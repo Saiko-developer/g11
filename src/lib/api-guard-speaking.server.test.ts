@@ -25,7 +25,9 @@ describe("speaking distinguishes authentication rejection from unavailable authe
     });
   });
   it.each([401, 403])("keeps real token rejection %i as 401", async (status) => {
-    vi.mocked(fetch).mockResolvedValue(new Response(null, { status }));
+    vi.mocked(fetch).mockResolvedValue(
+      Response.json({ code: "bad_jwt", message: "Invalid JWT" }, { status }),
+    );
     expect(((await requireUser(request(), { reportServiceErrors: true })) as Response).status).toBe(
       401,
     );
@@ -63,4 +65,31 @@ describe("speaking distinguishes authentication rejection from unavailable authe
     ).toBe(401);
     expect(fetch).not.toHaveBeenCalled();
   });
+});
+
+it.each([
+  "error code: 1010",
+  "<html>Access denied</html>",
+  JSON.stringify({ message: "Forbidden" }),
+])("does not turn infrastructure 403 into repeated sign-in: %s", async (body) => {
+  vi.mocked(fetch).mockResolvedValue(new Response(body, { status: 403 }));
+  const response = (await requireUser(request(), { reportServiceErrors: true })) as Response;
+  expect(response.status).toBe(503);
+  expect((await response.json()).error).toBe("auth_service_unavailable");
+});
+it.each([401, 403])("reports wrong project API keys as setup failures (%i)", async (status) => {
+  vi.mocked(fetch).mockResolvedValue(Response.json({ message: "Invalid API key" }, { status }));
+  expect(((await requireUser(request(), { reportServiceErrors: true })) as Response).status).toBe(
+    503,
+  );
+});
+it("does not prompt a banned account to keep signing in", async () => {
+  vi.mocked(fetch).mockResolvedValue(Response.json({ code: "user_banned" }, { status: 403 }));
+  const response = (await requireUser(request(), { reportServiceErrors: true })) as Response;
+  expect(response.status).toBe(403);
+  expect((await response.json()).error).toBe("account_unavailable");
+});
+it("leaves default Grade 10 handling of infrastructure 403 unchanged", async () => {
+  vi.mocked(fetch).mockResolvedValue(new Response("error code: 1010", { status: 403 }));
+  expect(((await requireUser(request())) as Response).status).toBe(401);
 });

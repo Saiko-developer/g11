@@ -30,8 +30,46 @@ export async function requireUser(
     if (options?.reportServiceErrors) return unavailable();
     throw error;
   }
-  if (options?.reportServiceErrors && !res.ok && res.status !== 401 && res.status !== 403)
-    return unavailable();
+  if (options?.reportServiceErrors && !res.ok) {
+    if (res.status !== 401 && res.status !== 403) return unavailable();
+    // A proxy/WAF 403 (for example error 1010) is not evidence of a bad token.
+    // Likewise an invalid project API key cannot be repaired by student sign-in.
+    const detail = (await res.json().catch(() => null)) as {
+      code?: unknown;
+      error_code?: unknown;
+      message?: unknown;
+      msg?: unknown;
+      error?: unknown;
+    } | null;
+    const code =
+      typeof detail?.code === "string"
+        ? detail.code
+        : typeof detail?.error_code === "string"
+          ? detail.error_code
+          : "";
+    const message = [detail?.message, detail?.msg, detail?.error]
+      .filter((value): value is string => typeof value === "string")
+      .join(" ");
+    if (
+      /invalid[_ ]api[_ ]key|invalid[_ ]apikey|no api key|missing api key/i.test(
+        `${code} ${message}`,
+      )
+    )
+      return unavailable();
+    if (code === "user_banned")
+      return Response.json(
+        {
+          error: "account_unavailable",
+          message: "ဤအကောင့်ကို ယာယီအသုံးမပြုနိုင်ပါ။ ဆရာထံ ဆက်သွယ်ပါ။",
+        },
+        { status: 403 },
+      );
+    if (
+      res.status === 403 &&
+      !["bad_jwt", "no_authorization", "session_not_found", "user_not_found"].includes(code)
+    )
+      return unavailable();
+  }
   if (!res.ok) return Response.json({ error: "Please sign in again." }, { status: 401 });
   const user = (await res.json().catch(() => null)) as { id?: string } | null;
   if (!user?.id)
