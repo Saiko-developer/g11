@@ -1,3 +1,4 @@
+import { validateGrade11Speaking } from "@/lib/grade11SpeakingSessions.server";
 import { requireUser, untrusted, cleanLine } from "@/lib/api-guard.server";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -47,6 +48,14 @@ export const Route = createFileRoute("/api/transcribe")({
 
         const upstreamForm = new FormData();
         // Speaking Practice sends language "en"; everything else keeps the Burmese default.
+        if (form.has("grade11SpeakingSession")) {
+          const access = await validateGrade11Speaking(
+            request,
+            String(form.get("grade11SpeakingSession")),
+            Number(form.get("grade11SpeakingUnit")),
+          );
+          if (access instanceof Response) return access;
+        }
         const lang = String(form.get("language") ?? "").toLowerCase() === "en" ? "en" : "my";
         const grade11 = String(form.get("grade") ?? "") === "11";
         const isSpeaking = String(form.get("context") ?? "") === "speaking";

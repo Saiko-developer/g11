@@ -6,7 +6,11 @@ import { getChatModel, DEFAULT_LOVABLE_CHAT_MODEL } from "@/lib/ai-gateway.serve
  * Uses the Lovable AI Gateway and returns parsed JSON.
  * Streaming is required on this endpoint — we consume it server-side.
  */
-export async function generateJson<T>(opts: { system: string; prompt: string }): Promise<T> {
+export async function generateJson<T>(opts: {
+  system: string;
+  prompt: string;
+  signal?: AbortSignal;
+}): Promise<T> {
   const modelId =
     process.env.LOVABLE_JSON_MODEL?.trim() ||
     process.env.LOVABLE_CHAT_MODEL?.trim() ||
@@ -14,6 +18,7 @@ export async function generateJson<T>(opts: { system: string; prompt: string }):
 
   const result = streamText({
     model: getChatModel(modelId),
+    abortSignal: opts.signal,
     system: withTone`${opts.system}\n\nReply with raw JSON only. No markdown fences, no commentary.`,
     prompt: opts.prompt,
   });

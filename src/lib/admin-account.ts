@@ -17,6 +17,13 @@ export const accountSchema = z.object({
   is_admin: z.boolean(),
   is_teacher: z.boolean(),
   is_main_admin: z.boolean(),
+  grade11_speaking_units: z.array(z.number().int()).optional(),
+  grade11_speaking_sessions: z.number().int().nonnegative().optional(),
+  grade11_speaking_seconds: z.number().int().nonnegative().optional(),
+  grade11_speaking_active: z
+    .object({ unit: z.number().int(), expiresAt: z.string(), serverNow: z.string() })
+    .nullable()
+    .optional(),
 });
 export const walletUpdateSchema = z
   .object({

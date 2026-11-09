@@ -1,3 +1,4 @@
+import { validateGrade11Speaking } from "@/lib/grade11SpeakingSessions.server";
 import { unit1GrammarAudio } from "@/lib/grade11GrammarAudioCache.server";
 import { requireUser, untrusted, cleanLine } from "@/lib/api-guard.server";
 import { createFileRoute } from "@tanstack/react-router";
@@ -5,6 +6,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { sanitizeForSpeech } from "@/lib/sanitizeSpeech";
 
 type TtsBody = {
+  grade11SpeakingSession?: string;
+  grade11SpeakingUnit?: number;
   lessonCache?: string;
   text?: string;
   voice?: string;
@@ -64,11 +67,27 @@ export const Route = createFileRoute("/api/tts")({
       POST: async ({ request }) => {
         const authed = await requireUser(request, { enforceAccountStatus: true });
         if (authed instanceof Response) return authed;
-        const { text, voice, speed, provider, lessonCache } = (await request.json()) as TtsBody;
+        const {
+          text,
+          voice,
+          speed,
+          provider,
+          lessonCache,
+          grade11SpeakingSession,
+          grade11SpeakingUnit,
+        } = (await request.json()) as TtsBody;
         if (!text || typeof text !== "string") {
           return new Response("text is required", { status: 400 });
         }
 
+        if (grade11SpeakingSession !== undefined) {
+          const access = await validateGrade11Speaking(
+            request,
+            grade11SpeakingSession,
+            Number(grade11SpeakingUnit),
+          );
+          if (access instanceof Response) return access;
+        }
         const generate = async () => {
           const lovableKey = process.env.LOVABLE_API_KEY;
           if (!lovableKey) return new Response("Missing LOVABLE_API_KEY", { status: 500 });

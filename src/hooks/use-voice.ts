@@ -22,9 +22,7 @@ type SpeechRecognitionLike = {
   onend: (() => void) | null;
 };
 
-function getRecognitionCtor():
-  | (new () => SpeechRecognitionLike)
-  | null {
+function getRecognitionCtor(): (new () => SpeechRecognitionLike) | null {
   if (typeof window === "undefined") return null;
   const w = window as unknown as {
     SpeechRecognition?: new () => SpeechRecognitionLike;
@@ -93,7 +91,12 @@ export function useSpeechRecognition(opts: {
     // and may replay old indices; only emit genuinely new words.
     const emitted = new Set<number>();
     let lastFinal = "";
-    const norm = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}\s']/gu, "").replace(/\s+/g, " ").trim();
+    const norm = (s: string) =>
+      s
+        .toLowerCase()
+        .replace(/[^\p{L}\p{N}\s']/gu, "")
+        .replace(/\s+/g, " ")
+        .trim();
     rec.onresult = (e) => {
       let finalText = "";
       let interimText = "";
@@ -158,7 +161,6 @@ export function useSpeechRecognition(opts: {
     setListening(false);
   }, [clearSilenceTimer]);
 
-
   useEffect(() => () => stop(), [stop]);
 
   return { listening, supported, start, stop };
@@ -208,7 +210,15 @@ export function useSpeechSynthesis() {
   const speak = useCallback(
     async (
       text: string,
-      opts?: { lang?: string; speed?: number; onStart?: () => void; nativeEnglish?: boolean; voice?: string; provider?: "openai" },
+      opts?: {
+        lang?: string;
+        speed?: number;
+        onStart?: () => void;
+        nativeEnglish?: boolean;
+        voice?: string;
+        provider?: "openai";
+        speakingScope?: { session: string; unit: number };
+      },
     ) => {
       if (typeof window === "undefined") return;
       // Instant path: built-in English voice, no network round-trip.
@@ -297,6 +307,8 @@ export function useSpeechSynthesis() {
             voice: opts?.voice ?? "alloy",
             provider: opts?.provider,
             speed: opts?.speed ?? 1.1,
+            grade11SpeakingSession: opts?.speakingScope?.session,
+            grade11SpeakingUnit: opts?.speakingScope?.unit,
           }),
         });
         if (!res.ok) {

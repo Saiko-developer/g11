@@ -15,6 +15,7 @@ export function useWhisperRecognition(opts: {
   /** Extra hint for the transcriber (e.g. "speaking"). */
   context?: string;
   silenceMs?: number;
+  speakingScope?: () => { session: string; unit: number } | undefined;
   /** When true, a manual stop() transcribes what was recorded and calls onFinal. */
   flushOnStop?: boolean;
   onFinal: (text: string) => void;
@@ -67,6 +68,11 @@ export function useWhisperRecognition(opts: {
       form.append("file", blob, `recording.${ext}`);
       if (lang) form.append("language", lang.slice(0, 2));
       if (context) form.append("context", context);
+      const scope = cbRef.current.speakingScope?.();
+      if (scope) {
+        form.append("grade11SpeakingSession", scope.session);
+        form.append("grade11SpeakingUnit", String(scope.unit));
+      }
       try {
         const res = await fetch("/api/transcribe", { method: "POST", body: form });
         if (!res.ok) throw new Error(`transcribe ${res.status}`);
@@ -126,8 +132,8 @@ export function useWhisperRecognition(opts: {
     }
     streamRef.current = stream;
 
-    const mime = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg"].find(
-      (m) => MediaRecorder.isTypeSupported?.(m),
+    const mime = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg"].find((m) =>
+      MediaRecorder.isTypeSupported?.(m),
     );
     const rec = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
     const chunks: Blob[] = [];
@@ -139,16 +145,23 @@ export function useWhisperRecognition(opts: {
     recRef.current = rec;
 
     // Volume meter for end-of-speech detection.
-    const Ctx = window.AudioContext ?? (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    const Ctx =
+      window.AudioContext ??
+      (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
     const ctx = new Ctx();
     ctxRef.current = ctx;
     const analyser = ctx.createAnalyser();
     analyser.fftSize = 1024;
     // Noise reduction for detection: cut fan/AC rumble and hiss, keep the voice band.
-    const hp = ctx.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 120;
-    const lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 3800;
+    const hp = ctx.createBiquadFilter();
+    hp.type = "highpass";
+    hp.frequency.value = 120;
+    const lp = ctx.createBiquadFilter();
+    lp.type = "lowpass";
+    lp.frequency.value = 3800;
     ctx.createMediaStreamSource(stream).connect(hp);
-    hp.connect(lp); lp.connect(analyser);
+    hp.connect(lp);
+    lp.connect(analyser);
     const buf = new Uint8Array(analyser.fftSize);
     const startedAt = Date.now();
     let noise = 0.01;

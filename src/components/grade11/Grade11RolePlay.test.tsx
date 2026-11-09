@@ -54,13 +54,31 @@ const reply = (text = "Where would you like to travel?") =>
     scenario: "Planning a trip",
     emotion: "curious",
   });
-const start = () => fireEvent.click(screen.getByRole("button", { name: "စကားပြော စတင်မည်" }));
+const start = async () => {
+  await waitFor(() =>
+    expect(screen.getByRole("button", { name: "စကားပြော စတင်မည်" })).toBeEnabled(),
+  );
+  fireEvent.click(screen.getByRole("button", { name: "စကားပြော စတင်မည်" }));
+};
 const typedMode = () => fireEvent.click(screen.getByRole("checkbox"));
 beforeEach(() => {
   vi.clearAllMocks();
   mocks.getSession.mockResolvedValue({ data: { session: { access_token: "test-token" } } });
   mocks.refreshSession.mockResolvedValue({ data: { session: null }, error: new Error("expired") });
-  mocks.rpc.mockResolvedValue({ data: { used: 0, limit: 2, unlimited: false } });
+  mocks.rpc.mockResolvedValue({
+    data: {
+      ok: true,
+      used: 0,
+      limit: 2,
+      unitsUsed: [],
+      unitLimit: 2,
+      sessionsUsed: 0,
+      durationSeconds: 300,
+      serverNow: new Date().toISOString(),
+      canStart: true,
+      active: null,
+    },
+  });
   vi.stubGlobal(
     "fetch",
     vi.fn().mockImplementation(async () => reply()),
@@ -80,7 +98,7 @@ describe("Grade 11 AI speaking lifecycle", () => {
   it("uses Grade 11 context and the existing session for typed turns and final feedback", async () => {
     render(<Grade11RolePlay unit={5} />);
     typedMode();
-    start();
+    await start();
     await screen.findByLabelText("Your AI conversation reply");
     expect(mocks.speak).not.toHaveBeenCalled();
     expect(fetch).toHaveBeenCalledWith(
@@ -113,7 +131,7 @@ describe("Grade 11 AI speaking lifecycle", () => {
   });
   it("shows AI captions, then automatically opens the mic and sends recognized speech", async () => {
     render(<Grade11RolePlay unit={7} />);
-    start();
+    await start();
     await screen.findAllByText("Where would you like to travel?");
     expect(mocks.speak).toHaveBeenCalled();
     act(() => mocks.finishVoice());
@@ -132,7 +150,7 @@ describe("Grade 11 AI speaking lifecycle", () => {
     vi.mocked(fetch).mockResolvedValue(new Response(null, { status: 402 }));
     render(<Grade11RolePlay unit={1} />);
     typedMode();
-    start();
+    await start();
     await screen.findByRole("alert");
     expect(screen.getByRole("button", { name: "စကားပြော စတင်မည်" })).toBeEnabled();
   });
@@ -146,7 +164,7 @@ describe("Grade 11 AI speaking lifecycle", () => {
     );
     const view = render(<Grade11RolePlay unit={12} />);
     typedMode();
-    start();
+    await start();
     await waitFor(() => expect(fetch).toHaveBeenCalledOnce());
     const signal = vi.mocked(fetch).mock.calls[0][1]!.signal!;
     view.unmount();
@@ -161,7 +179,7 @@ describe("Grade 11 AI speaking lifecycle", () => {
   it("does not open a paid session when microphone permission is denied", async () => {
     vi.mocked(navigator.mediaDevices.getUserMedia).mockRejectedValue(new Error("denied"));
     render(<Grade11RolePlay unit={2} />);
-    start();
+    await start();
     await waitFor(() =>
       expect(screen.getByRole("button", { name: "စကားပြော စတင်မည်" })).toBeVisible(),
     );
@@ -178,7 +196,7 @@ it("does not ask a signed-in student to login again for a speaking service error
   );
   render(<Grade11RolePlay unit={5} />);
   typedMode();
-  start();
+  await start();
   expect(await screen.findByRole("alert")).toHaveTextContent(
     "စကားပြောဝန်ဆောင်မှုကို ချိတ်ဆက်မရပါ။",
   );
@@ -189,7 +207,7 @@ it("offers login only after a real auth rejection and unsuccessful token refresh
   vi.mocked(fetch).mockResolvedValue(Response.json({ error: "signin" }, { status: 401 }));
   render(<Grade11RolePlay unit={5} />);
   typedMode();
-  start();
+  await start();
   await screen.findByRole("alert");
   expect(screen.getByRole("button", { name: "Login" })).toBeVisible();
   expect(mocks.refreshSession).toHaveBeenCalledOnce();
@@ -199,8 +217,107 @@ it("continues to the student's turn when speech playback fails before reporting 
     throw new Error("audio unavailable");
   });
   render(<Grade11RolePlay unit={5} />);
-  start();
+  await start();
   await screen.findByLabelText("Your AI conversation reply");
   expect(mocks.startMic).toHaveBeenCalled();
   expect(fetch).toHaveBeenCalledOnce();
+});
+it("does not offer a third new unit after two units have been started", async () => {
+  mocks.rpc.mockResolvedValue({
+    data: {
+      ok: true,
+      used: 0,
+      limit: 2,
+      unitsUsed: [1, 2],
+      unitLimit: 2,
+      sessionsUsed: 2,
+      durationSeconds: 300,
+      canStart: false,
+      active: null,
+      serverNow: new Date().toISOString(),
+    },
+  });
+  render(<Grade11RolePlay unit={3} />);
+  await screen.findByText(/ဒီနေ့ Unit အသစ် ထပ်ရွေးမရပါ/);
+  expect(screen.getByRole("button", { name: "စကားပြော စတင်မည်" })).toBeDisabled();
+  expect(fetch).not.toHaveBeenCalled();
+});
+it("allows resuming an active second session even when no new sessions remain", async () => {
+  const serverNow = new Date().toISOString(),
+    expiresAt = new Date(Date.now() + 60000).toISOString();
+  mocks.rpc.mockResolvedValue({
+    data: {
+      ok: true,
+      used: 2,
+      limit: 2,
+      unitsUsed: [5],
+      unitLimit: 2,
+      sessionsUsed: 2,
+      durationSeconds: 300,
+      canStart: false,
+      active: { session, unit: 5, exercise: null, expiresAt, revision: 3 },
+      serverNow,
+    },
+  });
+  vi.mocked(fetch).mockResolvedValue(
+    Response.json({
+      session,
+      resumed: true,
+      revision: 3,
+      reply: "Welcome back",
+      replyMy: "ပြန်ကြိုဆိုပါတယ်။",
+      expiresAt,
+      serverNow,
+      history: [
+        { role: "student", text: "My earlier answer" },
+        { role: "ai", text: "Welcome back" },
+      ],
+    }),
+  );
+  render(<Grade11RolePlay unit={5} />);
+  typedMode();
+  const resume = await screen.findByRole("button", { name: "မူလ စကားပြောမှုကို ပြန်ဆက်မည်" });
+  fireEvent.click(resume);
+  await screen.findByText("My earlier answer");
+  expect(screen.getByRole("timer")).toHaveTextContent("1:00");
+});
+it("stops playback/recording at the server deadline and ends an opening-only session", async () => {
+  vi.useFakeTimers();
+  try {
+    const serverNow = new Date().toISOString(),
+      expiresAt = new Date(Date.now() + 5000).toISOString();
+    vi.mocked(fetch).mockResolvedValue(
+      Response.json({
+        session,
+        revision: 1,
+        reply: "Hello",
+        replyMy: "မင်္ဂလာပါ",
+        expiresAt,
+        serverNow,
+      }),
+    );
+    render(<Grade11RolePlay unit={5} />);
+    await act(async () => {
+      await Promise.resolve();
+    });
+    fireEvent.click(screen.getByRole("button", { name: "စကားပြော စတင်မည်" }));
+    await act(async () => {
+      await Promise.resolve();
+      await Promise.resolve();
+    });
+    expect(screen.getByRole("timer")).toHaveTextContent("0:05");
+    await act(async () => {
+      vi.advanceTimersByTime(5000);
+      await Promise.resolve();
+    });
+    expect(mocks.stopMic).toHaveBeenCalled();
+    expect(mocks.stopVoice).toHaveBeenCalled();
+    expect(
+      vi
+        .mocked(fetch)
+        .mock.calls.some(([, init]) => JSON.parse(String(init?.body)).action === "end"),
+    ).toBe(true);
+  } finally {
+    vi.useRealTimers();
+  }
 });

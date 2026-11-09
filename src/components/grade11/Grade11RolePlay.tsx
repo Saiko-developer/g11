@@ -1,3 +1,11 @@
+import {
+  speakingAllowanceSchema,
+  speakingSeconds,
+  speakingTime,
+  notifySpeakingAllowanceChanged,
+  onSpeakingAllowanceChanged,
+  type Grade11SpeakingAllowance,
+} from "@/lib/grade11SpeakingAllowance";
 import { grade11ApiFetch } from "@/lib/grade11ApiFetch";
 import { useEffect, useRef, useState } from "react";
 import { Loader2, Mic, Phone, PhoneOff, Square } from "lucide-react";
@@ -81,6 +89,17 @@ export function Grade11RolePlay({
   const [summary, setSummary] = useState<{ feedbackMy: string } | null>(null);
   const [left, setLeft] = useState<number | null>(null);
   const sessionRef = useRef("");
+  const revisionRef = useRef<number | undefined>(undefined);
+  const [allowance, setAllowance] = useState<Grade11SpeakingAllowance | null>(null);
+  const [statusAt, setStatusAt] = useState(0);
+  const [allowanceError, setAllowanceError] = useState("");
+  const [statusLoading, setStatusLoading] = useState(true);
+  const [clock, setClock] = useState<{
+    expiresAt: string;
+    serverNow: string;
+    receivedAt: number;
+  } | null>(null);
+  const [remaining, setRemaining] = useState<number | null>(null);
   const endingRef = useRef(false);
   const activeRef = useRef(false);
   const phaseRef = useRef<Phase>("idle");
@@ -132,6 +151,7 @@ export function Grade11RolePlay({
     lang: "en",
     context: "speaking",
     silenceMs: 2200,
+    speakingScope: () => (sessionRef.current ? { session: sessionRef.current, unit } : undefined),
     onFinal: (t) => {
       if (phaseRef.current !== "listening") return;
       bufRef.current += ` ${t}`;
@@ -158,23 +178,37 @@ export function Grade11RolePlay({
           unit,
           unitTitle,
           exercise,
+          requestId: crypto.randomUUID(),
+          revision: revisionRef.current,
           session: sessionRef.current || undefined,
           goodbye,
-          turns: history.slice(-20).map(({ role, text }) => ({ role, text })),
+          turns: history.slice(-20).map(({ role, text, my, tip }) => ({ role, text, my, tip })),
         },
         controller.signal,
       );
       if (!activeRef.current || generation !== generationRef.current) return;
       if (typeof r.session === "string" && !sessionRef.current) {
         sessionRef.current = r.session;
-        void refreshLeft();
+        notifySpeakingAllowanceChanged();
+      }
+      if (typeof r.revision === "number") revisionRef.current = r.revision;
+      if (typeof r.expiresAt === "string" && typeof r.serverNow === "string") {
+        const receivedAt = Date.now();
+        setClock({ expiresAt: r.expiresAt, serverNow: r.serverNow, receivedAt });
+        setRemaining(speakingSeconds(r.expiresAt, r.serverNow, receivedAt, receivedAt));
       }
       endingRef.current = goodbye;
       if (r.scenario) setScenario({ partner: "Saya Owl", en: r.scenario, my: r.scenarioMy ?? "" });
       const withTip = [...history];
       if (r.tip && withTip.length)
         withTip[withTip.length - 1] = { ...withTip[withTip.length - 1], tip: r.tip };
-      const next = [...withTip, { role: "ai" as const, text: r.reply, my: r.replyMy }];
+      const restored = Array.isArray(r.history)
+        ? (r.history.filter(
+            (turn: Turn) =>
+              (turn.role === "ai" || turn.role === "student") && typeof turn.text === "string",
+          ) as Turn[])
+        : null;
+      const next = restored ?? [...withTip, { role: "ai" as const, text: r.reply, my: r.replyMy }];
       turnsRef.current = next;
       setTurns(next);
       if (typeof r.emotion === "string" && EMOTIONS[r.emotion]) setEmotion(r.emotion);
@@ -193,7 +227,12 @@ export function Grade11RolePlay({
       const attempt = ++speechAttempt.current;
       void (async () => {
         try {
-          await tts.speak(r.reply, { speed: 1, voice: "echo", provider: "openai" });
+          await tts.speak(r.reply, {
+            speed: 1,
+            voice: "echo",
+            provider: "openai",
+            speakingScope: { session: sessionRef.current, unit },
+          });
         } catch {
           if (
             activeRef.current &&
@@ -223,6 +262,7 @@ export function Grade11RolePlay({
       setAuthError(e instanceof SpeakingFailure && e.status === 401);
       toast.error(message);
       stop(false);
+      void refreshLeft();
     }
   };
 
@@ -280,14 +320,64 @@ export function Grade11RolePlay({
 
   const [limit, setLimit] = useState<number | null>(null);
   const refreshLeft = async () => {
-    const { data } = await supabase.rpc("speaking_unit_status" as never, { p_unit: unit } as never);
-    const s = data as unknown as { used: number; limit: number; unlimited: boolean } | null;
-    setLeft(s ? (s.unlimited ? -1 : Math.max(0, s.limit - s.used)) : null);
-    setLimit(s && !s.unlimited ? s.limit : null);
+    setStatusLoading(true);
+    try {
+      const { data, error } = await supabase.rpc("grade11_speaking_status", { p_unit: unit });
+      const parsed = speakingAllowanceSchema.safeParse(data);
+      if (error || !parsed.success) {
+        setAllowance(null);
+        setLeft(null);
+        setAllowanceError("Grade 11 စကားပြောခွင့် စစ်ဆေးမရပါ။ ဆရာထံ အကြောင်းကြားပါ။");
+        return;
+      }
+      const status = parsed.data;
+      setAllowance(status);
+      setStatusAt(Date.now());
+      setAllowanceError("");
+      setLeft(Math.max(0, status.limit - status.used));
+      setLimit(status.limit);
+    } catch {
+      setAllowance(null);
+      setAllowanceError("စကားပြောခွင့် စစ်ဆေးမရပါ။ ပြန်စမ်းပါ။");
+    } finally {
+      setStatusLoading(false);
+    }
   };
   useEffect(() => {
     void refreshLeft();
   }, [unit]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (!clock || !activeRef.current) return;
+    const tick = () => {
+      const seconds = speakingSeconds(
+        clock.expiresAt,
+        clock.serverNow,
+        clock.receivedAt,
+        Date.now(),
+      );
+      setRemaining(seconds);
+      if (seconds === 0 && activeRef.current) void stop();
+    };
+    tick();
+    const timer = setInterval(tick, 1000);
+    return () => clearInterval(timer);
+  }, [clock]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (!allowance || !Number.isFinite(Date.parse(allowance.serverNow))) return;
+    const serverTime = Date.parse(allowance.serverNow);
+    const nextDay = 86400000 - ((serverTime + 23400000) % 86400000);
+    const expiry = allowance.active
+      ? Date.parse(allowance.active.expiresAt) - serverTime
+      : Infinity;
+    const timer = setTimeout(
+      () => void refreshLeft(),
+      Math.max(50, Math.min(nextDay, expiry) - (Date.now() - statusAt) + 50),
+    );
+    return () => clearTimeout(timer);
+  }, [allowance, statusAt]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => onSpeakingAllowanceChanged(() => void refreshLeft()), [unit]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // 15 seconds of silence while listening = the student is done; Saya Owl says goodbye.
   useEffect(() => {
@@ -308,6 +398,15 @@ export function Grade11RolePlay({
   }, [phase, heard, voiceMode]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const start = async () => {
+    if (
+      allowance?.active &&
+      Date.parse(allowance.active.expiresAt) <=
+        Date.parse(allowance.serverNow) + (Date.now() - statusAt)
+    ) {
+      await refreshLeft();
+      setError("မူလစကားပြောချိန် ပြည့်သွားပါပြီ။ လက်ကျန်အကြိမ်ကို စစ်ပြီး အသစ် စတင်နိုင်ပါတယ်။");
+      return;
+    }
     if (voiceMode && !rec.supported) {
       toast.error("ဒီ browser မှာ အသံဖမ်းလို့ မရပါ။ Chrome ဖြင့် ဖွင့်ကြည့်ပါ။");
       return;
@@ -346,6 +445,9 @@ export function Grade11RolePlay({
     }
     activeRef.current = true;
     sessionRef.current = "";
+    revisionRef.current = undefined;
+    setClock(null);
+    setRemaining(null);
     endingRef.current = false;
     turnsRef.current = [];
     setTurns([]);
@@ -363,9 +465,17 @@ export function Grade11RolePlay({
     requestRef.current = controller;
     rec.stop();
     tts.stop();
+    setClock(null);
     setHeard("");
     const said = turnsRef.current.filter((t) => t.role === "student");
     if (!withSummary || !said.length || !sessionRef.current) {
+      if (withSummary && sessionRef.current) {
+        void callRoleplay({ unit, exercise, session: sessionRef.current, action: "end" })
+          .finally(() => {
+            notifySpeakingAllowanceChanged();
+          })
+          .catch(() => {});
+      }
       set("idle");
       return;
     }
@@ -377,6 +487,8 @@ export function Grade11RolePlay({
           unitTitle,
           exercise,
           session: sessionRef.current,
+          requestId: crypto.randomUUID(),
+          revision: revisionRef.current,
           turns: turnsRef.current.slice(-20),
           finish: true,
         },
@@ -386,9 +498,22 @@ export function Grade11RolePlay({
     } catch {
       if (generation !== generationRef.current) return;
       setSummary({ feedbackMy: "အကဲဖြတ်ချက် ရယူမရပါ။ အသစ်ပြန်စနိုင်ပါတယ်။" });
+    } finally {
+      notifySpeakingAllowanceChanged();
     }
   };
 
+  const sameActive =
+    !!allowance?.active &&
+    Date.parse(allowance.active.expiresAt) >
+      Date.parse(allowance.serverNow) + (Date.now() - statusAt) &&
+    allowance.active.unit === unit &&
+    (allowance.active.exercise ?? undefined) === exercise;
+  const differentActive = !!allowance?.active && !sameActive;
+  const dailyBlocked =
+    !!allowance &&
+    allowance.unitsUsed.length >= allowance.unitLimit &&
+    !allowance.unitsUsed.includes(unit);
   const live = phase !== "idle" && phase !== "summary";
   const status: Record<Phase, string> = {
     idle: "",
@@ -419,6 +544,66 @@ export function Grade11RolePlay({
       aria-label="Grade 11 AI speaking practice"
       className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-b from-card to-muted/40 shadow-sm"
     >
+      <div className="space-y-2 border-b border-border bg-muted/40 px-5 py-3 text-xs">
+        <p lang="my">တစ်နေ့ Unit ၂ ခု · Unit တစ်ခုလျှင် ၂ ကြိမ် · တစ်ကြိမ် ၅ မိနစ်</p>
+        {allowance && (
+          <p>
+            ယနေ့ စတင်ထားသော Units:{" "}
+            {allowance.unitsUsed.length ? allowance.unitsUsed.join(", ") : "မရှိသေး"} ·{" "}
+            {allowance.unitsUsed.length}/{allowance.unitLimit} Units · Sessions{" "}
+            {allowance.sessionsUsed}/4
+          </p>
+        )}
+        {live && remaining !== null && (
+          <p
+            role="timer"
+            aria-label="Speaking time remaining"
+            className="font-semibold text-primary"
+          >
+            ကျန်ချိန် {speakingTime(remaining)}
+          </p>
+        )}
+        {statusLoading && <p role="status">စကားပြောခွင့် စစ်ဆေးနေသည်…</p>}
+        {allowanceError && (
+          <p role="alert" className="text-destructive">
+            {allowanceError}{" "}
+            <button type="button" className="underline" onClick={() => void refreshLeft()}>
+              ပြန်စစ်မည်
+            </button>
+          </p>
+        )}
+        {!live && differentActive && (
+          <div className="space-y-2">
+            <p>
+              Unit {allowance?.active?.unit} မှာ စကားပြောချိန် ကျန်နေပါသည်။ အရင် conversation ကို
+              ပြန်ဆက်ပါ သို့မဟုတ် အဆုံးသတ်ပါ။
+            </p>
+            <button
+              type="button"
+              className="font-medium text-primary underline"
+              onClick={async () => {
+                try {
+                  await callRoleplay({
+                    unit: allowance!.active!.unit,
+                    session: allowance!.active!.session,
+                    action: "end",
+                  });
+                  notifySpeakingAllowanceChanged();
+                } catch (e) {
+                  setError(e instanceof Error ? e.message : "အဆုံးသတ်မရပါ။");
+                }
+              }}
+            >
+              အရင် conversation ကို အဆုံးသတ်မည်
+            </button>
+          </div>
+        )}
+        {!live && dailyBlocked && (
+          <p>
+            ဒီနေ့ Unit အသစ် ထပ်ရွေးမရပါ။ ရွေးထားသော Unit များတွင် လက်ကျန်အကြိမ်ကို သုံးနိုင်ပါတယ်။
+          </p>
+        )}
+      </div>
       <div className="flex items-center justify-between px-5 pt-4 text-xs">
         <span className="flex items-center gap-2 font-semibold text-foreground">
           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 text-sm">
@@ -631,11 +816,22 @@ export function Grade11RolePlay({
             <button
               type="button"
               onClick={start}
-              disabled={left === 0}
+              disabled={
+                statusLoading ||
+                !!allowanceError ||
+                differentActive ||
+                dailyBlocked ||
+                (left === 0 && !sameActive) ||
+                (phase === "summary" && !summary)
+              }
               className="flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition hover:opacity-90"
             >
               <Phone className="h-4 w-4" />{" "}
-              {phase === "summary" ? "အသစ် ပြန်စမည်" : "စကားပြော စတင်မည်"}
+              {sameActive
+                ? "မူလ စကားပြောမှုကို ပြန်ဆက်မည်"
+                : phase === "summary"
+                  ? "အသစ် ပြန်စမည်"
+                  : "စကားပြော စတင်မည်"}
             </button>
             {left !== null && left >= 0 && (
               <p className="text-xs text-muted-foreground">

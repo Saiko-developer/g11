@@ -3,15 +3,29 @@ import { TRAVEL_LESSONS } from "./grade11Travel";
 import { z } from "zod";
 import { generateJson } from "@/lib/ai-json.server";
 import { requireUser, untrusted } from "@/lib/api-guard.server";
-import { chargeSpeakingTurn, startSpeakingSession } from "@/lib/speaking-session.server";
+import {
+  prepareGrade11Speaking,
+  completeGrade11Speaking,
+  endGrade11Speaking,
+} from "./grade11SpeakingSessions.server";
 import { G11_SYLLABUS } from "@/data/grade11/syllabus";
 import { GRADE11_SPEAKING_LINES } from "@/data/grade11/speakingPractice";
 
 const input = z.object({
   unit: z.number().int().min(1).max(12),
+  requestId: z.string().uuid().optional(),
+  revision: z.number().int().nonnegative().optional(),
+  action: z.literal("end").optional(),
   exercise: z.enum(["1D-30", "1D-31", "5D-14", "5D-21"]).optional(),
   turns: z
-    .array(z.object({ role: z.enum(["ai", "student"]), text: z.string().max(1600) }))
+    .array(
+      z.object({
+        role: z.enum(["ai", "student"]),
+        text: z.string().max(1600),
+        my: z.string().max(3000).optional(),
+        tip: z.string().max(2000).optional(),
+      }),
+    )
     .max(20)
     .default([]),
   session: z.string().uuid().optional(),
@@ -54,6 +68,11 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
     return Response.json({ error: "Session required" }, { status: 400 });
   if (body.exercise && Number(body.exercise[0]) !== body.unit)
     return Response.json({ error: "Invalid exercise" }, { status: 400 });
+  if (body.action === "end") {
+    if (!body.session) return Response.json({ error: "Session required" }, { status: 400 });
+    const result = await endGrade11Speaking(request, body.session);
+    return result instanceof Response ? result : Response.json(result);
+  }
   // The shared model helper requires this key. Fail before opening/charging a speaking session.
   if (!process.env.LOVABLE_API_KEY?.trim())
     return Response.json(
@@ -63,16 +82,35 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
       },
       { status: 503 },
     );
-  let session = body.session;
-  if (session) {
-    const blocked = await chargeSpeakingTurn(request, session, { reportServiceErrors: true });
-    // Preserve the existing policy: final feedback remains available after credits run out.
-    if (blocked && !(body.finish && blocked.status === 402)) return blocked;
-  } else {
-    const opened = await startSpeakingSession(request, body.unit, { reportServiceErrors: true });
-    if (opened instanceof Response) return opened;
-    session = opened.session;
+  const requestId = body.requestId ?? crypto.randomUUID();
+  const claim = crypto.randomUUID();
+  let prepared = await prepareGrade11Speaking(request, body, requestId, claim);
+  if (
+    body.finish &&
+    prepared instanceof Response &&
+    prepared.status === 409 &&
+    (
+      await prepared
+        .clone()
+        .json()
+        .catch(() => null)
+    )?.error === "busy"
+  ) {
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    if (!request.signal.aborted)
+      prepared = await prepareGrade11Speaking(request, body, requestId, claim);
   }
+  if (prepared instanceof Response) return prepared;
+  if (prepared.cached) return Response.json(prepared);
+  const deadline =
+    typeof prepared.expiresAt === "string" && !body.finish
+      ? Date.parse(prepared.expiresAt) - Date.parse(String(prepared.serverNow))
+      : 45000;
+  const controller = new AbortController();
+  const abort = () => controller.abort();
+  request.signal.addEventListener("abort", abort, { once: true });
+  if (request.signal.aborted) controller.abort();
+  const timer = setTimeout(abort, Math.max(1, Math.min(45000, deadline)));
   const unit = G11_SYLLABUS.filter((node) => node.type === "unit").find(
     (node) => node.number === body.unit,
   )!;
@@ -112,11 +150,14 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
     if (body.finish) {
       const out = z.object({ feedbackMy: z.string().min(1).max(3000) }).parse(
         await generateJson({
+          signal: controller.signal,
           system: GRADE11_ROLEPLAY_SYSTEM,
           prompt: `${context}\n${conversation}\nThe call ended. Evaluate only the student's English. Return {"feedbackMy":"2-3 Burmese sentences: one strength and one practical improvement"}.`,
         }),
       );
-      return Response.json(out);
+      if (controller.signal.aborted) throw new Error("Speaking request interrupted");
+      const saved = await completeGrade11Speaking(request, requestId, claim, true, out, body.turns);
+      return saved instanceof Response ? saved : Response.json(saved);
     }
     const task = body.goodbye
       ? 'End the call warmly without a question. Return {"reply":"short English goodbye","replyMy":"Burmese translation","hints":[],"emotion":"calm"}.'
@@ -125,12 +166,26 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
         : 'Continue the conversation. Return {"reply":"English reply and question","replyMy":"Burmese translation","hints":["sample answer","sample answer"],"tip":"short Burmese correction if needed, otherwise empty","emotion":"happy|excited|curious|encouraging|calm"}.';
     const out = reply.parse(
       await generateJson({
+        signal: controller.signal,
         system: GRADE11_ROLEPLAY_SYSTEM,
         prompt: `${context}\n${conversation}\n${task}`,
       }),
     );
-    return Response.json({ ...out, partner: "Saya Owl", session });
+    if (controller.signal.aborted) throw new Error("Speaking request interrupted");
+    const history = body.turns.map((turn) => ({ ...turn }));
+    if (out.tip && history.length) history[history.length - 1].tip = out.tip;
+    history.push({ role: "ai", text: out.reply, my: out.replyMy });
+    const saved = await completeGrade11Speaking(
+      request,
+      requestId,
+      claim,
+      true,
+      { ...out, partner: "Saya Owl" },
+      history,
+    );
+    return saved instanceof Response ? saved : Response.json(saved);
   } catch (error) {
+    await completeGrade11Speaking(request, requestId, claim, false, {}, []);
     console.error("[g11-roleplay]", error instanceof Error ? error.message : "Generation failed");
     const message = error instanceof Error ? error.message : "";
     const status = /\b402\b/.test(message) ? 402 : /\b429\b/.test(message) ? 429 : 502;
@@ -151,5 +206,8 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
       },
       { status },
     );
+  } finally {
+    clearTimeout(timer);
+    request.signal.removeEventListener("abort", abort);
   }
 }

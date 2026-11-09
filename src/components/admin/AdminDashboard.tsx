@@ -1,3 +1,4 @@
+import { AdminSpeakingUsage } from "./AdminSpeakingUsage";
 import { useState, type ReactNode } from "react";
 import {
   ArrowUpRight,
@@ -648,6 +649,7 @@ export function AdminDashboard({
                   </p>
                 </div>
               </div>
+              <AdminSpeakingUsage student={selected} />
               <p className="text-xs text-muted-foreground">
                 Scholarship: {selected.scholarship || "Not set"} · Last seen{" "}
                 {date(selected.last_seen_at)}

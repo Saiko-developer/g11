@@ -36,6 +36,13 @@
       "when": 1794206599246,
       "tag": "0004_admin_account_integrity",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1794209059196,
+      "tag": "0005_grade11_speaking_allowance",
+      "breakpoints": true
     }
   ]
 }
