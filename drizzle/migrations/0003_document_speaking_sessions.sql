@@ -1,0 +1,1 @@
+COMMENT ON TABLE public.speaking_sessions IS 'AI speaking role-play sessions; per-unit daily limits enforced by start_speaking_session.';
