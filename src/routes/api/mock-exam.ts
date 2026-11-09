@@ -1,3 +1,4 @@
+import { requireActiveAccount } from "@/lib/account-access.server";
 import { untrusted, cleanLine } from "@/lib/api-guard.server";
 import { withTone } from "@/lib/tone-rules";
 import { createFileRoute } from "@tanstack/react-router";
@@ -5,9 +6,23 @@ import { createClient } from "@supabase/supabase-js";
 
 import { generateJson } from "@/lib/ai-json.server";
 import type { MockExamPaper } from "@/lib/mockExam";
-import { configKey, examTotals, isFullExam, normalizeConfig, type SectionId } from "@/lib/examBlueprint";
+import {
+  configKey,
+  examTotals,
+  isFullExam,
+  normalizeConfig,
+  type SectionId,
+} from "@/lib/examBlueprint";
 
-type Body = { unit?: number; unitTitle?: string; topics?: string; fresh?: boolean; units?: number[]; sections?: string[]; count?: number };
+type Body = {
+  unit?: number;
+  unitTitle?: string;
+  topics?: string;
+  fresh?: boolean;
+  units?: number[];
+  sections?: string[];
+  count?: number;
+};
 export type ExamQuota = { role: string; limit: number; used: number; extra?: number };
 
 function userClient(token: string) {
@@ -26,13 +41,18 @@ export const Route = createFileRoute("/api/mock-exam")({
   server: {
     handlers: {
       POST: async ({ request }) => {
+        if (request.headers.get("authorization")) {
+          const denied = await requireActiveAccount(request);
+          if (denied) return denied;
+        }
         const token = (request.headers.get("authorization") ?? "").replace(/^Bearer\s+/i, "");
         if (!token) return Response.json({ error: "Please sign in first." }, { status: 401 });
         const db = userClient(token);
         const { data: q0, error: qErr } = await db.rpc("exam_quota");
         if (qErr) return Response.json({ error: "Please sign in again." }, { status: 401 });
         const quota = q0 as unknown as ExamQuota;
-        if (quota.limit === 0) return Response.json({ error: "Please sign in first." }, { status: 401 });
+        if (quota.limit === 0)
+          return Response.json({ error: "Please sign in first." }, { status: 401 });
 
         const body = (await request.json()) as Body;
         const config = normalizeConfig(body, Number(body.unit ?? 1));
@@ -56,13 +76,18 @@ export const Route = createFileRoute("/api/mock-exam")({
         }
         if (quota.limit >= 0 && quota.used >= quota.limit && (quota.extra ?? 0) <= 0) {
           return Response.json(
-            { error: `ယနေ့အတွက် မေးခွန်းထုတ်ခွင့် (${quota.limit} ကြိမ်) ပြည့်သွားပါပြီ။ မနက်ဖြန် ပြန်ထုတ်နိုင်ပါသည် (သို့) Exam Credit ဝယ်ယူ / Admin ထံ ဆက်သွယ်ပါ။`, quota, limitReached: true },
+            {
+              error: `ယနေ့အတွက် မေးခွန်းထုတ်ခွင့် (${quota.limit} ကြိမ်) ပြည့်သွားပါပြီ။ မနက်ဖြန် ပြန်ထုတ်နိုင်ပါသည် (သို့) Exam Credit ဝယ်ယူ / Admin ထံ ဆက်သွယ်ပါ။`,
+              quota,
+              limitReached: true,
+            },
             { status: 429 },
           );
         }
         const unit = unitNo;
         const topics = cleanLine(body.topics, 1000);
-        const unitLabel = config.units.length > 1 ? `Units ${config.units.join(", ")}` : `Unit ${unit}`;
+        const unitLabel =
+          config.units.length > 1 ? `Units ${config.units.join(", ")}` : `Unit ${unit}`;
         const unitTitle = cleanLine(body.unitTitle, 120) || unitLabel;
         const n = config.count;
         const totals = examTotals(config);
@@ -78,7 +103,10 @@ export const Route = createFileRoute("/api/mock-exam")({
           IX: `IX Free Composition (Essay) — 10 marks, type "writing", maxWords 300: exactly 3 thematic essay prompts rooted in the unit's core concept. "sampleAnswers" MUST contain exactly 3 complete model essays (about 180 words each), one for each prompt (a), (b), (c) in order — never fewer, even though students choose only one.`,
         };
         const sectionLines = config.sections.map((id) => LINES[id]).join("\n");
-        const mix = config.units.length > 1 ? `\nMix the units fairly: spread items across ${unitLabel} so every chosen unit is tested.` : "";
+        const mix =
+          config.units.length > 1
+            ? `\nMix the units fairly: spread items across ${unitLabel} so every chosen unit is tested.`
+            : "";
 
         const system = `You are Sayar Owl, the automated examination generation engine for Grade 10 English in Myanmar.
 Generate an exam paper based strictly on the themes, reading materials and grammar targets of ${unitLabel} (${unitTitle}: ${topics}).${mix}
@@ -112,8 +140,15 @@ No conversational text.`;
           paper.durationMinutes = totals.minutes;
           paper.units = config.units;
           paper.configKey = key;
-          const { data: q1, error: recErr } = await db.rpc("record_exam_generation", { _unit: unit, _paper: paper as never });
-          if (recErr) return Response.json({ error: "ယနေ့အတွက် မေးခွန်းထုတ်ခွင့် ပြည့်သွားပါပြီ။", quota, limitReached: true }, { status: 429 });
+          const { data: q1, error: recErr } = await db.rpc("record_exam_generation", {
+            _unit: unit,
+            _paper: paper as never,
+          });
+          if (recErr)
+            return Response.json(
+              { error: "ယနေ့အတွက် မေးခွန်းထုတ်ခွင့် ပြည့်သွားပါပြီ။", quota, limitReached: true },
+              { status: 429 },
+            );
           return Response.json({ paper, quota: q1, cached: false });
         } catch (error) {
           console.error("[mock-exam]", error);

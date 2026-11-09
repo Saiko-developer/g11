@@ -29,6 +29,13 @@
       "when": 1794202547433,
       "tag": "0003_document_speaking_sessions",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794206599246,
+      "tag": "0004_admin_account_integrity",
+      "breakpoints": true
     }
   ]
 }

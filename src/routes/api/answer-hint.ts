@@ -10,7 +10,7 @@ export const Route = createFileRoute("/api/answer-hint")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const authed = await requireUser(request);
+        const authed = await requireUser(request, { enforceAccountStatus: true });
         if (authed instanceof Response) return authed;
         const body = (await request.json().catch(() => ({}))) as Record<string, unknown>;
         const question = s(body.question, 600);

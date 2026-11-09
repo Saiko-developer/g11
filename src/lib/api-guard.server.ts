@@ -1,7 +1,8 @@
+import { requireActiveAccount } from "./account-access.server";
 /** Verifies the caller's bearer token with Lovable Cloud auth. Returns a 401 Response when missing/invalid. */
 export async function requireUser(
   request: Request,
-  options?: { reportServiceErrors?: boolean },
+  options?: { reportServiceErrors?: boolean; enforceAccountStatus?: boolean },
 ): Promise<{ userId: string } | Response> {
   const token = (request.headers.get("authorization") ?? "").replace(/^Bearer\s+/i, "").trim();
   if (!token) return Response.json({ error: "Please sign in first." }, { status: 401 });
@@ -76,6 +77,10 @@ export async function requireUser(
     return options?.reportServiceErrors
       ? unavailable()
       : Response.json({ error: "Please sign in again." }, { status: 401 });
+  if (options?.enforceAccountStatus) {
+    const denied = await requireActiveAccount(request);
+    if (denied) return denied;
+  }
   return { userId: user.id };
 }
 

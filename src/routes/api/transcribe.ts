@@ -12,7 +12,7 @@ export const Route = createFileRoute("/api/transcribe")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const authed = await requireUser(request);
+        const authed = await requireUser(request, { enforceAccountStatus: true });
         if (authed instanceof Response) return authed;
         const key = process.env.LOVABLE_API_KEY;
         if (!key) return new Response("Missing LOVABLE_API_KEY", { status: 500 });

@@ -17,7 +17,7 @@ export const Route = createFileRoute("/api/exercises")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const authed = await requireUser(request);
+        const authed = await requireUser(request, { enforceAccountStatus: true });
         if (authed instanceof Response) return authed;
         const body = (await request.json()) as Body;
         const topic = (body.topic ?? "").trim();

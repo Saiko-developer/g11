@@ -1,3 +1,4 @@
+import { requireActiveAccount } from "@/lib/account-access.server";
 import { untrusted, cleanLine } from "@/lib/api-guard.server";
 import { GRADE11_HOME_PROMPT } from "@/lib/grade11TutorPrompt.server";
 import { withTone } from "@/lib/tone-rules";
@@ -99,6 +100,10 @@ export const Route = createFileRoute("/api/chat-home")({
   server: {
     handlers: {
       POST: async ({ request }) => {
+        if (request.headers.get("authorization")) {
+          const denied = await requireActiveAccount(request);
+          if (denied) return denied;
+        }
         const blocked = await consumeTutorQuota(request);
         if (blocked) return blocked;
         const body = (await request.json()) as ChatHomeRequestBody;

@@ -5,7 +5,7 @@ import { generateJson } from "@/lib/ai-json.server";
 const s = (v: unknown, n: number) => (typeof v === "string" ? v.trim().slice(0, n) : "");
 
 export async function handleGrade11Check(request: Request): Promise<Response> {
-  const authed = await requireUser(request);
+  const authed = await requireUser(request, { enforceAccountStatus: true });
   if (authed instanceof Response) return authed;
   const parsed: unknown = await request.json().catch(() => null);
   const body: Record<string, unknown> =

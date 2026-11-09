@@ -37,7 +37,10 @@ Return short raw JSON, with no markdown or emoji.`;
 
 /** Isolated Grade 11 adapter; uses the existing caller-owned sessions and billing RPCs. */
 export async function handleGrade11Roleplay(request: Request): Promise<Response> {
-  const auth = await requireUser(request, { reportServiceErrors: true });
+  const auth = await requireUser(request, {
+    reportServiceErrors: true,
+    enforceAccountStatus: true,
+  });
   if (auth instanceof Response) return auth;
   let body: z.infer<typeof input>;
   try {

@@ -24,8 +24,8 @@ type PostBody = {
 };
 
 async function admin() {
-  const supabaseAdmin: any = (await import("@/integrations/supabase/client.server")).supabaseAdmin;
-  return supabaseAdmin as any;
+  const supabaseAdmin = (await import("@/integrations/supabase/client.server")).supabaseAdmin;
+  return supabaseAdmin;
 }
 
 export const Route = createFileRoute("/api/grammar-questions")({
@@ -44,7 +44,7 @@ export const Route = createFileRoute("/api/grammar-questions")({
         return Response.json({ batches: data ?? [] });
       },
       POST: async ({ request }) => {
-        const authed = await requireUser(request);
+        const authed = await requireUser(request, { enforceAccountStatus: true });
         if (authed instanceof Response) return authed;
         const body = (await request.json().catch(() => ({}))) as PostBody;
         const sectionId = (body.sectionId ?? "").trim().slice(0, 120);
@@ -54,7 +54,12 @@ export const Route = createFileRoute("/api/grammar-questions")({
           return Response.json({ error: "Invalid lesson" }, { status: 400 });
         }
         const list = (v: unknown) =>
-          Array.isArray(v) ? v.filter((x) => typeof x === "string").slice(0, 8).map((s) => s.slice(0, 300)) : [];
+          Array.isArray(v)
+            ? v
+                .filter((x) => typeof x === "string")
+                .slice(0, 8)
+                .map((s) => s.slice(0, 300))
+            : [];
 
         const db = await admin();
         const { data: existing } = await db
@@ -64,11 +69,14 @@ export const Route = createFileRoute("/api/grammar-questions")({
           .order("batch", { ascending: true });
         const batches = existing ?? [];
         if (batches.length >= MAX_BATCHES) {
-          return Response.json({ error: "Question limit reached for this lesson" }, { status: 429 });
+          return Response.json(
+            { error: "Question limit reached for this lesson" },
+            { status: 429 },
+          );
         }
         const previous = batches
-          .flatMap((b: any) => (b.questions as GrammarPracticeQuestion[]) ?? [])
-          .map((q: any) => q.question)
+          .flatMap((b) => (b.questions as unknown as GrammarPracticeQuestion[]) ?? [])
+          .map((q) => q.question)
           .slice(-60);
 
         try {

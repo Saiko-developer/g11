@@ -1,9 +1,17 @@
+import { requireActiveAccount } from "@/lib/account-access.server";
 import { createFileRoute } from "@tanstack/react-router";
 import { generateJson } from "@/lib/ai-json.server";
 import { chargeSpeakingTurn, startSpeakingSession } from "@/lib/speaking-session.server";
 
 type Turn = { role: "ai" | "student"; text: string };
-type Body = { unit?: number; unitTitle?: string; turns?: Turn[]; finish?: boolean; session?: string; goodbye?: boolean };
+type Body = {
+  unit?: number;
+  unitTitle?: string;
+  turns?: Turn[];
+  finish?: boolean;
+  session?: string;
+  goodbye?: boolean;
+};
 
 export type RoleplayReply = {
   partner?: string;
@@ -29,6 +37,10 @@ export const Route = createFileRoute("/api/roleplay")({
   server: {
     handlers: {
       POST: async ({ request }) => {
+        if (request.headers.get("authorization")) {
+          const denied = await requireActiveAccount(request);
+          if (denied) return denied;
+        }
         const body = (await request.json()) as Body;
         const turns = Array.isArray(body.turns) ? body.turns.slice(-20) : [];
         let session = typeof body.session === "string" ? body.session : "";
@@ -45,7 +57,9 @@ export const Route = createFileRoute("/api/roleplay")({
           if (b) return b;
         }
         const theme = `Unit ${body.unit ?? ""}: ${body.unitTitle ?? "Grade 10 English"}`;
-        const history = turns.map((t) => `${t.role === "ai" ? "PARTNER" : "STUDENT"}: ${t.text}`).join("\n");
+        const history = turns
+          .map((t) => `${t.role === "ai" ? "PARTNER" : "STUDENT"}: ${t.text}`)
+          .join("\n");
         try {
           if (body.finish) {
             const out = await generateJson<RoleplaySummary>({
@@ -60,8 +74,8 @@ export const Route = createFileRoute("/api/roleplay")({
             prompt: body.goodbye
               ? `Theme: ${theme}\nConversation so far:\n${history}\n\nThe student has gone quiet, so end the call now. JSON {"reply": "one short warm goodbye line, no question", "emotion": "calm", "replyMy": "Burmese translation", "hints": []}.`
               : first
-              ? `Theme: ${theme}\nStart a new role-play. JSON {"partner": "Saya Owl", "scenario": "one English sentence describing the situation and who the student is", "scenarioMy": "same in Burmese", "reply": "your opening line", "emotion": "happy|excited|curious|encouraging|calm", "replyMy": "Burmese translation", "hints": ["2 short sample answers the student could say"]}.`
-              : `Theme: ${theme}\nConversation so far:\n${history}\n\nContinue as the partner. JSON {"reply": "your next line", "emotion": "happy|excited|curious|encouraging|calm", "replyMy": "Burmese translation", "hints": ["2 short sample answers"], "tip": "if the student's last line had a clear mistake, one short Burmese correction tip, otherwise empty string"}.`,
+                ? `Theme: ${theme}\nStart a new role-play. JSON {"partner": "Saya Owl", "scenario": "one English sentence describing the situation and who the student is", "scenarioMy": "same in Burmese", "reply": "your opening line", "emotion": "happy|excited|curious|encouraging|calm", "replyMy": "Burmese translation", "hints": ["2 short sample answers the student could say"]}.`
+                : `Theme: ${theme}\nConversation so far:\n${history}\n\nContinue as the partner. JSON {"reply": "your next line", "emotion": "happy|excited|curious|encouraging|calm", "replyMy": "Burmese translation", "hints": ["2 short sample answers"], "tip": "if the student's last line had a clear mistake, one short Burmese correction tip, otherwise empty string"}.`,
           });
           return Response.json({ ...out, session });
         } catch (err) {

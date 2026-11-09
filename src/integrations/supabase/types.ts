@@ -809,6 +809,8 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      admin_account_summaries: { Args: never; Returns: Json }
+      is_active_ai_account: { Args: never; Returns: boolean }
       admin_exam_credit: {
         Args: { _add: number; _user: string }
         Returns: undefined
@@ -822,7 +824,7 @@ export type Database = {
         Returns: undefined
       }
       admin_tutor_update: {
-        Args: { _add_bonus: number; _scholarship: string; _user: string }
+        Args: { _add_bonus: number; _scholarship: string | null; _user: string }
         Returns: undefined
       }
       claim_class_exam_ai: {

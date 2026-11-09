@@ -62,7 +62,7 @@ export const Route = createFileRoute("/api/tts")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const authed = await requireUser(request);
+        const authed = await requireUser(request, { enforceAccountStatus: true });
         if (authed instanceof Response) return authed;
         const { text, voice, speed, provider, lessonCache } = (await request.json()) as TtsBody;
         if (!text || typeof text !== "string") {

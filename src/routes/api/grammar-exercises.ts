@@ -12,14 +12,17 @@ export const Route = createFileRoute("/api/grammar-exercises")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const authed = await requireUser(request);
+        const authed = await requireUser(request, { enforceAccountStatus: true });
         if (authed instanceof Response) return authed;
         const body = (await request.json().catch(() => ({}))) as Record<string, unknown>;
         const title = s(body.title, 200);
         const instructions = s(body.instructions, 600);
         const samples = (Array.isArray(body.samples) ? body.samples : [])
           .slice(0, 8)
-          .map((x: any) => ({ text: s(x?.text, 400), answer: s(x?.answer, 400) }))
+          .map((x: { text?: unknown; answer?: unknown } | null) => ({
+            text: s(x?.text, 400),
+            answer: s(x?.answer, 400),
+          }))
           .filter((x) => x.text);
         const avoid = (Array.isArray(body.avoid) ? body.avoid : [])
           .slice(-40)

@@ -11,6 +11,14 @@ function userDb(request: Request) {
 }
 
 function blocked(reason?: string, options?: SpeakingOptions): Response {
+  if (reason === "suspended")
+    return Response.json(
+      {
+        error: "account_suspended",
+        message: "သင့်အကောင့်ကို ယာယီရပ်ဆိုင်းထားပါသည်။ ဆရာထံ ဆက်သွယ်ပါ။",
+      },
+      { status: 403 },
+    );
   if (reason === "no_session" && options?.reportServiceErrors)
     return Response.json(
       { error: "expired", message: "စကားပြော session မရှိတော့ပါ။ အသစ် ပြန်စပါ။" },
