@@ -15,6 +15,13 @@
       "when": 1794200964820,
       "tag": "0001_support_and_announcements",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794201541857,
+      "tag": "0002_restore_speaking_practice",
+      "breakpoints": true
     }
   ]
 }
