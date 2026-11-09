@@ -579,33 +579,6 @@ export type Database = {
         }
         Relationships: []
       }
-      speaking_sessions: {
-        Row: {
-          created_at: string
-          expires_at: string
-          id: string
-          turns: number
-          unit: number
-          user_id: string
-        }
-        Insert: {
-          created_at?: string
-          expires_at?: string
-          id?: string
-          turns?: number
-          unit: number
-          user_id?: string
-        }
-        Update: {
-          created_at?: string
-          expires_at?: string
-          id?: string
-          turns?: number
-          unit?: number
-          user_id?: string
-        }
-        Relationships: []
-      }
       support_messages: {
         Row: {
           body: string
@@ -980,9 +953,6 @@ export type Database = {
         Returns: undefined
       }
       set_my_name: { Args: { _name: string }; Returns: undefined }
-      speaking_turn: { Args: { p_session: string }; Returns: Json }
-      speaking_unit_status: { Args: { p_unit: number }; Returns: Json }
-      start_speaking_session: { Args: { p_unit: number }; Returns: Json }
       strip_answers: { Args: { j: Json }; Returns: Json }
       tutor_quota: { Args: never; Returns: Json }
     }
