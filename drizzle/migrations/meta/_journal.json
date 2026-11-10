@@ -1,48 +1,5 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": [
-    {
-      "idx": 0,
-      "version": "7",
-      "when": 1794200893217,
-      "tag": "0000_initial_app_schema",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1794200964820,
-      "tag": "0001_support_and_announcements",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1794201541857,
-      "tag": "0002_restore_speaking_practice",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1794202547433,
-      "tag": "0003_document_speaking_sessions",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1794206599246,
-      "tag": "0004_admin_account_integrity",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1794209059196,
-      "tag": "0005_grade11_speaking_allowance",
-      "breakpoints": true
-    }
-  ]
+  "entries": []
 }

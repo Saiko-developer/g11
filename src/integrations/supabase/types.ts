@@ -809,14 +809,6 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      grade11_speaking_status: { Args: { p_unit: number }; Returns: Json }
-      grade11_speaking_prepare: { Args: { p_unit: number; p_exercise: string | null; p_session: string | null; p_request: string; p_claim: string; p_operation: string; p_revision: number | null }; Returns: Json }
-      grade11_speaking_complete: { Args: { p_request: string; p_claim: string; p_success: boolean; p_reply: Json; p_history: Json }; Returns: Json }
-      grade11_speaking_end: { Args: { p_session: string }; Returns: Json }
-      grade11_speaking_validate: { Args: { p_session: string; p_unit: number }; Returns: Json }
-
-      admin_account_summaries: { Args: never; Returns: Json }
-      is_active_ai_account: { Args: never; Returns: boolean }
       admin_exam_credit: {
         Args: { _add: number; _user: string }
         Returns: undefined
@@ -830,7 +822,7 @@ export type Database = {
         Returns: undefined
       }
       admin_tutor_update: {
-        Args: { _add_bonus: number; _scholarship: string | null; _user: string }
+        Args: { _add_bonus: number; _scholarship: string; _user: string }
         Returns: undefined
       }
       claim_class_exam_ai: {
