@@ -453,6 +453,98 @@ export type Database = {
         }
         Relationships: []
       }
+      grade11_speaking_requests: {
+        Row: {
+          claim: string
+          created_at: string
+          lease_until: string
+          operation: string
+          request_id: string
+          session_id: string
+          state: string
+          user_id: string
+        }
+        Insert: {
+          claim: string
+          created_at?: string
+          lease_until?: string
+          operation: string
+          request_id: string
+          session_id: string
+          state?: string
+          user_id: string
+        }
+        Update: {
+          claim?: string
+          created_at?: string
+          lease_until?: string
+          operation?: string
+          request_id?: string
+          session_id?: string
+          state?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "grade11_speaking_requests_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "grade11_speaking_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      grade11_speaking_sessions: {
+        Row: {
+          created_at: string
+          ended_at: string | null
+          exercise: string | null
+          expires_at: string | null
+          feedback: Json | null
+          history: Json
+          id: string
+          latest_reply: Json | null
+          practice_day: string
+          revision: number
+          started_at: string | null
+          state: string
+          unit: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          ended_at?: string | null
+          exercise?: string | null
+          expires_at?: string | null
+          feedback?: Json | null
+          history?: Json
+          id?: string
+          latest_reply?: Json | null
+          practice_day?: string
+          revision?: number
+          started_at?: string | null
+          state?: string
+          unit: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          ended_at?: string | null
+          exercise?: string | null
+          expires_at?: string | null
+          feedback?: Json | null
+          history?: Json
+          id?: string
+          latest_reply?: Json | null
+          practice_day?: string
+          revision?: number
+          started_at?: string | null
+          state?: string
+          unit?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       grammar_generated_questions: {
         Row: {
           batch: number
@@ -809,6 +901,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      admin_account_summaries: { Args: never; Returns: Json }
       admin_exam_credit: {
         Args: { _add: number; _user: string }
         Returns: undefined
@@ -936,6 +1029,40 @@ export type Database = {
         }
       }
       exam_quota: { Args: never; Returns: Json }
+      grade11_speaking_complete: {
+        Args: {
+          p_claim: string
+          p_history: Json
+          p_reply: Json
+          p_request: string
+          p_success: boolean
+        }
+        Returns: Json
+      }
+      grade11_speaking_end: { Args: { p_session: string }; Returns: Json }
+      grade11_speaking_payload: {
+        Args: {
+          s: Database["public"]["Tables"]["grade11_speaking_sessions"]["Row"]
+        }
+        Returns: Json
+      }
+      grade11_speaking_prepare: {
+        Args: {
+          p_claim: string
+          p_exercise: string
+          p_operation: string
+          p_request: string
+          p_revision: number
+          p_session: string
+          p_unit: number
+        }
+        Returns: Json
+      }
+      grade11_speaking_status: { Args: { p_unit: number }; Returns: Json }
+      grade11_speaking_validate: {
+        Args: { p_session: string; p_unit: number }
+        Returns: Json
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -943,6 +1070,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_active_ai_account: { Args: never; Returns: boolean }
       is_admin: { Args: { _user_id: string }; Returns: boolean }
       is_class_member: { Args: { _cid: string }; Returns: boolean }
       is_class_teacher: { Args: { _cid: string }; Returns: boolean }

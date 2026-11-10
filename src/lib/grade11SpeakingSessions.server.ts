@@ -67,12 +67,12 @@ export function prepareGrade11Speaking(
   return decode(() =>
     db(request).rpc("grade11_speaking_prepare", {
       p_unit: body.unit,
-      p_exercise: body.exercise ?? null,
-      p_session: body.session ?? null,
+      p_exercise: (body.exercise ?? null) as string,
+      p_session: (body.session ?? null) as string,
       p_request: requestId,
       p_claim: claim,
       p_operation: body.finish ? "finish" : body.session ? "turn" : "open",
-      p_revision: body.revision ?? null,
+      p_revision: (body.revision ?? null) as number,
     }),
   );
 }
