@@ -21,6 +21,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { signInWithGoogle } from "@/components/RequireSignIn";
 import type { ExamQuota } from "@/routes/api/mock-exam";
 import { SYLLABUS, type SyllabusUnit } from "@/data/syllabus";
+import { G11_SYLLABUS, type G11Unit } from "@/data/grade11/syllabus";
 import { downloadExamPaper, type DownloadFormat } from "@/lib/examPrint";
 import { AnswerKeyDialog } from "@/components/AnswerKeyDialog";
 import { PaperEditor } from "@/components/PaperEditor";
@@ -55,7 +56,8 @@ export const Route = createFileRoute("/mock-exam/$unit")({
       ],
     };
   },
-  validateSearch: (s: Record<string, unknown>): { units?: string; sections?: string; count?: number } => ({
+  validateSearch: (s: Record<string, unknown>): { units?: string; sections?: string; count?: number; grade?: number } => ({
+    grade: Number(s.grade) === 11 ? 11 : undefined,
     units: typeof s.units === "string" ? s.units : typeof s.units === "number" ? String(s.units) : undefined,
     sections: typeof s.sections === "string" ? s.sections : undefined,
     count: Number(s.count) === 5 ? 5 : Number(s.count) === 10 ? 10 : undefined,
@@ -63,11 +65,15 @@ export const Route = createFileRoute("/mock-exam/$unit")({
   component: MockExamPage,
 });
 
-function useUnitMeta(units: number[]) {
+function useUnitMeta(units: number[], grade = 10) {
   return useMemo(() => {
+    const source: (SyllabusUnit | G11Unit)[] =
+      grade === 11
+        ? G11_SYLLABUS.filter((n): n is G11Unit => n.type === "unit")
+        : SYLLABUS.filter((n): n is SyllabusUnit => n.type === "unit");
     const nodes = units
-      .map((u) => SYLLABUS.find((n): n is SyllabusUnit => n.type === "unit" && n.number === u))
-      .filter((n): n is SyllabusUnit => !!n);
+      .map((u) => source.find((n) => n.number === u))
+      .filter((n): n is SyllabusUnit | G11Unit => !!n);
     const title =
       units.length > 1
         ? `Units ${units.join(", ")} Combined Exam`
@@ -76,7 +82,7 @@ function useUnitMeta(units: number[]) {
       .map((n) => `Unit ${n.number} (${n.title}) — ${n.skills.map((s) => `${s.label}: ${s.detail}`).join("; ")}`)
       .join(" || ");
     return { title, topics };
-  }, [units.join(",")]);
+  }, [units.join(","), grade]);
 }
 
 function MockExamPage() {
@@ -85,11 +91,11 @@ function MockExamPage() {
   const search = Route.useSearch();
   const unitNumber = Number(unit);
   const config = useMemo(
-    () => normalizeConfig({ units: search.units, sections: search.sections, count: search.count }, unitNumber),
-    [search.units, search.sections, search.count, unitNumber],
+    () => normalizeConfig({ units: search.units, sections: search.sections, count: search.count, grade: search.grade }, unitNumber),
+    [search.units, search.sections, search.count, search.grade, unitNumber],
   );
   const unitLabel = config.units.length > 1 ? `Units ${config.units.join(", ")}` : `Unit ${config.units[0]}`;
-  const meta = useUnitMeta(config.units);
+  const meta = useUnitMeta(config.units, config.grade ?? 10);
 
   const [paper, setPaper] = useState<MockExamPaper | null>(null);
   const [loading, setLoading] = useState(true);
@@ -114,7 +120,7 @@ function MockExamPage() {
             "content-type": "application/json",
             authorization: `Bearer ${(await supabase.auth.getSession()).data.session?.access_token ?? ""}`,
           },
-          body: JSON.stringify({ unit: config.units[0], unitTitle: meta.title, topics: meta.topics, fresh, units: config.units, sections: config.sections, count: config.count }),
+          body: JSON.stringify({ unit: config.units[0], unitTitle: meta.title, topics: meta.topics, fresh, units: config.units, sections: config.sections, count: config.count, grade: config.grade }),
         });
         setNeedsSignIn(res.status === 401);
         const raw = (await res.json()) as { paper?: MockExamPaper; quota?: ExamQuota; error?: string };
