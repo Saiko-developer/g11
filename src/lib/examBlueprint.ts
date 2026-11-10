@@ -2,8 +2,10 @@
  * Exam Builder blueprint: which sections exist, their marks and time,
  * and how a custom selection turns into total marks and minutes.
  * Shared by the Exam Builder page, the mock-exam page and /api/mock-exam.
+ * Grade 10 full paper = 95 marks; Grade 11 full paper = 100 marks (Section IX essay is 15).
  */
 export type SectionId = "I" | "II" | "III" | "IV" | "V" | "VI" | "VII" | "VIII" | "IX";
+export type Grade = 10 | 11;
 
 export type SectionSpec = {
   id: SectionId;
@@ -28,9 +30,26 @@ export const SECTION_SPECS: SectionSpec[] = [
   { id: "IX", label: "Free Composition (Essay)", labelMy: "စာစီစာကုံး", marks: 10, minutes: 15, countable: false },
 ];
 
+/** Grade 11 paper: Section V is the textbook (seen) passage, Section IX essay is 15 marks. */
+export const G11_SECTION_SPECS: SectionSpec[] = SECTION_SPECS.map((s) =>
+  s.id === "V"
+    ? { ...s, label: "Textbook Reading Passage (Seen)", labelMy: "သင်ခန်းစာ စာဖတ်ခန်း" }
+    : s.id === "IX"
+      ? { ...s, marks: 15 }
+      : s,
+);
+
+export const sectionSpecs = (grade: Grade = 10) => (grade === 11 ? G11_SECTION_SPECS : SECTION_SPECS);
+
 export const ALL_SECTION_IDS = SECTION_SPECS.map((s) => s.id);
 
-export type ExamConfig = { units: number[]; sections: SectionId[]; count: 5 | 10 };
+/** Writing word limits per grade (letter, essay). */
+export const WRITING_LIMITS: Record<Grade, { letter: number; essay: number }> = {
+  10: { letter: 200, essay: 300 },
+  11: { letter: 300, essay: 500 },
+};
+
+export type ExamConfig = { units: number[]; sections: SectionId[]; count: 5 | 10; grade?: Grade };
 
 export function isFullExam(c: ExamConfig) {
   return c.sections.length === ALL_SECTION_IDS.length && c.count === 10;
@@ -40,27 +59,34 @@ export function sectionMarks(spec: SectionSpec, count: 5 | 10) {
   return spec.countable ? count : spec.marks;
 }
 
-/** Total marks and minutes for a selection. Full paper = 95 marks / 120 minutes. */
-export function examTotals(c: Pick<ExamConfig, "sections" | "count">) {
-  const chosen = SECTION_SPECS.filter((s) => c.sections.includes(s.id));
-  if (chosen.length === ALL_SECTION_IDS.length && c.count === 10) return { marks: 95, minutes: 120 };
+/** Total marks and minutes for a selection. Full paper = 95 (G10) / 100 (G11) marks, 120 minutes. */
+export function examTotals(c: Pick<ExamConfig, "sections" | "count" | "grade">) {
+  const grade = c.grade ?? 10;
+  const chosen = sectionSpecs(grade).filter((s) => c.sections.includes(s.id));
+  if (chosen.length === ALL_SECTION_IDS.length && c.count === 10) return { marks: grade === 11 ? 100 : 95, minutes: 120 };
   const marks = chosen.reduce((t, s) => t + sectionMarks(s, c.count), 0);
   const minutes = chosen.reduce((t, s) => t + (s.countable && c.count === 5 ? Math.ceil(s.minutes / 2) : s.minutes), 0);
   return { marks, minutes };
 }
 
 /** Parse/clean a config coming from the URL or a request body. */
-export function normalizeConfig(raw: { units?: unknown; sections?: unknown; count?: unknown }, fallbackUnit = 1): ExamConfig {
+export function normalizeConfig(
+  raw: { units?: unknown; sections?: unknown; count?: unknown; grade?: unknown },
+  fallbackUnit = 1,
+): ExamConfig {
   const toList = (v: unknown) => (Array.isArray(v) ? v : typeof v === "string" ? v.split(",") : []);
   const units = [...new Set(toList(raw.units).map(Number).filter((n) => Number.isInteger(n) && n >= 1 && n <= 20))].sort((a, b) => a - b);
   const sections = ALL_SECTION_IDS.filter((id) => toList(raw.sections).map(String).includes(id));
-  return {
+  const config: ExamConfig = {
     units: units.length ? units : [fallbackUnit],
     sections: sections.length ? sections : [...ALL_SECTION_IDS],
     count: Number(raw.count) === 5 ? 5 : 10,
   };
+  if (Number(raw.grade) === 11) config.grade = 11;
+  return config;
 }
 
 export function configKey(c: ExamConfig) {
-  return `${c.units.join(",")}|${c.sections.join(",")}|${c.count}`;
+  const base = `${c.units.join(",")}|${c.sections.join(",")}|${c.count}`;
+  return c.grade === 11 ? `g11|${base}` : base;
 }
