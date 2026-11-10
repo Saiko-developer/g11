@@ -1,5 +1,6 @@
 import { withTone } from "@/lib/tone-rules";
 import { streamText } from "ai";
+import { jsonrepair } from "jsonrepair";
 import { getChatModel, DEFAULT_LOVABLE_CHAT_MODEL } from "@/lib/ai-gateway.server";
 
 /**
@@ -51,9 +52,17 @@ export function parseJson<T>(text: string): T {
   } catch {
     const start = cleaned.search(/[[{]/);
     const end = Math.max(cleaned.lastIndexOf("]"), cleaned.lastIndexOf("}"));
-    if (start >= 0 && end > start) {
-      return JSON.parse(cleaned.slice(start, end + 1)) as T;
+    const body = start >= 0 && end > start ? cleaned.slice(start, end + 1) : cleaned;
+    try {
+      return JSON.parse(body) as T;
+    } catch {
+      // Long AI replies (e.g. exam papers quoting textbook text) sometimes contain
+      // stray quotes, missing commas or a cut-off ending — repair instead of failing.
+      try {
+        return JSON.parse(jsonrepair(start >= 0 ? cleaned.slice(start) : cleaned)) as T;
+      } catch {
+        throw new Error("Model did not return valid JSON");
+      }
     }
-    throw new Error("Model did not return valid JSON");
   }
 }
