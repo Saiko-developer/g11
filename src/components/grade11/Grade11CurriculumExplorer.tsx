@@ -76,7 +76,7 @@ export function Grade11CurriculumExplorer() {
 
   return (
     <div className="space-y-3">
-      <Link to="/exam-builder"
+      <Link to="/exam-builder" search={{ grade: 11 }}
         className="flex items-center justify-between gap-3 rounded-2xl border border-primary/40 bg-primary/5 px-5 py-4 transition hover:bg-primary/10">
         <span className="flex items-center gap-3">
           <Sparkles className="h-5 w-5 shrink-0 text-primary" />
