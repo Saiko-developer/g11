@@ -28,7 +28,7 @@ export async function adjustWallet(db: Db, raw: z.infer<typeof walletUpdateSchem
       : await db.rpc("admin_tutor_update", {
           _user: data.id,
           _add_bonus: data.addBonus ?? 0,
-          _scholarship: data.scholarship ?? null,
+          _scholarship: (data.scholarship ?? null) as string,
         });
   if (error) throw new Error(error.message);
   return { ok: true };
