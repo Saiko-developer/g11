@@ -25,6 +25,7 @@ import { Route as ApiExercisesRouteImport } from './routes/api/exercises'
 import { Route as ApiG11CheckRouteImport } from './routes/api/g11-check'
 import { Route as ApiG11RoleplayRouteImport } from './routes/api/g11-roleplay'
 import { Route as ApiGradeExamRouteImport } from './routes/api/grade-exam'
+import { Route as ApiGrade11AudioAdminRouteImport } from './routes/api/grade11-audio-admin'
 import { Route as ApiGrammarExercisesRouteImport } from './routes/api/grammar-exercises'
 import { Route as ApiGrammarQuestionsRouteImport } from './routes/api/grammar-questions'
 import { Route as ApiHealthRouteImport } from './routes/api/health'
@@ -122,6 +123,11 @@ const ApiG11RoleplayRoute = ApiG11RoleplayRouteImport.update({
 const ApiGradeExamRoute = ApiGradeExamRouteImport.update({
   id: '/api/grade-exam',
   path: '/api/grade-exam',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiGrade11AudioAdminRoute = ApiGrade11AudioAdminRouteImport.update({
+  id: '/api/grade11-audio-admin',
+  path: '/api/grade11-audio-admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiGrammarExercisesRoute = ApiGrammarExercisesRouteImport.update({
@@ -232,6 +238,7 @@ export interface FileRoutesByFullPath {
   '/api/g11-check': typeof ApiG11CheckRoute
   '/api/g11-roleplay': typeof ApiG11RoleplayRoute
   '/api/grade-exam': typeof ApiGradeExamRoute
+  '/api/grade11-audio-admin': typeof ApiGrade11AudioAdminRoute
   '/api/grammar-exercises': typeof ApiGrammarExercisesRoute
   '/api/grammar-questions': typeof ApiGrammarQuestionsRoute
   '/api/health': typeof ApiHealthRoute
@@ -268,6 +275,7 @@ export interface FileRoutesByTo {
   '/api/g11-check': typeof ApiG11CheckRoute
   '/api/g11-roleplay': typeof ApiG11RoleplayRoute
   '/api/grade-exam': typeof ApiGradeExamRoute
+  '/api/grade11-audio-admin': typeof ApiGrade11AudioAdminRoute
   '/api/grammar-exercises': typeof ApiGrammarExercisesRoute
   '/api/grammar-questions': typeof ApiGrammarQuestionsRoute
   '/api/health': typeof ApiHealthRoute
@@ -304,6 +312,7 @@ export interface FileRoutesById {
   '/api/g11-check': typeof ApiG11CheckRoute
   '/api/g11-roleplay': typeof ApiG11RoleplayRoute
   '/api/grade-exam': typeof ApiGradeExamRoute
+  '/api/grade11-audio-admin': typeof ApiGrade11AudioAdminRoute
   '/api/grammar-exercises': typeof ApiGrammarExercisesRoute
   '/api/grammar-questions': typeof ApiGrammarQuestionsRoute
   '/api/health': typeof ApiHealthRoute
@@ -342,6 +351,7 @@ export interface FileRouteTypes {
     | '/api/g11-check'
     | '/api/g11-roleplay'
     | '/api/grade-exam'
+    | '/api/grade11-audio-admin'
     | '/api/grammar-exercises'
     | '/api/grammar-questions'
     | '/api/health'
@@ -378,6 +388,7 @@ export interface FileRouteTypes {
     | '/api/g11-check'
     | '/api/g11-roleplay'
     | '/api/grade-exam'
+    | '/api/grade11-audio-admin'
     | '/api/grammar-exercises'
     | '/api/grammar-questions'
     | '/api/health'
@@ -413,6 +424,7 @@ export interface FileRouteTypes {
     | '/api/g11-check'
     | '/api/g11-roleplay'
     | '/api/grade-exam'
+    | '/api/grade11-audio-admin'
     | '/api/grammar-exercises'
     | '/api/grammar-questions'
     | '/api/health'
@@ -450,6 +462,7 @@ export interface RootRouteChildren {
   ApiG11CheckRoute: typeof ApiG11CheckRoute
   ApiG11RoleplayRoute: typeof ApiG11RoleplayRoute
   ApiGradeExamRoute: typeof ApiGradeExamRoute
+  ApiGrade11AudioAdminRoute: typeof ApiGrade11AudioAdminRoute
   ApiGrammarExercisesRoute: typeof ApiGrammarExercisesRoute
   ApiGrammarQuestionsRoute: typeof ApiGrammarQuestionsRoute
   ApiHealthRoute: typeof ApiHealthRoute
@@ -580,6 +593,13 @@ declare module '@tanstack/react-router' {
       path: '/api/grade-exam'
       fullPath: '/api/grade-exam'
       preLoaderRoute: typeof ApiGradeExamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/grade11-audio-admin': {
+      id: '/api/grade11-audio-admin'
+      path: '/api/grade11-audio-admin'
+      fullPath: '/api/grade11-audio-admin'
+      preLoaderRoute: typeof ApiGrade11AudioAdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/grammar-exercises': {
@@ -742,6 +762,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiG11CheckRoute: ApiG11CheckRoute,
   ApiG11RoleplayRoute: ApiG11RoleplayRoute,
   ApiGradeExamRoute: ApiGradeExamRoute,
+  ApiGrade11AudioAdminRoute: ApiGrade11AudioAdminRoute,
   ApiGrammarExercisesRoute: ApiGrammarExercisesRoute,
   ApiGrammarQuestionsRoute: ApiGrammarQuestionsRoute,
   ApiHealthRoute: ApiHealthRoute,
