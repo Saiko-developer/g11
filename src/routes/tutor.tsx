@@ -324,8 +324,8 @@ function Index({
   // If neither tag exists, treat the whole text as ui_display (and, in voice mode, as spoken).
   const parseVoiceReply = (raw: string) => {
     // Tolerate unclosed tags while the reply is still streaming.
-    const voiceMatch = raw.match(/<voice_only>([\s\S]*?)(?:<\/voice_only>|$)/i);
-    const uiMatch = raw.match(/<ui_display>([\s\S]*?)(?:<\/ui_display>|$)/i);
+    const voiceMatch = raw.match(/<voice_only\s*>?([\s\S]*?)(?:<\/voice_only\s*>?|<ui_display|$)/i);
+    const uiMatch = raw.match(/<ui_display\s*>?([\s\S]*?)(?:<\/ui_display\s*>?|$)/i);
     if (!voiceMatch && !uiMatch) return { voice: raw.trim(), ui: raw.trim() };
     if (voiceMatch && !uiMatch) return { voice: voiceMatch[1].trim(), ui: "" };
     return {
