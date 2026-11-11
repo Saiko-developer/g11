@@ -232,13 +232,15 @@ export async function pregenerateGrade11Audio(
   limit: number,
   generate: (text: string) => Promise<Response>,
   store: AudioStore = supabaseAudioStore(),
-): Promise<{ generated: number; skipped: number; failed: number; remaining: number }> {
-  const out = { generated: 0, skipped: 0, failed: 0, remaining: 0 };
+  skip: Set<string> = new Set(),
+): Promise<{ generated: number; skipped: number; failed: number }> {
+  const out = { generated: 0, skipped: 0, failed: 0 };
   const clips = grade11AuthoredClips().filter((c) => units.includes(c.unit));
   for (const clip of clips) {
     const hash = await grade11AudioHash(clip.text);
-    if (out.generated + out.failed >= limit) {
-      if (!(await store.read(hash).catch(() => null))) out.remaining++;
+    if (out.generated + out.failed >= limit) break;
+    if (skip.has(hash)) {
+      out.skipped++;
       continue;
     }
     const before = memory.has(hash);
