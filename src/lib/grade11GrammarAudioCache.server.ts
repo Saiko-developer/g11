@@ -1,121 +1,259 @@
 import { UNIT1_GRAMMAR } from "./grade11Unit1Grammar";
+import { GRADE11_ORAL_GRAMMAR } from "./grade11GrammarOral";
+import { grade11OralChunks } from "./grade11OralChunks";
 import { chunkScript } from "./grammarSpeechChunks";
 import { sanitizeForSpeech } from "./sanitizeSpeech";
 
-// Only public, authored Unit 1 clips may enter this shared cache. Never cache chat.
-const authored = new Set(
-  UNIT1_GRAMMAR.sections.flatMap((section) =>
-    (section.oral.segments ?? []).flatMap((segment) =>
-      chunkScript(sanitizeForSpeech(segment.scriptMy)),
-    ),
-  ),
-);
-const pending = new Map<string, Promise<Response>>();
-const memory = new Map<string, { response: Response; bytes: number }>();
+// Only fixed, authored Grade 11 grammar narration may enter this shared cache. Never chat or student audio.
+export type AuthoredClip = { unit: number; text: string };
+let authoredCache: Map<string, number> | null = null;
+function authored(): Map<string, number> {
+  if (authoredCache) return authoredCache;
+  const map = new Map<string, number>();
+  for (const section of UNIT1_GRAMMAR.sections)
+    for (const segment of section.oral.segments ?? [])
+      for (const text of chunkScript(sanitizeForSpeech(segment.scriptMy))) map.set(text, 1);
+  for (const [unit, grammar] of Object.entries(GRADE11_ORAL_GRAMMAR))
+    for (const section of grammar.sections)
+      for (const segment of section.oral.segments ?? [])
+        for (const text of grade11OralChunks(segment.scriptMy))
+          if (!map.has(text)) map.set(text, Number(unit));
+  authoredCache = map;
+  return map;
+}
+export function grade11AuthoredClips(): AuthoredClip[] {
+  return [...authored()].map(([text, unit]) => ({ unit, text }));
+}
+
+/** Bump CONTENT_VERSION when the voice pipeline changes in a way that should re-record every clip. */
+const CONTENT_VERSION = "g11-grammar-v1";
+export async function grade11AudioHash(text: string): Promise<string> {
+  const identity = JSON.stringify([
+    CONTENT_VERSION,
+    text,
+    "Puck",
+    1,
+    process.env.LOVABLE_TTS_MODEL?.trim() || "google/gemini-2.5-flash-tts",
+  ]);
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(identity));
+  return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+export type ClaimResult = "owner" | "busy" | "ready" | "gave_up";
+export type AudioStore = {
+  read(hash: string): Promise<ArrayBuffer | null>;
+  claim(hash: string, unit: number): Promise<ClaimResult>;
+  save(hash: string, unit: number, bytes: ArrayBuffer): Promise<void>;
+  fail(hash: string, error: string): Promise<void>;
+  stat(kind: "hit" | "miss" | "generated" | "error", hash?: string): Promise<void>;
+};
+
+const BUCKET = "grade11-grammar-audio";
+const path = (hash: string) => `clips/${hash}.wav`;
+/** Server-only store: private bucket + service-role table; students have no storage policies at all. */
+export function supabaseAudioStore(): AudioStore {
+  const admin = async () => (await import("@/integrations/supabase/client.server")).supabaseAdmin;
+  return {
+    async read(hash) {
+      const db = await admin();
+      const { data: row } = await db
+        .from("grade11_grammar_audio")
+        .select("status")
+        .eq("hash", hash)
+        .maybeSingle();
+      if (row?.status !== "ready") return null;
+      const { data } = await db.storage.from(BUCKET).download(path(hash));
+      return data ? await data.arrayBuffer() : null;
+    },
+    async claim(hash, unit) {
+      const { data, error } = await (await admin()).rpc("grade11_audio_claim", {
+        p_hash: hash,
+        p_unit: unit,
+      });
+      if (error) throw error;
+      return data as ClaimResult;
+    },
+    async save(hash, unit, bytes) {
+      const db = await admin();
+      const { error } = await db.storage.from(BUCKET).upload(path(hash), bytes, {
+        contentType: "audio/wav",
+        cacheControl: "31536000",
+        upsert: true,
+      });
+      if (error) throw error;
+      await db
+        .from("grade11_grammar_audio")
+        .update({
+          status: "ready",
+          unit,
+          storage_path: path(hash),
+          bytes: bytes.byteLength,
+          last_error: null,
+          lease_until: null,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("hash", hash);
+    },
+    async fail(hash, message) {
+      await (await admin())
+        .from("grade11_grammar_audio")
+        .update({
+          status: "failed",
+          last_error: message.slice(0, 300),
+          lease_until: null,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("hash", hash);
+    },
+    async stat(kind, hash) {
+      await (await admin()).rpc("grade11_audio_stat", { p_kind: kind, p_hash: hash });
+    },
+  };
+}
+
+const pending = new Map<string, Promise<{ bytes: ArrayBuffer | null; response?: Response; result: string }>>();
+const memory = new Map<string, ArrayBuffer>();
 let memoryBytes = 0;
 const MAX_BYTES = 24 * 1024 * 1024;
 const MAX_CLIP = 8 * 1024 * 1024;
-type EdgeCache = {
-  match(key: Request): Promise<Response | undefined>;
-  put(key: Request, value: Response): Promise<void>;
+const MIN_CLIP = 1024;
+const quiet = (task: Promise<unknown>) => task.catch(() => undefined);
+const remember = (hash: string, bytes: ArrayBuffer) => {
+  while (memoryBytes + bytes.byteLength > MAX_BYTES && memory.size) {
+    const oldest = memory.keys().next().value!;
+    memoryBytes -= memory.get(oldest)!.byteLength;
+    memory.delete(oldest);
+  }
+  memory.set(hash, bytes);
+  memoryBytes += bytes.byteLength;
 };
-const bounded = <T>(task: Promise<T>, fallback: T): Promise<T> =>
-  new Promise((resolve) => {
-    const timer = setTimeout(() => resolve(fallback), 500);
-    task.then(
-      (value) => {
-        clearTimeout(timer);
-        resolve(value);
-      },
-      () => {
-        clearTimeout(timer);
-        resolve(fallback);
-      },
-    );
+const wav = (bytes: ArrayBuffer, result: string, hash: string) => {
+  console.info("[grade11-grammar-audio]", result, hash.slice(0, 12));
+  return new Response(bytes.slice(0), {
+    headers: {
+      "Content-Type": "audio/wav",
+      "Cache-Control": "private, max-age=86400",
+      "X-Grade11-Audio-Cache": result,
+    },
   });
+};
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 /** Auth is checked by /api/tts before entering here, including on cache hits. */
-export async function unit1GrammarAudio(
-  request: Request,
+export async function grade11GrammarAudio(
+  _request: Request,
   body: { text: string; voice?: string; speed?: number; provider?: string },
   generate: () => Promise<Response>,
+  store: AudioStore = supabaseAudioStore(),
+  options: { waitMs?: number; pollMs?: number } = {},
 ): Promise<Response> {
-  if (
-    body.voice !== "sarah" ||
-    (body.speed ?? 1) !== 1 ||
-    body.provider ||
-    !authored.has(body.text)
-  )
-    return generate();
-  // Changing either model or authored text gives a fresh key. Bump v1 for voice/pipeline changes.
-  const identity = JSON.stringify([
-    "g11-unit1-v1",
-    body.text,
-    "Puck",
-    "echo",
-    1,
-    process.env.LOVABLE_TTS_MODEL || "google/gemini-2.5-flash-tts",
-    process.env.LOVABLE_TTS_FALLBACK_MODEL || "openai/gpt-4o-mini-tts",
-  ]);
+  const unit = authored().get(body.text);
+  if (body.voice !== "sarah" || (body.speed ?? 1) !== 1 || body.provider || !unit) return generate();
   let hash: string;
   try {
-    hash = Array.from(
-      new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(identity))),
-    )
-      .map((byte) => byte.toString(16).padStart(2, "0"))
-      .join("");
+    hash = await grade11AudioHash(body.text);
   } catch {
     return generate();
   }
-  const key = new Request(new URL(`/__grade11-grammar-audio/${hash}`, request.url));
-  const edge = (globalThis as typeof globalThis & { caches?: { default?: EdgeCache } }).caches
-    ?.default;
-  const hit =
-    memory.get(hash)?.response ??
-    (edge
-      ? await bounded(
-          Promise.resolve().then(() => edge.match(key)),
-          undefined,
-        )
-      : undefined);
-  const report = (response: Response, result: string) => {
-    const headers = new Headers(response.headers);
-    headers.set("Cache-Control", "no-store"); // authenticated response; edge copy is stored separately
-    headers.set("X-Grade11-Audio-Cache", result);
-    console.info("[grade11-grammar-audio]", result, hash.slice(0, 12));
-    return new Response(response.body, { status: response.status, headers });
-  };
-  if (hit) return report(hit.clone(), "hit");
-  const existing = pending.get(hash);
-  if (existing) return report((await existing).clone(), "shared");
-  const job = (async () => {
-    const response = await generate();
-    // Do not preserve temporary fallback voices or any provider failure.
-    if (!response.ok || response.headers.get("X-TTS-Provider") !== "gemini") return response;
-    const bytes = await response.arrayBuffer();
-    const saved = new Response(bytes, { status: response.status, headers: response.headers });
-    if (bytes.byteLength < 1024 || bytes.byteLength > MAX_CLIP) return saved;
-    while (memoryBytes + bytes.byteLength > MAX_BYTES && memory.size) {
-      const oldest = memory.keys().next().value!;
-      memoryBytes -= memory.get(oldest)!.bytes;
-      memory.delete(oldest);
-    }
-    memory.set(hash, { response: saved.clone(), bytes: bytes.byteLength });
-    memoryBytes += bytes.byteLength;
-    if (edge) {
-      const headers = new Headers(saved.headers);
-      headers.set("Cache-Control", "public, max-age=2592000");
-      await bounded(
-        Promise.resolve().then(() => edge.put(key, new Response(bytes.slice(0), { headers }))),
-        undefined,
-      );
-    }
-    return saved;
-  })();
-  pending.set(hash, job);
-  try {
-    return report((await job).clone(), "miss");
-  } finally {
-    pending.delete(hash);
+  const cached = memory.get(hash);
+  if (cached) {
+    void quiet(store.stat("hit", hash));
+    return wav(cached, "hit", hash);
   }
+  let job = pending.get(hash);
+  const shared = !!job;
+  if (!job) {
+    job = (async () => {
+      const stored = await store.read(hash).catch(() => null);
+      if (stored) {
+        void quiet(store.stat("hit", hash));
+        return { bytes: stored, result: "hit" };
+      }
+      const claim = await store.claim(hash, unit).catch(() => "owner" as const);
+      if (claim === "ready" || claim === "busy") {
+        const deadline = Date.now() + (options.waitMs ?? 25000);
+        do {
+          const ready = await store.read(hash).catch(() => null);
+          if (ready) {
+            void quiet(store.stat("hit", hash));
+            return { bytes: ready, result: "hit" };
+          }
+          if (claim === "ready") break;
+          await sleep(options.pollMs ?? 1500);
+        } while (Date.now() < deadline);
+        return { bytes: null, result: "busy" };
+      }
+      if (claim === "gave_up") return { bytes: null, result: "gave_up" };
+      void quiet(store.stat("miss", hash));
+      const response = await generate();
+      if (!response.ok || response.headers.get("X-TTS-Provider") !== "gemini") {
+        void quiet(store.fail(hash, `provider ${response.status} ${response.headers.get("X-TTS-Provider") ?? ""}`));
+        void quiet(store.stat("error", hash));
+        // Fallback voice or error goes back to this student only; nothing is cached.
+        return { bytes: null, response, result: "uncached" };
+      }
+      const bytes = await response.arrayBuffer();
+      if (bytes.byteLength < MIN_CLIP || bytes.byteLength > MAX_CLIP) {
+        void quiet(store.fail(hash, `invalid size ${bytes.byteLength}`));
+        void quiet(store.stat("error", hash));
+        return { bytes, result: "uncached" };
+      }
+      try {
+        await store.save(hash, unit, bytes);
+        void quiet(store.stat("generated", hash));
+      } catch (error) {
+        void quiet(store.fail(hash, error instanceof Error ? error.message : "save failed"));
+      }
+      return { bytes, result: "miss" };
+    })();
+    pending.set(hash, job);
+  }
+  try {
+    const outcome = await job;
+    if (outcome.response) return shared ? generate() : outcome.response;
+    if (!outcome.bytes)
+      return new Response("This lesson audio is being prepared. Please try again shortly.", {
+        status: 503,
+        headers: { "Retry-After": "5", "X-Grade11-Audio-Cache": outcome.result },
+      });
+    if (outcome.result !== "uncached") remember(hash, outcome.bytes);
+    return wav(outcome.bytes, shared ? "shared" : outcome.result, hash);
+  } finally {
+    if (!shared) pending.delete(hash);
+  }
+}
+
+/** Backwards-compatible name for the Unit 1 player. */
+export const unit1GrammarAudio = grade11GrammarAudio;
+
+/** Admin pre-generation: fills up to `limit` missing clips, one at a time. */
+export async function pregenerateGrade11Audio(
+  units: number[],
+  limit: number,
+  generate: (text: string) => Promise<Response>,
+  store: AudioStore = supabaseAudioStore(),
+): Promise<{ generated: number; skipped: number; failed: number; remaining: number }> {
+  const out = { generated: 0, skipped: 0, failed: 0, remaining: 0 };
+  const clips = grade11AuthoredClips().filter((c) => units.includes(c.unit));
+  for (const clip of clips) {
+    const hash = await grade11AudioHash(clip.text);
+    if (out.generated + out.failed >= limit) {
+      if (!(await store.read(hash).catch(() => null))) out.remaining++;
+      continue;
+    }
+    const before = memory.has(hash);
+    const res = await grade11GrammarAudio(
+      new Request("https://local/api/tts"),
+      { text: clip.text, voice: "sarah", speed: 1 },
+      () => generate(clip.text),
+      store,
+      { waitMs: 0 },
+    );
+    const result = res.headers.get("X-Grade11-Audio-Cache");
+    if (result === "miss") out.generated++;
+    else if (result === "hit" || before) out.skipped++;
+    else out.failed++;
+    if (result === "miss") await sleep(400);
+  }
+  return out;
 }
