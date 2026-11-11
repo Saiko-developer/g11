@@ -453,6 +453,75 @@ export type Database = {
         }
         Relationships: []
       }
+      grade11_grammar_audio: {
+        Row: {
+          attempts: number
+          bytes: number
+          content_type: string
+          created_at: string
+          hash: string
+          hit_count: number
+          last_error: string | null
+          lease_until: string | null
+          status: string
+          storage_path: string | null
+          unit: number
+          updated_at: string
+        }
+        Insert: {
+          attempts?: number
+          bytes?: number
+          content_type?: string
+          created_at?: string
+          hash: string
+          hit_count?: number
+          last_error?: string | null
+          lease_until?: string | null
+          status?: string
+          storage_path?: string | null
+          unit: number
+          updated_at?: string
+        }
+        Update: {
+          attempts?: number
+          bytes?: number
+          content_type?: string
+          created_at?: string
+          hash?: string
+          hit_count?: number
+          last_error?: string | null
+          lease_until?: string | null
+          status?: string
+          storage_path?: string | null
+          unit?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      grade11_grammar_audio_stats: {
+        Row: {
+          day: string
+          errors: number
+          generated: number
+          hits: number
+          misses: number
+        }
+        Insert: {
+          day?: string
+          errors?: number
+          generated?: number
+          hits?: number
+          misses?: number
+        }
+        Update: {
+          day?: string
+          errors?: number
+          generated?: number
+          hits?: number
+          misses?: number
+        }
+        Relationships: []
+      }
       grade11_speaking_requests: {
         Row: {
           claim: string
@@ -1029,6 +1098,14 @@ export type Database = {
         }
       }
       exam_quota: { Args: never; Returns: Json }
+      grade11_audio_claim: {
+        Args: { p_hash: string; p_unit: number }
+        Returns: string
+      }
+      grade11_audio_stat: {
+        Args: { p_hash?: string; p_kind: string }
+        Returns: undefined
+      }
       grade11_speaking_complete: {
         Args: {
           p_claim: string

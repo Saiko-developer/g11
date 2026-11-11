@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { BookOpen, Loader2, Mic, Pause, Play } from "lucide-react";
 import type { GrammarOralSegment } from "@/data/grammar/types";
 import { GRADE11_ORAL_GRAMMAR } from "@/lib/grade11GrammarOral";
-import { sanitizeForSpeech } from "@/lib/sanitizeSpeech";
+import { grade11OralChunks } from "@/lib/grade11OralChunks";
 import { Button } from "@/components/ui/button";
 import { Grade11RequireSignIn } from "./Grade11RequireSignIn";
 
@@ -132,23 +132,7 @@ export function Grade11GrammarExplanation({ unit }: { unit: number }) {
   );
 }
 
-function chunks(text: string): string[] {
-  const sentences = sanitizeForSpeech(text).match(/[^။.!?]+[။.!?]*|[။.!?]+/g) ?? [];
-  const output: string[] = [];
-  let current = "";
-  for (const sentence of sentences) {
-    if (current.length + sentence.length > 900 && current) {
-      output.push(current.trim());
-      current = "";
-    }
-    if (sentence.length > 900) {
-      for (let offset = 0; offset < sentence.length; offset += 900)
-        output.push(sentence.slice(offset, offset + 900).trim());
-    } else current += sentence;
-  }
-  if (current.trim()) output.push(current.trim());
-  return output.filter(Boolean);
-}
+const chunks = grade11OralChunks;
 
 async function fetchClip(text: string, signal: AbortSignal): Promise<Blob> {
   const controller = new AbortController();
@@ -165,7 +149,7 @@ async function fetchClip(text: string, signal: AbortSignal): Promise<Blob> {
       method: "POST",
       signal: controller.signal,
       headers: { "Content-Type": "application/json; charset=utf-8" },
-      body: JSON.stringify({ text, voice: "sarah", speed: 1.0 }),
+      body: JSON.stringify({ text, voice: "sarah", speed: 1.0, lessonCache: "grade11-grammar" }),
     });
     if (!response.ok) throw new Error(`TTS ${response.status}`);
     return await response.blob();
