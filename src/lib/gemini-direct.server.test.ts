@@ -19,6 +19,7 @@ it("returns Puck voice audio from the own key", async () => {
 });
 
 it("transcribes speech with the own key, and does nothing without a key", async () => {
+  vi.stubEnv("GEMINI_API_KEY", "");
   const fetcher = vi.fn(async () => Response.json({ candidates: [{ content: { parts: [{ text: " ဆရာ " }] } }] }));
   expect(await geminiDirectTranscribe(({ arrayBuffer: async () => new ArrayBuffer(4) }) as Blob, "audio/webm", "p", fetcher as typeof fetch)).toBeNull();
   vi.stubEnv("GEMINI_API_KEY", "k");
