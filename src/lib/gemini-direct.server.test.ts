@@ -1,4 +1,3 @@
-// @vitest-environment node
 import { afterEach, expect, it, vi } from "vitest";
 import { geminiDirectSpeech, geminiDirectTranscribe, shouldUseGeminiFallback } from "./gemini-direct.server";
 
@@ -21,7 +20,7 @@ it("returns Puck voice audio from the own key", async () => {
 
 it("transcribes speech with the own key, and does nothing without a key", async () => {
   const fetcher = vi.fn(async () => Response.json({ candidates: [{ content: { parts: [{ text: " ဆရာ " }] } }] }));
-  expect(await geminiDirectTranscribe(new Blob([new Uint8Array(4)]), "audio/webm", "p", fetcher as typeof fetch)).toBeNull();
+  expect(await geminiDirectTranscribe(({ arrayBuffer: async () => new ArrayBuffer(4) }) as Blob, "audio/webm", "p", fetcher as typeof fetch)).toBeNull();
   vi.stubEnv("GEMINI_API_KEY", "k");
-  expect(await geminiDirectTranscribe(new Blob([new Uint8Array(4)]), "audio/webm", "p", fetcher as typeof fetch)).toBe("ဆရာ");
+  expect(await geminiDirectTranscribe(({ arrayBuffer: async () => new ArrayBuffer(4) }) as Blob, "audio/webm", "p", fetcher as typeof fetch)).toBe("ဆရာ");
 });
