@@ -6,7 +6,7 @@ vi.mock("@/lib/api-guard.server", () => ({
   untrusted: vi.fn(),
   cleanLine: vi.fn(),
 }));
-vi.mock("@/lib/grade11GrammarAudioCache.server", () => ({ unit1GrammarAudio: mocks.cache }));
+vi.mock("@/lib/grade11GrammarAudioCache.server", () => ({ grade11GrammarAudio: mocks.cache }));
 import { Route } from "../routes/api/tts";
 const post = (
   Route as unknown as {
