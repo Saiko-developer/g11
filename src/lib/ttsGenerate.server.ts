@@ -1,4 +1,5 @@
 import { sanitizeForSpeech } from "./sanitizeSpeech";
+import { geminiDirectSpeech } from "./gemini-direct.server";
 
 // Sayar Owl uses a warm, clear, upbeat male voice everywhere.
 const GEMINI_VOICES: Record<string, string> = {
@@ -108,6 +109,20 @@ export async function generateSpeech({ text, voice, speed, provider }: SpeechInp
               "[tts] gemini failed, falling back to openai",
               err instanceof Error ? err.message : err,
             );
+
+            // Same Gemini voice on the owner's own key (Lovable credits out / outage).
+            if (provider !== "openai") {
+              const pcm = await geminiDirectSpeech(input, geminiVoice);
+              if (pcm) {
+                return new Response(pcmToWav(pcm).slice().buffer as ArrayBuffer, {
+                  headers: {
+                    "Content-Type": "audio/wav",
+                    "Cache-Control": "no-store",
+                    "X-TTS-Provider": "gemini",
+                  },
+                });
+              }
+            }
 
             // Male fallback voice to match Sayar Owl.
             const openaiVoice = provider === "openai" && voice ? voice.toLowerCase() : "echo";

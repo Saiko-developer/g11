@@ -21,6 +21,7 @@ import { AdminTopups } from "@/components/Topup";
 import { AdminTeacherRequests } from "@/components/TeacherRequest";
 import { Button } from "@/components/ui/button";
 import { AdminAiStatus } from "@/components/AdminAiStatus";
+import { AdminGrade11Audio } from "@/components/admin/AdminGrade11Audio";
 import { AdminSupportInbox, AdminAnnouncements } from "@/components/Support";
 
 export const Route = createFileRoute("/admin")({
@@ -138,7 +139,12 @@ function Dashboard({ myId, onSignOut }: { myId: string; onSignOut: () => void })
       onSignOut={onSignOut}
       onAction={onAction}
       panels={{
-        ai: <AdminAiStatus />,
+        ai: (
+          <div className="space-y-4">
+            <AdminAiStatus />
+            <AdminGrade11Audio />
+          </div>
+        ),
         payments: <AdminTopups emails={emails} onChanged={changed} />,
         requests: <AdminTeacherRequests emails={emails} onChanged={changed} />,
         support: (

@@ -1,6 +1,7 @@
 import { validateGrade11Speaking } from "@/lib/grade11SpeakingSessions.server";
 import { requireUser, untrusted, cleanLine } from "@/lib/api-guard.server";
 import { createFileRoute } from "@tanstack/react-router";
+import { geminiDirectTranscribe, shouldUseGeminiFallback } from "@/lib/gemini-direct.server";
 
 /**
  * Speech-to-text for the Saya Owl chatbox (Syllabus Curriculum Explorer only).
@@ -97,6 +98,14 @@ export const Route = createFileRoute("/api/transcribe")({
           ...(grade11 ? { signal: AbortSignal.timeout(25000) } : {}),
         }).catch(() => null);
 
+        if (!upstream || (!upstream.ok && shouldUseGeminiFallback(upstream.status))) {
+          const text = await geminiDirectTranscribe(file, type, String(upstreamForm.get("prompt") ?? ""));
+          if (text !== null) {
+            return new Response(JSON.stringify({ text }), {
+              headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
+            });
+          }
+        }
         if (!upstream) return new Response("Transcription network error", { status: 502 });
         if (!upstream.ok) {
           const detail = await upstream.text().catch(() => "");
