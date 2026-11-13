@@ -1,3 +1,4 @@
+import { withAiCredit } from "@/lib/ai-credit.server";
 import { validateGrade11Speaking } from "@/lib/grade11SpeakingSessions.server";
 import { requireUser, untrusted, cleanLine } from "@/lib/api-guard.server";
 import { createFileRoute } from "@tanstack/react-router";
@@ -13,7 +14,7 @@ import { geminiDirectTranscribe, shouldUseGeminiFallback } from "@/lib/gemini-di
 export const Route = createFileRoute("/api/transcribe")({
   server: {
     handlers: {
-      POST: async ({ request }) => {
+      POST: async ({ request }) => withAiCredit(request, "speech", async () => {
         const authed = await requireUser(request, { enforceAccountStatus: true });
         if (authed instanceof Response) return authed;
         const key = process.env.LOVABLE_API_KEY;
@@ -120,7 +121,7 @@ export const Route = createFileRoute("/api/transcribe")({
         return new Response(JSON.stringify({ text: data?.text ?? "" }), {
           headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
         });
-      },
+      }),
     },
   },
 });

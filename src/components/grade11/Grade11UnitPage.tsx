@@ -40,6 +40,7 @@ export function Grade11UnitPage({
             </Link>
           ))}
         </nav>
+        {unitNumber === 1 && skill === "reading" && <a href="/classroom/11" className="mt-4 inline-flex rounded-lg border border-primary px-4 py-2 text-sm font-semibold text-primary">🦉 Unit 1 Reading Classroom — စာကြောင်းချင်း သင်မယ်</a>}
         <div data-saya-home-section>
           <Grade11TextLesson key={`${unitNumber}:${skill}`} unit={unitNumber} kind={skill} />
         </div>

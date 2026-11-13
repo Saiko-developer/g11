@@ -48,6 +48,9 @@ ${untrusted("answer_key", body.paper, 60000)}`;
   const modelId = process.env.LOVABLE_CHAT_MODEL?.trim() || DEFAULT_LOVABLE_CHAT_MODEL;
   const result = streamText({
     model: getChatModel(modelId),
+    maxOutputTokens: 8000,
+    maxRetries: 0,
+    abortSignal: AbortSignal.timeout(90000),
     system: withTone(system),
     messages: [{ role: "user", content: [
       { type: "text", text: `Here are my ${images.length} answer page photo(s). Please mark my exam.` },

@@ -1,3 +1,4 @@
+import { withAiCredit } from "./ai-credit.server";
 import { requireUser, untrusted } from "@/lib/api-guard.server";
 import { withTone } from "@/lib/tone-rules";
 import { generateJson } from "@/lib/ai-json.server";
@@ -5,6 +6,10 @@ import { generateJson } from "@/lib/ai-json.server";
 const s = (v: unknown, n: number) => (typeof v === "string" ? v.trim().slice(0, n) : "");
 
 export async function handleGrade11Check(request: Request): Promise<Response> {
+  return withAiCredit(request, "check", () => check(request));
+}
+
+async function check(request: Request): Promise<Response> {
   const authed = await requireUser(request, { enforceAccountStatus: true });
   if (authed instanceof Response) return authed;
   const parsed: unknown = await request.json().catch(() => null);

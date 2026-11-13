@@ -1,3 +1,4 @@
+import { withAiCredit } from "@/lib/ai-credit.server";
 import { validateGrade11Speaking } from "@/lib/grade11SpeakingSessions.server";
 import { grade11GrammarAudio } from "@/lib/grade11GrammarAudioCache.server";
 import { generateSpeech } from "@/lib/ttsGenerate.server";
@@ -50,7 +51,7 @@ export const Route = createFileRoute("/api/tts")({
           );
           if (access instanceof Response) return access;
         }
-        const generate = () => generateSpeech({ text, voice, speed, provider });
+        const generate = () => withAiCredit(request, "speech", () => generateSpeech({ text, voice, speed, provider }));
         return lessonCache === "grade11-unit1" || lessonCache === "grade11-grammar"
           ? grade11GrammarAudio(request, { text, voice, speed, provider }, generate)
           : generate();

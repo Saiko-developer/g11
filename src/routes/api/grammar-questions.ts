@@ -1,3 +1,4 @@
+import { withAiCredit, creditGuardEnabled } from "@/lib/ai-credit.server";
 import { requireUser, untrusted, cleanLine } from "@/lib/api-guard.server";
 import { withTone } from "@/lib/tone-rules";
 import { createFileRoute } from "@tanstack/react-router";
@@ -43,7 +44,7 @@ export const Route = createFileRoute("/api/grammar-questions")({
         if (error) return Response.json({ error: error.message }, { status: 500 });
         return Response.json({ batches: data ?? [] });
       },
-      POST: async ({ request }) => {
+      POST: async ({ request }) => withAiCredit(request, "generate", async () => {
         const authed = await requireUser(request, { enforceAccountStatus: true });
         if (authed instanceof Response) return authed;
         const body = (await request.json().catch(() => ({}))) as PostBody;
@@ -120,7 +121,7 @@ Previously generated questions (avoid): ${previous.join(" || ") || "none"}`,
           const status = msg.includes("429") ? 429 : msg.includes("402") ? 402 : 500;
           return Response.json({ error: msg }, { status });
         }
-      },
+      }),
     },
   },
 });

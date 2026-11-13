@@ -1,3 +1,4 @@
+import { withAiCredit, creditGuardEnabled } from "@/lib/ai-credit.server";
 import { requireActiveAccount } from "@/lib/account-access.server";
 import { untrusted, cleanLine } from "@/lib/api-guard.server";
 import { withTone } from "@/lib/tone-rules";
@@ -88,12 +89,12 @@ type ChatRequestBody = {
 export const Route = createFileRoute("/api/chat")({
   server: {
     handlers: {
-      POST: async ({ request }) => {
+      POST: async ({ request }) => withAiCredit(request, "tutor", async () => {
         if (request.headers.get("authorization")) {
           const denied = await requireActiveAccount(request);
           if (denied) return denied;
         }
-        const blocked = await consumeTutorQuota(request);
+        const blocked = creditGuardEnabled() ? null : await consumeTutorQuota(request);
         if (blocked) return blocked;
         const body = (await request.json()) as ChatRequestBody;
         const { messages, lessonContext, currentQuestion, mode } = body;
@@ -121,6 +122,9 @@ export const Route = createFileRoute("/api/chat")({
 
         const result = streamText({
           model,
+          maxOutputTokens: 2400,
+          maxRetries: 0,
+          abortSignal: AbortSignal.any([request.signal, AbortSignal.timeout(90000)]),
           system: withTone(system),
           messages: await convertToModelMessages(messages as UIMessage[]),
         });
@@ -137,7 +141,7 @@ export const Route = createFileRoute("/api/chat")({
             return "ဆရာဇီးကွက် နည်းနည်း မအီးမသာ ဖြစ်နေပါတယ်။ ထပ်ကြိုးစားကြည့်ပါနော်။";
           },
         });
-      },
+      }),
     },
   },
 });
