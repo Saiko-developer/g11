@@ -16,6 +16,7 @@ import { Route as ClassroomsRouteImport } from './routes/classrooms'
 import { Route as ExamBuilderRouteImport } from './routes/exam-builder'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as ProgressRouteImport } from './routes/progress'
+import { Route as TeachingSetupRouteImport } from './routes/teaching-setup'
 import { Route as TutorRouteImport } from './routes/tutor'
 import { Route as ApiAnswerHintRouteImport } from './routes/api/answer-hint'
 import { Route as ApiAutoGradeRouteImport } from './routes/api/auto-grade'
@@ -34,6 +35,7 @@ import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as ApiMockExamRouteImport } from './routes/api/mock-exam'
 import { Route as ApiRoleplayRouteImport } from './routes/api/roleplay'
 import { Route as ApiStudyPlanRouteImport } from './routes/api/study-plan'
+import { Route as ApiTeachingSetupRouteImport } from './routes/api/teaching-setup'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as ApiTtsRouteImport } from './routes/api/tts'
 import { Route as ClassExamIdRouteImport } from './routes/class-exam.$id'
@@ -82,6 +84,11 @@ const GuideRoute = GuideRouteImport.update({
 const ProgressRoute = ProgressRouteImport.update({
   id: '/progress',
   path: '/progress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeachingSetupRoute = TeachingSetupRouteImport.update({
+  id: '/teaching-setup',
+  path: '/teaching-setup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TutorRoute = TutorRouteImport.update({
@@ -174,6 +181,11 @@ const ApiStudyPlanRoute = ApiStudyPlanRouteImport.update({
   path: '/api/study-plan',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiTeachingSetupRoute = ApiTeachingSetupRouteImport.update({
+  id: '/api/teaching-setup',
+  path: '/api/teaching-setup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiTranscribeRoute = ApiTranscribeRouteImport.update({
   id: '/api/transcribe',
   path: '/api/transcribe',
@@ -253,6 +265,7 @@ export interface FileRoutesByFullPath {
   '/exam-builder': typeof ExamBuilderRoute
   '/guide': typeof GuideRoute
   '/progress': typeof ProgressRoute
+  '/teaching-setup': typeof TeachingSetupRoute
   '/tutor': typeof TutorRoute
   '/api/answer-hint': typeof ApiAnswerHintRoute
   '/api/auto-grade': typeof ApiAutoGradeRoute
@@ -271,6 +284,7 @@ export interface FileRoutesByFullPath {
   '/api/mock-exam': typeof ApiMockExamRoute
   '/api/roleplay': typeof ApiRoleplayRoute
   '/api/study-plan': typeof ApiStudyPlanRoute
+  '/api/teaching-setup': typeof ApiTeachingSetupRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/tts': typeof ApiTtsRoute
   '/class-exam/$id': typeof ClassExamIdRoute
@@ -294,6 +308,7 @@ export interface FileRoutesByTo {
   '/exam-builder': typeof ExamBuilderRoute
   '/guide': typeof GuideRoute
   '/progress': typeof ProgressRoute
+  '/teaching-setup': typeof TeachingSetupRoute
   '/tutor': typeof TutorRoute
   '/api/answer-hint': typeof ApiAnswerHintRoute
   '/api/auto-grade': typeof ApiAutoGradeRoute
@@ -312,6 +327,7 @@ export interface FileRoutesByTo {
   '/api/mock-exam': typeof ApiMockExamRoute
   '/api/roleplay': typeof ApiRoleplayRoute
   '/api/study-plan': typeof ApiStudyPlanRoute
+  '/api/teaching-setup': typeof ApiTeachingSetupRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/tts': typeof ApiTtsRoute
   '/class-exam/$id': typeof ClassExamIdRoute
@@ -335,6 +351,7 @@ export interface FileRoutesById {
   '/exam-builder': typeof ExamBuilderRoute
   '/guide': typeof GuideRoute
   '/progress': typeof ProgressRoute
+  '/teaching-setup': typeof TeachingSetupRoute
   '/tutor': typeof TutorRoute
   '/api/answer-hint': typeof ApiAnswerHintRoute
   '/api/auto-grade': typeof ApiAutoGradeRoute
@@ -353,6 +370,7 @@ export interface FileRoutesById {
   '/api/mock-exam': typeof ApiMockExamRoute
   '/api/roleplay': typeof ApiRoleplayRoute
   '/api/study-plan': typeof ApiStudyPlanRoute
+  '/api/teaching-setup': typeof ApiTeachingSetupRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/tts': typeof ApiTtsRoute
   '/class-exam/$id': typeof ClassExamIdRoute
@@ -378,6 +396,7 @@ export interface FileRouteTypes {
     | '/exam-builder'
     | '/guide'
     | '/progress'
+    | '/teaching-setup'
     | '/tutor'
     | '/api/answer-hint'
     | '/api/auto-grade'
@@ -396,6 +415,7 @@ export interface FileRouteTypes {
     | '/api/mock-exam'
     | '/api/roleplay'
     | '/api/study-plan'
+    | '/api/teaching-setup'
     | '/api/transcribe'
     | '/api/tts'
     | '/class-exam/$id'
@@ -419,6 +439,7 @@ export interface FileRouteTypes {
     | '/exam-builder'
     | '/guide'
     | '/progress'
+    | '/teaching-setup'
     | '/tutor'
     | '/api/answer-hint'
     | '/api/auto-grade'
@@ -437,6 +458,7 @@ export interface FileRouteTypes {
     | '/api/mock-exam'
     | '/api/roleplay'
     | '/api/study-plan'
+    | '/api/teaching-setup'
     | '/api/transcribe'
     | '/api/tts'
     | '/class-exam/$id'
@@ -459,6 +481,7 @@ export interface FileRouteTypes {
     | '/exam-builder'
     | '/guide'
     | '/progress'
+    | '/teaching-setup'
     | '/tutor'
     | '/api/answer-hint'
     | '/api/auto-grade'
@@ -477,6 +500,7 @@ export interface FileRouteTypes {
     | '/api/mock-exam'
     | '/api/roleplay'
     | '/api/study-plan'
+    | '/api/teaching-setup'
     | '/api/transcribe'
     | '/api/tts'
     | '/class-exam/$id'
@@ -501,6 +525,7 @@ export interface RootRouteChildren {
   ExamBuilderRoute: typeof ExamBuilderRoute
   GuideRoute: typeof GuideRoute
   ProgressRoute: typeof ProgressRoute
+  TeachingSetupRoute: typeof TeachingSetupRoute
   TutorRoute: typeof TutorRoute
   ApiAnswerHintRoute: typeof ApiAnswerHintRoute
   ApiAutoGradeRoute: typeof ApiAutoGradeRoute
@@ -519,6 +544,7 @@ export interface RootRouteChildren {
   ApiMockExamRoute: typeof ApiMockExamRoute
   ApiRoleplayRoute: typeof ApiRoleplayRoute
   ApiStudyPlanRoute: typeof ApiStudyPlanRoute
+  ApiTeachingSetupRoute: typeof ApiTeachingSetupRoute
   ApiTranscribeRoute: typeof ApiTranscribeRoute
   ApiTtsRoute: typeof ApiTtsRoute
   ClassExamIdRoute: typeof ClassExamIdRoute
@@ -582,6 +608,13 @@ declare module '@tanstack/react-router' {
       path: '/progress'
       fullPath: '/progress'
       preLoaderRoute: typeof ProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/teaching-setup': {
+      id: '/teaching-setup'
+      path: '/teaching-setup'
+      fullPath: '/teaching-setup'
+      preLoaderRoute: typeof TeachingSetupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tutor': {
@@ -710,6 +743,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiStudyPlanRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/teaching-setup': {
+      id: '/api/teaching-setup'
+      path: '/api/teaching-setup'
+      fullPath: '/api/teaching-setup'
+      preLoaderRoute: typeof ApiTeachingSetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/transcribe': {
       id: '/api/transcribe'
       path: '/api/transcribe'
@@ -833,6 +873,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExamBuilderRoute: ExamBuilderRoute,
   GuideRoute: GuideRoute,
   ProgressRoute: ProgressRoute,
+  TeachingSetupRoute: TeachingSetupRoute,
   TutorRoute: TutorRoute,
   ApiAnswerHintRoute: ApiAnswerHintRoute,
   ApiAutoGradeRoute: ApiAutoGradeRoute,
@@ -851,6 +892,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiMockExamRoute: ApiMockExamRoute,
   ApiRoleplayRoute: ApiRoleplayRoute,
   ApiStudyPlanRoute: ApiStudyPlanRoute,
+  ApiTeachingSetupRoute: ApiTeachingSetupRoute,
   ApiTranscribeRoute: ApiTranscribeRoute,
   ApiTtsRoute: ApiTtsRoute,
   ClassExamIdRoute: ClassExamIdRoute,

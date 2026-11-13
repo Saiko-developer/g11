@@ -1,3 +1,4 @@
+import { classroomLiveEnabled } from "./live-settings.server";
 import { z } from "zod";
 import { requireUser, untrusted } from "@/lib/api-guard.server";
 import { withAiCredit } from "@/lib/ai-credit.server";
@@ -135,7 +136,7 @@ export async function postClassroom(request: Request) {
       return prepareClassroomAudio(lesson, body.cursor);
     }
     if (!body.question) return Response.json({ error: "question_required" }, { status: 400 });
-    if (process.env.CLASSROOM_LIVE_AI_ENABLED !== "true")
+    if (!(await classroomLiveEnabled()))
       return Response.json(
         { error: "live_ai_disabled", message: "တိုက်ရိုက် AI မေးခွင့် မဖွင့်ရသေးပါ။" },
         { status: 503 },

@@ -36,6 +36,13 @@
       "when": 1794560823323,
       "tag": "0004_apply_daily_study_plan_storage",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1794561299287,
+      "tag": "0005_activate_classroom_narration",
+      "breakpoints": true
     }
   ]
 }

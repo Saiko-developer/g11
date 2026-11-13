@@ -590,6 +590,9 @@ function TeacherPreparation({
   return (
     <details className="rounded-xl border border-border p-4">
       <summary className="cursor-pointer font-semibold">ဆရာ / Admin — အသံအတန်းပြင်ဆင်ရန်</summary>
+      <a href="/teaching-setup" className="mt-3 inline-block text-primary underline">
+        Backend စစ်ဆေးပြီး အသံအတန်းကို အမှန်တကယ်ဖွင့်ရန် →
+      </a>
       <p className="mt-3 text-sm leading-loose">
         စာသားစစ်ဆေးအတည်ပြုခြင်းကို မူလ classroom review panel မှာ ပြုလုပ်ပါ။ ဒီခလုတ်က ဒီနေ့အတန်းရဲ့
         cached clips တွေကို ပြင်ဆင်ပေးမယ်။ အသံတစ်ခုချင်း နားထောင်စစ်ဆေးပါ။ တစ်နေ့ ၂၀ clip
