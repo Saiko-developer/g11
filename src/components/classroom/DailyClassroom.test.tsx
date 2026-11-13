@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { StrictMode, type ReactNode } from "react";
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { DailyClassroom } from "./DailyClassroom";
@@ -295,4 +295,32 @@ it("a browser autoplay block offers Play without regenerating prepared narration
       ([, init]) => init?.body && JSON.parse(init.body as string).action === "warm_audio",
     );
   expect(warms).toHaveLength(16);
+});
+
+it("starts buffered teaching after StrictMode effect cleanup and setup", async () => {
+  render(
+    <StrictMode>
+      <DailyClassroom autoStart />
+    </StrictMode>,
+  );
+  await waitFor(() => expect(AudioMock.all).toHaveLength(1));
+  expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+});
+
+it("shows a recoverable message for unexpected browser aborts and resumes on Play", async () => {
+  const normalFetch = vi.mocked(fetch).getMockImplementation()!;
+  let interrupt = true;
+  vi.mocked(fetch).mockImplementation(async (input, init) => {
+    const body = init?.body ? JSON.parse(init.body as string) : null;
+    if (body?.action === "warm_audio" && interrupt) {
+      interrupt = false;
+      throw new DOMException("signal is aborted without reason", "AbortError");
+    }
+    return normalFetch(input, init);
+  });
+  render(<DailyClassroom autoStart />);
+  await screen.findByText("အသံချိတ်ဆက်မှု ရပ်သွားပါသည်။ ပြန်ဆက်သင်မယ် ခလုတ်ကို နှိပ်ပါ။");
+  expect(screen.queryByText("signal is aborted without reason")).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "ဆရာနဲ့ ပြန်ဆက်သင်မယ်" }));
+  await waitFor(() => expect(AudioMock.all).toHaveLength(1));
 });

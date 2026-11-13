@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { createClassAudioBuffer } from "./class-audio-buffer";
 import { emptyProgress, type ClassroomProgress, type ReadingLesson } from "@/lib/classroom/types";
 
@@ -76,27 +76,7 @@ export function useClassroom(
   const [loading, setLoading] = useState(false);
   const [preparing, setPreparing] = useState(false);
   const [preparation, setPreparation] = useState({ ready: 0, total: endCursor - startCursor });
-  const classBuffer = useMemo(
-    () =>
-      bufferedClass && userId
-        ? createClassAudioBuffer({
-            start: startCursor,
-            end: endCursor,
-            warm: async (cursor, signal) => {
-              const response = await classroomRequest(
-                lesson.grade,
-                { action: "warm_audio", cursor },
-                signal,
-              );
-              await response.body?.cancel();
-            },
-            load: async (cursor, signal) =>
-              (await classroomRequest(lesson.grade, { action: "audio", cursor }, signal)).blob(),
-          })
-        : null,
-    [bufferedClass, userId, lesson, startCursor, endCursor],
-  );
-  useEffect(() => () => classBuffer?.dispose(), [classBuffer]);
+  const classBuffer = useRef<ReturnType<typeof createClassAudioBuffer> | null>(null);
   const [manual, setManual] = useState(false);
   const manualRef = useRef(manual);
   manualRef.current = manual;
@@ -185,6 +165,30 @@ export function useClassroom(
   }, []);
   useEffect(() => {
     active.current = true;
+    loadingRef.current = false;
+    setLoading(false);
+    setPreparing(false);
+    setPlaying(false);
+    setReady(!userId);
+    // Effect replay must create fresh abort controllers, never reuse a disposed buffer.
+    const buffer =
+      bufferedClass && userId
+        ? createClassAudioBuffer({
+            start: startCursor,
+            end: endCursor,
+            warm: async (cursor, signal) => {
+              const response = await classroomRequest(
+                lesson.grade,
+                { action: "warm_audio", cursor },
+                signal,
+              );
+              await response.body?.cancel();
+            },
+            load: async (cursor, signal) =>
+              (await classroomRequest(lesson.grade, { action: "audio", cursor }, signal)).blob(),
+          })
+        : null;
+    classBuffer.current = buffer;
     const abort = new AbortController();
     if (userId) {
       void (async () => {
@@ -196,7 +200,7 @@ export function useClassroom(
           if (!response.ok)
             throw new Error("Account မှတ်တမ်း ချိတ်ဆက်မရပါ။ ယာယီ Manual Mode ဖြင့် ဖတ်နိုင်ပါတယ်။");
           const data = await response.json();
-          if (!active.current) return;
+          if (!active.current || abort.signal.aborted) return;
           const p = data.progress as ClassroomProgress;
           const safe = {
             ...p,
@@ -230,10 +234,13 @@ export function useClassroom(
       abort.abort();
       invalidatePlayback();
       releaseAudio();
+      buffer?.dispose();
+      if (classBuffer.current === buffer) classBuffer.current = null;
     };
   }, [
     userId,
-    lesson.grade,
+    bufferedClass,
+    lesson,
     maxCursor,
     startCursor,
     endCursor,
@@ -267,16 +274,17 @@ export function useClassroom(
       setError("");
       try {
         let blob: Blob;
-        if (classBuffer) {
-          if (!classBuffer.isPrepared()) {
+        const buffer = classBuffer.current;
+        if (buffer) {
+          if (!buffer.isPrepared()) {
             setPreparing(true);
-            await classBuffer.prepare(abort.signal, (count, total) => {
+            await buffer.prepare(abort.signal, (count, total) => {
               if (token === generation.current && active.current)
                 setPreparation({ ready: count, total });
             });
           }
           if (token !== generation.current || !active.current) return;
-          blob = await classBuffer.playback(cursor);
+          blob = await buffer.playback(cursor);
         } else {
           const response = await classroomRequest(
             lesson.grade,
@@ -327,9 +335,14 @@ export function useClassroom(
               "name" in err &&
               err.name === "NotAllowedError"
               ? "အသံအဆင်သင့်ပါပြီ။ ပြန်ဆက်သင်မယ် ခလုတ်ကို နှိပ်ပါ။"
-              : err instanceof Error
-                ? err.message
-                : "Audio failed",
+              : typeof err === "object" &&
+                  err !== null &&
+                  "name" in err &&
+                  err.name === "AbortError"
+                ? "အသံချိတ်ဆက်မှု ရပ်သွားပါသည်။ ပြန်ဆက်သင်မယ် ခလုတ်ကို နှိပ်ပါ။"
+                : err instanceof Error
+                  ? err.message
+                  : "အသံချိတ်ဆက်မရပါ။ ပြန်စမ်းပါ။",
           );
           setPlaying(false);
         }
@@ -341,7 +354,7 @@ export function useClassroom(
         }
       }
     },
-    [userId, published, ready, lesson.grade, maxCursor, releaseAudio, complete, classBuffer],
+    [userId, published, ready, lesson.grade, maxCursor, releaseAudio, complete],
   );
   playRef.current = playAt;
   const resume = () => {
