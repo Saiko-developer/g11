@@ -9,3 +9,7 @@
 - [ ] Verify first Google signup and profile/role creation live — blocked: no account has signed up yet.
 - [ ] Admin first sign-in check — blocked: admin must sign in with Google once.
 - [ ] Save KBZPay/WavePay details and prices — blocked: admin enters them on the Top-up page.
+
+# Classroom availability
+- [ ] Install the missing reading-classroom schema without changing AI quotas or enabling paid narration.
+- [ ] Add regression coverage and verify Grade 10 and Grade 11 classroom loading.
