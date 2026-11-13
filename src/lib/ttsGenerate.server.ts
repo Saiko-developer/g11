@@ -59,6 +59,7 @@ export async function generateSpeech({ text, voice, speed, provider }: SpeechInp
             if (provider === "openai") throw new Error("openai requested");
             const upstream = await fetch("https://ai.gateway.lovable.dev/v1/audio/speech", {
               method: "POST",
+              signal: AbortSignal.timeout(60000),
               headers: {
                 "Lovable-API-Key": lovableKey,
                 "Content-Type": "application/json; charset=utf-8",
@@ -129,6 +130,7 @@ export async function generateSpeech({ text, voice, speed, provider }: SpeechInp
 
             const fallback = await fetch("https://ai.gateway.lovable.dev/v1/audio/speech", {
               method: "POST",
+              signal: AbortSignal.timeout(60000),
               headers: {
                 "Lovable-API-Key": lovableKey,
                 "Content-Type": "application/json; charset=utf-8",

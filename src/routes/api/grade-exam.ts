@@ -1,3 +1,4 @@
+import { withAiCredit } from "@/lib/ai-credit.server";
 import { requireActiveAccount } from "@/lib/account-access.server";
 import { createFileRoute } from "@tanstack/react-router";
 import { gradePaper } from "@/lib/grade-paper.server";
@@ -41,7 +42,7 @@ type Body = { paper?: MockExamPaper; images?: string[] };
 export const Route = createFileRoute("/api/grade-exam")({
   server: {
     handlers: {
-      POST: async ({ request }) => {
+      POST: async ({ request }) => withAiCredit(request, "check", async () => {
         if (request.headers.get("authorization")) {
           const denied = await requireActiveAccount(request);
           if (denied) return denied;
@@ -80,7 +81,7 @@ export const Route = createFileRoute("/api/grade-exam")({
                 : "Sayar Owl could not mark this paper. Please try again with clearer photos.";
           return Response.json({ error: friendly }, { status });
         }
-      },
+      }),
     },
   },
 });

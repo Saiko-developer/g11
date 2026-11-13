@@ -1,3 +1,4 @@
+import { ClassroomProgressSummary } from "@/components/classroom/ClassroomProgressSummary";
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ChevronDown, Loader2, Trash2 } from "lucide-react";
@@ -79,6 +80,7 @@ export function StudentProgress({ userId }: { userId: string }) {
 
   return (
     <div className="space-y-6">
+      <ClassroomProgressSummary key={userId} userId={userId} />
       <section>
         <h3 className="mb-2 font-semibold">လေ့ကျင့်ခန်း မှတ်တမ်း (Practice)</h3>
         {units.length === 0 ? (

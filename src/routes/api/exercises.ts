@@ -1,3 +1,4 @@
+import { withAiCredit, creditGuardEnabled } from "@/lib/ai-credit.server";
 import { requireUser, untrusted, cleanLine } from "@/lib/api-guard.server";
 import { withTone } from "@/lib/tone-rules";
 import { createFileRoute } from "@tanstack/react-router";
@@ -16,7 +17,7 @@ type Body = { topic?: string; unitTitle?: string; count?: number; ruleMy?: strin
 export const Route = createFileRoute("/api/exercises")({
   server: {
     handlers: {
-      POST: async ({ request }) => {
+      POST: async ({ request }) => withAiCredit(request, "generate", async () => {
         const authed = await requireUser(request, { enforceAccountStatus: true });
         if (authed instanceof Response) return authed;
         const body = (await request.json()) as Body;
@@ -58,7 +59,7 @@ ${body.ruleMy ? `Rule reference (Burmese): ${body.ruleMy}` : ""}`,
           const status = msg.includes("429") ? 429 : msg.includes("402") ? 402 : 500;
           return Response.json({ error: msg }, { status });
         }
-      },
+      }),
     },
   },
 });

@@ -90,7 +90,7 @@ it("never caches student text, other voices, errors or fallback speech", async (
   expect(store.files.size).toBe(0);
 });
 
-it("serves saved audio after a worker restart and survives storage failures", async () => {
+it("serves saved audio after a worker restart and fails closed during storage outages", async () => {
   const files = new Map<string, ArrayBuffer>();
   let module = await import("./grade11GrammarAudioCache.server");
   const generate = vi.fn(async () => audio());
@@ -109,5 +109,16 @@ it("serves saved audio after a worker restart and survives storage failures", as
     fail: async () => {},
     stat: async () => {},
   };
-  expect((await module.grade11GrammarAudio(request, body, generate, broken)).ok).toBe(true);
+  expect((await module.grade11GrammarAudio(request, body, generate, broken)).status).toBe(503);
+  expect(generate).toHaveBeenCalledTimes(1);
+});
+
+it("does not generate billable audio when the claim service is down", async () => {
+  const { grade11GrammarAudio } = await import("./grade11GrammarAudioCache.server");
+  const store = fakeStore();
+  store.claim = async () => { throw new Error("database unavailable"); };
+  const generate = vi.fn(async () => audio());
+  const response = await grade11GrammarAudio(request, body, generate, store, { waitMs: 0 });
+  expect(response.status).toBe(503);
+  expect(generate).not.toHaveBeenCalled();
 });

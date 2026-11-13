@@ -20,6 +20,7 @@ import { Route as ApiAnswerHintRouteImport } from './routes/api/answer-hint'
 import { Route as ApiAutoGradeRouteImport } from './routes/api/auto-grade'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiChatHomeRouteImport } from './routes/api/chat-home'
+import { Route as ApiClassroomRouteImport } from './routes/api/classroom'
 import { Route as ApiExamRouteImport } from './routes/api/exam'
 import { Route as ApiExercisesRouteImport } from './routes/api/exercises'
 import { Route as ApiG11CheckRouteImport } from './routes/api/g11-check'
@@ -35,6 +36,7 @@ import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as ApiTtsRouteImport } from './routes/api/tts'
 import { Route as ClassExamIdRouteImport } from './routes/class-exam.$id'
 import { Route as ClassExamNewRouteImport } from './routes/class-exam.new'
+import { Route as ClassroomGradeRouteImport } from './routes/classroom.$grade'
 import { Route as Grade11IndexRouteImport } from './routes/grade-11.index'
 import { Route as Grade11UnitRouteImport } from './routes/grade-11.$unit'
 import { Route as MockExamUnitRouteImport } from './routes/mock-exam.$unit'
@@ -98,6 +100,11 @@ const ApiChatRoute = ApiChatRouteImport.update({
 const ApiChatHomeRoute = ApiChatHomeRouteImport.update({
   id: '/api/chat-home',
   path: '/api/chat-home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiClassroomRoute = ApiClassroomRouteImport.update({
+  id: '/api/classroom',
+  path: '/api/classroom',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiExamRoute = ApiExamRouteImport.update({
@@ -175,6 +182,11 @@ const ClassExamNewRoute = ClassExamNewRouteImport.update({
   path: '/class-exam/new',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClassroomGradeRoute = ClassroomGradeRouteImport.update({
+  id: '/classroom/$grade',
+  path: '/classroom/$grade',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Grade11IndexRoute = Grade11IndexRouteImport.update({
   id: '/grade-11/',
   path: '/grade-11/',
@@ -233,6 +245,7 @@ export interface FileRoutesByFullPath {
   '/api/auto-grade': typeof ApiAutoGradeRoute
   '/api/chat': typeof ApiChatRoute
   '/api/chat-home': typeof ApiChatHomeRoute
+  '/api/classroom': typeof ApiClassroomRoute
   '/api/exam': typeof ApiExamRoute
   '/api/exercises': typeof ApiExercisesRoute
   '/api/g11-check': typeof ApiG11CheckRoute
@@ -248,6 +261,7 @@ export interface FileRoutesByFullPath {
   '/api/tts': typeof ApiTtsRoute
   '/class-exam/$id': typeof ClassExamIdRoute
   '/class-exam/new': typeof ClassExamNewRoute
+  '/classroom/$grade': typeof ClassroomGradeRoute
   '/grade-11/$unit': typeof Grade11UnitRoute
   '/mock-exam/$unit': typeof MockExamUnitRoute
   '/practice/$unit': typeof PracticeUnitRouteWithChildren
@@ -270,6 +284,7 @@ export interface FileRoutesByTo {
   '/api/auto-grade': typeof ApiAutoGradeRoute
   '/api/chat': typeof ApiChatRoute
   '/api/chat-home': typeof ApiChatHomeRoute
+  '/api/classroom': typeof ApiClassroomRoute
   '/api/exam': typeof ApiExamRoute
   '/api/exercises': typeof ApiExercisesRoute
   '/api/g11-check': typeof ApiG11CheckRoute
@@ -285,6 +300,7 @@ export interface FileRoutesByTo {
   '/api/tts': typeof ApiTtsRoute
   '/class-exam/$id': typeof ClassExamIdRoute
   '/class-exam/new': typeof ClassExamNewRoute
+  '/classroom/$grade': typeof ClassroomGradeRoute
   '/grade-11/$unit': typeof Grade11UnitRoute
   '/mock-exam/$unit': typeof MockExamUnitRoute
   '/section/$sectionId': typeof SectionSectionIdRoute
@@ -307,6 +323,7 @@ export interface FileRoutesById {
   '/api/auto-grade': typeof ApiAutoGradeRoute
   '/api/chat': typeof ApiChatRoute
   '/api/chat-home': typeof ApiChatHomeRoute
+  '/api/classroom': typeof ApiClassroomRoute
   '/api/exam': typeof ApiExamRoute
   '/api/exercises': typeof ApiExercisesRoute
   '/api/g11-check': typeof ApiG11CheckRoute
@@ -322,6 +339,7 @@ export interface FileRoutesById {
   '/api/tts': typeof ApiTtsRoute
   '/class-exam/$id': typeof ClassExamIdRoute
   '/class-exam/new': typeof ClassExamNewRoute
+  '/classroom/$grade': typeof ClassroomGradeRoute
   '/grade-11/$unit': typeof Grade11UnitRoute
   '/mock-exam/$unit': typeof MockExamUnitRoute
   '/practice/$unit': typeof PracticeUnitRouteWithChildren
@@ -346,6 +364,7 @@ export interface FileRouteTypes {
     | '/api/auto-grade'
     | '/api/chat'
     | '/api/chat-home'
+    | '/api/classroom'
     | '/api/exam'
     | '/api/exercises'
     | '/api/g11-check'
@@ -361,6 +380,7 @@ export interface FileRouteTypes {
     | '/api/tts'
     | '/class-exam/$id'
     | '/class-exam/new'
+    | '/classroom/$grade'
     | '/grade-11/$unit'
     | '/mock-exam/$unit'
     | '/practice/$unit'
@@ -383,6 +403,7 @@ export interface FileRouteTypes {
     | '/api/auto-grade'
     | '/api/chat'
     | '/api/chat-home'
+    | '/api/classroom'
     | '/api/exam'
     | '/api/exercises'
     | '/api/g11-check'
@@ -398,6 +419,7 @@ export interface FileRouteTypes {
     | '/api/tts'
     | '/class-exam/$id'
     | '/class-exam/new'
+    | '/classroom/$grade'
     | '/grade-11/$unit'
     | '/mock-exam/$unit'
     | '/section/$sectionId'
@@ -419,6 +441,7 @@ export interface FileRouteTypes {
     | '/api/auto-grade'
     | '/api/chat'
     | '/api/chat-home'
+    | '/api/classroom'
     | '/api/exam'
     | '/api/exercises'
     | '/api/g11-check'
@@ -434,6 +457,7 @@ export interface FileRouteTypes {
     | '/api/tts'
     | '/class-exam/$id'
     | '/class-exam/new'
+    | '/classroom/$grade'
     | '/grade-11/$unit'
     | '/mock-exam/$unit'
     | '/practice/$unit'
@@ -457,6 +481,7 @@ export interface RootRouteChildren {
   ApiAutoGradeRoute: typeof ApiAutoGradeRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiChatHomeRoute: typeof ApiChatHomeRoute
+  ApiClassroomRoute: typeof ApiClassroomRoute
   ApiExamRoute: typeof ApiExamRoute
   ApiExercisesRoute: typeof ApiExercisesRoute
   ApiG11CheckRoute: typeof ApiG11CheckRoute
@@ -472,6 +497,7 @@ export interface RootRouteChildren {
   ApiTtsRoute: typeof ApiTtsRoute
   ClassExamIdRoute: typeof ClassExamIdRoute
   ClassExamNewRoute: typeof ClassExamNewRoute
+  ClassroomGradeRoute: typeof ClassroomGradeRoute
   Grade11UnitRoute: typeof Grade11UnitRoute
   MockExamUnitRoute: typeof MockExamUnitRoute
   PracticeUnitRoute: typeof PracticeUnitRouteWithChildren
@@ -558,6 +584,13 @@ declare module '@tanstack/react-router' {
       path: '/api/chat-home'
       fullPath: '/api/chat-home'
       preLoaderRoute: typeof ApiChatHomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/classroom': {
+      id: '/api/classroom'
+      path: '/api/classroom'
+      fullPath: '/api/classroom'
+      preLoaderRoute: typeof ApiClassroomRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/exam': {
@@ -665,6 +698,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClassExamNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/classroom/$grade': {
+      id: '/classroom/$grade'
+      path: '/classroom/$grade'
+      fullPath: '/classroom/$grade'
+      preLoaderRoute: typeof ClassroomGradeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/grade-11/': {
       id: '/grade-11/'
       path: '/grade-11'
@@ -757,6 +797,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAutoGradeRoute: ApiAutoGradeRoute,
   ApiChatRoute: ApiChatRoute,
   ApiChatHomeRoute: ApiChatHomeRoute,
+  ApiClassroomRoute: ApiClassroomRoute,
   ApiExamRoute: ApiExamRoute,
   ApiExercisesRoute: ApiExercisesRoute,
   ApiG11CheckRoute: ApiG11CheckRoute,
@@ -772,6 +813,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiTtsRoute: ApiTtsRoute,
   ClassExamIdRoute: ClassExamIdRoute,
   ClassExamNewRoute: ClassExamNewRoute,
+  ClassroomGradeRoute: ClassroomGradeRoute,
   Grade11UnitRoute: Grade11UnitRoute,
   MockExamUnitRoute: MockExamUnitRoute,
   PracticeUnitRoute: PracticeUnitRouteWithChildren,

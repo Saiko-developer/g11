@@ -1,0 +1,344 @@
+[
+  {
+    "id": "g11-u1-p1-s1",
+    "paragraph": 1,
+    "source": "1A-9",
+    "english": "The dolphin is a kind of sea animal that looks like a large fish with a long pointed snout.",
+    "translation": "လင်းပိုင်ဟာ ရှည်လျားချွန်ထက်တဲ့နှုတ်သီးရှိတဲ့ ငါးကြီးနဲ့ဆင်တူတဲ့ ပင်လယ်သတ္တဝါတစ်မျိုးပါ။",
+    "explanation": "စာအုပ်က dolphin အမျိုးအစားယေဘုယျကို အရင်မိတ်ဆက်ထားတာပါ။ ငါးနဲ့တူတယ်လို့ပဲ ပြောတာဖြစ်ပြီး ငါးဖြစ်တယ်လို့ မပြောထားဘူးနော်။",
+    "reasoning": "a kind of က တစ်မျိုးဖြစ်တာပါ။ that looks like က sea animal ကို ထပ်ရှင်းတဲ့ relative clause ဖြစ်ပါတယ်။ snout က နှုတ်သီးပါ။"
+  },
+  {
+    "id": "g11-u1-p1-s2",
+    "paragraph": 1,
+    "source": "1A-9",
+    "english": "Dolphins are both intelligent and friendly towards humans.",
+    "translation": "လင်းပိုင်တွေဟာ ဉာဏ်ရည်ထက်မြက်သလို လူတွေအပေါ်လည်း ဖော်ရွေပါတယ်။",
+    "explanation": "အရည်အသွေးနှစ်ခုကို တန်းတူအလေးပေးထားတယ်။ intelligent တစ်ခုတည်း မရွေးဘဲ friendly ကိုပါ တွဲမှတ်ပါ။",
+    "reasoning": "both ... and ... က adjective နှစ်ခုကို ဆက်ထားပါတယ်။ friendly towards humans မှာ towards က ဘယ်သူ့အပေါ် ဖော်ရွေလဲဆိုတာ ပြပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p1-s3",
+    "paragraph": 1,
+    "source": "1A-9",
+    "english": "There are several types of dolphins.",
+    "translation": "လင်းပိုင်အမျိုးအစား အများအပြားရှိပါတယ်။",
+    "explanation": "အရှေ့မှာ dolphin ယေဘုယျအကြောင်း ပြောပြီး အခု အမျိုးအစားတွေရှိတာကို ဆက်ပြောပါတယ်။ နောက်ဝါကျမှာ အဲဒီထဲက တစ်မျိုးကို ရွေးမိတ်ဆက်မယ်။",
+    "reasoning": "There are က plural အရာတွေ ရှိတာကို ပြပါတယ်။ several types of က အမျိုးအစားအများအပြားပါ။"
+  },
+  {
+    "id": "g11-u1-p1-s4",
+    "paragraph": 1,
+    "source": "1A-9",
+    "english": "Among them, the Ayeyarwady dolphin is a popular kind in Southeast Asia.",
+    "translation": "အဲဒီအမျိုးအစားတွေထဲက ဧရာဝတီလင်းပိုင်ဟာ အရှေ့တောင်အာရှမှာ လူသိများတဲ့တစ်မျိုးပါ။",
+    "explanation": "Among them ထဲက them က dolphin types ကို ပြန်ညွှန်းတာပါ။ ဒီကနေ passage ရဲ့အဓိကအကြောင်းအရာ ဧရာဝတီလင်းပိုင်ဆီ ပြောင်းလာပါတယ်။",
+    "reasoning": "Among က အများအကြားပါ။ popular kind ဆိုတာ ဒီနေရာမှာ လူသိများတဲ့အမျိုးအစားလို့ နားလည်ပါ။"
+  },
+  {
+    "id": "g11-u1-p1-s5",
+    "paragraph": 1,
+    "source": "1A-9",
+    "english": "Dolphins of this type are usually found in coastal areas in South and Southeast Asia and in freshwater rivers in Myanmar, Indonesia, and Laos.",
+    "translation": "ဒီလင်းပိုင်မျိုးကို တောင်နဲ့အရှေ့တောင်အာရှ ကမ်းရိုးတန်းတွေ၊ မြန်မာ၊ အင်ဒိုနီးရှား၊ လာအိုတို့ရဲ့ ရေချိုမြစ်တွေမှာ တွေ့ရလေ့ရှိပါတယ်။",
+    "explanation": "တွေ့ရတဲ့နေရာကို ကမ်းရိုးတန်းနဲ့ ရေချိုမြစ်ဆိုပြီး နှစ်စုခွဲမှတ်ပါ။ နိုင်ငံစာရင်းကို မကျော်ဖတ်ပါနဲ့။",
+    "reasoning": "are found က တွေ့ရှိရသည်ဆိုတဲ့ passive ပါ။ coastal areas က ကမ်းရိုးတန်းဒေသ၊ freshwater က ရေချိုပါ။"
+  },
+  {
+    "id": "g11-u1-p1-s6",
+    "paragraph": 1,
+    "source": "1A-9",
+    "english": "This species is called the Ayeyarwady dolphin as it was first found in the Ayeyarwady River in Myanmar.",
+    "translation": "မြန်မာနိုင်ငံ ဧရာဝတီမြစ်မှာ ပထမဆုံးတွေ့ရှိခဲ့တာကြောင့် ဒီမျိုးစိတ်ကို ဧရာဝတီလင်းပိုင်လို့ ခေါ်ပါတယ်။",
+    "explanation": "ဒီဝါကျက စာအုပ်ထဲမှာ အမည်ရလာရတဲ့အကြောင်းကို ရှင်းထားတာပါ။ အဖြေဖြေရင် passage အထောက်အထားအတိုင်း ရည်ညွှန်းပြောပါ။",
+    "reasoning": "as က ဒီနေရာမှာ because လို အကြောင်းပြချက်ပါ။ is called နဲ့ was found က passive ဖြစ်ပြီး အချိန်ကာလမတူပါဘူး။"
+  },
+  {
+    "id": "g11-u1-p1-s7",
+    "paragraph": 1,
+    "source": "1A-9",
+    "english": "Its scientific name is Orcaella brevirostris and it is one of the endangered species among the freshwater dolphins in the world.",
+    "translation": "သိပ္ပံအမည်က Orcaella brevirostris ဖြစ်ပြီး ကမ္ဘာ့ရေချိုလင်းပိုင်တွေထဲမှာ အန္တရာယ်ရှိနေတဲ့ မျိုးစိတ်တစ်မျိုးပါ။",
+    "explanation": "သာမန်အမည်နဲ့ သိပ္ပံအမည်ကို ခွဲမှတ်ပါ။ endangered ဆိုတာ ရှားပါးရုံမဟုတ်ဘဲ မျိုးသုဉ်းနိုင်ခြေရှိနေတာပါ။",
+    "reasoning": "one of the endangered species မှာ one က တစ်မျိုးကို ရွေးညွှန်းပါတယ်။ Its က dolphin ရဲ့ဆိုတဲ့ ပိုင်ဆိုင်မှုပြစကားလုံးပါ။"
+  },
+  {
+    "id": "g11-u1-p2-s1",
+    "paragraph": 2,
+    "source": "1A-10",
+    "english": "The Ayeyarwady dolphin is quite different from other well-known dolphins.",
+    "translation": "ဧရာဝတီလင်းပိုင်ဟာ အခြားလူသိများတဲ့ လင်းပိုင်တွေနဲ့ အတော်ကွာခြားပါတယ်။",
+    "explanation": "ဒီစာပိုဒ်က ပုံပန်းသဏ္ဌာန်ကို စရှင်းတော့မယ်။ different ဆိုတာ ဘာတွေကွာလဲဆိုတဲ့ အထောက်အထားကို နောက်ဝါကျတွေမှာ ရှာပါ။",
+    "reasoning": "different from ကို တွဲမှတ်ပါ။ quite က ကွာခြားမှုအတိုင်းအတာကို အားဖြည့်ထားပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p2-s2",
+    "paragraph": 2,
+    "source": "1A-10",
+    "english": "Its colour may be dark blue or dark or pale gray.",
+    "translation": "အရောင်က နက်ပြာ၊ မီးခိုးရင့် ဒါမှမဟုတ် မီးခိုးဖျော့ ဖြစ်နိုင်ပါတယ်။",
+    "explanation": "အကောင်တိုင်း အရောင်တစ်မျိုးတည်း မဟုတ်နိုင်တာကို ပြပါတယ်။ အရောင်တွေကို or နဲ့ ဆက်ထားတာ သတိထားပါ။",
+    "reasoning": "may be က ဖြစ်နိုင်ခြေပါ။ pale gray က မီးခိုးဖျော့၊ dark က အရောင်ရင့်တာပါ။"
+  },
+  {
+    "id": "g11-u1-p2-s3",
+    "paragraph": 2,
+    "source": "1A-10",
+    "english": "It has a rounded head and a very bulging forehead.",
+    "translation": "လုံးဝန်းတဲ့ဦးခေါင်းနဲ့ အလွန်ဖောင်းထွက်တဲ့နဖူး ရှိပါတယ်။",
+    "explanation": "head နဲ့ forehead ကို မရောပါနဲ့။ forehead က နဖူးဖြစ်ပြီး bulging က ရှေ့ကိုဖောင်းထွက်နေတာကို ပုံဖော်ပေးပါတယ်။",
+    "reasoning": "rounded နဲ့ bulging က နာမ်ကိုဖော်ပြတဲ့ adjective တွေပါ။ It က singular ဖြစ်လို့ has သုံးပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p2-s4",
+    "paragraph": 2,
+    "source": "1A-10",
+    "english": "Unlike other dolphins, it has no beak, or snout.",
+    "translation": "အခြားလင်းပိုင်တွေနဲ့မတူဘဲ နှုတ်သီး မရှိပါဘူး။",
+    "explanation": "ပထမမိတ်ဆက်ဝါကျက dolphin ယေဘုယျကို ပြောတာ၊ ဒီဝါကျက ဧရာဝတီလင်းပိုင်ကို သီးသန့်ပြောတာပါ။ အကြောင်းအရာဘောင်ကို ခွဲဖတ်ရပါတယ်။",
+    "reasoning": "Unlike က မတူဘဲလို့ ဆိုလိုပါတယ်။ has no + noun က အရာတစ်ခု မရှိကြောင်း ပြပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p2-s5",
+    "paragraph": 2,
+    "source": "1A-10",
+    "english": "The dorsal fin is short, blunt and triangular.",
+    "translation": "ကျောဆူးတောင်က တို၊ ထိပ်တုံးပြီး တြိဂံပုံရှိပါတယ်။",
+    "explanation": "dorsal fin ကို ကျောပေါ်ကဆူးတောင်လို့ မြင်ယောင်ပါ။ အရှည်၊ ထိပ်ပုံနဲ့ အခြေခံပုံသဏ္ဌာန် သုံးမျိုးကို ဖော်ပြထားပါတယ်။",
+    "reasoning": "short, blunt, triangular က is နောက်က adjective စာရင်းပါ။ triangular က triangle ကနေ ဆင်းသက်လာပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p2-s6",
+    "paragraph": 2,
+    "source": "1A-10",
+    "english": "The flippers are long and broad.",
+    "translation": "ရေယက်တွေက ရှည်လျားပြီး ကျယ်ပါတယ်။",
+    "explanation": "ကျောဆူးတောင်နဲ့ ရေယက် မတူဘူးနော်။ ဘယ်အစိတ်အပိုင်းကို ဘယ်အရည်အသွေးနဲ့ ဖော်ပြလဲ တွဲမှတ်ရပါတယ်။",
+    "reasoning": "flippers က plural ဖြစ်လို့ are သုံးပါတယ်။ long and broad က အရှည်နဲ့အကျယ်ကို ဖော်ပြပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p2-s7",
+    "paragraph": 2,
+    "source": "1A-10",
+    "english": "The average length is 2.3 metres and the weight can range from 90 kg to 200 kg.",
+    "translation": "ပျမ်းမျှအလျားက ၂.၃ မီတာ၊ အလေးချိန်က ၉၀ မှ ၂၀၀ ကီလိုဂရမ်အထိ ရှိနိုင်ပါတယ်။",
+    "explanation": "average က အကောင်တိုင်း အတိအကျတူတာ မဟုတ်ပါဘူး။ အလေးချိန်က အနိမ့်နဲ့အမြင့်ကြား ကွာနိုင်တာကိုပါ သတိပြုပါ။",
+    "reasoning": "range from ... to ... က အတိုင်းအတာနှစ်ခုကြား ရှိတာပါ။ length က အလျား၊ weight က အလေးချိန်ပါ။"
+  },
+  {
+    "id": "g11-u1-p3-s1",
+    "paragraph": 3,
+    "source": "1A-11",
+    "english": "They feed on bony fish, fish eggs, and crustaceans which are crabs, lobsters and shrimps.",
+    "translation": "အရိုးမာငါး၊ ငါးဥနဲ့ ကဏန်း၊ ပုစွန်ထုပ်၊ ပုစွန်လို အခွံမာရေနေသတ္တဝါတွေကို စားပါတယ်။",
+    "explanation": "ဒီစာပိုဒ်က အစားအစာအကြောင်းပါ။ crustaceans ဆိုတဲ့ ခက်တဲ့စကားလုံးကို နောက်က ဥပမာသုံးခုက ရှင်းပေးထားပါတယ်။",
+    "reasoning": "feed on ကို အစားအစာနဲ့ တွဲသုံးပါတယ်။ which are က crustaceans ကို အဓိပ္ပာယ်ဖြည်ထားတာပါ။"
+  },
+  {
+    "id": "g11-u1-p3-s2",
+    "paragraph": 3,
+    "source": "1A-11",
+    "english": "They also eat octopuses and squids.",
+    "translation": "ရေဘဝဲနဲ့ ပြည်ကြီးငါးတွေကိုလည်း စားပါတယ်။",
+    "explanation": "also က အရှေ့စာရင်းအပြင် ထပ်ဖြည့်တာပါ။ စားစရာစာရင်းကို ပထမဝါကျမှာတင် မရပ်ပါနဲ့။",
+    "reasoning": "octopuses နဲ့ squids က plural နာမ်တွေပါ။ They က dolphins ကို ဆက်ညွှန်းထားပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p3-s3",
+    "paragraph": 3,
+    "source": "1A-11",
+    "english": "They take food into the mouth by suction, that is, by sucking in it.",
+    "translation": "အစာကို စုပ်ယူတဲ့နည်းနဲ့ ပါးစပ်ထဲသို့ ယူပါတယ်။",
+    "explanation": "ဘာကိုစားလဲပြီးတော့ ဘယ်လိုစားလဲဆိုတာ ဆက်ရှင်းထားပါတယ်။ suction ကို နောက်က sucking ဆိုတဲ့စကားနဲ့ ပြန်ဖြည်ပေးထားတယ်။",
+    "reasoning": "by + noun သို့မဟုတ် ing ပုံစံက နည်းလမ်းပါ။ that is က ဆိုလိုသည်မှာလို့ ပြန်ရှင်းခြင်း ဖြစ်ပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p4-s1",
+    "paragraph": 4,
+    "source": "1A-12",
+    "english": "Ayeyarwady dolphins like to stay in tropical and subtropical waters and near shallow coastal waters.",
+    "translation": "အပူပိုင်း၊ အပူလျော့ပိုင်းရေပြင်နဲ့ ရေတိမ်တဲ့ကမ်းရိုးတန်းအနီး နေလိုကြပါတယ်။",
+    "explanation": "ဒီစာပိုဒ်က နေရင်းဒေသကို ဖော်ပြပါတယ်။ ရေအပူချိန်ဒေသနဲ့ ရေအနက်ကို ခွဲမှတ်ထားပါ။",
+    "reasoning": "like to stay က နေလိုကြတာပါ။ shallow က ရေတိမ်၊ deep နဲ့ ဆန့်ကျင်ဘက်ပါ။"
+  },
+  {
+    "id": "g11-u1-p4-s2",
+    "paragraph": 4,
+    "source": "1A-12",
+    "english": "In other words, they live near coasts and river mouths.",
+    "translation": "တစ်နည်းအားဖြင့် ကမ်းခြေနဲ့ မြစ်ဝအနီးမှာ နေကြပါတယ်။",
+    "explanation": "အရှေ့ဝါကျကို ပိုရိုးရိုးပြန်ရှင်းတာပါ။ အသစ်တစ်ချက်ထပ်ပြောတာလား အရင်အချက်ပြန်ရှင်းတာလားဆိုတာ ခွဲဖတ်ရပါတယ်။",
+    "reasoning": "In other words က တစ်နည်းဆိုရသော်ပါ။ river mouth က မြစ်ဝဖြစ်ပြီး လူရဲ့ပါးစပ်ကို မဆိုလိုပါဘူး။"
+  },
+  {
+    "id": "g11-u1-p4-s3",
+    "paragraph": 4,
+    "source": "1A-12",
+    "english": "They are also found in freshwater rivers: the Ayeyarwady in Myanmar, the Mahakam in Indonesia and the Mekong in Laos.",
+    "translation": "မြန်မာရဲ့ဧရာဝတီ၊ အင်ဒိုနီးရှားရဲ့မဟာကမ်နဲ့ လာအိုရဲ့မဲခေါင် ရေချိုမြစ်တွေမှာလည်း တွေ့ရပါတယ်။",
+    "explanation": "နိုင်ငံနဲ့မြစ်အမည်ကို အတွဲလိုက်မှတ်ပါ။ ကမ်းရိုးတန်းမှာပဲ ရှိတယ်လို့ မယူဘဲ also ဆိုတဲ့ ထပ်ဖြည့်ချက်ကို သတိထားပါ။",
+    "reasoning": "are found က passive ပါ။ colon နောက်မှာ freshwater rivers ရဲ့ ဥပမာတွေ စာရင်းပေးထားပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p4-s4",
+    "paragraph": 4,
+    "source": "1A-12",
+    "english": "They are mostly seen about 1.6 kilometres away from the shore and they do not usually live in deep waters.",
+    "translation": "ကမ်းကနေ ၁.၆ ကီလိုမီတာခန့်အကွာမှာ အများဆုံးတွေ့ရပြီး ရေနက်ပိုင်းမှာ နေလေ့မရှိပါဘူး။",
+    "explanation": "ဒီဝါကျမှာ အကွာအဝေးနဲ့ အလေ့အထ နှစ်ချက်ပါတယ်။ not usually က ဘယ်တော့မှမဖြစ်လို့ မဆိုလိုပါဘူး။",
+    "reasoning": "about က ခန့်မှန်းပမာဏပါ။ away from က ဘယ်နေရာကနေ ကွာလဲပြပါတယ်။ usually က ပုံမှန်အလေ့အထပါ။"
+  },
+  {
+    "id": "g11-u1-p4-s5",
+    "paragraph": 4,
+    "source": "1A-12",
+    "english": "In Myanmar, they inhabit the Ayeyarwady River between Mandalay and Bamaw.",
+    "translation": "မြန်မာမှာ မန္တလေးနဲ့ ဗန်းမော်ကြား ဧရာဝတီမြစ်ထဲမှာ နေထိုင်ကြပါတယ်။",
+    "explanation": "နိုင်ငံယေဘုယျကနေ နေရာအပိုင်းအခြားသီးသန့်ဆီ ချုံ့ဖော်ပြထားပါတယ်။ between နောက်က မြို့နှစ်မြို့ကို တွဲမှတ်ပါ။",
+    "reasoning": "inhabit က နေထိုင်သည်ဖြစ်ပြီး နောက်မှာ in မလိုပါဘူး။ between ... and ... က အစွန်းနှစ်ဖက်ကို ဆက်ပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p5-s1",
+    "paragraph": 5,
+    "source": "1A-13",
+    "english": "Ayeyarwady dolphins are slow swimmers and they are generally found in groups of 3 to 6 members, but sometimes up to 15 dolphins are seen together.",
+    "translation": "ရေကူးနှေးပြီး ပုံမှန် ၃ မှ ၆ ကောင်အုပ်စုနဲ့ တွေ့ရပေမယ့် တစ်ခါတစ်ရံ ၁၅ ကောင်အထိ တွေ့ရပါတယ်။",
+    "explanation": "ပုံမှန်အရေအတွက်နဲ့ တစ်ခါတစ်ရံ အများဆုံးအရေအတွက်ကို မရောပါနဲ့။ ဒီစာပိုဒ်က အမူအကျင့်တွေအကြောင်း စပါတယ်။",
+    "reasoning": "generally က ယေဘုယျအားဖြင့်၊ sometimes က တစ်ခါတစ်ရံပါ။ up to က အများဆုံးအတိုင်းအတာကို ပြပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p5-s2",
+    "paragraph": 5,
+    "source": "1A-13",
+    "english": "They usually breathe, bringing only the head out of the water.",
+    "translation": "အသက်ရှူချိန်မှာ ပုံမှန်အားဖြင့် ဦးခေါင်းကိုပဲ ရေပေါ်ဖော်ကြပါတယ်။",
+    "explanation": "ကိုယ်တစ်ခုလုံး မဖော်ဘဲ head ပဲ ဖော်တာကို only က အလေးပေးထားပါတယ်။ လုပ်ဆောင်ချက်နှစ်ခု ဆက်စပ်နေပုံကို မြင်ယောင်ပါ။",
+    "reasoning": "bringing ဆိုတဲ့ ing phrase က အသက်ရှူစဉ် ဘယ်လိုလုပ်သလဲ ဖော်ပြပါတယ်။ breathe က ကြိယာ၊ breath က နာမ်ပါ။"
+  },
+  {
+    "id": "g11-u1-p5-s3",
+    "paragraph": 5,
+    "source": "1A-13",
+    "english": "They produce sounds such as whistles, clicks and screeches to communicate with one another.",
+    "translation": "အချင်းချင်းဆက်သွယ်ဖို့ လေချွန်သံ၊ တောက်သံနဲ့ စူးရှအော်သံတွေ ထုတ်ကြပါတယ်။",
+    "explanation": "အသံထုတ်တာရဲ့ ရည်ရွယ်ချက်က communication ပါ။ such as နောက်က အသံသုံးမျိုးဟာ ဥပမာဖြစ်ပါတယ်။",
+    "reasoning": "to communicate က ရည်ရွယ်ချက်ပါ။ one another က အချင်းချင်းဖြစ်ပြီး sounds ကို produce နဲ့ တွဲသုံးပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p5-s4",
+    "paragraph": 5,
+    "source": "1A-13",
+    "english": "They can be seen jumping, making bubbles, and hitting the water with their flippers and tails.",
+    "translation": "ခုန်၊ ရေပူဖောင်းလုပ်၊ ရေယက်နဲ့အမြီးသုံးပြီး ရေကိုရိုက်နေတာတွေ တွေ့နိုင်ပါတယ်။",
+    "explanation": "လင်းပိုင်တွေကို ကြည့်တဲ့သူရဲ့ရှုထောင့်ကနေ တွေ့ရတဲ့လုပ်ဆောင်ချက်တွေကို စာရင်းပေးထားပါတယ်။",
+    "reasoning": "can be seen က modal passive ပါ။ jumping, making, hitting ဆိုတဲ့ ing ပုံစံတွေကို တန်းတူဆက်ထားပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p5-s5",
+    "paragraph": 5,
+    "source": "1A-13",
+    "english": "They can squirt streams of water that can reach up to 1.5 metres above the surface of the water.",
+    "translation": "ရေမျက်နှာပြင်အထက် ၁.၅ မီတာအထိရောက်တဲ့ ရေတန်းတွေကို ပန်းထုတ်နိုင်ပါတယ်။",
+    "explanation": "ရေပန်းအမြင့်ကို ပြောတာဖြစ်ပြီး လင်းပိုင်အလျားမဟုတ်ဘူးနော်။ ကိန်းဂဏန်းတစ်ခုက ဘာကိုတိုင်းတာလဲ အရင်စစ်ပါ။",
+    "reasoning": "that can reach က streams of water ကို ထပ်ရှင်းပါတယ်။ above က အထက်၊ surface က မျက်နှာပြင်ပါ။"
+  },
+  {
+    "id": "g11-u1-p5-s6",
+    "paragraph": 5,
+    "source": "1A-13",
+    "english": "One of the most distinctive characteristics of these dolphins is the mutual relationship they have with the local fishermen.",
+    "translation": "ထူးခြားဆုံးလက္ခဏာတစ်ခုက ဒေသခံတံငါသည်တွေနဲ့ အပြန်အလှန်အကျိုးပြုဆက်ဆံရေးပါ။",
+    "explanation": "mutual ဆိုတာ တစ်ဖက်တည်းမဟုတ်ဘဲ နှစ်ဖက်လုံး အကျိုးရတာပါ။ နောက်ဝါကျတွေမှာ ဘယ်လိုအကျိုးပြုလဲ ရှာကြည့်မယ်။",
+    "reasoning": "one of the most distinctive characteristics မှာ characteristics က plural ဖြစ်ပါတယ်။ relationship with ကို တွဲမှတ်ပါ။"
+  },
+  {
+    "id": "g11-u1-p5-s7",
+    "paragraph": 5,
+    "source": "1A-13",
+    "english": "By making a tapping sound against the sides of their boats, the local fishermen used to call the dolphins to drive fish into their cast nets.",
+    "translation": "တံငါသည်တွေက လှေနံဘေးတောက်ခေါက်ပြီး လင်းပိုင်တွေကို ခေါ်ကာ ငါးတွေကို ပစ်ကွန်ထဲ မောင်းသွင်းစေလေ့ရှိခဲ့ပါတယ်။",
+    "explanation": "ဒီနေရာမှာ အရင်ကလုပ်လေ့ရှိတဲ့ ပူးပေါင်းနည်းကို ဖော်ပြတာပါ။ အသံက အချက်ပြမှုဖြစ်ပြီး ကွန်ထဲငါးရောက်ဖို့ လင်းပိုင်က ကူညီတယ်။",
+    "reasoning": "used to + verb က အတိတ်အလေ့အထပါ။ by making က နည်းလမ်း၊ to drive က ရည်ရွယ်ချက်ပါ။"
+  },
+  {
+    "id": "g11-u1-p5-s8",
+    "paragraph": 5,
+    "source": "1A-13",
+    "english": "In return, they rewarded the dolphins with a share of the fish that they had caught.",
+    "translation": "အပြန်အလှန်အနေနဲ့ ဖမ်းမိတဲ့ငါးအချို့ကို လင်းပိုင်တွေကို ဝေမျှပေးခဲ့ကြပါတယ်။",
+    "explanation": "လင်းပိုင်က ဘာရလဲဆိုတဲ့မေးခွန်းကို ဒီဝါကျက ဖြေပေးပါတယ်။ mutual relationship ရဲ့ ဒုတိယဘက် အထောက်အထားပါ။",
+    "reasoning": "In return က တုံ့ပြန်အကျိုးအဖြစ်ပါ။ had caught က rewarded မတိုင်မီ ဖမ်းထားပြီးတာကို ပြပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p5-s9",
+    "paragraph": 5,
+    "source": "1A-13",
+    "english": "The fishermen tried to get the attention of the dolphins in various ways - by striking the sides of their boats with their wooden sticks, by splashing the surface of the water with their oars and by giving their nets several rapid tugs.",
+    "translation": "တုတ်နဲ့လှေနံဘေးရိုက်၊ လှော်တက်နဲ့ရေပုတ်၊ ကွန်ကိုခပ်မြန်မြန်ဆွဲလှုပ်ပြီး လင်းပိုင်တွေရဲ့အာရုံစိုက်မှုကို ရယူဖို့ကြိုးစားခဲ့ကြပါတယ်။",
+    "explanation": "ဝါကျရှည်ပေမယ့် အဓိကက tried to get attention ပါ။ နောက်က by သုံးခုဟာ နည်းလမ်းသုံးမျိုးဖြစ်လို့ ခွဲဖတ်ရင် လွယ်ပါတယ်။",
+    "reasoning": "by striking, by splashing, by giving က parallel ပုံစံပါ။ oars က လှော်တက်၊ tugs က ဆွဲလှုပ်မှုတွေပါ။"
+  },
+  {
+    "id": "g11-u1-p6-s1",
+    "paragraph": 6,
+    "source": "1A-14",
+    "english": "Ayeyarwady dolphins are now on the verge of extinction.",
+    "translation": "ဧရာဝတီလင်းပိုင်တွေဟာ အခု မျိုးသုဉ်းလုနီးအခြေအနေ ရောက်နေပါတယ်။",
+    "explanation": "အခုစာပိုဒ်က အန္တရာယ်နဲ့ထိန်းသိမ်းရေးကို ပြောင်းပြောပါတယ်။ verge ဆိုတာ အစွန်းဆိုတဲ့သဘောဖြစ်လို့ အန္တရာယ်အလွန်နီးနေကြောင်း ဖော်ပြတယ်။",
+    "reasoning": "on the verge of + noun က တစ်စုံတစ်ခုဖြစ်လုနီးပါးပါ။ extinction က မျိုးသုဉ်းခြင်းဆိုတဲ့နာမ်ပါ။"
+  },
+  {
+    "id": "g11-u1-p6-s2",
+    "paragraph": 6,
+    "source": "1A-14",
+    "english": "They are listed as a critically endangered species, that is, it may no longer exist in the future as the dolphin population declines year by year.",
+    "translation": "အကောင်ရေနှစ်စဉ်လျော့နေလို့ အနာဂတ်မှာမရှိတော့နိုင်တဲ့ အလွန်အန္တရာယ်ရှိမျိုးစိတ်အဖြစ် စာရင်းဝင်ပါတယ်။",
+    "explanation": "စာအုပ်ထဲက critically endangered ကို နောက်ပိုင်းစကားနဲ့ ပြန်ရှင်းထားပါတယ်။ အကောင်ရေကျလာတာနဲ့ အနာဂတ်အန္တရာယ် ဆက်စပ်ပုံကို နားလည်ပါ။",
+    "reasoning": "as က ဒီနေရာမှာ အကြောင်းပြချက်ပါ။ year by year က တစ်နှစ်ပြီးတစ်နှစ်၊ declines က လျော့နည်းလာတာပါ။"
+  },
+  {
+    "id": "g11-u1-p6-s3",
+    "paragraph": 6,
+    "source": "1A-14",
+    "english": "They often get entangled in the fishing nets and they also die as a result of electrofishing, and the use of gillnets and explosives.",
+    "translation": "ပိုက်တွေမှာငြိမိပြီး လျှပ်စစ်ငါးဖမ်းမှု၊ ပါးဟက်ငြိပိုက်နဲ့ ဖောက်ခွဲပစ္စည်းအသုံးပြုမှုကြောင့်လည်း သေဆုံးကြပါတယ်။",
+    "explanation": "အန္တရာယ်ဖြစ်စေတဲ့နည်းတွေကို ခွဲမှတ်ပါ။ သဘာဝအကြောင်းတစ်ခုတည်းမဟုတ်ဘဲ လူလုပ်ငါးဖမ်းနည်းတွေကို အလေးထားဖော်ပြထားပါတယ်။",
+    "reasoning": "get entangled in က တစ်စုံတစ်ခုထဲ ငြိတွယ်မိတာပါ။ as a result of + noun က အကြောင်းရင်းကို ပြပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p6-s4",
+    "paragraph": 6,
+    "source": "1A-14",
+    "english": "Now, in Myanmar the dolphins are under protection.",
+    "translation": "ယခု မြန်မာနိုင်ငံမှာ လင်းပိုင်တွေကို ကာကွယ်ထားပါတယ်။",
+    "explanation": "အန္တရာယ်တွေရှင်းပြီး ထိန်းသိမ်းရေးလုပ်ဆောင်ချက်ဘက် ပြောင်းသွားပါတယ်။ စာပိုဒ်ရဲ့ပြဿနာနဲ့ဖြေရှင်းချက်အစီအစဉ်ကို ချိတ်ဖတ်ပါ။",
+    "reasoning": "under protection က ကာကွယ်စောင့်ရှောက်မှုအောက်မှာပါ။ Now က ဒီစာအုပ်ဖော်ပြတဲ့အချိန်ကို ရည်ညွှန်းတာဖြစ်ပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p6-s5",
+    "paragraph": 6,
+    "source": "1A-14",
+    "english": "The region in the Ayeyarwady River between Mingun and Kyaukmyaung is officially recognized as a sanctuary to protect the decline of the dolphin population.",
+    "translation": "မင်းကွန်းနဲ့ကျောက်မြောင်းကြား ဧရာဝတီမြစ်ဒေသကို အကောင်ရေလျော့နည်းမှုတားဆီးဖို့ ဘေးမဲ့နယ်မြေအဖြစ် တရားဝင်သတ်မှတ်ထားပါတယ်။",
+    "explanation": "ဘယ်နေရာကို ဘာအတွက် သတ်မှတ်လဲဆိုတာ နှစ်ပိုင်းခွဲပါ။ စာအုပ်ရဲ့မူရင်းစကားအတိုင်း ထိန်းထားပြီး ရည်ရွယ်ချက်က လင်းပိုင်အကောင်ရေ မလျော့စေရေးလို့ နားလည်ပါ။",
+    "reasoning": "is recognized as က အဖြစ်သတ်မှတ်ခံရတာပါ။ sanctuary က ဘေးမဲ့နယ်မြေ၊ officially က တရားဝင်ပါ။"
+  },
+  {
+    "id": "g11-u1-p6-s6",
+    "paragraph": 6,
+    "source": "1A-14",
+    "english": "The Department of Fisheries prohibits the catching or killing of dolphins.",
+    "translation": "ငါးလုပ်ငန်းဦးစီးဌာနက လင်းပိုင်ဖမ်းခြင်းနဲ့သတ်ခြင်းကို တားမြစ်ပါတယ်။",
+    "explanation": "ကာကွယ်တာ ဘယ်လိုလဲဆိုတဲ့ အတိအကျစည်းကမ်းတစ်ချက်ပါ။ ဘယ်အဖွဲ့က ဘာကိုတားလဲဆိုပြီး မှတ်နိုင်ပါတယ်။",
+    "reasoning": "prohibit နောက်မှာ noun သို့မဟုတ် ing ပုံစံလိုက်ပါတယ်။ catching နဲ့ killing က လုပ်ရပ်ကို နာမ်အဖြစ်ပြထားပါတယ်။"
+  },
+  {
+    "id": "g11-u1-p6-s7",
+    "paragraph": 6,
+    "source": "1A-14",
+    "english": "The local fishermen are not allowed to use electrofishing, gillnets and explosives, which lead to a steady decline of the population of Ayeyarwady dolphins.",
+    "translation": "အကောင်ရေတဖြည်းဖြည်းလျော့စေတဲ့ လျှပ်စစ်ငါးဖမ်းမှု၊ ပါးဟက်ငြိပိုက်နဲ့ ဖောက်ခွဲပစ္စည်းတွေကို ဒေသခံတံငါသည်တွေ သုံးခွင့်မရှိပါဘူး။",
+    "explanation": "အန္တရာယ်နဲ့တားမြစ်ချက်ကို ချိတ်ဆက်ပြီး passage ကို အဆုံးသတ်ထားပါတယ်။ ဒီအချက်တွေကို သိမှ conservation မေးခွန်းကို အကြောင်းပြချက်နဲ့ ဖြေနိုင်မှာပါ။",
+    "reasoning": "are not allowed to + verb က လုပ်ခွင့်မရှိကြောင်းပြ passive ပါ။ lead to + noun က အကျိုးဆက်ဖြစ်စေခြင်း၊ steady decline က ဆက်တိုက်လျော့နည်းမှုပါ။"
+  }
+]

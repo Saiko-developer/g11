@@ -169,7 +169,8 @@ export async function grade11GrammarAudio(
         void quiet(store.stat("hit", hash));
         return { bytes: stored, result: "hit" };
       }
-      const claim = await store.claim(hash, unit).catch(() => "owner" as const);
+      const claim = await store.claim(hash, unit).catch(() => "unavailable" as const);
+      if (claim === "unavailable") return { bytes: null, result: "unavailable" };
       if (claim === "ready" || claim === "busy") {
         const deadline = Date.now() + (options.waitMs ?? 25000);
         do {

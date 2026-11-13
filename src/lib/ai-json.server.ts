@@ -19,7 +19,9 @@ export async function generateJson<T>(opts: {
 
   const result = streamText({
     model: getChatModel(modelId),
-    abortSignal: opts.signal,
+    maxOutputTokens: 8000,
+    maxRetries: 0,
+    abortSignal: opts.signal ? AbortSignal.any([opts.signal, AbortSignal.timeout(90000)]) : AbortSignal.timeout(90000),
     system: withTone`${opts.system}\n\nReply with raw JSON only. No markdown fences, no commentary.`,
     prompt: opts.prompt,
   });

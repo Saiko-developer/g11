@@ -1,0 +1,146 @@
+[
+  {
+    "id": "g10-u1-p1-s1",
+    "paragraph": 1,
+    "source": "1",
+    "english": "The question, \"What is language?\" can have several different answers, and all of them may be acceptable.",
+    "translation": "ဘာသာစကားဆိုတာ ဘာလဲဆိုတဲ့မေးခွန်းမှာ လက်ခံနိုင်တဲ့အဖြေ အမျိုးမျိုး ရှိနိုင်ပါတယ်။",
+    "explanation": "အဓိပ္ပာယ်တစ်မျိုးတည်းကို အလွတ်ကျက်ဖို့ မလိုဘူးနော်။ ဘာသာစကားကို ဘယ်ရှုထောင့်ကကြည့်သလဲဆိုတာပေါ်မူတည်ပြီး အဖြေကွာနိုင်ပါတယ်။",
+    "reasoning": "several က အများအပြား၊ acceptable က လက်ခံနိုင်သောပါ။ may be ဆိုတာ သေချာပေါက်မဟုတ်ဘဲ ဖြစ်နိုင်ခြေကို ပြပါတယ်။"
+  },
+  {
+    "id": "g10-u1-p1-s2",
+    "paragraph": 1,
+    "source": "1",
+    "english": "For our present purpose, however, let us look at language as a skill, as a tool for communication, as a form of communication, and as a means to perform many social functions.",
+    "translation": "ယခုရည်ရွယ်ချက်အတွက်တော့ ဘာသာစကားကို ကျွမ်းကျင်မှု၊ ဆက်သွယ်ရေးကိရိယာ၊ ဆက်သွယ်ရေးပုံစံနဲ့ လူမှုရေးလုပ်ငန်းများ ဆောင်ရွက်ရာနည်းလမ်းအဖြစ် ကြည့်ကြပါစို့။",
+    "explanation": "ဒီဝါကျက passage တစ်ခုလုံးရဲ့ လမ်းညွှန်မြေပုံပါ။ နောက်စာပိုဒ်တွေမှာ ဒီအချက်လေးချက်ကို တစ်ချက်ချင်း ရှင်းပြသွားမယ်။",
+    "reasoning": "however က အရင်အချက်နဲ့ ချိန်ဆပြောတာပါ။ look at ... as ... က တစ်စုံတစ်ခုကို အဲဒီအဖြစ် သဘောထားကြည့်ခြင်းပါ။"
+  },
+  {
+    "id": "g10-u1-p2-s1",
+    "paragraph": 2,
+    "source": "2",
+    "english": "First, language is a set of skills: listening, speaking, reading, and writing.",
+    "translation": "ပထမအချက်က ဘာသာစကားမှာ နားထောင်၊ ပြော၊ ဖတ်၊ ရေး စွမ်းရည်တွေ ပါဝင်ပါတယ်။",
+    "explanation": "အင်္ဂလိပ်စာက grammar တစ်ခုတည်း မဟုတ်ပါဘူး။ စာဖတ်တတ်ရုံနဲ့ စကားပြောနိုင်ပြီလို့လည်း မဆိုနိုင်လို့ စွမ်းရည်လေးမျိုးလုံး လေ့ကျင့်ရပါတယ်။",
+    "reasoning": "a set of skills က စွမ်းရည်အစုအဖွဲ့ပါ။ colon နောက်မှာ အဲဒီအစုထဲက အရာတွေကို စာရင်းပြထားပါတယ်။"
+  },
+  {
+    "id": "g10-u1-p2-s2",
+    "paragraph": 2,
+    "source": "2",
+    "english": "They are often known as the four language skills.",
+    "translation": "အဲဒီစွမ်းရည်တွေကို ဘာသာစကားစွမ်းရည်လေးမျိုးလို့ ခေါ်လေ့ရှိပါတယ်။",
+    "explanation": "They က အရှေ့ဝါကျထဲက listening, speaking, reading, writing ကို ပြန်ညွှန်းတာပါ။ စာဖတ်ရင် pronoun က ဘာကိုပြန်ညွှန်းသလဲ အမြဲချိတ်ကြည့်ပါ။",
+    "reasoning": "are known as က အဲဒီအမည်နဲ့ သိကြ၊ ခေါ်ကြတာကို ဖော်ပြတဲ့ passive ပုံစံပါ။ often က မကြာခဏ၊ လေ့ရှိတာကို ပြပါတယ်။"
+  },
+  {
+    "id": "g10-u1-p2-s3",
+    "paragraph": 2,
+    "source": "2",
+    "english": "Of these four skills, the listening skill is the first to be developed by a baby.",
+    "translation": "ဒီစွမ်းရည်လေးမျိုးထဲမှာ ကလေးငယ် အရင်ဆုံးဖွံ့ဖြိုးလာတာက နားထောင်ခြင်းပါ။",
+    "explanation": "ကလေးက မပြောတတ်သေးခင် လူကြီးပြောသံကို အရင်နားထောင်ရပါတယ်။ ဒီအစဉ်ကို မှတ်မိရင် first skill မေးခွန်းကို နားလည်ပြီး ဖြေနိုင်မယ်။",
+    "reasoning": "the first to be developed က ပထမဆုံး ဖွံ့ဖြိုးလာမည့်အရာပါ။ by a baby က လုပ်ဆောင်သူကို ဖော်ပြပါတယ်။"
+  },
+  {
+    "id": "g10-u1-p3-s1",
+    "paragraph": 3,
+    "source": "3",
+    "english": "Here, we should note that listening and speaking work together as a pair of skills, while reading and writing work together as another pair.",
+    "translation": "နားထောင်နဲ့ပြောက တစ်တွဲ၊ ဖတ်နဲ့ရေးက နောက်တစ်တွဲအဖြစ် အတူလုပ်ဆောင်တာကို သတိပြုသင့်ပါတယ်။",
+    "explanation": "တစ်ယောက်ပြောတာကို နားထောင်ပြီး ပြန်ပြောကြတာက စကားဝိုင်းပါ။ စာတစ်စောင်ဖတ်ပြီး ပြန်ရေးတာလည်း ဖတ်နဲ့ရေးကို တွဲသုံးတာဖြစ်ပါတယ်။",
+    "reasoning": "while က ဒီနေရာမှာ အချိန်မဟုတ်ဘဲ အုပ်စုနှစ်ခုကို ယှဉ်ပြတာပါ။ a pair of က တစ်စုံ၊ တစ်တွဲလို့ ဆိုလိုပါတယ်။"
+  },
+  {
+    "id": "g10-u1-p3-s2",
+    "paragraph": 3,
+    "source": "3",
+    "english": "We should note further that speaking and writing are productive skills, while listening and reading are receptive skills.",
+    "translation": "ပြောနဲ့ရေးက ထုတ်ဖော်ဖန်တီးသည့်စွမ်းရည်၊ နားထောင်နဲ့ဖတ်က လက်ခံနားလည်သည့်စွမ်းရည်ဖြစ်တာကိုလည်း သတိပြုသင့်ပါတယ်။",
+    "explanation": "ကိုယ်က စကားနဲ့စာ ထုတ်ပေးရင် productive ပါ။ သူများပြော၊ ရေးထားတာကို လက်ခံနားလည်ရင် receptive ပါ။ စာမေးပွဲမှာ ဒီအုပ်စုနှစ်ခုကို မရောပါနဲ့။",
+    "reasoning": "speaking and writing ဆိုတဲ့ subject အတွဲကြောင့် are သုံးပါတယ်။ productive နဲ့ receptive က skills ကို အမျိုးအစားခွဲပေးတဲ့ adjective တွေပါ။"
+  },
+  {
+    "id": "g10-u1-p4-s1",
+    "paragraph": 4,
+    "source": "4",
+    "english": "Second, language is a tool for communication.",
+    "translation": "ဒုတိယအချက်က ဘာသာစကားဟာ ဆက်သွယ်ရေးကိရိယာတစ်ခုပါ။",
+    "explanation": "tool ဆိုတာ လက်နဲ့ကိုင်ရတဲ့ပစ္စည်းပဲ မဟုတ်ပါဘူး။ ကိုယ့်အတွေးကို တခြားသူနားလည်အောင် ပို့ပေးတဲ့ နည်းလမ်းအဖြစ် ဘာသာစကားကို tool လို့ ခိုင်းနှိုင်းထားပါတယ်။",
+    "reasoning": "a tool for communication မှာ for က ရည်ရွယ်ချက်ကို ပြပါတယ်။ language က ဒီနေရာမှာ ယေဘုယျသဘောဖြစ်လို့ a language မရေးပါဘူး။"
+  },
+  {
+    "id": "g10-u1-p4-s2",
+    "paragraph": 4,
+    "source": "4",
+    "english": "This means that we use language to speak to someone, or to write to someone.",
+    "translation": "ဆိုလိုတာက တစ်စုံတစ်ယောက်ကို စကားပြောဖို့ ဒါမှမဟုတ် စာရေးဖို့ ဘာသာစကားကို သုံးတာပါ။",
+    "explanation": "ဆက်သွယ်တာမှာ ပါးစပ်ကပြောတာနဲ့ စာကနေပြောတာ နှစ်မျိုးလုံး ပါဝင်တယ်နော်။ ဒီဝါကျက ရှေ့က communication ကို ပိုရှင်းအောင် ပြန်ဖြည်ပြထားတာပါ။",
+    "reasoning": "use ... to + verb က လုပ်ဆောင်ရတဲ့ရည်ရွယ်ချက်ပါ။ speak to someone နဲ့ write to someone မှာ to ကို တွဲမှတ်ပါ။"
+  },
+  {
+    "id": "g10-u1-p4-s3",
+    "paragraph": 4,
+    "source": "4",
+    "english": "To speak, we use vocal symbols; to write, we use written symbols.",
+    "translation": "ပြောရာမှာ အသံသင်္ကေတ၊ ရေးရာမှာ အရေးအသားသင်္ကေတတွေကို သုံးပါတယ်။",
+    "explanation": "အသံကနေ အဓိပ္ပာယ်ပို့တာနဲ့ စာလုံးကနေ အဓိပ္ပာယ်ပို့တာကို ယှဉ်ထားပါတယ်။ အင်္ဂလိပ်မှာ အသံနဲ့စာလုံး အမြဲမတူတာလည်း သတိပြုပါ။",
+    "reasoning": "To speak နဲ့ to write က ရည်ရွယ်ချက်ပြ infinitive တွေပါ။ semicolon က အဓိပ္ပာယ်ဆက်နေတဲ့ ဝါကျနှစ်ခုကို ဆက်ပေးပါတယ်။"
+  },
+  {
+    "id": "g10-u1-p5-s1",
+    "paragraph": 5,
+    "source": "5",
+    "english": "Third, communication may be in one of two forms: verbal communication, and non-verbal communication.",
+    "translation": "တတိယအချက်က ဆက်သွယ်ရေးမှာ စကားလုံးအသုံးပြုခြင်းနဲ့ စကားလုံးမသုံးခြင်းဆိုတဲ့ ပုံစံနှစ်မျိုး ရှိနိုင်ပါတယ်။",
+    "explanation": "verbal ဆိုတာ အသံထွက်ပြောတာတစ်ခုတည်း မဟုတ်ဘူးနော်။ စကားလုံးပါရင် ရေးထားတဲ့စာလည်း verbal ထဲဝင်တယ်။ လက်ဟန်နဲ့ပြတာက non-verbal ပါ။",
+    "reasoning": "one of two forms က ပုံစံနှစ်မျိုးအနက် တစ်မျိုးကို ဆိုလိုပါတယ်။ non- က မဟုတ်သောဆိုတဲ့ ဆန့်ကျင်အဓိပ္ပာယ် ပေါင်းပေးပါတယ်။"
+  },
+  {
+    "id": "g10-u1-p5-s2",
+    "paragraph": 5,
+    "source": "5",
+    "english": "In verbal communication, we use words and sentences.",
+    "translation": "စကားလုံးအသုံးပြုဆက်သွယ်ရာမှာ စကားလုံးတွေနဲ့ ဝါကျတွေကို သုံးပါတယ်။",
+    "explanation": "မင်္ဂလာပါလို့ ပြောတာဖြစ်ဖြစ် စာရေးပို့တာဖြစ်ဖြစ် စကားလုံးပါလို့ verbal communication ဖြစ်ပါတယ်။ spoken ပဲလို့ အဓိပ္ပာယ်ကျဉ်းမယူပါနဲ့။",
+    "reasoning": "In verbal communication က အကြောင်းအရာဘောင်ကို ပြထားတာပါ။ words and sentences က use ရဲ့ object ဖြစ်ပါတယ်။"
+  },
+  {
+    "id": "g10-u1-p5-s3",
+    "paragraph": 5,
+    "source": "5",
+    "english": "They may be spoken or written.",
+    "translation": "အဲဒါတွေဟာ ပြောထားတာ ဒါမှမဟုတ် ရေးထားတာ ဖြစ်နိုင်ပါတယ်။",
+    "explanation": "They က words and sentences ကို ပြန်ညွှန်းတာပါ။ ဆက်သွယ်ရေးကို spoken နဲ့ written ခွဲလို့ရသလို verbal နဲ့ non-verbal လည်း ခွဲနိုင်တယ်။",
+    "reasoning": "may be + past participle က ဖြစ်နိုင်ခြေပြ passive ပါ။ speak ရဲ့ past participle က spoken၊ write ရဲ့ past participle က written ဖြစ်ပါတယ်။"
+  },
+  {
+    "id": "g10-u1-p6-s1",
+    "paragraph": 6,
+    "source": "6",
+    "english": "Fourth, we use language to help us perform many social functions, which are very much part of our day-to-day life.",
+    "translation": "စတုတ္ထအချက်က နေ့စဉ်ဘဝရဲ့ အစိတ်အပိုင်းဖြစ်တဲ့ လူမှုရေးလုပ်ငန်းများကို ဆောင်ရွက်ဖို့ ဘာသာစကားသုံးပါတယ်။",
+    "explanation": "social functions ဆိုတာ လူတွေအချင်းချင်း ဆက်ဆံရာမှာ ပြောဆိုရတဲ့ ရည်ရွယ်ချက်တွေပါ။ function က ဒီနေရာမှာ ပွဲအခမ်းအနားလို့ မယူရဘူးနော်။",
+    "reasoning": "which are က many social functions ကို ထပ်ရှင်းထားတာပါ။ day-to-day က နေ့စဉ်ဆိုတဲ့ adjective ဖြစ်ပါတယ်။"
+  },
+  {
+    "id": "g10-u1-p6-s2",
+    "paragraph": 6,
+    "source": "6",
+    "english": "This means that we use language: to greet or to bid goodbye, to ask questions, to give orders, to thank someone, to apologize, to request something, to offer, to refuse, to invite, to suggest, and to warn.",
+    "translation": "နှုတ်ဆက်၊ ခွဲခွာနှုတ်ဆက်၊ မေး၊ အမိန့်ပေး၊ ကျေးဇူးတင်၊ တောင်းပန်၊ တောင်းဆို၊ ကမ်းလှမ်း၊ ငြင်း၊ ဖိတ်၊ အကြံပြုနဲ့ သတိပေးဖို့ ဘာသာစကားသုံးတာပါ။",
+    "explanation": "ဥပမာ Please close the door က request ဖြစ်နိုင်တယ်။ Thank you က thanking ပါ။ ဝါကျရဲ့ပုံစံသာမက ပြောသူဘာလုပ်ချင်လဲဆိုတာ ချိတ်ကြည့်ရပါတယ်။",
+    "reasoning": "to + verb တွေကို စာရင်းတစ်ခုတည်းအဖြစ် ဆက်ထားပါတယ်။ bid goodbye က ခွဲခွာနှုတ်ဆက်ခြင်း၊ refuse က ငြင်းဆိုခြင်းပါ။"
+  },
+  {
+    "id": "g10-u1-p7-s1",
+    "paragraph": 7,
+    "source": "7",
+    "english": "In addition, language reflects culture, preserves culture, passes on culture from one generation to the next, preserves nationality, and also identifies social class.",
+    "translation": "ဒါ့အပြင် ဘာသာစကားက ယဉ်ကျေးမှုကို ထင်ဟပ်ထိန်းသိမ်း၊ မျိုးဆက်တစ်ဆက်မှ နောက်တစ်ဆက်ဆီ လက်ဆင့်ကမ်းပေးပြီး အမျိုးသားလက္ခဏာနဲ့ လူမှုအဆင့်ကိုလည်း ဖော်ပြပါတယ်။",
+    "explanation": "လူကြီးကို ရိုရိုသေသေပြောတာ၊ ရိုးရာစကားပုံတွေ သင်ပေးတာက ဘာသာစကားနဲ့ယဉ်ကျေးမှု ဆက်စပ်နေပုံပါ။ passage အဆုံးမှာ အရင်အချက်လေးချက်အပြင် နောက်ထပ်အခန်းကဏ္ဍကို ဖြည့်ပြထားပါတယ်။",
+    "reasoning": "In addition က ထပ်ဖြည့်ချက်ပါ။ language က singular ဖြစ်လို့ reflects, preserves, passes, identifies မှာ s ပါပါတယ်။ pass on က လက်ဆင့်ကမ်းပေးတာပါ။"
+  }
+]
