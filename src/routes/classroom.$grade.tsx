@@ -8,7 +8,15 @@ export const Route = createFileRoute("/classroom/$grade")({
     if (!lesson) throw notFound();
     return { lesson };
   },
-  head: () => ({ meta: [{ title: "Unit 1 Reading Classroom | Saya Owl Academy" }] }),
+  head: ({ loaderData }) => {
+    const title = `Grade ${loaderData?.lesson.grade ?? "10 & 11"} Reading Classroom | Saya Owl Academy`;
+    const description = "Read Unit 1 with Saya Owl's Burmese explanations and saved classroom progress.";
+    return { meta: [
+      { title }, { name: "description", content: description },
+      { property: "og:title", content: title }, { property: "og:description", content: description },
+      { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" },
+    ] };
+  },
   component: ClassroomPage,
 });
 function ClassroomPage() {

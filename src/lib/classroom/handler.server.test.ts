@@ -6,6 +6,7 @@ const m = vi.hoisted(() => ({
   credit: vi.fn(),
   rpc: vi.fn(),
   audio: vi.fn(),
+  progress: vi.fn(),
 }));
 vi.mock("@/lib/api-guard.server", () => ({
   requireUser: m.auth,
@@ -15,6 +16,14 @@ vi.mock("@/lib/ai-credit.server", () => ({ withAiCredit: m.credit }));
 vi.mock("./db.server", () => ({
   classroomAdmin: m.admin,
   classroomUnavailable: () => new Response("unavailable", { status: 503 }),
+  classroomUserDb: () => {
+    const query = {
+      select: vi.fn(() => query),
+      eq: vi.fn(() => query),
+      maybeSingle: m.progress,
+    };
+    return { from: vi.fn(() => query) };
+  },
 }));
 vi.mock("./manifest.server", () => ({
   publishedLesson: m.published,
@@ -22,7 +31,7 @@ vi.mock("./manifest.server", () => ({
 }));
 vi.mock("./audio.server", () => ({ readClassroomAudio: m.audio, prepareClassroomAudio: m.audio }));
 vi.mock("@/integrations/supabase/client.server", () => ({ supabaseAdmin: { rpc: m.rpc } }));
-import { postClassroom } from "./handler.server";
+import { getClassroom, postClassroom } from "./handler.server";
 const request = (body: unknown) =>
   new Request("https://school.test/api/classroom", { method: "POST", body: JSON.stringify(body) });
 beforeEach(() => {
@@ -31,6 +40,34 @@ beforeEach(() => {
   m.published.mockResolvedValue(false);
   m.admin.mockResolvedValue(false);
   m.rpc.mockResolvedValue({ data: { ok: true, revision: 1 }, error: null });
+  m.progress.mockResolvedValue({ data: null, error: null });
+});
+it.each([10, 11])("loads Grade %i classroom with no existing progress", async (grade) => {
+  const response = await getClassroom(new Request(`https://school.test/api/classroom?grade=${grade}`));
+  expect(response.status).toBe(200);
+  expect(await response.json()).toEqual({
+    progress: { cursor: 0, offset: 0, completed: [], revision: 0 },
+    published: false,
+    admin: false,
+    contentHash: "a".repeat(64),
+  });
+});
+it("restores saved progress rather than resetting the student's place", async () => {
+  m.progress.mockResolvedValue({
+    data: { cursor: 5, audio_offset: 12, completed: [0, 1], revision: 3 }, error: null,
+  });
+  const response = await getClassroom(new Request("https://school.test/api/classroom?grade=10"));
+  expect(response.status).toBe(200);
+  expect((await response.json()).progress).toEqual({ cursor: 5, offset: 12, completed: [0, 1], revision: 3 });
+});
+it("does not disguise a failed progress read as a new student record", async () => {
+  const log = vi.spyOn(console, "error").mockImplementation(() => {});
+  m.progress.mockResolvedValue({ data: null, error: { code: "42P01" } });
+  const response = await getClassroom(new Request("https://school.test/api/classroom?grade=10"));
+  expect(response.status).toBe(503);
+  expect(m.published).not.toHaveBeenCalled();
+  expect(log).toHaveBeenCalledWith("[classroom] progress read failed", { code: "42P01" });
+  log.mockRestore();
 });
 it("rejects missing authentication before any data or provider work", async () => {
   m.auth.mockResolvedValue(new Response("signin", { status: 401 }));
