@@ -11,5 +11,6 @@
 - [ ] Save KBZPay/WavePay details and prices — blocked: admin enters them on the Top-up page.
 
 # Classroom availability
-- [ ] Install the missing reading-classroom schema without changing AI quotas or enabling paid narration.
-- [ ] Add regression coverage and verify Grade 10 and Grade 11 classroom loading.
+- [x] Install the missing reading-classroom schema without changing AI quotas or enabling paid narration.
+- [x] Add regression coverage and verify Grade 10 and Grade 11 public classroom loading.
+- [ ] Verify signed-in classroom progress live — blocked: requesting user has no matching auth account; sign in through preview.
