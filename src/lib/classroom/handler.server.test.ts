@@ -160,3 +160,24 @@ it("only the approved Grade 10 Unit 1 pilot can generate on a student cache miss
   expect(m.audio).toHaveBeenCalledTimes(1);
   expect(m.credit).not.toHaveBeenCalled();
 });
+
+it("warms only published pilot scripts and never charges personal question credits", async () => {
+  expect(
+    (await postClassroom(request({ grade: 10, action: "warm_audio", cursor: 0 }))).status,
+  ).toBe(409);
+  expect(m.audio).not.toHaveBeenCalled();
+  m.published.mockResolvedValue(true);
+  expect(
+    (
+      await postClassroom(
+        request({ grade: 10, action: "warm_audio", cursor: 7, text: "untrusted replacement" }),
+      )
+    ).status,
+  ).toBe(200);
+  expect(m.audio).toHaveBeenCalledWith(expect.objectContaining({ id: "g10-u1-reading" }), 7);
+  expect(
+    (await postClassroom(request({ grade: 11, action: "warm_audio", cursor: 0 }))).status,
+  ).toBe(403);
+  expect(m.audio).toHaveBeenCalledTimes(1);
+  expect(m.credit).not.toHaveBeenCalled();
+});

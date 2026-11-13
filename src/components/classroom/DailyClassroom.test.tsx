@@ -199,3 +199,100 @@ it("keeps the default class automatic and resumes after free supplementary help"
   await screen.findByRole("heading", { name: "ဒီနေ့အတန်းပြီးပါပြီ" });
   expect(screen.queryByRole("region", { name: "Teacher dialogue" })).not.toBeInTheDocument();
 });
+
+it("prepares all assigned clips before starting speech and leaves listening progress untouched", async () => {
+  const normalFetch = vi.mocked(fetch).getMockImplementation()!;
+  let releaseLast: (() => void) | undefined;
+  vi.mocked(fetch).mockImplementation(async (input, init) => {
+    const body = init?.body ? JSON.parse(init.body as string) : null;
+    if (body?.action === "warm_audio" && body.cursor === 15)
+      return new Promise<Response>((resolve) => {
+        releaseLast = () => resolve(Response.json({ ok: true }));
+      });
+    return normalFetch(input, init);
+  });
+  render(<DailyClassroom autoStart />);
+  await screen.findByRole("status", { name: "Class preparation" });
+  await waitFor(() => expect(releaseLast).toBeDefined());
+  expect(AudioMock.all).toHaveLength(0);
+  expect(
+    vi
+      .mocked(fetch)
+      .mock.calls.filter(
+        ([, init]) => init?.body && JSON.parse(init.body as string).action === "save",
+      ),
+  ).toHaveLength(0);
+  expect(screen.queryByText(/ဝါကျ 1 မှ 4 အထိ/)).not.toBeInTheDocument();
+  await act(async () => releaseLast!());
+  await waitFor(() => expect(AudioMock.all).toHaveLength(1));
+  expect(screen.queryByRole("status", { name: "Class preparation" })).not.toBeInTheDocument();
+  const warms = vi
+    .mocked(fetch)
+    .mock.calls.filter(
+      ([, init]) => init?.body && JSON.parse(init.body as string).action === "warm_audio",
+    );
+  expect(warms).toHaveLength(16);
+  await act(async () => AudioMock.all[0].finish());
+  await waitFor(() => expect(AudioMock.all).toHaveLength(2));
+  expect(
+    vi
+      .mocked(fetch)
+      .mock.calls.filter(
+        ([, init]) => init?.body && JSON.parse(init.body as string).action === "warm_audio",
+      ),
+  ).toHaveLength(16);
+});
+
+it("Pause during preparation prevents late playback and resumes without rewarming ready clips", async () => {
+  const normalFetch = vi.mocked(fetch).getMockImplementation()!;
+  let release: (() => void) | undefined;
+  vi.mocked(fetch).mockImplementation(async (input, init) => {
+    const body = init?.body ? JSON.parse(init.body as string) : null;
+    if (body?.action === "warm_audio" && body.cursor === 15)
+      return new Promise<Response>((resolve) => {
+        release = () => resolve(Response.json({ ok: true }));
+      });
+    return normalFetch(input, init);
+  });
+  render(<DailyClassroom autoStart />);
+  await waitFor(() => expect(release).toBeDefined());
+  const firstRelease = release;
+  fireEvent.click(screen.getByRole("button", { name: "ခဏရပ်မယ်" }));
+  await act(async () => firstRelease!());
+  expect(AudioMock.all).toHaveLength(0);
+  expect(screen.queryByRole("status", { name: "Class preparation" })).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "ဆရာနဲ့ ပြန်ဆက်သင်မယ်" }));
+  await waitFor(() => expect(release).not.toBe(firstRelease));
+  await act(async () => release!());
+  await waitFor(() => expect(AudioMock.all).toHaveLength(1));
+  const warms = vi
+    .mocked(fetch)
+    .mock.calls.filter(
+      ([, init]) => init?.body && JSON.parse(init.body as string).action === "warm_audio",
+    );
+  expect(warms.filter(([, init]) => JSON.parse(init!.body as string).cursor === 0)).toHaveLength(1);
+});
+
+it("a browser autoplay block offers Play without regenerating prepared narration", async () => {
+  let blocked = true;
+  class GestureAudio extends AudioMock {
+    override play = vi.fn(async () => {
+      if (blocked) {
+        blocked = false;
+        throw new DOMException("Gesture required", "NotAllowedError");
+      }
+    });
+  }
+  vi.stubGlobal("Audio", GestureAudio);
+  render(<DailyClassroom autoStart />);
+  await screen.findByText("အသံအဆင်သင့်ပါပြီ။ ပြန်ဆက်သင်မယ် ခလုတ်ကို နှိပ်ပါ။");
+  fireEvent.click(screen.getByRole("button", { name: "ဆရာနဲ့ ပြန်ဆက်သင်မယ်" }));
+  await waitFor(() => expect(AudioMock.all[0].play).toHaveBeenCalledTimes(2));
+  expect(AudioMock.all).toHaveLength(1);
+  const warms = vi
+    .mocked(fetch)
+    .mock.calls.filter(
+      ([, init]) => init?.body && JSON.parse(init.body as string).action === "warm_audio",
+    );
+  expect(warms).toHaveLength(16);
+});

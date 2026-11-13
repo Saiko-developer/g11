@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createClassAudioBuffer } from "./class-audio-buffer";
 import { emptyProgress, type ClassroomProgress, type ReadingLesson } from "@/lib/classroom/types";
 
 export async function classroomRequest(
@@ -23,7 +24,7 @@ export async function classroomRequest(
         body: JSON.stringify({ grade, ...body }),
         signal: requestSignal,
       });
-      if (body.action === "audio" && response.status === 202) {
+      if ((body.action === "audio" || body.action === "warm_audio") && response.status === 202) {
         await response.body?.cancel();
         await new Promise<void>((resolve, reject) => {
           const abort = () => {
@@ -60,6 +61,7 @@ export function useClassroom(
   userId?: string,
   range?: { start: number; end: number },
   teacherDialogue = false,
+  bufferedClass = false,
 ) {
   const teacherDialogueRef = useRef(teacherDialogue);
   teacherDialogueRef.current = teacherDialogue;
@@ -72,6 +74,29 @@ export function useClassroom(
   const [passCompleted, setPassCompleted] = useState(false);
   const [waitingAt, setWaitingAt] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
+  const [preparing, setPreparing] = useState(false);
+  const [preparation, setPreparation] = useState({ ready: 0, total: endCursor - startCursor });
+  const classBuffer = useMemo(
+    () =>
+      bufferedClass && userId
+        ? createClassAudioBuffer({
+            start: startCursor,
+            end: endCursor,
+            warm: async (cursor, signal) => {
+              const response = await classroomRequest(
+                lesson.grade,
+                { action: "warm_audio", cursor },
+                signal,
+              );
+              await response.body?.cancel();
+            },
+            load: async (cursor, signal) =>
+              (await classroomRequest(lesson.grade, { action: "audio", cursor }, signal)).blob(),
+          })
+        : null,
+    [bufferedClass, userId, lesson, startCursor, endCursor],
+  );
+  useEffect(() => () => classBuffer?.dispose(), [classBuffer]);
   const [manual, setManual] = useState(false);
   const manualRef = useRef(manual);
   manualRef.current = manual;
@@ -111,6 +136,7 @@ export function useClassroom(
     setProgress(current.current);
     setPlaying(false);
     setLoading(false);
+    setPreparing(false);
   }, []);
   const releaseAudio = useCallback(() => {
     if (audio.current) {
@@ -240,13 +266,27 @@ export function useClassroom(
       setLoading(true);
       setError("");
       try {
-        const response = await classroomRequest(
-          lesson.grade,
-          { action: "audio", cursor },
-          abort.signal,
-        );
-        const blob = await response.blob();
+        let blob: Blob;
+        if (classBuffer) {
+          if (!classBuffer.isPrepared()) {
+            setPreparing(true);
+            await classBuffer.prepare(abort.signal, (count, total) => {
+              if (token === generation.current && active.current)
+                setPreparation({ ready: count, total });
+            });
+          }
+          if (token !== generation.current || !active.current) return;
+          blob = await classBuffer.playback(cursor);
+        } else {
+          const response = await classroomRequest(
+            lesson.grade,
+            { action: "audio", cursor },
+            abort.signal,
+          );
+          blob = await response.blob();
+        }
         if (token !== generation.current || !active.current) return;
+        setPreparing(false);
         objectUrl.current = URL.createObjectURL(blob);
         const a = new Audio(objectUrl.current);
         audio.current = a;
@@ -281,17 +321,27 @@ export function useClassroom(
         else a.pause();
       } catch (err) {
         if (token === generation.current && !abort.signal.aborted) {
-          setError(err instanceof Error ? err.message : "Audio failed");
+          setError(
+            typeof err === "object" &&
+              err !== null &&
+              "name" in err &&
+              err.name === "NotAllowedError"
+              ? "အသံအဆင်သင့်ပါပြီ။ ပြန်ဆက်သင်မယ် ခလုတ်ကို နှိပ်ပါ။"
+              : err instanceof Error
+                ? err.message
+                : "Audio failed",
+          );
           setPlaying(false);
         }
       } finally {
         if (token === generation.current) {
           loadingRef.current = false;
           setLoading(false);
+          setPreparing(false);
         }
       }
     },
-    [userId, published, ready, lesson.grade, maxCursor, releaseAudio, complete],
+    [userId, published, ready, lesson.grade, maxCursor, releaseAudio, complete, classBuffer],
   );
   playRef.current = playAt;
   const resume = () => {
@@ -375,6 +425,8 @@ export function useClassroom(
     flushProgress: () => saveQueue.current,
     playing,
     loading,
+    preparing,
+    preparation,
     manual,
     error,
     saveStatus,

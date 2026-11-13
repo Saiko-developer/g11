@@ -253,7 +253,13 @@ function TeacherRoom({
   onFinished: (plan: StudyPlan | null) => void;
 }) {
   const [guidedChecks, setGuidedChecks] = useState(false);
-  const engine = useClassroom(lesson, userId, plan.session, guidedChecks);
+  const engine = useClassroom(
+    lesson,
+    userId,
+    plan.session,
+    guidedChecks,
+    onDemandReadingPilot(lesson),
+  );
   const { segment, step, narration } = spokenStepAt(lesson, engine.progress.cursor);
   const stage = engine.progress.cursor % 4;
   const [started, setStarted] = useState(false);
@@ -350,6 +356,28 @@ function TeacherRoom({
           သိမ်းမည်။
         </p>
       )}
+      {engine.preparing && (
+        <section
+          role="status"
+          aria-label="Class preparation"
+          className="space-y-3 rounded-2xl border border-primary/30 bg-primary/5 p-5"
+        >
+          <h2 className="font-semibold">အတန်းကို ပြင်ဆင်နေပါတယ်…</h2>
+          <p className="text-sm leading-loose">
+            ဒီအတန်းအသံတွေ အဆင်သင့်ဖြစ်ပြီးမှ ဆက်တိုက်သင်ပေးမယ်။ ပြင်ဆင်ပြီးသားအသံတွေကို
+            ပြန်သုံးပါမယ်။
+          </p>
+          <progress
+            className="h-3 w-full"
+            aria-label="အတန်းအသံ အဆင်သင့်ဖြစ်မှု"
+            value={engine.preparation.ready}
+            max={engine.preparation.total}
+          />
+          <p className="text-sm">
+            {Math.round((engine.preparation.ready / engine.preparation.total) * 100)}% ပြင်ဆင်ပြီး
+          </p>
+        </section>
+      )}
       <div className="grid gap-5 lg:grid-cols-[14rem_minmax(0,1fr)]">
         <aside className="flex items-center gap-4 rounded-3xl border border-border bg-card p-5 lg:flex-col lg:justify-start lg:py-9">
           <SayaOwlAvatar
@@ -369,14 +397,13 @@ function TeacherRoom({
             <p className="mt-2 text-sm text-muted-foreground">
               {engine.playing
                 ? "သင်ကြားနေသည်…"
-                : engine.loading
-                  ? "အသံပြင်ဆင်နေသည်…"
-                  : asking
-                    ? "သင့်မေးခွန်းကို နားထောင်နေပါတယ်"
-                    : "အတူတူ လေ့လာကြမယ်"}
-            </p>
-            <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-              {plan.session.objective}
+                : engine.preparing
+                  ? "အတန်းကို ပြင်ဆင်နေပါတယ်…"
+                  : engine.loading
+                    ? "အသံချိတ်ဆက်နေသည်…"
+                    : asking
+                      ? "သင့်မေးခွန်းကို နားထောင်နေပါတယ်"
+                      : "အတူတူ လေ့လာကြမယ်"}
             </p>
           </div>
         </aside>

@@ -15,7 +15,7 @@ import {
 
 const bodySchema = z.object({
   grade: z.union([z.literal(10), z.literal(11)]),
-  action: z.enum(["save", "ask", "approve", "audio", "prepare"]),
+  action: z.enum(["save", "ask", "approve", "audio", "prepare", "warm_audio"]),
   cursor: z.number().int().nonnegative().default(0),
   offset: z.number().min(0).max(3600).default(0),
   completed: z.array(z.number().int().nonnegative()).max(1000).default([]),
@@ -140,6 +140,11 @@ export async function postClassroom(request: Request) {
         },
         { status: 409 },
       );
+    if (body.action === "warm_audio") {
+      if (!onDemandReadingPilot(lesson))
+        return Response.json({ error: "pilot_only" }, { status: 403 });
+      return prepareClassroomAudio(lesson, body.cursor);
+    }
     if (body.action === "audio")
       return onDemandReadingPilot(lesson)
         ? readOrPrepareClassroomAudio(lesson, body.cursor)
