@@ -43,6 +43,20 @@
       "when": 1794561299287,
       "tag": "0005_activate_classroom_narration",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1794562100617,
+      "tag": "0006_reconcile_classroom_narration_storage",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1794562349491,
+      "tag": "0007_restrict_classroom_narration_grants",
+      "breakpoints": true
     }
   ]
 }

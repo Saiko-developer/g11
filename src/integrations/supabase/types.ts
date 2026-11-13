@@ -14,6 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_credit_control: {
+        Row: {
+          daily_requests: number
+          enabled: boolean
+          id: boolean
+        }
+        Insert: {
+          daily_requests?: number
+          enabled?: boolean
+          id?: boolean
+        }
+        Update: {
+          daily_requests?: number
+          enabled?: boolean
+          id?: boolean
+        }
+        Relationships: []
+      }
+      ai_credit_ledger: {
+        Row: {
+          amount: number
+          created_at: string
+          event: string
+          id: number
+          request_id: string | null
+          source: string
+          topup_id: string | null
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          event: string
+          id?: never
+          request_id?: string | null
+          source: string
+          topup_id?: string | null
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          event?: string
+          id?: never
+          request_id?: string | null
+          source?: string
+          topup_id?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      ai_credit_requests: {
+        Row: {
+          created_at: string
+          day: string
+          operation: string
+          request_id: string
+          settled_at: string | null
+          source: string
+          state: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          day?: string
+          operation: string
+          request_id: string
+          settled_at?: string | null
+          source: string
+          state?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          day?: string
+          operation?: string
+          request_id?: string
+          settled_at?: string | null
+          source?: string
+          state?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       announcements: {
         Row: {
           active: boolean
@@ -315,6 +399,60 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      classroom_audio: {
+        Row: {
+          bytes: number | null
+          created_at: string
+          hash: string
+          last_error: string | null
+          lesson_id: string
+          state: string
+          storage_path: string
+          version: string
+        }
+        Insert: {
+          bytes?: number | null
+          created_at?: string
+          hash: string
+          last_error?: string | null
+          lesson_id: string
+          state?: string
+          storage_path: string
+          version: string
+        }
+        Update: {
+          bytes?: number | null
+          created_at?: string
+          hash?: string
+          last_error?: string | null
+          lesson_id?: string
+          state?: string
+          storage_path?: string
+          version?: string
+        }
+        Relationships: []
+      }
+      classroom_live_settings: {
+        Row: {
+          id: boolean
+          live_enabled: boolean
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          id?: boolean
+          live_enabled?: boolean
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          id?: boolean
+          live_enabled?: boolean
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
       }
       classroom_members: {
         Row: {
@@ -1093,6 +1231,15 @@ export type Database = {
         Args: { _attempt: string; _force?: boolean }
         Returns: boolean
       }
+      claim_classroom_audio: {
+        Args: {
+          p_hash: string
+          p_lesson: string
+          p_path: string
+          p_version: string
+        }
+        Returns: boolean
+      }
       class_chat: {
         Args: { _cid: string; _peer: string }
         Returns: {
@@ -1295,6 +1442,10 @@ export type Database = {
         Args: { _note: string; _school: string; _subject: string }
         Returns: undefined
       }
+      reserve_ai_credit: {
+        Args: { p_operation: string; p_request: string; p_user: string }
+        Returns: Json
+      }
       save_classroom_progress: {
         Args: {
           p_completed: number[]
@@ -1313,6 +1464,10 @@ export type Database = {
         Returns: undefined
       }
       set_my_name: { Args: { _name: string }; Returns: undefined }
+      settle_ai_credit: {
+        Args: { p_request: string; p_success: boolean; p_user: string }
+        Returns: undefined
+      }
       speaking_turn: { Args: { p_session: string }; Returns: Json }
       speaking_unit_status: { Args: { p_unit: number }; Returns: Json }
       start_speaking_session: { Args: { p_unit: number }; Returns: Json }

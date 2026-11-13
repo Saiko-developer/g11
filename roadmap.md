@@ -19,3 +19,12 @@
 - [x] Apply missing daily-study storage and verify authenticated read access.
 - [x] Add regression coverage for plan reads and enrollment saves (16 tests passed).
 - [ ] Verify Study Plan live while signed in — blocked: requesting user has no matching auth account; sign in through preview.
+
+# Daily classroom narration activation
+- [x] Apply narration/credit migration 0005 through the runner; reconcile storage in 0006 and least-privilege grants in 0007.
+- [x] Verify RLS, service-role-only mutation RPCs, private 8 MB storage and configured server providers without exposing secrets.
+- [x] Match all four Day 1 English scripts to canonical textbook data; record Burmese narration as AI-assisted with sampled STT verification, not human teacher certification.
+- [x] Generate 16 real Grade 10 Unit 1 Day 1 clips (5,822,880 bytes) within the 20-clip cap; decode every WAV and confirm repeat cache hits.
+- [ ] Owner publication and bounded Ask Teacher activation — blocked: no auth account matches the requesting user; sign up/sign in with Google, listen to the clips and approve publication.
+- [ ] Verify signed-in Start Class narration order, pause/repeat/question/reserve/refund/resume — blocked by the same owner authentication/approval requirement; live questions remain disabled.
+- [x] No production deployment.
