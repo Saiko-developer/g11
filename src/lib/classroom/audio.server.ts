@@ -101,13 +101,6 @@ export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: numbe
       },
       { status: 429, headers: { "Retry-After": "3600", "Cache-Control": "no-store" } },
     );
-    return Response.json(
-      {
-        error: "narration_claim_unavailable",
-        message: "အသံပြင်ဆင်မှုကို ယခု ချိတ်ဆက်မရပါ။ ခဏနားပြီး ပြန်စမ်းပါ။",
-      },
-      { status: 503 },
-    );
   }
   try {
     const response = await generateSpeech({ text, voice: "sarah", speed: 1, provider: "gemini" });
