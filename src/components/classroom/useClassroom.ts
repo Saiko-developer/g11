@@ -27,13 +27,18 @@ export function useClassroom(
   lesson: ReadingLesson,
   userId?: string,
   range?: { start: number; end: number },
+  teacherDialogue = false,
 ) {
+  const teacherDialogueRef = useRef(teacherDialogue);
+  teacherDialogueRef.current = teacherDialogue;
   const startCursor = range?.start ?? 0;
   const endCursor = range?.end ?? lesson.segments.length * 4;
   const [progress, setProgress] = useState(() => ({ ...emptyProgress(), cursor: startCursor }));
   const current = useRef(progress);
   const revision = useRef(0);
   const [playing, setPlaying] = useState(false);
+  const [passCompleted, setPassCompleted] = useState(false);
+  const [waitingAt, setWaitingAt] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [manual, setManual] = useState(false);
   const manualRef = useRef(manual);
@@ -181,6 +186,7 @@ export function useClassroom(
   ]);
   const complete = useCallback(
     (cursor: number) => {
+      if (cursor === maxCursor) setPassCompleted(true);
       const p = current.current;
       const completed = [...new Set([...p.completed, cursor])].sort((a, b) => a - b);
       const next = { ...p, completed, cursor: Math.min(maxCursor, cursor + 1), offset: 0 };
@@ -221,6 +227,12 @@ export function useClassroom(
         };
         a.onended = () => {
           if (token !== generation.current) return;
+          if (teacherDialogueRef.current && cursor % 4 === 3) {
+            setWaitingAt(cursor);
+            setPlaying(false);
+            loadingRef.current = false;
+            return;
+          }
           const next = complete(cursor);
           setPlaying(false);
           loadingRef.current = false;
@@ -256,6 +268,12 @@ export function useClassroom(
       const cursor = current.current.cursor;
       const token = generation.current;
       audio.current.onended = () => {
+        if (generation.current !== token || !active.current) return;
+        if (teacherDialogueRef.current && cursor % 4 === 3) {
+          setWaitingAt(cursor);
+          setPlaying(false);
+          return;
+        }
         const next = complete(cursor);
         setPlaying(false);
         if (!manualRef.current && cursor < maxCursor) void playRef.current(next.cursor, 0);
@@ -269,6 +287,7 @@ export function useClassroom(
     } else void playAt(current.current.cursor, current.current.offset);
   };
   const move = (delta: number, markRead = false) => {
+    setWaitingAt(null);
     pause();
     releaseAudio();
     if (markRead) complete(current.current.cursor);
@@ -303,6 +322,24 @@ export function useClassroom(
   }, [pause, persist]);
   return {
     progress,
+    waitingAt,
+    passCompleted,
+    continueTeaching: () => {
+      if (waitingAt === null) return;
+      const cursor = waitingAt;
+      setWaitingAt(null);
+      releaseAudio();
+      const next = complete(cursor);
+      if (!manualRef.current && cursor < maxCursor) void playAt(next.cursor, 0);
+    },
+    restart: () => {
+      setPassCompleted(false);
+      pause();
+      releaseAudio();
+      setWaitingAt(null);
+      update({ ...current.current, cursor: startCursor, offset: 0 });
+      void playAt(startCursor, 0);
+    },
     flushProgress: () => saveQueue.current,
     playing,
     loading,
@@ -319,6 +356,7 @@ export function useClassroom(
     setError,
     setPublished,
     repeat: () => {
+      setWaitingAt(null);
       pause();
       releaseAudio();
       update({ ...current.current, offset: 0 });

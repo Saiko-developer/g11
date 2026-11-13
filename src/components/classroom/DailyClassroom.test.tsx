@@ -77,12 +77,31 @@ it("restores the learner's assigned class without choosing a unit or section", a
   expect(screen.queryByRole("button", { name: "Next" })).not.toBeInTheDocument();
   expect(screen.queryByRole("button", { name: "Previous" })).not.toBeInTheDocument();
 });
-it("teacher advances all 16 daily steps automatically, stops before tomorrow, and saves completion once", async () => {
+it("teacher waits for understanding after each sentence and saves completion once", async () => {
   render(<DailyClassroom />);
   fireEvent.click(await screen.findByRole("button", { name: "အတန်းစမယ်" }));
   await waitFor(() => expect(AudioMock.all).toHaveLength(1));
+  fireEvent.click(
+    screen.getByRole("checkbox", { name: "ဝါကျတစ်ကြောင်းပြီးတိုင်း နားလည်မှု စစ်ပြီးသင်မယ်" }),
+  );
   for (let i = 0; i < 16; i++) {
     await act(async () => AudioMock.all[i].finish());
+    if (i % 4 === 3) {
+      await screen.findByRole("region", { name: "Teacher dialogue" });
+      expect(AudioMock.all).toHaveLength(i + 1);
+      if (i === 3) {
+        fireEvent.click(screen.getByRole("button", { name: "ဆရာ၊ ထပ်ရှင်းပြပါ" }));
+        expect(screen.getByText(/It may rain today/)).toBeInTheDocument();
+        expect(
+          vi
+            .mocked(fetch)
+            .mock.calls.some(
+              ([, init]) => init?.body && JSON.parse(init.body as string).action === "ask",
+            ),
+        ).toBe(false);
+      }
+      fireEvent.click(screen.getByRole("button", { name: "နားလည်ပြီ၊ ဆက်သင်မယ်" }));
+    }
     if (i < 15) await waitFor(() => expect(AudioMock.all).toHaveLength(i + 2));
   }
   await screen.findByRole("heading", { name: "ဒီနေ့အတန်းပြီးပါပြီ" });
@@ -113,4 +132,66 @@ it("Home Start Class enters the enrolled learner's assigned room with no second 
   await screen.findByLabelText("Classroom whiteboard");
   await waitFor(() => expect(AudioMock.all).toHaveLength(1));
   expect(screen.queryByRole("button", { name: "အတန်းစမယ်" })).not.toBeInTheDocument();
+});
+
+it("replays a completed class from its first sentence instead of its last clip", async () => {
+  const normalFetch = vi.mocked(fetch).getMockImplementation()!;
+  vi.mocked(fetch).mockImplementation(async (input, init) => {
+    if (input === "/api/study-plan" && !init?.body)
+      return Response.json({ plan: { ...plan, todayDone: true, completedClasses: 1 } });
+    if (String(input).startsWith("/api/classroom?") && !init?.method)
+      return Response.json({
+        progress: {
+          cursor: 15,
+          offset: 4,
+          completed: Array.from({ length: 16 }, (_, i) => i),
+          revision: 2,
+        },
+        published: true,
+        admin: false,
+      });
+    return normalFetch(input, init);
+  });
+  render(<DailyClassroom autoStart />);
+  fireEvent.click(await screen.findByRole("button", { name: "ဒီနေ့အတန်း အစက ပြန်သင်မယ်" }));
+  await waitFor(() => expect(AudioMock.all).toHaveLength(1));
+  const requests = vi
+    .mocked(fetch)
+    .mock.calls.filter(
+      ([, init]) => init?.body && JSON.parse(init.body as string).action === "audio",
+    );
+  expect(JSON.parse(requests[0][1]!.body as string).cursor).toBe(0);
+  for (let i = 0; i < 16; i++) {
+    await act(async () => AudioMock.all[i].finish());
+    if (i < 15) await waitFor(() => expect(AudioMock.all).toHaveLength(i + 2));
+  }
+  await screen.findByRole("heading", { name: "ဒီနေ့အတန်းပြီးပါပြီ" });
+  expect(
+    vi
+      .mocked(fetch)
+      .mock.calls.filter(
+        ([url, init]) =>
+          url === "/api/study-plan" &&
+          init?.body &&
+          JSON.parse(init.body as string).action === "finish",
+      ),
+  ).toHaveLength(0);
+});
+
+it("keeps the default class automatic and resumes after free supplementary help", async () => {
+  render(<DailyClassroom autoStart />);
+  await waitFor(() => expect(AudioMock.all).toHaveLength(1));
+  expect(screen.getByRole("checkbox")).not.toBeChecked();
+  AudioMock.all[0].currentTime = 2;
+  fireEvent.click(screen.getByRole("button", { name: "ဥပမာနဲ့ ထပ်ရှင်းပြပါ" }));
+  expect(screen.getByText(/It may rain today/)).toBeInTheDocument();
+  expect(AudioMock.all[0].pause).toHaveBeenCalled();
+  fireEvent.click(screen.getByRole("button", { name: "နားလည်ပြီ၊ ဆက်သင်မယ်" }));
+  expect(AudioMock.all[0].currentTime).toBe(2);
+  for (let i = 0; i < 16; i++) {
+    await act(async () => AudioMock.all[i].finish());
+    if (i < 15) await waitFor(() => expect(AudioMock.all).toHaveLength(i + 2));
+  }
+  await screen.findByRole("heading", { name: "ဒီနေ့အတန်းပြီးပါပြီ" });
+  expect(screen.queryByRole("region", { name: "Teacher dialogue" })).not.toBeInTheDocument();
 });

@@ -14,6 +14,7 @@ import { RequireSignIn } from "@/components/RequireSignIn";
 import { SayaOwlAvatar } from "@/components/SayaOwlAvatar";
 import { Button } from "@/components/ui/button";
 import { AnswerTryBox } from "@/components/lesson/ExerciseKit";
+import { teachingExamples } from "@/lib/classroom/teaching-dialogue";
 import { getReadingLesson } from "@/lib/classroom/lessons";
 import { readingFinished, stepAt, type ReadingLesson } from "@/lib/classroom/types";
 import {
@@ -254,10 +255,13 @@ function TeacherRoom({
   onExit: () => void;
   onFinished: (plan: StudyPlan | null) => void;
 }) {
-  const engine = useClassroom(lesson, userId, plan.session);
+  const [guidedChecks, setGuidedChecks] = useState(false);
+  const engine = useClassroom(lesson, userId, plan.session, guidedChecks);
   const { segment, step, text } = stepAt(lesson, engine.progress.cursor);
   const stage = engine.progress.cursor % 4;
   const [started, setStarted] = useState(false);
+  const [reviewing, setReviewing] = useState(false);
+  const [needsHelp, setNeedsHelp] = useState(false);
   const [asking, setAsking] = useState(false);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -270,7 +274,13 @@ function TeacherRoom({
     { length: plan.session.end - plan.session.start },
     (_, i) => i + plan.session.start,
   ).filter((i) => engine.progress.completed.includes(i)).length;
-  const classDone = completedSteps === plan.session.end - plan.session.start;
+  const classDone =
+    !reviewing &&
+    engine.waitingAt === null &&
+    completedSteps === plan.session.end - plan.session.start;
+  useEffect(() => {
+    if (reviewing && engine.passCompleted) setReviewing(false);
+  }, [reviewing, engine.passCompleted]);
   const resumeRef = useRef(engine.resume);
   resumeRef.current = engine.resume;
   // Entering from the plan is the single start action; the teacher handles every subsequent step.
@@ -411,7 +421,13 @@ function TeacherRoom({
           <div className="mt-7 flex items-start gap-2 border-t border-emerald-700/50 pt-4 text-sm leading-loose text-emerald-200">
             <Headphones className="mt-1 h-4 w-4 shrink-0" />
             <p aria-live="polite">
-              {engine.playing ? text : classDone ? plan.session.closing : plan.session.opening}
+              {engine.playing
+                ? text
+                : engine.waitingAt !== null || needsHelp
+                  ? "မရှင်းသေးတဲ့အချက်ကို အတူပြန်ကြည့်ကြမယ်။"
+                  : classDone
+                    ? plan.session.closing
+                    : plan.session.opening}
             </p>
           </div>
         </article>
@@ -425,16 +441,74 @@ function TeacherRoom({
           အလိုအလျောက်မစနိုင်သေးပါ။
         </p>
       )}
+      {(engine.waitingAt !== null || needsHelp) && (
+        <section
+          aria-label="Teacher dialogue"
+          className="rounded-2xl border border-primary/30 bg-card p-6"
+        >
+          <h2 className="font-semibold">ဒီဝါကျကို နားလည်ပြီလား?</h2>
+          <p className="mt-3 leading-loose">
+            မရှင်းသေးရင် ဆရာနဲ့ ပြန်ကြည့်ကြမယ်။ ဒါက အမှတ်ပေးမေးခွန်း မဟုတ်ပါဘူး။
+          </p>
+          {needsHelp && (
+            <div role="status" className="mt-4 space-y-3 rounded-xl bg-muted p-4 leading-loose">
+              <p>{segment.translation}</p>
+              <p>{teachingExamples[segment.id]?.example ?? segment.english}</p>
+              <p lang="my">
+                {teachingExamples[segment.id]?.explanation ??
+                  `${segment.explanation} ${segment.reasoning}`}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                ဖြည့်စွက်ရှင်းလင်းချက် စာသားပါ။ အသံအသစ် မထုတ်ပါ။ AI credit မသုံးပါ။
+              </p>
+            </div>
+          )}
+          <div className="mt-4 flex flex-wrap gap-3">
+            <Button variant="outline" onClick={() => setNeedsHelp(true)}>
+              ဆရာ၊ ထပ်ရှင်းပြပါ
+            </Button>
+            <Button
+              onClick={() => {
+                setNeedsHelp(false);
+                if (engine.waitingAt === plan.session.end - 1) setReviewing(false);
+                if (engine.waitingAt !== null) engine.continueTeaching();
+                else engine.resume();
+              }}
+            >
+              နားလည်ပြီ၊ ဆက်သင်မယ်
+            </Button>
+          </div>
+        </section>
+      )}
+      <label className="flex items-center justify-center gap-3 text-sm">
+        <input
+          type="checkbox"
+          checked={guidedChecks}
+          onChange={(event) => setGuidedChecks(event.target.checked)}
+        />
+        ဝါကျတစ်ကြောင်းပြီးတိုင်း နားလည်မှု စစ်ပြီးသင်မယ်
+      </label>
       <div className="flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-border bg-card p-4">
         <Button
           size="lg"
-          disabled={!engine.published || !userId || !engine.ready || busy}
+          disabled={
+            !engine.published ||
+            !userId ||
+            !engine.ready ||
+            busy ||
+            asking ||
+            needsHelp ||
+            engine.waitingAt !== null
+          }
           onClick={
             engine.playing || engine.loading
               ? engine.pause
               : () => {
                   setStarted(true);
-                  engine.resume();
+                  if (classDone) {
+                    setReviewing(true);
+                    engine.restart();
+                  } else engine.resume();
                 }
           }
         >
@@ -443,15 +517,32 @@ function TeacherRoom({
           ) : (
             <Play className="h-5 w-5" />
           )}
-          {engine.playing || engine.loading ? "ခဏရပ်မယ်" : "ဆရာနဲ့ ပြန်ဆက်သင်မယ်"}
+          {engine.playing || engine.loading
+            ? "ခဏရပ်မယ်"
+            : classDone
+              ? "ဒီနေ့အတန်း အစက ပြန်သင်မယ်"
+              : "ဆရာနဲ့ ပြန်ဆက်သင်မယ်"}
         </Button>
         <Button
           variant="outline"
           disabled={!engine.published || !userId || busy || engine.loading}
-          onClick={engine.repeat}
+          onClick={() => {
+            setNeedsHelp(false);
+            engine.repeat();
+          }}
         >
           <RotateCcw className="h-4 w-4" />
           ပြန်ရှင်းပြပါ
+        </Button>
+        <Button
+          variant="outline"
+          disabled={busy || !engine.ready}
+          onClick={() => {
+            engine.pause();
+            setNeedsHelp(true);
+          }}
+        >
+          ဥပမာနဲ့ ထပ်ရှင်းပြပါ
         </Button>
         <Button
           variant="outline"
@@ -498,7 +589,7 @@ function TeacherRoom({
               disabled={busy}
               onClick={() => {
                 setAsking(false);
-                engine.resume();
+                if (engine.waitingAt === null && !needsHelp) engine.resume();
               }}
             >
               သင်ခန်းစာ ပြန်ဆက်မယ်
