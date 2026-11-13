@@ -38,7 +38,8 @@ export async function getStudyPlan(request: Request) {
       { plan: await readPlan(request, auth.userId) },
       { headers: { "Cache-Control": "no-store" } },
     );
-  } catch {
+  } catch (error) {
+    console.error("[study-plan] read failed", error);
     return classroomUnavailable();
   }
 }
@@ -66,18 +67,18 @@ export async function postStudyPlan(request: Request) {
     if (body.data.action === "enroll") {
       // First selection only. Do not silently switch an existing learner's grade or plan.
       const { error } = await supabaseAdmin
-        .from("study_enrollments" as never)
-        .upsert({ user_id: auth.userId, grade: body.data.grade } as never, {
+        .from("study_enrollments")
+        .upsert({ user_id: auth.userId, grade: body.data.grade }, {
           onConflict: "user_id",
           ignoreDuplicates: true,
         });
-      if (error) return classroomUnavailable();
+      if (error) throw error;
     } else {
       const plan = await readPlan(request, auth.userId);
       if (!plan || body.data.session !== plan.session.index)
         return Response.json({ error: "class_not_assigned" }, { status: 409 });
       const { data, error } = await supabaseAdmin.rpc(
-        "finish_daily_class" as never,
+        "finish_daily_class",
         {
           p_user: auth.userId,
           p_grade: plan.grade,
@@ -87,13 +88,15 @@ export async function postStudyPlan(request: Request) {
           p_lesson_version: plan.lessonVersion,
           p_start: plan.session.start,
           p_end: plan.session.end,
-        } as never,
+        },
       );
-      if (error || !data) return classroomUnavailable();
+      if (error) throw error;
+      if (!data) return classroomUnavailable();
       if (!(data as { ok: boolean }).ok) return Response.json(data, { status: 409 });
     }
     return Response.json({ plan: await readPlan(request, auth.userId) });
-  } catch {
+  } catch (error) {
+    console.error("[study-plan] save failed", error);
     return classroomUnavailable();
   }
 }
