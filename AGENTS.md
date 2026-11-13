@@ -21,3 +21,5 @@
 - AI /api/* routes call `requireUser` and wrap caller text with `untrusted()` (src/lib/api-guard.server.ts); the browser adds the bearer token to same-origin /api calls via `installApiAuthFetch` — stops anonymous paid AI use and prompt injection.
 - Grade 11 units with teacher-provided DOCX transcriptions render as text from src/data/grade11/textbook/unitN.json (Grade11TextLesson); units without one fall back to scanned page images — text lessons like Grade 10, while keeping official textbook content.
 - Reading-classroom progress, publication and daily-study storage must be applied through the migration runner, not review drafts; reads remain caller-scoped and completion saves use server-only RPCs — prevents unavailable classrooms and cross-account writes.
+
+- Shared classroom narration has no daily clip-count quota (migration 0008). Keep approved canonical scripts, private cache reuse and unique per-hash generation claims; do not reintroduce 20-clip limits or next-day quota messages. Other account credit and daily study-plan rules are separate.

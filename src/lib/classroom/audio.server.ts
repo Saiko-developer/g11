@@ -92,14 +92,13 @@ export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: numbe
     if (currentState === "ready") return Response.json({ ok: true, cached: true });
     if (currentState === "preparing") return pendingNarration();
     if (currentState === "failed") return failedNarration();
-    // No row and no claim means the shared daily budget of new clips is used up.
+    // The claim function has no daily quota. An unexplained denial is a service error.
     return Response.json(
       {
-        error: "daily_audio_budget_reached",
-        message:
-          "ယနေ့အတွက် အသံအသစ်ပြင်ဆင်နိုင်သည့် အရေအတွက် ပြည့်သွားပါပြီ။ Manual Mode ဖြင့် ဆက်ဖတ်ပြီး မနက်ဖြန် ပြန်စမ်းပါ။",
+        error: "narration_claim_unavailable",
+        message: "အသံပြင်ဆင်မှုကို ယခု ချိတ်ဆက်မရပါ။ ခဏနားပြီး ပြန်စမ်းပါ။",
       },
-      { status: 429, headers: { "Retry-After": "3600", "Cache-Control": "no-store" } },
+      { status: 503, headers: { "Cache-Control": "no-store" } },
     );
   }
   try {

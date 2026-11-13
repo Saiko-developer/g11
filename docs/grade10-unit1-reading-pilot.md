@@ -32,3 +32,7 @@ Removing the former clip quota requires migration 0008 (a function-only change; 
 Tests cover admin-only exact-hash approval without generation, the grade/unit boundary, cache miss → generation → private response, duplicate listeners, pending polling and Pause, failed claims, more than 20 same-day claims, duplicate-claim denial, database failure, Grade 11's read-only audio path, no shared-credit debit and the simplified setup UI. Existing local SQL tests check service-only claims, quotas, RLS and versioned progress.
 
 There is no durable background worker or automatic lease recovery in this pilot. A worker crash can leave a claim preparing. The browser eventually stops waiting; an operator must inspect failed/stale claims before a deliberate recovery. This prevents automatic repeat charges but is a limitation of the beta. No real provider generation or audio-listening test was performed from the Codex workspace.
+
+## Live migration verification — 2026-11-13
+
+Migration 0008 was applied to the connected project and recorded with its Drizzle checksum/timestamp. Read-back confirmed the narration claim function no longer contains the 20-clip daily condition. A 64-claim live database probe succeeded, a duplicate claim was refused, and the probe transaction was rolled back with zero temporary records remaining. Anonymous and authenticated roles still cannot call the claim RPC directly; the service role can. This probe did not call a speech provider or delete scripts, progress, publications or cached audio.
