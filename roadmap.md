@@ -19,3 +19,11 @@
 - [x] Apply missing daily-study storage and verify authenticated read access.
 - [x] Add regression coverage for plan reads and enrollment saves (16 tests passed).
 - [ ] Verify Study Plan live while signed in — blocked: requesting user has no matching auth account; sign in through preview.
+
+# Daily classroom narration activation
+- [ ] Apply narration/credit migration and reconcile grants, RLS, private storage and runtime configuration.
+- [ ] Review canonical Grade 10 Unit 1 Day 1 scripts and record honest pilot provenance.
+- [ ] Generate and verify 16 real cached clips within the 20-clip daily budget; confirm repeat cache hits.
+- [ ] Enable bounded Ask Teacher only after live reserve/refund and provider checks.
+- [ ] Verify Start Class, narration order, pause/repeat/question/resume with an authorized session; report any auth boundary.
+- [ ] No production deployment.
