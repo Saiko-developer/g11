@@ -16,6 +16,6 @@
 - [ ] Verify signed-in classroom progress live — blocked: requesting user has no matching auth account; sign in through preview.
 
 # Study Plan availability
-- [ ] Apply missing daily-study storage and verify authenticated read access.
-- [ ] Add regression coverage for plan reads and enrollment saves.
+- [x] Apply missing daily-study storage and verify authenticated read access.
+- [x] Add regression coverage for plan reads and enrollment saves (16 tests passed).
 - [ ] Verify Study Plan live while signed in — blocked: requesting user has no matching auth account; sign in through preview.
