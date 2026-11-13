@@ -6,7 +6,12 @@ import { getReadingLesson } from "./lessons";
 import { classroomAdmin, classroomUnavailable, classroomUserDb } from "./db.server";
 import { lessonHash, publishedLesson } from "./manifest.server";
 import { emptyProgress, readingFinished, stepAt } from "./types";
-import { prepareClassroomAudio, readClassroomAudio } from "./audio.server";
+import { onDemandReadingPilot } from "./pilot";
+import {
+  prepareClassroomAudio,
+  readClassroomAudio,
+  readOrPrepareClassroomAudio,
+} from "./audio.server";
 
 const bodySchema = z.object({
   grade: z.union([z.literal(10), z.literal(11)]),
@@ -135,7 +140,10 @@ export async function postClassroom(request: Request) {
         },
         { status: 409 },
       );
-    if (body.action === "audio") return readClassroomAudio(lesson, body.cursor);
+    if (body.action === "audio")
+      return onDemandReadingPilot(lesson)
+        ? readOrPrepareClassroomAudio(lesson, body.cursor)
+        : readClassroomAudio(lesson, body.cursor);
     if (body.action === "prepare") {
       if (!(await classroomAdmin(request)))
         return Response.json({ error: "forbidden" }, { status: 403 });

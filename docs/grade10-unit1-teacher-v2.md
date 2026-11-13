@@ -1,5 +1,7 @@
 # Grade 10 Unit 1: teacher-led Reading script v2
 
+> Audio activation now uses the approved-script/on-demand pilot. See [current pilot instructions](grade10-unit1-reading-pilot.md). The manual audio-preparation instructions below describe the previous rollout.
+
 ## Scope
 
 Grade 10 Unit 1 **Reading only**, all 16 source sentences. Other units, Grade 11, and the other skills are unchanged. The student's approved dolphin-style example is the teaching model: contextual explanation, grammatical reasons, contrasts, natural examples, and connected transitions, not a translated summary.

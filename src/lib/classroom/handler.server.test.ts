@@ -6,6 +6,7 @@ const m = vi.hoisted(() => ({
   credit: vi.fn(),
   rpc: vi.fn(),
   audio: vi.fn(),
+  demand: vi.fn(),
   progress: vi.fn(),
 }));
 vi.mock("@/lib/api-guard.server", () => ({
@@ -29,7 +30,11 @@ vi.mock("./manifest.server", () => ({
   publishedLesson: m.published,
   lessonHash: async () => "a".repeat(64),
 }));
-vi.mock("./audio.server", () => ({ readClassroomAudio: m.audio, prepareClassroomAudio: m.audio }));
+vi.mock("./audio.server", () => ({
+  readClassroomAudio: m.audio,
+  prepareClassroomAudio: m.audio,
+  readOrPrepareClassroomAudio: m.demand,
+}));
 vi.mock("@/integrations/supabase/client.server", () => ({ supabaseAdmin: { rpc: m.rpc } }));
 import { getClassroom, postClassroom } from "./handler.server";
 const request = (body: unknown) =>
@@ -39,6 +44,8 @@ beforeEach(() => {
   m.auth.mockResolvedValue({ userId: "alice" });
   m.published.mockResolvedValue(false);
   m.admin.mockResolvedValue(false);
+  m.demand.mockImplementation(async () => new Response("wave"));
+  m.audio.mockImplementation(async () => new Response("wave"));
   m.rpc.mockResolvedValue({ data: { ok: true, revision: 1 }, error: null });
   m.progress.mockResolvedValue({ data: null, error: null });
 });
@@ -138,4 +145,18 @@ it("requires the audio-review setup for the revised teacher script even for admi
   expect(result.status).toBe(409);
   expect((await result.json()).error).toBe("narration_review_required");
   expect(m.audio).not.toHaveBeenCalled();
+});
+
+it("only the approved Grade 10 Unit 1 pilot can generate on a student cache miss", async () => {
+  m.published.mockResolvedValue(true);
+  expect((await postClassroom(request({ grade: 10, action: "audio", cursor: 0 }))).status).toBe(
+    200,
+  );
+  expect(m.demand).toHaveBeenCalledTimes(1);
+  expect((await postClassroom(request({ grade: 11, action: "audio", cursor: 0 }))).status).toBe(
+    200,
+  );
+  expect(m.demand).toHaveBeenCalledTimes(1);
+  expect(m.audio).toHaveBeenCalledTimes(1);
+  expect(m.credit).not.toHaveBeenCalled();
 });

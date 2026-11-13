@@ -5,6 +5,7 @@ const m = vi.hoisted(() => ({
   prepare: vi.fn(),
   listen: vi.fn(),
   query: vi.fn(),
+  upsert: vi.fn(),
 }));
 vi.mock("@/lib/api-guard.server", () => ({ requireUser: m.auth }));
 vi.mock("./db.server", () => ({ classroomAdmin: m.admin }));
@@ -18,7 +19,7 @@ vi.mock("./manifest.server", () => ({
   publishedLesson: async () => false,
 }));
 vi.mock("@/integrations/supabase/client.server", () => ({
-  supabaseAdmin: { from: () => ({ select: () => ({ in: m.query }) }) },
+  supabaseAdmin: { from: () => ({ select: () => ({ in: m.query }), upsert: m.upsert }) },
 }));
 import { getTeachingSetup, postTeachingSetup } from "./activation.server";
 const req = (body: unknown) =>
@@ -32,6 +33,7 @@ beforeEach(() => {
   m.admin.mockResolvedValue(true);
   m.prepare.mockResolvedValue(Response.json({ ok: true }));
   m.query.mockResolvedValue({ data: [], error: null });
+  m.upsert.mockResolvedValue({ error: null });
 });
 it("denies non-admins before reading setup state or generating audio", async () => {
   m.admin.mockResolvedValue(false);
@@ -73,4 +75,56 @@ it("does not publish a class with missing audio", async () => {
   );
   expect(r.status).toBe(409);
   expect((await r.json()).error).toBe("prepare_audio_first");
+});
+
+it("allows an admin to approve the exact pilot script without generating audio", async () => {
+  vi.stubEnv("LOVABLE_API_KEY", "test-only");
+  try {
+    const result = await postTeachingSetup(
+      req({ grade: 10, action: "approve_script", acknowledge: true, contentHash: "a".repeat(64) }),
+    );
+    expect(result.status).toBe(200);
+    expect(m.upsert).toHaveBeenCalledWith(
+      expect.objectContaining({
+        reviewed_by: "admin",
+        version: "teacher-v2",
+        content_hash: "a".repeat(64),
+      }),
+    );
+    expect(m.prepare).not.toHaveBeenCalled();
+  } finally {
+    vi.unstubAllEnvs();
+  }
+});
+it("rejects changed scripts and other grades before approving on-demand spending", async () => {
+  vi.stubEnv("LOVABLE_API_KEY", "test-only");
+  try {
+    expect(
+      (
+        await postTeachingSetup(
+          req({
+            grade: 10,
+            action: "approve_script",
+            acknowledge: true,
+            contentHash: "b".repeat(64),
+          }),
+        )
+      ).status,
+    ).toBe(409);
+    expect(
+      (
+        await postTeachingSetup(
+          req({
+            grade: 11,
+            action: "approve_script",
+            acknowledge: true,
+            contentHash: "a".repeat(64),
+          }),
+        )
+      ).status,
+    ).toBe(400);
+    expect(m.upsert).not.toHaveBeenCalled();
+  } finally {
+    vi.unstubAllEnvs();
+  }
 });

@@ -1,3 +1,4 @@
+import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import { generateSpeech } from "@/lib/ttsGenerate.server";
 import { spokenStepAt, type ReadingLesson } from "./types";
 import { lessonHash } from "./manifest.server";
@@ -22,14 +23,14 @@ export async function classroomAudioIdentity(lesson: ReadingLesson, cursor: numb
   return { hash, text, path: `clips/${hash}.wav` };
 }
 export async function readClassroomAudio(lesson: ReadingLesson, cursor: number): Promise<Response> {
-  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   const { hash, path } = await classroomAudioIdentity(lesson, cursor);
   const { data, error } = await supabaseAdmin
     .from("classroom_audio" as never)
     .select("state")
     .eq("hash", hash)
     .maybeSingle();
-  if (error || (data as { state?: string } | null)?.state !== "ready")
+  if (error) return Response.json({ error: "audio_service_unavailable" }, { status: 503 });
+  if ((data as { state?: string } | null)?.state !== "ready")
     return Response.json(
       {
         error: "audio_not_ready",
@@ -41,12 +42,11 @@ export async function readClassroomAudio(lesson: ReadingLesson, cursor: number):
     .from("classroom-narration")
     .download(path);
   if (storageError || !file) return Response.json({ error: "audio_unavailable" }, { status: 503 });
-  return new Response(file, {
+  return new Response(await file.arrayBuffer(), {
     headers: { "Content-Type": "audio/wav", "Cache-Control": "private, max-age=86400" },
   });
 }
 export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: number) {
-  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   const { hash, path, text } = await classroomAudioIdentity(lesson, cursor);
   // The generic speech service caps input at 3500 characters. Never silently truncate a class.
   if (!text.trim() || text.length > 3500)
@@ -57,8 +57,18 @@ export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: numbe
     .eq("hash", hash)
     .maybeSingle();
   if (existing.error) return Response.json({ error: "audio_service_unavailable" }, { status: 503 });
-  if ((existing.data as { state?: string } | null)?.state === "ready")
-    return Response.json({ ok: true, cached: true });
+  const state = (existing.data as { state?: string } | null)?.state;
+  if (state === "ready") return Response.json({ ok: true, cached: true });
+  if (state === "preparing") return pendingNarration();
+  if (state === "failed") return failedNarration();
+  if (!process.env.LOVABLE_API_KEY)
+    return Response.json(
+      {
+        error: "speech_provider_unavailable",
+        message: "အသံဝန်ဆောင်မှုကို ချိတ်ဆက်မရပါ။ နောက်မှ ပြန်စမ်းပါ။",
+      },
+      { status: 503 },
+    );
   const { data, error } = await supabaseAdmin.rpc(
     "claim_classroom_audio" as never,
     {
@@ -69,16 +79,29 @@ export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: numbe
     } as never,
   );
   if (error) return Response.json({ error: "audio_service_unavailable" }, { status: 503 });
-  if (!data)
+  if (!data) {
+    // Another process may have won the unique claim. Only that process generates.
+    const current = await supabaseAdmin
+      .from("classroom_audio" as never)
+      .select("state")
+      .eq("hash", hash)
+      .maybeSingle();
+    if (current.error)
+      return Response.json({ error: "audio_service_unavailable" }, { status: 503 });
+    const currentState = (current.data as { state?: string } | null)?.state;
+    if (currentState === "ready") return Response.json({ ok: true, cached: true });
+    if (currentState === "preparing") return pendingNarration();
+    if (currentState === "failed") return failedNarration();
     return Response.json(
       {
-        error: "prepared_or_daily_limit",
-        message: "ပြင်ဆင်ပြီးသား သို့မဟုတ် ယနေ့အသံပြင်ဆင်ခွင့် ပြည့်သွားပါပြီ။",
+        error: "narration_daily_limit",
+        message: "ယနေ့အတန်းအသံ ပြင်ဆင်ခွင့် ပြည့်သွားပါပြီ။ နောက်နေ့ ပြန်ဆက်နိုင်ပါတယ်။",
       },
-      { status: 409 },
+      { status: 429 },
     );
+  }
   try {
-    const response = await generateSpeech({ text, voice: "sarah", speed: 1 });
+    const response = await generateSpeech({ text, voice: "sarah", speed: 1, provider: "gemini" });
     if (!response.ok || response.headers.get("X-TTS-Provider") !== "gemini")
       throw new Error("Approved Gemini narration unavailable");
     const bytes = await response.arrayBuffer();
@@ -104,4 +127,31 @@ export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: numbe
       .eq("hash", hash);
     return Response.json({ error: "preparation_failed" }, { status: 503 });
   }
+}
+
+function pendingNarration() {
+  return Response.json(
+    { pending: true, message: "ဆရာ့အသံ ပြင်ဆင်နေပါတယ်။ ခဏစောင့်ပါ။" },
+    {
+      status: 202,
+      headers: { "Retry-After": "2", "Cache-Control": "no-store" },
+    },
+  );
+}
+function failedNarration() {
+  return Response.json(
+    {
+      error: "narration_review_required",
+      message: "ဒီအပိုင်းအသံကို ဆရာက ပြန်စစ်ဆေးရန် လိုပါသည်။ နောက်မှ ပြန်ဆက်ပါ။",
+    },
+    { status: 503 },
+  );
+}
+/** Caller must authenticate and verify the exact script publication before entering. */
+export async function readOrPrepareClassroomAudio(lesson: ReadingLesson, cursor: number) {
+  const cached = await readClassroomAudio(lesson, cursor);
+  if (cached.status !== 404) return cached;
+  const prepared = await prepareClassroomAudio(lesson, cursor);
+  if (prepared.status !== 200) return prepared;
+  return readClassroomAudio(lesson, cursor);
 }

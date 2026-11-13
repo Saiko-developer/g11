@@ -17,12 +17,7 @@ import { AnswerTryBox } from "@/components/lesson/ExerciseKit";
 import { teachingExamples } from "@/lib/classroom/teaching-dialogue";
 import { getReadingLesson } from "@/lib/classroom/lessons";
 import { readingFinished, spokenStepAt, type ReadingLesson } from "@/lib/classroom/types";
-import {
-  dailyAssignment,
-  myanmarDay,
-  studyPlanVersion,
-  type DailyClass,
-} from "@/lib/classroom/study-plan";
+import { dailyAssignment, myanmarDay, studyPlanVersion } from "@/lib/classroom/study-plan";
 import { classroomRequest, useClassroom } from "./useClassroom";
 
 type StudyPlan = ReturnType<typeof dailyAssignment> & {
@@ -443,10 +438,7 @@ function TeacherRoom({
           role="status"
           className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm leading-loose text-amber-950"
         >
-          ဆရာသင်ကြားမည့် စာသားနဲ့အသံကို ပြင်ဆင်အတည်ပြုနေဆဲပါ။ အတန်းအသံ အဆင်သင့်မဖြစ်သေးလို့
-          အလိုအလျောက်မစနိုင်သေးပါ။
-          {lesson.teachingRevision &&
-            " သင်ကြားပုံအသစ်အတွက် အသံအသစ်ကို စစ်ဆေးအတည်ပြုရန် လိုပါသည်။ အသံဟောင်းကို အစားထိုးဖွင့်မည် မဟုတ်ပါ။"}
+          ဆရာက ဒီသင်ခန်းစာကို ပြင်ဆင်အတည်ပြုနေဆဲပါ။ အတည်ပြုပြီးမှ အတန်းစနိုင်ပါမယ်။
         </p>
       )}
       {(engine.waitingAt !== null || needsHelp) && (
@@ -668,74 +660,6 @@ function TeacherRoom({
           စာအုပ်အပြည့်ကြည့်မယ်
         </a>
       </details>
-      {engine.admin && (
-        <TeacherPreparation lesson={lesson} session={plan.session} engine={engine} />
-      )}
     </div>
-  );
-}
-function TeacherPreparation({
-  lesson,
-  session,
-  engine,
-}: {
-  lesson: ReadingLesson;
-  session: DailyClass;
-  engine: ReturnType<typeof useClassroom>;
-}) {
-  const [reviewed, setReviewed] = useState(false);
-  const [message, setMessage] = useState("");
-  const [busy, setBusy] = useState(false);
-  return (
-    <details className="rounded-xl border border-border p-4">
-      <summary className="cursor-pointer font-semibold">ဆရာ / Admin — အသံအတန်းပြင်ဆင်ရန်</summary>
-      <a href="/teaching-setup" className="mt-3 inline-block text-primary underline">
-        Backend စစ်ဆေးပြီး အသံအတန်းကို အမှန်တကယ်ဖွင့်ရန် →
-      </a>
-      <p className="mt-3 text-sm leading-loose">
-        စာသားစစ်ဆေးအတည်ပြုခြင်းကို မူလ classroom review panel မှာ ပြုလုပ်ပါ။ ဒီခလုတ်က ဒီနေ့အတန်းရဲ့
-        cached clips တွေကို ပြင်ဆင်ပေးမယ်။ အသံတစ်ခုချင်း နားထောင်စစ်ဆေးပါ။ တစ်နေ့ ၂၀ clip
-        ကန့်သတ်ချက် ရှိပါတယ်။
-      </p>
-      <a
-        href={`/classroom/${lesson.grade}`}
-        className="mt-2 inline-block text-sm text-primary underline"
-      >
-        စာသားစစ်ဆေးမည့်နေရာ →
-      </a>
-      <label className="mt-3 flex gap-2 text-sm">
-        <input type="checkbox" checked={reviewed} onChange={(e) => setReviewed(e.target.checked)} />
-        အသံပြင်ဆင်ရာမှာ AI ကုန်ကျစရိတ်ရှိကြောင်း နားလည်ပါသည်။
-      </label>
-      <Button
-        className="mt-3"
-        disabled={!reviewed || !engine.published || busy}
-        onClick={async () => {
-          setBusy(true);
-          try {
-            for (let cursor = session.start; cursor < session.end; cursor++) {
-              setMessage(
-                `ပြင်ဆင်နေသည်… ${cursor - session.start + 1}/${session.end - session.start}`,
-              );
-              await classroomRequest(lesson.grade, {
-                action: "prepare",
-                cursor,
-                acknowledge: true,
-              });
-            }
-            setMessage("အသံပြင်ဆင်ပြီးပါပြီ။ နားထောင်စစ်ဆေးပါ။");
-          } catch (err) {
-            setMessage(err instanceof Error ? err.message : "Preparation failed");
-          } finally {
-            setBusy(false);
-          }
-        }}
-      >
-        ဒီနေ့အတန်း အသံပြင်ဆင်မယ်
-      </Button>
-      <p className="mt-2 text-sm" role="status">
-        {message}
-      </p>
-    </details>
   );
 }

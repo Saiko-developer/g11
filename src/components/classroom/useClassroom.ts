@@ -6,22 +6,54 @@ export async function classroomRequest(
   body: Record<string, unknown>,
   signal?: AbortSignal,
 ) {
-  const response = await fetch("/api/classroom", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ grade, ...body }),
-    signal,
-  });
-  if (!response.ok) {
-    const data = await response.json().catch(() => ({}));
-    throw new Error(
-      data.message ??
-        (response.status === 409
-          ? "အခြား tab မှ မှတ်တမ်းပြောင်းထားနိုင်ပါသည်။ Refresh လုပ်ပါ။"
-          : "အတန်းဝန်ဆောင်မှု ချိတ်ဆက်မရပါ။ ပြန်စမ်းပါ။"),
-    );
+  const controller = new AbortController();
+  const cancel = () => controller.abort(signal?.reason);
+  if (signal?.aborted) cancel();
+  else signal?.addEventListener("abort", cancel, { once: true });
+  const deadline = setTimeout(
+    () => controller.abort(new Error("ဆရာ့အသံ ပြင်ဆင်မှု ကြာနေပါသည်။ ခဏနားပြီး ပြန်စမ်းပါ။")),
+    120000,
+  );
+  const requestSignal = controller.signal;
+  try {
+    for (;;) {
+      const response = await fetch("/api/classroom", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ grade, ...body }),
+        signal: requestSignal,
+      });
+      if (body.action === "audio" && response.status === 202) {
+        await response.body?.cancel();
+        await new Promise<void>((resolve, reject) => {
+          const abort = () => {
+            clearTimeout(timer);
+            reject(requestSignal.reason);
+          };
+          const timer = setTimeout(() => {
+            requestSignal.removeEventListener("abort", abort);
+            resolve();
+          }, 2000);
+          if (requestSignal.aborted) abort();
+          else requestSignal.addEventListener("abort", abort, { once: true });
+        });
+        continue;
+      }
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(
+          data.message ??
+            (response.status === 409
+              ? "အခြား tab မှ မှတ်တမ်းပြောင်းထားနိုင်ပါသည်။ Refresh လုပ်ပါ။"
+              : "အတန်းဝန်ဆောင်မှု ချိတ်ဆက်မရပါ။ ပြန်စမ်းပါ။"),
+        );
+      }
+      return response;
+    }
+  } finally {
+    clearTimeout(deadline);
+    signal?.removeEventListener("abort", cancel);
   }
-  return response;
 }
 export function useClassroom(
   lesson: ReadingLesson,

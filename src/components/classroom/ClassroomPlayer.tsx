@@ -38,9 +38,6 @@ function Player({ lesson, userId }: { lesson: ReadingLesson; userId?: string }) 
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [busy, setBusy] = useState(false);
-  const [reviewed, setReviewed] = useState(false);
-  const [adminBusy, setAdminBusy] = useState(false);
-  const [adminMessage, setAdminMessage] = useState("");
   const askAbort = useRef<AbortController | null>(null);
   useEffect(() => () => askAbort.current?.abort(), []);
   const finished = readingFinished(lesson, engine.progress.completed);
@@ -65,28 +62,6 @@ function Player({ lesson, userId }: { lesson: ReadingLesson; userId?: string }) 
       setBusy(false);
     }
   };
-  const adminAction = async (action: "approve" | "prepare") => {
-    setAdminBusy(true);
-    setAdminMessage("");
-    try {
-      await classroomRequest(lesson.grade, {
-        action,
-        cursor: engine.progress.cursor,
-        contentHash: engine.contentHash,
-        acknowledge: true,
-      });
-      if (action === "approve") engine.setPublished(true);
-      setAdminMessage(
-        action === "approve"
-          ? "စာသားအတည်ပြုပြီးပါပြီ။"
-          : "ဒီအဆင့်အသံ ပြင်ဆင်ပြီးပါပြီ။ နားထောင်စစ်ဆေးပါ။",
-      );
-    } catch (err) {
-      setAdminMessage(err instanceof Error ? err.message : "Failed");
-    } finally {
-      setAdminBusy(false);
-    }
-  };
   return (
     <div className="mt-6 space-y-5">
       <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5">
@@ -99,8 +74,7 @@ function Player({ lesson, userId }: { lesson: ReadingLesson; userId?: string }) 
         </p>
         {!engine.published && (
           <p className="mt-3 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950">
-            ဆရာစစ်ဆေးရန် မူကြမ်း — စာသားနမူနာကို ဖတ်နိုင်ပါတယ်။ ဆရာအတည်ပြုပြီး အသံပြင်ဆင်မှ
-            အလိုအလျောက်သင်ကြားမှုကို သုံးနိုင်ပါမယ်။
+            ဆရာစစ်ဆေးရန် မူကြမ်း — စာသားနမူနာကို ဖတ်နိုင်ပါတယ်။ ဆရာအတည်ပြုပြီးမှ အတန်းစနိုင်ပါမယ်။
           </p>
         )}
         {!userId && (
@@ -261,60 +235,6 @@ function Player({ lesson, userId }: { lesson: ReadingLesson; userId?: string }) 
           )}
         </aside>
       </div>
-      {engine.admin && (
-        <details className="rounded-xl border border-border p-4">
-          <summary className="cursor-pointer font-semibold">
-            ဆရာ / Admin — စာသားစစ်ဆေးခြင်းနှင့် အသံပြင်ဆင်ခြင်း
-          </summary>
-          <p className="mt-3 text-sm">
-            ဝါကျအားလုံးရဲ့ ဘာသာပြန်၊ ရှင်းပြချက်၊ အကြောင်းပြချက်ကို စစ်ဆေးပြီးမှ အတည်ပြုပါ။
-            အသံပြင်ဆင်ခြင်းမှာ AI ကုန်ကျစရိတ်ရှိပြီး တစ်နေ့ ၂၀ clips အထိသာ ပြင်ဆင်နိုင်ပါတယ်။
-          </p>
-          <details className="mt-3">
-            <summary>မူကြမ်းစာသား အားလုံးကြည့်ရန်</summary>
-            <ol className="mt-3 space-y-4">
-              {lesson.segments.map((s) => (
-                <li key={s.id} className="border-t border-border pt-3 text-sm leading-loose">
-                  <p>{s.english}</p>
-                  <p>{s.translation}</p>
-                  <p>{s.explanation}</p>
-                  <p>{s.reasoning}</p>
-                </li>
-              ))}
-            </ol>
-          </details>
-          <label className="mt-4 flex items-start gap-2 text-sm">
-            <input
-              type="checkbox"
-              checked={reviewed}
-              onChange={(e) => setReviewed(e.target.checked)}
-            />
-            စာသားအားလုံး စစ်ဆေးပြီးပါပြီ။ ရွေးထားသည့်အသံကို ပြင်ဆင်ရာတွင် ကုန်ကျစရိတ်ရှိကြောင်း
-            နားလည်ပါသည်။
-          </label>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {lesson.teachingRevision ? (
-              <a href="/teaching-setup" className="text-sm font-semibold text-primary underline">
-                သင်ကြားပုံအသစ်အတွက် အသံပြင်ဆင်ပြီး အတည်ပြုရန် →
-              </a>
-            ) : (
-              <Button disabled={!reviewed || adminBusy} onClick={() => void adminAction("approve")}>
-                စာသား အတည်ပြုမယ်
-              </Button>
-            )}
-            <Button
-              variant="outline"
-              disabled={!reviewed || !engine.published || adminBusy}
-              onClick={() => void adminAction("prepare")}
-            >
-              လက်ရှိအဆင့် အသံပြင်ဆင်မယ်
-            </Button>
-          </div>
-          <p role="status" className="mt-2 text-sm">
-            {adminMessage}
-          </p>
-        </details>
-      )}
       <section className="rounded-2xl border border-border bg-card p-5">
         <h2 className="font-semibold">Reading comprehension</h2>
         {!finished ? (

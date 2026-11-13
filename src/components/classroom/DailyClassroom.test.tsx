@@ -59,7 +59,7 @@ beforeEach(() => {
         return Response.json({
           progress: { cursor: 0, offset: 0, completed: [], revision: 0 },
           published: true,
-          admin: false,
+          admin: true,
         });
       if (b.action === "audio") return new Response(new Uint8Array(2048));
       return Response.json({ ok: true, revision: b.revision + 1 });
@@ -74,6 +74,10 @@ it("restores the learner's assigned class without choosing a unit or section", a
   fireEvent.click(screen.getByRole("button", { name: "အတန်းစမယ်" }));
   await waitFor(() => expect(AudioMock.all).toHaveLength(1));
   expect(screen.getByLabelText("Classroom whiteboard")).toBeInTheDocument();
+  expect(screen.queryByText(/ဆရာ \/ Admin/)).not.toBeInTheDocument();
+  expect(
+    screen.queryByRole("button", { name: "ဒီနေ့အတန်း အသံပြင်ဆင်မယ်" }),
+  ).not.toBeInTheDocument();
   expect(screen.queryByRole("button", { name: "Next" })).not.toBeInTheDocument();
   expect(screen.queryByRole("button", { name: "Previous" })).not.toBeInTheDocument();
 });
@@ -148,7 +152,7 @@ it("replays a completed class from its first sentence instead of its last clip",
           revision: 2,
         },
         published: true,
-        admin: false,
+        admin: true,
       });
     return normalFetch(input, init);
   });

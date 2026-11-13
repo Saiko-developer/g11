@@ -5,6 +5,7 @@ import { getReadingLesson } from "./lessons";
 import { buildDailyClasses } from "./study-plan";
 import { classroomAudioIdentity, prepareClassroomAudio, readClassroomAudio } from "./audio.server";
 import { lessonHash, publishedLesson } from "./manifest.server";
+import { onDemandReadingPilot } from "./pilot";
 import { classroomLiveEnabled } from "./live-settings.server";
 
 async function adminAccess(request: Request) {
@@ -19,9 +20,13 @@ const selection = z.object({
   day: z.number().int().min(0).max(9).default(0),
 });
 const action = selection.extend({
-  action: z.enum(["prepare", "listen", "publish", "enable_questions"]),
+  action: z.enum(["prepare", "listen", "publish", "approve_script", "enable_questions"]),
   cursor: z.number().int().nonnegative().optional(),
   acknowledge: z.literal(true).optional(),
+  contentHash: z
+    .string()
+    .regex(/^[a-f0-9]{64}$/)
+    .optional(),
 });
 export async function getTeachingSetup(request: Request) {
   const auth = await adminAccess(request);
@@ -82,6 +87,7 @@ export async function getTeachingSetup(request: Request) {
   return Response.json(
     {
       config,
+      contentHash: await lessonHash(lesson),
       missing,
       ready: identities.flatMap((i, index) => (readyHashes.has(i.hash) ? [day.start + index] : [])),
       published: await publishedLesson(lesson),
@@ -124,6 +130,25 @@ export async function postTeachingSetup(request: Request) {
     return prepareClassroomAudio(lesson, body.cursor);
   }
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  if (body.action === "approve_script") {
+    if (!onDemandReadingPilot(lesson))
+      return Response.json({ error: "pilot_only" }, { status: 400 });
+    if (!process.env.LOVABLE_API_KEY)
+      return Response.json({ error: "provider_not_configured" }, { status: 503 });
+    const hash = await lessonHash(lesson);
+    if (body.contentHash !== hash)
+      return Response.json({ error: "script_changed_review_again" }, { status: 409 });
+    const result = await supabaseAdmin.from("classroom_publications" as never).upsert({
+      lesson_id: lesson.id,
+      version: lesson.version,
+      content_hash: hash,
+      reviewed_by: auth.userId,
+      reviewed_at: new Date().toISOString(),
+    } as never);
+    return result.error
+      ? Response.json({ error: "publication_failed" }, { status: 503 })
+      : Response.json({ ok: true });
+  }
   if (body.action === "publish") {
     const hashes = await Promise.all(
       Array.from({ length: day.end - day.start }, (_, i) =>

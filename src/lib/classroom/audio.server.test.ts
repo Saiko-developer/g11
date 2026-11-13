@@ -1,3 +1,4 @@
+import { Blob as NodeBlob } from "node:buffer";
 import { webcrypto } from "node:crypto";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { getReadingLesson } from "./lessons";
@@ -8,6 +9,7 @@ const m = vi.hoisted(() => ({
   existing: vi.fn(),
   upload: vi.fn(),
   update: vi.fn(),
+  download: vi.fn(),
 }));
 vi.mock("@/lib/ttsGenerate.server", () => ({ generateSpeech: m.speech }));
 vi.mock("@/integrations/supabase/client.server", () => ({
@@ -17,13 +19,18 @@ vi.mock("@/integrations/supabase/client.server", () => ({
       select: () => ({ eq: () => ({ maybeSingle: m.existing }) }),
       update: () => ({ eq: m.update }),
     }),
-    storage: { from: () => ({ upload: m.upload }) },
+    storage: { from: () => ({ upload: m.upload, download: m.download }) },
   },
 }));
-import { classroomAudioIdentity, prepareClassroomAudio } from "./audio.server";
+import {
+  classroomAudioIdentity,
+  prepareClassroomAudio,
+  readOrPrepareClassroomAudio,
+} from "./audio.server";
 const lesson = getReadingLesson(10)!;
 beforeEach(() => {
   vi.clearAllMocks();
+  vi.stubEnv("LOVABLE_API_KEY", "test-only");
   vi.stubGlobal("crypto", webcrypto);
   m.existing.mockResolvedValue({ data: null, error: null });
   m.claim.mockResolvedValue({ data: true, error: null });
@@ -36,7 +43,10 @@ beforeEach(() => {
   m.upload.mockResolvedValue({ error: null });
   m.update.mockResolvedValue({ error: null });
 });
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => {
+  vi.unstubAllGlobals();
+  vi.unstubAllEnvs();
+});
 it("prepares the spoken introduction and full explanation as normal cached narration", async () => {
   for (const cursor of [0, 2, 3, 15, 63]) {
     expect((await prepareClassroomAudio(lesson, cursor)).status).toBe(200);
@@ -44,6 +54,7 @@ it("prepares the spoken introduction and full explanation as normal cached narra
       text: spokenStepAt(lesson, cursor).narration,
       voice: "sarah",
       speed: 1,
+      provider: "gemini",
     });
   }
   expect(m.speech.mock.calls[0][0].text).toContain("ကဲ သားတို့သမီးတို့ရေ");
@@ -68,7 +79,7 @@ it("refuses overlong scripts before claims, paid generation, or uploads", async 
 });
 it("never spends when the shared preparation cap denies a claim", async () => {
   m.claim.mockResolvedValue({ data: false, error: null });
-  expect((await prepareClassroomAudio(lesson, 2)).status).toBe(409);
+  expect((await prepareClassroomAudio(lesson, 2)).status).toBe(429);
   expect(m.speech).not.toHaveBeenCalled();
 });
 it("script edits get new audio identities, including opening and closing edits", async () => {
@@ -100,4 +111,57 @@ it("reuses unchanged narration when another sentence is edited", async () => {
   expect((await classroomAudioIdentity(edited, 6)).hash).not.toBe(
     (await classroomAudioIdentity(lesson, 6)).hash,
   );
+});
+
+it("waits on an existing claim and never regenerates failed clips automatically", async () => {
+  m.existing.mockResolvedValue({ data: { state: "preparing" }, error: null });
+  expect((await prepareClassroomAudio(lesson, 0)).status).toBe(202);
+  m.existing.mockResolvedValue({ data: { state: "failed" }, error: null });
+  expect((await prepareClassroomAudio(lesson, 0)).status).toBe(503);
+  expect(m.claim).not.toHaveBeenCalled();
+  expect(m.speech).not.toHaveBeenCalled();
+});
+it("a losing concurrent caller waits for the winner without a second paid generation", async () => {
+  m.existing
+    .mockResolvedValueOnce({ data: null, error: null })
+    .mockResolvedValueOnce({ data: { state: "preparing" }, error: null });
+  m.claim.mockResolvedValue({ data: false, error: null });
+  expect((await prepareClassroomAudio(lesson, 0)).status).toBe(202);
+  expect(m.speech).not.toHaveBeenCalled();
+});
+
+it("two first listeners share one generation and later listeners reuse the private audio", async () => {
+  let state: string | null = null;
+  m.existing.mockImplementation(async () => ({ data: state ? { state } : null, error: null }));
+  m.claim.mockImplementation(async () => {
+    if (state) return { data: false, error: null };
+    state = "preparing";
+    return { data: true, error: null };
+  });
+  m.update.mockImplementation(async () => {
+    state = "ready";
+    return { error: null };
+  });
+  m.download.mockImplementation(async () => ({
+    data: new NodeBlob([new Uint8Array(2048)]),
+    error: null,
+  }));
+  const results = await Promise.all([
+    readOrPrepareClassroomAudio(lesson, 0),
+    readOrPrepareClassroomAudio(lesson, 0),
+  ]);
+  expect(results.every((r) => r.status === 200 || r.status === 202)).toBe(true);
+  expect(results.some((r) => r.status === 200)).toBe(true);
+  expect(m.speech).toHaveBeenCalledTimes(1);
+  const cached = await readOrPrepareClassroomAudio(lesson, 0);
+  expect(cached.status).toBe(200);
+  expect(cached.headers.get("Cache-Control")).toContain("private");
+  expect((await cached.arrayBuffer()).byteLength).toBe(2048);
+  expect(m.speech).toHaveBeenCalledTimes(1);
+});
+it("database read failures never trigger paid generation", async () => {
+  m.existing.mockResolvedValue({ data: null, error: { code: "unavailable" } });
+  expect((await readOrPrepareClassroomAudio(lesson, 0)).status).toBe(503);
+  expect(m.claim).not.toHaveBeenCalled();
+  expect(m.speech).not.toHaveBeenCalled();
 });
