@@ -29,6 +29,13 @@
       "when": 1794559588671,
       "tag": "0003_teacher_led_daily_plan",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794560823323,
+      "tag": "0004_apply_daily_study_plan_storage",
+      "breakpoints": true
     }
   ]
 }
