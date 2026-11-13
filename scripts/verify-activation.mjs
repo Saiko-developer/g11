@@ -26,6 +26,7 @@ try {
     "0003_teacher_led_daily_plan",
     "0004_apply_daily_study_plan_storage",
     "0005_activate_classroom_narration",
+    "0008_remove_narration_daily_cap",
   ])
     await db.exec(await readFile(`drizzle/migrations/${file}.sql`, "utf8"));
   await db.query("INSERT INTO auth.users VALUES($1)", [uid]);
@@ -91,6 +92,25 @@ try {
     (await db.query("SELECT live_enabled FROM classroom_live_settings")).rows[0].live_enabled,
     false,
   );
+  // A full Reading passage can be prepared on one day; duplicate claims still lose.
+  for (let i = 0; i < 64; i++) {
+    const hash = String(i).padStart(64, "0");
+    const result = await db.query(
+      "SELECT claim_classroom_audio($1,'g10-u1-reading','teacher-v2',$2) AS r",
+      [hash, `clips/${hash}.wav`],
+    );
+    assert.equal(result.rows[0].r, true);
+  }
+  const sharedHash = "f".repeat(64);
+  const duplicates = await Promise.all(
+    Array.from({ length: 8 }, () =>
+      db.query(
+        "SELECT claim_classroom_audio($1,'g10-u1-reading','teacher-v2','clips/shared.wav') AS r",
+        [sharedHash],
+      ),
+    ),
+  );
+  assert.equal(duplicates.filter((result) => result.rows[0].r).length, 1);
   await db.exec("RESET ROLE; SET ROLE authenticated");
   for (const sql of [
     "SELECT * FROM classroom_audio",
@@ -100,7 +120,7 @@ try {
   ])
     await assert.rejects(db.query(sql), /permission denied/);
   console.log(
-    "PASS: runner migrations 0002–0005, version-isolated progress/completion, credits/replay/single refund, private audio claims and live settings denied to students.",
+    "PASS: runner migrations 0002–0005 + 0008, no daily narration cap, version-isolated progress/completion, credits/replay/single refund, private audio claims and live settings denied to students.",
   );
 } finally {
   await db.close();

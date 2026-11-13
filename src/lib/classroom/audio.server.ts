@@ -94,10 +94,10 @@ export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: numbe
     if (currentState === "failed") return failedNarration();
     return Response.json(
       {
-        error: "narration_daily_limit",
-        message: "ယနေ့အတန်းအသံ ပြင်ဆင်ခွင့် ပြည့်သွားပါပြီ။ နောက်နေ့ ပြန်ဆက်နိုင်ပါတယ်။",
+        error: "narration_claim_unavailable",
+        message: "အသံပြင်ဆင်မှုကို ယခု ချိတ်ဆက်မရပါ။ ခဏနားပြီး ပြန်စမ်းပါ။",
       },
-      { status: 429 },
+      { status: 503 },
     );
   }
   try {

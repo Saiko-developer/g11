@@ -195,8 +195,8 @@ export function TeachingSetup() {
           </a>
         )}
         <p className="text-xs leading-loose text-muted-foreground">
-          အသံအသစ် တစ်နေ့ ၂၀ ခုအထိသာ ထုတ်မယ်။ ရှိပြီးသားအသံကို ပြန်သုံးမယ်။ Shared lesson အသံအတွက်
-          student credit မဖြတ်ပါ။
+          အသံကို လိုအပ်သည့်အခါ တစ်ကြိမ်ထုတ်ပြီး ပြန်သုံးမယ်။ Shared lesson အသံအတွက် student credit
+          မဖြတ်ပါ။
         </p>
         {status && !configured && (
           <p role="alert" className="text-sm text-destructive">
