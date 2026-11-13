@@ -345,6 +345,63 @@ export type Database = {
           },
         ]
       }
+      classroom_progress: {
+        Row: {
+          audio_offset: number
+          completed: number[]
+          cursor: number
+          lesson_id: string
+          revision: number
+          updated_at: string
+          user_id: string
+          version: string
+        }
+        Insert: {
+          audio_offset?: number
+          completed?: number[]
+          cursor?: number
+          lesson_id: string
+          revision?: number
+          updated_at?: string
+          user_id: string
+          version: string
+        }
+        Update: {
+          audio_offset?: number
+          completed?: number[]
+          cursor?: number
+          lesson_id?: string
+          revision?: number
+          updated_at?: string
+          user_id?: string
+          version?: string
+        }
+        Relationships: []
+      }
+      classroom_publications: {
+        Row: {
+          content_hash: string
+          lesson_id: string
+          reviewed_at: string
+          reviewed_by: string
+          version: string
+        }
+        Insert: {
+          content_hash: string
+          lesson_id: string
+          reviewed_at?: string
+          reviewed_by: string
+          version: string
+        }
+        Update: {
+          content_hash?: string
+          lesson_id?: string
+          reviewed_at?: string
+          reviewed_by?: string
+          version?: string
+        }
+        Relationships: []
+      }
       classrooms: {
         Row: {
           code: string
@@ -1179,6 +1236,19 @@ export type Database = {
       request_teacher_role: {
         Args: { _note: string; _school: string; _subject: string }
         Returns: undefined
+      }
+      save_classroom_progress: {
+        Args: {
+          p_completed: number[]
+          p_cursor: number
+          p_lesson: string
+          p_offset: number
+          p_revision: number
+          p_steps: number
+          p_user: string
+          p_version: string
+        }
+        Returns: Json
       }
       set_member_name: {
         Args: { _cid: string; _name: string; _sid: string }

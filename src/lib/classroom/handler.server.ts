@@ -35,7 +35,10 @@ export async function getClassroom(request: Request) {
       .eq("lesson_id", lesson.id)
       .eq("version", lesson.version)
       .maybeSingle();
-    if (error) return classroomUnavailable();
+    if (error) {
+      console.error("[classroom] progress read failed", { code: error.code });
+      return classroomUnavailable();
+    }
     return Response.json(
       {
         progress: data
@@ -52,7 +55,10 @@ export async function getClassroom(request: Request) {
       },
       { headers: { "Cache-Control": "no-store" } },
     );
-  } catch {
+  } catch (error) {
+    console.error("[classroom] load failed", {
+      name: error instanceof Error ? error.name : "UnknownError",
+    });
     return classroomUnavailable();
   }
 }
@@ -73,7 +79,8 @@ export async function postClassroom(request: Request) {
   );
   if (!parsed.success) return Response.json({ error: "invalid_request" }, { status: 400 });
   const body = parsed.data;
-  const lesson = getReadingLesson(body.grade)!;
+  const lesson = getReadingLesson(body.grade);
+  if (!lesson) return Response.json({ error: "lesson_not_found" }, { status: 404 });
   const steps = lesson.segments.length * 4;
   if (body.cursor >= steps || body.completed.some((i) => i >= steps))
     return Response.json({ error: "invalid_cursor" }, { status: 400 });
