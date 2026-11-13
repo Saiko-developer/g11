@@ -23,8 +23,14 @@ export async function classroomRequest(
   }
   return response;
 }
-export function useClassroom(lesson: ReadingLesson, userId?: string) {
-  const [progress, setProgress] = useState(emptyProgress);
+export function useClassroom(
+  lesson: ReadingLesson,
+  userId?: string,
+  range?: { start: number; end: number },
+) {
+  const startCursor = range?.start ?? 0;
+  const endCursor = range?.end ?? lesson.segments.length * 4;
+  const [progress, setProgress] = useState(() => ({ ...emptyProgress(), cursor: startCursor }));
   const current = useRef(progress);
   const revision = useRef(0);
   const [playing, setPlaying] = useState(false);
@@ -47,7 +53,8 @@ export function useClassroom(lesson: ReadingLesson, userId?: string) {
   const stale = useRef(false);
   const loadingRef = useRef(false);
   const playRef = useRef<(cursor: number, offset: number) => Promise<void>>(async () => {});
-  const maxCursor = lesson.segments.length * 4 - 1;
+  const maxCursor = endCursor - 1;
+  const totalSteps = lesson.segments.length * 4;
   const update = useCallback((next: ClassroomProgress) => {
     current.current = next;
     setProgress(next);
@@ -130,8 +137,14 @@ export function useClassroom(lesson: ReadingLesson, userId?: string) {
           const p = data.progress as ClassroomProgress;
           const safe = {
             ...p,
-            cursor: Math.min(maxCursor, Math.max(0, p.cursor)),
-            completed: p.completed.filter((i) => i >= 0 && i <= maxCursor),
+            cursor:
+              p.cursor >= startCursor && p.cursor <= maxCursor
+                ? p.cursor
+                : (Array.from({ length: endCursor - startCursor }, (_, i) => startCursor + i).find(
+                    (i) => !p.completed.includes(i),
+                  ) ?? startCursor),
+            completed: p.completed.filter((i) => i >= 0 && i < totalSteps),
+            offset: p.cursor >= startCursor && p.cursor <= maxCursor ? p.offset : 0,
           };
           revision.current = safe.revision;
           update(safe);
@@ -155,7 +168,17 @@ export function useClassroom(lesson: ReadingLesson, userId?: string) {
       invalidatePlayback();
       releaseAudio();
     };
-  }, [userId, lesson.grade, maxCursor, update, releaseAudio, invalidatePlayback]);
+  }, [
+    userId,
+    lesson.grade,
+    maxCursor,
+    startCursor,
+    endCursor,
+    totalSteps,
+    update,
+    releaseAudio,
+    invalidatePlayback,
+  ]);
   const complete = useCallback(
     (cursor: number) => {
       const p = current.current;
@@ -252,7 +275,7 @@ export function useClassroom(lesson: ReadingLesson, userId?: string) {
     else {
       const next = {
         ...current.current,
-        cursor: Math.max(0, Math.min(maxCursor, current.current.cursor + delta)),
+        cursor: Math.max(startCursor, Math.min(maxCursor, current.current.cursor + delta)),
         offset: 0,
       };
       update(next);
@@ -280,6 +303,7 @@ export function useClassroom(lesson: ReadingLesson, userId?: string) {
   }, [pause, persist]);
   return {
     progress,
+    flushProgress: () => saveQueue.current,
     playing,
     loading,
     manual,

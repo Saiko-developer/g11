@@ -43,6 +43,7 @@ try {
  RETURN jsonb_build_object('daily_left',greatest(2-n,0),'bonus_left',b,'unlimited',false); END $$;
  `);
   await db.exec(await readFile("docs/step2/schema.sql", "utf8"));
+  await db.exec(await readFile("drizzle/migrations/0003_teacher_led_daily_plan.sql", "utf8"));
   await db.query("INSERT INTO auth.users VALUES($1),($2)", [alice, bob]);
   await db.query("INSERT INTO public.profiles(id) VALUES($1),($2)", [alice, bob]);
   await db.exec("GRANT SELECT ON public.tutor_wallets TO service_role; SET ROLE service_role");
@@ -147,8 +148,45 @@ try {
   await db.query("UPDATE profiles SET status='suspended' WHERE id=$1", [bob]);
   await db.exec("SET ROLE service_role");
   assert.equal((await reserve(5, bob)).reason, "suspended");
+  await db.exec("RESET ROLE");
+  await db.query("INSERT INTO study_enrollments(user_id,grade) VALUES($1,10)", [alice]);
+  await db.exec("SET ROLE service_role");
+  const finishDay = (day, start, end) =>
+    result(
+      "SELECT finish_daily_class($1,10,'reading-daily-v1',$2,'g10-u1-reading','pilot-v1',$3,$4) AS result",
+      [alice, day, start, end],
+    );
+  assert.equal((await finishDay(0, 0, 16)).reason, "class_incomplete");
+  await db.query(
+    "UPDATE classroom_progress SET completed=ARRAY(SELECT generate_series(0,15)) WHERE user_id=$1",
+    [alice],
+  );
+  assert.equal((await finishDay(0, 0, 16)).ok, true);
+  assert.equal((await finishDay(0, 0, 16)).already_completed, true);
+  assert.equal((await finishDay(1, 16, 32)).reason, "today_completed");
+  assert.equal((await finishDay(2, 32, 48)).reason, "previous_class_required");
+  await asUser(bob);
+  assert.equal(await result("SELECT count(*)::int AS result FROM daily_class_completions"), 0);
+  await assert.rejects(
+    db.query(
+      "SELECT finish_daily_class($1,10,'reading-daily-v1',0,'g10-u1-reading','pilot-v1',0,16)",
+      [alice],
+    ),
+    /permission denied/,
+  );
+  await db.exec("RESET ROLE");
+  await db.query(
+    "UPDATE daily_class_completions SET completed_on=public.mm_today()-1 WHERE user_id=$1",
+    [alice],
+  );
+  await db.query(
+    "UPDATE classroom_progress SET completed=ARRAY(SELECT generate_series(0,31)) WHERE user_id=$1",
+    [alice],
+  );
+  await db.exec("SET ROLE service_role");
+  assert.equal((await finishDay(1, 16, 32)).ok, true);
   console.log(
-    "PASS: schema, quotas, replay, refund, in-flight cap, RLS, stale progress, invalid steps, package tampering, duplicate payments, audio claims, suspension.",
+    "PASS: schema, quotas, replay, refund, in-flight cap, RLS, stale progress, invalid steps, package tampering, duplicate payments, audio claims, suspension, daily-class order/day limits/ownership.",
   );
 } finally {
   await db.close();

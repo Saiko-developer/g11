@@ -44,6 +44,14 @@ export async function readClassroomAudio(lesson: ReadingLesson, cursor: number):
 export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: number) {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   const { hash, path, text } = await classroomAudioIdentity(lesson, cursor);
+  const existing = await supabaseAdmin
+    .from("classroom_audio" as never)
+    .select("state")
+    .eq("hash", hash)
+    .maybeSingle();
+  if (existing.error) return Response.json({ error: "audio_service_unavailable" }, { status: 503 });
+  if ((existing.data as { state?: string } | null)?.state === "ready")
+    return Response.json({ ok: true, cached: true });
   const { data, error } = await supabaseAdmin.rpc(
     "claim_classroom_audio" as never,
     {
