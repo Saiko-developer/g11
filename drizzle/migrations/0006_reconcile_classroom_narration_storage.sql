@@ -1,0 +1,1 @@
+COMMENT ON TABLE public.classroom_audio IS 'Private shared narration metadata; classroom-narration bucket is provisioned through the storage API.';
