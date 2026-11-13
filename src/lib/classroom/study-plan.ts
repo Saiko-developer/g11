@@ -1,6 +1,10 @@
 import type { ReadingLesson } from "./types";
 
 export const STUDY_PLAN_VERSION = "reading-daily-v1";
+/** Keep legacy Grade 11 history; revised teaching gets its own completion namespace. */
+export function studyPlanVersion(lesson: ReadingLesson) {
+  return lesson.teachingRevision ? `reading-${lesson.teachingRevision}` : STUDY_PLAN_VERSION;
+}
 export type DailyClass = {
   index: number;
   title: string;

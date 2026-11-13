@@ -108,6 +108,14 @@ export async function postClassroom(request: Request) {
     if (body.action === "approve") {
       if (!(await classroomAdmin(request)))
         return Response.json({ error: "forbidden" }, { status: 403 });
+      if (lesson.teachingRevision)
+        return Response.json(
+          {
+            error: "narration_review_required",
+            message: "သင်ကြားပုံအသစ်ကို /teaching-setup မှ အသံပြင်ဆင်နားထောင်ပြီး အတည်ပြုပါ။",
+          },
+          { status: 409 },
+        );
       if (!body.acknowledge || body.contentHash !== (await lessonHash(lesson)))
         return Response.json({ error: "review_required" }, { status: 400 });
       const { error } = await supabaseAdmin.from("classroom_publications" as never).upsert({

@@ -1,11 +1,15 @@
 import { generateSpeech } from "@/lib/ttsGenerate.server";
-import { stepAt, type ReadingLesson } from "./types";
+import { spokenStepAt, type ReadingLesson } from "./types";
 import { lessonHash } from "./manifest.server";
 
 export async function classroomAudioIdentity(lesson: ReadingLesson, cursor: number) {
-  const { step, text } = stepAt(lesson, cursor);
+  const { step, narration: text } = spokenStepAt(lesson, cursor);
   const identity = JSON.stringify([
-    await lessonHash(lesson),
+    // New teaching scripts use per-clip content identity: editing a later sentence
+    // must not regenerate unchanged clips. Legacy Grade 11 hashes stay identical.
+    lesson.teachingRevision
+      ? `${lesson.id}:${lesson.version}:${lesson.teachingRevision}`
+      : await lessonHash(lesson),
     cursor,
     step,
     text,
@@ -44,6 +48,9 @@ export async function readClassroomAudio(lesson: ReadingLesson, cursor: number):
 export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: number) {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   const { hash, path, text } = await classroomAudioIdentity(lesson, cursor);
+  // The generic speech service caps input at 3500 characters. Never silently truncate a class.
+  if (!text.trim() || text.length > 3500)
+    return Response.json({ error: "narration_script_too_long" }, { status: 422 });
   const existing = await supabaseAdmin
     .from("classroom_audio" as never)
     .select("state")

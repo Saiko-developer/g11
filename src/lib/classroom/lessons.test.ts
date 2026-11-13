@@ -59,3 +59,28 @@ describe("both-grade reading contract", () => {
     expect(getReadingLesson("10x")).toBeNull();
   });
 });
+
+describe("Grade 10 Unit 1 teacher script", () => {
+  it("isolates new progress and completion history without changing Grade 11", () => {
+    expect(getReadingLesson(10)!.version).toBe("teacher-v2");
+    expect(getReadingLesson(11)!.version).toBe("pilot-v1");
+    expect(getReadingLesson(11)!.teachingRevision).toBeUndefined();
+  });
+  it("narrates authored examples and recaps inside the normal sentence sequence", async () => {
+    const { spokenStepAt } = await import("./types");
+    const lesson = getReadingLesson(10)!;
+    expect(spokenStepAt(lesson, 0).narration).toContain(lesson.segments[0].english);
+    expect(spokenStepAt(lesson, 0).narration).toContain("ကဲ သားတို့သမီးတို့ရေ");
+    expect(spokenStepAt(lesson, 3).narration).toContain("May is");
+    for (let i = 0; i < 64; i++) {
+      const clip = spokenStepAt(lesson, i);
+      expect(clip.narration.length).toBeLessThanOrEqual(3500);
+      expect(clip.narration).toContain(clip.text);
+    }
+    for (const cursor of [15, 31, 47, 63])
+      expect(spokenStepAt(lesson, cursor).segment.closing).toBeTruthy();
+    expect(spokenStepAt(lesson, 63).narration).toContain(
+      "Reading ပြီးတာဟာ Unit တစ်ခုလုံးပြီးတာ မဟုတ်သေး",
+    );
+  });
+});

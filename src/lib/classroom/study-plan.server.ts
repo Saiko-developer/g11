@@ -2,7 +2,7 @@ import { z } from "zod";
 import { requireUser } from "@/lib/api-guard.server";
 import { classroomUnavailable, classroomUserDb } from "./db.server";
 import { getReadingLesson } from "./lessons";
-import { dailyAssignment, myanmarDay, STUDY_PLAN_VERSION, type ClassHistory } from "./study-plan";
+import { dailyAssignment, myanmarDay, studyPlanVersion, type ClassHistory } from "./study-plan";
 
 async function readPlan(request: Request, userId: string) {
   const db = classroomUserDb(request);
@@ -15,16 +15,17 @@ async function readPlan(request: Request, userId: string) {
   if (!enrollment.data) return null;
   const lesson = getReadingLesson(enrollment.data.grade);
   if (!lesson) throw new Error("Unsupported grade");
+  const planVersion = studyPlanVersion(lesson);
   const history = await db
     .from("daily_class_completions")
     .select("session_index,completed_on")
     .eq("user_id", userId)
     .eq("grade", lesson.grade)
-    .eq("plan_version", STUDY_PLAN_VERSION);
+    .eq("plan_version", planVersion);
   if (history.error) throw history.error;
   return {
     grade: lesson.grade,
-    planVersion: STUDY_PLAN_VERSION,
+    planVersion,
     lessonId: lesson.id,
     lessonVersion: lesson.version,
     ...dailyAssignment(lesson, history.data as ClassHistory, myanmarDay()),
@@ -66,30 +67,28 @@ export async function postStudyPlan(request: Request) {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     if (body.data.action === "enroll") {
       // First selection only. Do not silently switch an existing learner's grade or plan.
-      const { error } = await supabaseAdmin
-        .from("study_enrollments")
-        .upsert({ user_id: auth.userId, grade: body.data.grade }, {
+      const { error } = await supabaseAdmin.from("study_enrollments").upsert(
+        { user_id: auth.userId, grade: body.data.grade },
+        {
           onConflict: "user_id",
           ignoreDuplicates: true,
-        });
+        },
+      );
       if (error) throw error;
     } else {
       const plan = await readPlan(request, auth.userId);
       if (!plan || body.data.session !== plan.session.index)
         return Response.json({ error: "class_not_assigned" }, { status: 409 });
-      const { data, error } = await supabaseAdmin.rpc(
-        "finish_daily_class",
-        {
-          p_user: auth.userId,
-          p_grade: plan.grade,
-          p_version: plan.planVersion,
-          p_session: plan.session.index,
-          p_lesson: plan.lessonId,
-          p_lesson_version: plan.lessonVersion,
-          p_start: plan.session.start,
-          p_end: plan.session.end,
-        },
-      );
+      const { data, error } = await supabaseAdmin.rpc("finish_daily_class", {
+        p_user: auth.userId,
+        p_grade: plan.grade,
+        p_version: plan.planVersion,
+        p_session: plan.session.index,
+        p_lesson: plan.lessonId,
+        p_lesson_version: plan.lessonVersion,
+        p_start: plan.session.start,
+        p_end: plan.session.end,
+      });
       if (error) throw error;
       if (!data) return classroomUnavailable();
       if (!(data as { ok: boolean }).ok) return Response.json(data, { status: 409 });

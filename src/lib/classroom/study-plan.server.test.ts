@@ -5,6 +5,7 @@ const m = vi.hoisted(() => ({
   enrollment: vi.fn(),
   history: vi.fn(),
   upsert: vi.fn(),
+  filter: vi.fn(),
 }));
 vi.mock("@/lib/api-guard.server", () => ({ requireUser: m.auth }));
 vi.mock("@/integrations/supabase/client.server", () => ({
@@ -16,7 +17,10 @@ vi.mock("./db.server", () => ({
     from: (table: string) => {
       const q = {
         select: () => q,
-        eq: () => q,
+        eq: (...args: unknown[]) => {
+          m.filter(...args);
+          return q;
+        },
         maybeSingle: m.enrollment,
         then: (resolve: (value: unknown) => unknown) => Promise.resolve(m.history()).then(resolve),
       };
@@ -44,7 +48,11 @@ it("returns the enrolled Grade 10 plan without a 503", async () => {
   const response = await getStudyPlan(new Request("https://school.test/api/study-plan"));
   expect(response.status).toBe(200);
   expect(response.headers.get("Cache-Control")).toBe("no-store");
-  expect((await response.json()).plan).toMatchObject({ grade: 10, lessonId: "g10-u1-reading", session: { index: 0 } });
+  expect((await response.json()).plan).toMatchObject({
+    grade: 10,
+    lessonId: "g10-u1-reading",
+    session: { index: 0 },
+  });
 });
 it("returns no plan for an account that has not enrolled", async () => {
   m.enrollment.mockResolvedValue({ data: null, error: null });
@@ -55,7 +63,10 @@ it("returns no plan for an account that has not enrolled", async () => {
 it("saves enrollment for the authenticated caller and reads the plan back", async () => {
   const response = await post({ action: "enroll", grade: 10, user_id: "bob" });
   expect(response.status).toBe(200);
-  expect(m.upsert).toHaveBeenCalledWith({ user_id: "alice", grade: 10 }, { onConflict: "user_id", ignoreDuplicates: true });
+  expect(m.upsert).toHaveBeenCalledWith(
+    { user_id: "alice", grade: 10 },
+    { onConflict: "user_id", ignoreDuplicates: true },
+  );
   expect((await response.json()).plan.grade).toBe(10);
 });
 it("requires active authentication for both plan reads and completion writes", async () => {
@@ -93,4 +104,13 @@ it("refuses future classes before invoking the completion RPC", async () => {
 it("does not fabricate enrollment when the backend enrollment read fails", async () => {
   m.enrollment.mockResolvedValue({ data: null, error: { code: "42P01" } });
   expect((await getStudyPlan(new Request("https://school.test/api/study-plan"))).status).toBe(503);
+});
+
+it("uses separate Grade 10 teaching history and retains Grade 11 legacy history", async () => {
+  await getStudyPlan(new Request("https://school.test/api/study-plan"));
+  expect(m.filter).toHaveBeenCalledWith("plan_version", "reading-myanmar-teacher-v2");
+  m.filter.mockClear();
+  m.enrollment.mockResolvedValue({ data: { grade: 11 }, error: null });
+  await getStudyPlan(new Request("https://school.test/api/study-plan"));
+  expect(m.filter).toHaveBeenCalledWith("plan_version", "reading-daily-v1");
 });

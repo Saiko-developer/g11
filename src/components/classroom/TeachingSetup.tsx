@@ -4,7 +4,7 @@ import { RequireSignIn } from "@/components/RequireSignIn";
 import { Button } from "@/components/ui/button";
 import { getReadingLesson } from "@/lib/classroom/lessons";
 import { buildDailyClasses } from "@/lib/classroom/study-plan";
-import { stepAt } from "@/lib/classroom/types";
+import { spokenStepAt } from "@/lib/classroom/types";
 type Status = {
   config: { database: boolean; serviceRole: boolean; speechProvider: boolean };
   missing: string[];
@@ -132,6 +132,13 @@ export function TeachingSetup() {
         Backend အမှန်၊ အသံဖိုင်အမှန်နဲ့ သင်ကြားနိုင်ဖို့ Admin setup ပါ။ ဒီနေ့အတန်းအတွက် အဆင့်{" "}
         {total} ဆင့်ကို တစ်ကြိမ်ထုတ်ပြီး ကျောင်းသားအားလုံးအတွက် ပြန်သုံးမယ်။
       </p>
+      {lesson.teachingRevision && (
+        <p role="status" className="rounded-xl border border-amber-300 p-4 text-sm leading-loose">
+          Grade 10 Unit 1 · {lesson.teachingRevision} — သင်ကြားပုံအသစ် ဖြစ်ပါသည်။ မိတ်ဆက်၊
+          ဝါကျရှင်းပြချက်၊ ဥပမာနှင့် အတန်းအဆုံးပြန်ချုပ်ချက်တို့ အသံထဲတွင် ပါဝင်မည်။
+          အသံဟောင်းများကို မဖျက်ပါ။ စာသားအသစ်အတွက် အသံပြင်ဆင်ပြီး ပြန်အတည်ပြုရန် လိုပါသည်။
+        </p>
+      )}
       <div className="flex flex-wrap gap-4">
         <label className="text-sm">
           Grade
@@ -198,16 +205,22 @@ export function TeachingSetup() {
           နားထောင်နိုင်ပါတယ်။
         </p>
         <details className="mt-4">
-          <summary className="cursor-pointer">သင်ကြားရေးစာသား အားလုံး ဖတ်ရှုရန်</summary>
+          <summary className="cursor-pointer">ဒီအတန်းမှာ ပြောမည့်စာသားအပြည့် ဖတ်ရှုရန်</summary>
           <ol className="mt-3 space-y-4">
-            {lesson.segments.map((s) => (
-              <li className="border-t border-border pt-3 text-sm leading-loose" key={s.id}>
-                <p>{s.english}</p>
-                <p>{s.translation}</p>
-                <p>{s.explanation}</p>
-                <p>{s.reasoning}</p>
-              </li>
-            ))}
+            {Array.from({ length: total }, (_, i) => assigned.start + i).map((cursor) => {
+              const clip = spokenStepAt(lesson, cursor);
+              return (
+                <li className="border-t border-border pt-3 text-sm leading-loose" key={cursor}>
+                  <p className="font-semibold">
+                    ဝါကျ {Math.floor(cursor / 4) + 1} · {clip.step}
+                  </p>
+                  <p className="whitespace-pre-wrap">{clip.narration}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {clip.narration.length} / 3500 characters
+                  </p>
+                </li>
+              );
+            })}
           </ol>
         </details>
         <label className="mt-4 flex gap-2 text-sm">
@@ -253,7 +266,7 @@ export function TeachingSetup() {
               disabled={busy || !status?.ready.includes(cursor)}
               onClick={() => void listen(cursor)}
             >
-              ဝါကျ {Math.floor(cursor / 4) + 1} · {stepAt(lesson, cursor).step}
+              ဝါကျ {Math.floor(cursor / 4) + 1} · {spokenStepAt(lesson, cursor).step}
             </Button>
           ))}
         </div>

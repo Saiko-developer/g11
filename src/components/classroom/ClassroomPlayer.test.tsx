@@ -73,7 +73,9 @@ it("automatically teaches English then translation, explanation, reasoning and t
     [3, lesson.segments[1].english],
   ] as const) {
     await act(async () => FakeAudio.all[i].finish());
-    await waitFor(() => expect(screen.getByText(expected)).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByText(expected.replace(/\s+/g, " "))).toBeInTheDocument(),
+    );
   }
 });
 it("next does not unlock comprehension, and manual mode acknowledges only the viewed step", async () => {

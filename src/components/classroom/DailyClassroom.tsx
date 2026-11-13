@@ -16,11 +16,11 @@ import { Button } from "@/components/ui/button";
 import { AnswerTryBox } from "@/components/lesson/ExerciseKit";
 import { teachingExamples } from "@/lib/classroom/teaching-dialogue";
 import { getReadingLesson } from "@/lib/classroom/lessons";
-import { readingFinished, stepAt, type ReadingLesson } from "@/lib/classroom/types";
+import { readingFinished, spokenStepAt, type ReadingLesson } from "@/lib/classroom/types";
 import {
   dailyAssignment,
   myanmarDay,
-  STUDY_PLAN_VERSION,
+  studyPlanVersion,
   type DailyClass,
 } from "@/lib/classroom/study-plan";
 import { classroomRequest, useClassroom } from "./useClassroom";
@@ -101,7 +101,7 @@ function DailyClassHome({
   const selectedLesson = getReadingLesson(plan?.grade ?? grade)!;
   const previewPlan: StudyPlan = {
     grade,
-    planVersion: STUDY_PLAN_VERSION,
+    planVersion: studyPlanVersion(selectedLesson),
     lessonId: selectedLesson.id,
     lessonVersion: selectedLesson.version,
     ...dailyAssignment(selectedLesson, [], myanmarDay()),
@@ -257,7 +257,7 @@ function TeacherRoom({
 }) {
   const [guidedChecks, setGuidedChecks] = useState(false);
   const engine = useClassroom(lesson, userId, plan.session, guidedChecks);
-  const { segment, step, text } = stepAt(lesson, engine.progress.cursor);
+  const { segment, step, narration } = spokenStepAt(lesson, engine.progress.cursor);
   const stage = engine.progress.cursor % 4;
   const [started, setStarted] = useState(false);
   const [reviewing, setReviewing] = useState(false);
@@ -347,6 +347,12 @@ function TeacherRoom({
           ခဏနားမယ်
         </Button>
       </header>
+      {lesson.teachingRevision && (
+        <p className="text-sm leading-loose text-muted-foreground">
+          သင်ကြားပုံအသစ် · မူလအတန်းမှတ်တမ်းများကို မဖျက်ဘဲ ဒီသင်ခန်းစာအတွက် မှတ်တမ်းသီးခြား
+          သိမ်းမည်။
+        </p>
+      )}
       <div className="grid gap-5 lg:grid-cols-[14rem_minmax(0,1fr)]">
         <aside className="flex items-center gap-4 rounded-3xl border border-border bg-card p-5 lg:flex-col lg:justify-start lg:py-9">
           <SayaOwlAvatar
@@ -403,7 +409,7 @@ function TeacherRoom({
           {stage >= 2 && (
             <div className="mt-5 rounded-xl border-l-4 border-amber-300 bg-emerald-900/60 p-4">
               <p className="mb-2 text-xs font-semibold text-amber-200">ဆရာရှင်းပြမယ်</p>
-              <p lang="my" className="text-base leading-loose">
+              <p lang="my" className="whitespace-pre-wrap text-base leading-loose">
                 {segment.explanation}
               </p>
             </div>
@@ -413,7 +419,7 @@ function TeacherRoom({
               <p className="mb-2 text-xs font-semibold text-amber-200">
                 Vocabulary / Grammar · ဘာကြောင့်လဲ?
               </p>
-              <p lang="my" className="text-base leading-loose">
+              <p lang="my" className="whitespace-pre-wrap text-base leading-loose">
                 {segment.reasoning}
               </p>
             </div>
@@ -422,7 +428,7 @@ function TeacherRoom({
             <Headphones className="mt-1 h-4 w-4 shrink-0" />
             <p aria-live="polite">
               {engine.playing
-                ? text
+                ? narration
                 : engine.waitingAt !== null || needsHelp
                   ? "မရှင်းသေးတဲ့အချက်ကို အတူပြန်ကြည့်ကြမယ်။"
                   : classDone
@@ -439,6 +445,8 @@ function TeacherRoom({
         >
           ဆရာသင်ကြားမည့် စာသားနဲ့အသံကို ပြင်ဆင်အတည်ပြုနေဆဲပါ။ အတန်းအသံ အဆင်သင့်မဖြစ်သေးလို့
           အလိုအလျောက်မစနိုင်သေးပါ။
+          {lesson.teachingRevision &&
+            " သင်ကြားပုံအသစ်အတွက် အသံအသစ်ကို စစ်ဆေးအတည်ပြုရန် လိုပါသည်။ အသံဟောင်းကို အစားထိုးဖွင့်မည် မဟုတ်ပါ။"}
         </p>
       )}
       {(engine.waitingAt !== null || needsHelp) && (

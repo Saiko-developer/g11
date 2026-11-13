@@ -18,10 +18,15 @@ try {
   await page
     .getByRole("heading", { name: "Language: Skill, Tool, Form, and Function", exact: true })
     .waitFor();
+  // The teacher introduction and authored explanation are normal lesson content, not hidden help.
+  await page.getByText(/ကဲ သားတို့သမီးတို့ရေ၊ ဒီနေ့ ဆရာတို့ Language/).waitFor();
   await page.getByRole("checkbox", { name: /Manual Mode/ }).check();
   // Skipping a step must leave comprehension locked, even after reaching the end.
   await page.getByRole("button", { name: "Next", exact: true }).click();
-  for (let i = 1; i < 64; i++) await page.getByRole("button", { name: /ဖတ်ပြီး/ }).click();
+  for (let i = 1; i < 64; i++) {
+    await page.getByRole("button", { name: /ဖတ်ပြီး/ }).click();
+    if (i === 2) await page.getByText(/Your answer is acceptable/).waitFor();
+  }
   assert.equal(
     await page.getByText("The four language skills are: ___________.", { exact: true }).count(),
     0,

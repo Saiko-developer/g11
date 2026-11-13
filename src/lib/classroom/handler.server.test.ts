@@ -43,7 +43,9 @@ beforeEach(() => {
   m.progress.mockResolvedValue({ data: null, error: null });
 });
 it.each([10, 11])("loads Grade %i classroom with no existing progress", async (grade) => {
-  const response = await getClassroom(new Request(`https://school.test/api/classroom?grade=${grade}`));
+  const response = await getClassroom(
+    new Request(`https://school.test/api/classroom?grade=${grade}`),
+  );
   expect(response.status).toBe(200);
   expect(await response.json()).toEqual({
     progress: { cursor: 0, offset: 0, completed: [], revision: 0 },
@@ -54,11 +56,17 @@ it.each([10, 11])("loads Grade %i classroom with no existing progress", async (g
 });
 it("restores saved progress rather than resetting the student's place", async () => {
   m.progress.mockResolvedValue({
-    data: { cursor: 5, audio_offset: 12, completed: [0, 1], revision: 3 }, error: null,
+    data: { cursor: 5, audio_offset: 12, completed: [0, 1], revision: 3 },
+    error: null,
   });
   const response = await getClassroom(new Request("https://school.test/api/classroom?grade=10"));
   expect(response.status).toBe(200);
-  expect((await response.json()).progress).toEqual({ cursor: 5, offset: 12, completed: [0, 1], revision: 3 });
+  expect((await response.json()).progress).toEqual({
+    cursor: 5,
+    offset: 12,
+    completed: [0, 1],
+    revision: 3,
+  });
 });
 it("does not disguise a failed progress read as a new student record", async () => {
   const log = vi.spyOn(console, "error").mockImplementation(() => {});
@@ -120,4 +128,14 @@ it("rejects out-of-range completion indices and stale saves", async () => {
   expect(m.rpc).not.toHaveBeenCalled();
   m.rpc.mockResolvedValue({ data: { ok: false, reason: "stale" }, error: null });
   expect((await postClassroom(request({ grade: 10, action: "save" }))).status).toBe(409);
+});
+
+it("requires the audio-review setup for the revised teacher script even for admins", async () => {
+  m.admin.mockResolvedValue(true);
+  const result = await postClassroom(
+    request({ grade: 10, action: "approve", acknowledge: true, contentHash: "a".repeat(64) }),
+  );
+  expect(result.status).toBe(409);
+  expect((await result.json()).error).toBe("narration_review_required");
+  expect(m.audio).not.toHaveBeenCalled();
 });

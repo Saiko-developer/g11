@@ -3,7 +3,7 @@ import { act, fireEvent, render, screen, waitFor } from "@testing-library/react"
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { DailyClassroom } from "./DailyClassroom";
 import { getReadingLesson } from "@/lib/classroom/lessons";
-import { dailyAssignment } from "@/lib/classroom/study-plan";
+import { dailyAssignment, studyPlanVersion } from "@/lib/classroom/study-plan";
 vi.mock("@/components/AuthGate", () => ({
   useAuth: () => ({ session: { user: { id: "alice" } }, ready: true }),
 }));
@@ -14,7 +14,7 @@ vi.mock("@/components/lesson/ExerciseKit", () => ({ AnswerTryBox: () => null }))
 const lesson = getReadingLesson(10)!;
 const plan = {
   grade: 10,
-  planVersion: "reading-daily-v1",
+  planVersion: studyPlanVersion(lesson),
   lessonId: lesson.id,
   lessonVersion: lesson.version,
   ...dailyAssignment(lesson, [], "2026-11-13"),

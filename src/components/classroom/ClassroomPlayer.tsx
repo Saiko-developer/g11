@@ -3,7 +3,7 @@ import { useAuth } from "@/components/AuthGate";
 import { RequireSignIn } from "@/components/RequireSignIn";
 import { AnswerTryBox } from "@/components/lesson/ExerciseKit";
 import { Button } from "@/components/ui/button";
-import { readingFinished, stepAt, type ReadingLesson } from "@/lib/classroom/types";
+import { readingFinished, spokenStepAt, type ReadingLesson } from "@/lib/classroom/types";
 import { classroomRequest, useClassroom } from "./useClassroom";
 import {
   Pause,
@@ -33,7 +33,7 @@ export function ClassroomPlayer({ lesson }: { lesson: ReadingLesson }) {
 }
 function Player({ lesson, userId }: { lesson: ReadingLesson; userId?: string }) {
   const engine = useClassroom(lesson, userId);
-  const { segment, step, text } = stepAt(lesson, engine.progress.cursor);
+  const { segment, step, narration: text } = spokenStepAt(lesson, engine.progress.cursor);
   const [asking, setAsking] = useState(false);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -293,9 +293,15 @@ function Player({ lesson, userId }: { lesson: ReadingLesson; userId?: string }) 
             နားလည်ပါသည်။
           </label>
           <div className="mt-3 flex flex-wrap gap-2">
-            <Button disabled={!reviewed || adminBusy} onClick={() => void adminAction("approve")}>
-              စာသား အတည်ပြုမယ်
-            </Button>
+            {lesson.teachingRevision ? (
+              <a href="/teaching-setup" className="text-sm font-semibold text-primary underline">
+                သင်ကြားပုံအသစ်အတွက် အသံပြင်ဆင်ပြီး အတည်ပြုရန် →
+              </a>
+            ) : (
+              <Button disabled={!reviewed || adminBusy} onClick={() => void adminAction("approve")}>
+                စာသား အတည်ပြုမယ်
+              </Button>
+            )}
             <Button
               variant="outline"
               disabled={!reviewed || !engine.published || adminBusy}

@@ -31,6 +31,42 @@ try {
   await db.query("INSERT INTO auth.users VALUES($1)", [uid]);
   await db.query("INSERT INTO profiles(id) VALUES($1)", [uid]);
   await db.exec("SET ROLE service_role");
+  // Revised narration must never inherit the old clip's offset or completion.
+  await db.query("INSERT INTO study_enrollments(user_id,grade) VALUES($1,10)", [uid]);
+  const oldSteps = Array.from({ length: 16 }, (_, i) => i);
+  await db.query("SELECT save_classroom_progress($1,'g10-u1-reading','pilot-v1',15,8,$2,0,64)", [
+    uid,
+    oldSteps,
+  ]);
+  await db.query("SELECT save_classroom_progress($1,'g10-u1-reading','teacher-v2',0,0,'{}',0,64)", [
+    uid,
+  ]);
+  const histories = (
+    await db.query(
+      "SELECT version,audio_offset,completed FROM classroom_progress WHERE user_id=$1 ORDER BY version",
+      [uid],
+    )
+  ).rows;
+  assert.equal(histories.length, 2);
+  assert.equal(histories[0].version, "pilot-v1");
+  assert.equal(histories[0].audio_offset, 8);
+  assert.equal(histories[0].completed.length, 16);
+  assert.equal(histories[1].version, "teacher-v2");
+  assert.equal(histories[1].audio_offset, 0);
+  assert.equal(histories[1].completed.length, 0);
+  const revisedFinish = async () =>
+    (
+      await db.query(
+        "SELECT finish_daily_class($1,10,'reading-myanmar-teacher-v2',0,'g10-u1-reading','teacher-v2',0,16) AS r",
+        [uid],
+      )
+    ).rows[0].r;
+  assert.equal((await revisedFinish()).reason, "class_incomplete");
+  await db.query("SELECT save_classroom_progress($1,'g10-u1-reading','teacher-v2',15,0,$2,1,64)", [
+    uid,
+    oldSteps,
+  ]);
+  assert.equal((await revisedFinish()).ok, true);
   const reserve = async (id) =>
     (await db.query("SELECT reserve_ai_credit($1,$2,'classroom') AS r", [uid, id])).rows[0].r;
   const id = "00000000-0000-4000-8000-000000000010";
@@ -64,7 +100,7 @@ try {
   ])
     await assert.rejects(db.query(sql), /permission denied/);
   console.log(
-    "PASS: runner migrations 0002–0005, credits/replay/single refund, private audio claims and live settings denied to students.",
+    "PASS: runner migrations 0002–0005, version-isolated progress/completion, credits/replay/single refund, private audio claims and live settings denied to students.",
   );
 } finally {
   await db.close();

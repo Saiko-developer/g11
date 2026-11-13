@@ -1,4 +1,5 @@
 import grade10 from "@/data/classroom/grade10-unit1-reading.json";
+import teacherScript from "@/data/classroom/grade10-unit1-teacher-script.json";
 import grade11 from "@/data/classroom/grade11-unit1-reading.json";
 import type { ReadingLesson } from "./types";
 
@@ -7,10 +8,15 @@ const lessons: Record<string, ReadingLesson> = {
     id: "g10-u1-reading",
     grade: 10,
     unit: 1,
-    version: "pilot-v1",
+    version: "teacher-v2",
     review: "draft",
     title: "Language: Skill, Tool, Form, and Function",
-    segments: grade10,
+    teachingRevision: teacherScript.revision,
+    segments: grade10.map((segment) => {
+      const script = teacherScript.segments.find((s) => s.id === segment.id);
+      if (!script) throw new Error(`Missing Grade 10 Unit 1 script: ${segment.id}`);
+      return { ...segment, ...script };
+    }),
     // Only source exercises answerable from this repository's passage are included.
     questions: [
       {

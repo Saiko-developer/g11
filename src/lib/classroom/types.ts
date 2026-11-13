@@ -8,6 +8,8 @@ export type ReadingSegment = {
   translation: string;
   explanation: string;
   reasoning: string;
+  leadIn?: string;
+  closing?: string;
 };
 export type ReadingLesson = {
   id: string;
@@ -16,6 +18,7 @@ export type ReadingLesson = {
   version: string;
   title: string;
   review: "draft";
+  teachingRevision?: string;
   segments: ReadingSegment[];
   questions: { id: string; question: string; answer: string }[];
 };
@@ -40,4 +43,18 @@ export function stepAt(lesson: ReadingLesson, cursor: number) {
 export function readingFinished(lesson: ReadingLesson, completed: number[]) {
   const done = new Set(completed);
   return Array.from({ length: lesson.segments.length * 4 }, (_, i) => i).every((i) => done.has(i));
+}
+
+/** Exact narration submitted to TTS. Source English remains unchanged on the board. */
+export function spokenStepAt(lesson: ReadingLesson, cursor: number) {
+  const result = stepAt(lesson, cursor);
+  const { segment, step, text } = result;
+  const narration = [
+    step === "english" ? segment.leadIn : undefined,
+    text,
+    step === "reasoning" ? segment.closing : undefined,
+  ]
+    .filter(Boolean)
+    .join("\n\n");
+  return { ...result, narration };
 }
