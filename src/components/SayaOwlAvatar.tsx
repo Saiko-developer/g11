@@ -1,6 +1,6 @@
 import tutorLogo from "@/assets/tutor-logo.png";
 
-export type OwlState = "idle" | "listening" | "thinking" | "speaking" | "muted";
+export type OwlState = "ready" | "idle" | "listening" | "thinking" | "speaking" | "muted";
 
 /** Sayar Owl logo whose decoration shows what the voice tutor is doing. */
 export function SayaOwlAvatar({ state, size = 56 }: { state: OwlState; size?: number }) {

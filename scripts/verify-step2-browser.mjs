@@ -42,6 +42,18 @@ try {
     data: { grade: 10, action: "ask", question: "hello" },
   });
   assert.equal(response.status(), 401);
+  await page.goto(`${base}/`, { waitUntil: "networkidle" });
+  await page.getByRole("link", { name: "အတန်းစမယ်", exact: true }).click();
+  await page.getByRole("heading", { name: "ဒီနေ့အတန်းအတွက် အဆင်သင့်ပဲလား?" }).waitFor();
+  await page.getByRole("button", { name: "အတန်းပုံစံ ကြည့်မယ်" }).click();
+  await page.getByLabel("Classroom whiteboard").waitFor();
+  assert.equal(await page.getByRole("button", { name: "Next", exact: true }).count(), 0);
+  assert.equal(
+    await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth),
+    false,
+  );
+  const planResponse = await page.request.get(`${base}/api/study-plan`);
+  assert.equal(planResponse.status(), 401);
   assert.deepEqual(errors, []);
   console.log(
     "PASS: both-grade routes, mobile layout, manual completion/skip gating, grade isolation, API authentication, no browser exceptions.",

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as ClassRouteImport } from './routes/class'
 import { Route as ClassroomsRouteImport } from './routes/classrooms'
 import { Route as ExamBuilderRouteImport } from './routes/exam-builder'
 import { Route as GuideRouteImport } from './routes/guide'
@@ -32,6 +33,7 @@ import { Route as ApiGrammarQuestionsRouteImport } from './routes/api/grammar-qu
 import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as ApiMockExamRouteImport } from './routes/api/mock-exam'
 import { Route as ApiRoleplayRouteImport } from './routes/api/roleplay'
+import { Route as ApiStudyPlanRouteImport } from './routes/api/study-plan'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as ApiTtsRouteImport } from './routes/api/tts'
 import { Route as ClassExamIdRouteImport } from './routes/class-exam.$id'
@@ -55,6 +57,11 @@ const IndexRoute = IndexRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassRoute = ClassRouteImport.update({
+  id: '/class',
+  path: '/class',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClassroomsRoute = ClassroomsRouteImport.update({
@@ -162,6 +169,11 @@ const ApiRoleplayRoute = ApiRoleplayRouteImport.update({
   path: '/api/roleplay',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiStudyPlanRoute = ApiStudyPlanRouteImport.update({
+  id: '/api/study-plan',
+  path: '/api/study-plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiTranscribeRoute = ApiTranscribeRouteImport.update({
   id: '/api/transcribe',
   path: '/api/transcribe',
@@ -236,6 +248,7 @@ const PracticeUnitSkillRoute = PracticeUnitSkillRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/class': typeof ClassRoute
   '/classrooms': typeof ClassroomsRoute
   '/exam-builder': typeof ExamBuilderRoute
   '/guide': typeof GuideRoute
@@ -257,6 +270,7 @@ export interface FileRoutesByFullPath {
   '/api/health': typeof ApiHealthRoute
   '/api/mock-exam': typeof ApiMockExamRoute
   '/api/roleplay': typeof ApiRoleplayRoute
+  '/api/study-plan': typeof ApiStudyPlanRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/tts': typeof ApiTtsRoute
   '/class-exam/$id': typeof ClassExamIdRoute
@@ -275,6 +289,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/class': typeof ClassRoute
   '/classrooms': typeof ClassroomsRoute
   '/exam-builder': typeof ExamBuilderRoute
   '/guide': typeof GuideRoute
@@ -296,6 +311,7 @@ export interface FileRoutesByTo {
   '/api/health': typeof ApiHealthRoute
   '/api/mock-exam': typeof ApiMockExamRoute
   '/api/roleplay': typeof ApiRoleplayRoute
+  '/api/study-plan': typeof ApiStudyPlanRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/tts': typeof ApiTtsRoute
   '/class-exam/$id': typeof ClassExamIdRoute
@@ -314,6 +330,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/class': typeof ClassRoute
   '/classrooms': typeof ClassroomsRoute
   '/exam-builder': typeof ExamBuilderRoute
   '/guide': typeof GuideRoute
@@ -335,6 +352,7 @@ export interface FileRoutesById {
   '/api/health': typeof ApiHealthRoute
   '/api/mock-exam': typeof ApiMockExamRoute
   '/api/roleplay': typeof ApiRoleplayRoute
+  '/api/study-plan': typeof ApiStudyPlanRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/tts': typeof ApiTtsRoute
   '/class-exam/$id': typeof ClassExamIdRoute
@@ -355,6 +373,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/class'
     | '/classrooms'
     | '/exam-builder'
     | '/guide'
@@ -376,6 +395,7 @@ export interface FileRouteTypes {
     | '/api/health'
     | '/api/mock-exam'
     | '/api/roleplay'
+    | '/api/study-plan'
     | '/api/transcribe'
     | '/api/tts'
     | '/class-exam/$id'
@@ -394,6 +414,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin'
+    | '/class'
     | '/classrooms'
     | '/exam-builder'
     | '/guide'
@@ -415,6 +436,7 @@ export interface FileRouteTypes {
     | '/api/health'
     | '/api/mock-exam'
     | '/api/roleplay'
+    | '/api/study-plan'
     | '/api/transcribe'
     | '/api/tts'
     | '/class-exam/$id'
@@ -432,6 +454,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/admin'
+    | '/class'
     | '/classrooms'
     | '/exam-builder'
     | '/guide'
@@ -453,6 +476,7 @@ export interface FileRouteTypes {
     | '/api/health'
     | '/api/mock-exam'
     | '/api/roleplay'
+    | '/api/study-plan'
     | '/api/transcribe'
     | '/api/tts'
     | '/class-exam/$id'
@@ -472,6 +496,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
+  ClassRoute: typeof ClassRoute
   ClassroomsRoute: typeof ClassroomsRoute
   ExamBuilderRoute: typeof ExamBuilderRoute
   GuideRoute: typeof GuideRoute
@@ -493,6 +518,7 @@ export interface RootRouteChildren {
   ApiHealthRoute: typeof ApiHealthRoute
   ApiMockExamRoute: typeof ApiMockExamRoute
   ApiRoleplayRoute: typeof ApiRoleplayRoute
+  ApiStudyPlanRoute: typeof ApiStudyPlanRoute
   ApiTranscribeRoute: typeof ApiTranscribeRoute
   ApiTtsRoute: typeof ApiTtsRoute
   ClassExamIdRoute: typeof ClassExamIdRoute
@@ -521,6 +547,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/class': {
+      id: '/class'
+      path: '/class'
+      fullPath: '/class'
+      preLoaderRoute: typeof ClassRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/classrooms': {
@@ -670,6 +703,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiRoleplayRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/study-plan': {
+      id: '/api/study-plan'
+      path: '/api/study-plan'
+      fullPath: '/api/study-plan'
+      preLoaderRoute: typeof ApiStudyPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/transcribe': {
       id: '/api/transcribe'
       path: '/api/transcribe'
@@ -788,6 +828,7 @@ const PracticeUnitRouteWithChildren = PracticeUnitRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
+  ClassRoute: ClassRoute,
   ClassroomsRoute: ClassroomsRoute,
   ExamBuilderRoute: ExamBuilderRoute,
   GuideRoute: GuideRoute,
@@ -809,6 +850,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiHealthRoute: ApiHealthRoute,
   ApiMockExamRoute: ApiMockExamRoute,
   ApiRoleplayRoute: ApiRoleplayRoute,
+  ApiStudyPlanRoute: ApiStudyPlanRoute,
   ApiTranscribeRoute: ApiTranscribeRoute,
   ApiTtsRoute: ApiTtsRoute,
   ClassExamIdRoute: ClassExamIdRoute,
