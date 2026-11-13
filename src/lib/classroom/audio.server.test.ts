@@ -79,7 +79,7 @@ it("refuses overlong scripts before claims, paid generation, or uploads", async 
 });
 it("never spends when a claim is denied without a usable cache record", async () => {
   m.claim.mockResolvedValue({ data: false, error: null });
-  expect((await prepareClassroomAudio(lesson, 2)).status).toBe(503);
+  expect((await prepareClassroomAudio(lesson, 2)).status).toBe(429);
   expect(m.speech).not.toHaveBeenCalled();
 });
 it("script edits get new audio identities, including opening and closing edits", async () => {
