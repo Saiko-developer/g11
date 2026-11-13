@@ -4,9 +4,12 @@ const m = vi.hoisted(() => ({
   rpc: vi.fn(),
   enrollment: vi.fn(),
   history: vi.fn(),
+  upsert: vi.fn(),
 }));
 vi.mock("@/lib/api-guard.server", () => ({ requireUser: m.auth }));
-vi.mock("@/integrations/supabase/client.server", () => ({ supabaseAdmin: { rpc: m.rpc } }));
+vi.mock("@/integrations/supabase/client.server", () => ({
+  supabaseAdmin: { rpc: m.rpc, from: () => ({ upsert: m.upsert }) },
+}));
 vi.mock("./db.server", () => ({
   classroomUnavailable: () => new Response("unavailable", { status: 503 }),
   classroomUserDb: () => ({
@@ -35,6 +38,25 @@ beforeEach(() => {
   m.enrollment.mockResolvedValue({ data: { grade: 10 }, error: null });
   m.history.mockReturnValue({ data: [], error: null });
   m.rpc.mockResolvedValue({ data: { ok: true }, error: null });
+  m.upsert.mockResolvedValue({ error: null });
+});
+it("returns the enrolled Grade 10 plan without a 503", async () => {
+  const response = await getStudyPlan(new Request("https://school.test/api/study-plan"));
+  expect(response.status).toBe(200);
+  expect(response.headers.get("Cache-Control")).toBe("no-store");
+  expect((await response.json()).plan).toMatchObject({ grade: 10, lessonId: "g10-u1-reading", session: { index: 0 } });
+});
+it("returns no plan for an account that has not enrolled", async () => {
+  m.enrollment.mockResolvedValue({ data: null, error: null });
+  const response = await getStudyPlan(new Request("https://school.test/api/study-plan"));
+  expect(response.status).toBe(200);
+  expect(await response.json()).toEqual({ plan: null });
+});
+it("saves enrollment for the authenticated caller and reads the plan back", async () => {
+  const response = await post({ action: "enroll", grade: 10, user_id: "bob" });
+  expect(response.status).toBe(200);
+  expect(m.upsert).toHaveBeenCalledWith({ user_id: "alice", grade: 10 }, { onConflict: "user_id", ignoreDuplicates: true });
+  expect((await response.json()).plan.grade).toBe(10);
 });
 it("requires active authentication for both plan reads and completion writes", async () => {
   m.auth.mockResolvedValue(new Response("signin", { status: 401 }));

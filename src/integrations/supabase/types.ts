@@ -429,6 +429,33 @@ export type Database = {
         }
         Relationships: []
       }
+      daily_class_completions: {
+        Row: {
+          completed_on: string
+          created_at: string
+          grade: number
+          plan_version: string
+          session_index: number
+          user_id: string
+        }
+        Insert: {
+          completed_on?: string
+          created_at?: string
+          grade: number
+          plan_version: string
+          session_index: number
+          user_id: string
+        }
+        Update: {
+          completed_on?: string
+          created_at?: string
+          grade?: number
+          plan_version?: string
+          session_index?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       exam_generations: {
         Row: {
           created_at: string
@@ -824,6 +851,24 @@ export type Database = {
         }
         Relationships: []
       }
+      study_enrollments: {
+        Row: {
+          created_at: string
+          grade: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          grade: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          grade?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       support_messages: {
         Row: {
           body: string
@@ -1155,6 +1200,19 @@ export type Database = {
         }
       }
       exam_quota: { Args: never; Returns: Json }
+      finish_daily_class: {
+        Args: {
+          p_end: number
+          p_grade: number
+          p_lesson: string
+          p_lesson_version: string
+          p_session: number
+          p_start: number
+          p_user: string
+          p_version: string
+        }
+        Returns: Json
+      }
       grade11_audio_claim: {
         Args: { p_hash: string; p_unit: number }
         Returns: string

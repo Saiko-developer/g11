@@ -14,3 +14,8 @@
 - [x] Install the missing reading-classroom schema without changing AI quotas or enabling paid narration.
 - [x] Add regression coverage and verify Grade 10 and Grade 11 public classroom loading.
 - [ ] Verify signed-in classroom progress live — blocked: requesting user has no matching auth account; sign in through preview.
+
+# Study Plan availability
+- [x] Apply missing daily-study storage and verify authenticated read access.
+- [x] Add regression coverage for plan reads and enrollment saves (16 tests passed).
+- [ ] Verify Study Plan live while signed in — blocked: requesting user has no matching auth account; sign in through preview.
