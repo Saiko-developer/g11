@@ -1,0 +1,259 @@
+[
+  {
+    "id": "g10-u1-p1-s1",
+    "meaning": {
+      "focus": ["several different answers", "all of them"],
+      "notes": ["several + plural noun", "them → answers"],
+      "example": "several answers",
+      "incorrect": "several answer"
+    },
+    "grammar": {
+      "focus": ["may be acceptable"],
+      "notes": ["may + verb အခြေခံပုံစံ", "ဖြစ်နိုင်ခြေကို ပြသည်"],
+      "example": "Your answer may be acceptable.",
+      "incorrect": "Your answer may is acceptable."
+    }
+  },
+  {
+    "id": "g10-u1-p1-s2",
+    "meaning": {
+      "focus": [
+        "as a skill",
+        "as a tool for communication",
+        "as a form of communication",
+        "as a means"
+      ],
+      "notes": ["ဘာသာစကားကို ကြည့်သည့် ရှုထောင့် ၄ ခု", "skill · tool · form · social functions"],
+      "example": "a tool for communication",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["let us look at language"],
+      "notes": ["let us + verb အခြေခံပုံစံ", "look at … as … → …အဖြစ် ရှုမြင်သည်"],
+      "example": "Let us read this sentence.",
+      "incorrect": "Let us to read this sentence."
+    }
+  },
+  {
+    "id": "g10-u1-p2-s1",
+    "meaning": {
+      "focus": ["listening, speaking, reading, and writing"],
+      "notes": ["နားထောင် · ပြော · ဖတ် · ရေး", "a set of → ဆက်စပ်နေသော အစုတစ်စု"],
+      "example": "I listen to a question and speak.",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["a set of skills:"],
+      "notes": ["colon (:) နောက်မှာ စာရင်းဖော်ပြသည်", "ဒီနေရာက -ing → လုပ်ဆောင်မှုအမည်"],
+      "example": "Reading is useful.",
+      "incorrect": ""
+    }
+  },
+  {
+    "id": "g10-u1-p2-s2",
+    "meaning": {
+      "focus": ["They", "the four language skills"],
+      "notes": ["They → listening, speaking, reading, writing", "often → လေ့ရှိသည်"],
+      "example": "the four language skills",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["are often known as"],
+      "notes": ["be + past participle → passive", "know → knew → known"],
+      "example": "They are known as the four language skills.",
+      "incorrect": "They are know as the four language skills."
+    }
+  },
+  {
+    "id": "g10-u1-p2-s3",
+    "meaning": {
+      "focus": ["the listening skill", "the first"],
+      "notes": ["ကလေးငယ်မှာ နားထောင်ခြင်း အရင်ဖွံ့ဖြိုးသည်"],
+      "example": "A baby listens before it speaks.",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["to be developed"],
+      "notes": ["to be + past participle", "ကလေးကို subject ထားလျှင် develops သုံးသည်"],
+      "example": "A baby develops listening skills first.",
+      "incorrect": ""
+    }
+  },
+  {
+    "id": "g10-u1-p3-s1",
+    "meaning": {
+      "focus": ["listening and speaking", "reading and writing"],
+      "notes": ["listening ↔ speaking", "reading ↔ writing"],
+      "example": "I read a letter and write a reply.",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["while"],
+      "notes": ["while → ဒီနေရာမှာ အုပ်စုနှစ်ခုကို ယှဉ်ပြသည်", "a pair of → နှစ်ခုပါသော တစ်တွဲ"],
+      "example": "My brother likes speaking, while I prefer writing.",
+      "incorrect": ""
+    }
+  },
+  {
+    "id": "g10-u1-p3-s2",
+    "meaning": {
+      "focus": ["productive skills", "receptive skills"],
+      "notes": ["productive → speaking + writing", "receptive → listening + reading"],
+      "example": "Writing a message → productive",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["speaking and writing are"],
+      "notes": ["subject အတွဲ → are", "productive / receptive → skills ကို ဖော်ပြသည့် adjectives"],
+      "example": "Speaking and writing are productive skills.",
+      "incorrect": "Speaking and writing is productive skills."
+    }
+  },
+  {
+    "id": "g10-u1-p4-s1",
+    "meaning": {
+      "focus": ["a tool for communication"],
+      "notes": [
+        "tool → ဒီနေရာမှာ ကိရိယာအဖြစ် တင်စားထားသည်",
+        "communication → အဓိပ္ပာယ် ဖလှယ်ဆက်သွယ်ခြင်း"
+      ],
+      "example": "A pen is a tool for writing.",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["a tool for communication"],
+      "notes": ["a tool → ရေတွက်နိုင်သော တစ်ခုကိန်း", "for → အသုံးပြုသည့် ရည်ရွယ်ချက်"],
+      "example": "Language is a tool for communication.",
+      "incorrect": ""
+    }
+  },
+  {
+    "id": "g10-u1-p4-s2",
+    "meaning": {
+      "focus": ["This means that"],
+      "notes": ["This → ရှေ့ဝါကျ၏ အဓိပ္ပာယ်", "ပြောခြင်းနှင့် ရေးခြင်း နှစ်မျိုးလုံး ဆက်သွယ်မှုပါ"],
+      "example": "speak to someone · write to someone",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["to speak to someone", "to write to someone"],
+      "notes": ["use … to + verb → ရည်ရွယ်ချက်", "to someone → ဆက်သွယ်ရာလူ"],
+      "example": "I use English to write to my friend.",
+      "incorrect": ""
+    }
+  },
+  {
+    "id": "g10-u1-p4-s3",
+    "meaning": {
+      "focus": ["vocal symbols", "written symbols"],
+      "notes": ["vocal → အသံ", "written → အရေးအသား"],
+      "example": "say “hello” ↔ write “hello”",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["To speak", "to write"],
+      "notes": ["to + verb → ရည်ရွယ်ချက်", "semicolon (;) → ဆက်စပ်ဝါကျနှစ်ခုကို ဆက်သည်"],
+      "example": "To listen, we use our ears; to read, we use our eyes.",
+      "incorrect": ""
+    }
+  },
+  {
+    "id": "g10-u1-p5-s1",
+    "meaning": {
+      "focus": ["verbal communication", "non-verbal communication"],
+      "notes": ["verbal → စကားလုံးအသုံးပြုသည်", "non-verbal → စကားလုံးမသုံးပါ"],
+      "example": "written note → verbal · smile → non-verbal",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["one of two forms:"],
+      "notes": ["two + plural noun", "colon (:) နောက်မှာ ပုံစံနှစ်မျိုးကို စာရင်းပြသည်"],
+      "example": "one of two forms",
+      "incorrect": "one of two form"
+    }
+  },
+  {
+    "id": "g10-u1-p5-s2",
+    "meaning": {
+      "focus": ["words and sentences"],
+      "notes": ["စကားလုံးနှင့် ဝါကျဖြင့် အဓိပ္ပာယ်ပို့သည်"],
+      "example": "Please help me.",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["we use words and sentences"],
+      "notes": ["we → subject · use → verb", "words and sentences → object"],
+      "example": "We use words to express ideas.",
+      "incorrect": ""
+    }
+  },
+  {
+    "id": "g10-u1-p5-s3",
+    "meaning": {
+      "focus": ["They", "spoken or written"],
+      "notes": [
+        "They → words and sentences",
+        "spoken နှင့် written နှစ်မျိုးလုံး verbal ဖြစ်နိုင်သည်"
+      ],
+      "example": "spoken words ↔ written words",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["may be spoken or written"],
+      "notes": ["may be + past participle", "speak → spoken · write → written"],
+      "example": "The words may be written.",
+      "incorrect": "The words may be wrote."
+    }
+  },
+  {
+    "id": "g10-u1-p6-s1",
+    "meaning": {
+      "focus": ["social functions", "day-to-day life"],
+      "notes": ["social functions → ဆက်သွယ်ရေး ရည်ရွယ်ချက်များ", "day-to-day → နေ့စဉ်"],
+      "example": "We use language to apologize.",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["which are"],
+      "notes": ["which → social functions ကို ထပ်ရှင်းသည်", "functions အများကိန်း → are"],
+      "example": "Help us perform = help us to perform",
+      "incorrect": ""
+    }
+  },
+  {
+    "id": "g10-u1-p6-s2",
+    "meaning": {
+      "focus": ["to request something", "to offer"],
+      "notes": [
+        "ဝါကျပုံစံနှင့် ပြောဆိုရည်ရွယ်ချက်ကို ခွဲကြည့်ပါ",
+        "မေးခွန်းပုံစံဖြင့်လည်း တောင်းဆိုနိုင်သည်"
+      ],
+      "example": "Could you close the door, please? → request",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["to greet", "to ask questions", "to give orders"],
+      "notes": ["to + verb အခြေခံပုံစံ", "စာရင်းထဲက အချက်များကို ပုံစံညီစီသည်"],
+      "example": "We use English to study, to work, and to communicate.",
+      "incorrect": ""
+    }
+  },
+  {
+    "id": "g10-u1-p7-s1",
+    "meaning": {
+      "focus": ["preserves culture", "passes on culture"],
+      "notes": ["preserve → ထိန်းသိမ်းသည်", "pass on → လက်ဆင့်ကမ်းသည်"],
+      "example": "Parents pass on stories to their children.",
+      "incorrect": ""
+    },
+    "grammar": {
+      "focus": ["reflects", "preserves", "passes", "identifies"],
+      "notes": [
+        "language တစ်ခုကိန်း → verb + s",
+        "from one generation to the next → နောက်မျိုးဆက်ဆီ"
+      ],
+      "example": "Language preserves culture. → Parents preserve culture.",
+      "incorrect": ""
+    }
+  }
+]

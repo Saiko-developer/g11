@@ -18,6 +18,8 @@ import { teachingExamples } from "@/lib/classroom/teaching-dialogue";
 import { getReadingLesson } from "@/lib/classroom/lessons";
 import { readingFinished, spokenStepAt, type ReadingLesson } from "@/lib/classroom/types";
 import { dailyAssignment, myanmarDay, studyPlanVersion } from "@/lib/classroom/study-plan";
+import { onDemandReadingPilot } from "@/lib/classroom/pilot";
+import { ReadingWhiteboard } from "./ReadingWhiteboard";
 import { classroomRequest, useClassroom } from "./useClassroom";
 
 type StudyPlan = ReturnType<typeof dailyAssignment> & {
@@ -378,60 +380,70 @@ function TeacherRoom({
             </p>
           </div>
         </aside>
-        <article
-          aria-label="Classroom whiteboard"
-          className="relative min-h-[28rem] overflow-hidden rounded-3xl border-8 border-stone-700 bg-emerald-950 p-5 text-emerald-50 shadow-xl md:p-8"
-        >
-          <div className="mb-5 flex items-center justify-between border-b border-emerald-700/50 pb-3 text-xs text-emerald-200">
-            <span>ဒီနေ့မှတ်စု · Sentence {Math.floor(engine.progress.cursor / 4) + 1}</span>
-            <span>
-              {completedSteps} / {plan.session.end - plan.session.start}
-            </span>
-          </div>
-          <p
-            className={`text-xl font-semibold leading-loose md:text-2xl ${stage === 0 && engine.playing ? "text-amber-200" : ""}`}
+        {onDemandReadingPilot(lesson) ? (
+          <ReadingWhiteboard
+            lesson={lesson}
+            cursor={engine.progress.cursor}
+            completed={completedSteps}
+            total={plan.session.end - plan.session.start}
+            transcript={narration}
+          />
+        ) : (
+          <article
+            aria-label="Classroom whiteboard"
+            className="relative min-h-[28rem] overflow-hidden rounded-3xl border-8 border-stone-700 bg-emerald-950 p-5 text-emerald-50 shadow-xl md:p-8"
           >
-            {segment.english}
-          </p>
-          {stage >= 1 && (
+            <div className="mb-5 flex items-center justify-between border-b border-emerald-700/50 pb-3 text-xs text-emerald-200">
+              <span>ဒီနေ့မှတ်စု · Sentence {Math.floor(engine.progress.cursor / 4) + 1}</span>
+              <span>
+                {completedSteps} / {plan.session.end - plan.session.start}
+              </span>
+            </div>
             <p
-              lang="my"
-              className={`mt-5 text-base leading-loose ${stage === 1 ? "text-amber-200" : "text-emerald-100"}`}
+              className={`text-xl font-semibold leading-loose md:text-2xl ${stage === 0 && engine.playing ? "text-amber-200" : ""}`}
             >
-              {segment.translation}
+              {segment.english}
             </p>
-          )}
-          {stage >= 2 && (
-            <div className="mt-5 rounded-xl border-l-4 border-amber-300 bg-emerald-900/60 p-4">
-              <p className="mb-2 text-xs font-semibold text-amber-200">ဆရာရှင်းပြမယ်</p>
-              <p lang="my" className="whitespace-pre-wrap text-base leading-loose">
-                {segment.explanation}
+            {stage >= 1 && (
+              <p
+                lang="my"
+                className={`mt-5 text-base leading-loose ${stage === 1 ? "text-amber-200" : "text-emerald-100"}`}
+              >
+                {segment.translation}
+              </p>
+            )}
+            {stage >= 2 && (
+              <div className="mt-5 rounded-xl border-l-4 border-amber-300 bg-emerald-900/60 p-4">
+                <p className="mb-2 text-xs font-semibold text-amber-200">ဆရာရှင်းပြမယ်</p>
+                <p lang="my" className="whitespace-pre-wrap text-base leading-loose">
+                  {segment.explanation}
+                </p>
+              </div>
+            )}
+            {stage >= 3 && (
+              <div className="mt-4 rounded-xl bg-black/15 p-4">
+                <p className="mb-2 text-xs font-semibold text-amber-200">
+                  Vocabulary / Grammar · ဘာကြောင့်လဲ?
+                </p>
+                <p lang="my" className="whitespace-pre-wrap text-base leading-loose">
+                  {segment.reasoning}
+                </p>
+              </div>
+            )}
+            <div className="mt-7 flex items-start gap-2 border-t border-emerald-700/50 pt-4 text-sm leading-loose text-emerald-200">
+              <Headphones className="mt-1 h-4 w-4 shrink-0" />
+              <p aria-live="polite">
+                {engine.playing
+                  ? narration
+                  : engine.waitingAt !== null || needsHelp
+                    ? "မရှင်းသေးတဲ့အချက်ကို အတူပြန်ကြည့်ကြမယ်။"
+                    : classDone
+                      ? plan.session.closing
+                      : plan.session.opening}
               </p>
             </div>
-          )}
-          {stage >= 3 && (
-            <div className="mt-4 rounded-xl bg-black/15 p-4">
-              <p className="mb-2 text-xs font-semibold text-amber-200">
-                Vocabulary / Grammar · ဘာကြောင့်လဲ?
-              </p>
-              <p lang="my" className="whitespace-pre-wrap text-base leading-loose">
-                {segment.reasoning}
-              </p>
-            </div>
-          )}
-          <div className="mt-7 flex items-start gap-2 border-t border-emerald-700/50 pt-4 text-sm leading-loose text-emerald-200">
-            <Headphones className="mt-1 h-4 w-4 shrink-0" />
-            <p aria-live="polite">
-              {engine.playing
-                ? narration
-                : engine.waitingAt !== null || needsHelp
-                  ? "မရှင်းသေးတဲ့အချက်ကို အတူပြန်ကြည့်ကြမယ်။"
-                  : classDone
-                    ? plan.session.closing
-                    : plan.session.opening}
-            </p>
-          </div>
-        </article>
+          </article>
+        )}
       </div>
       {!engine.published && (
         <p
