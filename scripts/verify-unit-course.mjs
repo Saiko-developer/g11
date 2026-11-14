@@ -26,6 +26,7 @@ try {
     "0003_teacher_led_daily_plan",
     "0009_unit_teaching_and_homework",
     "0010_classroom_grammar_writing_methods",
+    "0012_writing_teacher_style",
   ])
     await db.exec(await readFile(`drizzle/migrations/${file}.sql`, "utf8"));
   await db.exec("GRANT USAGE ON SCHEMA auth TO authenticated,anon,service_role");
@@ -43,7 +44,7 @@ try {
             : skill === "grammar"
               ? "rule-first-v1"
               : skill === "writing"
-                ? "point-first-v1"
+                ? "point-first-v2"
                 : "unit-teacher-v1",
           practised,
         ],
@@ -60,7 +61,7 @@ try {
         : skill === "grammar"
           ? "rule-first-v1"
           : skill === "writing"
-            ? "point-first-v1"
+            ? "point-first-v2"
             : "unit-teacher-v1",
       Array.from({ length: count }, (_, i) => i),
       count,
@@ -68,10 +69,27 @@ try {
   await db.exec("SET ROLE service_role");
   assert.equal((await finish("reading")).reason, "teacher_review_required");
   await db.query(
-    "INSERT INTO classroom_publications(lesson_id,version,content_hash,reviewed_by) SELECT 'g10-u1-'||s,CASE s WHEN 'reading' THEN 'teacher-v2' WHEN 'grammar' THEN 'rule-first-v1' WHEN 'writing' THEN 'point-first-v1' ELSE 'unit-teacher-v1' END,repeat('a',64),$1 FROM unnest($2::text[]) s",
+    "INSERT INTO classroom_publications(lesson_id,version,content_hash,reviewed_by) SELECT 'g10-u1-'||s,CASE s WHEN 'reading' THEN 'teacher-v2' WHEN 'grammar' THEN 'rule-first-v1' WHEN 'writing' THEN 'point-first-v2' ELSE 'unit-teacher-v1' END,repeat('a',64),$1 FROM unnest($2::text[]) s",
     [alice, skills],
   );
   assert.equal((await finish("reading")).reason, "section_incomplete");
+  // An old approved Writing completion must not grant homework for the revised course.
+  await db.query(
+    "INSERT INTO classroom_publications(lesson_id,version,content_hash,reviewed_by) VALUES('g10-u1-writing','point-first-v1',repeat('b',64),$1)",
+    [alice],
+  );
+  await db.query(
+    "INSERT INTO unit_section_learning(user_id,grade,unit,course_version,skill,lesson_version,content_hash,answers,practised,completed_at) VALUES($1,10,1,'g10-u1-course-v1','writing','point-first-v1',repeat('b',64),'{}',true,now())",
+    [alice],
+  );
+  await assert.rejects(
+    () =>
+      db.query(
+        "SELECT save_unit_section($1,'writing','point-first-v1',repeat('b',64),'{}',true,true)",
+        [alice],
+      ),
+    /Invalid section/,
+  );
   for (let i = 0; i < skills.length; i++) {
     await save(skills[i], counts[i]);
     if (skills[i] === "listening")

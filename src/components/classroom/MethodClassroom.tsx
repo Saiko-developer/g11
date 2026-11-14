@@ -136,7 +136,10 @@ export function MethodClassroom({
         <div className="mt-4 space-y-5">
           {lesson.segments.map((s, i) => (
             <section key={s.id}>
-              <h2 className="font-semibold">{s.english}</h2>
+              <h2 className="font-semibold">
+                {lesson.section === "writing" ? `${lesson.title} · ${i + 1}` : s.english}
+              </h2>
+              {lesson.section === "writing" && <p className="mt-2 leading-loose">{s.english}</p>}
               {[1, 2, 3].map((step) => (
                 <p key={step} className="mt-3 whitespace-pre-wrap text-sm leading-loose">
                   {spokenStepAt(lesson, i * 4 + step).narration}

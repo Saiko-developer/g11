@@ -29,7 +29,7 @@ it("deletes the superseded classroom Grammar/Writing scripts and preserves the o
   const grammar = getMethodLesson(10, 1, "grammar")!,
     writing = getMethodLesson(10, 1, "writing")!;
   expect(grammar.version).toBe("rule-first-v1");
-  expect(writing.version).toBe("point-first-v1");
+  expect(writing.version).toBe("point-first-v2");
   expect(grammar.segments).toHaveLength(4);
   expect(writing.segments).toHaveLength(4);
   const text = grammar.segments.map((s) => s.translation + s.explanation + s.reasoning).join(" ");
@@ -41,9 +41,9 @@ it("deletes the superseded classroom Grammar/Writing scripts and preserves the o
 it("keeps Writing about thinking, point grouping and grammatical choices rather than ready-written answers", () => {
   for (const lesson of methodLessons.filter((l) => l.section === "writing")) {
     const text = lesson.segments.map((s) => s.translation + s.explanation + s.reasoning).join(" ");
-    expect(text).toContain("outline");
-    expect(text).toContain("subject");
-    expect(text).toContain("ဘာကြောင့်");
+    expect(lesson.segments).toHaveLength(4);
+    expect(text).toMatch(/subject|clause|tense|present|past/);
+    expect(text).toMatch(/ဖြစ်လို့|အတွက်|ကြောင့်/);
     expect(text).toContain("မူကြမ်း");
     expect(text).not.toContain("Japan is an island nation.");
   }

@@ -68,7 +68,8 @@ export function UnitScriptReview({
       {lesson.segments.map((s, i) => (
         <details key={s.id} className="rounded-lg border p-4">
           <summary>
-            {i + 1}. {s.english}
+            {i + 1}.{" "}
+            {lesson.section === "writing" ? `${lesson.title} · သင်ကြားပိုင်း ${i + 1}` : s.english}
           </summary>
           {[0, 1, 2, 3].map((step) => (
             <p key={step} className="mt-4 whitespace-pre-wrap text-sm leading-loose">

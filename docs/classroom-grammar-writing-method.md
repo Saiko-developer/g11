@@ -35,3 +35,5 @@ Migration `0010_classroom_grammar_writing_methods` expands the explicit supporte
 - Full test suite, TypeScript, focused ESLint, source-reference drift check and production build.
 
 Development verification does not claim that every new narration has been generated or listened to. Owner review and an authenticated preview voice test remain necessary before publishing each new lesson.
+
+Writing narration and supporting boards were subsequently revised to `point-first-v2` / `writing-teacher-v3`; see [writing-classroom-teaching.md](./writing-classroom-teaching.md) for the current Writing behavior and migration. Grammar remains on the version described above.

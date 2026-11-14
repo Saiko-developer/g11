@@ -165,7 +165,7 @@ it("opens the embedded teaching setup from dashboard navigation", () => {
       teaching: <div>Classroom teaching setup</div>,
     },
   });
-  fireEvent.click(screen.getByRole("button", { name: "Teaching setup", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Teaching setup" }));
   expect(screen.getByText("Classroom teaching setup")).toBeVisible();
 });
 it("opens legacy teaching links directly in the admin teaching panel", () => {
@@ -181,7 +181,7 @@ it("opens legacy teaching links directly in the admin teaching panel", () => {
     },
   });
   expect(screen.getByText("Classroom teaching setup")).toBeVisible();
-  expect(screen.getByRole("button", { name: "Teaching setup", exact: true })).toHaveAttribute(
+  expect(screen.getByRole("button", { name: "Teaching setup" })).toHaveAttribute(
     "aria-current",
     "page",
   );

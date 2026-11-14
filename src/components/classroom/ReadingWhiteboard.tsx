@@ -1,3 +1,4 @@
+import { WritingWhiteboard } from "./WritingWhiteboard";
 import { GrammarWhiteboard } from "./GrammarWhiteboard";
 import notes from "@/data/classroom/grade10-unit1-board-notes.json";
 import { stepAt, type ReadingLesson } from "@/lib/classroom/types";
@@ -48,6 +49,16 @@ export function ReadingWhiteboard({
   total: number;
   transcript: string;
 }) {
+  if (lesson.section === "writing" && lesson.teachingMethod === "point-first")
+    return (
+      <WritingWhiteboard
+        lesson={lesson}
+        cursor={cursor}
+        completed={completed}
+        total={total}
+        transcript={transcript}
+      />
+    );
   if (lesson.section === "grammar" && lesson.teachingMethod === "rule-first")
     return (
       <GrammarWhiteboard
