@@ -14,6 +14,7 @@ import { RequireSignIn } from "@/components/RequireSignIn";
 import { SayaOwlAvatar } from "@/components/SayaOwlAvatar";
 import { Button } from "@/components/ui/button";
 import { AnswerTryBox } from "@/components/lesson/ExerciseKit";
+import { isClassroomCancellation } from "@/lib/classroom/cancellation";
 import { teachingExamples } from "@/lib/classroom/teaching-dialogue";
 import { getReadingLesson } from "@/lib/classroom/lessons";
 import { readingFinished, spokenStepAt, type ReadingLesson } from "@/lib/classroom/types";
@@ -64,6 +65,7 @@ function DailyClassHome({
   const [loading, setLoading] = useState(!!userId);
   const [grade, setGrade] = useState<10 | 11>(10);
   const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
   const [room, setRoom] = useState(false);
   useEffect(() => {
     if (!userId) return;
@@ -76,7 +78,11 @@ function DailyClassHome({
         }
       })
       .catch((err) => {
-        if (!abort.signal.aborted) setError(err.message);
+        if (!abort.signal.aborted) {
+          if (isClassroomCancellation(err))
+            setNotice("ချိတ်ဆက်မှု ခဏရပ်သွားပါသည်။ စာမျက်နှာကို ပြန်ဖွင့်ပါ။");
+          else setError(err.message);
+        }
       })
       .finally(() => {
         if (!abort.signal.aborted) setLoading(false);
@@ -86,11 +92,14 @@ function DailyClassHome({
   const enroll = async () => {
     setLoading(true);
     setError("");
+    setNotice("");
     try {
       setPlan(await studyRequest({ action: "enroll", grade }));
       if (autoStart) setRoom(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Plan unavailable");
+      if (isClassroomCancellation(err))
+        setNotice("ချိတ်ဆက်မှု ခဏရပ်သွားပါသည်။ စာမျက်နှာကို ပြန်ဖွင့်ပါ။");
+      else setError(err instanceof Error ? err.message : "Plan unavailable");
     } finally {
       setLoading(false);
     }
@@ -134,7 +143,7 @@ function DailyClassHome({
         <p role="status">သင့်အတန်းအစီအစဉ်ကို ပြင်ဆင်နေသည်…</p>
       ) : (
         <>
-          {!plan && (
+          {!plan && !notice && (
             <section className="rounded-2xl border border-border bg-card p-5">
               <h2 className="font-semibold">ပထမဆုံးအကြိမ် — သင့်အတန်းကို ရွေးပါ</h2>
               <p className="mt-2 text-sm text-muted-foreground">
@@ -193,7 +202,7 @@ function DailyClassHome({
                     : "အတန်းစမယ်"
                   : "အတန်းပုံစံ ကြည့်မယ်"}
               </Button>
-              {!plan && (
+              {!plan && !notice && (
                 <p className="mt-3 text-xs text-muted-foreground">
                   စာသားမူကြမ်းနမူနာပါ။ အသံနဲ့ Account အတန်းစနစ် အဆင်သင့်ဖြစ်ကြောင်း မဆိုလိုပါ။
                 </p>
@@ -201,6 +210,14 @@ function DailyClassHome({
             </section>
           )}
         </>
+      )}
+      {notice && (
+        <div role="status" className="space-y-3 text-sm text-muted-foreground">
+          <p>{notice}</p>
+          <Button variant="outline" onClick={() => window.location.reload()}>
+            ပြန်ဖွင့်မယ်
+          </Button>
+        </div>
       )}
       {error && (
         <p role="alert" className="text-sm text-destructive">
@@ -271,6 +288,7 @@ function TeacherRoom({
   const [busy, setBusy] = useState(false);
   const [completed, setCompleted] = useState(plan.todayDone || plan.allDone);
   const [completionError, setCompletionError] = useState("");
+  const [completionCancelled, setCompletionCancelled] = useState(false);
   const finishClaimed = useRef(false);
   const abort = useRef<AbortController | null>(null);
   const completedSteps = Array.from(
@@ -303,7 +321,15 @@ function TeacherRoom({
       setCompleted(true);
       onFinished(next);
     } catch (err) {
-      setCompletionError(err instanceof Error ? err.message : "Class save failed");
+      const cancelled = isClassroomCancellation(err);
+      setCompletionCancelled(cancelled);
+      setCompletionError(
+        cancelled
+          ? "မှတ်တမ်းသိမ်းခြင်း ခဏရပ်သွားပါသည်။ ပြန်သိမ်းနိုင်ပါတယ်။"
+          : err instanceof Error
+            ? err.message
+            : "Class save failed",
+      );
       finishClaimed.current = false;
     }
   }, [userId, completed, classDone, engine, plan.session.index, onFinished]);
@@ -315,17 +341,22 @@ function TeacherRoom({
     setBusy(true);
     setAnswer("");
     engine.setError("");
-    abort.current = new AbortController();
+    const pending = new AbortController();
+    abort.current = pending;
+    engine.setNotice("");
     try {
       const response = await classroomRequest(
         lesson.grade,
         { action: "ask", cursor: engine.progress.cursor, question },
-        abort.current.signal,
+        pending.signal,
       );
       setAnswer((await response.json()).answer);
     } catch (err) {
-      if (!abort.current.signal.aborted)
-        engine.setError(err instanceof Error ? err.message : "AI unavailable");
+      if (!pending.signal.aborted) {
+        if (isClassroomCancellation(err))
+          engine.setNotice("မေးခွန်းချိတ်ဆက်မှု ခဏရပ်သွားပါသည်။ လိုအပ်လျှင် ပြန်မေးနိုင်ပါတယ်။");
+        else engine.setError(err instanceof Error ? err.message : "AI unavailable");
+      }
     } finally {
       setBusy(false);
     }
@@ -598,6 +629,11 @@ function TeacherRoom({
       <p role="status" className="text-center text-xs text-muted-foreground">
         {engine.saveStatus}
       </p>
+      {engine.notice && (
+        <p role="status" className="text-sm text-muted-foreground">
+          {engine.notice}
+        </p>
+      )}
       {engine.error && (
         <p role="alert" className="text-sm text-destructive">
           {engine.error}
@@ -656,7 +692,12 @@ function TeacherRoom({
           </p>
           {completionError && (
             <>
-              <p role="alert" className="mt-3 text-destructive">
+              <p
+                role={completionCancelled ? "status" : "alert"}
+                className={
+                  completionCancelled ? "mt-3 text-muted-foreground" : "mt-3 text-destructive"
+                }
+              >
                 {completionError}
               </p>
               <Button

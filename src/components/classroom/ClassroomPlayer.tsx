@@ -4,6 +4,7 @@ import { RequireSignIn } from "@/components/RequireSignIn";
 import { AnswerTryBox } from "@/components/lesson/ExerciseKit";
 import { Button } from "@/components/ui/button";
 import { readingFinished, spokenStepAt, type ReadingLesson } from "@/lib/classroom/types";
+import { isClassroomCancellation } from "@/lib/classroom/cancellation";
 import { classroomRequest, useClassroom } from "./useClassroom";
 import {
   Pause,
@@ -46,6 +47,7 @@ function Player({ lesson, userId }: { lesson: ReadingLesson; userId?: string }) 
     setBusy(true);
     setAnswer("");
     engine.setError("");
+    engine.setNotice("");
     askAbort.current = new AbortController();
     try {
       const response = await classroomRequest(
@@ -56,8 +58,11 @@ function Player({ lesson, userId }: { lesson: ReadingLesson; userId?: string }) 
       const data = await response.json();
       setAnswer(data.answer);
     } catch (err) {
-      if (!askAbort.current.signal.aborted)
-        engine.setError(err instanceof Error ? err.message : "AI unavailable");
+      if (!askAbort.current.signal.aborted) {
+        if (isClassroomCancellation(err))
+          engine.setNotice("မေးခွန်းချိတ်ဆက်မှု ခဏရပ်သွားပါသည်။ ပြန်မေးနိုင်ပါတယ်။");
+        else engine.setError(err instanceof Error ? err.message : "AI unavailable");
+      }
     } finally {
       setBusy(false);
     }
@@ -173,6 +178,11 @@ function Player({ lesson, userId }: { lesson: ReadingLesson; userId?: string }) 
           <p className="mt-4 text-xs text-muted-foreground" role="status">
             {engine.saveStatus}
           </p>
+          {engine.notice && (
+            <p role="status" className="text-sm text-muted-foreground">
+              {engine.notice}
+            </p>
+          )}
           {engine.error && (
             <p className="mt-3 text-sm text-destructive" role="alert">
               {engine.error}

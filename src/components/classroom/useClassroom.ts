@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { isClassroomCancellation, CLASSROOM_PAUSED_NOTICE } from "@/lib/classroom/cancellation";
 import { createClassAudioBuffer } from "./class-audio-buffer";
 import { emptyProgress, type ClassroomProgress, type ReadingLesson } from "@/lib/classroom/types";
 
@@ -81,6 +82,7 @@ export function useClassroom(
   const manualRef = useRef(manual);
   manualRef.current = manual;
   const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
   const [saveStatus, setSaveStatus] = useState("Account ထဲ သိမ်းရန် Login ဝင်ပါ။");
   const [published, setPublished] = useState(false);
   const [admin, setAdmin] = useState(false);
@@ -117,6 +119,7 @@ export function useClassroom(
     setPlaying(false);
     setLoading(false);
     setPreparing(false);
+    setNotice("");
   }, []);
   const releaseAudio = useCallback(() => {
     if (audio.current) {
@@ -152,7 +155,9 @@ export function useClassroom(
           if (active.current) {
             pause();
             setSaveStatus("မသိမ်းရသေးပါ။ Refresh လုပ်ပြီး Account မှတ်တမ်း ပြန်ယူပါ။");
-            setError(err instanceof Error ? err.message : "Save failed");
+            if (isClassroomCancellation(err))
+              setNotice("မှတ်တမ်းချိတ်ဆက်မှု ရပ်သွားပါသည်။ Refresh လုပ်ပြီး မှတ်တမ်းပြန်ယူပါ။");
+            else setError(err instanceof Error ? err.message : "Save failed");
           }
         }
       });
@@ -170,6 +175,8 @@ export function useClassroom(
     setPreparing(false);
     setPlaying(false);
     setReady(!userId);
+    setError("");
+    setNotice("");
     // Effect replay must create fresh abort controllers, never reuse a disposed buffer.
     const buffer =
       bufferedClass && userId
@@ -222,7 +229,9 @@ export function useClassroom(
           setReady(true);
         } catch (err) {
           if (active.current && !abort.signal.aborted) {
-            setError(err instanceof Error ? err.message : "Load failed");
+            if (isClassroomCancellation(err))
+              setNotice("မှတ်တမ်းချိတ်ဆက်မှု ရပ်သွားပါသည်။ Refresh လုပ်ပြီး မှတ်တမ်းပြန်ယူပါ။");
+            else setError(err instanceof Error ? err.message : "Load failed");
             setSaveStatus("Account ထဲ မသိမ်းနိုင်သေးပါ။");
             setManual(true);
           }
@@ -272,6 +281,7 @@ export function useClassroom(
       loadingRef.current = true;
       setLoading(true);
       setError("");
+      setNotice("");
       try {
         let blob: Blob;
         const buffer = classBuffer.current;
@@ -328,21 +338,21 @@ export function useClassroom(
         if (token === generation.current) setPlaying(true);
         else a.pause();
       } catch (err) {
-        if (token === generation.current && !abort.signal.aborted) {
+        if (token === generation.current && active.current && !abort.signal.aborted) {
+          setPlaying(false);
+          if (isClassroomCancellation(err)) {
+            setNotice(CLASSROOM_PAUSED_NOTICE);
+            return;
+          }
           setError(
             typeof err === "object" &&
               err !== null &&
               "name" in err &&
               err.name === "NotAllowedError"
               ? "အသံအဆင်သင့်ပါပြီ။ ပြန်ဆက်သင်မယ် ခလုတ်ကို နှိပ်ပါ။"
-              : typeof err === "object" &&
-                  err !== null &&
-                  "name" in err &&
-                  err.name === "AbortError"
-                ? "အသံချိတ်ဆက်မှု ရပ်သွားပါသည်။ ပြန်ဆက်သင်မယ် ခလုတ်ကို နှိပ်ပါ။"
-                : err instanceof Error
-                  ? err.message
-                  : "အသံချိတ်ဆက်မရပါ။ ပြန်စမ်းပါ။",
+              : err instanceof Error
+                ? err.message
+                : "အသံချိတ်ဆက်မရပါ။ ပြန်စမ်းပါ။",
           );
           setPlaying(false);
         }
@@ -358,6 +368,9 @@ export function useClassroom(
   );
   playRef.current = playAt;
   const resume = () => {
+    if (stale.current) return;
+    setNotice("");
+    setError("");
     if (audio.current && !audio.current.ended && !loadingRef.current) {
       // Rebind ended token after pause invalidated any pending work.
       const cursor = current.current.cursor;
@@ -378,7 +391,12 @@ export function useClassroom(
         .then(() => {
           if (generation.current === token && active.current) setPlaying(true);
         })
-        .catch(() => setError("အသံဖွင့်ရန် ထပ်နှိပ်ပါ။"));
+        .catch((err) => {
+          if (generation.current !== token || !active.current) return;
+          setPlaying(false);
+          if (isClassroomCancellation(err)) setNotice(CLASSROOM_PAUSED_NOTICE);
+          else setError("အသံဖွင့်ရန် ထပ်နှိပ်ပါ။");
+        });
     } else void playAt(current.current.cursor, current.current.offset);
   };
   const move = (delta: number, markRead = false) => {
@@ -442,6 +460,7 @@ export function useClassroom(
     preparation,
     manual,
     error,
+    notice,
     saveStatus,
     ready,
     published,
@@ -451,6 +470,7 @@ export function useClassroom(
     resume,
     move,
     setError,
+    setNotice,
     setPublished,
     repeat: () => {
       setWaitingAt(null);

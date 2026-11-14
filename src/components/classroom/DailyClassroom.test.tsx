@@ -319,8 +319,76 @@ it("shows a recoverable message for unexpected browser aborts and resumes on Pla
     return normalFetch(input, init);
   });
   render(<DailyClassroom autoStart />);
-  await screen.findByText("အသံချိတ်ဆက်မှု ရပ်သွားပါသည်။ ပြန်ဆက်သင်မယ် ခလုတ်ကို နှိပ်ပါ။");
+  await screen.findByText("အတန်းကို ခဏရပ်ထားပါတယ်။ ပြန်ဆက်သင်မယ် ခလုတ်ကို နှိပ်နိုင်ပါတယ်။");
   expect(screen.queryByText("signal is aborted without reason")).not.toBeInTheDocument();
+  expect(screen.queryByRole("alert")).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole("button", { name: "ဆရာနဲ့ ပြန်ဆက်သင်မယ်" }));
   await waitFor(() => expect(AudioMock.all).toHaveLength(1));
+});
+
+it("does not render cancelled study-plan loads as errors or offer accidental re-enrollment", async () => {
+  const normalFetch = vi.mocked(fetch).getMockImplementation()!;
+  vi.mocked(fetch).mockImplementation(async (input, init) => {
+    if (input === "/api/study-plan" && !init?.body)
+      throw new DOMException("signal is aborted without reason", "AbortError");
+    return normalFetch(input, init);
+  });
+  render(<DailyClassroom autoStart />);
+  await screen.findByRole("button", { name: "ပြန်ဖွင့်မယ်" });
+  expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+  expect(screen.queryByText(/ပထမဆုံးအကြိမ်/)).not.toBeInTheDocument();
+  expect(screen.queryByText("signal is aborted without reason")).not.toBeInTheDocument();
+});
+it("cancelled questions remain retryable without displaying a red error", async () => {
+  const normalFetch = vi.mocked(fetch).getMockImplementation()!;
+  vi.mocked(fetch).mockImplementation(async (input, init) => {
+    if (init?.body && JSON.parse(init.body as string).action === "ask")
+      throw new Error("signal is aborted without reason");
+    return normalFetch(input, init);
+  });
+  render(<DailyClassroom autoStart />);
+  await waitFor(() => expect(AudioMock.all).toHaveLength(1));
+  fireEvent.click(screen.getByRole("button", { name: "ဆရာ၊ မေးချင်ပါတယ်" }));
+  fireEvent.change(screen.getByLabelText(/ဆရာကို မေးပါ/), {
+    target: { value: "What does may mean?" },
+  });
+  fireEvent.click(screen.getByRole("button", { name: "မေးမယ်" }));
+  await screen.findByText("မေးခွန်းချိတ်ဆက်မှု ခဏရပ်သွားပါသည်။ လိုအပ်လျှင် ပြန်မေးနိုင်ပါတယ်။");
+  expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+});
+
+it("cancelled completion waits for explicit retry and never loops or displays a red error", async () => {
+  const normalFetch = vi.mocked(fetch).getMockImplementation()!;
+  let finishes = 0;
+  vi.mocked(fetch).mockImplementation(async (input, init) => {
+    const body = init?.body ? JSON.parse(init.body as string) : null;
+    if (input === "/api/study-plan" && body?.action === "finish" && ++finishes === 1)
+      throw new DOMException("signal is aborted without reason", "AbortError");
+    return normalFetch(input, init);
+  });
+  render(<DailyClassroom autoStart />);
+  await waitFor(() => expect(AudioMock.all).toHaveLength(1));
+  for (let i = 0; i < 16; i++) {
+    await act(async () => AudioMock.all[i].finish());
+    if (i < 15) await waitFor(() => expect(AudioMock.all).toHaveLength(i + 2));
+  }
+  await screen.findByText("မှတ်တမ်းသိမ်းခြင်း ခဏရပ်သွားပါသည်။ ပြန်သိမ်းနိုင်ပါတယ်။");
+  expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+  expect(finishes).toBe(1);
+  fireEvent.click(screen.getByRole("button", { name: "မှတ်တမ်း ပြန်သိမ်းမယ်" }));
+  await waitFor(() => expect(finishes).toBe(2));
+});
+it("cancelled progress saves require reconnecting without displaying the browser exception", async () => {
+  const normalFetch = vi.mocked(fetch).getMockImplementation()!;
+  vi.mocked(fetch).mockImplementation(async (input, init) => {
+    if (init?.body && JSON.parse(init.body as string).action === "save")
+      throw new DOMException("signal is aborted without reason", "AbortError");
+    return normalFetch(input, init);
+  });
+  render(<DailyClassroom autoStart />);
+  await waitFor(() => expect(AudioMock.all).toHaveLength(1));
+  await act(async () => AudioMock.all[0].finish());
+  await screen.findByText("မှတ်တမ်းချိတ်ဆက်မှု ရပ်သွားပါသည်။ Refresh လုပ်ပြီး မှတ်တမ်းပြန်ယူပါ။");
+  expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+  expect(screen.queryByText("signal is aborted without reason")).not.toBeInTheDocument();
 });
