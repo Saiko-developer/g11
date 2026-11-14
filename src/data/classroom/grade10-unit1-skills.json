@@ -1,0 +1,335 @@
+{
+  "vocabulary": {
+    "title": "Countries, Nationalities and Languages",
+    "cards": [
+      {
+        "id": "g10-u1-vocabulary-1",
+        "paragraph": 1,
+        "source": "src/data/textbookUnit1.json: vocabulary (teacher-authored explanation and examples)",
+        "english": "Australia — Australian — English; China — Chinese — Chinese; France — French — French; Germany — German — German.",
+        "translation": "နိုင်ငံအမည်၊ နိုင်ငံသား သို့မဟုတ် လူမျိုး၊ ဘာသာစကားအမည်တို့ကို ခွဲသိကြမယ်။",
+        "explanation": "ကဲ၊ Reading မှာ language ဆိုတာ ဘာလဲဆိုတာ သိခဲ့ပြီနော်။ အခု လူတစ်ယောက် ဘယ်နိုင်ငံကလဲ၊ ဘာဘာသာစကားပြောလဲဆိုတာ ပြောကြည့်မယ်။ ဇယားကို ဘယ်ကနေညာ လိုက်ကြည့်ပါ။ Australia က နိုင်ငံအမည်၊ Australian က အဲဒီနိုင်ငံသား ဒါမှမဟုတ် အဲဒီနိုင်ငံနဲ့ဆိုင်တဲ့ adjective ပါ။ English က ဘာသာစကား။ သုံးခု အတူတူမဟုတ်ဘူးနော်။ China နဲ့ Chinese ကိုလည်း နှိုင်းကြည့်ပါ။ Chinese က လူမျိုးအနေနဲ့လည်း သုံးတယ်၊ ဘာသာစကားအနေနဲ့လည်း သုံးတယ်။ France က နိုင်ငံ၊ French က လူမျိုးနဲ့ ဘာသာစကား။ Germany ကို German နဲ့ မရောပါနဲ့။",
+        "reasoning": "I am from Australia. ဆိုရင် from နောက်မှာ country ထားတယ်။ I am Australian. ဆိုရင် am နောက်မှာ nationality adjective ထားတယ်။ I speak English. ဆိုရင် speak နောက်မှာ language ထားတာပါ။ I am Australia လို့ ပြောလိုက်ရင် ကိုယ်က နိုင်ငံကြီးဖြစ်သွားမယ်နော်။ I speak French fluently. မှာ fluently က ဘယ်လိုပြောနိုင်လဲဆိုတာ ဖြည့်ပြတဲ့ adverb ပါ။ အခု China နဲ့ ကိုယ့်ဘာသာ ဝါကျသုံးကြောင်းလုပ်ကြည့်ပါ။",
+        "notes": [
+          "from + country",
+          "be + nationality",
+          "speak + language",
+          "Australian / Chinese / French / German ကို adjective အဖြစ်လည်းသုံးနိုင်"
+        ],
+        "focus": [
+          "Australian",
+          "Chinese",
+          "French",
+          "German"
+        ]
+      },
+      {
+        "id": "g10-u1-vocabulary-2",
+        "paragraph": 2,
+        "source": "src/data/textbookUnit1.json: vocabulary (teacher-authored explanation and examples)",
+        "english": "Italy — Italian — Italian; Japan — Japanese — Japanese; Korea — Korean — Korean; Laos — Laotian — Lao / Laotian.",
+        "translation": "အီတလီ၊ ဂျပန်၊ ကိုရီးယား၊ လာအိုတို့ရဲ့ နိုင်ငံ၊ လူမျိုး၊ ဘာသာစကားအမည်တွေပါ။",
+        "explanation": "ဒီတစ်ခါ Japan ကို အရင်ကြည့်မယ်။ နိုင်ငံအမည်က Japan၊ လူမျိုးနဲ့ ဘာသာစကားက Japanese နော်။ Japan language လို့ တိုက်ရိုက်မဆက်ဘဲ Japanese ဒါမှမဟုတ် the Japanese language လို့ သုံးတယ်။ Italy ကနေ Italian ဖြစ်တာကိုကြည့်၊ နောက်ဆုံးစာလုံးတွေကို စည်းမျဉ်းတစ်ခုတည်းနဲ့ ခန့်မှန်းလို့မရဘူး။ Korean နဲ့ Japanese ရဲ့ အသံအဆုံးကို နားထောင်ပြီး တစ်ခေါက်စီ လိုက်ပြောကြည့်ပါ။ စာအုပ်ဇယားမှာ Laos အတွက် Laotian၊ language နဲ့ adjective မှာ Lao / Laotian လို့ ပေးထားတယ်။ နှစ်မျိုးလုံးကို ဇယားအတိုင်း မှတ်ထားမယ်။",
+        "reasoning": "Japanese cars ဆိုရင် Japanese က cars ကို ဖော်ပြတဲ့ adjective၊ speak Japanese ဆိုရင် language name ပါ။ I am Japanese. မှာ Japanese က nationality adjective ဖြစ်လို့ a မထည့်ပါဘူး။ an Italian student လို့ student နာမ်ကို ထည့်လိုက်ရင်တော့ singular countable noun အတွက် an လိုတယ်။ စကားလုံးတူပေမယ့် ဝါကျထဲ ဘာအလုပ်လုပ်နေလဲဆိုတာ ကြည့်ရမယ်နော်။",
+        "notes": [
+          "Japanese cars → adjective",
+          "speak Japanese → language",
+          "I am Japanese. / an Italian student",
+          "Laos → Laotian; Lao / Laotian"
+        ],
+        "focus": [
+          "Italian",
+          "Japanese",
+          "Korean",
+          "Laotian"
+        ]
+      },
+      {
+        "id": "g10-u1-vocabulary-3",
+        "paragraph": 3,
+        "source": "src/data/textbookUnit1.json: vocabulary (teacher-authored explanation and examples)",
+        "english": "Myanmar — Burmese — Myanmar / Burmese; The UK — British — English; The USA — American — English; Vietnam — Vietnamese — Vietnamese.",
+        "translation": "မြန်မာ၊ ဗြိတိန်၊ အမေရိကန်၊ ဗီယက်နမ်တို့ရဲ့ ဇယားအချက်အလက်တွေကို ဆက်လေ့လာမယ်။",
+        "explanation": "ဇယားအဆုံးက လေးနိုင်ငံကို ကြည့်ရအောင်။ စာအုပ်မှာ Myanmar ရဲ့ nationality ကို Burmese၊ language ကို Myanmar / Burmese လို့ ရေးထားတယ်။ အဲဒီပေးထားတဲ့ ဝေါဟာရအတိုင်း ဒီလေ့ကျင့်ခန်းမှာ ဖြေမယ်နော်။ လူတစ်ဦးရဲ့ ကိုယ်ပိုင်လူမျိုးအမှတ်အသားအားလုံးကို ဒီဇယားတစ်ခုက ဖော်ပြတယ်လို့ မဆိုလိုပါဘူး။ UK နဲ့ USA ကိုကြည့်၊ နိုင်ငံမတူပေမယ့် language column မှာ English နှစ်ခုလုံးဖြစ်နေတယ်။ nationality ကတော့ British နဲ့ American ခွဲရတယ်။ Vietnam ကနေ Vietnamese ဖြစ်တာလည်း မှတ်ထားပါ။",
+        "reasoning": "She is from the UK. She is British. She speaks English. လို့ ဆက်ပြောကြည့်မယ်။ She ဖြစ်လို့ speaks မှာ s ပါတယ်။ UK နဲ့ USA ရှေ့မှာ the ထည့်ပေမယ့် Vietnam ရှေ့မှာ ပုံမှန် the မထည့်ဘူး။ အခု vocabulary လေ့ကျင့်ခန်းမှာ speak နောက်က blank လား၊ from နောက်က blank လား အရင်ကြည့်ပါ။ အဓိပ္ပာယ်တစ်ခုတည်းနဲ့ မခန့်မှန်းဘဲ ဝါကျထဲက နေရာနဲ့ပါ စဉ်းစားရမှာပါ။",
+        "notes": [
+          "the UK / the USA",
+          "British ≠ English (nationality vs language)",
+          "She speaks English.",
+          "from Vietnam → Vietnamese"
+        ],
+        "focus": [
+          "Burmese",
+          "British",
+          "American",
+          "Vietnamese"
+        ]
+      }
+    ]
+  },
+  "grammar": {
+    "title": "Nouns in Apposition",
+    "cards": [
+      {
+        "id": "g10-u1-grammar-1",
+        "paragraph": 1,
+        "source": "src/data/textbookUnit1.json: grammar (teacher-authored explanation and examples)",
+        "english": "The ostrich, a kind of flightless bird, is found only in Africa.",
+        "translation": "ငှက်ကုလားအုတ်သည် မပျံနိုင်သောငှက်တစ်မျိုးဖြစ်ပြီး အာဖရိကတွင်သာ တွေ့ရသည်။",
+        "explanation": "ကဲ၊ ဒီဝါကျမှာ ostrich ကို မသိတဲ့သူလည်း ရှိနိုင်တယ်နော်။ စာရေးသူက အဲဒါဘာကောင်လဲဆိုတာ ဘေးမှာပဲ a kind of flightless bird လို့ ထပ်ရှင်းပေးထားတယ်။ အဲဒီနာမ်စုနဲ့ The ostrich က အရာတစ်ခုတည်းကိုပဲ ညွှန်းတာပါ။ ဒါကို noun in apposition လို့ခေါ်တယ်။ နာမ်နှစ်ခုတွေ့တိုင်း apposition မဟုတ်ဘူးနော်။ တစ်ခုကို နောက်တစ်ခုက အမည်ပြောင်းခေါ်ပေးတာလား၊ ထပ်ရှင်းပေးတာလား အရင်မေးကြည့်ပါ။",
+        "reasoning": "a kind of flightless bird ကို ခဏဖယ်ကြည့်မယ်။ The ostrich is found only in Africa. ဆိုတဲ့ အဓိကဝါကျ ကျန်နေတယ်။ ဒီနေရာမှာ ထပ်ဖြည့်အချက်အလက်ဖြစ်လို့ comma နှစ်ဖက်နဲ့ ခွဲထားတာပါ။ ဒါပေမယ့် my friend Aye Aye လို ဘယ်သူငယ်ချင်းလဲဆိုတာ ခွဲသတ်မှတ်ပေးတဲ့ အမည်မှာ comma မလိုနိုင်ဘူး။ Apposition ဆိုတိုင်း comma အမြဲထည့်ရမယ်လို့ မမှတ်ပါနဲ့။",
+        "notes": [
+          "နာမ် / နာမ်စု နှစ်ခု → အရာတစ်ခုတည်း",
+          "a kind of flightless bird → apposition",
+          "အပိုအချက်အလက်ကို comma ဖြင့်ခွဲ"
+        ],
+        "focus": [
+          "a kind of flightless bird"
+        ]
+      },
+      {
+        "id": "g10-u1-grammar-2",
+        "paragraph": 2,
+        "source": "src/data/textbookUnit1.json: grammar (teacher-authored explanation and examples)",
+        "english": "My son, a musician, earns little and lives with me.",
+        "translation": "ဂီတပညာရှင်တစ်ဦးဖြစ်သော ကျွန်ုပ်၏သားသည် ဝင်ငွေနည်းပြီး ကျွန်ုပ်နှင့်အတူ နေသည်။",
+        "explanation": "ဒီတစ်ကြောင်းမှာ ဘယ်သူက ဂီတပညာရှင်လဲ။ My son ပဲနော်။ a musician က လူအသစ်တစ်ယောက် မဟုတ်ဘူး။ My son ကို ထပ်ရှင်းတာပါ။ Subject ကို ရှာတဲ့အခါ musician ကို subject အသစ်လို့ မယူပါနဲ့။ အဓိက subject က My son၊ verbs တွေက earns နဲ့ lives ပါ။ ဆရာတို့ apposition ကို ခဏကွင်းခတ်ထားရင် ဝါကျဖွဲ့ပုံ ပိုမြင်လာမယ်။",
+        "reasoning": "စာအုပ်ထဲက Judo ဝါကျမှာလည်း a Japanese martial art က Judo ကို ရှင်းတယ်၊ a samurai unarmed fighting technique က jujitsu ကို ရှင်းတယ်။ တစ်ဝါကျမှာ apposition နှစ်ခု ရှိနိုင်တာ တွေ့ပြီနော်။ ကိုယ်ဖြေတဲ့အခါ phrase ကို အပြည့်ယူပါ။ musician တစ်လုံးတည်းမဟုတ်ဘဲ a musician လို့ article ပါ အပြည့် ရေးရမယ်။",
+        "notes": [
+          "My son = a musician",
+          "Subject: My son; verbs: earns / lives",
+          "a musician ကို phrase အပြည့်ယူ",
+          "Judo ဝါကျတွင် apposition နှစ်ခုရှိ"
+        ],
+        "focus": [
+          "a musician",
+          "earns",
+          "lives"
+        ]
+      },
+      {
+        "id": "g10-u1-grammar-3",
+        "paragraph": 3,
+        "source": "src/data/textbookUnit1.json: grammar (teacher-authored explanation and examples)",
+        "english": "U Tun Tun is our English teacher. He is a very strict person. → U Tun Tun, our English teacher, is a very strict person.",
+        "translation": "ဦးထွန်းထွန်း၊ ကျွန်ုပ်တို့၏ အင်္ဂလိပ်စာဆရာသည် အလွန်စည်းကမ်းတင်းကျပ်သူ ဖြစ်သည်။",
+        "explanation": "အခု ဝါကျနှစ်ကြောင်းကို ပေါင်းကြည့်ကြမယ်။ U Tun Tun နဲ့ He က လူတစ်ယောက်တည်းလား။ ဟုတ်တယ်နော်။ ပထမဝါကျထဲက our English teacher ကို အဲဒီလူရဲ့ အမည်ဘေးမှာ ရွှေ့ထည့်မယ်။ ဒုတိယဝါကျရဲ့ He နေရာကို U Tun Tun နဲ့ အစားထိုးပြီး ကျန်တဲ့ is a very strict person ကို ဆက်ထားမယ်။ ကြိယာ is နှစ်ခုကို တစ်နေရာတည်း အတင်းမဆက်ပါနဲ့။",
+        "reasoning": "အဆင့်က တူညီတဲ့လူကိုရှာ၊ ရှင်းပြတဲ့ noun phrase ကိုရွေး၊ ပထမနာမ်ဘေးကိုရွှေ့၊ ကျန်တဲ့ main clause ကိုဆက်၊ comma စစ်။ U Tun Tun, is our English teacher, is a very strict person. လို့ ရေးရင် apposition ထဲမှာ is ပိုနေတယ်။ our English teacher က noun phrase ဖြစ်ရမှာပါ။ အခု Aung Aung နဲ့ best footballer လေ့ကျင့်ခန်းကို ဒီအဆင့်အတိုင်း လုပ်ကြည့်ပါ။",
+        "notes": [
+          "တူညီသောလူ → He = U Tun Tun",
+          "our English teacher → noun phrase",
+          "ထပ်နေသော subject / linking verb ကိုဖယ်",
+          "Name, noun phrase, main verb …"
+        ],
+        "focus": [
+          "our English teacher"
+        ]
+      },
+      {
+        "id": "g10-u1-grammar-4",
+        "paragraph": 4,
+        "source": "src/data/textbookUnit1.json: grammar (teacher-authored explanation and examples)",
+        "english": "Jack was born in Finland. Finland is the land of a thousand lakes. → Jack was born in Finland, the land of a thousand lakes.",
+        "translation": "ဂျက်ကို ရေကန်တစ်ထောင်ရှိရာနိုင်ငံဟုခေါ်သော ဖင်လန်နိုင်ငံတွင် မွေးဖွားခဲ့သည်။",
+        "explanation": "ဒီတစ်ပုဒ်က နည်းနည်းကွာတယ်။ ထပ်နေတဲ့နာမ်က Jack မဟုတ်ဘူး၊ Finland နော်။ ဒါကြောင့် the land of a thousand lakes ကို Jack ဘေးမထားဘဲ Finland ဘေးမှာ ထားရတယ်။ ဘယ်နာမ်ကို ရှင်းပြနေတာလဲဆိုတာ မစစ်ဘဲ subject နောက်တင်လိုက်ရင် အဓိပ္ပာယ်မှားသွားမယ်။ စာအုပ်ထဲက spaghetti နဲ့ Ngapali Beach ကိုလည်း ဒီလို စစ်ကြည့်ပါ။",
+        "reasoning": "ဒီမှာ apposition က ဝါကျအဆုံးရောက်နေတော့ ရှေ့မှာ comma တစ်ခု၊ နောက်မှာ full stop ပါ။ ဝါကျအလယ်မှာဆို comma နှစ်ခု၊ အဆုံးမှာဆို comma တစ်ခုနဲ့ full stop ဖြစ်တာကို နှိုင်းကြည့်ပါ။ Transformation ပြီးတိုင်း မူရင်းအဓိပ္ပာယ်မပြောင်းလား၊ နာမ်စုနေရာမှန်လား၊ main verb ကျန်လား၊ punctuation မှန်လား လေးချက် ပြန်စစ်မယ်။",
+        "notes": [
+          "Finland = the land of a thousand lakes",
+          "Apposition ကို ရည်ညွှန်းသောနာမ်ဘေးတွင်ထား",
+          "ဝါကျအဆုံး → comma + phrase + full stop",
+          "Meaning / noun / verb / punctuation စစ်"
+        ],
+        "focus": [
+          "Finland",
+          "the land of a thousand lakes"
+        ]
+      }
+    ]
+  },
+  "listening": {
+    "title": "Global Languages — Listening",
+    "cards": [
+      {
+        "id": "g10-u1-listening-1",
+        "paragraph": 1,
+        "source": "src/data/textbookUnit1.json: listening (teacher-authored explanation and examples)",
+        "english": "Listen and tick the names of the languages you hear.",
+        "translation": "အသံထဲမှာ တကယ်ကြားရတဲ့ ဘာသာစကားအမည်တွေကိုသာ ရွေးမယ်။",
+        "explanation": "အခု စာအုပ်ရဲ့ မူရင်းအသံနဲ့ နားထောင်လေ့ကျင့်မယ်နော်။ ပထမတစ်ခေါက်မှာ စကားလုံးတိုင်း ဘာသာပြန်ဖို့ မကြိုးစားနဲ့။ Arabic၊ Chinese၊ English၊ French စတဲ့ အမည်တွေကို မျက်စိနဲ့ အရင်ဖတ်ထားပါ။ အသံထဲမှာ ကြားလိုက်တာကိုပဲ မှတ်ပါ။ ကိုယ်သိပြီးသား ဘာသာစကားဆိုပြီး အလိုလို အမှန်ခြစ်မလုပ်ရဘူးနော်။ Brazilian ဆိုတဲ့ စကားလုံးကိုလည်း စာရင်းထဲပါလို့ပဲ ဘာသာစကားအမည်မှန်ဖြစ်မယ်လို့ မယူဆပါနဲ့။ နားထောင်ရတဲ့ အချက်အလက်က အဓိကပါ။",
+        "reasoning": "ပထမတစ်ခေါက်ပြီးရင် ဘာအကြောင်းပြောသလဲ တစ်ကြောင်းနဲ့ ကိုယ့်ဘာသာ ပြန်ပြောကြည့်။ ဒုတိယတစ်ခေါက်မှာ language names ကို တိုက်စစ်မယ်။ မကြားလိုက်တဲ့နေရာကို မခန့်မှန်းဘဲ မသေချာဟု မှတ်ထားပါ။ ဒီအတန်းရဲ့ မူရင်း recording ခလုတ်ကနေ ဖွင့်နိုင်ပါတယ်။ ဆရာရှင်းပြသံနဲ့ မူရင်း recording ကို တစ်ပြိုင်တည်း မဖွင့်ပါနဲ့။",
+        "notes": [
+          "ပထမအကြိမ် → အကြောင်းအရာ",
+          "ဒုတိယအကြိမ် → language names",
+          "ကြားရသောအချက်ကိုသာ မှတ်",
+          "မူရင်းအသံ /audio/unit1.mp3"
+        ],
+        "focus": [
+          "Listen",
+          "languages"
+        ]
+      },
+      {
+        "id": "g10-u1-listening-2",
+        "paragraph": 2,
+        "source": "src/data/textbookUnit1.json: listening (teacher-authored explanation and examples)",
+        "english": "Listen again and order the seven languages from the most widely spoken to the least spoken.",
+        "translation": "လူအများဆုံးပြောသော ဘာသာစကားမှ အနည်းဆုံးပြောသော ဘာသာစကားအထိ အသံအတိုင်း စီပါ။",
+        "explanation": "ဒီတစ်ခါ order ဆိုတော့ ဘာသာစကားအမည်ကို သိရုံနဲ့ မရဘူးနော်။ တစ်ခုနဲ့တစ်ခု နှိုင်းယှဉ်ထားတဲ့ အရေအတွက်ကို ဖမ်းရမယ်။ million နဲ့ billion ကြားကွာခြားချက်ကို သတိထားပါ။ အမည်နဲ့ နံပါတ်ကို တွဲပြီး မှတ်စုတိုရေး။ မကြားလိုက်ရင် အသံပြန်ရစ်ပြီး နားထောင်လို့ရတယ်။ ကိုယ့်အထင်နဲ့ ကမ္ဘာ့လက်ရှိအဆင့်ကို ရေးတာမဟုတ်ဘဲ စာအုပ် recording ထဲက အစီအစဉ်ကို လိုက်ဖြေရမှာပါ။",
+        "reasoning": "from the most … to the least … က အများဆုံးကနေ အနည်းဆုံးအထိဆိုတဲ့ direction ကို ပြထားတာပါ။ ပြောင်းပြန်စီမိရင် အချက်သိပေမယ့် အဖြေမှားနိုင်တယ်။ ဒီ repository မှာ listening blank တချို့ရဲ့ exact number နဲ့ အဖြေကို အတည်ပြုမထားသေးလို့ ဆရာက ကိန်းဂဏန်းအဖြေကို မဖန်တီးပေးပါဘူး။ ကြားရတာကို evidence အဖြစ် ရေးပြီး မသေချာတာကို ဆရာမေးခွန်းထဲ ထည့်နိုင်ပါတယ်။",
+        "notes": [
+          "language + number တွဲမှတ်",
+          "million ≠ billion",
+          "most → least",
+          "မအတည်ပြုထားသော exact answers မခန့်မှန်း"
+        ],
+        "focus": [
+          "most widely spoken",
+          "least spoken"
+        ]
+      }
+    ]
+  },
+  "speaking": {
+    "title": "Talking about Learning a Foreign Language",
+    "cards": [
+      {
+        "id": "g10-u1-speaking-1",
+        "paragraph": 1,
+        "source": "src/data/textbookUnit1.json: speaking (teacher-authored explanation and examples)",
+        "english": "Are you learning a foreign language? What is it? — Yes, I am learning English.",
+        "translation": "နိုင်ငံခြားဘာသာစကားတစ်ခုကို သင်ယူနေသလား။ ဘာဘာသာစကားလဲ။ ဟုတ်ကဲ့၊ အင်္ဂလိပ်စာ သင်ယူနေပါတယ်။",
+        "explanation": "ကဲ၊ ဒီတစ်ခါ ဆရာက မေးမယ်၊ သင်က ကိုယ့်အကြောင်း ဖြေကြည့်ပါ။ Are you learning a foreign language? တစ်ခဏ ရပ်ပြီး အသံထွက်ဖြေကြည့်။ ဆရာပေးထားတဲ့ Yes, I am learning English. ကို ကြည့်ပြီး တစ်ခေါက်၊ မကြည့်ဘဲ တစ်ခေါက် ပြောပါ။ တခြားဘာသာစကား သင်နေရင် အဲဒီအမည်ကို အစားထိုးပြောလို့ရတယ်။ ကိုယ့်အကြောင်းအမှန်ကို ပြောနိုင်ဖို့က အဓိကနော်။",
+        "reasoning": "am learning က အခုကာလအတွင်း ဆက်လက်သင်ယူနေတာကို ပြတယ်။ Yes တစ်လုံးတည်းထက် ဘာဘာသာစကားလဲဆိုတာပါ ဖြည့်ပြောရင် ဆက်သွယ်မှု ပိုပြည့်စုံတယ်။ ပြောတဲ့အခါ English ဆိုတဲ့ အဓိကအချက်ကို နည်းနည်းဖိပြောကြည့်ပါ။ ဒီအပိုင်းမှာ အသံထွက်အမှတ်ကို အလိုအလျောက် ပေးထားတာမဟုတ်ဘူး။ ကိုယ်တိုင် အသံထွက်လေ့ကျင့်ပြီး ဖြေထားတဲ့စာကို သိမ်းထားနိုင်ပါတယ်။",
+        "notes": [
+          "Yes, I am learning …",
+          "ကိုယ့်အကြောင်းအမှန်ဖြင့် ပြောင်းဖြေ",
+          "ကြည့်ပြီးပြော → မကြည့်ဘဲပြော",
+          "အလိုအလျောက် pronunciation score မပေး"
+        ],
+        "focus": [
+          "am learning English"
+        ]
+      },
+      {
+        "id": "g10-u1-speaking-2",
+        "paragraph": 2,
+        "source": "src/data/textbookUnit1.json: speaking (teacher-authored explanation and examples)",
+        "english": "When did you start learning it? — I started learning it when I was in primary school.",
+        "translation": "အဲဒီဘာသာစကားကို ဘယ်အချိန်က စသင်ခဲ့သလဲ။ မူလတန်းတုန်းက စသင်ခဲ့ပါတယ်။",
+        "explanation": "When did you start learning it? လို့ ဆက်မေးမယ်။ ကိုယ်စသင်ခဲ့တဲ့ အချိန်ကို အရင်စဉ်းစားပါ။ primary school မဟုတ်ရင် when I was six လို ကိုယ့်အချိန်နဲ့ ပြောင်းပြောနိုင်တယ်။ မေးခွန်းမှာ did ပါပေမယ့် start က မူရင်းပုံစံ၊ အဖြေမှာတော့ started ဖြစ်တာ သတိထားနော်။ မေးခွန်းတစ်ခုကို အလွတ်ကျက်ဖြေတာထက် ဘာကို မေးနေလဲ အရင်နားလည်ပါ။",
+        "reasoning": "နောက်တစ်ခုက What difficulties do you have in learning it? ပါ။ I have difficulties with vocabulary. လို့ ပြောပြီး အကြောင်းရင်းတစ်ခု ဆက်ပြောကြည့်။ Outside school မှာ ဘယ်လိုလေ့ကျင့်လဲဆိုရင် I practise by reading storybooks. လို့ by နောက်မှာ reading သုံးနိုင်တယ်။ သူငယ်ချင်းရှိရင် အလှည့်ကျ interview လုပ်၊ တစ်ယောက်တည်းဆို ဆရာမေးခွန်းပြီးတိုင်း Pause လုပ်ပြီး အသံထွက် ဖြေကြည့်ပါ။",
+        "notes": [
+          "did + start; answer → started",
+          "when I was …",
+          "difficulties with …",
+          "practise by + V-ing"
+        ],
+        "focus": [
+          "did you start",
+          "started learning"
+        ]
+      },
+      {
+        "id": "g10-u1-speaking-3",
+        "paragraph": 3,
+        "source": "src/data/textbookUnit1.json: speaking (teacher-authored explanation and examples)",
+        "english": "My friend is learning English. They started learning it in primary school and practise outside school by reading and speaking with friends.",
+        "translation": "သူငယ်ချင်း သင်ယူနေတဲ့ ဘာသာစကားနဲ့ လေ့ကျင့်ပုံကို အတန်းကို ပြန်ပြောမယ်။",
+        "explanation": "စာအုပ်ရဲ့ နောက်ဆုံး speaking task က သူငယ်ချင်းအကြောင်း ပြန်တင်ပြဖို့ပါ။ interview လုပ်တုန်းက သူက I am learning English. လို့ ပြောတယ်ဆိုပါစို့။ ကိုယ်ပြန်တင်ပြတဲ့အခါ My friend is learning English. လို့ ပြောင်းရမယ်။ I ကို အတိုင်း မကူးပါနဲ့။ ကိုယ့်မှာ partner မရှိရင် စိတ်ကူးထားတဲ့ အဖော်အကြောင်းဆိုပြီး ရှင်းရှင်းလင်းလင်း ပြောလို့ရတယ်။ တကယ်မေးမထားတဲ့အချက်ကို မေးပြီးသားလို့ မဆိုရဘူးနော်။",
+        "reasoning": "တင်ပြတဲ့အခါ language၊ started when၊ difficulty၊ outside-school practice ဆိုတဲ့ အချက်လေးခုကို အစီအစဉ်နဲ့ ပြောပါ။ စာရွက်ကို တစ်လုံးချင်းမဖတ်ဘဲ keywords ကိုကြည့်ပြီး ဝါကျဆောက်ကြည့်မယ်။ ကိုယ်သုံးတဲ့ subject နဲ့ verb ညီလား ပြန်စစ်ပါ။ My friend practises ဆိုရင် s ပါမယ်။ singular they ကို သုံးရင် They practise လို့ s မပါဘူး။",
+        "notes": [
+          "language → start → difficulty → practice",
+          "I am → My friend is",
+          "My friend practises / They practise",
+          "keywords ကြည့်ပြီး ပြန်တင်ပြ"
+        ],
+        "focus": [
+          "My friend",
+          "They"
+        ]
+      }
+    ]
+  },
+  "writing": {
+    "title": "A Short Paragraph about Japan",
+    "cards": [
+      {
+        "id": "g10-u1-writing-1",
+        "paragraph": 1,
+        "source": "src/data/textbookUnit1.json: writing (teacher-authored explanation and examples)",
+        "english": "Japan: island nation • north Pacific Ocean • Japanese • advanced country • cars, cameras and televisions",
+        "translation": "ဂျပန်နိုင်ငံအကြောင်း ရေးဖို့ ပေးထားတဲ့ အချက်တွေကို အုပ်စုခွဲပြီး စုမယ်။",
+        "explanation": "အခု စာပိုဒ်အဆင်သင့်ကို ကူးရေးမယ့်အစား ကိုယ်တိုင် တည်ဆောက်ကြမယ်နော်။ စာအုပ်က Japan အကြောင်း ခုနစ်ကြောင်းကနေ ဆယ်ကြောင်း ရေးခိုင်းထားတယ်။ အရင်ဆုံး အချက်တွေကို သုံးအုပ်စုခွဲပါ။ ဘယ်မှာရှိလဲ၊ လူနဲ့ဘာသာစကား၊ တိုးတက်မှုနဲ့ ထုတ်ကုန် ဆိုပြီး ခွဲရင် အစီအစဉ်မြင်လာမယ်။ ပေးထားတဲ့အချက်မဟုတ်တဲ့ ကိန်းဂဏန်းတွေကို အထင်နဲ့ ဖြည့်ဖို့ မလိုဘူး။",
+        "reasoning": "Brainstorm ဆိုတာ စဉ်းစားမိသမျှကို စုတာ၊ outline ဆိုတာ အဲဒီအချက်တွေထဲက သင့်တော်တာကို ရွေးပြီး စီတာပါ။ Opening sentence မှာ နိုင်ငံအကြောင်း မိတ်ဆက်၊ body မှာ တည်နေရာနဲ့ ဘာသာစကား၊ နောက်မှာ စက်မှုနဲ့ ထုတ်ကုန်၊ closing မှာ အဓိကအချက်ကို ချုပ်မယ်။ တစ်ဝါကျတည်းထဲ အချက်အားလုံး မသိပ်ထည့်ပါနဲ့။",
+        "notes": [
+          "Brainstorm → group → outline",
+          "Opening: Japan ကို မိတ်ဆက်",
+          "Body: location / language / industry",
+          "Closing: အဓိကအချက် ပြန်ချုပ်"
+        ],
+        "focus": [
+          "island nation",
+          "Japanese"
+        ]
+      },
+      {
+        "id": "g10-u1-writing-2",
+        "paragraph": 2,
+        "source": "src/data/textbookUnit1.json: writing (teacher-authored explanation and examples)",
+        "english": "Japan is an island nation in the north Pacific Ocean. The people of Japan speak Japanese.",
+        "translation": "ဂျပန်သည် ပစိဖိတ်သမုဒ္ဒရာမြောက်ပိုင်းရှိ ကျွန်းနိုင်ငံဖြစ်သည်။ ဂျပန်ပြည်သူများသည် ဂျပန်ဘာသာစကား ပြောကြသည်။",
+        "explanation": "ပထမဝါကျကို အတူဆောက်မယ်။ Japan ဆိုတာ subject၊ is က linking verb၊ an island nation က complement၊ in the north Pacific Ocean က နေရာကို ဖြည့်တယ်။ island က vowel sound နဲ့စလို့ an သုံးတာပါ။ ဒုတိယဝါကျမှာ The people of Japan ဆိုတဲ့ subject အများကိန်း ဖြစ်လို့ speak လို့ပဲ ရေးတယ်။ speaks မဟုတ်ဘူးနော်။ ဒီလို sentence တစ်ကြောင်းစီ ရှင်းရင် paragraph တည်ဆောက်ရတာ မခက်တော့ဘူး။",
+        "reasoning": "နောက်ဝါကျမှာ Japan ကို အကြိမ်ကြိမ် ထပ်မရေးဘဲ It နဲ့ ပြန်ညွှန်းနိုင်တယ်။ ဒါပေမယ့် The people ကို ညွှန်းချင်ရင် They ဖြစ်ရမယ်။ It နဲ့ They က ဘာကိုပြန်ညွှန်းလဲ မသေချာရင် နာမ်ကို ပြန်ရေးပါ။ ဥပမာ It is an advanced country. နဲ့ They speak Japanese. ကို နှိုင်းကြည့်မယ်။",
+        "notes": [
+          "Japan + is + an island nation",
+          "people + speak (speaks မဟုတ်)",
+          "Japan → It; people → They",
+          "an + vowel sound"
+        ],
+        "focus": [
+          "an island nation",
+          "people",
+          "speak"
+        ]
+      },
+      {
+        "id": "g10-u1-writing-3",
+        "paragraph": 3,
+        "source": "src/data/textbookUnit1.json: writing (teacher-authored explanation and examples)",
+        "english": "Japan manufactures and exports cars, cameras and televisions.",
+        "translation": "ဂျပန်သည် ကား၊ ကင်မရာနှင့် ရုပ်မြင်သံကြားစက်များကို ထုတ်လုပ်ပြီး ပြည်ပသို့ တင်ပို့သည်။",
+        "explanation": "ဒီအချက်မှာ manufacture က ထုတ်လုပ်တာ၊ export က နိုင်ငံခြားကို တင်ပို့တာပါ။ နှစ်ခု အဓိပ္ပာယ်မတူဘူးနော်။ Japan ဆိုတဲ့ subject တစ်ခုတည်းက အလုပ်နှစ်ခုလုပ်တာမို့ manufactures and exports လို့ ဆက်နိုင်တယ်။ ကြိယာနှစ်ခုလုံးမှာ s ထည့်ဖို့ မမေ့ပါနဲ့။ ကားတစ်စီးတည်းကို ပြောတာမဟုတ်ဘဲ ထုတ်ကုန်အမျိုးအစားတွေကို ပြောတာမို့ cars၊ cameras၊ televisions လို့ အများကိန်းသုံးတယ်။",
+        "reasoning": "ဆရာရေးပြတဲ့ ဒီဥပမာတွေက သင်ရေးဖို့ လမ်းပြပါ။ စာပိုဒ်တစ်ခုလုံးအဖြစ် ကူးရေးရုံ မလုပ်ပါနဲ့။ ကိုယ့် outline အတိုင်း ခုနစ်ကြောင်းကနေ ဆယ်ကြောင်း တည်ဆောက်ပါ။ တစ်ကြောင်းနဲ့တစ်ကြောင်း ဆက်စပ်လား၊ Japan သို့မဟုတ် It ဆိုတာ ဘာကိုညွှန်းလဲ၊ အချက်အသစ်ထပ်ဖြည့်မိလား ပြန်ကြည့်မယ်။",
+        "notes": [
+          "manufacture = ထုတ်လုပ်",
+          "export = ပြည်ပသို့တင်ပို့",
+          "Japan manufactures and exports …",
+          "စာအုပ်သတ်မှတ်ချက်: 7–10 sentences"
+        ],
+        "focus": [
+          "manufactures",
+          "exports"
+        ]
+      },
+      {
+        "id": "g10-u1-writing-4",
+        "paragraph": 4,
+        "source": "src/data/textbookUnit1.json: writing (teacher-authored explanation and examples)",
+        "english": "Draft → check meaning → check grammar → revise your paragraph.",
+        "translation": "မူကြမ်းရေး၊ အဓိပ္ပာယ်စစ်၊ သဒ္ဒါစစ်ပြီး ကိုယ်တိုင်ပြန်ပြင်မယ်။",
+        "explanation": "အခု မူကြမ်းကို အသံထွက် တစ်ခေါက်ဖတ်ကြည့်ပါ။ ဝါကျမပြီးသေးသလို ခံစားရတဲ့နေရာမှာ subject သို့မဟုတ် verb ကျန်သလား စစ်ပါ။ Japan export cars. လို့ ရေးထားရင် Japan တစ်ခုကိန်းဖြစ်လို့ exports လို့ ပြင်မယ်။ They speaks Japanese. ဆိုရင် They အများကိန်းနဲ့ speak ဖြစ်ရမယ်။ အမှားကို ဖျက်လိုက်ရုံမဟုတ်ဘဲ ဘာကြောင့်ပြင်ရလဲ ကိုယ်တိုင် ပြောနိုင်ရမယ်နော်။",
+        "reasoning": "နောက်ဆုံး စာကြောင်းအရေအတွက် ခုနစ်ကနေဆယ်အတွင်းလား၊ capital letter နဲ့ full stop ပါလား၊ အချက်တွေ အစီအစဉ်ရှိလား စစ်ပါ။ အခု section activity က guided draft ပါ။ Unit ရဲ့ section ခြောက်ခုလုံး ပြီးမှ formal exam-practice homework ကို သီးခြားအပ်ပေးမယ်။ Writing အမှတ်ကို စက်နဲ့ exact match လုပ်ပြီး မဆုံးဖြတ်ပါဘူး။ ပြန်သုံးသပ်ဖို့ draft ကို Account ထဲ သိမ်းပေးမယ်။",
+        "notes": [
+          "Meaning → structure → agreement → punctuation",
+          "Japan exports / They speak",
+          "7–10 sentences",
+          "Draft ကို သိမ်းပြီး ပြန်ပြင်နိုင်"
+        ],
+        "focus": [
+          "Draft",
+          "revise"
+        ]
+      }
+    ]
+  }
+}

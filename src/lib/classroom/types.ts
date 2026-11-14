@@ -10,11 +10,14 @@ export type ReadingSegment = {
   reasoning: string;
   leadIn?: string;
   closing?: string;
+  notes?: string[];
+  focus?: string[];
 };
 export type ReadingLesson = {
   id: string;
   grade: 10 | 11;
   unit: 1;
+  section?: "vocabulary" | "grammar" | "listening" | "speaking" | "writing";
   version: string;
   title: string;
   review: "draft";

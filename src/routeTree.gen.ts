@@ -38,6 +38,7 @@ import { Route as ApiStudyPlanRouteImport } from './routes/api/study-plan'
 import { Route as ApiTeachingSetupRouteImport } from './routes/api/teaching-setup'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as ApiTtsRouteImport } from './routes/api/tts'
+import { Route as ApiUnitClassroomRouteImport } from './routes/api/unit-classroom'
 import { Route as ClassExamIdRouteImport } from './routes/class-exam.$id'
 import { Route as ClassExamNewRouteImport } from './routes/class-exam.new'
 import { Route as ClassroomGradeRouteImport } from './routes/classroom.$grade'
@@ -196,6 +197,11 @@ const ApiTtsRoute = ApiTtsRouteImport.update({
   path: '/api/tts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiUnitClassroomRoute = ApiUnitClassroomRouteImport.update({
+  id: '/api/unit-classroom',
+  path: '/api/unit-classroom',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ClassExamIdRoute = ClassExamIdRouteImport.update({
   id: '/class-exam/$id',
   path: '/class-exam/$id',
@@ -287,6 +293,7 @@ export interface FileRoutesByFullPath {
   '/api/teaching-setup': typeof ApiTeachingSetupRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/tts': typeof ApiTtsRoute
+  '/api/unit-classroom': typeof ApiUnitClassroomRoute
   '/class-exam/$id': typeof ClassExamIdRoute
   '/class-exam/new': typeof ClassExamNewRoute
   '/classroom/$grade': typeof ClassroomGradeRoute
@@ -330,6 +337,7 @@ export interface FileRoutesByTo {
   '/api/teaching-setup': typeof ApiTeachingSetupRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/tts': typeof ApiTtsRoute
+  '/api/unit-classroom': typeof ApiUnitClassroomRoute
   '/class-exam/$id': typeof ClassExamIdRoute
   '/class-exam/new': typeof ClassExamNewRoute
   '/classroom/$grade': typeof ClassroomGradeRoute
@@ -373,6 +381,7 @@ export interface FileRoutesById {
   '/api/teaching-setup': typeof ApiTeachingSetupRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/api/tts': typeof ApiTtsRoute
+  '/api/unit-classroom': typeof ApiUnitClassroomRoute
   '/class-exam/$id': typeof ClassExamIdRoute
   '/class-exam/new': typeof ClassExamNewRoute
   '/classroom/$grade': typeof ClassroomGradeRoute
@@ -418,6 +427,7 @@ export interface FileRouteTypes {
     | '/api/teaching-setup'
     | '/api/transcribe'
     | '/api/tts'
+    | '/api/unit-classroom'
     | '/class-exam/$id'
     | '/class-exam/new'
     | '/classroom/$grade'
@@ -461,6 +471,7 @@ export interface FileRouteTypes {
     | '/api/teaching-setup'
     | '/api/transcribe'
     | '/api/tts'
+    | '/api/unit-classroom'
     | '/class-exam/$id'
     | '/class-exam/new'
     | '/classroom/$grade'
@@ -503,6 +514,7 @@ export interface FileRouteTypes {
     | '/api/teaching-setup'
     | '/api/transcribe'
     | '/api/tts'
+    | '/api/unit-classroom'
     | '/class-exam/$id'
     | '/class-exam/new'
     | '/classroom/$grade'
@@ -547,6 +559,7 @@ export interface RootRouteChildren {
   ApiTeachingSetupRoute: typeof ApiTeachingSetupRoute
   ApiTranscribeRoute: typeof ApiTranscribeRoute
   ApiTtsRoute: typeof ApiTtsRoute
+  ApiUnitClassroomRoute: typeof ApiUnitClassroomRoute
   ClassExamIdRoute: typeof ClassExamIdRoute
   ClassExamNewRoute: typeof ClassExamNewRoute
   ClassroomGradeRoute: typeof ClassroomGradeRoute
@@ -764,6 +777,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiTtsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/unit-classroom': {
+      id: '/api/unit-classroom'
+      path: '/api/unit-classroom'
+      fullPath: '/api/unit-classroom'
+      preLoaderRoute: typeof ApiUnitClassroomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/class-exam/$id': {
       id: '/class-exam/$id'
       path: '/class-exam/$id'
@@ -895,6 +915,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiTeachingSetupRoute: ApiTeachingSetupRoute,
   ApiTranscribeRoute: ApiTranscribeRoute,
   ApiTtsRoute: ApiTtsRoute,
+  ApiUnitClassroomRoute: ApiUnitClassroomRoute,
   ClassExamIdRoute: ClassExamIdRoute,
   ClassExamNewRoute: ClassExamNewRoute,
   ClassroomGradeRoute: ClassroomGradeRoute,

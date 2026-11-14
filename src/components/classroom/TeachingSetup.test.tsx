@@ -81,9 +81,10 @@ it("clears Reading approval acknowledgement when switching preparation sections"
     expect(screen.getByRole("button", { name: "Reading အတန်း ဖွင့်မယ်" })).toBeEnabled(),
   );
   fireEvent.click(screen.getByRole("button", { name: "Grammar" }));
-  expect(screen.queryByRole("checkbox")).not.toBeInTheDocument();
+  expect(screen.getByRole("checkbox")).not.toBeChecked();
+  await screen.findByRole("button", { name: "ကျောင်းသားသင်ကြားမှု ဖွင့်မယ်" });
   fireEvent.click(screen.getByRole("button", { name: "Reading" }));
-  await waitFor(() => expect(fetch).toHaveBeenCalledTimes(2));
+  await waitFor(() => expect(fetch).toHaveBeenCalledTimes(3));
   expect(screen.getByRole("checkbox")).not.toBeChecked();
   expect(screen.getByRole("button", { name: "Reading အတန်း ဖွင့်မယ်" })).toBeDisabled();
   expect(vi.mocked(fetch).mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(0);

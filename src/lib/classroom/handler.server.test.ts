@@ -181,3 +181,64 @@ it("warms only published pilot scripts and never charges personal question credi
   expect(m.audio).toHaveBeenCalledTimes(1);
   expect(m.credit).not.toHaveBeenCalled();
 });
+
+it("binds the new Grammar section to canonical server progress coordinates", async () => {
+  const response = await postClassroom(
+    request({
+      grade: 10,
+      lessonId: "g10-u1-grammar",
+      action: "save",
+      cursor: 5,
+      completed: [0, 1, 2],
+      revision: 0,
+      user_id: "bob",
+    }),
+  );
+  expect(response.status).toBe(200);
+  expect(m.rpc).toHaveBeenCalledWith(
+    "save_classroom_progress",
+    expect.objectContaining({
+      p_user: "alice",
+      p_lesson: "g10-u1-grammar",
+      p_version: "unit-teacher-v1",
+      p_steps: 16,
+    }),
+  );
+});
+it("cannot generate unpublished Unit 1 section narration", async () => {
+  expect(
+    (await postClassroom(request({ grade: 10, lessonId: "g10-u1-grammar", action: "audio" })))
+      .status,
+  ).toBe(409);
+  expect(m.demand).not.toHaveBeenCalled();
+});
+it("uses the same shared cache service after a new section is published", async () => {
+  m.published.mockResolvedValue(true);
+  expect(
+    (await postClassroom(request({ grade: 10, lessonId: "g10-u1-grammar", action: "audio" })))
+      .status,
+  ).toBe(200);
+  expect(m.demand).toHaveBeenCalledWith(expect.objectContaining({ id: "g10-u1-grammar" }), 0);
+});
+it.each([
+  { grade: 11, lessonId: "g10-u1-grammar" },
+  { grade: 10, lessonId: "g10-u2-grammar" },
+])("rejects mismatched grade or unprepared lesson ids", async (selection) => {
+  expect((await postClassroom(request({ ...selection, action: "audio" }))).status).toBe(404);
+  expect(m.demand).not.toHaveBeenCalled();
+});
+it("never lets a student approve a new section script", async () => {
+  expect(
+    (
+      await postClassroom(
+        request({
+          grade: 10,
+          lessonId: "g10-u1-grammar",
+          action: "approve",
+          acknowledge: true,
+          contentHash: "a".repeat(64),
+        }),
+      )
+    ).status,
+  ).toBe(403);
+});

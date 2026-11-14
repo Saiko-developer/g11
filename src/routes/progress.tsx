@@ -1,3 +1,4 @@
+import { UnitProgressSummary } from "@/components/classroom/UnitProgressSummary";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { StudentProgress } from "@/components/StudentProgress";
@@ -29,6 +30,7 @@ function ProgressPage() {
         <Link to="/classrooms" className="mb-6 inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-muted">
           🏫 Classrooms — အတန်းဖွင့်ရန် / Class Code ဖြင့် ဝင်ရန်
         </Link>
+        {session && <UnitProgressSummary key={session.user.id} userId={session.user.id} />}
         {session && <TeacherRequestCard userId={session.user.id} />}
         {session ? <StudentProgress userId={session.user.id} /> : <p>Sign in first.</p>}
       </main>

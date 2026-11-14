@@ -1,3 +1,4 @@
+import { StartClassCard } from "@/components/classroom/StartClassCard";
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 
@@ -280,6 +281,7 @@ if (node.type === "banner") {
             >
               <div className="overflow-hidden">
 
+                <StartClassCard grade={10} unit={node.number} compact />
                 <div className="grid gap-4 px-5 py-5 md:grid-cols-3">
 
                   {GROUPS.map((group) => (

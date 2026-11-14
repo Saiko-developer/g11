@@ -1,3 +1,4 @@
+import { UnitScriptReview } from "./UnitScriptReview";
 import { useState, type ReactNode } from "react";
 import { useAuth } from "@/components/AuthGate";
 import { RequireSignIn } from "@/components/RequireSignIn";
@@ -119,6 +120,8 @@ export function CurriculumPreparation({ children }: { children: ReactNode }) {
       </section>
       {pilot ? (
         children
+      ) : grade === 10 && unit === 1 ? (
+        <UnitScriptReview key={skill} skill={skill} />
       ) : (
         <section className="rounded-2xl border p-5 text-sm leading-loose">
           <h2 className="font-semibold">ဆရာသင်ကြားရေး ပြင်ဆင်ရန်</h2>

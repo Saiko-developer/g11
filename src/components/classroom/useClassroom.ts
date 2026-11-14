@@ -143,6 +143,7 @@ export function useClassroom(
         try {
           const response = await classroomRequest(lesson.grade, {
             action: "save",
+            ...(lesson.section ? { lessonId: lesson.id } : {}),
             ...snapshot,
             revision: revision.current,
           });
@@ -162,7 +163,7 @@ export function useClassroom(
         }
       });
     },
-    [userId, ready, lesson.grade, pause],
+    [userId, ready, lesson.grade, lesson.id, lesson.section, pause],
   );
   const invalidatePlayback = useCallback(() => {
     generation.current++;
@@ -186,13 +187,23 @@ export function useClassroom(
             warm: async (cursor, signal) => {
               const response = await classroomRequest(
                 lesson.grade,
-                { action: "warm_audio", cursor },
+                {
+                  action: "warm_audio",
+                  cursor,
+                  ...(lesson.section ? { lessonId: lesson.id } : {}),
+                },
                 signal,
               );
               await response.body?.cancel();
             },
             load: async (cursor, signal) =>
-              (await classroomRequest(lesson.grade, { action: "audio", cursor }, signal)).blob(),
+              (
+                await classroomRequest(
+                  lesson.grade,
+                  { action: "audio", cursor, ...(lesson.section ? { lessonId: lesson.id } : {}) },
+                  signal,
+                )
+              ).blob(),
           })
         : null;
     classBuffer.current = buffer;
@@ -200,10 +211,13 @@ export function useClassroom(
     if (userId) {
       void (async () => {
         try {
-          const response = await fetch(`/api/classroom?grade=${lesson.grade}`, {
-            signal: abort.signal,
-            cache: "no-store",
-          });
+          const response = await fetch(
+            `/api/classroom?grade=${lesson.grade}${lesson.section ? `&lessonId=${lesson.id}` : ""}`,
+            {
+              signal: abort.signal,
+              cache: "no-store",
+            },
+          );
           if (!response.ok)
             throw new Error("Account မှတ်တမ်း ချိတ်ဆက်မရပါ။ ယာယီ Manual Mode ဖြင့် ဖတ်နိုင်ပါတယ်။");
           const data = await response.json();
@@ -298,7 +312,7 @@ export function useClassroom(
         } else {
           const response = await classroomRequest(
             lesson.grade,
-            { action: "audio", cursor },
+            { action: "audio", cursor, ...(lesson.section ? { lessonId: lesson.id } : {}) },
             abort.signal,
           );
           blob = await response.blob();
@@ -364,7 +378,17 @@ export function useClassroom(
         }
       }
     },
-    [userId, published, ready, lesson.grade, maxCursor, releaseAudio, complete],
+    [
+      userId,
+      published,
+      ready,
+      lesson.grade,
+      lesson.id,
+      lesson.section,
+      maxCursor,
+      releaseAudio,
+      complete,
+    ],
   );
   playRef.current = playAt;
   const resume = () => {

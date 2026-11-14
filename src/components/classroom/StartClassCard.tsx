@@ -1,37 +1,54 @@
 import { Link } from "@tanstack/react-router";
-import { Play, CalendarDays } from "lucide-react";
+import { Play } from "lucide-react";
 import { SayaOwlAvatar } from "@/components/SayaOwlAvatar";
 
-/** The primary learner entry point: no unit or skill selection. */
-export function StartClassCard() {
+/** Unit entry keeps the existing self-study material beside teacher-led learning. */
+export function StartClassCard({
+  grade = 10,
+  unit = 1,
+  compact = false,
+}: {
+  grade?: 10 | 11;
+  unit?: number;
+  compact?: boolean;
+}) {
+  const ready = grade === 10 && unit === 1;
   return (
-    <section aria-label="Saya Owl daily class" className="mx-auto max-w-6xl px-4 pt-6">
-      <div className="flex flex-col gap-6 rounded-3xl bg-primary p-6 text-primary-foreground shadow-lg sm:flex-row sm:items-center sm:justify-between md:p-8">
-        <div className="flex items-start gap-4">
-          <SayaOwlAvatar state="ready" size={64} />
+    <section
+      aria-label={`Grade ${grade} Unit ${unit} learning modes`}
+      className={compact ? "px-5 pt-4" : "mx-auto max-w-6xl px-4 pt-6"}
+    >
+      <div className="flex flex-col gap-4 rounded-2xl bg-primary p-5 text-primary-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-start gap-3">
+          <SayaOwlAvatar state="ready" size={48} />
           <div>
-            <p className="flex items-center gap-2 text-xs font-semibold opacity-80">
-              <CalendarDays className="h-4 w-4" />
-              Saya Owl · နေ့စဉ်အင်္ဂလိပ်စာအတန်း
+            <p className="text-xs opacity-80">
+              Grade {grade} · Unit {unit}
             </p>
-            <h2 className="mt-2 text-2xl font-bold leading-relaxed">
-              ဒီနေ့ ဆရာဇီးကွက်နဲ့ စာသင်ကြမယ်
-            </h2>
-            <p className="mt-2 max-w-xl text-sm leading-relaxed opacity-90">
-              သင်မယ့်အစီအစဉ်ကို ဆရာက စီစဉ်ပေးမယ်။ နားထောင်၊ နားလည်၊ မေးမြန်းပြီး မနေ့ကရပ်ထားတဲ့နေရာက
-              ဆက်သင်ပါ။
+            <h2 className="mt-1 text-lg font-bold">Saya Owl နဲ့ သင်မလား၊ ကိုယ်တိုင် လေ့လာမလား?</h2>
+            <p className="mt-2 text-sm leading-loose opacity-90">
+              {ready
+                ? "Section တစ်ခုပြီးတစ်ခု ဆရာသင်ပေးမယ်။ ရပ်ထားတဲ့နေရာက ပြန်ဆက်နိုင်ပါတယ်။"
+                : "Self-study ကို ဖွင့်လေ့လာနိုင်ပါတယ်။ Saya Owl Teaching ကို စစ်ဆေးပြင်ဆင်နေဆဲပါ။"}
             </p>
           </div>
         </div>
-        <Link
-          to="/class"
-          search={{ start: true }}
-          className="inline-flex min-h-14 shrink-0 items-center justify-center gap-2 rounded-xl bg-background px-7 py-4 text-base font-bold text-foreground transition hover:bg-secondary"
-        >
-          <Play className="h-5 w-5" fill="currentColor" />
-          အတန်းစမယ်
-        </Link>
+        {ready && (
+          <Link
+            to="/class"
+            search={{ start: true, grade, unit, skill: undefined }}
+            className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-background px-5 py-3 font-bold text-foreground hover:bg-secondary"
+          >
+            <Play className="h-4 w-4" />
+            အတန်းစမယ် / ဆက်သင်မယ်
+          </Link>
+        )}
       </div>
+      {compact && (
+        <p className="mt-3 text-xs text-muted-foreground">
+          Self-study — အောက်က section များကို ကိုယ်တိုင်ရွေး လေ့လာနိုင်ပါတယ်။
+        </p>
+      )}
     </section>
   );
 }

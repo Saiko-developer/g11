@@ -1,3 +1,4 @@
+import { StartClassCard } from "@/components/classroom/StartClassCard";
 import { Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Grade11PopupTutor } from "./Grade11PopupTutor";
@@ -24,6 +25,7 @@ export function Grade11UnitPage({
         <Link to="/grade-11" className="text-sm text-primary">
           ← Grade 11 Units
         </Link>
+        <StartClassCard grade={11} unit={unitNumber} />
         <p className="mt-3 text-sm font-semibold text-primary">Unit {unitNumber}</p>
         <h1 className="text-3xl font-bold">{title}</h1>
         <p className="text-muted-foreground">{mmTitle}</p>

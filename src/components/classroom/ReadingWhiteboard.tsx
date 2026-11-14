@@ -50,20 +50,27 @@ export function ReadingWhiteboard({
   const { segment } = stepAt(lesson, cursor);
   const stage = cursor % 4;
   const entry = notes.find((item) => item.id === segment.id);
-  const cue = stage === 2 ? entry?.meaning : stage === 3 ? entry?.grammar : undefined;
+  const cue =
+    (stage === 2 ? entry?.meaning : stage === 3 ? entry?.grammar : undefined) ??
+    ((stage === 2 || stage === 3) && lesson.section && segment.notes
+      ? { focus: segment.focus ?? [], notes: segment.notes, example: "", incorrect: undefined }
+      : undefined);
   return (
     <article
       aria-label="Classroom whiteboard"
       className="min-w-0 rounded-3xl border-8 border-stone-700 bg-emerald-950 p-5 text-emerald-50 shadow-xl md:p-8"
     >
       <div className="mb-5 flex items-center justify-between gap-3 border-b border-emerald-700/50 pb-3 text-xs text-emerald-200">
-        <span>ဒီနေ့မှတ်စု · Sentence {Math.floor(cursor / 4) + 1}</span>
+        <span>
+          ဒီနေ့မှတ်စု · {lesson.section ? "Teaching point" : "Sentence"}{" "}
+          {Math.floor(cursor / 4) + 1}
+        </span>
         <span>
           {completed} / {total}
         </span>
       </div>
       <p lang="en" className="text-xl font-semibold leading-loose md:text-2xl">
-        <HighlightedSentence text={segment.english} phrases={cue?.focus ?? []} />
+        <HighlightedSentence text={segment.english} phrases={cue?.focus ?? segment.focus ?? []} />
       </p>
       {stage === 1 && (
         <p
@@ -88,20 +95,22 @@ export function ReadingWhiteboard({
               <li key={note}>{note}</li>
             ))}
           </ul>
-          <div className="space-y-2 border-t border-emerald-700/60 pt-3 text-sm leading-loose">
-            <p>
-              <span className="mr-2 font-semibold text-emerald-200">
-                {cue.incorrect ? "မှန်" : "ဥပမာ"}
-              </span>
-              {cue.example}
-            </p>
-            {cue.incorrect && (
+          {cue.example && (
+            <div className="space-y-2 border-t border-emerald-700/60 pt-3 text-sm leading-loose">
               <p>
-                <span className="mr-2 font-semibold text-rose-200">မသုံးရ</span>
-                <span className="line-through decoration-rose-300">{cue.incorrect}</span>
+                <span className="mr-2 font-semibold text-emerald-200">
+                  {cue.incorrect ? "မှန်" : "ဥပမာ"}
+                </span>
+                {cue.example}
               </p>
-            )}
-          </div>
+              {cue.incorrect && (
+                <p>
+                  <span className="mr-2 font-semibold text-rose-200">မသုံးရ</span>
+                  <span className="line-through decoration-rose-300">{cue.incorrect}</span>
+                </p>
+              )}
+            </div>
+          )}
         </section>
       )}
       <details className="mt-6 border-t border-emerald-700/50 pt-4 text-sm text-emerald-200">

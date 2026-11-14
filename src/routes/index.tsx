@@ -1,4 +1,3 @@
-import { StartClassCard } from "@/components/classroom/StartClassCard";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   BookOpen,
@@ -68,7 +67,6 @@ function Landing() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
-      <StartClassCard />
       <SayaOwlPaper />
 
       {/* Hero */}

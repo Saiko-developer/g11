@@ -22,7 +22,7 @@ function Grade11Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
-      <StartClassCard />
+      <StartClassCard grade={11} />
       <main className="mx-auto max-w-5xl px-4 py-8">
         <GradeSwitcher current={11} />
         <h1 className="mt-4 text-3xl font-bold">Grade 11 English</h1>

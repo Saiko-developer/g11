@@ -2,7 +2,7 @@ import { classroomLiveEnabled } from "./live-settings.server";
 import { z } from "zod";
 import { requireUser, untrusted } from "@/lib/api-guard.server";
 import { withAiCredit } from "@/lib/ai-credit.server";
-import { getReadingLesson } from "./lessons";
+import { resolveClassroomLesson } from "./unit-course";
 import { classroomAdmin, classroomUnavailable, classroomUserDb } from "./db.server";
 import { lessonHash, publishedLesson } from "./manifest.server";
 import { emptyProgress, readingFinished, stepAt } from "./types";
@@ -15,6 +15,7 @@ import {
 
 const bodySchema = z.object({
   grade: z.union([z.literal(10), z.literal(11)]),
+  lessonId: z.string().max(80).optional(),
   action: z.enum(["save", "ask", "approve", "audio", "prepare", "warm_audio"]),
   cursor: z.number().int().nonnegative().default(0),
   offset: z.number().min(0).max(3600).default(0),
@@ -30,7 +31,10 @@ const bodySchema = z.object({
 export async function getClassroom(request: Request) {
   const auth = await requireUser(request, { enforceAccountStatus: true });
   if (auth instanceof Response) return auth;
-  const lesson = getReadingLesson(new URL(request.url).searchParams.get("grade"));
+  const lesson = resolveClassroomLesson(
+    new URL(request.url).searchParams.get("grade"),
+    new URL(request.url).searchParams.get("lessonId") ?? undefined,
+  );
   if (!lesson) return Response.json({ error: "lesson_not_found" }, { status: 404 });
   try {
     const db = classroomUserDb(request);
@@ -85,7 +89,7 @@ export async function postClassroom(request: Request) {
   );
   if (!parsed.success) return Response.json({ error: "invalid_request" }, { status: 400 });
   const body = parsed.data;
-  const lesson = getReadingLesson(body.grade);
+  const lesson = resolveClassroomLesson(body.grade, body.lessonId);
   if (!lesson) return Response.json({ error: "lesson_not_found" }, { status: 404 });
   const steps = lesson.segments.length * 4;
   if (body.cursor >= steps || body.completed.some((i) => i >= steps))
@@ -113,7 +117,7 @@ export async function postClassroom(request: Request) {
     if (body.action === "approve") {
       if (!(await classroomAdmin(request)))
         return Response.json({ error: "forbidden" }, { status: 403 });
-      if (lesson.teachingRevision)
+      if (lesson.teachingRevision && !lesson.section)
         return Response.json(
           {
             error: "narration_review_required",
@@ -186,5 +190,5 @@ export async function postClassroom(request: Request) {
     return classroomUnavailable();
   }
 }
-// Formal unit completion/homework is deliberately absent from this reading-only pilot.
+// Unit completion and homework use the separate authenticated unit-course endpoint.
 export { readingFinished };
