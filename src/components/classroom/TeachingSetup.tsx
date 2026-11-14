@@ -3,6 +3,7 @@ import { useAuth } from "@/components/AuthGate";
 import { RequireSignIn } from "@/components/RequireSignIn";
 import { Button } from "@/components/ui/button";
 import { getReadingLesson } from "@/lib/classroom/lessons";
+import { CurriculumPreparation } from "./CurriculumPreparation";
 import { spokenStepAt } from "@/lib/classroom/types";
 
 type Status = {
@@ -13,8 +14,14 @@ type Status = {
   live: boolean;
   contentHash?: string;
 };
-const skills = ["Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
 export function TeachingSetup() {
+  return (
+    <CurriculumPreparation>
+      <PilotSetup />
+    </CurriculumPreparation>
+  );
+}
+function PilotSetup() {
   const { session, access, ready } = useAuth();
   const [status, setStatus] = useState<Status | null>(null);
   const [reviewed, setReviewed] = useState(false);
@@ -81,58 +88,7 @@ export function TeachingSetup() {
     status.config.speechProvider &&
     !status.missing.length;
   return (
-    <div className="mx-auto max-w-4xl space-y-6 py-7">
-      <header>
-        <h1 className="text-2xl font-bold">သင်ခန်းစာ စီမံရန်</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          အရင်ဆုံး Grade 10 · Unit 1 · Reading ကို စမ်းသပ်ပါမယ်။
-        </p>
-      </header>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="space-y-2 text-sm font-semibold">
-          Grade
-          <select
-            aria-label="Grade"
-            className="block w-full rounded-xl border bg-background p-3"
-            defaultValue="10"
-          >
-            <option value="10">Grade 10</option>
-            <option value="11" disabled>
-              Grade 11 — နောက်မှ ဆက်ပြင်ဆင်မည်
-            </option>
-          </select>
-        </label>
-        <label className="space-y-2 text-sm font-semibold">
-          Unit
-          <select
-            aria-label="Unit"
-            className="block w-full rounded-xl border bg-background p-3"
-            defaultValue="1"
-          >
-            <option value="1">Unit 1</option>
-            {Array.from({ length: 11 }, (_, i) => i + 2).map((unit) => (
-              <option key={unit} value={unit} disabled>
-                Unit {unit} — မပြင်ဆင်ရသေးပါ
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-      <nav aria-label="Lesson skills" className="flex flex-wrap gap-2">
-        {skills.map((skill) => (
-          <Button
-            key={skill}
-            variant={skill === "Reading" ? "default" : "outline"}
-            disabled={skill !== "Reading"}
-            aria-current={skill === "Reading" ? "page" : undefined}
-          >
-            {skill}
-          </Button>
-        ))}
-      </nav>
-      <p className="text-xs text-muted-foreground">
-        ကျန် sections များကို Reading စမ်းသပ်ပြီးမှ ဆက်ထည့်ပါမယ်။
-      </p>
+    <div className="space-y-5">
       <section className="space-y-4 rounded-2xl border bg-card p-5">
         <div>
           <h2 className="text-lg font-bold">Grade 10 · Unit 1 · Reading</h2>

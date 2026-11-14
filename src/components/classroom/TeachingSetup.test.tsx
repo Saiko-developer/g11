@@ -34,7 +34,7 @@ it("shows Grade → Unit → Reading and requires explicit approval without bulk
   render(<TeachingSetup />);
   expect(screen.getByRole("combobox", { name: "Grade" })).toHaveValue("10");
   expect(screen.getByRole("combobox", { name: "Unit" })).toHaveValue("1");
-  expect(screen.getByRole("button", { name: "Grammar" })).toBeDisabled();
+  expect(screen.getByRole("button", { name: "Grammar" })).toBeEnabled();
   const approve = screen.getByRole("button", { name: "Reading အတန်း ဖွင့်မယ်" });
   expect(approve).toBeDisabled();
   await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
@@ -55,4 +55,36 @@ it("never loads admin setup for students", () => {
   render(<TeachingSetup />);
   expect(screen.getByRole("alert")).toHaveTextContent("Admin");
   expect(fetch).not.toHaveBeenCalled();
+});
+
+it("lets admins inspect any unit/skill without approving Reading or generating audio", async () => {
+  render(<TeachingSetup />);
+  await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
+  fireEvent.change(screen.getByRole("combobox", { name: "Grade" }), { target: { value: "11" } });
+  fireEvent.change(screen.getByRole("combobox", { name: "Unit" }), { target: { value: "7" } });
+  fireEvent.click(screen.getByRole("button", { name: "Writing" }));
+  expect(screen.getByRole("heading", { name: "Grade 11 · Unit 7 · Writing" })).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: /ရှိပြီးသား textbook lesson/ })).toHaveAttribute(
+    "href",
+    "/grade-11/7/writing",
+  );
+  expect(screen.queryByRole("button", { name: "Reading အတန်း ဖွင့်မယ်" })).not.toBeInTheDocument();
+  expect(screen.queryByRole("checkbox")).not.toBeInTheDocument();
+  expect(fetch).toHaveBeenCalledTimes(1);
+});
+
+it("clears Reading approval acknowledgement when switching preparation sections", async () => {
+  render(<TeachingSetup />);
+  await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
+  fireEvent.click(screen.getByRole("checkbox"));
+  await waitFor(() =>
+    expect(screen.getByRole("button", { name: "Reading အတန်း ဖွင့်မယ်" })).toBeEnabled(),
+  );
+  fireEvent.click(screen.getByRole("button", { name: "Grammar" }));
+  expect(screen.queryByRole("checkbox")).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "Reading" }));
+  await waitFor(() => expect(fetch).toHaveBeenCalledTimes(2));
+  expect(screen.getByRole("checkbox")).not.toBeChecked();
+  expect(screen.getByRole("button", { name: "Reading အတန်း ဖွင့်မယ်" })).toBeDisabled();
+  expect(vi.mocked(fetch).mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(0);
 });

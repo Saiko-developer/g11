@@ -1,0 +1,3914 @@
+[
+  {
+    "id": "g10-u1-reading",
+    "grade": 10,
+    "unit": 1,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit1.json",
+        "sha256": "90b4c43ba309846696e2c5d762e62e8ef9bc46e2600f3924fa41601c2e71c443"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit1Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 9,
+    "scanPages": [],
+    "exerciseCount": 14,
+    "providedAnswers": 10,
+    "suggestedAnswers": 4,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": "src/data/classroom/grade10-unit1-teacher-script.json",
+    "classroomDelivery": "current-pilot"
+  },
+  {
+    "id": "g10-u1-vocabulary",
+    "grade": 10,
+    "unit": 1,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit1.json",
+        "sha256": "90b4c43ba309846696e2c5d762e62e8ef9bc46e2600f3924fa41601c2e71c443"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit1Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 6,
+    "providedAnswers": 6,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u1-grammar",
+    "grade": 10,
+    "unit": 1,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit1.json",
+        "sha256": "90b4c43ba309846696e2c5d762e62e8ef9bc46e2600f3924fa41601c2e71c443"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit1Supplement.ts",
+      "src/data/grammar/unit1.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 6,
+    "providedAnswers": 6,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u1-listening",
+    "grade": 10,
+    "unit": 1,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit1.json",
+        "sha256": "90b4c43ba309846696e2c5d762e62e8ef9bc46e2600f3924fa41601c2e71c443"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 15,
+    "providedAnswers": 8,
+    "suggestedAnswers": 5,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit1.mp3",
+      "path": "public/audio/unit1.mp3",
+      "bytes": 749743
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u1-speaking",
+    "grade": 10,
+    "unit": 1,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit1.json",
+        "sha256": "90b4c43ba309846696e2c5d762e62e8ef9bc46e2600f3924fa41601c2e71c443"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 15,
+    "providedAnswers": 8,
+    "suggestedAnswers": 5,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit1.mp3",
+      "path": "public/audio/unit1.mp3",
+      "bytes": 749743
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u1-writing",
+    "grade": 10,
+    "unit": 1,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit1.json",
+        "sha256": "90b4c43ba309846696e2c5d762e62e8ef9bc46e2600f3924fa41601c2e71c443"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 3,
+    "providedAnswers": 2,
+    "suggestedAnswers": 1,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u2-reading",
+    "grade": 10,
+    "unit": 2,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit2.json",
+        "sha256": "6703edbe4fa7370efe363f5dce5acbbb6f1a946151c5611a3007166f1e15dd55"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit2Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 13,
+    "scanPages": [],
+    "exerciseCount": 23,
+    "providedAnswers": 15,
+    "suggestedAnswers": 8,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u2-vocabulary",
+    "grade": 10,
+    "unit": 2,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit2.json",
+        "sha256": "6703edbe4fa7370efe363f5dce5acbbb6f1a946151c5611a3007166f1e15dd55"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit2Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 2,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u2-grammar",
+    "grade": 10,
+    "unit": 2,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit2.json",
+        "sha256": "6703edbe4fa7370efe363f5dce5acbbb6f1a946151c5611a3007166f1e15dd55"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit2Supplement.ts",
+      "src/data/grammar/unit2.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 4,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u2-listening",
+    "grade": 10,
+    "unit": 2,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit2.json",
+        "sha256": "6703edbe4fa7370efe363f5dce5acbbb6f1a946151c5611a3007166f1e15dd55"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 17,
+    "providedAnswers": 11,
+    "suggestedAnswers": 6,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit2.mp3",
+      "path": "public/audio/unit2.mp3",
+      "bytes": 4513387
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u2-speaking",
+    "grade": 10,
+    "unit": 2,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit2.json",
+        "sha256": "6703edbe4fa7370efe363f5dce5acbbb6f1a946151c5611a3007166f1e15dd55"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 17,
+    "providedAnswers": 11,
+    "suggestedAnswers": 6,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit2.mp3",
+      "path": "public/audio/unit2.mp3",
+      "bytes": 4513387
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u2-writing",
+    "grade": 10,
+    "unit": 2,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit2.json",
+        "sha256": "6703edbe4fa7370efe363f5dce5acbbb6f1a946151c5611a3007166f1e15dd55"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 3,
+    "providedAnswers": 2,
+    "suggestedAnswers": 1,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u3-reading",
+    "grade": 10,
+    "unit": 3,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit3.json",
+        "sha256": "846b75b15e3d710a338ddbce884506b254d5881046b1ff57b3eb76e3e6db7088"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit3Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 7,
+    "scanPages": [],
+    "exerciseCount": 18,
+    "providedAnswers": 10,
+    "suggestedAnswers": 8,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u3-vocabulary",
+    "grade": 10,
+    "unit": 3,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit3.json",
+        "sha256": "846b75b15e3d710a338ddbce884506b254d5881046b1ff57b3eb76e3e6db7088"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit3Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 2,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u3-grammar",
+    "grade": 10,
+    "unit": 3,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit3.json",
+        "sha256": "846b75b15e3d710a338ddbce884506b254d5881046b1ff57b3eb76e3e6db7088"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit3Supplement.ts",
+      "src/data/grammar/unit3.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 4,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u3-listening",
+    "grade": 10,
+    "unit": 3,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit3.json",
+        "sha256": "846b75b15e3d710a338ddbce884506b254d5881046b1ff57b3eb76e3e6db7088"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 14,
+    "providedAnswers": 4,
+    "suggestedAnswers": 10,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit3.mp3",
+      "path": "public/audio/unit3.mp3",
+      "bytes": 5278476
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u3-speaking",
+    "grade": 10,
+    "unit": 3,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit3.json",
+        "sha256": "846b75b15e3d710a338ddbce884506b254d5881046b1ff57b3eb76e3e6db7088"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 14,
+    "providedAnswers": 4,
+    "suggestedAnswers": 10,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit3.mp3",
+      "path": "public/audio/unit3.mp3",
+      "bytes": 5278476
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u3-writing",
+    "grade": 10,
+    "unit": 3,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit3.json",
+        "sha256": "846b75b15e3d710a338ddbce884506b254d5881046b1ff57b3eb76e3e6db7088"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 3,
+    "providedAnswers": 2,
+    "suggestedAnswers": 1,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u4-reading",
+    "grade": 10,
+    "unit": 4,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit4.json",
+        "sha256": "9ce97f40cc2cc9e3dad25edb23b453150c3687b6b27a2eb93e0faf18fe44ebf8"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit4Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 8,
+    "scanPages": [],
+    "exerciseCount": 18,
+    "providedAnswers": 11,
+    "suggestedAnswers": 7,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u4-vocabulary",
+    "grade": 10,
+    "unit": 4,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit4.json",
+        "sha256": "9ce97f40cc2cc9e3dad25edb23b453150c3687b6b27a2eb93e0faf18fe44ebf8"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit4Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 2,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u4-grammar",
+    "grade": 10,
+    "unit": 4,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit4.json",
+        "sha256": "9ce97f40cc2cc9e3dad25edb23b453150c3687b6b27a2eb93e0faf18fe44ebf8"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit4Supplement.ts",
+      "src/data/grammar/unit4.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 5,
+    "providedAnswers": 2,
+    "suggestedAnswers": 3,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u4-listening",
+    "grade": 10,
+    "unit": 4,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit4.json",
+        "sha256": "9ce97f40cc2cc9e3dad25edb23b453150c3687b6b27a2eb93e0faf18fe44ebf8"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 18,
+    "providedAnswers": 10,
+    "suggestedAnswers": 8,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit4.mp3",
+      "path": "public/audio/unit4.mp3",
+      "bytes": 6704762
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u4-speaking",
+    "grade": 10,
+    "unit": 4,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit4.json",
+        "sha256": "9ce97f40cc2cc9e3dad25edb23b453150c3687b6b27a2eb93e0faf18fe44ebf8"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 18,
+    "providedAnswers": 10,
+    "suggestedAnswers": 8,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit4.mp3",
+      "path": "public/audio/unit4.mp3",
+      "bytes": 6704762
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u4-writing",
+    "grade": 10,
+    "unit": 4,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit4.json",
+        "sha256": "9ce97f40cc2cc9e3dad25edb23b453150c3687b6b27a2eb93e0faf18fe44ebf8"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 3,
+    "suggestedAnswers": 1,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u5-reading",
+    "grade": 10,
+    "unit": 5,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit5.json",
+        "sha256": "41934c92ca53e17b79c6e31e8270f4b980e2e14e621a48f95873e88e0fd70b2b"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit5Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 10,
+    "scanPages": [],
+    "exerciseCount": 24,
+    "providedAnswers": 17,
+    "suggestedAnswers": 7,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u5-vocabulary",
+    "grade": 10,
+    "unit": 5,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit5.json",
+        "sha256": "41934c92ca53e17b79c6e31e8270f4b980e2e14e621a48f95873e88e0fd70b2b"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit5Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 2,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u5-grammar",
+    "grade": 10,
+    "unit": 5,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit5.json",
+        "sha256": "41934c92ca53e17b79c6e31e8270f4b980e2e14e621a48f95873e88e0fd70b2b"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit5Supplement.ts",
+      "src/data/grammar/unit5.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 5,
+    "providedAnswers": 2,
+    "suggestedAnswers": 3,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u5-listening",
+    "grade": 10,
+    "unit": 5,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit5.json",
+        "sha256": "41934c92ca53e17b79c6e31e8270f4b980e2e14e621a48f95873e88e0fd70b2b"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 14,
+    "providedAnswers": 6,
+    "suggestedAnswers": 8,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit5.mp3",
+      "path": "public/audio/unit5.mp3",
+      "bytes": 5637697
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u5-speaking",
+    "grade": 10,
+    "unit": 5,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit5.json",
+        "sha256": "41934c92ca53e17b79c6e31e8270f4b980e2e14e621a48f95873e88e0fd70b2b"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 14,
+    "providedAnswers": 6,
+    "suggestedAnswers": 8,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit5.mp3",
+      "path": "public/audio/unit5.mp3",
+      "bytes": 5637697
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u5-writing",
+    "grade": 10,
+    "unit": 5,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit5.json",
+        "sha256": "41934c92ca53e17b79c6e31e8270f4b980e2e14e621a48f95873e88e0fd70b2b"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 3,
+    "providedAnswers": 2,
+    "suggestedAnswers": 1,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u6-reading",
+    "grade": 10,
+    "unit": 6,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit6.json",
+        "sha256": "15bcb989f3a127a86ccc243774ba4724859ec6dfb654b73f3bb45117051a4b09"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit6Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 10,
+    "scanPages": [],
+    "exerciseCount": 24,
+    "providedAnswers": 17,
+    "suggestedAnswers": 7,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u6-vocabulary",
+    "grade": 10,
+    "unit": 6,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit6.json",
+        "sha256": "15bcb989f3a127a86ccc243774ba4724859ec6dfb654b73f3bb45117051a4b09"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit6Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 2,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u6-grammar",
+    "grade": 10,
+    "unit": 6,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit6.json",
+        "sha256": "15bcb989f3a127a86ccc243774ba4724859ec6dfb654b73f3bb45117051a4b09"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit6Supplement.ts",
+      "src/data/grammar/unit6.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 5,
+    "providedAnswers": 2,
+    "suggestedAnswers": 3,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u6-listening",
+    "grade": 10,
+    "unit": 6,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit6.json",
+        "sha256": "15bcb989f3a127a86ccc243774ba4724859ec6dfb654b73f3bb45117051a4b09"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 16,
+    "providedAnswers": 6,
+    "suggestedAnswers": 10,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit6.mp3",
+      "path": "public/audio/unit6.mp3",
+      "bytes": 4002432
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u6-speaking",
+    "grade": 10,
+    "unit": 6,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit6.json",
+        "sha256": "15bcb989f3a127a86ccc243774ba4724859ec6dfb654b73f3bb45117051a4b09"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 16,
+    "providedAnswers": 6,
+    "suggestedAnswers": 10,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit6.mp3",
+      "path": "public/audio/unit6.mp3",
+      "bytes": 4002432
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u6-writing",
+    "grade": 10,
+    "unit": 6,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit6.json",
+        "sha256": "15bcb989f3a127a86ccc243774ba4724859ec6dfb654b73f3bb45117051a4b09"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 3,
+    "providedAnswers": 2,
+    "suggestedAnswers": 1,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u7-reading",
+    "grade": 10,
+    "unit": 7,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit7.json",
+        "sha256": "dde2b290141f0ac1a3c1f8252e3051e7438792cdcce65c9b2aa840c27678fdc5"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit7Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 10,
+    "scanPages": [],
+    "exerciseCount": 20,
+    "providedAnswers": 12,
+    "suggestedAnswers": 8,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u7-vocabulary",
+    "grade": 10,
+    "unit": 7,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit7.json",
+        "sha256": "dde2b290141f0ac1a3c1f8252e3051e7438792cdcce65c9b2aa840c27678fdc5"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit7Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 2,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u7-grammar",
+    "grade": 10,
+    "unit": 7,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit7.json",
+        "sha256": "dde2b290141f0ac1a3c1f8252e3051e7438792cdcce65c9b2aa840c27678fdc5"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit7Supplement.ts",
+      "src/data/grammar/unit7.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 5,
+    "providedAnswers": 2,
+    "suggestedAnswers": 3,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u7-listening",
+    "grade": 10,
+    "unit": 7,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit7.json",
+        "sha256": "dde2b290141f0ac1a3c1f8252e3051e7438792cdcce65c9b2aa840c27678fdc5"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 15,
+    "providedAnswers": 7,
+    "suggestedAnswers": 8,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit7.mp3",
+      "path": "public/audio/unit7.mp3",
+      "bytes": 3750612
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u7-speaking",
+    "grade": 10,
+    "unit": 7,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit7.json",
+        "sha256": "dde2b290141f0ac1a3c1f8252e3051e7438792cdcce65c9b2aa840c27678fdc5"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 15,
+    "providedAnswers": 7,
+    "suggestedAnswers": 8,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit7.mp3",
+      "path": "public/audio/unit7.mp3",
+      "bytes": 3750612
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u7-writing",
+    "grade": 10,
+    "unit": 7,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit7.json",
+        "sha256": "dde2b290141f0ac1a3c1f8252e3051e7438792cdcce65c9b2aa840c27678fdc5"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 2,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u8-reading",
+    "grade": 10,
+    "unit": 8,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit8.json",
+        "sha256": "4e3acb3ff73466fe2df8deccf11592b562f3f2178cf18063a96db48f6ebc9859"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit8Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 9,
+    "scanPages": [],
+    "exerciseCount": 18,
+    "providedAnswers": 10,
+    "suggestedAnswers": 8,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u8-vocabulary",
+    "grade": 10,
+    "unit": 8,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit8.json",
+        "sha256": "4e3acb3ff73466fe2df8deccf11592b562f3f2178cf18063a96db48f6ebc9859"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit8Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 2,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u8-grammar",
+    "grade": 10,
+    "unit": 8,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit8.json",
+        "sha256": "4e3acb3ff73466fe2df8deccf11592b562f3f2178cf18063a96db48f6ebc9859"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit8Supplement.ts",
+      "src/data/grammar/unit8.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 5,
+    "providedAnswers": 2,
+    "suggestedAnswers": 3,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u8-listening",
+    "grade": 10,
+    "unit": 8,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit8.json",
+        "sha256": "4e3acb3ff73466fe2df8deccf11592b562f3f2178cf18063a96db48f6ebc9859"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 19,
+    "providedAnswers": 3,
+    "suggestedAnswers": 10,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit8.mp3",
+      "path": "public/audio/unit8.mp3",
+      "bytes": 4408897
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u8-speaking",
+    "grade": 10,
+    "unit": 8,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit8.json",
+        "sha256": "4e3acb3ff73466fe2df8deccf11592b562f3f2178cf18063a96db48f6ebc9859"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 19,
+    "providedAnswers": 3,
+    "suggestedAnswers": 10,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit8.mp3",
+      "path": "public/audio/unit8.mp3",
+      "bytes": 4408897
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u8-writing",
+    "grade": 10,
+    "unit": 8,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit8.json",
+        "sha256": "4e3acb3ff73466fe2df8deccf11592b562f3f2178cf18063a96db48f6ebc9859"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 2,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u9-reading",
+    "grade": 10,
+    "unit": 9,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit9.json",
+        "sha256": "d616958d15fae020716722bd9f7a46972ec73c84d31ac9f0da0ec0cae12255f9"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit9Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 9,
+    "scanPages": [],
+    "exerciseCount": 15,
+    "providedAnswers": 11,
+    "suggestedAnswers": 4,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u9-vocabulary",
+    "grade": 10,
+    "unit": 9,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit9.json",
+        "sha256": "d616958d15fae020716722bd9f7a46972ec73c84d31ac9f0da0ec0cae12255f9"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit9Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 2,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u9-grammar",
+    "grade": 10,
+    "unit": 9,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit9.json",
+        "sha256": "d616958d15fae020716722bd9f7a46972ec73c84d31ac9f0da0ec0cae12255f9"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit9Supplement.ts",
+      "src/data/grammar/unit9.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 5,
+    "providedAnswers": 2,
+    "suggestedAnswers": 3,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u9-listening",
+    "grade": 10,
+    "unit": 9,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit9.json",
+        "sha256": "d616958d15fae020716722bd9f7a46972ec73c84d31ac9f0da0ec0cae12255f9"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 13,
+    "providedAnswers": 3,
+    "suggestedAnswers": 10,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit9.mp3",
+      "path": "public/audio/unit9.mp3",
+      "bytes": 4383820
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u9-speaking",
+    "grade": 10,
+    "unit": 9,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit9.json",
+        "sha256": "d616958d15fae020716722bd9f7a46972ec73c84d31ac9f0da0ec0cae12255f9"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 13,
+    "providedAnswers": 3,
+    "suggestedAnswers": 10,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit9.mp3",
+      "path": "public/audio/unit9.mp3",
+      "bytes": 4383820
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u9-writing",
+    "grade": 10,
+    "unit": 9,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit9.json",
+        "sha256": "d616958d15fae020716722bd9f7a46972ec73c84d31ac9f0da0ec0cae12255f9"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 2,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u10-reading",
+    "grade": 10,
+    "unit": 10,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit10.json",
+        "sha256": "1914cdc7064ee2cb420e188b2edabad8354314c32a6d9225727555938acaa42a"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit10Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 13,
+    "scanPages": [],
+    "exerciseCount": 21,
+    "providedAnswers": 10,
+    "suggestedAnswers": 11,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u10-vocabulary",
+    "grade": 10,
+    "unit": 10,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit10.json",
+        "sha256": "1914cdc7064ee2cb420e188b2edabad8354314c32a6d9225727555938acaa42a"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit10Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 20,
+    "providedAnswers": 10,
+    "suggestedAnswers": 10,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u10-grammar",
+    "grade": 10,
+    "unit": 10,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit10.json",
+        "sha256": "1914cdc7064ee2cb420e188b2edabad8354314c32a6d9225727555938acaa42a"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit10Supplement.ts",
+      "src/data/grammar/unit10.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 12,
+    "providedAnswers": 2,
+    "suggestedAnswers": 10,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u10-listening",
+    "grade": 10,
+    "unit": 10,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit10.json",
+        "sha256": "1914cdc7064ee2cb420e188b2edabad8354314c32a6d9225727555938acaa42a"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 2,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit10.mp3",
+      "path": "public/audio/unit10.mp3",
+      "bytes": 3663885
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u10-speaking",
+    "grade": 10,
+    "unit": 10,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit10.json",
+        "sha256": "1914cdc7064ee2cb420e188b2edabad8354314c32a6d9225727555938acaa42a"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 2,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit10.mp3",
+      "path": "public/audio/unit10.mp3",
+      "bytes": 3663885
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u10-writing",
+    "grade": 10,
+    "unit": 10,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit10.json",
+        "sha256": "1914cdc7064ee2cb420e188b2edabad8354314c32a6d9225727555938acaa42a"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 3,
+    "providedAnswers": 1,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u11-reading",
+    "grade": 10,
+    "unit": 11,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit11.json",
+        "sha256": "6abc10ccfb546c1ea3045823a6c3508214929923cd074120828c88f15d8abea7"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit11Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 7,
+    "scanPages": [],
+    "exerciseCount": 25,
+    "providedAnswers": 12,
+    "suggestedAnswers": 13,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u11-vocabulary",
+    "grade": 10,
+    "unit": 11,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit11.json",
+        "sha256": "6abc10ccfb546c1ea3045823a6c3508214929923cd074120828c88f15d8abea7"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit11Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 5,
+    "providedAnswers": 2,
+    "suggestedAnswers": 3,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u11-grammar",
+    "grade": 10,
+    "unit": 11,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit11.json",
+        "sha256": "6abc10ccfb546c1ea3045823a6c3508214929923cd074120828c88f15d8abea7"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit11Supplement.ts",
+      "src/data/grammar/unit11.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 5,
+    "providedAnswers": 2,
+    "suggestedAnswers": 3,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u11-listening",
+    "grade": 10,
+    "unit": 11,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit11.json",
+        "sha256": "6abc10ccfb546c1ea3045823a6c3508214929923cd074120828c88f15d8abea7"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 11,
+    "providedAnswers": 4,
+    "suggestedAnswers": 7,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit11.mp3",
+      "path": "public/audio/unit11.mp3",
+      "bytes": 7574938
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u11-speaking",
+    "grade": 10,
+    "unit": 11,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit11.json",
+        "sha256": "6abc10ccfb546c1ea3045823a6c3508214929923cd074120828c88f15d8abea7"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 11,
+    "providedAnswers": 4,
+    "suggestedAnswers": 7,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit11.mp3",
+      "path": "public/audio/unit11.mp3",
+      "bytes": 7574938
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u11-writing",
+    "grade": 10,
+    "unit": 11,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit11.json",
+        "sha256": "6abc10ccfb546c1ea3045823a6c3508214929923cd074120828c88f15d8abea7"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 3,
+    "providedAnswers": 1,
+    "suggestedAnswers": 2,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u12-reading",
+    "grade": 10,
+    "unit": 12,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit12.json",
+        "sha256": "aba4e131e30f0f5159a46f4bc485c2fc7241acb350fcd94d6f0d202bf9b68995"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit12Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 8,
+    "scanPages": [],
+    "exerciseCount": 21,
+    "providedAnswers": 13,
+    "suggestedAnswers": 8,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u12-vocabulary",
+    "grade": 10,
+    "unit": 12,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit12.json",
+        "sha256": "aba4e131e30f0f5159a46f4bc485c2fc7241acb350fcd94d6f0d202bf9b68995"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit12Supplement.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 5,
+    "providedAnswers": 0,
+    "suggestedAnswers": 5,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u12-grammar",
+    "grade": 10,
+    "unit": 12,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit12.json",
+        "sha256": "aba4e131e30f0f5159a46f4bc485c2fc7241acb350fcd94d6f0d202bf9b68995"
+      }
+    ],
+    "supportFiles": [
+      "src/data/unit12Supplement.ts",
+      "src/data/grammar/unit12.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 0,
+    "suggestedAnswers": 4,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u12-listening",
+    "grade": 10,
+    "unit": 12,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit12.json",
+        "sha256": "aba4e131e30f0f5159a46f4bc485c2fc7241acb350fcd94d6f0d202bf9b68995"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 17,
+    "providedAnswers": 0,
+    "suggestedAnswers": 17,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit12.mp3",
+      "path": "public/audio/unit12.mp3",
+      "bytes": 3308620
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u12-speaking",
+    "grade": 10,
+    "unit": 12,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit12.json",
+        "sha256": "aba4e131e30f0f5159a46f4bc485c2fc7241acb350fcd94d6f0d202bf9b68995"
+      }
+    ],
+    "supportFiles": [
+      "src/data/listeningScripts.ts"
+    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 17,
+    "providedAnswers": 0,
+    "suggestedAnswers": 17,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/audio/unit12.mp3",
+      "path": "public/audio/unit12.mp3",
+      "bytes": 3308620
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g10-u12-writing",
+    "grade": 10,
+    "unit": 12,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/textbookUnit12.json",
+        "sha256": "aba4e131e30f0f5159a46f4bc485c2fc7241acb350fcd94d6f0d202bf9b68995"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 2,
+    "scanPages": [],
+    "exerciseCount": 3,
+    "providedAnswers": 0,
+    "suggestedAnswers": 3,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u1-reading",
+    "grade": 11,
+    "unit": 1,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit1.json",
+        "sha256": "af2756a07e99598f410fe42cdf46c113d6a1f471353ca3256d807824270fa3d8"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit1-keys.json",
+        "sha256": "cc600fbb6ce5208117c4a57411d23131c0700deb695449f951b6f22bb93750fc"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 7,
+    "scanPages": [],
+    "exerciseCount": 28,
+    "providedAnswers": 12,
+    "suggestedAnswers": 10,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": "src/data/classroom/grade11-unit1-reading.json",
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u1-vocabulary",
+    "grade": 11,
+    "unit": 1,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit1.json",
+        "sha256": "af2756a07e99598f410fe42cdf46c113d6a1f471353ca3256d807824270fa3d8"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit1-keys.json",
+        "sha256": "cc600fbb6ce5208117c4a57411d23131c0700deb695449f951b6f22bb93750fc"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 4,
+    "scanPages": [],
+    "exerciseCount": 20,
+    "providedAnswers": 20,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u1-grammar",
+    "grade": 11,
+    "unit": 1,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit1.json",
+        "sha256": "af2756a07e99598f410fe42cdf46c113d6a1f471353ca3256d807824270fa3d8"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit1-keys.json",
+        "sha256": "cc600fbb6ce5208117c4a57411d23131c0700deb695449f951b6f22bb93750fc"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 29,
+    "scanPages": [],
+    "exerciseCount": 40,
+    "providedAnswers": 10,
+    "suggestedAnswers": 30,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u1-listening",
+    "grade": 11,
+    "unit": 1,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit1.json",
+        "sha256": "af2756a07e99598f410fe42cdf46c113d6a1f471353ca3256d807824270fa3d8"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit1-keys.json",
+        "sha256": "cc600fbb6ce5208117c4a57411d23131c0700deb695449f951b6f22bb93750fc"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 0,
+    "scanPages": [],
+    "exerciseCount": 12,
+    "providedAnswers": 5,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": {
+      "url": "/grade11/audio/unit1.mp3",
+      "path": "public/grade11/audio/unit1.mp3",
+      "bytes": 1858383
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u1-speaking",
+    "grade": 11,
+    "unit": 1,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit1.json",
+        "sha256": "af2756a07e99598f410fe42cdf46c113d6a1f471353ca3256d807824270fa3d8"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit1-keys.json",
+        "sha256": "cc600fbb6ce5208117c4a57411d23131c0700deb695449f951b6f22bb93750fc"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 0,
+    "scanPages": [],
+    "exerciseCount": 12,
+    "providedAnswers": 5,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": {
+      "url": "/grade11/audio/unit1.mp3",
+      "path": "public/grade11/audio/unit1.mp3",
+      "bytes": 1858383
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u1-writing",
+    "grade": 11,
+    "unit": 1,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit1.json",
+        "sha256": "af2756a07e99598f410fe42cdf46c113d6a1f471353ca3256d807824270fa3d8"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "mixed",
+    "lessonTextBlocks": 19,
+    "scanPages": [
+      15
+    ],
+    "exerciseCount": 0,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u2-reading",
+    "grade": 11,
+    "unit": 2,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit2.json",
+        "sha256": "c4b820805c0884a3332efd1494f11db7514f7466c52fd6f0ba07a637b98c6d4d"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit2-keys.json",
+        "sha256": "5bb600740023d8b94cc39111922a0991af66ce1c82cf7cc0783b43f8d9818671"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 12,
+    "scanPages": [],
+    "exerciseCount": 25,
+    "providedAnswers": 12,
+    "suggestedAnswers": 7,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u2-vocabulary",
+    "grade": 11,
+    "unit": 2,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit2.json",
+        "sha256": "c4b820805c0884a3332efd1494f11db7514f7466c52fd6f0ba07a637b98c6d4d"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit2-keys.json",
+        "sha256": "5bb600740023d8b94cc39111922a0991af66ce1c82cf7cc0783b43f8d9818671"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 9,
+    "scanPages": [],
+    "exerciseCount": 8,
+    "providedAnswers": 8,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u2-grammar",
+    "grade": 11,
+    "unit": 2,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit2.json",
+        "sha256": "c4b820805c0884a3332efd1494f11db7514f7466c52fd6f0ba07a637b98c6d4d"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit2-keys.json",
+        "sha256": "5bb600740023d8b94cc39111922a0991af66ce1c82cf7cc0783b43f8d9818671"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 71,
+    "scanPages": [],
+    "exerciseCount": 30,
+    "providedAnswers": 30,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u2-listening",
+    "grade": 11,
+    "unit": 2,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit2.json",
+        "sha256": "c4b820805c0884a3332efd1494f11db7514f7466c52fd6f0ba07a637b98c6d4d"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      25
+    ],
+    "exerciseCount": 8,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit2.mp3",
+      "path": "public/grade11/audio/unit2.mp3",
+      "bytes": 1805302
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u2-speaking",
+    "grade": 11,
+    "unit": 2,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit2.json",
+        "sha256": "c4b820805c0884a3332efd1494f11db7514f7466c52fd6f0ba07a637b98c6d4d"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      25
+    ],
+    "exerciseCount": 8,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit2.mp3",
+      "path": "public/grade11/audio/unit2.mp3",
+      "bytes": 1805302
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u2-writing",
+    "grade": 11,
+    "unit": 2,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit2.json",
+        "sha256": "c4b820805c0884a3332efd1494f11db7514f7466c52fd6f0ba07a637b98c6d4d"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 14,
+    "scanPages": [],
+    "exerciseCount": 0,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u3-reading",
+    "grade": 11,
+    "unit": 3,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit3.json",
+        "sha256": "3607ccc89b59b0adcedb762d4e79b847ff3d53514e8ac1580aae9dbd99e75d81"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit3-keys.json",
+        "sha256": "bf16a7ab4a0bcac46716b26809229d4e99426fae27432081d7ffa825d1e997e0"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "mixed",
+    "lessonTextBlocks": 13,
+    "scanPages": [
+      29
+    ],
+    "exerciseCount": 26,
+    "providedAnswers": 12,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u3-vocabulary",
+    "grade": 11,
+    "unit": 3,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit3.json",
+        "sha256": "3607ccc89b59b0adcedb762d4e79b847ff3d53514e8ac1580aae9dbd99e75d81"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit3-keys.json",
+        "sha256": "bf16a7ab4a0bcac46716b26809229d4e99426fae27432081d7ffa825d1e997e0"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "mixed",
+    "lessonTextBlocks": 12,
+    "scanPages": [
+      32
+    ],
+    "exerciseCount": 8,
+    "providedAnswers": 5,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u3-grammar",
+    "grade": 11,
+    "unit": 3,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit3.json",
+        "sha256": "3607ccc89b59b0adcedb762d4e79b847ff3d53514e8ac1580aae9dbd99e75d81"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit3-keys.json",
+        "sha256": "bf16a7ab4a0bcac46716b26809229d4e99426fae27432081d7ffa825d1e997e0"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 29,
+    "scanPages": [],
+    "exerciseCount": 10,
+    "providedAnswers": 10,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u3-listening",
+    "grade": 11,
+    "unit": 3,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit3.json",
+        "sha256": "3607ccc89b59b0adcedb762d4e79b847ff3d53514e8ac1580aae9dbd99e75d81"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit3-keys.json",
+        "sha256": "bf16a7ab4a0bcac46716b26809229d4e99426fae27432081d7ffa825d1e997e0"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 12,
+    "scanPages": [],
+    "exerciseCount": 14,
+    "providedAnswers": 4,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": {
+      "url": "/grade11/audio/unit3.mp3",
+      "path": "public/grade11/audio/unit3.mp3",
+      "bytes": 1247745
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u3-speaking",
+    "grade": 11,
+    "unit": 3,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit3.json",
+        "sha256": "3607ccc89b59b0adcedb762d4e79b847ff3d53514e8ac1580aae9dbd99e75d81"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit3-keys.json",
+        "sha256": "bf16a7ab4a0bcac46716b26809229d4e99426fae27432081d7ffa825d1e997e0"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 12,
+    "scanPages": [],
+    "exerciseCount": 14,
+    "providedAnswers": 4,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": {
+      "url": "/grade11/audio/unit3.mp3",
+      "path": "public/grade11/audio/unit3.mp3",
+      "bytes": 1247745
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u3-writing",
+    "grade": 11,
+    "unit": 3,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit3.json",
+        "sha256": "3607ccc89b59b0adcedb762d4e79b847ff3d53514e8ac1580aae9dbd99e75d81"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 9,
+    "scanPages": [],
+    "exerciseCount": 0,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u4-reading",
+    "grade": 11,
+    "unit": 4,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit4.json",
+        "sha256": "454b63a205ac684cfe23296f84b40365fc300efb8913727406b959ce4ec265ff"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "mixed",
+    "lessonTextBlocks": 9,
+    "scanPages": [
+      42
+    ],
+    "exerciseCount": 15,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u4-vocabulary",
+    "grade": 11,
+    "unit": 4,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit4.json",
+        "sha256": "454b63a205ac684cfe23296f84b40365fc300efb8913727406b959ce4ec265ff"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit4-keys.json",
+        "sha256": "191f0dd2f8084a7f93b32d6fa32ba79fa9c8f7bb5207fff7d3275ce369f1023d"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 14,
+    "scanPages": [],
+    "exerciseCount": 24,
+    "providedAnswers": 24,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u4-grammar",
+    "grade": 11,
+    "unit": 4,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit4.json",
+        "sha256": "454b63a205ac684cfe23296f84b40365fc300efb8913727406b959ce4ec265ff"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 18,
+    "scanPages": [],
+    "exerciseCount": 20,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u4-listening",
+    "grade": 11,
+    "unit": 4,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit4.json",
+        "sha256": "454b63a205ac684cfe23296f84b40365fc300efb8913727406b959ce4ec265ff"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "mixed",
+    "lessonTextBlocks": 1,
+    "scanPages": [
+      47
+    ],
+    "exerciseCount": 16,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit4.mp3",
+      "path": "public/grade11/audio/unit4.mp3",
+      "bytes": 3094706
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u4-speaking",
+    "grade": 11,
+    "unit": 4,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit4.json",
+        "sha256": "454b63a205ac684cfe23296f84b40365fc300efb8913727406b959ce4ec265ff"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "mixed",
+    "lessonTextBlocks": 1,
+    "scanPages": [
+      47
+    ],
+    "exerciseCount": 16,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit4.mp3",
+      "path": "public/grade11/audio/unit4.mp3",
+      "bytes": 3094706
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u4-writing",
+    "grade": 11,
+    "unit": 4,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit4.json",
+        "sha256": "454b63a205ac684cfe23296f84b40365fc300efb8913727406b959ce4ec265ff"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 22,
+    "scanPages": [],
+    "exerciseCount": 4,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u5-reading",
+    "grade": 11,
+    "unit": 5,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit5.json",
+        "sha256": "ab16ebadd4bc4013f9ef3b2548c4c2ff4ef39f57fcd8d4d27784f2c836042929"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "mixed",
+    "lessonTextBlocks": 28,
+    "scanPages": [
+      51
+    ],
+    "exerciseCount": 51,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u5-vocabulary",
+    "grade": 11,
+    "unit": 5,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit5.json",
+        "sha256": "ab16ebadd4bc4013f9ef3b2548c4c2ff4ef39f57fcd8d4d27784f2c836042929"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 4,
+    "scanPages": [],
+    "exerciseCount": 16,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u5-grammar",
+    "grade": 11,
+    "unit": 5,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit5.json",
+        "sha256": "ab16ebadd4bc4013f9ef3b2548c4c2ff4ef39f57fcd8d4d27784f2c836042929"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 17,
+    "scanPages": [],
+    "exerciseCount": 29,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u5-listening",
+    "grade": 11,
+    "unit": 5,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit5.json",
+        "sha256": "ab16ebadd4bc4013f9ef3b2548c4c2ff4ef39f57fcd8d4d27784f2c836042929"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 0,
+    "scanPages": [],
+    "exerciseCount": 11,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit5.mp3",
+      "path": "public/grade11/audio/unit5.mp3",
+      "bytes": 2140088
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u5-speaking",
+    "grade": 11,
+    "unit": 5,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit5.json",
+        "sha256": "ab16ebadd4bc4013f9ef3b2548c4c2ff4ef39f57fcd8d4d27784f2c836042929"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 0,
+    "scanPages": [],
+    "exerciseCount": 11,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit5.mp3",
+      "path": "public/grade11/audio/unit5.mp3",
+      "bytes": 2140088
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u5-writing",
+    "grade": 11,
+    "unit": 5,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit5.json",
+        "sha256": "ab16ebadd4bc4013f9ef3b2548c4c2ff4ef39f57fcd8d4d27784f2c836042929"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 22,
+    "scanPages": [],
+    "exerciseCount": 2,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u6-reading",
+    "grade": 11,
+    "unit": 6,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit6.json",
+        "sha256": "f283d954048d86dc68a774b9458bac92afbd926396ac2ac236296f55ecdd0545"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 26,
+    "scanPages": [],
+    "exerciseCount": 25,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u6-vocabulary",
+    "grade": 11,
+    "unit": 6,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit6.json",
+        "sha256": "f283d954048d86dc68a774b9458bac92afbd926396ac2ac236296f55ecdd0545"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
+    "exerciseCount": 20,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u6-grammar",
+    "grade": 11,
+    "unit": 6,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit6.json",
+        "sha256": "f283d954048d86dc68a774b9458bac92afbd926396ac2ac236296f55ecdd0545"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 10,
+    "scanPages": [],
+    "exerciseCount": 20,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u6-listening",
+    "grade": 11,
+    "unit": 6,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit6.json",
+        "sha256": "f283d954048d86dc68a774b9458bac92afbd926396ac2ac236296f55ecdd0545"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 20,
+    "scanPages": [],
+    "exerciseCount": 10,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit6.mp3",
+      "path": "public/grade11/audio/unit6.mp3",
+      "bytes": 3467526
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u6-speaking",
+    "grade": 11,
+    "unit": 6,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit6.json",
+        "sha256": "f283d954048d86dc68a774b9458bac92afbd926396ac2ac236296f55ecdd0545"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 20,
+    "scanPages": [],
+    "exerciseCount": 10,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit6.mp3",
+      "path": "public/grade11/audio/unit6.mp3",
+      "bytes": 3467526
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u6-writing",
+    "grade": 11,
+    "unit": 6,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit6.json",
+        "sha256": "f283d954048d86dc68a774b9458bac92afbd926396ac2ac236296f55ecdd0545"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 24,
+    "scanPages": [],
+    "exerciseCount": 2,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u7-reading",
+    "grade": 11,
+    "unit": 7,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit7.json",
+        "sha256": "896916c2543dbfbe13fe7c645285b5d57d6482870f25ebba03cb02bffd8e7db0"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      76,
+      77,
+      78,
+      79
+    ],
+    "exerciseCount": 18,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u7-vocabulary",
+    "grade": 11,
+    "unit": 7,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit7.json",
+        "sha256": "896916c2543dbfbe13fe7c645285b5d57d6482870f25ebba03cb02bffd8e7db0"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit7-answer.json",
+        "sha256": "6ae954a5e8fdc030edb01528a84d30242b7636902117878257b29dc17ae4e9d5"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      79,
+      80,
+      81
+    ],
+    "exerciseCount": 14,
+    "providedAnswers": 14,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u7-grammar",
+    "grade": 11,
+    "unit": 7,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit7.json",
+        "sha256": "896916c2543dbfbe13fe7c645285b5d57d6482870f25ebba03cb02bffd8e7db0"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      81,
+      82,
+      83
+    ],
+    "exerciseCount": 22,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u7-listening",
+    "grade": 11,
+    "unit": 7,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit7.json",
+        "sha256": "896916c2543dbfbe13fe7c645285b5d57d6482870f25ebba03cb02bffd8e7db0"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      83
+    ],
+    "exerciseCount": 10,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit7.mp3",
+      "path": "public/grade11/audio/unit7.mp3",
+      "bytes": 2204871
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u7-speaking",
+    "grade": 11,
+    "unit": 7,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit7.json",
+        "sha256": "896916c2543dbfbe13fe7c645285b5d57d6482870f25ebba03cb02bffd8e7db0"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      83,
+      84
+    ],
+    "exerciseCount": 5,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit7.mp3",
+      "path": "public/grade11/audio/unit7.mp3",
+      "bytes": 2204871
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u7-writing",
+    "grade": 11,
+    "unit": 7,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit7.json",
+        "sha256": "896916c2543dbfbe13fe7c645285b5d57d6482870f25ebba03cb02bffd8e7db0"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      84
+    ],
+    "exerciseCount": 1,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u8-reading",
+    "grade": 11,
+    "unit": 8,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit8.json",
+        "sha256": "d2ccc218f98ebd64603903c94d31c51d61ff938ad0f1b77097b2370402759866"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit8-answer.json",
+        "sha256": "3dcaaaa15085194db9653e4ae0f86e4258c41d8f8de45369f9a19e2dadc6d222"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      86,
+      87,
+      88,
+      89,
+      90,
+      91
+    ],
+    "exerciseCount": 32,
+    "providedAnswers": 7,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u8-vocabulary",
+    "grade": 11,
+    "unit": 8,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit8.json",
+        "sha256": "d2ccc218f98ebd64603903c94d31c51d61ff938ad0f1b77097b2370402759866"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit8-answer.json",
+        "sha256": "3dcaaaa15085194db9653e4ae0f86e4258c41d8f8de45369f9a19e2dadc6d222"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      91,
+      92
+    ],
+    "exerciseCount": 24,
+    "providedAnswers": 24,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u8-grammar",
+    "grade": 11,
+    "unit": 8,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit8.json",
+        "sha256": "d2ccc218f98ebd64603903c94d31c51d61ff938ad0f1b77097b2370402759866"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      93,
+      94,
+      95,
+      96
+    ],
+    "exerciseCount": 25,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u8-listening",
+    "grade": 11,
+    "unit": 8,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit8.json",
+        "sha256": "d2ccc218f98ebd64603903c94d31c51d61ff938ad0f1b77097b2370402759866"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      96
+    ],
+    "exerciseCount": 8,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit8.mp3",
+      "path": "public/grade11/audio/unit8.mp3",
+      "bytes": 1493505
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u8-speaking",
+    "grade": 11,
+    "unit": 8,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit8.json",
+        "sha256": "d2ccc218f98ebd64603903c94d31c51d61ff938ad0f1b77097b2370402759866"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      96,
+      97
+    ],
+    "exerciseCount": 6,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit8.mp3",
+      "path": "public/grade11/audio/unit8.mp3",
+      "bytes": 1493505
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u8-writing",
+    "grade": 11,
+    "unit": 8,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit8.json",
+        "sha256": "d2ccc218f98ebd64603903c94d31c51d61ff938ad0f1b77097b2370402759866"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      97,
+      98
+    ],
+    "exerciseCount": 7,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u9-reading",
+    "grade": 11,
+    "unit": 9,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit9.json",
+        "sha256": "51a4964882659676ccdce05e089eace1e68ce63f8bd0e8b32fdab806f4f1eacd"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      100,
+      101,
+      102
+    ],
+    "exerciseCount": 22,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u9-vocabulary",
+    "grade": 11,
+    "unit": 9,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit9.json",
+        "sha256": "51a4964882659676ccdce05e089eace1e68ce63f8bd0e8b32fdab806f4f1eacd"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit9-answer.json",
+        "sha256": "a2046e9dda50c43342a7dbb025cf4a7026994b6e762b6ccd04b2163447247c93"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      103,
+      104
+    ],
+    "exerciseCount": 10,
+    "providedAnswers": 10,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u9-grammar",
+    "grade": 11,
+    "unit": 9,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit9.json",
+        "sha256": "51a4964882659676ccdce05e089eace1e68ce63f8bd0e8b32fdab806f4f1eacd"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      104,
+      105,
+      106
+    ],
+    "exerciseCount": 15,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u9-listening",
+    "grade": 11,
+    "unit": 9,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit9.json",
+        "sha256": "51a4964882659676ccdce05e089eace1e68ce63f8bd0e8b32fdab806f4f1eacd"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      106
+    ],
+    "exerciseCount": 8,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit9.mp3",
+      "path": "public/grade11/audio/unit9.mp3",
+      "bytes": 2080737
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u9-speaking",
+    "grade": 11,
+    "unit": 9,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit9.json",
+        "sha256": "51a4964882659676ccdce05e089eace1e68ce63f8bd0e8b32fdab806f4f1eacd"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      106,
+      107
+    ],
+    "exerciseCount": 4,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit9.mp3",
+      "path": "public/grade11/audio/unit9.mp3",
+      "bytes": 2080737
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u9-writing",
+    "grade": 11,
+    "unit": 9,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit9.json",
+        "sha256": "51a4964882659676ccdce05e089eace1e68ce63f8bd0e8b32fdab806f4f1eacd"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      107
+    ],
+    "exerciseCount": 1,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u10-reading",
+    "grade": 11,
+    "unit": 10,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit10.json",
+        "sha256": "cce1bab933b55fe4cd029fc4326a145ee2b935606232d59784c639fc738112b5"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      111,
+      112,
+      113,
+      114
+    ],
+    "exerciseCount": 19,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u10-vocabulary",
+    "grade": 11,
+    "unit": 10,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit10.json",
+        "sha256": "cce1bab933b55fe4cd029fc4326a145ee2b935606232d59784c639fc738112b5"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit10-answer.json",
+        "sha256": "69a8f14ec8a33a60d50c93554afed580cf409d7f2741bcd4245ced23061f8646"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      114,
+      115
+    ],
+    "exerciseCount": 19,
+    "providedAnswers": 19,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u10-grammar",
+    "grade": 11,
+    "unit": 10,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit10.json",
+        "sha256": "cce1bab933b55fe4cd029fc4326a145ee2b935606232d59784c639fc738112b5"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      116,
+      117
+    ],
+    "exerciseCount": 20,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u10-listening",
+    "grade": 11,
+    "unit": 10,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit10.json",
+        "sha256": "cce1bab933b55fe4cd029fc4326a145ee2b935606232d59784c639fc738112b5"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      117
+    ],
+    "exerciseCount": 9,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit10.mp3",
+      "path": "public/grade11/audio/unit10.mp3",
+      "bytes": 1592979
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u10-speaking",
+    "grade": 11,
+    "unit": 10,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit10.json",
+        "sha256": "cce1bab933b55fe4cd029fc4326a145ee2b935606232d59784c639fc738112b5"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      118
+    ],
+    "exerciseCount": 6,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit10.mp3",
+      "path": "public/grade11/audio/unit10.mp3",
+      "bytes": 1592979
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u10-writing",
+    "grade": 11,
+    "unit": 10,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit10.json",
+        "sha256": "cce1bab933b55fe4cd029fc4326a145ee2b935606232d59784c639fc738112b5"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      118
+    ],
+    "exerciseCount": 6,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u11-reading",
+    "grade": 11,
+    "unit": 11,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit11.json",
+        "sha256": "cce42bcebffe6331d2ed9bb5b7c9f60de51f3da0c62bb57d069cd3fad9568b8b"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit11-answer.json",
+        "sha256": "a6dd55679f382775a448df7bbdf1a1d87bc03a1692b06f9c0177bd4761cc67f3"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      120,
+      121,
+      122,
+      123
+    ],
+    "exerciseCount": 28,
+    "providedAnswers": 12,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u11-vocabulary",
+    "grade": 11,
+    "unit": 11,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit11.json",
+        "sha256": "cce42bcebffe6331d2ed9bb5b7c9f60de51f3da0c62bb57d069cd3fad9568b8b"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit11-answer.json",
+        "sha256": "a6dd55679f382775a448df7bbdf1a1d87bc03a1692b06f9c0177bd4761cc67f3"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      123,
+      124,
+      125
+    ],
+    "exerciseCount": 15,
+    "providedAnswers": 15,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u11-grammar",
+    "grade": 11,
+    "unit": 11,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit11.json",
+        "sha256": "cce42bcebffe6331d2ed9bb5b7c9f60de51f3da0c62bb57d069cd3fad9568b8b"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      125,
+      126,
+      127
+    ],
+    "exerciseCount": 30,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u11-listening",
+    "grade": 11,
+    "unit": 11,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit11.json",
+        "sha256": "cce42bcebffe6331d2ed9bb5b7c9f60de51f3da0c62bb57d069cd3fad9568b8b"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      127,
+      128
+    ],
+    "exerciseCount": 10,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit11.mp3",
+      "path": "public/grade11/audio/unit11.mp3",
+      "bytes": 3111007
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u11-speaking",
+    "grade": 11,
+    "unit": 11,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit11.json",
+        "sha256": "cce42bcebffe6331d2ed9bb5b7c9f60de51f3da0c62bb57d069cd3fad9568b8b"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      128,
+      129
+    ],
+    "exerciseCount": 6,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit11.mp3",
+      "path": "public/grade11/audio/unit11.mp3",
+      "bytes": 3111007
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u11-writing",
+    "grade": 11,
+    "unit": 11,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit11.json",
+        "sha256": "cce42bcebffe6331d2ed9bb5b7c9f60de51f3da0c62bb57d069cd3fad9568b8b"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      129
+    ],
+    "exerciseCount": 9,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u12-reading",
+    "grade": 11,
+    "unit": 12,
+    "skill": "reading",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit12.json",
+        "sha256": "6c502e10cde3e04203b98dce1ac39a5d868d46395d677e8d23a8d8de2bdca51c"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      131,
+      132,
+      133
+    ],
+    "exerciseCount": 17,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u12-vocabulary",
+    "grade": 11,
+    "unit": 12,
+    "skill": "vocabulary",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit12.json",
+        "sha256": "6c502e10cde3e04203b98dce1ac39a5d868d46395d677e8d23a8d8de2bdca51c"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit12-answer.json",
+        "sha256": "0df61241cd6963dc3c9ad6371c8e07407a242ec34e900f49ee168cb7cb3cc175"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      133,
+      134,
+      135,
+      136
+    ],
+    "exerciseCount": 50,
+    "providedAnswers": 38,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u12-grammar",
+    "grade": 11,
+    "unit": 12,
+    "skill": "grammar",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit12.json",
+        "sha256": "6c502e10cde3e04203b98dce1ac39a5d868d46395d677e8d23a8d8de2bdca51c"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      136,
+      137,
+      138,
+      139
+    ],
+    "exerciseCount": 50,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u12-listening",
+    "grade": 11,
+    "unit": 12,
+    "skill": "listening",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit12.json",
+        "sha256": "6c502e10cde3e04203b98dce1ac39a5d868d46395d677e8d23a8d8de2bdca51c"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      140
+    ],
+    "exerciseCount": 12,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit12.mp3",
+      "path": "public/grade11/audio/unit12.mp3",
+      "bytes": 3394383
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u12-speaking",
+    "grade": 11,
+    "unit": 12,
+    "skill": "speaking",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit12.json",
+        "sha256": "6c502e10cde3e04203b98dce1ac39a5d868d46395d677e8d23a8d8de2bdca51c"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      140
+    ],
+    "exerciseCount": 5,
+    "providedAnswers": 0,
+    "suggestedAnswers": 0,
+    "answerOrigins": [],
+    "audio": {
+      "url": "/grade11/audio/unit12.mp3",
+      "path": "public/grade11/audio/unit12.mp3",
+      "bytes": 3394383
+    },
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  },
+  {
+    "id": "g11-u12-writing",
+    "grade": 11,
+    "unit": 12,
+    "skill": "writing",
+    "sourceFiles": [
+      {
+        "path": "src/data/grade11/textbook/unit12.json",
+        "sha256": "6c502e10cde3e04203b98dce1ac39a5d868d46395d677e8d23a8d8de2bdca51c"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit12-answer.json",
+        "sha256": "0df61241cd6963dc3c9ad6371c8e07407a242ec34e900f49ee168cb7cb3cc175"
+      }
+    ],
+    "supportFiles": [],
+    "sourceFormat": "scan",
+    "lessonTextBlocks": 0,
+    "scanPages": [
+      141,
+      142
+    ],
+    "exerciseCount": 10,
+    "providedAnswers": 9,
+    "suggestedAnswers": 0,
+    "answerOrigins": [
+      "source-derived"
+    ],
+    "audio": null,
+    "teacherScript": null,
+    "classroomDelivery": "needs-preparation"
+  }
+]
