@@ -1,3 +1,4 @@
+import { getMethodLesson, methodLessons } from "./method-lessons";
 import { isAnswerMatch } from "@/lib/answerMatch";
 import scripts from "@/data/classroom/grade10-unit1-skills.json";
 import textbook from "@/data/textbookUnit1.json";
@@ -26,6 +27,7 @@ export function isUnitSkill(value: unknown): value is UnitSkill {
   return UNIT_SKILLS.includes(value as UnitSkill);
 }
 export function getUnitLesson(grade: number, unit: number, skill: UnitSkill): ReadingLesson | null {
+  if (skill === "grammar" || skill === "writing") return getMethodLesson(grade, unit, skill);
   if (grade !== 10 || unit !== 1) return null;
   if (skill === "reading") return getReadingLesson(10);
   const script = scripts[skill];
@@ -46,6 +48,8 @@ const skillLessons: Partial<Record<UnitSkill, ReadingLesson>> = {};
 export function resolveClassroomLesson(grade: unknown, lessonId?: string): ReadingLesson | null {
   const reading = getReadingLesson(grade);
   if (!lessonId || reading?.id === lessonId) return reading;
+  const method = methodLessons.find((l) => l.grade === Number(grade) && l.id === lessonId);
+  if (method) return method;
   if (Number(grade) !== 10) return null;
   return (
     UNIT_SKILLS.map((skill) => getUnitLesson(10, 1, skill)).find((l) => l?.id === lessonId) ?? null

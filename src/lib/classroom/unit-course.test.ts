@@ -12,8 +12,8 @@ import { onDemandReadingPilot } from "./pilot";
 it("preserves the exact Reading identity, scripts and cache namespace", () => {
   expect(getUnitLesson(10, 1, "reading")).toBe(getReadingLesson(10));
   expect(resolveClassroomLesson(11, "g10-u1-grammar")).toBeNull();
-  expect(resolveClassroomLesson(10, "g10-u2-grammar")).toBeNull();
-  expect(getUnitLesson(10, 2, "grammar")).toBeNull();
+  expect(resolveClassroomLesson(10, "g10-u2-grammar")?.unit).toBe(2);
+  expect(getUnitLesson(10, 2, "grammar")?.section).toBe("grammar");
   expect(getUnitLesson(11, 1, "reading")).toBeNull();
 });
 it("bounds rollout and narration to canonical, non-empty, TTS-sized Unit 1 scripts", () => {

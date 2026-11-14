@@ -120,8 +120,13 @@ export function CurriculumPreparation({ children }: { children: ReactNode }) {
       </section>
       {pilot ? (
         children
-      ) : grade === 10 && unit === 1 ? (
-        <UnitScriptReview key={skill} skill={skill} />
+      ) : skill === "grammar" || skill === "writing" || (grade === 10 && unit === 1) ? (
+        <UnitScriptReview
+          key={`${grade}:${unit}:${skill}`}
+          grade={grade}
+          unit={unit}
+          skill={skill}
+        />
       ) : (
         <section className="rounded-2xl border p-5 text-sm leading-loose">
           <h2 className="font-semibold">ဆရာသင်ကြားရေး ပြင်ဆင်ရန်</h2>

@@ -327,7 +327,7 @@ function UnitSection({
     </section>
   );
 }
-function UnitTeachingBlock({
+export function UnitTeachingBlock({
   lesson,
   userId,
   start,

@@ -25,6 +25,7 @@ try {
     "0002_reading_classroom_progress",
     "0003_teacher_led_daily_plan",
     "0009_unit_teaching_and_homework",
+    "0010_classroom_grammar_writing_methods",
   ])
     await db.exec(await readFile(`drizzle/migrations/${file}.sql`, "utf8"));
   await db.exec("GRANT USAGE ON SCHEMA auth TO authenticated,anon,service_role");
@@ -34,7 +35,18 @@ try {
     (
       await db.query(
         "SELECT save_unit_section($1,$2,$3,repeat('a',64),'{\"draft\":\"practice\"}',$4,true) AS r",
-        [user, skill, skill === "reading" ? "teacher-v2" : "unit-teacher-v1", practised],
+        [
+          user,
+          skill,
+          skill === "reading"
+            ? "teacher-v2"
+            : skill === "grammar"
+              ? "rule-first-v1"
+              : skill === "writing"
+                ? "point-first-v1"
+                : "unit-teacher-v1",
+          practised,
+        ],
       )
     ).rows[0].r;
   const skills = ["reading", "vocabulary", "grammar", "listening", "speaking", "writing"];
@@ -43,14 +55,20 @@ try {
     db.query("SELECT save_classroom_progress($1,$2,$3,0,0,$4,0,$5)", [
       alice,
       `g10-u1-${skill}`,
-      skill === "reading" ? "teacher-v2" : "unit-teacher-v1",
+      skill === "reading"
+        ? "teacher-v2"
+        : skill === "grammar"
+          ? "rule-first-v1"
+          : skill === "writing"
+            ? "point-first-v1"
+            : "unit-teacher-v1",
       Array.from({ length: count }, (_, i) => i),
       count,
     ]);
   await db.exec("SET ROLE service_role");
   assert.equal((await finish("reading")).reason, "teacher_review_required");
   await db.query(
-    "INSERT INTO classroom_publications(lesson_id,version,content_hash,reviewed_by) SELECT 'g10-u1-'||s,CASE WHEN s='reading' THEN 'teacher-v2' ELSE 'unit-teacher-v1' END,repeat('a',64),$1 FROM unnest($2::text[]) s",
+    "INSERT INTO classroom_publications(lesson_id,version,content_hash,reviewed_by) SELECT 'g10-u1-'||s,CASE s WHEN 'reading' THEN 'teacher-v2' WHEN 'grammar' THEN 'rule-first-v1' WHEN 'writing' THEN 'point-first-v1' ELSE 'unit-teacher-v1' END,repeat('a',64),$1 FROM unnest($2::text[]) s",
     [alice, skills],
   );
   assert.equal((await finish("reading")).reason, "section_incomplete");
@@ -95,6 +113,19 @@ try {
   assert.equal((await db.query("SELECT * FROM unit_section_learning")).rows.length, 6);
   await db.exec("RESET ROLE; SET ROLE anon");
   await assert.rejects(() => db.query("SELECT * FROM unit_homework"), /permission denied/);
+  await db.exec("RESET ROLE; SET ROLE service_role");
+  await db.query(
+    "SELECT save_classroom_progress($1,'g11-u12-grammar','rule-first-v1',0,0,'{}',0,24)",
+    [alice],
+  );
+  await assert.rejects(
+    () =>
+      db.query(
+        "SELECT save_classroom_progress($1,'g11-u13-grammar','rule-first-v1',0,0,'{}',0,24)",
+        [alice],
+      ),
+    /Invalid progress/,
+  );
   console.log(
     "Unit course SQL checks passed: all six sections same day, full-progress gate, publication gate, practice gate, idempotent homework, RLS and server-only writes.",
   );

@@ -1,3 +1,6 @@
+import { useAuth } from "@/components/AuthGate";
+import { getMethodLesson } from "@/lib/classroom/method-lessons";
+import { MethodClassroom, ClassroomLessonChooser } from "@/components/classroom/MethodClassroom";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { UnitClassroom } from "@/components/classroom/UnitClassroom";
@@ -17,17 +20,29 @@ export const Route = createFileRoute("/class")({
 });
 function ClassPage() {
   const { start, grade, unit, skill } = Route.useSearch();
+  const { session } = useAuth();
+  const method = getMethodLesson(grade, unit, skill ?? "");
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-4">
-        <UnitClassroom
-          key={`${grade}:${unit}`}
-          grade={grade}
-          unit={unit}
-          skill={skill}
-          autoStart={start}
-        />
+        <ClassroomLessonChooser key={`${grade}:${unit}`} grade={grade} unit={unit} />
+        {method && !(grade === 10 && unit === 1) ? (
+          <MethodClassroom
+            key={`${method.id}:${session?.user.id ?? "guest"}`}
+            lesson={method}
+            userId={session?.user.id}
+            autoStart={start}
+          />
+        ) : (
+          <UnitClassroom
+            key={`${grade}:${unit}`}
+            grade={grade}
+            unit={unit}
+            skill={skill}
+            autoStart={start}
+          />
+        )}
       </main>
     </div>
   );

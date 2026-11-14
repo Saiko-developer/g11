@@ -57,7 +57,7 @@ it("never loads admin setup for students", () => {
   expect(fetch).not.toHaveBeenCalled();
 });
 
-it("lets admins inspect any unit/skill without approving Reading or generating audio", async () => {
+it("lets admins review classroom Grammar/Writing in either grade without generating audio", async () => {
   render(<TeachingSetup />);
   await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
   fireEvent.change(screen.getByRole("combobox", { name: "Grade" }), { target: { value: "11" } });
@@ -69,8 +69,9 @@ it("lets admins inspect any unit/skill without approving Reading or generating a
     "/grade-11/7/writing",
   );
   expect(screen.queryByRole("button", { name: "Reading အတန်း ဖွင့်မယ်" })).not.toBeInTheDocument();
-  expect(screen.queryByRole("checkbox")).not.toBeInTheDocument();
-  expect(fetch).toHaveBeenCalledTimes(1);
+  expect(screen.getByRole("checkbox")).not.toBeChecked();
+  await waitFor(() => expect(fetch).toHaveBeenCalledTimes(2));
+  expect(vi.mocked(fetch).mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(0);
 });
 
 it("clears Reading approval acknowledgement when switching preparation sections", async () => {

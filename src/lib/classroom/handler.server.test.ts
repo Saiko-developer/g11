@@ -200,7 +200,7 @@ it("binds the new Grammar section to canonical server progress coordinates", asy
     expect.objectContaining({
       p_user: "alice",
       p_lesson: "g10-u1-grammar",
-      p_version: "unit-teacher-v1",
+      p_version: "rule-first-v1",
       p_steps: 16,
     }),
   );
@@ -222,7 +222,7 @@ it("uses the same shared cache service after a new section is published", async 
 });
 it.each([
   { grade: 11, lessonId: "g10-u1-grammar" },
-  { grade: 10, lessonId: "g10-u2-grammar" },
+  { grade: 10, lessonId: "g10-u13-grammar" },
 ])("rejects mismatched grade or unprepared lesson ids", async (selection) => {
   expect((await postClassroom(request({ ...selection, action: "audio" }))).status).toBe(404);
   expect(m.demand).not.toHaveBeenCalled();

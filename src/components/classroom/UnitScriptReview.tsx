@@ -5,8 +5,16 @@ import { spokenStepAt } from "@/lib/classroom/types";
 import { classroomRequest } from "./useClassroom";
 
 /** Rendered only inside the admin setup; API independently checks the admin role. */
-export function UnitScriptReview({ skill }: { skill: UnitSkill }) {
-  const lesson = getUnitLesson(10, 1, skill)!;
+export function UnitScriptReview({
+  skill,
+  grade = 10,
+  unit = 1,
+}: {
+  skill: UnitSkill;
+  grade?: 10 | 11;
+  unit?: number;
+}) {
+  const lesson = getUnitLesson(grade, unit, skill)!;
   const [hash, setHash] = useState("");
   const [published, setPublished] = useState(false);
   const [reviewed, setReviewed] = useState(false);
@@ -14,7 +22,7 @@ export function UnitScriptReview({ skill }: { skill: UnitSkill }) {
   const [error, setError] = useState("");
   useEffect(() => {
     const abort = new AbortController();
-    void fetch(`/api/classroom?grade=10&lessonId=${lesson.id}`, {
+    void fetch(`/api/classroom?grade=${grade}&lessonId=${lesson.id}`, {
       cache: "no-store",
       signal: abort.signal,
     })
@@ -30,12 +38,12 @@ export function UnitScriptReview({ skill }: { skill: UnitSkill }) {
         if (!abort.signal.aborted) setError(err.message);
       });
     return () => abort.abort();
-  }, [lesson.id]);
+  }, [lesson.id, grade]);
   const approve = async () => {
     setBusy(true);
     setError("");
     try {
-      await classroomRequest(10, {
+      await classroomRequest(grade, {
         action: "approve",
         lessonId: lesson.id,
         contentHash: hash,
@@ -50,7 +58,9 @@ export function UnitScriptReview({ skill }: { skill: UnitSkill }) {
   };
   return (
     <section className="space-y-4 rounded-xl border p-5">
-      <h2 className="text-xl font-bold">Unit 1 · {skill} ဆရာပြောစာသား စစ်ဆေးရန်</h2>
+      <h2 className="text-xl font-bold">
+        Grade {grade} · Unit {unit} · {skill} ဆရာပြောစာသား စစ်ဆေးရန်
+      </h2>
       <p className="text-sm leading-loose">
         စာအုပ်အကြောင်းအရာနဲ့ ဆက်စပ်ရေးထားသော သင်ကြားရေးမူကြမ်းပါ။ အတည်ပြုပြီးမှ ကျောင်းသားအသံအတန်း
         ဖွင့်နိုင်ပါမယ်။ အသံကို ပထမဆုံးလိုအပ်ချိန်မှာ ပြင်ဆင်ပြီး shared cache ထဲ သိမ်းပါမယ်။

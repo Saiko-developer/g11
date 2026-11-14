@@ -52,7 +52,7 @@ export function ReadingWhiteboard({
   const entry = notes.find((item) => item.id === segment.id);
   const cue =
     (stage === 2 ? entry?.meaning : stage === 3 ? entry?.grammar : undefined) ??
-    ((stage === 2 || stage === 3) && lesson.section && segment.notes
+    ((stage === 2 || stage === 3 || !!lesson.teachingMethod) && lesson.section && segment.notes
       ? { focus: segment.focus ?? [], notes: segment.notes, example: "", incorrect: undefined }
       : undefined);
   return (
@@ -72,7 +72,7 @@ export function ReadingWhiteboard({
       <p lang="en" className="text-xl font-semibold leading-loose md:text-2xl">
         <HighlightedSentence text={segment.english} phrases={cue?.focus ?? segment.focus ?? []} />
       </p>
-      {stage === 1 && (
+      {stage === 1 && !lesson.teachingMethod && (
         <p
           aria-label="Burmese translation"
           lang="my"
@@ -88,7 +88,11 @@ export function ReadingWhiteboard({
           className="mt-6 space-y-4 rounded-xl border-l-4 border-amber-300 bg-emerald-900/60 p-4"
         >
           <h2 className="text-sm font-semibold text-amber-200">
-            {stage === 2 ? "အဓိကအချက်" : "Grammar · မှတ်ထားမယ်"}
+            {lesson.teachingMethod === "point-first"
+              ? "စဉ်းစားပြီး ရေးမယ်"
+              : stage === 2
+                ? "အဓိကအချက်"
+                : "Grammar · မှတ်ထားမယ်"}
           </h2>
           <ul className="list-disc space-y-2 pl-5 text-base leading-loose">
             {cue.notes.map((note) => (

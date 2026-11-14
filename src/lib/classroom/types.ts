@@ -16,12 +16,13 @@ export type ReadingSegment = {
 export type ReadingLesson = {
   id: string;
   grade: 10 | 11;
-  unit: 1;
+  unit: number;
   section?: "vocabulary" | "grammar" | "listening" | "speaking" | "writing";
   version: string;
   title: string;
   review: "draft";
   teachingRevision?: string;
+  teachingMethod?: "rule-first" | "point-first";
   segments: ReadingSegment[];
   questions: { id: string; question: string; answer: string }[];
 };

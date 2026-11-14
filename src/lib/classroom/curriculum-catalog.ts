@@ -1,3 +1,4 @@
+import { grammarFlow, writingFlow } from "./teaching-method";
 import inventory from "@/data/classroom/curriculum-inventory.json";
 import { SYLLABUS } from "@/data/syllabus";
 import { G11_SYLLABUS } from "@/data/grade11/syllabus";
@@ -61,12 +62,7 @@ export const teachingBlueprints: Record<TeachingSkill, { flow: string[]; checks:
     ],
   },
   grammar: {
-    flow: [
-      "Textbook example နဲ့ အဓိပ္ပာယ်ကို အရင်မြင်အောင် ပြမယ်။",
-      "Rule၊ formula နှင့် ဘာကြောင့် ဒီပုံစံရွေးရသလဲ ရှင်းမယ်။",
-      "Before → အဆင့်ဆင့်ပြောင်းလဲပုံ → After ကို သင်မယ်။",
-      "မှန်/မှား နှိုင်းယှဉ်ပြီး ကျောင်းသားအဖြေကို အကြောင်းပြချက်နဲ့ ပြန်ပြင်မယ်။",
-    ],
+    flow: grammarFlow,
     checks: [
       "ရှိပြီးသား grammar teaching data နှင့် textbook example ကို ပြန်သုံးပါ။",
       "Subject–verb agreement၊ punctuation နှင့် tense မပြောင်းလဲသွားကြောင်း စစ်ပါ။",
@@ -100,12 +96,7 @@ export const teachingBlueprints: Record<TeachingSkill, { flow: string[]; checks:
     ],
   },
   writing: {
-    flow: [
-      "Textbook task၊ ဖတ်မည့်သူနှင့် ရေးရမည့်ရည်ရွယ်ချက်ကို နားလည်မယ်။",
-      "Brainstorm → ideas ရွေး → outline စီမယ်။",
-      "Sentence construction → paragraph → ဆက်စပ်ရေးသားပုံကို အဆင့်ဆင့်သင်မယ်။",
-      "ကျောင်းသားရဲ့ draft ကို စစ်ပြီး ဘာကြောင့်ပြင်ရသလဲ ရှင်းကာ ကိုယ်တိုင်ပြန်ရေးစေမယ်။",
-    ],
+    flow: writingFlow,
     checks: [
       "Essay အဆင်သင့် ထုတ်ပေးရုံ မဖြစ်စေရ။",
       "Textbook word target၊ format နှင့် ပေးထားသော facts ကို စစ်ပါ။",

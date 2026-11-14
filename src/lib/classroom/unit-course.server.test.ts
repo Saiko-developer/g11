@@ -122,7 +122,7 @@ it("binds progress, script identity and completion to the authenticated caller",
     expect.objectContaining({
       p_user: "alice",
       p_hash: "a".repeat(64),
-      p_lesson_version: "unit-teacher-v1",
+      p_lesson_version: "rule-first-v1",
       p_finish: true,
       p_answers: {
         g1: "a musician",
