@@ -44,7 +44,7 @@ export function AdminOverview({
   students: AdminStudent[];
   loading: boolean;
   error?: string;
-  navigate: (section: "students" | "payments" | "requests" | "ai") => void;
+  navigate: (section: "students" | "payments" | "requests" | "ai" | "teaching") => void;
 }) {
   const active = students.filter((student) => student.status !== "suspended").length;
   const scholarships = students.filter((student) => student.scholarship === "pending");
@@ -168,6 +168,12 @@ export function AdminOverview({
         </div>
         <div className="grid gap-3 sm:grid-cols-3">
           {[
+            {
+              id: "teaching" as const,
+              title: "Open teaching setup",
+              text: "Review Grade 10/11 classroom scripts",
+              icon: BookOpen,
+            },
             {
               id: "payments" as const,
               title: "Review top-ups",

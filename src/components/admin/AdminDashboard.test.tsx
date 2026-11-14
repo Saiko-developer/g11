@@ -153,3 +153,36 @@ it("preserves a payment draft when navigating away and back", () => {
   fireEvent.click(screen.getByRole("button", { name: "Payments" }));
   expect(screen.getByLabelText("Payment draft")).toHaveValue("unsaved edit");
 });
+
+it("opens the embedded teaching setup from dashboard navigation", () => {
+  setup(undefined, undefined, {
+    panels: {
+      payments: null,
+      ai: null,
+      requests: null,
+      support: null,
+      announcements: null,
+      teaching: <div>Classroom teaching setup</div>,
+    },
+  });
+  fireEvent.click(screen.getByRole("button", { name: "Teaching setup", exact: true }));
+  expect(screen.getByText("Classroom teaching setup")).toBeVisible();
+});
+it("opens legacy teaching links directly in the admin teaching panel", () => {
+  setup(undefined, undefined, {
+    initialSection: "teaching",
+    panels: {
+      payments: null,
+      ai: null,
+      requests: null,
+      support: null,
+      announcements: null,
+      teaching: <div>Classroom teaching setup</div>,
+    },
+  });
+  expect(screen.getByText("Classroom teaching setup")).toBeVisible();
+  expect(screen.getByRole("button", { name: "Teaching setup", exact: true })).toHaveAttribute(
+    "aria-current",
+    "page",
+  );
+});

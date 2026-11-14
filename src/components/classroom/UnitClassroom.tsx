@@ -488,8 +488,7 @@ export function UnitTeachingBlock({
       )}
       {engine.preparing && (
         <p role="status">
-          အတန်းအသံ ပြင်ဆင်နေသည်… {engine.preparation.ready}/{engine.preparation.total}{" "}
-          (အဆင်သင့်အသံကို ကျောင်းသားများ ပြန်သုံးနိုင်ပါမယ်။)
+          အတန်းအသံ ပြင်ဆင်နေသည်… {engine.preparation.ready}/{engine.preparation.total}
         </p>
       )}
       <p className="text-xs text-muted-foreground">{engine.saveStatus}</p>

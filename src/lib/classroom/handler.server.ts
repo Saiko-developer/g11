@@ -122,7 +122,8 @@ export async function postClassroom(request: Request) {
         return Response.json(
           {
             error: "narration_review_required",
-            message: "သင်ကြားပုံအသစ်ကို /teaching-setup မှ အသံပြင်ဆင်နားထောင်ပြီး အတည်ပြုပါ။",
+            message:
+              "သင်ကြားပုံအသစ်ကို Admin → Teaching setup မှ အသံပြင်ဆင်နားထောင်ပြီး အတည်ပြုပါ။",
           },
           { status: 409 },
         );

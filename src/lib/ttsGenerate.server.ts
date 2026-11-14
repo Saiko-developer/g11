@@ -44,6 +44,7 @@ export type SpeechInput = {
   voice?: string;
   speed?: number;
   provider?: "openai" | string;
+  signal?: AbortSignal;
 };
 
 /** Gemini TTS (natural Burmese) with OpenAI fallback, through the Lovable AI Gateway. */
@@ -52,6 +53,7 @@ export async function generateSpeech({
   voice,
   speed,
   provider,
+  signal,
 }: SpeechInput): Promise<Response> {
   const lovableKey = process.env.LOVABLE_API_KEY;
   if (!lovableKey) return new Response("Missing LOVABLE_API_KEY", { status: 500 });
@@ -69,7 +71,9 @@ export async function generateSpeech({
     if (provider === "openai") throw new Error("openai requested");
     const upstream = await fetch("https://ai.gateway.lovable.dev/v1/audio/speech", {
       method: "POST",
-      signal: AbortSignal.timeout(60000),
+      signal: signal
+        ? AbortSignal.any([signal, AbortSignal.timeout(60000)])
+        : AbortSignal.timeout(60000),
       headers: {
         "Lovable-API-Key": lovableKey,
         "Content-Type": "application/json; charset=utf-8",
@@ -121,9 +125,11 @@ export async function generateSpeech({
       err instanceof Error ? err.message : err,
     );
 
+    if (signal?.aborted) return new Response("Speech preparation timed out", { status: 504 });
+
     // Same Gemini voice on the owner's own key (Lovable credits out / outage).
     if (provider !== "openai") {
-      const pcm = await geminiDirectSpeech(input, geminiVoice);
+      const pcm = await geminiDirectSpeech(input, geminiVoice, fetch, signal);
       if (pcm) {
         return new Response(pcmToWav(pcm).slice().buffer as ArrayBuffer, {
           headers: {

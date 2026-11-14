@@ -9,6 +9,7 @@ const m = vi.hoisted(() => ({
   existing: vi.fn(),
   upload: vi.fn(),
   update: vi.fn(),
+  filters: vi.fn(),
   download: vi.fn(),
 }));
 vi.mock("@/lib/ttsGenerate.server", () => ({ generateSpeech: m.speech }));
@@ -17,7 +18,21 @@ vi.mock("@/integrations/supabase/client.server", () => ({
     rpc: m.claim,
     from: () => ({
       select: () => ({ eq: () => ({ maybeSingle: m.existing }) }),
-      update: () => ({ eq: m.update }),
+      update: (patch: unknown) => {
+        const q = {
+          eq: (...args: unknown[]) => {
+            m.filters(...args);
+            return q;
+          },
+          select: async () => {
+            const result = await m.update(patch);
+            return { data: result.data ?? [{ hash: "clip" }], error: result.error };
+          },
+          then: (resolve: (value: unknown) => unknown) =>
+            Promise.resolve(m.update(patch)).then(resolve),
+        };
+        return q;
+      },
     }),
     storage: { from: () => ({ upload: m.upload, download: m.download }) },
   },
@@ -46,6 +61,7 @@ beforeEach(() => {
 afterEach(() => {
   vi.unstubAllGlobals();
   vi.unstubAllEnvs();
+  vi.restoreAllMocks();
 });
 it("prepares the spoken introduction and full explanation as normal cached narration", async () => {
   for (const cursor of [0, 2, 3, 15, 63]) {
@@ -55,6 +71,7 @@ it("prepares the spoken introduction and full explanation as normal cached narra
       voice: "sarah",
       speed: 1,
       provider: "gemini",
+      signal: expect.any(AbortSignal),
     });
   }
   expect(m.speech.mock.calls[0][0].text).toContain("ကဲ သားတို့သမီးတို့ရေ");
@@ -164,4 +181,57 @@ it("database read failures never trigger paid generation", async () => {
   expect((await readOrPrepareClassroomAudio(lesson, 0)).status).toBe(503);
   expect(m.claim).not.toHaveBeenCalled();
   expect(m.speech).not.toHaveBeenCalled();
+});
+
+it("recovers an expired preparing clip under a new fenced lease", async () => {
+  m.existing.mockResolvedValue({
+    data: { state: "preparing", lease_until: "2000-01-01T00:00:00Z", attempts: 1 },
+    error: null,
+  });
+  m.download.mockResolvedValue({ data: null, error: { statusCode: "404" } });
+  expect((await prepareClassroomAudio(lesson, 0)).status).toBe(200);
+  expect(m.claim).toHaveBeenCalledWith(
+    "claim_classroom_audio_lease",
+    expect.objectContaining({ p_token: expect.any(String) }),
+  );
+  expect(m.filters).toHaveBeenCalledWith("generation_token", m.claim.mock.calls[0][1].p_token);
+  expect(m.speech).toHaveBeenCalledTimes(1);
+});
+it("restores audio uploaded by an interrupted worker without generating again", async () => {
+  m.existing.mockResolvedValue({
+    data: { state: "preparing", lease_until: "2000-01-01T00:00:00Z", attempts: 1 },
+    error: null,
+  });
+  m.download.mockResolvedValue({ data: new NodeBlob([new Uint8Array(2048)]), error: null });
+  expect((await prepareClassroomAudio(lesson, 0)).status).toBe(200);
+  expect(m.speech).not.toHaveBeenCalled();
+  expect(m.upload).not.toHaveBeenCalled();
+});
+it("never lets an expired owner mark another worker's clip ready", async () => {
+  m.update.mockResolvedValue({ data: [], error: null });
+  expect((await prepareClassroomAudio(lesson, 0)).status).toBe(202);
+  expect(m.filters).toHaveBeenCalledWith("state", "preparing");
+});
+it("does not spend on repeated recovery of a permanently interrupted clip", async () => {
+  m.existing.mockResolvedValue({
+    data: { state: "preparing", lease_until: "2000-01-01T00:00:00Z", attempts: 3 },
+    error: null,
+  });
+  expect((await prepareClassroomAudio(lesson, 0)).status).toBe(503);
+  expect(m.claim).not.toHaveBeenCalled();
+  expect(m.speech).not.toHaveBeenCalled();
+});
+
+it("a classroom generation deadline leaves an expired recoverable claim instead of a permanent pending row", async () => {
+  const controller = new AbortController();
+  controller.abort(new DOMException("Deadline", "TimeoutError"));
+  vi.spyOn(AbortSignal, "timeout").mockReturnValue(controller.signal);
+  expect((await prepareClassroomAudio(lesson, 0)).status).toBe(503);
+  expect(m.update).toHaveBeenCalledWith(
+    expect.objectContaining({
+      state: "preparing",
+      last_error: "Generation timed out; retry available",
+      lease_until: expect.any(String),
+    }),
+  );
 });

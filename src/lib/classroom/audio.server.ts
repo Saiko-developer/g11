@@ -26,7 +26,7 @@ export async function readClassroomAudio(lesson: ReadingLesson, cursor: number):
   const { hash, path } = await classroomAudioIdentity(lesson, cursor);
   const { data, error } = await supabaseAdmin
     .from("classroom_audio" as never)
-    .select("state")
+    .select("state,lease_until,created_at,attempts")
     .eq("hash", hash)
     .maybeSingle();
   if (error) return Response.json({ error: "audio_service_unavailable" }, { status: 503 });
@@ -53,13 +53,21 @@ export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: numbe
     return Response.json({ error: "narration_script_too_long" }, { status: 422 });
   const existing = await supabaseAdmin
     .from("classroom_audio" as never)
-    .select("state")
+    .select("state,lease_until,created_at,attempts")
     .eq("hash", hash)
     .maybeSingle();
   if (existing.error) return Response.json({ error: "audio_service_unavailable" }, { status: 503 });
-  const state = (existing.data as { state?: string } | null)?.state;
+  const row = existing.data as {
+    state?: string;
+    lease_until?: string;
+    created_at?: string;
+    attempts?: number;
+  } | null;
+  const state = row?.state;
+  const expired = state === "preparing" && Date.parse(row?.lease_until ?? "") <= Date.now();
   if (state === "ready") return Response.json({ ok: true, cached: true });
-  if (state === "preparing") return pendingNarration();
+  if (state === "preparing" && !expired) return pendingNarration();
+  if (expired && (row?.attempts ?? 1) >= 3) return failedNarration();
   if (state === "failed") return failedNarration();
   if (!process.env.LOVABLE_API_KEY)
     return Response.json(
@@ -69,13 +77,15 @@ export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: numbe
       },
       { status: 503 },
     );
+  const token = crypto.randomUUID();
   const { data, error } = await supabaseAdmin.rpc(
-    "claim_classroom_audio" as never,
+    "claim_classroom_audio_lease" as never,
     {
       p_hash: hash,
       p_lesson: lesson.id,
       p_version: lesson.version,
       p_path: path,
+      p_token: token,
     } as never,
   );
   if (error) return Response.json({ error: "audio_service_unavailable" }, { status: 503 });
@@ -83,7 +93,7 @@ export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: numbe
     // Another process may have won the unique claim. Only that process generates.
     const current = await supabaseAdmin
       .from("classroom_audio" as never)
-      .select("state")
+      .select("state,lease_until,created_at,attempts")
       .eq("hash", hash)
       .maybeSingle();
     if (current.error)
@@ -101,9 +111,42 @@ export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: numbe
       { status: 503, headers: { "Cache-Control": "no-store" } },
     );
   }
+  const markReady = async (bytes: number) => {
+    const saved = await supabaseAdmin
+      .from("classroom_audio" as never)
+      .update({ state: "ready", bytes, lease_until: null, last_error: null } as never)
+      .eq("hash", hash)
+      .eq("generation_token", token)
+      .eq("state", "preparing")
+      .select("hash");
+    if (saved.error) throw saved.error;
+    return saved.data?.length ? Response.json({ ok: true }) : pendingNarration();
+  };
+  const signal = AbortSignal.timeout(100000);
   try {
-    const response = await generateSpeech({ text, voice: "sarah", speed: 1, provider: "gemini" });
-    if (!response.ok || response.headers.get("X-TTS-Provider") !== "gemini")
+    // A worker can die after upload but before marking ready. Restore that file rather than pay again.
+    if (expired) {
+      const recovered = await supabaseAdmin.storage.from("classroom-narration").download(path);
+      if (recovered.data) {
+        const bytes = await recovered.data.arrayBuffer();
+        if (bytes.byteLength >= 1024 && bytes.byteLength <= 8388608)
+          return await markReady(bytes.byteLength);
+      } else if (
+        recovered.error &&
+        !["404", "400"].includes(String((recovered.error as { statusCode?: string }).statusCode))
+      ) {
+        throw new Error("Audio recovery unavailable");
+      }
+    }
+    // The total gateway + direct-Gemini attempt is bounded, including the direct fallback request.
+    const response = await generateSpeech({
+      text,
+      voice: "sarah",
+      speed: 1,
+      provider: "gemini",
+      signal,
+    });
+    if (signal.aborted || !response.ok || response.headers.get("X-TTS-Provider") !== "gemini")
       throw new Error("Approved Gemini narration unavailable");
     const bytes = await response.arrayBuffer();
     if (bytes.byteLength < 1024 || bytes.byteLength > 8388608)
@@ -112,21 +155,27 @@ export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: numbe
       .from("classroom-narration")
       .upload(path, bytes, { contentType: "audio/wav", upsert: false });
     if (uploadError) throw uploadError;
-    const { error: saveError } = await supabaseAdmin
-      .from("classroom_audio" as never)
-      .update({ state: "ready", bytes: bytes.byteLength } as never)
-      .eq("hash", hash);
-    if (saveError) throw saveError;
-    return Response.json({ ok: true });
+    return await markReady(bytes.byteLength);
   } catch {
     await supabaseAdmin
       .from("classroom_audio" as never)
       .update({
-        state: "failed",
-        last_error: "Preparation failed; administrator review required",
+        state: signal.aborted ? "preparing" : "failed",
+        last_error: signal.aborted
+          ? "Generation timed out; retry available"
+          : "Preparation failed; administrator review required",
+        lease_until: signal.aborted ? new Date().toISOString() : null,
       } as never)
-      .eq("hash", hash);
-    return Response.json({ error: "preparation_failed" }, { status: 503 });
+      .eq("hash", hash)
+      .eq("generation_token", token)
+      .eq("state", "preparing");
+    return Response.json(
+      {
+        error: "preparation_failed",
+        message: "အသံပြင်ဆင်မှု မအောင်မြင်ပါ။ ပြန်စစ်ရန် ဆရာထံ အကြောင်းကြားပါ။",
+      },
+      { status: 503 },
+    );
   }
 }
 

@@ -106,6 +106,7 @@ export function useClassroom(
   const pause = useCallback(() => {
     generation.current++;
     controller.current?.abort();
+    classBuffer.current?.pausePreparation();
     loadingRef.current = false;
     const a = audio.current;
     if (a) {
@@ -300,13 +301,15 @@ export function useClassroom(
         let blob: Blob;
         const buffer = classBuffer.current;
         if (buffer) {
-          if (!buffer.isPrepared()) {
-            setPreparing(true);
-            await buffer.prepare(abort.signal, (count, total) => {
-              if (token === generation.current && active.current)
+          if (!buffer.canPlay(cursor)) setPreparing(true);
+          await buffer.prepare(
+            abort.signal,
+            (count, total) => {
+              if (active.current && classBuffer.current === buffer)
                 setPreparation({ ready: count, total });
-            });
-          }
+            },
+            cursor,
+          );
           if (token !== generation.current || !active.current) return;
           blob = await buffer.playback(cursor);
         } else {
@@ -393,6 +396,7 @@ export function useClassroom(
   playRef.current = playAt;
   const resume = () => {
     if (stale.current) return;
+    classBuffer.current?.retryPreparation(current.current.cursor);
     setNotice("");
     setError("");
     if (audio.current && !audio.current.ended && !loadingRef.current) {

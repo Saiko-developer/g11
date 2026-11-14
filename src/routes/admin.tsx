@@ -1,3 +1,4 @@
+import { TeachingSetup } from "@/components/classroom/TeachingSetup";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
@@ -25,6 +26,9 @@ import { AdminGrade11Audio } from "@/components/admin/AdminGrade11Audio";
 import { AdminSupportInbox, AdminAnnouncements } from "@/components/Support";
 
 export const Route = createFileRoute("/admin")({
+  validateSearch: (search: Record<string, unknown>): { panel?: "teaching" } => ({
+    panel: search.panel === "teaching" ? ("teaching" as const) : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Admin Dashboard | Sayar Owl Academy" },
@@ -43,6 +47,7 @@ export const Route = createFileRoute("/admin")({
 
 function AdminPage() {
   const { access, session, signOut, ready } = useAuth();
+  const { panel } = Route.useSearch();
   if (!ready || (session && !access))
     return (
       <main className="flex min-h-screen items-center justify-center bg-background text-foreground">
@@ -65,10 +70,20 @@ function AdminPage() {
       </main>
     );
   }
-  return <Dashboard myId={session.user.id} onSignOut={signOut} />;
+  return (
+    <Dashboard key={panel} myId={session.user.id} onSignOut={signOut} initialSection={panel} />
+  );
 }
 
-function Dashboard({ myId, onSignOut }: { myId: string; onSignOut: () => void }) {
+function Dashboard({
+  myId,
+  onSignOut,
+  initialSection,
+}: {
+  myId: string;
+  onSignOut: () => void;
+  initialSection?: "teaching";
+}) {
   const qc = useQueryClient();
   const list = useServerFn(listStudents);
   const setStatus = useServerFn(setStudentStatus);
@@ -128,6 +143,7 @@ function Dashboard({ myId, onSignOut }: { myId: string; onSignOut: () => void })
   );
   return (
     <AdminDashboard
+      initialSection={initialSection}
       students={data}
       myId={myId}
       loading={isLoading}
@@ -139,6 +155,7 @@ function Dashboard({ myId, onSignOut }: { myId: string; onSignOut: () => void })
       onSignOut={onSignOut}
       onAction={onAction}
       panels={{
+        teaching: <TeachingSetup />,
         ai: (
           <div className="space-y-4">
             <AdminAiStatus />

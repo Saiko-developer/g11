@@ -46,8 +46,21 @@ export type AdminAction =
   | "reject"
   | "end-scholarship";
 type Section =
-  "overview" | "students" | "payments" | "ai" | "requests" | "support" | "announcements";
+  | "overview"
+  | "students"
+  | "payments"
+  | "ai"
+  | "requests"
+  | "support"
+  | "announcements"
+  | "teaching";
 const NAV = [
+  {
+    id: "teaching",
+    label: "Teaching setup",
+    icon: BookOpen,
+    subtitle: "Review classroom scripts and teaching audio.",
+  },
   {
     id: "overview",
     label: "Overview",
@@ -142,6 +155,7 @@ export function AdminDashboard({
   onSignOut,
   onAction,
   panels,
+  initialSection = "overview",
 }: {
   students: AdminStudent[];
   myId: string;
@@ -151,10 +165,13 @@ export function AdminDashboard({
   onRefresh: () => void;
   onSignOut: () => void;
   onAction: (student: AdminStudent, action: AdminAction, amount?: number) => Promise<void>;
-  panels: Record<"payments" | "ai" | "requests" | "support" | "announcements", ReactNode>;
+  initialSection?: Section;
+  panels: Record<"payments" | "ai" | "requests" | "support" | "announcements", ReactNode> & {
+    teaching?: ReactNode;
+  };
 }) {
-  const [section, setSection] = useState<Section>("overview");
-  const [visited, setVisited] = useState<Set<Section>>(() => new Set(["overview"]));
+  const [section, setSection] = useState<Section>(initialSection);
+  const [visited, setVisited] = useState<Set<Section>>(() => new Set([initialSection]));
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   const [page, setPage] = useState(0);

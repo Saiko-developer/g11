@@ -200,14 +200,17 @@ it("keeps the default class automatic and resumes after free supplementary help"
   expect(screen.queryByRole("region", { name: "Teacher dialogue" })).not.toBeInTheDocument();
 });
 
-it("prepares all assigned clips before starting speech and leaves listening progress untouched", async () => {
+it("starts after the first half is ready even when the final clip is still pending", async () => {
   const normalFetch = vi.mocked(fetch).getMockImplementation()!;
+  let releaseHalf: (() => void) | undefined;
   let releaseLast: (() => void) | undefined;
   vi.mocked(fetch).mockImplementation(async (input, init) => {
     const body = init?.body ? JSON.parse(init.body as string) : null;
-    if (body?.action === "warm_audio" && body.cursor === 15)
+    if (body?.action === "warm_audio" && (body.cursor === 7 || body.cursor === 15))
       return new Promise<Response>((resolve) => {
-        releaseLast = () => resolve(Response.json({ ok: true }));
+        const release = () => resolve(Response.json({ ok: true }));
+        if (body.cursor === 7) releaseHalf = release;
+        else releaseLast = release;
       });
     return normalFetch(input, init);
   });
@@ -222,18 +225,9 @@ it("prepares all assigned clips before starting speech and leaves listening prog
         ([, init]) => init?.body && JSON.parse(init.body as string).action === "save",
       ),
   ).toHaveLength(0);
-  expect(screen.queryByText(/ဝါကျ 1 မှ 4 အထိ/)).not.toBeInTheDocument();
-  await act(async () => releaseLast!());
+  await act(async () => releaseHalf!());
   await waitFor(() => expect(AudioMock.all).toHaveLength(1));
   expect(screen.queryByRole("status", { name: "Class preparation" })).not.toBeInTheDocument();
-  const warms = vi
-    .mocked(fetch)
-    .mock.calls.filter(
-      ([, init]) => init?.body && JSON.parse(init.body as string).action === "warm_audio",
-    );
-  expect(warms).toHaveLength(16);
-  await act(async () => AudioMock.all[0].finish());
-  await waitFor(() => expect(AudioMock.all).toHaveLength(2));
   expect(
     vi
       .mocked(fetch)
@@ -241,6 +235,9 @@ it("prepares all assigned clips before starting speech and leaves listening prog
         ([, init]) => init?.body && JSON.parse(init.body as string).action === "warm_audio",
       ),
   ).toHaveLength(16);
+  await act(async () => AudioMock.all[0].finish());
+  await waitFor(() => expect(AudioMock.all).toHaveLength(2));
+  await act(async () => releaseLast!());
 });
 
 it("Pause during preparation prevents late playback and resumes without rewarming ready clips", async () => {
@@ -248,7 +245,7 @@ it("Pause during preparation prevents late playback and resumes without rewarmin
   let release: (() => void) | undefined;
   vi.mocked(fetch).mockImplementation(async (input, init) => {
     const body = init?.body ? JSON.parse(init.body as string) : null;
-    if (body?.action === "warm_audio" && body.cursor === 15)
+    if (body?.action === "warm_audio" && body.cursor === 7)
       return new Promise<Response>((resolve) => {
         release = () => resolve(Response.json({ ok: true }));
       });
