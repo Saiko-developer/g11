@@ -1,3 +1,4 @@
+import { AudioPreparation } from "./AudioPreparation";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/components/AuthGate";
 import { RequireSignIn } from "@/components/RequireSignIn";
@@ -487,9 +488,7 @@ export function UnitTeachingBlock({
         </Button>
       )}
       {engine.preparing && (
-        <p role="status">
-          အတန်းအသံ ပြင်ဆင်နေသည်… {engine.preparation.ready}/{engine.preparation.total}
-        </p>
+        <AudioPreparation ready={engine.preparation.ready} total={engine.preparation.total} />
       )}
       <p className="text-xs text-muted-foreground">{engine.saveStatus}</p>
       {engine.notice && <p role="status">{engine.notice}</p>}

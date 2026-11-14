@@ -1,0 +1,63 @@
+.owl {
+  animation: owl-step 1.5s ease-in-out infinite;
+}
+.wave {
+  transform-origin: center;
+  animation: audio-wave 1s ease-in-out infinite alternate;
+}
+.shimmer {
+  animation: audio-shimmer 1.7s linear infinite;
+}
+.runner {
+  animation: audio-runner 2.8s ease-in-out infinite;
+}
+.fill {
+  transition: width 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes owl-step {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(3deg);
+  }
+}
+@keyframes audio-wave {
+  from {
+    transform: scaleY(0.35);
+    opacity: 0.45;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+@keyframes audio-shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+@keyframes audio-runner {
+  0%,
+  100% {
+    left: 0;
+  }
+  50% {
+    left: calc(100% - 1.5rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .owl,
+  .wave,
+  .shimmer,
+  .runner {
+    animation: none;
+  }
+  .fill {
+    transition: none;
+  }
+}

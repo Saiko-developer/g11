@@ -1,3 +1,4 @@
+import { AudioPreparation } from "./AudioPreparation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
@@ -388,26 +389,7 @@ function TeacherRoom({
         </p>
       )}
       {engine.preparing && (
-        <section
-          role="status"
-          aria-label="Class preparation"
-          className="space-y-3 rounded-2xl border border-primary/30 bg-primary/5 p-5"
-        >
-          <h2 className="font-semibold">အတန်းကို ပြင်ဆင်နေပါတယ်…</h2>
-          <p className="text-sm leading-loose">
-            ဒီအတန်းအသံတွေ အဆင်သင့်ဖြစ်ပြီးမှ ဆက်တိုက်သင်ပေးမယ်။ ပြင်ဆင်ပြီးသားအသံတွေကို
-            ပြန်သုံးပါမယ်။
-          </p>
-          <progress
-            className="h-3 w-full"
-            aria-label="အတန်းအသံ အဆင်သင့်ဖြစ်မှု"
-            value={engine.preparation.ready}
-            max={engine.preparation.total}
-          />
-          <p className="text-sm">
-            {Math.round((engine.preparation.ready / engine.preparation.total) * 100)}% ပြင်ဆင်ပြီး
-          </p>
-        </section>
+        <AudioPreparation ready={engine.preparation.ready} total={engine.preparation.total} />
       )}
       <div className="grid gap-5 lg:grid-cols-[14rem_minmax(0,1fr)]">
         <aside className="flex items-center gap-4 rounded-3xl border border-border bg-card p-5 lg:flex-col lg:justify-start lg:py-9">
