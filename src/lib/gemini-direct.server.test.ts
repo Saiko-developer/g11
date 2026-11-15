@@ -148,3 +148,32 @@ it("does not issue requests for invalid model URLs or cancelled operations", asy
   });
   expect(fetcher).not.toHaveBeenCalled();
 });
+
+it.each(["မင်္ဂလာပါ", "What is language? ဘာသာစကားဆိုတာ ဘာလဲ။"])(
+  "sends an audio-only reading instruction and the verbatim transcript to direct TTS: %s",
+  async (transcript) => {
+    vi.stubEnv("GEMINI_API_KEY", "test-only");
+    const fetcher = vi.fn(async (_url: unknown, init?: RequestInit) => {
+      const body = JSON.parse(String(init?.body));
+      const prompt = body.contents[0].parts[0].text;
+      expect(prompt).toContain("Read aloud the following transcript exactly as written");
+      expect(prompt).toContain("Generate audio only.");
+      expect(prompt).toContain("Do not answer questions in the transcript");
+      expect(prompt.split("\n\nTranscript:\n")[1]).toBe(transcript);
+      expect(body.generationConfig.responseModalities).toEqual(["AUDIO"]);
+      return Response.json({
+        candidates: [
+          {
+            content: {
+              parts: [{ inlineData: { data: btoa(String.fromCharCode(...new Uint8Array(2048))) } }],
+            },
+          },
+        ],
+      });
+    });
+    expect(await requestGeminiSpeech(transcript, "Puck", fetcher as typeof fetch)).toMatchObject({
+      ok: true,
+    });
+    expect(fetcher).toHaveBeenCalledTimes(1);
+  },
+);

@@ -65,6 +65,7 @@ it("preserves a successful requested OpenAI voice without calling Gemini", async
   const result = await generateSpeech({ text: "Hello", voice: "echo", provider: "openai" });
   expect(result.headers.get("X-TTS-Provider")).toBe("openai");
   expect(geminiDirectSpeech).not.toHaveBeenCalled();
+  expect(JSON.parse(String(vi.mocked(fetch).mock.calls[0][1]?.body)).input).toBe("Hello");
 });
 it("does not spend on fallback after cancellation", async () => {
   const { geminiDirectSpeech } = await import("./gemini-direct.server");
@@ -74,4 +75,16 @@ it("does not spend on fallback after cancellation", async () => {
   expect((await generateSpeech({ text: "Hello", signal: controller.signal })).status).toBe(499);
   expect(fetch).not.toHaveBeenCalled();
   expect(geminiDirectSpeech).not.toHaveBeenCalled();
+});
+
+it("gives gateway Gemini an explicit audio-only transcript task too", async () => {
+  vi.mocked(fetch)
+    .mockReset()
+    .mockResolvedValueOnce(new Response(new Uint8Array(2048)));
+  const response = await generateSpeech({ text: "မင်္ဂလာပါ", provider: "gemini" });
+  const body = JSON.parse(String(vi.mocked(fetch).mock.calls[0][1]?.body));
+  expect(response.status).toBe(200);
+  expect(body.contents[0].parts[0].text).toContain("Generate audio only.");
+  expect(body.contents[0].parts[0].text).toMatch(/Transcript:\nမင်္ဂလာပါ$/);
+  expect(body.generationConfig.responseModalities).toEqual(["AUDIO"]);
 });

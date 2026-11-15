@@ -1,3 +1,4 @@
+import { geminiSpeechPrompt } from "./tts-prompt";
 import { providerUnavailable } from "./ai-provider.server";
 import { sanitizeForSpeech } from "./sanitizeSpeech";
 import { geminiDirectSpeech } from "./gemini-direct.server";
@@ -96,7 +97,7 @@ export async function generateSpeech({
               }
             : {
                 model: process.env.LOVABLE_TTS_MODEL?.trim() || "google/gemini-2.5-flash-tts",
-                contents: [{ role: "user", parts: [{ text: input }] }],
+                contents: [{ role: "user", parts: [{ text: geminiSpeechPrompt(input) }] }],
                 generationConfig: {
                   responseModalities: ["AUDIO"],
                   speechConfig: {

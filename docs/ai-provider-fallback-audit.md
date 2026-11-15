@@ -44,3 +44,9 @@ Direct speech normalizes `models/` and `google/` model prefixes and catches fail
 This change does not establish which error the live Google project is returning: runtime credentials/logs and a signed-in admin session are unavailable in this workspace. Run the explicit admin speech test after preview sync to obtain that evidence; Google billing, access or quota changes require the Google project owner.
 
 Follow-up validation: all 727 tests in 92 files passed, along with TypeScript, focused ESLint and the production build. Added coverage checks model path normalization, quota/billing/permission classification, credential redaction, body-read timeouts, missing audio, invalid configuration, cancellation and visible admin error details.
+
+## Confirmed audio-only prompt failure
+
+A live admin test returned HTTP 400 `INVALID_ARGUMENT`: “Model tried to generate text, but it should only be used for TTS.” The request had `responseModalities: ["AUDIO"]` but sent a bare greeting/transcript without an explicit speech instruction. Both direct Google and gateway Gemini speech requests now use the same explicit read-aloud, audio-only instruction, preserving the original transcript and preventing lesson questions from being treated as questions to answer. OpenAI speech input, voices and caches are unchanged. No automatic retry was added.
+
+Targeted validation: 46 tests passed, including Burmese greetings, mixed Burmese/English questions, both Gemini request paths, successful OpenAI input preservation, classroom audio and authenticated TTS routes. Live voice success still requires repeating the admin speech test after preview sync.

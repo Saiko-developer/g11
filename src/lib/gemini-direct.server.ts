@@ -1,3 +1,4 @@
+import { geminiSpeechPrompt } from "./tts-prompt";
 import { DEFAULT_GEMINI_FALLBACK_MODEL } from "./ai-gateway.server";
 
 type GeminiResponse = {
@@ -94,7 +95,7 @@ export async function requestGeminiSpeech(
       method: "POST",
       headers: { "x-goog-api-key": k, "Content-Type": "application/json" },
       body: JSON.stringify({
-        contents: [{ role: "user", parts: [{ text }] }],
+        contents: [{ role: "user", parts: [{ text: geminiSpeechPrompt(text) }] }],
         generationConfig: {
           responseModalities: ["AUDIO"],
           speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName } } },
