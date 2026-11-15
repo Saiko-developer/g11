@@ -1,3 +1,4 @@
+import { UNIT7_TEXT, unit7Reference } from "./grade11Unit7";
 import { UNIT1_SECTIONS } from "./grade11Unit1";
 import { UNIT2_SECTIONS } from "./grade11Unit2";
 import { UNIT3_SECTIONS } from "./grade11Unit3";
@@ -31,11 +32,26 @@ export function grade11LessonContext(unit: number, kind: G11SkillKind) {
     const content = UPPER_UNITS[unit].skills[kind];
     for (const group of content.groups)
       for (const item of group.items)
-        questions.push({ id: item.id, question: item.prompt, instructions: group.instruction });
+        questions.push({
+          id: item.id,
+          question:
+            unit === 7 && kind === "vocabulary"
+              ? UNIT7_TEXT.vocabulary.find((row) => row.id === item.id)!.sentence
+              : item.prompt,
+          instructions: group.instruction,
+        });
     const pages = sourceText.pages as Record<string, { text: string }>;
     text = content.sources
       .map((s) => `Textbook page ${s.page - 5}:\n${pages[s.page]?.text ?? ""}`)
       .join("\n\n");
+    if (unit === 7) {
+      text = unit7Reference(kind);
+      if (kind === "reading")
+        passageIndex = UNIT7_TEXT.reading
+          .filter((b) => b.t === "para")
+          .map((b, i) => `[Paragraph ${i + 1} | source ${b.id}]\n${b.x}`)
+          .join("\n\n");
+    }
   } else {
     const sections =
       unit === 1

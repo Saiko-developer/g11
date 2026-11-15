@@ -29,8 +29,12 @@ describe("Grade 11 Units 7–12 workspaces", () => {
     expect(hasGrade11Text(unit)).toBe(true);
     for (const kind of skills) {
       const view = render(<Grade11TextLesson unit={unit} kind={kind} />);
-      expect(screen.getByRole("complementary", { name: "Original textbook" })).toBeVisible();
-      expect(screen.getAllByRole("img").length).toBeGreaterThan(0);
+      if (unit === 7)
+        expect(screen.queryByRole("complementary", { name: "Original textbook" })).toBeNull();
+      else {
+        expect(screen.getByRole("complementary", { name: "Original textbook" })).toBeVisible();
+        expect(screen.getAllByRole("img").length).toBeGreaterThan(0);
+      }
       expect(
         screen.queryByText("သင်ခန်းစာမှ ဆက်စပ်ဖြေဆိုထားသောအဖြေ — တရားဝင်အဖြေလွှာ မဟုတ်ပါ။"),
       ).toBeNull();
@@ -38,8 +42,13 @@ describe("Grade 11 Units 7–12 workspaces", () => {
         expect(screen.getByRole("region", { name: "Grammar video explanation" })).toBeVisible();
       if (kind === "listening") {
         expect(screen.getAllByText(/🎧/)).toHaveLength(1);
-        expect(screen.queryByRole("button", { name: "Check Answer" })).toBeNull();
-        expect(screen.queryByRole("button", { name: "Reveal Answer" })).toBeNull();
+        if (unit === 7) {
+          expect(screen.getAllByRole("button", { name: "Check Answer" })).toHaveLength(10);
+          expect(screen.getAllByRole("button", { name: "Reveal Answer" })).toHaveLength(10);
+        } else {
+          expect(screen.queryByRole("button", { name: "Check Answer" })).toBeNull();
+          expect(screen.queryByRole("button", { name: "Reveal Answer" })).toBeNull();
+        }
       }
       if (kind === "speaking" || kind === "listening") {
         expect(
@@ -77,8 +86,8 @@ describe("Grade 11 Units 7–12 workspaces", () => {
 
   it("supports Check, Reveal and Hide for closed source-derived responses", () => {
     render(<Grade11UpperLesson unit={7} kind="vocabulary" />);
-    const field = screen.getByLabelText("Your answer: 1. organ");
-    fireEvent.change(field, { target: { value: "a" } });
+    const field = screen.getAllByRole("radio")[0];
+    fireEvent.click(field);
     fireEvent.click(screen.getAllByRole("button", { name: "Check Answer" })[0]);
     expect(screen.getByRole("status")).toHaveTextContent("✅");
     fireEvent.click(screen.getAllByRole("button", { name: "Reveal Answer" })[0]);

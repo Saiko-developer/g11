@@ -1,3 +1,4 @@
+import { Grade11Unit7Lesson } from "./Grade11Unit7Lesson";
 import { UPPER_STRUCTURES } from "@/lib/grade11UpperStructure";
 import { Grade11GrammarQuestion } from "./Grade11GrammarExercise";
 import grammarSupport from "@/data/grade11/grammarExerciseSupport.json";
@@ -24,6 +25,7 @@ import { Grade11GrammarVideos } from "./Grade11GrammarVideos";
 import { Grade11SourceStructure } from "./Grade11SourceStructure";
 
 export function Grade11UpperLesson({ unit, kind }: { unit: UpperUnitNumber; kind: G11SkillKind }) {
+  if (unit === 7) return <Grade11Unit7Lesson kind={kind} />;
   return <UpperWorkspace key={`${unit}:${kind}`} unit={unit} kind={kind} />;
 }
 

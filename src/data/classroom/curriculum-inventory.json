@@ -2869,22 +2869,27 @@
     "sourceFiles": [
       {
         "path": "src/data/grade11/textbook/unit7.json",
-        "sha256": "896916c2543dbfbe13fe7c645285b5d57d6482870f25ebba03cb02bffd8e7db0"
+        "sha256": "9f363937cd209f0eafdf7b4774a6b54f574782c57b42786aea59363776a706d4"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit7-text.json",
+        "sha256": "d209c887a7dfe07db6e858ffc37e0a50bb6eb34a4dfff17884e9664e923811f6"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit7-answer.json",
+        "sha256": "67c77afee5f41277257a36f9e33febd635822c5efa17cd8fb504e81824bfb388"
       }
     ],
     "supportFiles": [],
-    "sourceFormat": "scan",
-    "lessonTextBlocks": 0,
-    "scanPages": [
-      76,
-      77,
-      78,
-      79
-    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 19,
+    "scanPages": [],
     "exerciseCount": 18,
     "providedAnswers": 0,
-    "suggestedAnswers": 0,
-    "answerOrigins": [],
+    "suggestedAnswers": 14,
+    "answerOrigins": [
+      "source-derived"
+    ],
     "audio": null,
     "teacherScript": null,
     "classroomDelivery": "needs-preparation"
@@ -2897,21 +2902,21 @@
     "sourceFiles": [
       {
         "path": "src/data/grade11/textbook/unit7.json",
-        "sha256": "896916c2543dbfbe13fe7c645285b5d57d6482870f25ebba03cb02bffd8e7db0"
+        "sha256": "9f363937cd209f0eafdf7b4774a6b54f574782c57b42786aea59363776a706d4"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit7-text.json",
+        "sha256": "d209c887a7dfe07db6e858ffc37e0a50bb6eb34a4dfff17884e9664e923811f6"
       },
       {
         "path": "src/data/grade11/textbook/unit7-answer.json",
-        "sha256": "6ae954a5e8fdc030edb01528a84d30242b7636902117878257b29dc17ae4e9d5"
+        "sha256": "67c77afee5f41277257a36f9e33febd635822c5efa17cd8fb504e81824bfb388"
       }
     ],
     "supportFiles": [],
-    "sourceFormat": "scan",
-    "lessonTextBlocks": 0,
-    "scanPages": [
-      79,
-      80,
-      81
-    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 9,
+    "scanPages": [],
     "exerciseCount": 14,
     "providedAnswers": 14,
     "suggestedAnswers": 0,
@@ -2930,17 +2935,17 @@
     "sourceFiles": [
       {
         "path": "src/data/grade11/textbook/unit7.json",
-        "sha256": "896916c2543dbfbe13fe7c645285b5d57d6482870f25ebba03cb02bffd8e7db0"
+        "sha256": "9f363937cd209f0eafdf7b4774a6b54f574782c57b42786aea59363776a706d4"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit7-text.json",
+        "sha256": "d209c887a7dfe07db6e858ffc37e0a50bb6eb34a4dfff17884e9664e923811f6"
       }
     ],
     "supportFiles": [],
-    "sourceFormat": "scan",
-    "lessonTextBlocks": 0,
-    "scanPages": [
-      81,
-      82,
-      83
-    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 16,
+    "scanPages": [],
     "exerciseCount": 22,
     "providedAnswers": 0,
     "suggestedAnswers": 0,
@@ -2957,15 +2962,17 @@
     "sourceFiles": [
       {
         "path": "src/data/grade11/textbook/unit7.json",
-        "sha256": "896916c2543dbfbe13fe7c645285b5d57d6482870f25ebba03cb02bffd8e7db0"
+        "sha256": "9f363937cd209f0eafdf7b4774a6b54f574782c57b42786aea59363776a706d4"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit7-text.json",
+        "sha256": "d209c887a7dfe07db6e858ffc37e0a50bb6eb34a4dfff17884e9664e923811f6"
       }
     ],
     "supportFiles": [],
-    "sourceFormat": "scan",
-    "lessonTextBlocks": 0,
-    "scanPages": [
-      83
-    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 1,
+    "scanPages": [],
     "exerciseCount": 10,
     "providedAnswers": 0,
     "suggestedAnswers": 0,
@@ -2986,16 +2993,17 @@
     "sourceFiles": [
       {
         "path": "src/data/grade11/textbook/unit7.json",
-        "sha256": "896916c2543dbfbe13fe7c645285b5d57d6482870f25ebba03cb02bffd8e7db0"
+        "sha256": "9f363937cd209f0eafdf7b4774a6b54f574782c57b42786aea59363776a706d4"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit7-text.json",
+        "sha256": "d209c887a7dfe07db6e858ffc37e0a50bb6eb34a4dfff17884e9664e923811f6"
       }
     ],
     "supportFiles": [],
-    "sourceFormat": "scan",
-    "lessonTextBlocks": 0,
-    "scanPages": [
-      83,
-      84
-    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 18,
+    "scanPages": [],
     "exerciseCount": 5,
     "providedAnswers": 0,
     "suggestedAnswers": 0,
@@ -3016,15 +3024,17 @@
     "sourceFiles": [
       {
         "path": "src/data/grade11/textbook/unit7.json",
-        "sha256": "896916c2543dbfbe13fe7c645285b5d57d6482870f25ebba03cb02bffd8e7db0"
+        "sha256": "9f363937cd209f0eafdf7b4774a6b54f574782c57b42786aea59363776a706d4"
+      },
+      {
+        "path": "src/data/grade11/textbook/unit7-text.json",
+        "sha256": "d209c887a7dfe07db6e858ffc37e0a50bb6eb34a4dfff17884e9664e923811f6"
       }
     ],
     "supportFiles": [],
-    "sourceFormat": "scan",
-    "lessonTextBlocks": 0,
-    "scanPages": [
-      84
-    ],
+    "sourceFormat": "text",
+    "lessonTextBlocks": 19,
+    "scanPages": [],
     "exerciseCount": 1,
     "providedAnswers": 0,
     "suggestedAnswers": 0,

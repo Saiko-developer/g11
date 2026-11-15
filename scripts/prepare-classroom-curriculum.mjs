@@ -67,6 +67,14 @@ for (const grade of [10, 11])
         records = section?.groups ?? [];
         scans = (section?.sources ?? []).map((s) => s.page);
         // Exercise prompts are not a transcription of the scanned teaching material.
+        if (unit === 7) {
+          const transcribed = "src/data/grade11/textbook/unit7-text.json";
+          const text = read(transcribed);
+          const notes = skill === "vocabulary" ? text.vocabularyNotes : text[skill];
+          texts = skill === "listening" ? 1 : notes.length;
+          sourceFiles.push(transcribed);
+          scans = [];
+        }
       }
       const questions = [...questionRecords(records).values()];
       const origins = new Set();

@@ -36,9 +36,9 @@ it("binds inventory to real unchanged files and preserves scan/transcription lim
     section.supportFiles.forEach((file) => expect(existsSync(file)).toBe(true));
     if (section.audio) expect(existsSync(section.audio.path)).toBe(true);
   }
-  expect(curriculumSection(11, 7, "reading")!.sourceFormat).toBe("scan");
-  expect(curriculumSection(11, 7, "reading")!.lessonTextBlocks).toBe(0);
-  expect(curriculumSection(11, 7, "reading")!.scanPages.length).toBeGreaterThan(0);
+  expect(curriculumSection(11, 7, "reading")!.sourceFormat).toBe("text");
+  expect(curriculumSection(11, 7, "reading")!.lessonTextBlocks).toBeGreaterThan(0);
+  expect(curriculumSection(11, 8, "reading")!.scanPages.length).toBeGreaterThan(0);
   expect(
     curriculumInventory.filter((s) => s.classroomDelivery === "current-pilot").map((s) => s.id),
   ).toEqual(["g10-u1-reading"]);

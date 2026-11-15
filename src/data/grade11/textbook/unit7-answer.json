@@ -4,7 +4,7 @@
   "items": {
     "7-homonyms-1": {
       "answer": "a",
-      "answerMy": null,
+      "answerMy": "ဂီတတူရိယာတစ်မျိုး",
       "origin": "source-derived",
       "sourcePages": [
         79,
@@ -14,7 +14,7 @@
     },
     "7-homonyms-2": {
       "answer": "b",
-      "answerMy": null,
+      "answerMy": "အယူအဆ၊ အတွေး၊ အချက်အလက်ကဲ့သို့ အရာတစ်ခုကို ဖော်ပြကိုယ်စားပြုသည်",
       "origin": "source-derived",
       "sourcePages": [
         79,
@@ -24,7 +24,7 @@
     },
     "7-homonyms-3": {
       "answer": "b",
-      "answerMy": null,
+      "answerMy": "ပြိုင်ပွဲ၊ အငြင်းပွားမှု စသည်တွင် မအနိုင်ရဘဲ ရှုံးသည်",
       "origin": "source-derived",
       "sourcePages": [
         79,
@@ -34,7 +34,7 @@
     },
     "7-homonyms-4": {
       "answer": "a",
-      "answerMy": null,
+      "answerMy": "လူတစ်ဦး သို့မဟုတ် နေရာတစ်ခုမှ ထွက်ခွာသွားသည်",
       "origin": "source-derived",
       "sourcePages": [
         79,
@@ -44,7 +44,7 @@
     },
     "7-homonyms-5": {
       "answer": "a",
-      "answerMy": null,
+      "answerMy": "မိနစ်၊ နာရီ၊ ရက် စသည်ဖြင့် တိုင်းတာသော အချိန်",
       "origin": "source-derived",
       "sourcePages": [
         79,
@@ -54,7 +54,7 @@
     },
     "7-homonyms-6": {
       "answer": "b",
-      "answerMy": null,
+      "answerMy": "မျက်နှာပြင်တစ်ခုပေါ်တွင် အလျားလိုက် လဲလျောင်းနေသည်",
       "origin": "source-derived",
       "sourcePages": [
         79,
@@ -64,7 +64,7 @@
     },
     "7-homonyms-7": {
       "answer": "b",
-      "answerMy": null,
+      "answerMy": "ငွေ၊ ပစ္စည်း၊ အချိန်၊ စွမ်းအင် စသည်ကို မလိုအပ်ဘဲ သို့မဟုတ် မှားယွင်းစွာ အသုံးပြုခြင်း",
       "origin": "source-derived",
       "sourcePages": [
         79,
@@ -74,7 +74,7 @@
     },
     "7-homonyms-8": {
       "answer": "b",
-      "answerMy": null,
+      "answerMy": "အမှတ်အသားပြုသည် သို့မဟုတ် အတိုချုံး မှတ်ရေးသည်",
       "origin": "source-derived",
       "sourcePages": [
         79,
@@ -84,7 +84,7 @@
     },
     "7-homonyms-9": {
       "answer": "a",
-      "answerMy": null,
+      "answerMy": "မှန်ကန်သော",
       "origin": "source-derived",
       "sourcePages": [
         79,
@@ -94,7 +94,7 @@
     },
     "7-homonyms-10": {
       "answer": "b",
-      "answerMy": null,
+      "answerMy": "သင်္ဘော သို့မဟုတ် လှေကြီး",
       "origin": "source-derived",
       "sourcePages": [
         79,
@@ -104,7 +104,7 @@
     },
     "7-homonyms-11": {
       "answer": "a",
-      "answerMy": null,
+      "answerMy": "ပစ္စည်းအမျိုးမျိုး ရောင်းချသော ဆိုင်ကြီး",
       "origin": "source-derived",
       "sourcePages": [
         79,
@@ -114,7 +114,7 @@
     },
     "7-homonyms-12": {
       "answer": "b",
-      "answerMy": null,
+      "answerMy": "အစားအစာတွင်ပါဝင်သော ဆီကဲ့သို့ အစိုင်အခဲ သို့မဟုတ် အရည်ပစ္စည်း၊ အဆီ",
       "origin": "source-derived",
       "sourcePages": [
         79,
@@ -124,7 +124,7 @@
     },
     "7-homonyms-13": {
       "answer": "b",
-      "answerMy": null,
+      "answerMy": "အလုပ်လုပ်သည် သို့မဟုတ် လည်ပတ်သည်",
       "origin": "source-derived",
       "sourcePages": [
         79,
@@ -134,12 +134,175 @@
     },
     "7-homonyms-14": {
       "answer": "a",
-      "answerMy": null,
+      "answerMy": "ပုံစံတစ်မျိုးအဖြစ် စီဖွဲ့ထားသည်",
       "origin": "source-derived",
       "sourcePages": [
         79,
         80,
         81
+      ]
+    },
+    "7-functions-1": {
+      "answer": "to breathe and smell",
+      "answerMy": "အသက်ရှူရန်နှင့် အနံ့ခံရန်",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78
+      ]
+    },
+    "7-functions-2": {
+      "answer": "to listen and hear",
+      "answerMy": "နားထောင်ရန်နှင့် ကြားသိရန်",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78
+      ]
+    },
+    "7-functions-3": {
+      "answer": "to propel blood to all parts of the body",
+      "answerMy": "ခန္ဓာကိုယ်အစိတ်အပိုင်းအားလုံးသို့ သွေးပို့ရန်",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78
+      ]
+    },
+    "7-functions-4": {
+      "answer": "to remove poisonous wastes from the blood and filter impurities",
+      "answerMy": "သွေးထဲမှ အဆိပ်ရှိစွန့်ပစ်ပစ္စည်းနှင့် မသန့်စင်ပစ္စည်းများကို စစ်ထုတ်ဖယ်ရှားရန်",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78
+      ]
+    },
+    "7-functions-5": {
+      "answer": "to store energy as glycogen, produce bile and proteins, store vitamins and clear toxic substances from the blood",
+      "answerMy": "စွမ်းအင်သိုလှောင်၊ သည်းခြေရည်နှင့် ပရိုတင်းထုတ်၊ ဗီတာမင်သိုလှောင်ကာ သွေးထဲမှ အဆိပ်ပစ္စည်းများ ဖယ်ရှားရန်",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78
+      ]
+    },
+    "7-comprehension-1": {
+      "answer": "The systems of the human body are made up of different interrelated and interdependent parts.",
+      "answerMy": "လူ့ခန္ဓာကိုယ်စနစ်များကို အချင်းချင်းဆက်နွှယ်မှီခိုသော အစိတ်အပိုင်းအမျိုးမျိုးဖြင့် ဖွဲ့စည်းထားသည်။",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    "7-comprehension-2": {
+      "answer": "No, not all organs are vital for our survival because we can still live without some organs, such as one hand or one eye.",
+      "answerMy": "မဟုတ်ပါ။ လက်တစ်ဖက် သို့မဟုတ် မျက်စိတစ်ဖက်ကဲ့သို့ အချို့အင်္ဂါများ မရှိလျှင်လည်း အသက်ရှင်နိုင်သောကြောင့် ဖြစ်သည်။",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    "7-comprehension-3": {
+      "answer": "The rhythmic contraction begins in the developing embryo about three weeks after conception.",
+      "answerMy": "စည်းချက်မှန်ကျုံ့ခြင်းသည် သန္ဓေတည်ပြီး သုံးပတ်ခန့်အကြာ ဖွံ့ဖြိုးဆဲသန္ဓေသားတွင် စတင်သည်။",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    "7-comprehension-4": {
+      "answer": "The kidneys lie against the rear wall of the abdomen on either side of the spine, below the middle of the back, beneath the liver on the right and the spleen on the left.",
+      "answerMy": "ကျောက်ကပ်များသည် ဝမ်းဗိုက်နောက်ဘက်နံရံနှင့်ကပ်၍ ကျောရိုးတစ်ဖက်တစ်ချက်၊ နောက်ကျောအလယ်အောက်၊ ညာဘက်အသည်းအောက်နှင့် ဘယ်ဘက်သရက်ရွက်အောက်တွင် တည်ရှိသည်။",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    "7-comprehension-5": {
+      "answer": "The tiny tubules filter impurities and water from the blood, purify the water and return it to the circulation, concentrating the waste products in urine.",
+      "answerMy": "ပြွန်ငယ်များသည် သွေးမှ မသန့်စင်ပစ္စည်းနှင့် ရေကို စစ်ထုတ်၊ ရေကို သန့်စင်ပြီး သွေးလည်ပတ်မှုထဲ ပြန်ပို့ကာ စွန့်ပစ်ပစ္စည်းများကို ဆီးတွင် စုစည်းသည်။",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    "7-comprehension-6": {
+      "answer": "The diaphragm is a sheet of muscle tissue that separates the lungs from the abdominal organs.",
+      "answerMy": "ရင်ဝမ်းခြားကြွက်သားသည် အဆုတ်နှင့် ဝမ်းဗိုက်အင်္ဂါများကို ခွဲထားသော ကြွက်သားတစ်ရှူးအလွှာ ဖြစ်သည်။",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    "7-comprehension-7": {
+      "answer": "When the blood glucose level is very low, the liver transforms glycogen into glucose.",
+      "answerMy": "သွေးတွင်းဂလူးကို့စ် အလွန်နည်းလာလျှင် အသည်းသည် ဂလိုင်ကိုဂျင်ကို ဂလူးကို့စ်အဖြစ် ပြောင်းပေးသည်။",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    "7-comprehension-8": {
+      "answer": "In addition to bile, the liver produces important proteins and chemicals, including fibrinogen, prothrombin and cholesterol.",
+      "answerMy": "အသည်းသည် သည်းခြေရည်အပြင် အရေးကြီးပရိုတင်းနှင့် ဖိုင်ဘရင်နိုဂျင်၊ ပရိုသရော်ဘင်၊ ကိုလက်စထရောအပါအဝင် ဓာတုပစ္စည်းများကို ထုတ်လုပ်သည်။",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    "7-comprehension-9": {
+      "answer": "The digestive system can have a problem when we overeat.",
+      "answerMy": "အစားအလွန်အကျွံစားလျှင် အစာချေစနစ်တွင် ပြဿနာဖြစ်နိုင်သည်။",
+      "origin": "source-derived",
+      "kind": "suggested",
+      "sourcePages": [
+        76,
+        77,
+        78,
+        79
       ]
     }
   }

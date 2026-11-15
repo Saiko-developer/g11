@@ -1,0 +1,1041 @@
+{
+  "source": {
+    "pdf": "13575. Grade (11) English New Syllabus-49-96.pdf",
+    "pdfPages": [76, 77, 78, 79, 80, 81, 82, 83, 84],
+    "textbookPages": [71, 72, 73, 74, 75, 76, 77, 78, 79],
+    "method": "Manually transcribed and visually compared with bundled source scans; spacing and apostrophes normalized. Original scans are retained. Burmese translations are teaching support, not original textbook text."
+  },
+  "reading": [
+    {
+      "id": "7-text-1",
+      "x": "The human body is made up of systems and organs. A system is something that is made up of different parts, and these parts are interrelated and interdependent. The most widely known systems of the human body are (in the alphabetical order): Circulatory, Digestive, Excretory, Musculoskeletal, Nervous, Reproductive, and Respiratory systems.",
+      "my": "လူ့ခန္ဓာကိုယ်ကို စနစ်များနှင့် အင်္ဂါများဖြင့် ဖွဲ့စည်းထားသည်။ စနစ်ဆိုသည်မှာ အစိတ်အပိုင်းအမျိုးမျိုးဖြင့် ဖွဲ့စည်းထားပြီး ထိုအစိတ်အပိုင်းများသည် အချင်းချင်း ဆက်နွှယ်မှီခိုနေသော အရာဖြစ်သည်။ လူသိအများဆုံး ခန္ဓာကိုယ်စနစ်များမှာ အက္ခရာစဉ်အတိုင်း သွေးလည်ပတ်မှု၊ အစာချေမှု၊ စွန့်ထုတ်မှု၊ အရိုးနှင့်ကြွက်သား၊ အာရုံကြော၊ မျိုးပွားမှုနှင့် အသက်ရှူမှုစနစ်များ ဖြစ်သည်။",
+      "sourcePage": 76,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-2",
+      "x": "An organ is a part of the human body that performs special functions. For instance, the eye is an organ to see; the ear is an organ to listen and hear; the nose is the organ to breathe and smell, etc. Some organs are vital for our survival. This means that when a vital organ stops functioning, or working, we cannot live; we die. For example, if our heart stops functioning, we die. In the same way, if our brain stops functioning, we die.",
+      "my": "အင်္ဂါဆိုသည်မှာ အထူးလုပ်ငန်းဆောင်တာများ လုပ်ဆောင်သော ခန္ဓာကိုယ်အစိတ်အပိုင်း ဖြစ်သည်။ ဥပမာ မျက်စိက မြင်ရန်၊ နားက နားထောင်ကြားသိရန်၊ နှာခေါင်းက အသက်ရှူရန်နှင့် အနံ့ခံရန်ဖြစ်သည်။ အချို့အင်္ဂါများသည် အသက်ရှင်ရပ်တည်ရန် မရှိမဖြစ်လိုအပ်သည်။ ထိုအင်္ဂါတစ်ခု အလုပ်လုပ်ခြင်း ရပ်တန့်ပါက ကျွန်ုပ်တို့ အသက်မရှင်နိုင်ဘဲ သေဆုံးမည်ဟု ဆိုလိုသည်။ ဥပမာ နှလုံး သို့မဟုတ် ဦးနှောက် အလုပ်ရပ်သွားလျှင် အသက်မရှင်နိုင်ပါ။",
+      "sourcePage": 76,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-3",
+      "x": "Some organs, on the other hand, are not vital. This means that if we lose such an organ, we do not die; we can still live without it. For instance, if we lose one hand in an accident, we do not die; we can still live without it. In the same way, if we lose an eye, we do not die; we can still live.",
+      "my": "အခြားတစ်ဖက်တွင် အချို့အင်္ဂါများက အသက်ရှင်ရေးအတွက် မရှိမဖြစ် မဟုတ်ပါ။ ထိုအင်္ဂါတစ်ခု ဆုံးရှုံးလျှင်လည်း အသက်မသေဘဲ ဆက်လက်နေထိုင်နိုင်သည်။ ဥပမာ မတော်တဆမှုတစ်ခုတွင် လက်တစ်ဖက် ဆုံးရှုံးလျှင်လည်း ထိုလက်မရှိဘဲ အသက်ရှင်နိုင်သည်။ ထိုနည်းတူ မျက်စိတစ်ဖက် ဆုံးရှုံးလျှင်လည်း ဆက်လက်အသက်ရှင်နိုင်သည်။",
+      "sourcePage": 76,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-4",
+      "x": "In this lesson, we shall study three vital organs: the heart, the kidneys, and the liver.",
+      "my": "ဤသင်ခန်းစာတွင် အရေးကြီးအင်္ဂါသုံးမျိုးဖြစ်သော နှလုံး၊ ကျောက်ကပ်များနှင့် အသည်းကို လေ့လာမည်။",
+      "sourcePage": 76,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-5",
+      "x": "The heart",
+      "my": "နှလုံး",
+      "sourcePage": 76,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-6",
+      "x": "The human heart is shaped like an upside-down pear and is located in the centre of the chest cavity slightly to the left. About the size of a closed fist, the heart is made primarily of muscle tissue that contracts rhythmically to propel blood to all parts of the body. This rhythmic contraction begins in the developing embryo about three weeks after conception and continues throughout an individual’s life. The muscle rests only for a fraction of a second between beats. Over a typical life span of 76 years, the heart will beat nearly 2.8 billion times and move 169 million litres (179 million quarts) of blood.",
+      "my": "လူ့နှလုံးသည် ပြောင်းပြန်ထားသော သစ်တော်သီးပုံရှိပြီး ရင်ခေါင်းအလယ်တွင် ဘယ်ဘက်သို့ အနည်းငယ်ယိမ်း၍ တည်ရှိသည်။ လက်သီးဆုပ်အရွယ်ခန့်ရှိသော နှလုံးကို ခန္ဓာကိုယ်တစ်လျှောက် သွေးပို့ရန် စည်းချက်မှန်ကျုံ့သော ကြွက်သားတစ်ရှူးဖြင့် အဓိကဖွဲ့စည်းထားသည်။ ထိုကျုံ့ခြင်းသည် သန္ဓေတည်ပြီး သုံးပတ်ခန့်အကြာ ဖွံ့ဖြိုးဆဲသန္ဓေသားတွင် စတင်ကာ ဘဝတစ်လျှောက် ဆက်ဖြစ်သည်။ နှလုံးခုန်ချက်များကြားတွင် ကြွက်သားသည် တစ်စက္ကန့်၏ အစိတ်အပိုင်းမျှသာ နားသည်။ သာမန်အသက် ၇၆ နှစ်တာတွင် နှလုံးသည် အကြိမ် ၂.၈ ဘီလီယံနီးပါး ခုန်ပြီး သွေးလီတာ ၁၆၉ သန်း (ကွတ် ၁၇၉ သန်း) ကို ရွှေ့ပို့မည်ဟု စာပိုဒ်တွင် ဖော်ပြထားသည်။",
+      "sourcePage": 76,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-7",
+      "x": "Furthermore, the heart is an unbelievably rugged organ with four chambers, each with a valve to keep the blood flowing in one direction. It handles approximately 5,000 gallons of blood a day to supply our circulatory system, which has blood vessels that have a total length of 12,000 miles.",
+      "my": "ထို့ပြင် နှလုံးသည် အလွန်ခိုင်ခံ့သော အင်္ဂါဖြစ်ပြီး အခန်းလေးခန်း ပါသည်။ အခန်းတိုင်းတွင် သွေးကို ဦးတည်ချက်တစ်ခုတည်း စီးစေရန် အဆို့ရှင်တစ်ခုစီ ပါသည်။ တစ်နေ့လျှင် သွေးဂါလန် ၅,၀၀၀ ခန့်ကို ကိုင်တွယ်၍ စုစုပေါင်း မိုင် ၁၂,၀၀၀ ရှည်သော သွေးကြောများပါဝင်သည့် သွေးလည်ပတ်မှုစနစ်သို့ ပေးပို့သည်။",
+      "sourcePage": 76,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-8",
+      "x": "The kidneys",
+      "my": "ကျောက်ကပ်များ",
+      "sourcePage": 77,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-9",
+      "x": "Every normal person is born with a pair of kidneys. They lie against the rear wall of the abdomen, on either side of the spine. They are situated below the middle of the back, beneath the liver on the right and the spleen on the left. The concave part of each kidney is attached to two crucial blood vessels — the renal artery and the renal vein — and the ureter, which is a tube-like structure that carries urine to the bladder.",
+      "my": "သာမန်လူတိုင်းသည် ကျောက်ကပ်တစ်စုံဖြင့် မွေးဖွားလာသည်။ ၎င်းတို့သည် ဝမ်းဗိုက်နောက်ဘက်နံရံနှင့် ကပ်၍ ကျောရိုး၏ တစ်ဖက်တစ်ချက်တွင် တည်ရှိသည်။ နောက်ကျောအလယ်အောက်ဘက်၊ ညာဘက်အသည်းအောက်နှင့် ဘယ်ဘက်သရက်ရွက်အောက်တွင် ရှိသည်။ ကျောက်ကပ်တစ်ခုစီ၏ ခွက်ဝင်နေသောအပိုင်းသည် အရေးကြီးသွေးကြောနှစ်ခုဖြစ်သော ကျောက်ကပ်သွေးလွှတ်ကြော၊ ကျောက်ကပ်သွေးပြန်ကြောနှင့် ဆီးအိမ်သို့ ဆီးပို့သော ပြွန်ပုံစံဆီးပို့ပြွန်တို့နှင့် ဆက်နေသည်။",
+      "sourcePage": 77,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-10",
+      "x": "A primary function of kidneys is the removal of poisonous wastes from the blood. Chief among these wastes are the nitrogen-containing compounds urea and uric acid, which result from the breakdown of proteins and nucleic acids. Life-threatening illnesses occur when too many of these waste products accumulate in the bloodstream. Fortunately, a healthy kidney can easily rid the body of these substances.",
+      "my": "ကျောက်ကပ်များ၏ အဓိကလုပ်ဆောင်ချက်မှာ သွေးထဲမှ အဆိပ်ရှိစွန့်ပစ်ပစ္စည်းများ ဖယ်ရှားခြင်းဖြစ်သည်။ ၎င်းတို့အနက် အဓိကမှာ ပရိုတင်းနှင့် နျူကလီယစ်အက်စစ်များ ပြိုကွဲရာမှ ရရှိသည့် နိုက်ထရိုဂျင်ပါဝင်သော ယူရီးယားနှင့် ယူရစ်အက်စစ်တို့ ဖြစ်သည်။ ထိုစွန့်ပစ်ပစ္စည်းများ သွေးထဲတွင် များစွာစုလာပါက အသက်အန္တရာယ်ရှိရောဂါများ ဖြစ်နိုင်သည်။ ကျန်းမာသော ကျောက်ကပ်က ထိုပစ္စည်းများကို ခန္ဓာကိုယ်မှ အလွယ်တကူ ဖယ်ရှားနိုင်သည်။",
+      "sourcePage": 77,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-11",
+      "x": "A very interesting thing to note about the kidneys is that they are among the most miraculous organs in the body. They contain a total of approximately 280 miles of tiny tubules whose function is to filter impurities from the blood. In the course of a day they filter something like 185 quarts of water from the blood, purify it and return it to the circulation. The waste products they pick up are concentrated in a daily three pints of urine.",
+      "my": "ကျောက်ကပ်များနှင့်ပတ်သက်၍ စိတ်ဝင်စားစရာက ၎င်းတို့သည် ခန္ဓာကိုယ်၏ အံ့ဖွယ်အကောင်းဆုံး အင်္ဂါများထဲတွင် ပါဝင်ခြင်း ဖြစ်သည်။ သွေးထဲမှ မသန့်စင်သောပစ္စည်းများကို စစ်ထုတ်သည့် ပြွန်ငယ်များ၏ စုစုပေါင်းအရှည်မှာ မိုင် ၂၈၀ ခန့်ရှိသည်။ တစ်နေ့အတွင်း သွေးမှ ရေကွတ် ၁၈၅ ခန့်ကို စစ်ထုတ်သန့်စင်ပြီး သွေးလည်ပတ်မှုထဲသို့ ပြန်ပို့သည်။ စစ်ထုတ်ရရှိသော စွန့်ပစ်ပစ္စည်းများကို နေ့စဉ် ဆီးသုံးပိုင့်အဖြစ် စုစည်းစွန့်ထုတ်သည်။",
+      "sourcePage": 77,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-12",
+      "x": "The liver",
+      "my": "အသည်း",
+      "sourcePage": 77,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-13",
+      "x": "The liver is a dark red-brown organ with a soft, spongy texture. It is located at the top of the abdomen, on the right side of the body just below the diaphragm, which is a sheet of muscle tissue that separates the lungs from the abdominal organs. The lower part of the rib cage covers the liver, protecting it from injury. In a healthy adult, the liver weighs about 1.5 kg and is about 15 cm thick.",
+      "my": "အသည်းသည် ပျော့ပျောင်း၍ ရေမြှုပ်ကဲ့သို့ အသားအနေအထားရှိသော နီညိုရင့်ရောင်အင်္ဂါ ဖြစ်သည်။ ဝမ်းဗိုက်အပေါ်ပိုင်း၊ ခန္ဓာကိုယ်ညာဘက်၊ အဆုတ်နှင့် ဝမ်းဗိုက်အင်္ဂါများကို ခွဲထားသည့် ကြွက်သားတစ်ရှူးအလွှာဖြစ်သော ရင်ဝမ်းခြားကြွက်သားအောက်တွင် တည်ရှိသည်။ နံရိုးအိမ်အောက်ပိုင်းသည် အသည်းကို ဖုံးအုပ်၍ ထိခိုက်မှုမှ ကာကွယ်သည်။ ကျန်းမာသော အရွယ်ရောက်သူတွင် အသည်းသည် ၁.၅ ကီလိုဂရမ်ခန့် လေးပြီး ၁၅ စင်တီမီတာခန့် ထူသည်။",
+      "sourcePage": 77,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-14",
+      "x": "Quite unlike the heart and the kidneys, the liver is simple in structure. It consists of two main lobes, left and right, which overlap slightly. Each lobe contains many thousands of units called lobules. They are the building blocks of the liver. A tiny vein runs through the centre of each lobule and eventually drains into the hepatic vein, which carries blood out of the liver. On the outside surface of each lobule are small veins and arteries that carry fluids to and from the lobules. As the liver does its work, nutrients are collected, wastes are removed, and chemical substances are released into the body through these vessels.",
+      "my": "နှလုံးနှင့် ကျောက်ကပ်တို့နှင့် မတူဘဲ အသည်း၏ဖွဲ့စည်းပုံမှာ ရိုးရှင်းသည်။ အနည်းငယ်ထပ်နေသော ဘယ်နှင့်ညာ အဓိကအသည်းခြမ်းနှစ်ခု ပါဝင်သည်။ အသည်းခြမ်းတစ်ခုစီတွင် lobules ဟုခေါ်သော ယူနစ်ထောင်ပေါင်းများစွာ ပါပြီး ၎င်းတို့သည် အသည်းဖွဲ့စည်းရာ အခြေခံယူနစ်များ ဖြစ်သည်။ ယူနစ်တစ်ခုစီ၏ အလယ်ကို ဖြတ်သွားသော သွေးပြန်ကြောငယ်သည် နောက်ဆုံးတွင် အသည်းမှ သွေးသယ်ထုတ်သော အသည်းသွေးပြန်ကြောထဲသို့ စီးဝင်သည်။ ယူနစ်မျက်နှာပြင်တွင် အရည်များကို ယူနစ်များသို့ ပို့ဆောင်၊ ပြန်လည်သယ်ယူသော သွေးပြန်ကြောနှင့် သွေးလွှတ်ကြောငယ်များ ရှိသည်။ အသည်း အလုပ်လုပ်သောအခါ အာဟာရများ စုဆောင်းခြင်း၊ စွန့်ပစ်ပစ္စည်းများ ဖယ်ရှားခြင်းနှင့် ဓာတုပစ္စည်းများကို ထိုသွေးကြောများမှ ခန္ဓာကိုယ်ထဲသို့ ထုတ်လွှတ်ခြင်းတို့ ဖြစ်ပေါ်သည်။",
+      "sourcePage": 77,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-15",
+      "x": "One of the liver’s primary functions is to store energy in the form of glycogen. The liver removes glucose from the blood when blood glucose levels are high. When the amount of glucose in the blood falls below the level required to meet the body’s needs, the liver transforms glycogen into glucose.",
+      "my": "အသည်း၏ အဓိကလုပ်ဆောင်ချက်တစ်ခုမှာ ဂလိုင်ကိုဂျင်ပုံစံဖြင့် စွမ်းအင်သိုလှောင်ခြင်း ဖြစ်သည်။ သွေးတွင်းဂလူးကို့စ်ပမာဏ မြင့်သောအခါ အသည်းက သွေးထဲမှ ဂလူးကို့စ်ကို ဖယ်ယူသည်။ ခန္ဓာကိုယ်လိုအပ်ချက်ထက် သွေးတွင်းဂလူးကို့စ် လျော့နည်းသွားလျှင် အသည်းက ဂလိုင်ကိုဂျင်ကို ဂလူးကို့စ်အဖြစ် ပြောင်းပေးသည်။",
+      "sourcePage": 78,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-16",
+      "x": "Another crucial function of the liver is the production of bile, a yellowish-brown liquid which is necessary for the digestion of fats. Bile leaves the liver through a network of ducts and is transported to the gallbladder, which concentrates the bile and releases it into the small intestine. The liver also stores vitamins B, D, E and K.",
+      "my": "အသည်း၏ နောက်ထပ်အရေးကြီးသော လုပ်ဆောင်ချက်မှာ အဆီချေဖျက်ရန် လိုအပ်သော အဝါညိုရောင် သည်းခြေရည် ထုတ်လုပ်ခြင်း ဖြစ်သည်။ သည်းခြေရည်သည် ပြွန်ကွန်ရက်မှတစ်ဆင့် အသည်းမှ ထွက်ပြီး သည်းခြေအိတ်သို့ ရောက်သည်။ သည်းခြေအိတ်က ၎င်းကို ပျစ်စေပြီး အူသိမ်ထဲသို့ ထုတ်လွှတ်သည်။ အသည်းသည် ဗီတာမင် B၊ D၊ E နှင့် K တို့ကိုလည်း သိုလှောင်သည်။",
+      "sourcePage": 78,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-17",
+      "x": "The liver also functions as the body’s chemical factory. Several important proteins found in the blood are produced in the liver. The liver also produces chemicals, which include fibrinogen and prothrombin. They help wounds to heal by enabling blood to form clots, and cholesterol, a key component of cell membranes that transports fats in the bloodstream to body tissues.",
+      "my": "အသည်းသည် ခန္ဓာကိုယ်၏ ဓာတုစက်ရုံအဖြစ်လည်း လုပ်ဆောင်သည်။ သွေးတွင်းရှိ အရေးကြီးပရိုတင်းအမျိုးမျိုးကို အသည်းတွင် ထုတ်လုပ်သည်။ ဖိုင်ဘရင်နိုဂျင်နှင့် ပရိုသရော်ဘင်တို့အပါအဝင် ဓာတုပစ္စည်းများကိုလည်း ထုတ်လုပ်ပြီး ၎င်းတို့သည် သွေးခဲစေခြင်းဖြင့် အနာကျက်ရန် ကူညီသည်။ ထို့ပြင် ဆဲလ်အမြှေးပါးများ၏ အဓိကအစိတ်အပိုင်းတစ်ခုဖြစ်ပြီး သွေးထဲရှိ အဆီများကို ခန္ဓာကိုယ်တစ်ရှူးများသို့ သယ်ပို့သည့် ကိုလက်စထရောကိုလည်း ဖော်ပြထားသည်။",
+      "sourcePage": 78,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-18",
+      "x": "In addition, the liver helps clear toxic substances, such as drugs and alcohol, from the bloodstream. The liver is indeed a multifunctional organ of the human body.",
+      "my": "ထို့အပြင် အသည်းသည် ဆေးဝါးနှင့် အရက်ကဲ့သို့ အဆိပ်သင့်စေနိုင်သော ပစ္စည်းများကို သွေးထဲမှ ရှင်းထုတ်ရန် ကူညီသည်။ အသည်းသည် လူ့ခန္ဓာကိုယ်၏ လုပ်ငန်းများစွာ ဆောင်ရွက်သော အင်္ဂါဖြစ်သည်။",
+      "sourcePage": 78,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-text-19",
+      "x": "From just the description of only three vital organs of our body, it should be clear to all that our body is most marvellously and intricately built, and therefore deserves our utmost care to keep it fit at all times.",
+      "my": "အရေးကြီးအင်္ဂါသုံးမျိုးအကြောင်း ဖော်ပြချက်မှပင် ခန္ဓာကိုယ်ကို အလွန်အံ့ဖွယ်ကောင်းပြီး ရှုပ်ထွေးနူးညံ့စွာ ဖွဲ့စည်းထားကြောင်း နားလည်သင့်သည်။ ထို့ကြောင့် အချိန်တိုင်း ကျန်းမာကြံ့ခိုင်စေရန် အတတ်နိုင်ဆုံး ဂရုစိုက်သင့်သည်။",
+      "sourcePage": 78,
+      "t": "para",
+      "area": "lesson"
+    }
+  ],
+  "vocabularyNotes": [
+    {
+      "id": "7-vocab-title",
+      "x": "Homonyms",
+      "my": "စာလုံးပေါင်းနှင့် အသံထွက်တူပြီး အဓိပ္ပာယ်ကွာသော စကားလုံးများ",
+      "sourcePage": 79,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-vocab-definition",
+      "x": "Homonyms are words that have the same spelling and pronunciation but different meanings.",
+      "my": "Homonyms ဆိုသည်မှာ စာလုံးပေါင်းနှင့် အသံထွက် တူညီသော်လည်း အဓိပ္ပာယ် မတူသော စကားလုံးများ ဖြစ်သည်။",
+      "sourcePage": 79,
+      "t": "para",
+      "area": "lesson"
+    },
+    {
+      "id": "7-vocab-study",
+      "x": "Study the following homonyms.",
+      "my": "အောက်ပါ အဓိပ္ပာယ်ကွဲ စကားလုံးများကို လေ့လာပါ။",
+      "sourcePage": 79,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-vocab-example-0",
+      "x": "right (adj.) correct",
+      "my": "right — မှန်ကန်သော",
+      "sourcePage": 79,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-vocab-example-1",
+      "x": "right (adj.) opposite of left",
+      "my": "right — ညာဘက်ဖြစ်သော",
+      "sourcePage": 79,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-vocab-example-2",
+      "x": "kind (n) type",
+      "my": "kind — အမျိုးအစား",
+      "sourcePage": 79,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-vocab-example-3",
+      "x": "kind (adj.) caring",
+      "my": "kind — ကြင်နာတတ်သော",
+      "sourcePage": 79,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-vocab-example-4",
+      "x": "well (adj.) in good health",
+      "my": "well — ကျန်းမာသော",
+      "sourcePage": 79,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-vocab-example-5",
+      "x": "well (n) a source for water in the ground",
+      "my": "well — မြေအောက်ရေ ရရှိရာ ရေတွင်း",
+      "sourcePage": 79,
+      "t": "line",
+      "area": "lesson"
+    }
+  ],
+  "vocabulary": [
+    {
+      "id": "7-homonyms-1",
+      "word": "organ",
+      "sentence": "A piano and an organ are basically the same but the sounds produced when being played are a bit different.",
+      "my": "စန္ဒရားနှင့် အော်ဂင်တို့သည် အခြေခံအားဖြင့် တူသော်လည်း တီးခတ်သောအခါ ထွက်ပေါ်သည့် အသံများ အနည်းငယ်ကွာသည်။",
+      "page": 79,
+      "options": [
+        {
+          "value": "a",
+          "en": "a musical instrument",
+          "my": "ဂီတတူရိယာတစ်မျိုး"
+        },
+        {
+          "value": "b",
+          "en": "a part of the body",
+          "my": "ခန္ဓာကိုယ်အစိတ်အပိုင်းတစ်ခု"
+        }
+      ]
+    },
+    {
+      "id": "7-homonyms-2",
+      "word": "means",
+      "sentence": "Whenever I want to know what a new word means, I look it up in a dictionary.",
+      "my": "စကားလုံးအသစ်တစ်လုံး၏ အဓိပ္ပာယ်ကို သိချင်တိုင်း အဘိဓာန်တွင် ရှာကြည့်သည်။",
+      "page": 79,
+      "options": [
+        {
+          "value": "a",
+          "en": "indicates or shows",
+          "my": "ညွှန်ပြသည် သို့မဟုတ် ပြသသည်"
+        },
+        {
+          "value": "b",
+          "en": "expresses or represents something such as an idea, thought, or fact",
+          "my": "အယူအဆ၊ အတွေး၊ အချက်အလက်ကဲ့သို့ အရာတစ်ခုကို ဖော်ပြကိုယ်စားပြုသည်"
+        }
+      ]
+    },
+    {
+      "id": "7-homonyms-3",
+      "word": "lose",
+      "sentence": "We have been training very hard as we know that if we don’t, we will lose the football match.",
+      "my": "လေ့ကျင့်မှုမလုပ်ပါက ဘောလုံးပွဲရှုံးမည်ကို သိသဖြင့် ကျွန်ုပ်တို့ အလွန်ကြိုးစားလေ့ကျင့်နေခဲ့သည်။",
+      "page": 80,
+      "options": [
+        {
+          "value": "a",
+          "en": "have something taken away from you",
+          "my": "တစ်စုံတစ်ခု ဆုံးရှုံးသွားသည်"
+        },
+        {
+          "value": "b",
+          "en": "fail to win a competition, argument, etc.",
+          "my": "ပြိုင်ပွဲ၊ အငြင်းပွားမှု စသည်တွင် မအနိုင်ရဘဲ ရှုံးသည်"
+        }
+      ]
+    },
+    {
+      "id": "7-homonyms-4",
+      "word": "left",
+      "sentence": "This morning Min Min got up late and found that the ferry boat had left when he got to the jetty.",
+      "my": "ယနေ့နံနက် မင်းမင်း အိပ်ရာထနောက်ကျပြီး ဆိပ်ခံတံတားသို့ ရောက်သောအခါ ကူးတို့လှေ ထွက်သွားပြီးဖြစ်ကြောင်း တွေ့ရသည်။",
+      "page": 80,
+      "options": [
+        {
+          "value": "a",
+          "en": "went away from a person or place",
+          "my": "လူတစ်ဦး သို့မဟုတ် နေရာတစ်ခုမှ ထွက်ခွာသွားသည်"
+        },
+        {
+          "value": "b",
+          "en": "gave up or stopped having a job",
+          "my": "အလုပ်ထွက်သည် သို့မဟုတ် အလုပ်လုပ်ခြင်း ရပ်တန့်သည်"
+        }
+      ]
+    },
+    {
+      "id": "7-homonyms-5",
+      "word": "time",
+      "sentence": "Many mothers nowadays cannot give much time to their children as they have to go out and work.",
+      "my": "ယနေ့ခေတ် မိခင်အများအပြားသည် အပြင်ထွက် အလုပ်လုပ်ရသဖြင့် သားသမီးများကို အချိန်များစွာ မပေးနိုင်ကြပါ။",
+      "page": 80,
+      "options": [
+        {
+          "value": "a",
+          "en": "what is measured in minutes, hours, days, etc.",
+          "my": "မိနစ်၊ နာရီ၊ ရက် စသည်ဖြင့် တိုင်းတာသော အချိန်"
+        },
+        {
+          "value": "b",
+          "en": "a period of history connected with particular events or experiences",
+          "my": "အဖြစ်အပျက် သို့မဟုတ် အတွေ့အကြုံများနှင့် ဆက်နွှယ်သည့် သမိုင်းကာလ"
+        }
+      ]
+    },
+    {
+      "id": "7-homonyms-6",
+      "word": "lie",
+      "sentence": "All the problems that Nilar had been facing made her lie awake all night.",
+      "my": "နီလာ ရင်ဆိုင်နေရသော ပြဿနာများအားလုံးကြောင့် သူမ တစ်ညလုံး မအိပ်ဘဲ လဲလျောင်းနေခဲ့ရသည်။",
+      "page": 80,
+      "options": [
+        {
+          "value": "a",
+          "en": "say something that is not true",
+          "my": "မမှန်သောအရာကို ပြောဆိုသည်၊ လိမ်သည်"
+        },
+        {
+          "value": "b",
+          "en": "be in a horizontal position on a surface",
+          "my": "မျက်နှာပြင်တစ်ခုပေါ်တွင် အလျားလိုက် လဲလျောင်းနေသည်"
+        }
+      ]
+    },
+    {
+      "id": "7-homonyms-7",
+      "word": "waste",
+      "sentence": "We need to remind ourselves that buying unnecessary things is just a waste of money.",
+      "my": "မလိုအပ်သောပစ္စည်းများ ဝယ်ခြင်းသည် ငွေဖြုန်းခြင်းသာ ဖြစ်ကြောင်း ကိုယ့်ကိုယ်ကို သတိပေးရန် လိုသည်။",
+      "page": 80,
+      "options": [
+        {
+          "value": "a",
+          "en": "a material that is no longer needed and thrown away",
+          "my": "မလိုအပ်တော့၍ စွန့်ပစ်ထားသော ပစ္စည်း"
+        },
+        {
+          "value": "b",
+          "en": "an unnecessary or wrong use of money, substances, time, energy, etc.",
+          "my": "ငွေ၊ ပစ္စည်း၊ အချိန်၊ စွမ်းအင် စသည်ကို မလိုအပ်ဘဲ သို့မဟုတ် မှားယွင်းစွာ အသုံးပြုခြင်း"
+        }
+      ]
+    },
+    {
+      "id": "7-homonyms-8",
+      "word": "Note down",
+      "sentence": "Note down my address and telephone number in case you forget them.",
+      "my": "မေ့သွားနိုင်သောကြောင့် ကျွန်ုပ်၏ လိပ်စာနှင့် ဖုန်းနံပါတ်ကို မှတ်ရေးထားပါ။",
+      "page": 80,
+      "options": [
+        {
+          "value": "a",
+          "en": "notice or pay attention to",
+          "my": "သတိပြုသည် သို့မဟုတ် အာရုံစိုက်သည်"
+        },
+        {
+          "value": "b",
+          "en": "mark or write down briefly",
+          "my": "အမှတ်အသားပြုသည် သို့မဟုတ် အတိုချုံး မှတ်ရေးသည်"
+        }
+      ]
+    },
+    {
+      "id": "7-homonyms-9",
+      "word": "right",
+      "sentence": "Students need to read the passage at least three times to get the right answers to the questions.",
+      "my": "မေးခွန်းများ၏ မှန်ကန်သောအဖြေများ ရရှိရန် ကျောင်းသားများ စာပိုဒ်ကို အနည်းဆုံး သုံးကြိမ် ဖတ်ရန်လိုသည်။",
+      "page": 80,
+      "options": [
+        {
+          "value": "a",
+          "en": "true or correct",
+          "my": "မှန်ကန်သော"
+        },
+        {
+          "value": "b",
+          "en": "opposite of ‘left’",
+          "my": "ဘယ်ဘက်နှင့် ဆန့်ကျင်ဘက်၊ ညာဘက်"
+        }
+      ]
+    },
+    {
+      "id": "7-homonyms-10",
+      "word": "vessel",
+      "sentence": "The newspaper said that a vessel went down into the sea because of the cyclone.",
+      "my": "ဆိုင်ကလုန်းမုန်တိုင်းကြောင့် ရေယာဉ်တစ်စီး ပင်လယ်ထဲ နစ်မြုပ်သွားကြောင်း သတင်းစာက ဖော်ပြသည်။",
+      "page": 80,
+      "options": [
+        {
+          "value": "a",
+          "en": "a tube that carries blood through a body of a person or an animal",
+          "my": "လူ သို့မဟုတ် တိရစ္ဆာန်ခန္ဓာကိုယ်အတွင်း သွေးသယ်ပို့သော ပြွန်၊ သွေးကြော"
+        },
+        {
+          "value": "b",
+          "en": "a large ship or boat",
+          "my": "သင်္ဘော သို့မဟုတ် လှေကြီး"
+        }
+      ]
+    },
+    {
+      "id": "7-homonyms-11",
+      "word": "store",
+      "sentence": "The store in our community opens at 9 a.m. and closes at 9 p.m.",
+      "my": "ကျွန်ုပ်တို့ ရပ်ကွက်ရှိဆိုင်သည် နံနက် ၉ နာရီဖွင့်ပြီး ည ၉ နာရီပိတ်သည်။",
+      "page": 81,
+      "options": [
+        {
+          "value": "a",
+          "en": "a large shop that sells many different kinds of goods",
+          "my": "ပစ္စည်းအမျိုးမျိုး ရောင်းချသော ဆိုင်ကြီး"
+        },
+        {
+          "value": "b",
+          "en": "a large amount or supply of something that is kept for future use",
+          "my": "နောင်အသုံးပြုရန် သိမ်းဆည်းထားသော ပမာဏ သို့မဟုတ် သိုလှောင်ပစ္စည်းအများအပြား"
+        }
+      ]
+    },
+    {
+      "id": "7-homonyms-12",
+      "word": "fat",
+      "sentence": "As my uncle had some problems with his liver, he was advised by the doctor not to eat any meat high in fat.",
+      "my": "ဦးလေးတွင် အသည်းပြဿနာအချို့ ရှိသောကြောင့် အဆီများသောအသား မစားရန် ဆရာဝန်က အကြံပေးခဲ့သည်။",
+      "page": 81,
+      "options": [
+        {
+          "value": "a",
+          "en": "an amount that is more than what is usual or needed",
+          "my": "ပုံမှန် သို့မဟုတ် လိုအပ်သည်ထက် ပိုသောပမာဏ"
+        },
+        {
+          "value": "b",
+          "en": "an oily solid or liquid substance in food",
+          "my": "အစားအစာတွင်ပါဝင်သော ဆီကဲ့သို့ အစိုင်အခဲ သို့မဟုတ် အရည်ပစ္စည်း၊ အဆီ"
+        }
+      ]
+    },
+    {
+      "id": "7-homonyms-13",
+      "word": "function",
+      "sentence": "We had to wash our clothes by hand as our washing machine did not function properly.",
+      "my": "အဝတ်လျှော်စက် ကောင်းစွာအလုပ်မလုပ်သောကြောင့် အဝတ်များကို လက်ဖြင့် လျှော်ခဲ့ရသည်။",
+      "page": 81,
+      "options": [
+        {
+          "value": "a",
+          "en": "have a specific role or purpose",
+          "my": "သီးခြား အခန်းကဏ္ဍ သို့မဟုတ် ရည်ရွယ်ချက်ရှိသည်"
+        },
+        {
+          "value": "b",
+          "en": "work or operate",
+          "my": "အလုပ်လုပ်သည် သို့မဟုတ် လည်ပတ်သည်"
+        }
+      ]
+    },
+    {
+      "id": "7-homonyms-14",
+      "word": "form",
+      "sentence": "The teacher asked the students to form into groups of four to do the activity.",
+      "my": "လှုပ်ရှားမှုဆောင်ရွက်ရန် ဆရာက ကျောင်းသားများကို လေးယောက်တစ်စု ဖွဲ့ခိုင်းသည်။",
+      "page": 81,
+      "options": [
+        {
+          "value": "a",
+          "en": "be arranged in a shape",
+          "my": "ပုံစံတစ်မျိုးအဖြစ် စီဖွဲ့ထားသည်"
+        },
+        {
+          "value": "b",
+          "en": "begin to exist or to be seen",
+          "my": "စတင်ပေါ်ပေါက်လာသည် သို့မဟုတ် မြင်တွေ့လာရသည်"
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "7-speaking-0",
+      "x": "Introducing the health problem you had",
+      "my": "ကြုံခဲ့သော ကျန်းမာရေးပြဿနာကို မိတ်ဆက်ခြင်း",
+      "sourcePage": 84,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-1",
+      "x": "It was when …",
+      "my": "… ဖြစ်သောအချိန်က ဖြစ်ခဲ့သည်။",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-2",
+      "x": "I had (a terrible stomach pain / headache) when I was …",
+      "my": "… ဖြစ်နေစဉ် (ဗိုက်အလွန်နာ / ခေါင်းကိုက်) ခဲ့သည်။",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-3",
+      "x": "It was about 6 years ago.",
+      "my": "လွန်ခဲ့သော ခြောက်နှစ်ခန့်က ဖြစ်သည်။",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-4",
+      "x": "At that time, I was playing / sleeping, etc. …",
+      "my": "ထိုအချိန်တွင် ကစားနေ / အိပ်နေ စသည် ဖြစ်သည်။",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-5",
+      "x": "I was with my mother / sister, etc. …",
+      "my": "အမေ / ညီအစ်မ စသည်နှင့် အတူရှိနေခဲ့သည်။",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-6",
+      "x": "Describing how you felt",
+      "my": "မည်သို့ ခံစားခဲ့ရကြောင်း ဖော်ပြခြင်း",
+      "sourcePage": 84,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-7",
+      "x": "It was so painful / awful / terrible …",
+      "my": "အလွန် နာကျင် / ဆိုးရွား / ကြောက်မက်ဖွယ် ဖြစ်ခဲ့သည်။",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-8",
+      "x": "At that time, I / my family was / were very worried.",
+      "my": "ထိုအချိန်တွင် ကျွန်ုပ် / မိသားစု အလွန် စိတ်ပူခဲ့သည်။",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-9",
+      "x": "Describing the cause(s) of the problem",
+      "my": "ပြဿနာဖြစ်ပေါ်ရသည့် အကြောင်းရင်းကို ဖော်ပြခြင်း",
+      "sourcePage": 84,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-10",
+      "x": "One day …",
+      "my": "တစ်နေ့တွင် …",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-11",
+      "x": "When I came back from school …",
+      "my": "ကျောင်းမှ ပြန်လာသောအခါ …",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-12",
+      "x": "Suddenly … Then, …",
+      "my": "ရုတ်တရက် … ထို့နောက် …",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-13",
+      "x": "After a while, …",
+      "my": "အချိန်အနည်းငယ်ကြာပြီးနောက် …",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-14",
+      "x": "At the same time, …",
+      "my": "တစ်ချိန်တည်းမှာပင် …",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-15",
+      "x": "Describing what you did to overcome the problem",
+      "my": "ပြဿနာကျော်လွှားရန် လုပ်ဆောင်ခဲ့ပုံ ဖော်ပြခြင်း",
+      "sourcePage": 84,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-16",
+      "x": "Eventually, I took some medicine, milk, etc. …",
+      "my": "နောက်ဆုံးတွင် ဆေး၊ နို့ စသည်တို့ကို သောက်ခဲ့သည်။",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-speaking-17",
+      "x": "In the end, I was sent to the hospital / my father called the doctor.",
+      "my": "နောက်ဆုံးတွင် ဆေးရုံသို့ ပို့ခံရ / အဖေက ဆရာဝန်ကို ခေါ်ခဲ့သည်။",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    }
+  ],
+  "writing": [
+    {
+      "id": "7-writing-0",
+      "x": "What Fatty Liver Disease is",
+      "my": "အသည်းအဆီဖုံးရောဂါဆိုသည်မှာ",
+      "sourcePage": 84,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-1",
+      "x": "extra fat in liver",
+      "my": "အသည်းထဲတွင် အဆီပိုရှိခြင်း",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-2",
+      "x": "silent disease",
+      "my": "လက္ခဏာမထင်ရှားသော ရောဂါ",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-3",
+      "x": "people not experience any symptoms even it progresses",
+      "my": "ရောဂါတိုးလာသော်လည်း လူများတွင် လက္ခဏာမခံစားရနိုင်ခြင်း",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-4",
+      "x": "Causes",
+      "my": "ဖြစ်ပေါ်ရသည့် အကြောင်းရင်းများ",
+      "sourcePage": 84,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-5",
+      "x": "eating excess calories",
+      "my": "ကယ်လိုရီပိုလျှံစွာ စားသုံးခြင်း",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-6",
+      "x": "obesity",
+      "my": "အဝလွန်ခြင်း",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-7",
+      "x": "high blood sugar",
+      "my": "သွေးတွင်းသကြားဓာတ် မြင့်ခြင်း",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-8",
+      "x": "Symptoms",
+      "my": "လက္ခဏာများ",
+      "sourcePage": 84,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-9",
+      "x": "lose appetite, feel sick, lose weight, often feel tired",
+      "my": "စားချင်စိတ်ပျောက်၊ နေမကောင်းဖြစ်၊ ကိုယ်အလေးချိန်ကျ၊ မကြာခဏ ပင်ပန်းနွမ်းနယ်ခြင်း",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-10",
+      "x": "What to do",
+      "my": "လုပ်ဆောင်ရန်အချက်များ",
+      "sourcePage": 84,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-11",
+      "x": "make lifestyle changes",
+      "my": "နေထိုင်မှုပုံစံ ပြောင်းလဲခြင်း",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-12",
+      "x": "eat balanced diet, choosing smaller portion size meals",
+      "my": "အာဟာရမျှတစွာ စား၍ တစ်ကြိမ်စားပမာဏကို လျှော့ရွေးခြင်း",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-13",
+      "x": "do exercise regularly",
+      "my": "ကိုယ်လက်လှုပ်ရှားမှု မှန်မှန်လုပ်ခြင်း",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-14",
+      "x": "avoid too much deep-fried food, processed food like sausages, dried fish, and too much alcohol",
+      "my": "ဆီနက်ကြော်အစားအစာများ၊ ဝက်အူချောင်းနှင့် ငါးခြောက်ကဲ့သို့ ပြုပြင်ထားသော အစားအစာများကို အလွန်အကျွံစားခြင်းနှင့် အရက်အလွန်အကျွံသောက်ခြင်းကို ရှောင်ကြဉ်ရန်",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-15",
+      "x": "cut back on sugar and salt",
+      "my": "သကြားနှင့် ဆားကို လျှော့သုံးခြင်း",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-16",
+      "x": "What to eat",
+      "my": "စားသုံးရန်အချက်များ",
+      "sourcePage": 84,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-17",
+      "x": "apples, carrots, green and leafy vegetables, lemon and green tea",
+      "my": "ပန်းသီး၊ မုန်လာဥနီ၊ အစိမ်းရောင်နှင့် အရွက်ပါဟင်းသီးဟင်းရွက်များ၊ သံပုရာနှင့် လက်ဖက်စိမ်းရည်",
+      "sourcePage": 84,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-writing-18",
+      "x": "Keep liver healthy — important for us",
+      "my": "အသည်းကျန်းမာအောင် ထိန်းသိမ်းခြင်းသည် ကျွန်ုပ်တို့အတွက် အရေးကြီးသည်",
+      "sourcePage": 84,
+      "t": "h",
+      "area": "lesson"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "7-grammar-title",
+      "x": "The Passive Voice",
+      "my": "ကံပြုဝါကျပုံစံ",
+      "sourcePage": 81,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-active",
+      "x": "In the active voice, the subject of the verb is the person or thing that does the action.",
+      "my": "ကတ္တားပြုဝါကျတွင် ကြိယာ၏ကတ္တားသည် လုပ်ဆောင်သူ သို့မဟုတ် လုပ်ဆောင်သောအရာ ဖြစ်သည်။",
+      "sourcePage": 81,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-passive",
+      "x": "In the passive voice, the action is done to the subject.",
+      "my": "ကံပြုဝါကျတွင် ကတ္တားသည် လုပ်ဆောင်မှုကို ခံရသူ သို့မဟုတ် ခံရသောအရာ ဖြစ်သည်။",
+      "sourcePage": 81,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-agent",
+      "x": "In the passive voice, the agent may be omitted if it is implied, unknown or unimportant.",
+      "my": "ပြုလုပ်သူကို သိသာနေ၊ မသိ သို့မဟုတ် အရေးမကြီးပါက ကံပြုဝါကျတွင် ချန်ထားနိုင်သည်။",
+      "sourcePage": 81,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-study",
+      "x": "Study the following passive sentence from the text.",
+      "my": "စာပိုဒ်ထဲမှ အောက်ပါကံပြုဝါကျကို လေ့လာပါ။",
+      "sourcePage": 81,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-example",
+      "x": "As the liver does its work, nutrients are collected, wastes are removed, and chemical substances are released into the body through these vessels.",
+      "my": "အသည်း အလုပ်လုပ်စဉ် အာဟာရများ စုဆောင်းခြင်း၊ စွန့်ပစ်ပစ္စည်းများ ဖယ်ရှားခြင်းနှင့် ဓာတုပစ္စည်းများကို ထိုသွေးကြောများမှ ခန္ဓာကိုယ်ထဲသို့ ထုတ်လွှတ်ခြင်းတို့ ဖြစ်သည်။",
+      "sourcePage": 81,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-impersonal",
+      "x": "The Impersonal Passive",
+      "my": "ပုဂ္ဂိုလ်မညွှန်း ကံပြုဝါကျ",
+      "sourcePage": 82,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-impersonal-rule",
+      "x": "The impersonal passive is used to report what is said by people or by generalized agents. We can avoid mentioning the generalized agents: ‘we’, ‘they’, ‘people’, ‘everybody’, ‘one’, etc. With reporting verbs such as ‘say’, ‘think’, ‘know’, ‘believe’, ‘hope’, ‘report’, ‘find’, etc., we can use the following passive pattern:",
+      "my": "လူများ သို့မဟုတ် ယေဘုယျပြုလုပ်သူတို့ ပြောဆိုရာကို တင်ပြရန် impersonal passive ကို သုံးသည်။ we၊ they၊ people၊ everybody၊ one စသည့် ယေဘုယျကတ္တားများကို မဖော်ပြဘဲ ရေးနိုင်သည်။ say၊ think၊ know၊ believe၊ hope၊ report၊ find စသည့် သတင်းတင်ပြကြိယာများနှင့် အောက်ပါပုံစံကို သုံးနိုင်သည်။",
+      "sourcePage": 82,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-formula",
+      "x": "It + the passive form of the reporting verb + that clause",
+      "my": "It + သတင်းတင်ပြကြိယာ၏ ကံပြုပုံစံ + that ဝါကျခွဲ",
+      "sourcePage": 82,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-before-1",
+      "x": "Everybody knows that the earth is round.",
+      "my": "ကမ္ဘာသည် လုံးဝန်းကြောင်း လူတိုင်းသိသည်။",
+      "sourcePage": 82,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-after-1",
+      "x": "It is known that the earth is round.",
+      "my": "ကမ္ဘာသည် လုံးဝန်းကြောင်း သိရှိကြသည်။",
+      "sourcePage": 82,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-before-2",
+      "x": "They thought that the exam questions were quite easy.",
+      "my": "စာမေးပွဲမေးခွန်းများ အတော်လွယ်ခဲ့သည်ဟု သူတို့ ထင်ခဲ့ကြသည်။",
+      "sourcePage": 82,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-after-2",
+      "x": "It was thought that the exam questions were quite easy.",
+      "my": "စာမေးပွဲမေးခွန်းများ အတော်လွယ်ခဲ့သည်ဟု ယူဆခဲ့ကြသည်။",
+      "sourcePage": 82,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-worked-example",
+      "x": "Exercise B — Example",
+      "my": "လေ့ကျင့်ခန်း B — နမူနာ",
+      "sourcePage": 82,
+      "t": "h",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-before-3",
+      "x": "People once believed that the sun revolved around the earth.",
+      "my": "နေသည် ကမ္ဘာကို လှည့်ပတ်သည်ဟု လူတို့ တစ်ချိန်က ယုံကြည်ခဲ့ကြသည်။",
+      "sourcePage": 82,
+      "t": "line",
+      "area": "lesson"
+    },
+    {
+      "id": "7-grammar-after-3",
+      "x": "It was once believed that the sun revolved around the earth.",
+      "my": "နေသည် ကမ္ဘာကို လှည့်ပတ်သည်ဟု တစ်ချိန်က ယုံကြည်ခဲ့ကြသည်။",
+      "sourcePage": 82,
+      "t": "line",
+      "area": "lesson"
+    }
+  ],
+  "questionTranslations": {
+    "7-functions-1": "၂။ နှာခေါင်း",
+    "7-functions-2": "၃။ နား",
+    "7-functions-3": "၄။ နှလုံး",
+    "7-functions-4": "၅။ ကျောက်ကပ်",
+    "7-functions-5": "၆။ အသည်း",
+    "7-notes-1": "၁။ မည်သည့်ကျန်းမာရေးပြဿနာ ဖြစ်ခဲ့သနည်း။ မည်သည့်အချိန်က ဖြစ်သနည်း။",
+    "7-notes-2": "၂။ မည်သည့်အကြောင်းရင်းကြောင့် ဖြစ်ခဲ့သနည်း။",
+    "7-notes-3": "၃။ သင် မည်သို့ ခံစားခဲ့ရသနည်း။",
+    "7-notes-4": "၄။ ပြဿနာကို ကျော်လွှားရန် မည်သို့ လုပ်ဆောင်ခဲ့သနည်း။",
+    "7-present-1": "မိမိတင်ပြမည့် အကြောင်းအရာမှတ်စု",
+    "7-listen-1": "၁။ သင်ဇာနှင့် စုမွန်သည် သီတင်းကျွတ်ပိတ်ရက်ကတည်းက တစ်ဦးနှင့်တစ်ဦး မ______ ခဲ့ကြပါ။",
+    "7-listen-2": "၂။ သီတင်းကျွတ်ပိတ်ရက်တွင် စုမွန်သည် ______ နှင့် ပုဂံသို့ သွားခဲ့သည်။",
+    "7-listen-3": "၃။ ခရီးပြီးနောက် စုမွန်သည် အိမ်တွင် အမေ့ကို ______ ခဲ့သည်။",
+    "7-listen-4": "၄။ သီတင်းကျွတ်ပိတ်ရက်တွင် သင်ဇာသည် မည်သည့်နေရာကိုမျှ ______။",
+    "7-listen-5": "၅။ သင်ဇာသည် နေ့စဉ် တီဗီကို ______ ခန့် ကြည့်သောကြောင့် ကိုယ်အလေးချိန်တက်မည်ကို စိုးရိမ်သည်။",
+    "7-listen-6": "၆။ စုမွန်က သင်ဇာကို ______ သို့မဟုတ် အားကစားလုပ်ခြင်းဖြင့် ကိုယ်အလေးချိန်လျှော့ရန် အကြံပေးခဲ့သည်။",
+    "7-listen-7": "၇။ စုမွန် ______ အားကစားနှစ်မျိုးမှာ အသင်းလိုက်နှင့် တစ်ဦးချင်းအားကစားများ ဖြစ်သည်။",
+    "7-listen-8": "၈။ ______ က လူမှုဆက်ဆံရေးစွမ်းရည် ဖွံ့ဖြိုးစေကြောင်း စုမွန်က သင်ဇာကို ပြောခဲ့သည်။",
+    "7-listen-9": "၉။ ကုန်ကျစရိတ် မများသောကြောင့် သင်ဇာသည် ကျွမ်းဘား သို့မဟုတ် kickboxing ထက် ______ ကို ပိုနှစ်သက်သည်။",
+    "7-listen-10": "၁၀။ ______ ပိုမတက်မီ ရေကူးရန် စုမွန်က သင်ဇာကို အကြံပေးခဲ့သည်။"
+  },
+  "listeningAnswers": {
+    "7-listen-1": {
+      "answer": "seen",
+      "answerMy": "တွေ့ဆုံခဲ့",
+      "origin": "audio-derived",
+      "audioSrc": "/grade11/audio/unit7.mp3",
+      "audioSha256": "99501fa703f386dd5f4f09508c293f55293c301da51cf0ebc7ef5b2977743437",
+      "evidenceCueIds": ["g11-audio-7-3"]
+    },
+    "7-listen-2": {
+      "answer": "her cousins",
+      "answerMy": "သူမ၏ ဝမ်းကွဲများ",
+      "origin": "audio-derived",
+      "audioSrc": "/grade11/audio/unit7.mp3",
+      "audioSha256": "99501fa703f386dd5f4f09508c293f55293c301da51cf0ebc7ef5b2977743437",
+      "evidenceCueIds": ["g11-audio-7-5"]
+    },
+    "7-listen-3": {
+      "answer": "helped",
+      "answerMy": "ကူညီခဲ့",
+      "origin": "audio-derived",
+      "audioSrc": "/grade11/audio/unit7.mp3",
+      "audioSha256": "99501fa703f386dd5f4f09508c293f55293c301da51cf0ebc7ef5b2977743437",
+      "evidenceCueIds": ["g11-audio-7-6"]
+    },
+    "7-listen-4": {
+      "answer": "did not go; didn’t go",
+      "answerMy": "မသွားခဲ့",
+      "origin": "audio-derived",
+      "audioSrc": "/grade11/audio/unit7.mp3",
+      "audioSha256": "99501fa703f386dd5f4f09508c293f55293c301da51cf0ebc7ef5b2977743437",
+      "evidenceCueIds": ["g11-audio-7-8", "g11-audio-7-9"]
+    },
+    "7-listen-5": {
+      "answer": "four or five hours; 4 or 5 hours; 4–5 hours",
+      "answerMy": "လေးနာရီ သို့မဟုတ် ငါးနာရီ",
+      "origin": "audio-derived",
+      "audioSrc": "/grade11/audio/unit7.mp3",
+      "audioSha256": "99501fa703f386dd5f4f09508c293f55293c301da51cf0ebc7ef5b2977743437",
+      "evidenceCueIds": ["g11-audio-7-10"]
+    },
+    "7-listen-6": {
+      "answer": "doing workouts",
+      "answerMy": "လေ့ကျင့်ခန်းလုပ်ခြင်း",
+      "origin": "audio-derived",
+      "audioSrc": "/grade11/audio/unit7.mp3",
+      "audioSha256": "99501fa703f386dd5f4f09508c293f55293c301da51cf0ebc7ef5b2977743437",
+      "evidenceCueIds": ["g11-audio-7-15"]
+    },
+    "7-listen-7": {
+      "answer": "mentioned; recommended; suggested",
+      "answerMy": "အကြံပြုခဲ့သော",
+      "origin": "audio-derived",
+      "audioSrc": "/grade11/audio/unit7.mp3",
+      "audioSha256": "99501fa703f386dd5f4f09508c293f55293c301da51cf0ebc7ef5b2977743437",
+      "evidenceCueIds": ["g11-audio-7-19", "g11-audio-7-20"]
+    },
+    "7-listen-8": {
+      "answer": "team sports",
+      "answerMy": "အသင်းလိုက်အားကစားများ",
+      "origin": "audio-derived",
+      "audioSrc": "/grade11/audio/unit7.mp3",
+      "audioSha256": "99501fa703f386dd5f4f09508c293f55293c301da51cf0ebc7ef5b2977743437",
+      "evidenceCueIds": ["g11-audio-7-22"]
+    },
+    "7-listen-9": {
+      "answer": "swimming",
+      "answerMy": "ရေကူးခြင်း",
+      "origin": "audio-derived",
+      "audioSrc": "/grade11/audio/unit7.mp3",
+      "audioSha256": "99501fa703f386dd5f4f09508c293f55293c301da51cf0ebc7ef5b2977743437",
+      "evidenceCueIds": ["g11-audio-7-26"]
+    },
+    "7-listen-10": {
+      "answer": "weight",
+      "answerMy": "ကိုယ်အလေးချိန်",
+      "origin": "audio-derived",
+      "audioSrc": "/grade11/audio/unit7.mp3",
+      "audioSha256": "99501fa703f386dd5f4f09508c293f55293c301da51cf0ebc7ef5b2977743437",
+      "evidenceCueIds": ["g11-audio-7-29"]
+    }
+  },
+  "transcriptionNotes": {
+    "7-homonyms-1": "မူရင်းပုံတွင် ဝါကျအလယ်ပိုင်း မှိန်နေသောကြောင့် ထိုစကားစုကို ဖတ်ရှုနိုင်သမျှ ပြန်လည်ဖော်ပြထားသည်။ organ နှင့် အဓိပ္ပာယ်ရွေးချယ်စရာနှစ်ခုမှာ ရှင်းလင်းစွာ ဖတ်ရှုနိုင်သည်။"
+  }
+}
