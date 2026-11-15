@@ -1,3 +1,4 @@
+import { Grade11ExerciseRoleplay } from "./Grade11ExerciseRoleplay";
 import { Grade11ExerciseCard, Grade11LessonTips } from "./Grade11ExerciseCard";
 import { Grade11GrammarExercise } from "./Grade11GrammarExercise";
 import { Grade11AIReview } from "./Grade11AIReview";
@@ -102,7 +103,7 @@ export function Grade11Unit2Workspace({ kind }: { kind: G11SkillKind }) {
         ) : kind === "reading" || kind === "writing" ? (
           <article className="space-y-3 rounded-2xl border border-border bg-card p-5">
             {lesson.map((b) => (
-              <SourceBlock key={b.id} block={b} direct={kind === "writing"} />
+              <SourceBlock key={b.id} block={b} direct={kind === "writing" || b.id === "2A-15"} />
             ))}
           </article>
         ) : null}
@@ -147,7 +148,11 @@ export function Grade11Unit2Workspace({ kind }: { kind: G11SkillKind }) {
                 context={section.blocks.map((b) => b.x).join("\n")}
               />
             ) : (
-              <div key={ex.instruction.id} className="rounded-2xl border border-border bg-card p-4">
+              <div
+                key={ex.instruction.id}
+                data-exercise={ex.instruction.id}
+                className="rounded-2xl border border-border bg-card p-4"
+              >
                 <h3 className="border-b border-border pb-2 font-semibold">{ex.instruction.x}</h3>
                 {ex.instruction.id === "2A-0" ? (
                   <p lang="my" className="mt-2 text-sm text-muted-foreground">
@@ -157,12 +162,43 @@ export function Grade11Unit2Workspace({ kind }: { kind: G11SkillKind }) {
                   <p lang="my" className="mt-2 text-sm text-muted-foreground">
                     {ex.instruction.my}
                   </p>
+                ) : kind === "speaking" ? (
+                  <p lang="my" className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {ex.instruction.my}
+                  </p>
                 ) : (
                   <ToggleReveal label="Translate Instructions" icon={Languages}>
                     {ex.instruction.my}
                   </ToggleReveal>
                 )}
-                {ex.instruction.id === "2A-16" ? (
+                {ex.instruction.id === "2D-10" ? (
+                  <div className="mt-4 grid gap-4 md:grid-cols-2">
+                    {[
+                      {
+                        title: "Ideas for using the net · အသုံးပြုရသည့်အကြောင်း",
+                        items: ex.blocks.filter((b) => /^2D-1[234]$/.test(b.id)),
+                      },
+                      {
+                        title: "Questions to ask · မေးမြန်းရန်",
+                        items: ex.blocks.filter((b) => /^2D-1[567]$/.test(b.id)),
+                      },
+                    ].map((column) => (
+                      <section
+                        key={column.title}
+                        className="space-y-3 rounded-xl border border-border bg-secondary/30 p-4"
+                      >
+                        <h4 className="font-semibold text-primary">{column.title}</h4>
+                        {column.items.map((b) => (
+                          <SourceBlock key={b.id} block={b} direct />
+                        ))}
+                      </section>
+                    ))}
+                  </div>
+                ) : ex.instruction.id === "2D-18" ? (
+                  <div className="mt-4">
+                    <Grade11ExerciseRoleplay unit={2} exercise="2D-18" />
+                  </div>
+                ) : ex.instruction.id === "2A-16" ? (
                   <table className="mt-3 w-full table-fixed border-collapse text-sm">
                     <caption className="sr-only">
                       Advantages and disadvantages of online shopping

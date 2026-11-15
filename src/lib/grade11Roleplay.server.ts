@@ -1,3 +1,6 @@
+import { GRADE11_ROLEPLAY_EXERCISES } from "./grade11RoleplayExercises";
+import { UNIT2_SECTIONS } from "./grade11Unit2";
+import { UNIT3_SECTIONS, UNIT3_KEYS } from "./grade11Unit3";
 import { UNIT1_KEYS, UNIT1_SECTIONS } from "./grade11Unit1";
 import { TRAVEL_LESSONS } from "./grade11Travel";
 import { z } from "zod";
@@ -16,7 +19,7 @@ const input = z.object({
   requestId: z.string().uuid().optional(),
   revision: z.number().int().nonnegative().optional(),
   action: z.literal("end").optional(),
-  exercise: z.enum(["1D-30", "1D-31", "5D-14", "5D-21"]).optional(),
+  exercise: z.enum(GRADE11_ROLEPLAY_EXERCISES).optional(),
   turns: z
     .array(
       z.object({
@@ -132,6 +135,26 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
       body.exercise === "1D-30"
         ? `${instruction.x}\nOriginal Exercise B dialogue:\n${dialogue}\nPractise this textbook dialogue as one partner, one turn at a time. Let the student speak the other partner. Stay on this trip; do not introduce an unrelated scenario.`
         : `${instruction.x}\nCreate a related birdwatching trip dialogue with the student, using the structure of Exercise B. Ask about the student's local lake rather than inventing facts about their home.`;
+  }
+  if (body.exercise === "2D-18") {
+    const blocks = UNIT2_SECTIONS.find((s) => s.code === "2D")!.blocks;
+    exerciseContext = blocks
+      .filter((b) => Number(b.id.split("-")[1]) >= 10)
+      .map((b) => b.x)
+      .join("\n");
+    exerciseContext +=
+      "\nCreate and role-play the Exercise C dialogue about what the student usually does on the net. Ask which idea they choose and their own reasons first. Use the textbook questions about activities, habits and websites. Be one classmate, one turn at a time; let the learner create the other part. Do not invent their habits or deliver both sides of a completed dialogue.";
+  }
+  if (body.exercise === "3D-33") {
+    const blocks = UNIT3_SECTIONS.find((s) => s.code === "3D")!.blocks;
+    const dialogue = blocks
+      .filter((b) => {
+        const n = Number(b.id.split("-")[1]);
+        return n >= 28 && n <= 32;
+      })
+      .map((b) => b.x.replace(/\(\d+\)\s*_+/, UNIT3_KEYS[b.id]?.answer ?? ""))
+      .join("\n");
+    exerciseContext = `Original Exercise C dialogue:\n${dialogue}\nPractise this dialogue between Lin Lin and Thiri about relaxing after the exam, City Mall, the Food Court and watching a movie. Start as Lin Lin and let the student be Thiri. Follow the textbook turns, accept equivalent agreement/disagreement expressions, and never speak the student's turn. Do not switch to an unrelated memory scenario.`;
   }
   if (body.exercise && body.unit === 5) {
     const blocks = TRAVEL_LESSONS[5].sections.find((section) => section.code === "5D")!.blocks;

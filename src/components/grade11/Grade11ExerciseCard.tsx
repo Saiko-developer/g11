@@ -1,3 +1,6 @@
+import { Grade11QuestionAnswer } from "./Grade11QuestionAnswer";
+import { Grade11StudyNotes } from "./Grade11StudyNotes";
+import { Grade11ExerciseRoleplay } from "./Grade11ExerciseRoleplay";
 import { Grade11Unit5Map, Grade11Unit5Speaking } from "./Grade11Unit5Tools";
 import { Grade11ExpressionsTable } from "./Grade11ExpressionsTable";
 import { useState } from "react";
@@ -72,7 +75,10 @@ export function Grade11ExerciseCard({
   const openReading =
     instruction.id === "2A-30" || (kind === "reading" && /full-sentence/i.test(instruction.x));
   const order = instruction.id === "5E-17";
-  const ai = openReading || instruction.id === "5A-55" || (kind === "writing" && !order) || food;
+  const perQuestion = ["2A-30", "3A-35", "4A-13", "5A-82", "6D-0"].includes(instruction.id);
+  const ai =
+    !perQuestion &&
+    (openReading || instruction.id === "5A-55" || (kind === "writing" && !order) || food);
   const ids = survey
     ? questions.flatMap((q) => [1, 2, 3, 4].map((n) => `${q.id}:student${n}`))
     : food
@@ -83,7 +89,7 @@ export function Grade11ExerciseCard({
   const [revealed, setRevealed] = useState(false);
   const graded = checked === signature;
   const closed = questions.filter((q) => keys[q.id]);
-  const canCheck = closed.length > 0 && !ai && !personal;
+  const canCheck = closed.length > 0 && !ai && !personal && !perQuestion;
   const score = closed.filter((q) => isAnswerMatch(answers[q.id] ?? "", keys[q.id].answer)).length;
   const status = (q: Unit1Block) =>
     graded && canCheck ? (
@@ -101,6 +107,20 @@ export function Grade11ExerciseCard({
     ) : null;
   const field = (q: Unit1Block, id = q.id) => {
     const value = answers[id] ?? "";
+    if (perQuestion)
+      return (
+        <Grade11QuestionAnswer
+          key={id}
+          question={q.x}
+          instructions={instruction.x}
+          context={context}
+          answerKey={keys[q.id]}
+          value={value}
+          onChange={(value) => setAnswer(id, value)}
+          fullSentence={kind === "reading"}
+        />
+      );
+
     const label =
       food && id !== q.id
         ? `${id.split(":").at(-1)}: ${q.x.split(" — ")[0]}`
@@ -291,7 +311,9 @@ export function Grade11ExerciseCard({
           <summary className="cursor-pointer font-medium text-primary">
             Sample essay and planning points
           </summary>
-          <div className="mt-4 space-y-4">{renderNotes(notes)}</div>
+          <div className="mt-4">
+            <Grade11StudyNotes blocks={notes} />
+          </div>
         </details>
       )}
       {unit === 5 && ["5D-14", "5D-21"].includes(instruction.id) ? (
@@ -307,6 +329,8 @@ export function Grade11ExerciseCard({
           answers={answers}
           setAnswer={setAnswer}
         />
+      ) : instruction.id === "6D-11" ? (
+        <Grade11StudyNotes blocks={blocks} />
       ) : order ? (
         <div className="space-y-4">
           {notes.map((n) => (
@@ -472,9 +496,23 @@ export function Grade11ExerciseCard({
         </div>
       ) : (
         <>
-          {notes.length > 0 && !poem.length && (
-            <div className="space-y-3 rounded-xl bg-muted/30 p-4">{renderNotes(notes)}</div>
-          )}
+          {notes.length > 0 &&
+            !poem.length &&
+            (instruction.id === "3B-3" ? (
+              <div className="grid gap-3 sm:grid-cols-2">
+                {notes.map((n) => (
+                  <div key={n.id} className="rounded-xl border border-primary/20 bg-primary/5 p-4">
+                    <p className="font-semibold text-primary">{n.x.split(" = ")[0]}</p>
+                    <p className="mt-2 text-sm">{n.x.split(" = ").slice(1).join(" = ")}</p>
+                    <p lang="my" className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {n.my}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="space-y-3 rounded-xl bg-muted/30 p-4">{renderNotes(notes)}</div>
+            ))}
           <div className={instruction.id === "3A-28" ? "grid gap-3 md:grid-cols-2" : "space-y-3"}>
             {questions.map((q) => (
               <article
@@ -500,6 +538,7 @@ export function Grade11ExerciseCard({
           </div>
         </>
       )}
+      {instruction.id === "3D-33" && <Grade11ExerciseRoleplay unit={3} exercise="3D-33" />}
       {canCheck && (
         <div className="space-y-2 border-t border-border pt-3">
           <Button

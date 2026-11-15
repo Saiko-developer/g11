@@ -215,5 +215,23 @@
     "sourcePage": 35,
     "answerMy": "ငါ နင်နဲ့ သဘောတူတယ်",
     "kind": "closed"
+  },
+  "3B-18": {
+    "answer": "depends on",
+    "answerMy": "မူတည်သည်",
+    "origin": "source-derived",
+    "sourcePage": 32
+  },
+  "3B-19": {
+    "answer": "linked up",
+    "answerMy": "ပူးပေါင်းချိတ်ဆက်ခဲ့ကြသည်",
+    "origin": "source-derived",
+    "sourcePage": 32
+  },
+  "3B-20": {
+    "answer": "go through",
+    "answerMy": "ဖြတ်သန်းလေ့ကျင့်ရသည်",
+    "origin": "source-derived",
+    "sourcePage": 32
   }
 }

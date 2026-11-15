@@ -396,39 +396,42 @@
         },
         {
           "blockId": "3B-18",
-          "question": "6.",
-          "questionMy": "၆။",
-          "status": "unreadable-source",
+          "question": "6. The amount of money he has saved ___________ the job is doing.",
+          "questionMy": "၆။ သူစုဆောင်းထားသော ငွေပမာဏသည် သူလုပ်နေသောအလုပ်အပေါ် ___________။",
+          "status": "source-derived",
           "sourcePages": [
             32
           ],
-          "answer": null,
-          "answerMy": null,
-          "kind": "open"
+          "answer": "depends on",
+          "answerMy": "မူတည်သည်",
+          "kind": "closed",
+          "note": "Question restored from the user-supplied transcription; phrasal verb inferred from Exercise A. Wording is retained as supplied (laboratory spelling normalized)."
         },
         {
           "blockId": "3B-19",
-          "question": "7.",
-          "questionMy": "၇။",
-          "status": "unreadable-source",
+          "question": "7. The two universities have ___________ to do a project on rural development.",
+          "questionMy": "၇။ တက္ကသိုလ်နှစ်ခုသည် ကျေးလက်ဖွံ့ဖြိုးရေးစီမံကိန်းတစ်ခု လုပ်ဆောင်ရန် ___________။",
+          "status": "source-derived",
           "sourcePages": [
             32
           ],
-          "answer": null,
-          "answerMy": null,
-          "kind": "open"
+          "answer": "linked up",
+          "answerMy": "ပူးပေါင်းချိတ်ဆက်ခဲ့ကြသည်",
+          "kind": "closed",
+          "note": "Question restored from the user-supplied transcription; phrasal verb inferred from Exercise A. Wording is retained as supplied (laboratory spelling normalized)."
         },
         {
           "blockId": "3B-20",
-          "question": "8.",
-          "questionMy": "၈။",
-          "status": "unreadable-source",
+          "question": "8. To be able to do the laboratory you have to ___________ several months of training.",
+          "questionMy": "၈။ ဓာတ်ခွဲခန်းလုပ်ငန်းကို လုပ်နိုင်ရန် လအနည်းငယ်ကြာ သင်တန်းကို ___________ ရမည်။",
+          "status": "source-derived",
           "sourcePages": [
             32
           ],
-          "answer": null,
-          "answerMy": null,
-          "kind": "open"
+          "answer": "go through",
+          "answerMy": "ဖြတ်သန်းလေ့ကျင့်ရသည်",
+          "kind": "closed",
+          "note": "Question restored from the user-supplied transcription; phrasal verb inferred from Exercise A. Wording is retained as supplied (laboratory spelling normalized)."
         }
       ]
     },

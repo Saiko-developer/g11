@@ -1,3 +1,4 @@
+import type { Grade11RoleplayExercise } from "@/lib/grade11RoleplayExercises";
 import {
   speakingAllowanceSchema,
   speakingSeconds,
@@ -73,7 +74,7 @@ export function Grade11RolePlay({
   exercise,
 }: {
   unit: number;
-  exercise?: "1D-30" | "1D-31" | "5D-14" | "5D-21";
+  exercise?: Grade11RoleplayExercise;
 }) {
   const unitTitle =
     G11_SYLLABUS.filter((node) => node.type === "unit").find((node) => node.number === unit)

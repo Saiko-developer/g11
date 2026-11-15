@@ -213,3 +213,29 @@ it("ends an owned conversation without an AI call or provider key", async () => 
   expect(generateJson).not.toHaveBeenCalled();
   expect(prepareGrade11Speaking).not.toHaveBeenCalled();
 });
+
+it.each([
+  { unit: 2, exercise: "2D-18", expected: "what the student usually does on the net" },
+  { unit: 3, exercise: "3D-33", expected: "Lin Lin and Thiri" },
+])("anchors $exercise to its actual textbook task", async ({ unit, exercise, expected }) => {
+  const response = await handleGrade11Roleplay(request({ unit, exercise }));
+  expect(response.status).toBe(200);
+  const prompt = vi.mocked(generateJson).mock.calls[0][0].prompt;
+  expect(prompt).toContain(expected);
+  if (unit === 3) {
+    expect(prompt).toContain("City Mall");
+    expect(prompt).toContain("I see your point");
+    expect(prompt).not.toContain("_______________");
+  }
+  expect(prepareGrade11Speaking).toHaveBeenCalledWith(
+    expect.any(Request),
+    expect.objectContaining({ unit, exercise }),
+    expect.any(String),
+    expect.any(String),
+  );
+});
+it("rejects a new exercise on the wrong unit before any reservation or generation", async () => {
+  expect((await handleGrade11Roleplay(request({ unit: 3, exercise: "2D-18" }))).status).toBe(400);
+  expect(prepareGrade11Speaking).not.toHaveBeenCalled();
+  expect(generateJson).not.toHaveBeenCalled();
+});

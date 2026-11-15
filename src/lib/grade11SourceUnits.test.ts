@@ -28,7 +28,7 @@ describe("Grade 11 source lessons and bilingual answers", () => {
   });
 
   it("loads Unit 3 English/Myanmar answers into the existing Grade 10 Check/Reveal controls", () => {
-    expect(Object.keys(UNIT3_KEYS)).toHaveLength(41);
+    expect(Object.keys(UNIT3_KEYS)).toHaveLength(44);
     expect(UNIT3_KEYS["3C-30"].answer).toBe("thinking");
     expect(UNIT3_KEYS["3C-30"].answerMy).toBe("စဉ်းစားခြင်း");
     expect(UNIT3_KEYS["3A-37"].answer).toContain("all of our knowledge");

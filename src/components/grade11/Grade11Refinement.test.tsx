@@ -73,15 +73,16 @@ describe("Grade 11 requested Unit 1–4 improvements", () => {
     render(<Grade11Unit2Lesson kind="reading" />);
     const b = group("2A-30");
     expect(within(b).getAllByRole("textbox")).toHaveLength(10);
-    expect(within(b).queryByRole("button", { name: "Check Answer" })).toBeNull();
+    expect(within(b).getAllByRole("button", { name: "Check Answer" })).toHaveLength(10);
     fireEvent.change(within(b).getAllByRole("textbox")[0], {
       target: { value: "It means buying goods through the internet." },
     });
-    fireEvent.click(within(b).getByRole("button", { name: "Check Answer with AI" }));
+    fireEvent.click(within(b).getAllByRole("button", { name: "Check Answer" })[0]);
     await within(b).findByText("အဖြေကို ကောင်းစွာ ရေးထားပါတယ်။");
     expect(fetch).toHaveBeenCalledOnce();
     const body = JSON.parse(vi.mocked(fetch).mock.calls[0][1]!.body as string);
     expect(body.studentAnswer).toContain("buying goods");
+    expect(body.question).not.toContain("2A-32");
     expect(body.context.toLowerCase()).toContain("online shopping");
   });
   it("replaces the memory diagram and letter translation controls with tables and grouped extracts", () => {

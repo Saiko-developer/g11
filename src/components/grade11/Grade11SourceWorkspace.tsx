@@ -1,3 +1,5 @@
+import { Grade11TravelReadingTable } from "./Grade11TravelReadingTable";
+import { Grade11StudyNotes } from "./Grade11StudyNotes";
 import { Grade11ExerciseCard, Grade11LessonTips } from "./Grade11ExerciseCard";
 import { Grade11GrammarExercise } from "./Grade11GrammarExercise";
 import { Grade11MemoryTable } from "./Grade11MemoryTable";
@@ -85,6 +87,10 @@ export function Grade11SourceWorkspace({
       /* In-memory fallback. */
     }
   }, [answers, loadedKey, storageKey]);
+  const groupedNotes =
+    (kind === "writing" && [3, 4, 6].includes(unitNumber)) ||
+    (kind === "speaking" && unitNumber === 6) ||
+    (kind === "vocabulary" && [3, 4, 6].includes(unitNumber));
   const tasks = exercises.flatMap((ex) => ex.blocks.filter((b) => b.t === "q"));
   const writeFree = kind === "writing" || kind === "speaking";
   const survey = kind === "speaking" && unitNumber === 4;
@@ -151,6 +157,8 @@ export function Grade11SourceWorkspace({
             setAnswer={setAnswer}
             context={section.blocks.map((b) => b.x).join("\n")}
           />
+        ) : groupedNotes ? (
+          <Grade11StudyNotes blocks={lesson} />
         ) : (
           lesson.length > 0 && (
             <article
@@ -183,6 +191,17 @@ export function Grade11SourceWorkspace({
             <Grade11LessonTips kind={kind} />
           )}
           {exercises.map((ex) => {
+            if (["6A-26", "6A-32"].includes(ex.instruction.id))
+              return (
+                <Grade11TravelReadingTable
+                  key={ex.instruction.id}
+                  exercise={ex}
+                  keys={answerKeys}
+                  answers={answers}
+                  setAnswer={setAnswer}
+                />
+              );
+
             if (kind === "grammar")
               return (
                 <div key={ex.instruction.id}>
@@ -211,7 +230,9 @@ export function Grade11SourceWorkspace({
             const refine =
               unitNumber === 4 ||
               unitNumber === 5 ||
-              (unitNumber === 3 && ["reading", "grammar", "listening", "speaking"].includes(kind));
+              (unitNumber === 6 && kind !== "reading") ||
+              (unitNumber === 3 &&
+                ["reading", "vocabulary", "grammar", "listening", "speaking"].includes(kind));
             if (refine && ex.instruction.x !== "Pre-reading")
               return (
                 <Grade11ExerciseCard

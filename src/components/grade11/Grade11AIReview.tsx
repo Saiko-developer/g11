@@ -12,6 +12,7 @@ export function Grade11AIReview({
   answer,
   writing = false,
   checkLabel = "Check Answer with AI",
+  compact = false,
 }: {
   question: string;
   instructions: string;
@@ -19,6 +20,7 @@ export function Grade11AIReview({
   answer: string;
   writing?: boolean;
   checkLabel?: string;
+  compact?: boolean;
 }) {
   const { session, ready = true } = useAuth();
   const [busy, setBusy] = useState(false);
@@ -97,7 +99,11 @@ export function Grade11AIReview({
     }
   };
   return (
-    <div className="mt-4 space-y-3 border-t border-border pt-3">
+    <div
+      className={
+        compact ? "min-w-0 flex-1 space-y-3" : "mt-4 space-y-3 border-t border-border pt-3"
+      }
+    >
       <Button
         type="button"
         variant="outline"

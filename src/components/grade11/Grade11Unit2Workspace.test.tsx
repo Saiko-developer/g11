@@ -47,9 +47,9 @@ describe("Grade 11 Unit 2 workspace", () => {
   it("checks reading B semantically while retaining sentence structures", () => {
     render(<Grade11Unit2Workspace kind="reading" />);
     const b = within(document.querySelector('[data-exercise="2A-30"]') as HTMLElement);
-    expect(b.queryByRole("button", { name: "Check Answer" })).toBeNull();
-    expect(b.queryByRole("button", { name: "Reveal Answer" })).toBeNull();
-    expect(b.getAllByRole("button", { name: /check with AI/i })).toHaveLength(1);
+    expect(b.getAllByRole("button", { name: "Check Answer" })).toHaveLength(10);
+    expect(b.getAllByRole("button", { name: "Reveal Answer" })).toHaveLength(10);
+    expect(b.queryByRole("button", { name: /check with AI/i })).toBeNull();
     expect(b.getAllByRole("button", { name: "Sentence Structure" })).toHaveLength(10);
     for (const id of ["2A-38", "2A-39", "2A-40"]) expect(UNIT2_KEYS[id]).toBeUndefined();
   });

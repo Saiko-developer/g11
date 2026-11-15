@@ -623,5 +623,115 @@
     "evidenceCueIds": [
       "g11-audio-5-21"
     ]
+  },
+  "6D-1": {
+    "answer": "negative",
+    "answerMy": "အနုတ်လက္ခဏာ၊ ဆိုးကျိုးဖြစ်စေသော",
+    "kind": "closed",
+    "origin": "audio-derived",
+    "audioSrc": "/grade11/audio/unit6.mp3",
+    "audioSha256": "83097d8a0197472ecc05b29a30d32928436f536efe92311afea84f5197e60128",
+    "evidenceCueIds": [
+      "g11-audio-6-2"
+    ]
+  },
+  "6D-2": {
+    "answer": "local people",
+    "answerMy": "ဒေသခံများ",
+    "kind": "closed",
+    "origin": "audio-derived",
+    "audioSrc": "/grade11/audio/unit6.mp3",
+    "audioSha256": "83097d8a0197472ecc05b29a30d32928436f536efe92311afea84f5197e60128",
+    "evidenceCueIds": [
+      "g11-audio-6-8"
+    ]
+  },
+  "6D-3": {
+    "answer": "marine life",
+    "answerMy": "ပင်လယ်သက်ရှိများ",
+    "kind": "closed",
+    "origin": "audio-derived",
+    "audioSrc": "/grade11/audio/unit6.mp3",
+    "audioSha256": "83097d8a0197472ecc05b29a30d32928436f536efe92311afea84f5197e60128",
+    "evidenceCueIds": [
+      "g11-audio-6-11"
+    ]
+  },
+  "6D-4": {
+    "answer": "reusable",
+    "answerMy": "ပြန်လည်အသုံးပြုနိုင်သော",
+    "kind": "closed",
+    "origin": "audio-derived",
+    "audioSrc": "/grade11/audio/unit6.mp3",
+    "audioSha256": "83097d8a0197472ecc05b29a30d32928436f536efe92311afea84f5197e60128",
+    "evidenceCueIds": [
+      "g11-audio-6-12"
+    ]
+  },
+  "6D-5": {
+    "answer": "share",
+    "answerMy": "အတူမျှဝေစီးနင်း",
+    "kind": "closed",
+    "origin": "audio-derived",
+    "audioSrc": "/grade11/audio/unit6.mp3",
+    "audioSha256": "83097d8a0197472ecc05b29a30d32928436f536efe92311afea84f5197e60128",
+    "evidenceCueIds": [
+      "g11-audio-6-15"
+    ]
+  },
+  "6D-6": {
+    "answer": "destinations",
+    "answerMy": "ခရီးသွားရောက်ရာနေရာများ",
+    "kind": "closed",
+    "origin": "audio-derived",
+    "audioSrc": "/grade11/audio/unit6.mp3",
+    "audioSha256": "83097d8a0197472ecc05b29a30d32928436f536efe92311afea84f5197e60128",
+    "evidenceCueIds": [
+      "g11-audio-6-18"
+    ]
+  },
+  "6D-7": {
+    "answer": "dressed",
+    "answerMy": "ဝတ်စားဆင်ယင်ထားသော",
+    "kind": "closed",
+    "origin": "audio-derived",
+    "audioSrc": "/grade11/audio/unit6.mp3",
+    "audioSha256": "83097d8a0197472ecc05b29a30d32928436f536efe92311afea84f5197e60128",
+    "evidenceCueIds": [
+      "g11-audio-6-20"
+    ]
+  },
+  "6D-8": {
+    "answer": "popular",
+    "answerMy": "လူကြိုက်များသော",
+    "kind": "closed",
+    "origin": "audio-derived",
+    "audioSrc": "/grade11/audio/unit6.mp3",
+    "audioSha256": "83097d8a0197472ecc05b29a30d32928436f536efe92311afea84f5197e60128",
+    "evidenceCueIds": [
+      "g11-audio-6-23"
+    ]
+  },
+  "6D-9": {
+    "answer": "crowded",
+    "answerMy": "လူစည်ကားသော",
+    "kind": "closed",
+    "origin": "audio-derived",
+    "audioSrc": "/grade11/audio/unit6.mp3",
+    "audioSha256": "83097d8a0197472ecc05b29a30d32928436f536efe92311afea84f5197e60128",
+    "evidenceCueIds": [
+      "g11-audio-6-24"
+    ]
+  },
+  "6D-10": {
+    "answer": "environment",
+    "answerMy": "ပတ်ဝန်းကျင်",
+    "kind": "closed",
+    "origin": "audio-derived",
+    "audioSrc": "/grade11/audio/unit6.mp3",
+    "audioSha256": "83097d8a0197472ecc05b29a30d32928436f536efe92311afea84f5197e60128",
+    "evidenceCueIds": [
+      "g11-audio-6-26"
+    ]
   }
 }

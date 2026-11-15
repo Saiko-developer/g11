@@ -38,7 +38,10 @@ describe("Unit 5 textbook-based exercises", () => {
     expect(group("5A-44").queryByRole("button", { name: "Translate Question" })).toBeNull();
     expect(group("5A-62").getByRole("columnheader", { name: "Capital city" })).toBeVisible();
     expect(screen.getAllByText("Tips")).toHaveLength(1);
-    expect(group("5A-82").getByRole("button", { name: "Check Answer with AI" })).toBeDisabled();
+    expect(group("5A-82").queryByRole("button", { name: "Check Answer with AI" })).toBeNull();
+    const checks = group("5A-82").getAllByRole("button", { name: "Check Answer" });
+    expect(checks).toHaveLength(group("5A-82").getAllByRole("textbox").length);
+    checks.forEach((button) => expect(button).toBeDisabled());
   });
   it("uses a noun-pair table and checks an exercise together", () => {
     render(<Grade11Unit5Lesson kind="vocabulary" />);

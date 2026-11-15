@@ -2237,11 +2237,11 @@
     "sourceFiles": [
       {
         "path": "src/data/grade11/textbook/unit3.json",
-        "sha256": "3607ccc89b59b0adcedb762d4e79b847ff3d53514e8ac1580aae9dbd99e75d81"
+        "sha256": "f1126c5b970692faaaa568fddd4d7d65dc8da569873a3ba45cb4e875ae087a49"
       },
       {
         "path": "src/data/grade11/textbook/unit3-keys.json",
-        "sha256": "bf16a7ab4a0bcac46716b26809229d4e99426fae27432081d7ffa825d1e997e0"
+        "sha256": "a8f42cd57d00a78f5e8f71cdbc4179e1657629d2639ef87b7c813ad2ea76c0f2"
       }
     ],
     "supportFiles": [],
@@ -2268,11 +2268,11 @@
     "sourceFiles": [
       {
         "path": "src/data/grade11/textbook/unit3.json",
-        "sha256": "3607ccc89b59b0adcedb762d4e79b847ff3d53514e8ac1580aae9dbd99e75d81"
+        "sha256": "f1126c5b970692faaaa568fddd4d7d65dc8da569873a3ba45cb4e875ae087a49"
       },
       {
         "path": "src/data/grade11/textbook/unit3-keys.json",
-        "sha256": "bf16a7ab4a0bcac46716b26809229d4e99426fae27432081d7ffa825d1e997e0"
+        "sha256": "a8f42cd57d00a78f5e8f71cdbc4179e1657629d2639ef87b7c813ad2ea76c0f2"
       }
     ],
     "supportFiles": [],
@@ -2282,7 +2282,7 @@
       32
     ],
     "exerciseCount": 8,
-    "providedAnswers": 5,
+    "providedAnswers": 8,
     "suggestedAnswers": 0,
     "answerOrigins": [
       "source-derived"
@@ -2299,11 +2299,11 @@
     "sourceFiles": [
       {
         "path": "src/data/grade11/textbook/unit3.json",
-        "sha256": "3607ccc89b59b0adcedb762d4e79b847ff3d53514e8ac1580aae9dbd99e75d81"
+        "sha256": "f1126c5b970692faaaa568fddd4d7d65dc8da569873a3ba45cb4e875ae087a49"
       },
       {
         "path": "src/data/grade11/textbook/unit3-keys.json",
-        "sha256": "bf16a7ab4a0bcac46716b26809229d4e99426fae27432081d7ffa825d1e997e0"
+        "sha256": "a8f42cd57d00a78f5e8f71cdbc4179e1657629d2639ef87b7c813ad2ea76c0f2"
       }
     ],
     "supportFiles": [],
@@ -2328,11 +2328,11 @@
     "sourceFiles": [
       {
         "path": "src/data/grade11/textbook/unit3.json",
-        "sha256": "3607ccc89b59b0adcedb762d4e79b847ff3d53514e8ac1580aae9dbd99e75d81"
+        "sha256": "f1126c5b970692faaaa568fddd4d7d65dc8da569873a3ba45cb4e875ae087a49"
       },
       {
         "path": "src/data/grade11/textbook/unit3-keys.json",
-        "sha256": "bf16a7ab4a0bcac46716b26809229d4e99426fae27432081d7ffa825d1e997e0"
+        "sha256": "a8f42cd57d00a78f5e8f71cdbc4179e1657629d2639ef87b7c813ad2ea76c0f2"
       }
     ],
     "supportFiles": [],
@@ -2361,11 +2361,11 @@
     "sourceFiles": [
       {
         "path": "src/data/grade11/textbook/unit3.json",
-        "sha256": "3607ccc89b59b0adcedb762d4e79b847ff3d53514e8ac1580aae9dbd99e75d81"
+        "sha256": "f1126c5b970692faaaa568fddd4d7d65dc8da569873a3ba45cb4e875ae087a49"
       },
       {
         "path": "src/data/grade11/textbook/unit3-keys.json",
-        "sha256": "bf16a7ab4a0bcac46716b26809229d4e99426fae27432081d7ffa825d1e997e0"
+        "sha256": "a8f42cd57d00a78f5e8f71cdbc4179e1657629d2639ef87b7c813ad2ea76c0f2"
       }
     ],
     "supportFiles": [],
@@ -2394,7 +2394,7 @@
     "sourceFiles": [
       {
         "path": "src/data/grade11/textbook/unit3.json",
-        "sha256": "3607ccc89b59b0adcedb762d4e79b847ff3d53514e8ac1580aae9dbd99e75d81"
+        "sha256": "f1126c5b970692faaaa568fddd4d7d65dc8da569873a3ba45cb4e875ae087a49"
       }
     ],
     "supportFiles": [],

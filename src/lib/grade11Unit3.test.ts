@@ -55,7 +55,7 @@ describe("Grade 11 Unit 3 source fidelity", () => {
     expect(audio[0].x).toBe("1. Soe Thu has got a very good memory.");
     expect(audio[6].x).toContain("usually sang the song while they were playing");
     for (const b of all.filter((b) => b.response)) expect(UNIT3_KEYS[b.id]).toBeUndefined();
-    expect(Object.keys(UNIT3_KEYS)).toHaveLength(41);
+    expect(Object.keys(UNIT3_KEYS)).toHaveLength(44);
     for (const [id, key] of Object.entries(UNIT3_KEYS)) {
       expect(all.some((b) => b.id === id && b.t === "q")).toBe(true);
       expect(key.origin).toBe("source-derived");
@@ -89,8 +89,9 @@ describe("Grade 11 Unit 3 source fidelity", () => {
       if (b.scanPage) expect(existsSync(`public${unit3ScanUrl(b.scanPage)}`)).toBe(true);
     }
     for (const id of ["3B-18", "3B-19", "3B-20"]) {
-      expect(UNIT3_KEYS[id]).toBeUndefined();
-      expect(all.find((b) => b.id === id)?.x).toMatch(/^\d\.$/);
+      expect(UNIT3_KEYS[id].answer).toBeTruthy();
+      expect(all.find((b) => b.id === id)?.x.length).toBeGreaterThan(30);
+      expect(all.find((b) => b.id === id)?.scanPage).toBeUndefined();
     }
     expect(unit3ScanUrl(13)).toBeNull();
   });
