@@ -54,7 +54,7 @@ it("passes the classroom deadline to direct Gemini instead of allowing an unboun
   const controller = new AbortController();
   controller.abort(new DOMException("Timed out", "TimeoutError"));
   const fetcher = vi.fn(async (_url: unknown, init?: RequestInit) => {
-    expect(init?.signal).toBe(controller.signal);
+    expect(init?.signal?.aborted).toBe(true);
     throw controller.signal.reason;
   });
   expect(

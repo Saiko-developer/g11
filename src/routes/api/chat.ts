@@ -1,3 +1,4 @@
+import { hasAiProvider } from "@/lib/ai-provider.server";
 import { withAiCredit, creditGuardEnabled } from "@/lib/ai-credit.server";
 import { requireActiveAccount } from "@/lib/account-access.server";
 import { untrusted, cleanLine } from "@/lib/api-guard.server";
@@ -89,59 +90,61 @@ type ChatRequestBody = {
 export const Route = createFileRoute("/api/chat")({
   server: {
     handlers: {
-      POST: async ({ request }) => withAiCredit(request, "tutor", async () => {
-        if (request.headers.get("authorization")) {
-          const denied = await requireActiveAccount(request);
-          if (denied) return denied;
-        }
-        const blocked = creditGuardEnabled() ? null : await consumeTutorQuota(request);
-        if (blocked) return blocked;
-        const body = (await request.json()) as ChatRequestBody;
-        const { messages, lessonContext, currentQuestion, mode } = body;
-        if (!Array.isArray(messages)) {
-          return new Response("Messages are required", { status: 400 });
-        }
+      POST: async ({ request }) =>
+        withAiCredit(request, "tutor", async () => {
+          if (request.headers.get("authorization")) {
+            const denied = await requireActiveAccount(request);
+            if (denied) return denied;
+          }
+          const blocked = creditGuardEnabled() ? null : await consumeTutorQuota(request);
+          if (blocked) return blocked;
+          const body = (await request.json()) as ChatRequestBody;
+          const { messages, lessonContext, currentQuestion, mode } = body;
+          if (!Array.isArray(messages)) {
+            return new Response("Messages are required", { status: 400 });
+          }
 
-        if (!process.env.LOVABLE_API_KEY) {
-          return new Response("Missing LOVABLE_API_KEY", { status: 500 });
-        }
-        const model = getLovableChatModel();
+          if (!hasAiProvider()) {
+            return new Response("AI provider unavailable", { status: 500 });
+          }
+          const model = getLovableChatModel();
 
-        let system = mode === "voice" ? VOICE_PROMPT : mode === "text" ? TEXT_PROMPT : BASE_PROMPT;
-        const grade11 = body.grade === 11;
-        if (grade11) system = system.replaceAll("Grade 10", "Grade 11");
-        if (lessonContext) {
-          system += `\n\n--- ယခု ကျောင်းသား ဖတ်နေသော သင်ခန်းစာ ---\n${untrusted("lesson", lessonContext, grade11 ? 40000 : 8000)}`;
-        }
-        if (currentQuestion) {
-          system += `\n\n--- ကျောင်းသား လက်ရှိ ဖြေနေသော မေးခွန်း ---\n${untrusted("current_question", currentQuestion, 3000)}\n(သူဖြေနိုင်အောင် အကြံပြုပါ — အဖြေ တိုက်ရိုက် မပြောပါနှင့်၊ သူ မေးမှသာ ပြောပါ။)`;
-        }
-        if (grade11 && typeof body.sectionContent === "string") {
-          system += `\n\nVisible Grade 11 section:\n${untrusted("screen_section", body.sectionContent, 16000)}`;
-        }
+          let system =
+            mode === "voice" ? VOICE_PROMPT : mode === "text" ? TEXT_PROMPT : BASE_PROMPT;
+          const grade11 = body.grade === 11;
+          if (grade11) system = system.replaceAll("Grade 10", "Grade 11");
+          if (lessonContext) {
+            system += `\n\n--- ယခု ကျောင်းသား ဖတ်နေသော သင်ခန်းစာ ---\n${untrusted("lesson", lessonContext, grade11 ? 40000 : 8000)}`;
+          }
+          if (currentQuestion) {
+            system += `\n\n--- ကျောင်းသား လက်ရှိ ဖြေနေသော မေးခွန်း ---\n${untrusted("current_question", currentQuestion, 3000)}\n(သူဖြေနိုင်အောင် အကြံပြုပါ — အဖြေ တိုက်ရိုက် မပြောပါနှင့်၊ သူ မေးမှသာ ပြောပါ။)`;
+          }
+          if (grade11 && typeof body.sectionContent === "string") {
+            system += `\n\nVisible Grade 11 section:\n${untrusted("screen_section", body.sectionContent, 16000)}`;
+          }
 
-        const result = streamText({
-          model,
-          maxOutputTokens: 2400,
-          maxRetries: 0,
-          abortSignal: AbortSignal.any([request.signal, AbortSignal.timeout(90000)]),
-          system: withTone(system),
-          messages: await convertToModelMessages(messages as UIMessage[]),
-        });
+          const result = streamText({
+            model,
+            maxOutputTokens: 2400,
+            maxRetries: 0,
+            abortSignal: AbortSignal.any([request.signal, AbortSignal.timeout(90000)]),
+            system: withTone(system),
+            messages: await convertToModelMessages(messages as UIMessage[]),
+          });
 
-        return result.toUIMessageStreamResponse({
-          originalMessages: messages as UIMessage[],
-          onError: (error) => {
-            console.error("[chat] stream error", error);
-            const msg = error instanceof Error ? error.message : "Something went wrong.";
-            if (msg.includes("429"))
-              return "တောင်းဆိုမှု များနေပါသည် — ခဏစောင့်ပြီး ပြန်ကြိုးစားပါ။";
-            if (msg.includes("402"))
-              return "AI credits ကုန်ဆုံးနေပါသည်။ ဆက်လက်အသုံးပြုရန် credits ထပ်ဖြည့်ပါ။";
-            return "ဆရာဇီးကွက် နည်းနည်း မအီးမသာ ဖြစ်နေပါတယ်။ ထပ်ကြိုးစားကြည့်ပါနော်။";
-          },
-        });
-      }),
+          return result.toUIMessageStreamResponse({
+            originalMessages: messages as UIMessage[],
+            onError: (error) => {
+              console.error("[chat] stream error", error);
+              const msg = error instanceof Error ? error.message : "Something went wrong.";
+              if (msg.includes("429"))
+                return "တောင်းဆိုမှု များနေပါသည် — ခဏစောင့်ပြီး ပြန်ကြိုးစားပါ။";
+              if (msg.includes("402"))
+                return "AI credits ကုန်ဆုံးနေပါသည်။ ဆက်လက်အသုံးပြုရန် credits ထပ်ဖြည့်ပါ။";
+              return "ဆရာဇီးကွက် နည်းနည်း မအီးမသာ ဖြစ်နေပါတယ်။ ထပ်ကြိုးစားကြည့်ပါနော်။";
+            },
+          });
+        }),
     },
   },
 });

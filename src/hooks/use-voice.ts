@@ -175,6 +175,7 @@ export function useSpeechSynthesis() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const urlRef = useRef<string | null>(null);
   const reqIdRef = useRef(0);
+  const requestRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     setSupported(typeof window !== "undefined" && typeof Audio !== "undefined");
@@ -198,6 +199,8 @@ export function useSpeechSynthesis() {
 
   const stop = useCallback(() => {
     reqIdRef.current += 1; // invalidate any in-flight request
+    requestRef.current?.abort();
+    requestRef.current = null;
     cleanup();
     try {
       if (typeof window !== "undefined" && window.speechSynthesis) window.speechSynthesis.cancel();
@@ -297,9 +300,12 @@ export function useSpeechSynthesis() {
       stop();
       const myId = ++reqIdRef.current;
       setSpeaking(true);
+      const controller = new AbortController();
+      requestRef.current = controller;
 
       try {
         const res = await fetch("/api/tts", {
+          signal: controller.signal,
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -344,11 +350,13 @@ export function useSpeechSynthesis() {
         await audio.play();
         fireStart();
       } catch (err) {
+        if (controller.signal.aborted || myId !== reqIdRef.current) return;
         console.error("[tts] failed", err);
         const msg = err instanceof Error ? err.message : String(err);
         if (/TTS 402/.test(msg)) {
           toast.error("အသံဖန်တီးမှု ခဏ ရပ်နားထားပါသည်", {
-            description: "AI credits ကုန်ဆုံးနေပါသည်။ ထပ်မံဖြည့်ပြီးမှ အသံပြန်ရပါမည်။",
+            description:
+              "အသံဝန်ဆောင်မှုမှ အမှားပြန်လာပါသည်။ ခဏစောင့်၍ ပြန်စမ်းပါ သို့မဟုတ် Admin ထံ အကြောင်းကြားပါ။",
             duration: 8000,
           });
         } else if (/TTS 4\d\d|TTS 5\d\d/.test(msg)) {

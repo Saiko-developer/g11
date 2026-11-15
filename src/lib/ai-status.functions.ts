@@ -36,6 +36,8 @@ export const checkAiStatus = createServerFn({ method: "POST" })
       const r = await generateText({
         model: createLovableGatewayClient().chat(DEFAULT_LOVABLE_CHAT_MODEL),
         prompt,
+        maxRetries: 0,
+        abortSignal: AbortSignal.timeout(15000),
       });
       return r.text.trim();
     });
@@ -46,8 +48,26 @@ export const checkAiStatus = createServerFn({ method: "POST" })
       const r = await generateText({
         model: createGoogleGenerativeAI({ apiKey: key })(model),
         prompt,
+        maxRetries: 0,
+        abortSignal: AbortSignal.timeout(15000),
       });
       return r.text.trim();
     });
     return { lovable, gemini, checkedAt: new Date().toISOString() };
+  });
+
+/** Explicit admin action: one short direct-Gemini speech request, no Lovable credits. */
+export const checkSpeechFallbackStatus = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const { assertActiveAdmin } = await import("./admin-account-service.server");
+    await assertActiveAdmin(context.supabase);
+    const { geminiDirectSpeech, hasGeminiKey } = await import("./gemini-direct.server");
+    return timed(async () => {
+      if (!hasGeminiKey()) throw new Error("GEMINI_API_KEY မသတ်မှတ်ရသေးပါ။");
+      const audio = await geminiDirectSpeech("မင်္ဂလာပါ", "Puck");
+      if (!audio)
+        throw new Error("Gemini အသံ မရပါ။ Server key၊ TTS model နှင့် Google quota ကို စစ်ပါ။");
+      return "Gemini အသံ fallback အလုပ်လုပ်ပါသည်။";
+    });
   });

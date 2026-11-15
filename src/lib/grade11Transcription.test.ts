@@ -15,6 +15,7 @@ const post = (
 ).options.server.handlers.POST;
 beforeEach(() => {
   vi.stubEnv("LOVABLE_API_KEY", "test-only");
+  vi.stubEnv("GEMINI_API_KEY", "");
   vi.mocked(requireUser).mockResolvedValue({ id: "test" } as never);
   vi.stubGlobal(
     "fetch",
@@ -33,7 +34,9 @@ it.each([undefined, "11"])(
     form.append("file", new File(["audio"], "voice.webm", { type: "audio/webm" }));
     form.append("lessonContext", "Unit 1 dolphins");
     if (grade) form.append("grade", grade);
-    const response = await post({ request: { formData: async () => form } as Request });
+    const response = await post({
+      request: { formData: async () => form, signal: new AbortController().signal } as Request,
+    });
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ text: "ဒါလေး ရှင်းပြပေးပါ" });
     const init = vi.mocked(fetch).mock.calls[0][1]!;
@@ -47,7 +50,7 @@ it.each([undefined, "11"])(
     } else {
       expect(upstream.get("prompt")).toContain("Grade 10");
       expect(upstream.get("prompt")).not.toContain("Unit 1 dolphins");
-      expect(init.signal).toBeUndefined();
+      expect(init.signal).toBeInstanceOf(AbortSignal);
     }
   },
 );
@@ -64,7 +67,9 @@ it("returns a service error for malformed upstream output instead of empty recog
   const form = new FormData();
   form.append("file", new File(["audio"], "voice.webm", { type: "audio/webm" }));
   form.append("grade", "11");
-  const response = await post({ request: { formData: async () => form } as Request });
-  expect(response.status).toBe(502);
-  expect((await response.json()).error).toBe("invalid_transcription_response");
+  const response = await post({
+    request: { formData: async () => form, signal: new AbortController().signal } as Request,
+  });
+  expect(response.status).toBe(503);
+  expect((await response.json()).error).toBe("ai_provider_unavailable");
 });

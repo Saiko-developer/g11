@@ -1,3 +1,4 @@
+import { hasAiProvider } from "@/lib/ai-provider.server";
 import { z } from "zod";
 import { requireUser } from "@/lib/api-guard.server";
 import { classroomAdmin } from "./db.server";
@@ -43,7 +44,7 @@ export async function getTeachingSetup(request: Request) {
   const config = {
     database: !!process.env.SUPABASE_URL,
     serviceRole: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
-    speechProvider: !!process.env.LOVABLE_API_KEY,
+    speechProvider: hasAiProvider(),
   };
   if (!config.database || !config.serviceRole)
     return Response.json({
@@ -133,7 +134,7 @@ export async function postTeachingSetup(request: Request) {
   if (body.action === "approve_script") {
     if (!onDemandReadingPilot(lesson))
       return Response.json({ error: "pilot_only" }, { status: 400 });
-    if (!process.env.LOVABLE_API_KEY)
+    if (!hasAiProvider())
       return Response.json({ error: "provider_not_configured" }, { status: 503 });
     const hash = await lessonHash(lesson);
     if (body.contentHash !== hash)
@@ -181,8 +182,7 @@ export async function postTeachingSetup(request: Request) {
   }
   if (process.env.CLASSROOM_LIVE_AI_ENABLED === "false")
     return Response.json({ error: "disabled_by_environment" }, { status: 409 });
-  if (!process.env.LOVABLE_API_KEY)
-    return Response.json({ error: "provider_not_configured" }, { status: 503 });
+  if (!hasAiProvider()) return Response.json({ error: "provider_not_configured" }, { status: 503 });
   if (!(await publishedLesson(lesson)))
     return Response.json({ error: "publish_audio_first" }, { status: 409 });
   const check = await supabaseAdmin

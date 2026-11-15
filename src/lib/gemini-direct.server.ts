@@ -8,7 +8,14 @@ const BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 
 /** Lovable gateway statuses where switching to the owner's own Gemini key can help. */
 export function shouldUseGeminiFallback(status: number | null | undefined) {
-  return status == null || status === 402 || status === 403 || status === 429 || status >= 500;
+  return (
+    status == null ||
+    status === 401 ||
+    status === 402 ||
+    status === 403 ||
+    status === 429 ||
+    status >= 500
+  );
 }
 
 function key() {
@@ -41,10 +48,12 @@ export async function geminiDirectSpeech(
   signal?: AbortSignal,
 ) {
   const k = key();
-  if (!k) return null;
+  if (!k || signal?.aborted) return null;
   const model = process.env.GEMINI_TTS_MODEL?.trim() || "gemini-2.5-flash-preview-tts";
   const res = await fetcher(`${BASE}/${model}:generateContent`, {
-    ...(signal ? { signal } : {}),
+    signal: signal
+      ? AbortSignal.any([signal, AbortSignal.timeout(25000)])
+      : AbortSignal.timeout(25000),
     method: "POST",
     headers: { "x-goog-api-key": k, "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -63,8 +72,12 @@ export async function geminiDirectSpeech(
   const b64 = data?.candidates?.[0]?.content?.parts?.find((p) => p?.inlineData?.data)?.inlineData
     ?.data;
   if (typeof b64 !== "string") return null;
-  const pcm = b64ToBytes(b64);
-  return pcm.byteLength >= 1024 ? pcm : null;
+  try {
+    const pcm = b64ToBytes(b64);
+    return pcm.byteLength >= 1024 ? pcm : null;
+  } catch {
+    return null;
+  }
 }
 
 /** Direct Gemini transcription of an audio file. Returns text ("" for silence), or null on failure. */
@@ -73,12 +86,16 @@ export async function geminiDirectTranscribe(
   mimeType: string,
   prompt: string,
   fetcher: typeof fetch = fetch,
+  signal?: AbortSignal,
 ) {
   const k = key();
-  if (!k) return null;
+  if (!k || signal?.aborted) return null;
   const model = process.env.GEMINI_FALLBACK_MODEL?.trim() || DEFAULT_GEMINI_FALLBACK_MODEL;
   const audio = bytesToB64(new Uint8Array(await file.arrayBuffer()));
   const res = await fetcher(`${BASE}/${model}:generateContent`, {
+    signal: signal
+      ? AbortSignal.any([signal, AbortSignal.timeout(25000)])
+      : AbortSignal.timeout(25000),
     method: "POST",
     headers: { "x-goog-api-key": k, "Content-Type": "application/json" },
     body: JSON.stringify({

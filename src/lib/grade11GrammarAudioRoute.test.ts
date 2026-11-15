@@ -31,13 +31,14 @@ it("requires authentication before a Unit 1 cache lookup", async () => {
 it("keeps ordinary TTS requests on the original generation path", async () => {
   mocks.requireUser.mockResolvedValue({ userId: "student" });
   vi.stubEnv("LOVABLE_API_KEY", "");
+  vi.stubEnv("GEMINI_API_KEY", "");
   const response = await post({
     request: new Request("https://school.example/api/tts", {
       method: "POST",
       body: JSON.stringify({ text: "Grade 10 explanation", voice: "sarah" }),
     }),
   });
-  expect(response.status).toBe(500);
+  expect(response.status).toBe(503);
   expect(mocks.cache).not.toHaveBeenCalled();
 });
 

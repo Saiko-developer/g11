@@ -5,7 +5,6 @@ import { generateSpeech } from "@/lib/ttsGenerate.server";
 import { requireUser, untrusted, cleanLine } from "@/lib/api-guard.server";
 import { createFileRoute } from "@tanstack/react-router";
 
-
 type TtsBody = {
   grade11SpeakingSession?: string;
   grade11SpeakingUnit?: number;
@@ -21,7 +20,8 @@ type TtsBody = {
  *
  * Primary: Google Gemini TTS through the Lovable AI Gateway — it reads
  * Burmese (Pyidaungsu Unicode) naturally, which ElevenLabs/OpenAI voices do not.
- * Fallback: OpenAI gpt-4o-mini-tts through the same gateway.
+ * Direct Gemini on the owner’s key handles gateway failures, including explicit
+ * OpenAI voice requests. Gemini-only classroom narration never switches to OpenAI.
  */
 
 export const Route = createFileRoute("/api/tts")({
@@ -51,7 +51,10 @@ export const Route = createFileRoute("/api/tts")({
           );
           if (access instanceof Response) return access;
         }
-        const generate = () => withAiCredit(request, "speech", () => generateSpeech({ text, voice, speed, provider }));
+        const generate = () =>
+          withAiCredit(request, "speech", () =>
+            generateSpeech({ text, voice, speed, provider, signal: request.signal }),
+          );
         return lessonCache === "grade11-unit1" || lessonCache === "grade11-grammar"
           ? grade11GrammarAudio(request, { text, voice, speed, provider }, generate)
           : generate();

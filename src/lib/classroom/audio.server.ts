@@ -1,3 +1,4 @@
+import { hasAiProvider } from "@/lib/ai-provider.server";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import { generateSpeech } from "@/lib/ttsGenerate.server";
 import { spokenStepAt, type ReadingLesson } from "./types";
@@ -69,7 +70,7 @@ export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: numbe
   if (state === "preparing" && !expired) return pendingNarration();
   if (expired && (row?.attempts ?? 1) >= 3) return failedNarration();
   if (state === "failed") return failedNarration();
-  if (!process.env.LOVABLE_API_KEY)
+  if (!hasAiProvider())
     return Response.json(
       {
         error: "speech_provider_unavailable",

@@ -1,3 +1,4 @@
+import { hasAiProvider } from "@/lib/ai-provider.server";
 import { withAiCredit, creditGuardEnabled } from "@/lib/ai-credit.server";
 import { requireActiveAccount } from "@/lib/account-access.server";
 import { untrusted, cleanLine } from "@/lib/api-guard.server";
@@ -100,108 +101,109 @@ type ChatHomeRequestBody = {
 export const Route = createFileRoute("/api/chat-home")({
   server: {
     handlers: {
-      POST: async ({ request }) => withAiCredit(request, "tutor", async () => {
-        if (request.headers.get("authorization")) {
-          const denied = await requireActiveAccount(request);
-          if (denied) return denied;
-        }
-        const blocked = creditGuardEnabled() ? null : await consumeTutorQuota(request);
-        if (blocked) return blocked;
-        const body = (await request.json()) as ChatHomeRequestBody;
-        const { messages, lessonContext, sectionContent, mode, paperVoice } = body;
-        if (!Array.isArray(messages)) {
-          return new Response("Messages are required", { status: 400 });
-        }
+      POST: async ({ request }) =>
+        withAiCredit(request, "tutor", async () => {
+          if (request.headers.get("authorization")) {
+            const denied = await requireActiveAccount(request);
+            if (denied) return denied;
+          }
+          const blocked = creditGuardEnabled() ? null : await consumeTutorQuota(request);
+          if (blocked) return blocked;
+          const body = (await request.json()) as ChatHomeRequestBody;
+          const { messages, lessonContext, sectionContent, mode, paperVoice } = body;
+          if (!Array.isArray(messages)) {
+            return new Response("Messages are required", { status: 400 });
+          }
 
-        if (!process.env.LOVABLE_API_KEY) {
-          if (body.grade === 11)
-            return Response.json(
-              {
-                error: "ai_unavailable",
-                message: "AI ဝန်ဆောင်မှု ချိတ်ဆက်ရန် လိုနေပါသည်။ ဆရာထံ အကြောင်းကြားပေးပါ။",
-              },
-              { status: 503 },
-            );
-          return new Response("Missing LOVABLE_API_KEY", { status: 500 });
-        }
-        const model = getLovableChatModel();
-
-        const grade11 = body.grade === 11;
-        let system = grade11 ? GRADE11_HOME_PROMPT : HOME_PROMPT;
-        if (lessonContext) {
-          system += `\n\n--- ယခု ကျောင်းသား ဖတ်နေသော သင်ခန်းစာ ---\n${untrusted("lesson", lessonContext, grade11 ? 40000 : 8000)}`;
-        }
-        if (sectionContent) {
-          system += `\n\n--- ကျောင်းသား ကြည့်နေသော နေရာပိုင်း (မျက်နှာပြင်ပေါ်က စာသား အစစ်) ---\n${untrusted("screen_section", sectionContent, grade11 ? 16000 : 8000)}`;
-        }
-        if (grade11 && typeof body.currentQuestion === "string" && body.currentQuestion.trim()) {
-          system += `\n\n--- နောက်ဆုံးမေးခွန်းနှင့် ကိုက်ညီသော စာအုပ်မေးခွန်း ---\n${untrusted("resolved_question", body.currentQuestion, 2500)}`;
-        }
-        if (paperVoice) {
-          system += `\n\n# မျက်နှာပြင် မှတ်စုတို (Screen Note) — မဖြစ်မနေ\n- အသံဖြင့် အပြည့်အစုံ ရှင်းပြပြီးနောက် အဖြေ၏ အဆုံးတွင် "@@NOTE@@" ဟူသော စာကြောင်းတစ်ကြောင်း သီးသန့်ရေးပါ။ ထို့နောက် အောက်ပါပုံစံဖြင့်သာ ရေးပါ (ဤအပိုင်းကို အသံမဖတ်ပါ) —\nအမေး: <ကျောင်းသားမေးသော မေးခွန်း တိုတို>\nအဖြေ: <အဖြေမှန် တိုတို>\n• <အဓိကမှတ်သားရန် အချက်တို>\n• <အချက်တို> (၂–၃ ချက်သာ)\n- "@@NOTE@@" ကို အဖြေတစ်ခုလျှင် တစ်ကြိမ်သာ ရေးပါ။ နှုတ်ဆက်စကားသက်သက် ဖြစ်လျှင် မရေးပါနှင့်။`;
-        }
-        if (mode === "voice") {
-          system += `\n\n# အသံဖြင့် စကားပြောနေခြင်း (Hands-Free Voice Mode)\n- ကျောင်းသားက ပါးစပ်ဖြင့် မေးနေခြင်း ဖြစ်သည်၊ အဖြေကို ဝါကျအလိုက် အသံထွက် ဖတ်ပြမည်။ စာသားသည် အသံမှ ပြောင်းထားသဖြင့် စာလုံးပေါင်း လွဲနိုင်သည် — အသံတူစကားလုံးများကို သင်ခန်းစာ အကြောင်းအရာနှင့် တိုက်ဆိုင်၍ ကျောင်းသား ဆိုလိုရင်းကို နားလည်အောင် ယူပါ။\n\n# ဂရုတစိုက် နားထောင်ခြင်း — အရေးအကြီးဆုံး\n- ကျောင်းသား နောက်ဆုံးပြောသော စကားကိုသာ ဖြေရမည်။ မဖြေမီ ကျောင်းသား တကယ် ဘာမေးသလဲ (ဘယ် Exercise၊ ဘယ်နံပါတ်၊ ဘယ်စကားလုံး၊ ဘယ်သံသယ) ကို စိတ်ထဲတွင် ဦးစွာ အတိအကျ ဆုံးဖြတ်ပါ။\n- ပထမဝါကျတွင် ကျောင်းသား မေးခဲ့သည့်အရာကို သူ့စကားလုံးဖြင့် ပြန်ကိုးကား၍ အတည်ပြုပါ (ဥပမာ "ဟုတ်ကဲ့ ကျောင်းသား၊ Exercise A မေးခွန်း ၃ မှာ ဘာကြောင့် past tense သုံးလဲ ဆိုတာ မေးတာနော်။")။\n- ထို့နောက် မေးခွန်းကို တိုက်ရိုက် ချက်ချင်း ဖြေပါ — အဖြေ/အကြောင်းရင်း အဓိကကို ပထမဆုံး ပြောပြီးမှ အသေးစိတ် ရှင်းပါ။ မမေးသော အကြောင်းအရာ၊ သင်ခန်းစာ တစ်ခုလုံး အကျဉ်းချုပ် မပြောရ။ ပုံသေ အဆင့် ၅ ဆင့်ကို လိုအပ်မှသာ သုံးပါ။\n- ကြားရသည့် စကား မရှင်းလျှင်၊ ဆူညံသံသာ ဖြစ်လျှင် သို့မဟုတ် ပေးထားသော စာသားထဲ မတွေ့လျှင် ခန့်မှန်း၍ မဖြေဘဲ "ကျောင်းသား ... ကို မေးတာလား" ဟု တိုတိုလေး ပြန်မေးပါ။\n- ရှင်းလင်းချက်ကို အပြည့်အစုံ အသေးစိတ် ပေးပါ (အကျဉ်းချုပ် မဟုတ်ရ)၊ သို့သော် နားထောင်ရလွယ်အောင် ဝါကျတိုင်းကို "။" ဖြင့် ဆုံးပါ။ ဇယား၊ code၊ markdown၊ သင်္ကေတ အရှည်များ မသုံးရ။`;
-        }
-
-        // Word files aren't accepted by the model — extract their text first.
-        const DOCX = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-        for (const m of messages as UIMessage[]) {
-          for (let i = 0; i < (m.parts?.length ?? 0); i++) {
-            const p = m.parts[i] as {
-              type: string;
-              mediaType?: string;
-              url?: string;
-              filename?: string;
-            };
-            const isDocx =
-              p.type === "file" && (p.mediaType === DOCX || /\.docx$/i.test(p.filename ?? ""));
-            if (!isDocx || !p.url?.startsWith("data:")) continue;
-            try {
-              const bytes = Uint8Array.from(atob(p.url.split(",")[1] ?? ""), (c) =>
-                c.charCodeAt(0),
+          if (!hasAiProvider()) {
+            if (body.grade === 11)
+              return Response.json(
+                {
+                  error: "ai_unavailable",
+                  message: "AI ဝန်ဆောင်မှု ချိတ်ဆက်ရန် လိုနေပါသည်။ ဆရာထံ အကြောင်းကြားပေးပါ။",
+                },
+                { status: 503 },
               );
-              const mammoth = await import("mammoth/mammoth.browser");
-              const text = (
-                await mammoth.extractRawText({ arrayBuffer: bytes.buffer })
-              ).value.slice(0, 120000);
-              (m.parts as unknown[])[i] = {
-                type: "text",
-                text: untrusted(
-                  "uploaded_exam_paper",
-                  text.trim() || "(Word file had no readable text)",
-                ),
+            return new Response("AI provider unavailable", { status: 500 });
+          }
+          const model = getLovableChatModel();
+
+          const grade11 = body.grade === 11;
+          let system = grade11 ? GRADE11_HOME_PROMPT : HOME_PROMPT;
+          if (lessonContext) {
+            system += `\n\n--- ယခု ကျောင်းသား ဖတ်နေသော သင်ခန်းစာ ---\n${untrusted("lesson", lessonContext, grade11 ? 40000 : 8000)}`;
+          }
+          if (sectionContent) {
+            system += `\n\n--- ကျောင်းသား ကြည့်နေသော နေရာပိုင်း (မျက်နှာပြင်ပေါ်က စာသား အစစ်) ---\n${untrusted("screen_section", sectionContent, grade11 ? 16000 : 8000)}`;
+          }
+          if (grade11 && typeof body.currentQuestion === "string" && body.currentQuestion.trim()) {
+            system += `\n\n--- နောက်ဆုံးမေးခွန်းနှင့် ကိုက်ညီသော စာအုပ်မေးခွန်း ---\n${untrusted("resolved_question", body.currentQuestion, 2500)}`;
+          }
+          if (paperVoice) {
+            system += `\n\n# မျက်နှာပြင် မှတ်စုတို (Screen Note) — မဖြစ်မနေ\n- အသံဖြင့် အပြည့်အစုံ ရှင်းပြပြီးနောက် အဖြေ၏ အဆုံးတွင် "@@NOTE@@" ဟူသော စာကြောင်းတစ်ကြောင်း သီးသန့်ရေးပါ။ ထို့နောက် အောက်ပါပုံစံဖြင့်သာ ရေးပါ (ဤအပိုင်းကို အသံမဖတ်ပါ) —\nအမေး: <ကျောင်းသားမေးသော မေးခွန်း တိုတို>\nအဖြေ: <အဖြေမှန် တိုတို>\n• <အဓိကမှတ်သားရန် အချက်တို>\n• <အချက်တို> (၂–၃ ချက်သာ)\n- "@@NOTE@@" ကို အဖြေတစ်ခုလျှင် တစ်ကြိမ်သာ ရေးပါ။ နှုတ်ဆက်စကားသက်သက် ဖြစ်လျှင် မရေးပါနှင့်။`;
+          }
+          if (mode === "voice") {
+            system += `\n\n# အသံဖြင့် စကားပြောနေခြင်း (Hands-Free Voice Mode)\n- ကျောင်းသားက ပါးစပ်ဖြင့် မေးနေခြင်း ဖြစ်သည်၊ အဖြေကို ဝါကျအလိုက် အသံထွက် ဖတ်ပြမည်။ စာသားသည် အသံမှ ပြောင်းထားသဖြင့် စာလုံးပေါင်း လွဲနိုင်သည် — အသံတူစကားလုံးများကို သင်ခန်းစာ အကြောင်းအရာနှင့် တိုက်ဆိုင်၍ ကျောင်းသား ဆိုလိုရင်းကို နားလည်အောင် ယူပါ။\n\n# ဂရုတစိုက် နားထောင်ခြင်း — အရေးအကြီးဆုံး\n- ကျောင်းသား နောက်ဆုံးပြောသော စကားကိုသာ ဖြေရမည်။ မဖြေမီ ကျောင်းသား တကယ် ဘာမေးသလဲ (ဘယ် Exercise၊ ဘယ်နံပါတ်၊ ဘယ်စကားလုံး၊ ဘယ်သံသယ) ကို စိတ်ထဲတွင် ဦးစွာ အတိအကျ ဆုံးဖြတ်ပါ။\n- ပထမဝါကျတွင် ကျောင်းသား မေးခဲ့သည့်အရာကို သူ့စကားလုံးဖြင့် ပြန်ကိုးကား၍ အတည်ပြုပါ (ဥပမာ "ဟုတ်ကဲ့ ကျောင်းသား၊ Exercise A မေးခွန်း ၃ မှာ ဘာကြောင့် past tense သုံးလဲ ဆိုတာ မေးတာနော်။")။\n- ထို့နောက် မေးခွန်းကို တိုက်ရိုက် ချက်ချင်း ဖြေပါ — အဖြေ/အကြောင်းရင်း အဓိကကို ပထမဆုံး ပြောပြီးမှ အသေးစိတ် ရှင်းပါ။ မမေးသော အကြောင်းအရာ၊ သင်ခန်းစာ တစ်ခုလုံး အကျဉ်းချုပ် မပြောရ။ ပုံသေ အဆင့် ၅ ဆင့်ကို လိုအပ်မှသာ သုံးပါ။\n- ကြားရသည့် စကား မရှင်းလျှင်၊ ဆူညံသံသာ ဖြစ်လျှင် သို့မဟုတ် ပေးထားသော စာသားထဲ မတွေ့လျှင် ခန့်မှန်း၍ မဖြေဘဲ "ကျောင်းသား ... ကို မေးတာလား" ဟု တိုတိုလေး ပြန်မေးပါ။\n- ရှင်းလင်းချက်ကို အပြည့်အစုံ အသေးစိတ် ပေးပါ (အကျဉ်းချုပ် မဟုတ်ရ)၊ သို့သော် နားထောင်ရလွယ်အောင် ဝါကျတိုင်းကို "။" ဖြင့် ဆုံးပါ။ ဇယား၊ code၊ markdown၊ သင်္ကေတ အရှည်များ မသုံးရ။`;
+          }
+
+          // Word files aren't accepted by the model — extract their text first.
+          const DOCX = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+          for (const m of messages as UIMessage[]) {
+            for (let i = 0; i < (m.parts?.length ?? 0); i++) {
+              const p = m.parts[i] as {
+                type: string;
+                mediaType?: string;
+                url?: string;
+                filename?: string;
               };
-            } catch {
-              return new Response("Could not read the Word file. Please upload a PDF or photo.", {
-                status: 400,
-              });
+              const isDocx =
+                p.type === "file" && (p.mediaType === DOCX || /\.docx$/i.test(p.filename ?? ""));
+              if (!isDocx || !p.url?.startsWith("data:")) continue;
+              try {
+                const bytes = Uint8Array.from(atob(p.url.split(",")[1] ?? ""), (c) =>
+                  c.charCodeAt(0),
+                );
+                const mammoth = await import("mammoth/mammoth.browser");
+                const text = (
+                  await mammoth.extractRawText({ arrayBuffer: bytes.buffer })
+                ).value.slice(0, 120000);
+                (m.parts as unknown[])[i] = {
+                  type: "text",
+                  text: untrusted(
+                    "uploaded_exam_paper",
+                    text.trim() || "(Word file had no readable text)",
+                  ),
+                };
+              } catch {
+                return new Response("Could not read the Word file. Please upload a PDF or photo.", {
+                  status: 400,
+                });
+              }
             }
           }
-        }
 
-        const result = streamText({
-          model,
-          maxOutputTokens: 2400,
-          maxRetries: 0,
-          abortSignal: AbortSignal.any([request.signal, AbortSignal.timeout(90000)]),
-          system: withTone(system),
-          messages: await convertToModelMessages(messages as UIMessage[]),
-        });
+          const result = streamText({
+            model,
+            maxOutputTokens: 2400,
+            maxRetries: 0,
+            abortSignal: AbortSignal.any([request.signal, AbortSignal.timeout(90000)]),
+            system: withTone(system),
+            messages: await convertToModelMessages(messages as UIMessage[]),
+          });
 
-        return result.toUIMessageStreamResponse({
-          originalMessages: messages as UIMessage[],
-          onError: (error) => {
-            console.error("[chat-home] stream error", error);
-            const msg = error instanceof Error ? error.message : "Something went wrong.";
-            if (msg.includes("429"))
-              return "တောင်းဆိုမှု များနေပါသည် — ခဏစောင့်ပြီး ပြန်ကြိုးစားပါ။";
-            if (msg.includes("402"))
-              return "AI credits ကုန်ဆုံးနေပါသည်။ ဆက်လက်အသုံးပြုရန် credits ထပ်ဖြည့်ပါ။";
-            return "ဆရာဇီးကွက် နည်းနည်းီးမသာ ဖြစ်နေပါတယ်။ ထပ်ကြိုးစားကြည့်ပါနော်။";
-          },
-        });
-      }),
+          return result.toUIMessageStreamResponse({
+            originalMessages: messages as UIMessage[],
+            onError: (error) => {
+              console.error("[chat-home] stream error", error);
+              const msg = error instanceof Error ? error.message : "Something went wrong.";
+              if (msg.includes("429"))
+                return "တောင်းဆိုမှု များနေပါသည် — ခဏစောင့်ပြီး ပြန်ကြိုးစားပါ။";
+              if (msg.includes("402"))
+                return "AI credits ကုန်ဆုံးနေပါသည်။ ဆက်လက်အသုံးပြုရန် credits ထပ်ဖြည့်ပါ။";
+              return "ဆရာဇီးကွက် နည်းနည်းီးမသာ ဖြစ်နေပါတယ်။ ထပ်ကြိုးစားကြည့်ပါနော်။";
+            },
+          });
+        }),
     },
   },
 });

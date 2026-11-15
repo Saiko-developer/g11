@@ -1,3 +1,4 @@
+import { providerUnavailable } from "./ai-provider.server";
 import { sanitizeForSpeech } from "./sanitizeSpeech";
 import { geminiDirectSpeech } from "./gemini-direct.server";
 
@@ -47,7 +48,7 @@ export type SpeechInput = {
   signal?: AbortSignal;
 };
 
-/** Gemini TTS (natural Burmese) with OpenAI fallback, through the Lovable AI Gateway. */
+/** Keep each caller's preferred voice; all callers can recover using the owner's Gemini key. */
 export async function generateSpeech({
   text,
   voice,
@@ -55,131 +56,94 @@ export async function generateSpeech({
   provider,
   signal,
 }: SpeechInput): Promise<Response> {
-  const lovableKey = process.env.LOVABLE_API_KEY;
-  if (!lovableKey) return new Response("Missing LOVABLE_API_KEY", { status: 500 });
-
-  // Strip markdown / tags / emoji, keep Burmese script and English words intact.
+  const lovableKey = process.env.LOVABLE_API_KEY?.trim();
   const clean = sanitizeForSpeech(text);
   if (!clean) return new Response("empty text", { status: 400 });
-
-  const input = clean.length > 3500 ? clean.slice(0, 3500) : clean;
-  const safeSpeed = Math.min(1.3, Math.max(0.7, speed ?? 1.0));
+  const input = clean.slice(0, 3500);
+  const safeSpeed = Math.min(1.3, Math.max(0.7, speed ?? 1));
   const geminiVoice = (voice && GEMINI_VOICES[voice.toLowerCase()]) || DEFAULT_GEMINI_VOICE;
-
-  // 1) Gemini TTS — natural Burmese.
-  try {
-    if (provider === "openai") throw new Error("openai requested");
-    const upstream = await fetch("https://ai.gateway.lovable.dev/v1/audio/speech", {
-      method: "POST",
-      signal: signal
-        ? AbortSignal.any([signal, AbortSignal.timeout(60000)])
-        : AbortSignal.timeout(60000),
-      headers: {
-        "Lovable-API-Key": lovableKey,
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: JSON.stringify({
-        model: process.env.LOVABLE_TTS_MODEL?.trim() || "google/gemini-2.5-flash-tts",
-        contents: [
-          {
-            role: "user",
-            parts: [
-              {
-                text: input,
-              },
-            ],
-          },
-        ],
-        generationConfig: {
-          responseModalities: ["AUDIO"],
-          speechConfig: {
-            voiceConfig: { prebuiltVoiceConfig: { voiceName: geminiVoice } },
-          },
-        },
-      }),
-    });
-
-    if (!upstream.ok) {
-      const detail = await upstream.text().catch(() => "");
-      throw new Error(`Gemini TTS ${upstream.status}: ${detail.slice(0, 300)}`);
-    }
-
-    const buf = new Uint8Array(await upstream.arrayBuffer());
-    if (buf.byteLength < 1024) throw new Error("Gemini TTS returned no audio");
-
-    // Gateway returns a complete WAV file; pass through. If it ever
-    // returns raw PCM, wrap it so the browser can decode it.
-    const isWav = buf[0] === 0x52 && buf[1] === 0x49 && buf[2] === 0x46 && buf[3] === 0x46;
-    const body = isWav ? buf : pcmToWav(buf);
-
-    return new Response(body.slice().buffer as ArrayBuffer, {
+  const cancelled = () => new Response("Speech preparation cancelled", { status: 499 });
+  if (signal?.aborted) return cancelled();
+  const wav = (pcm: Uint8Array) =>
+    new Response(pcmToWav(pcm).slice().buffer as ArrayBuffer, {
       headers: {
         "Content-Type": "audio/wav",
         "Cache-Control": "no-store",
         "X-TTS-Provider": "gemini",
       },
     });
-  } catch (err) {
-    console.warn(
-      "[tts] gemini gateway failed, checking fallback",
-      err instanceof Error ? err.message : err,
-    );
-
-    if (signal?.aborted) return new Response("Speech preparation timed out", { status: 504 });
-
-    // Same Gemini voice on the owner's own key (Lovable credits out / outage).
-    if (provider !== "openai") {
-      const pcm = await geminiDirectSpeech(input, geminiVoice, fetch, signal);
-      if (pcm) {
-        return new Response(pcmToWav(pcm).slice().buffer as ArrayBuffer, {
-          headers: {
-            "Content-Type": "audio/wav",
-            "Cache-Control": "no-store",
-            "X-TTS-Provider": "gemini",
-          },
-        });
+  let lastStatus: number | undefined;
+  const gateway = async (openai: boolean): Promise<Response | null> => {
+    if (!lovableKey || signal?.aborted) return null;
+    try {
+      const upstream = await fetch("https://ai.gateway.lovable.dev/v1/audio/speech", {
+        method: "POST",
+        signal: signal
+          ? AbortSignal.any([signal, AbortSignal.timeout(provider === "gemini" ? 60000 : 15000)])
+          : AbortSignal.timeout(provider === "gemini" ? 60000 : 15000),
+        headers: {
+          "Lovable-API-Key": lovableKey,
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(
+          openai
+            ? {
+                model: process.env.LOVABLE_TTS_FALLBACK_MODEL?.trim() || "openai/gpt-4o-mini-tts",
+                input,
+                voice: provider === "openai" && voice ? voice.toLowerCase() : "echo",
+                response_format: "mp3",
+                speed: safeSpeed,
+              }
+            : {
+                model: process.env.LOVABLE_TTS_MODEL?.trim() || "google/gemini-2.5-flash-tts",
+                contents: [{ role: "user", parts: [{ text: input }] }],
+                generationConfig: {
+                  responseModalities: ["AUDIO"],
+                  speechConfig: {
+                    voiceConfig: { prebuiltVoiceConfig: { voiceName: geminiVoice } },
+                  },
+                },
+              },
+        ),
+      });
+      lastStatus = upstream.status;
+      if (!upstream.ok) {
+        await upstream.body?.cancel();
+        return null;
       }
-    }
-
-    // Classroom narration requires the approved Gemini voice. Do not pay for
-    // an OpenAI fallback that its caller would reject and discard.
-    if (provider === "gemini") return new Response("Gemini narration unavailable", { status: 503 });
-
-    // Male fallback voice to match Sayar Owl.
-    const openaiVoice = provider === "openai" && voice ? voice.toLowerCase() : "echo";
-
-    const fallback = await fetch("https://ai.gateway.lovable.dev/v1/audio/speech", {
-      method: "POST",
-      signal: AbortSignal.timeout(60000),
-      headers: {
-        "Lovable-API-Key": lovableKey,
-        "Content-Type": "application/json; charset=utf-8",
-        Accept: "audio/mpeg",
-      },
-      body: JSON.stringify({
-        model: process.env.LOVABLE_TTS_FALLBACK_MODEL?.trim() || "openai/gpt-4o-mini-tts",
-        input,
-        voice: openaiVoice,
-        response_format: "mp3",
-        speed: safeSpeed,
-      }),
-    }).catch((e) => {
-      console.error("[tts] openai fallback network error", e);
+      const bytes = new Uint8Array(await upstream.arrayBuffer());
+      if (bytes.byteLength < 1024) return null;
+      if (
+        !openai &&
+        !(bytes[0] === 0x52 && bytes[1] === 0x49 && bytes[2] === 0x46 && bytes[3] === 0x46)
+      )
+        return wav(bytes);
+      return new Response(bytes.slice().buffer as ArrayBuffer, {
+        headers: {
+          "Content-Type": openai ? "audio/mpeg" : "audio/wav",
+          "Cache-Control": "no-store",
+          "X-TTS-Provider": openai ? "openai" : "gemini",
+        },
+      });
+    } catch {
       return null;
-    });
-
-    if (!fallback || !fallback.ok) {
-      const detail = fallback ? await fallback.text().catch(() => "") : "network error";
-      console.error("[tts] openai fallback failed", fallback?.status, detail);
-      return new Response(detail || "TTS failed", { status: fallback?.status ?? 502 });
     }
-
-    return new Response(fallback.body, {
-      headers: {
-        "Content-Type": "audio/mpeg",
-        "Cache-Control": "no-store",
-        "X-TTS-Provider": "openai",
-      },
-    });
+  };
+  const primary = await gateway(provider === "openai");
+  if (primary) return primary;
+  if (signal?.aborted) return cancelled();
+  // Includes explicit OpenAI requests from Grade 10/11 speaking and Gemini-only classrooms.
+  const pcm = await geminiDirectSpeech(input, geminiVoice, fetch, signal);
+  if (signal?.aborted) return cancelled();
+  if (pcm) return wav(pcm);
+  // Keep legacy alternative voice for general callers, but avoid the same exhausted gateway.
+  if (
+    provider !== "openai" &&
+    provider !== "gemini" &&
+    ![402, 403, 429].includes(lastStatus ?? 0)
+  ) {
+    const alternate = await gateway(true);
+    if (alternate) return alternate;
   }
+  return signal?.aborted ? cancelled() : providerUnavailable();
 }

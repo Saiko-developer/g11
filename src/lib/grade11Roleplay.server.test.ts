@@ -239,3 +239,11 @@ it("rejects a new exercise on the wrong unit before any reservation or generatio
   expect(prepareGrade11Speaking).not.toHaveBeenCalled();
   expect(generateJson).not.toHaveBeenCalled();
 });
+
+it("allows a Gemini-only environment while keeping the existing speaking reservation", async () => {
+  vi.stubEnv("LOVABLE_API_KEY", "");
+  vi.stubEnv("GEMINI_API_KEY", "test-only");
+  expect((await handleGrade11Roleplay(request({ unit: 8 }))).status).toBe(200);
+  expect(prepareGrade11Speaking).toHaveBeenCalledTimes(1);
+  expect(generateJson).toHaveBeenCalledTimes(1);
+});

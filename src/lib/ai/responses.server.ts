@@ -1,3 +1,4 @@
+import { getChatModel, withGeminiFallback } from "@/lib/ai-gateway.server";
 import { withTone } from "@/lib/tone-rules";
 import { createOpenAI } from "@ai-sdk/openai";
 import { streamText, type ModelMessage } from "ai";
@@ -23,7 +24,9 @@ export function createResponsesCall(
   });
   const reasoning = config.model !== "openai/chat-latest";
   const result = streamText({
-    model: provider.responses(config.model),
+    model: config.apiKey?.trim()
+      ? withGeminiFallback(provider.responses(config.model))
+      : getChatModel(config.model),
     maxRetries: 0,
     // AI SDK 6 lacks `instructions`: rename this key to `system` there.
     ...(instructions ? { system: withTone(instructions) } : {}),
@@ -46,6 +49,9 @@ export function createResponsesCall(
   return {
     result,
     response: () =>
-      withLovableAiGatewayRunIdHeader(result.toUIMessageStreamResponse({ sendReasoning: true }), runIdFetch),
+      withLovableAiGatewayRunIdHeader(
+        result.toUIMessageStreamResponse({ sendReasoning: true }),
+        runIdFetch,
+      ),
   };
 }

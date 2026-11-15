@@ -35,6 +35,7 @@ export function useWhisperRecognition(opts: {
   const timerRef = useRef<number | null>(null);
   const capturingRef = useRef(false);
   const busyRef = useRef(false);
+  const requestRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     setSupported(
@@ -73,12 +74,20 @@ export function useWhisperRecognition(opts: {
         form.append("grade11SpeakingSession", scope.session);
         form.append("grade11SpeakingUnit", String(scope.unit));
       }
+      requestRef.current?.abort();
+      const controller = new AbortController();
+      requestRef.current = controller;
       try {
-        const res = await fetch("/api/transcribe", { method: "POST", body: form });
+        const res = await fetch("/api/transcribe", {
+          method: "POST",
+          body: form,
+          signal: controller.signal,
+        });
         if (!res.ok) throw new Error(`transcribe ${res.status}`);
         const data = (await res.json()) as { text?: string };
         return (data.text ?? "").trim();
       } catch (err) {
+        if (controller.signal.aborted) return "";
         console.error("[whisper] transcription failed", err);
         return "";
       }
@@ -112,6 +121,7 @@ export function useWhisperRecognition(opts: {
   }, [teardown]);
 
   const start = useCallback(async () => {
+    requestRef.current?.abort();
     const run = ++runRef.current;
     teardown();
     busyRef.current = false;
@@ -214,6 +224,7 @@ export function useWhisperRecognition(opts: {
   }, [teardown, finishRecording, transcribe, silenceMs]);
 
   const stop = useCallback(() => {
+    requestRef.current?.abort();
     const run = ++runRef.current;
     const hadSpeech = capturingRef.current;
     if (flushOnStop && hadSpeech && recRef.current) {
@@ -238,6 +249,7 @@ export function useWhisperRecognition(opts: {
   useEffect(
     () => () => {
       runRef.current++;
+      requestRef.current?.abort();
       teardown();
     },
     [teardown],

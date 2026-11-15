@@ -1,3 +1,4 @@
+import { hasAiProvider } from "@/lib/ai-provider.server";
 import { GRADE11_ROLEPLAY_EXERCISES } from "./grade11RoleplayExercises";
 import { UNIT2_SECTIONS } from "./grade11Unit2";
 import { UNIT3_SECTIONS, UNIT3_KEYS } from "./grade11Unit3";
@@ -76,8 +77,8 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
     const result = await endGrade11Speaking(request, body.session);
     return result instanceof Response ? result : Response.json(result);
   }
-  // The shared model helper requires this key. Fail before opening/charging a speaking session.
-  if (!process.env.LOVABLE_API_KEY?.trim())
+  // Require at least one provider before opening/charging a speaking session.
+  if (!hasAiProvider())
     return Response.json(
       {
         error: "ai_not_configured",
