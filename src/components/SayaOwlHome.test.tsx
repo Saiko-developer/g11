@@ -265,3 +265,17 @@ it("sends the user's reported Unit 3 Grammar number 3 as a unique textbook refer
   expect(body.currentQuestion).toContain("I finished ___________ (write) the assignment");
   expect(vi.mocked(fetch).mock.calls.filter(([url]) => url === "/api/tts")).toHaveLength(0);
 });
+
+it("gives Grade 10 a visible service failure and a working restart without paid fillers", async () => {
+  render(<SayaOwlHome grade={10} lessonContext="Grade 10 Unit 1" />);
+  await startAndSpeak();
+  expect(vi.mocked(fetch).mock.calls.filter(([url]) => url === "/api/tts")).toHaveLength(0);
+  expect(mock.chat.sendMessage).toHaveBeenCalledTimes(1);
+  act(() => mock.options.onError(new Error("AI service unavailable")));
+  expect(screen.getByRole("alert")).toHaveTextContent("AI service unavailable");
+  expect(mock.chat.stop).toHaveBeenCalled();
+  await act(async () => {
+    fireEvent.click(screen.getByRole("button", { name: "ဆရာနဲ့ စကားပြောရန် နှိပ်ပါ" }));
+  });
+  expect(screen.queryByRole("alert")).toBeNull();
+});

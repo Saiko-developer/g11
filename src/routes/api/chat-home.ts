@@ -1,3 +1,8 @@
+import {
+  POPUP_TEACHING_POLICY,
+  popupThinkingOptions,
+  popupStreamError,
+} from "@/lib/popup-tutor.server";
 import { hasAiProvider } from "@/lib/ai-provider.server";
 import { withAiCredit, creditGuardEnabled } from "@/lib/ai-credit.server";
 import { requireActiveAccount } from "@/lib/account-access.server";
@@ -126,7 +131,7 @@ export const Route = createFileRoute("/api/chat-home")({
               );
             return new Response("AI provider unavailable", { status: 500 });
           }
-          const model = getLovableChatModel();
+          const model = getLovableChatModel("LOVABLE_CHAT_MODEL", 8000);
 
           const grade11 = body.grade === 11;
           let system = grade11 ? GRADE11_HOME_PROMPT : HOME_PROMPT;
@@ -182,11 +187,17 @@ export const Route = createFileRoute("/api/chat-home")({
             }
           }
 
+          system += `\n\n${POPUP_TEACHING_POLICY}`;
+
           const result = streamText({
             model,
             maxOutputTokens: 2400,
             maxRetries: 0,
-            abortSignal: AbortSignal.any([request.signal, AbortSignal.timeout(90000)]),
+            providerOptions: popupThinkingOptions(),
+            abortSignal: AbortSignal.any([
+              request.signal,
+              AbortSignal.timeout(mode === "voice" ? 45000 : 60000),
+            ]),
             system: withTone(system),
             messages: await convertToModelMessages(messages as UIMessage[]),
           });
@@ -194,13 +205,8 @@ export const Route = createFileRoute("/api/chat-home")({
           return result.toUIMessageStreamResponse({
             originalMessages: messages as UIMessage[],
             onError: (error) => {
-              console.error("[chat-home] stream error", error);
-              const msg = error instanceof Error ? error.message : "Something went wrong.";
-              if (msg.includes("429"))
-                return "တောင်းဆိုမှု များနေပါသည် — ခဏစောင့်ပြီး ပြန်ကြိုးစားပါ။";
-              if (msg.includes("402"))
-                return "AI credits ကုန်ဆုံးနေပါသည်။ ဆက်လက်အသုံးပြုရန် credits ထပ်ဖြည့်ပါ။";
-              return "ဆရာဇီးကွက် နည်းနည်းီးမသာ ဖြစ်နေပါတယ်။ ထပ်ကြိုးစားကြည့်ပါနော်။";
+              console.error("[chat-home] AI stream unavailable");
+              return popupStreamError(error);
             },
           });
         }),

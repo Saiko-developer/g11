@@ -8,7 +8,8 @@ vi.mock("@tanstack/react-router", () => ({
   createFileRoute: () => (options: unknown) => ({ options }),
 }));
 vi.mock("./tutor-quota.server", () => ({ consumeTutorQuota: vi.fn() }));
-vi.mock("./ai-gateway.server", () => ({
+vi.mock("./ai-gateway.server", async (original) => ({
+  ...(await original<object>()),
   getLovableChatModel: vi.fn().mockReturnValue("existing-model"),
 }));
 vi.mock("ai", () => ({
@@ -114,3 +115,19 @@ it("grounds the reported Unit 3 Grammar question separately from the full sectio
   expect(system).toContain('<untrusted label="resolved_question">');
   expect(system).toContain("I finished ___________ (write) the assignment");
 });
+
+it.each([10, 11])(
+  "uses the shared experienced-teacher policy and bounded first-token fallback for Grade %s",
+  async (grade) => {
+    await post({ request: request({ grade, mode: "voice", messages: [] }) });
+    expect(getLovableChatModel).toHaveBeenCalledWith("LOVABLE_CHAT_MODEL", 8000);
+    const options = vi.mocked(streamText).mock.calls[0][0];
+    expect(options.system).toContain("Sentence combining alone is not a grammar lesson");
+    expect(options.system).toContain("Help the student turn the given points into ideas");
+    expect(options.system).toContain("Do not read the whole English paragraph first");
+    expect(options.system).toContain("not a title, greeting");
+    expect(options.maxRetries).toBe(0);
+    const response = vi.mocked(streamText).mock.results[0].value;
+    expect(response).toBeDefined();
+  },
+);

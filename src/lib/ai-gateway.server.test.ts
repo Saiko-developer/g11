@@ -122,3 +122,72 @@ it("returns a provider configuration error without either key", () => {
   vi.stubEnv("LOVABLE_API_KEY", "");
   expect(() => getChatModel("unused")).toThrow("AI provider unavailable");
 });
+
+it("switches a stalled primary connection to Gemini at the popup first-token deadline", async () => {
+  vi.useFakeTimers();
+  try {
+    let primarySignal: AbortSignal | undefined;
+    const primary = vi.fn((args: { abortSignal?: AbortSignal }) => {
+      primarySignal = args.abortSignal;
+      return new Promise<never>(() => {});
+    });
+    const pending = withGeminiFallback(model(primary), true, 50).doStream(options);
+    await vi.advanceTimersByTimeAsync(51);
+    const result = await pending;
+    expect(primarySignal?.aborted).toBe(true);
+    expect(await consume(result.stream)).toEqual([
+      { type: "text-delta", id: "t", delta: "backup" },
+    ]);
+    expect(m.stream).toHaveBeenCalledTimes(1);
+    expect(m.stream.mock.calls[0][0].abortSignal?.aborted).not.toBe(true);
+  } finally {
+    vi.useRealTimers();
+  }
+});
+
+it("also switches when the primary opens a stream but sends no content", async () => {
+  vi.useFakeTimers();
+  try {
+    const cancelled = vi.fn();
+    const primary = vi.fn(async () => ({
+      stream: new ReadableStream<LanguageModelV3StreamPart>({
+        start(c) {
+          c.enqueue({ type: "stream-start", warnings: [] });
+        },
+        cancel: cancelled,
+      }),
+    }));
+    const pending = withGeminiFallback(model(primary), true, 50).doStream(options);
+    await vi.advanceTimersByTimeAsync(51);
+    await consume((await pending).stream);
+    expect(cancelled).toHaveBeenCalledTimes(1);
+    expect(m.stream).toHaveBeenCalledTimes(1);
+  } finally {
+    vi.useRealTimers();
+  }
+});
+
+it("clears the first-token timer once a real response starts, preserving long teaching replies", async () => {
+  vi.useFakeTimers();
+  try {
+    let primarySignal: AbortSignal | undefined;
+    const primary = vi.fn(async (args: { abortSignal?: AbortSignal }) => {
+      primarySignal = args.abortSignal;
+      return { stream: frames([{ type: "text-delta", id: "t", delta: "lesson" }]) };
+    });
+    const result = await withGeminiFallback(model(primary), true, 50).doStream(options);
+    await vi.advanceTimersByTimeAsync(100);
+    expect(primarySignal?.aborted).toBe(false);
+    expect((await consume(result.stream))[0]).toMatchObject({ delta: "lesson" });
+    expect(m.stream).not.toHaveBeenCalled();
+  } finally {
+    vi.useRealTimers();
+  }
+});
+
+it("recovers a primary stream that closes without any generated content", async () => {
+  const primary = vi.fn(async () => ({ stream: frames([{ type: "stream-start", warnings: [] }]) }));
+  const result = await withGeminiFallback(model(primary), true, 50).doStream(options);
+  expect(await consume(result.stream)).toEqual([{ type: "text-delta", id: "t", delta: "backup" }]);
+  expect(m.stream).toHaveBeenCalledTimes(1);
+});

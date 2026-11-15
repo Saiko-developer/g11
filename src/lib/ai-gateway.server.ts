@@ -34,6 +34,7 @@ function geminiFallbackModel(): LanguageModelV3 | null {
 export function withGeminiFallback(
   primary: LanguageModelV3,
   allowFallback = true,
+  firstTokenTimeoutMs?: number,
 ): LanguageModelV3 {
   const fallback = allowFallback ? geminiFallbackModel() : null;
   const failover = (error: unknown, signal?: AbortSignal) => {
@@ -62,15 +63,41 @@ export function withGeminiFallback(
     },
     async doStream(options) {
       let reader: ReadableStreamDefaultReader<LanguageModelV3StreamPart> | undefined;
+      let timer: ReturnType<typeof setTimeout> | undefined;
+      const controller = new AbortController();
+      // Only popup callers opt into this deadline. Stop timing after content begins.
+      const deadline =
+        firstTokenTimeoutMs && fallback
+          ? new Promise<never>((_resolve, reject) => {
+              timer = setTimeout(() => {
+                const error = new DOMException(
+                  "Primary first-token deadline exceeded",
+                  "TimeoutError",
+                );
+                controller.abort(error);
+                reject(error);
+              }, firstTokenTimeoutMs);
+            })
+          : undefined;
+      const beforeContent = <T>(operation: PromiseLike<T>): Promise<T> =>
+        deadline ? Promise.race([operation, deadline]) : Promise.resolve(operation);
       try {
-        const result = await primary.doStream(options);
+        const primaryOptions = deadline
+          ? {
+              ...options,
+              abortSignal: options.abortSignal
+                ? AbortSignal.any([options.abortSignal, controller.signal])
+                : controller.signal,
+            }
+          : options;
+        const result = await beforeContent(primary.doStream(primaryOptions));
         reader = result.stream.getReader();
         const prefix: LanguageModelV3StreamPart[] = [];
         // SDK providers may return an error frame instead of throwing doStream.
         // Buffer only the prelude, stopping at the first visible/tool output.
         for (let i = 0; i < 32; i++) {
-          const next = await reader.read();
-          if (next.done) break;
+          const next = await beforeContent(reader.read());
+          if (next.done) throw new Error("Primary provider returned no generated content");
           if (next.value.type === "error") throw next.value.error;
           prefix.push(next.value);
           if (
@@ -80,6 +107,7 @@ export function withGeminiFallback(
           )
             break;
         }
+        clearTimeout(timer);
         const source = reader;
         return {
           ...result,
@@ -107,7 +135,8 @@ export function withGeminiFallback(
           }),
         };
       } catch (error) {
-        await reader?.cancel().catch(() => {});
+        clearTimeout(timer);
+        void reader?.cancel().catch(() => {});
         const backup = failover(error, options.abortSignal);
         try {
           const result = await backup.doStream(options);
@@ -133,16 +162,20 @@ export function withGeminiFallback(
 }
 
 /** Supports Gemini-only environments too, without exposing either key to browsers. */
-export function getChatModel(modelId: string): LanguageModelV3 {
+export function getChatModel(modelId: string, firstTokenTimeoutMs?: number): LanguageModelV3 {
   if (!process.env.LOVABLE_API_KEY?.trim()) {
     const backup = geminiFallbackModel();
     if (!backup) throw providerFailure();
     return withGeminiFallback(backup, false);
   }
-  return withGeminiFallback(createLovableGatewayClient().chat(modelId) as LanguageModelV3);
+  return withGeminiFallback(
+    createLovableGatewayClient().chat(modelId) as LanguageModelV3,
+    true,
+    firstTokenTimeoutMs,
+  );
 }
 
-export function getLovableChatModel(setting = "LOVABLE_CHAT_MODEL") {
+export function getLovableChatModel(setting = "LOVABLE_CHAT_MODEL", firstTokenTimeoutMs?: number) {
   const modelId = process.env[setting]?.trim() || DEFAULT_LOVABLE_CHAT_MODEL;
-  return getChatModel(modelId);
+  return getChatModel(modelId, firstTokenTimeoutMs);
 }

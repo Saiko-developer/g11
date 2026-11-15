@@ -7,7 +7,8 @@ vi.mock("@tanstack/react-router", () => ({
   createFileRoute: () => (options: unknown) => ({ options }),
 }));
 vi.mock("./tutor-quota.server", () => ({ consumeTutorQuota: vi.fn() }));
-vi.mock("./ai-gateway.server", () => ({
+vi.mock("./ai-gateway.server", async (original) => ({
+  ...(await original<object>()),
   getLovableChatModel: vi.fn().mockReturnValue("existing-model"),
 }));
 vi.mock("ai", () => ({
