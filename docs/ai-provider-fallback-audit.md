@@ -34,3 +34,13 @@ Admin AI status includes a separate **Gemini အသံ fallback စမ်းမ�
 Live Google credentials and speech quota cannot be established by mocked tests or a build. The admin speech test and a signed-in Speaking Practice turn are the live acceptance checks after the connected preview receives the commit.
 
 Local validation: 716 tests passed across 92 files; production build passed. Build retains the existing large-chunk advisory.
+
+## Voice failure diagnostics follow-up
+
+The admin speech test now reports the HTTP code, Google status, normalized model ID and a bounded Google error message with credentials and URLs redacted. It distinguishes missing configuration, unavailable models, permissions/billing, exhausted or zero quota, timeout, blocked/no audio and invalid audio. The error text wraps on narrow screens. Students continue to receive a generic service error; provider detail is returned only by the authenticated admin test.
+
+Direct speech normalizes `models/` and `google/` model prefixes and catches failures while reading the response body, including timeout/cancellation. It does not retry quota failures or make additional diagnostic requests automatically. Existing voices, script content, caches and provider order are retained.
+
+This change does not establish which error the live Google project is returning: runtime credentials/logs and a signed-in admin session are unavailable in this workspace. Run the explicit admin speech test after preview sync to obtain that evidence; Google billing, access or quota changes require the Google project owner.
+
+Follow-up validation: all 727 tests in 92 files passed, along with TypeScript, focused ESLint and the production build. Added coverage checks model path normalization, quota/billing/permission classification, credential redaction, body-read timeouts, missing audio, invalid configuration, cancellation and visible admin error details.

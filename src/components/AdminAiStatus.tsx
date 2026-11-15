@@ -6,14 +6,17 @@ type Result = Awaited<ReturnType<typeof checkAiStatus>>;
 
 function Row({ label, c }: { label: string; c?: Result["lovable"] }) {
   return (
-    <div className="flex items-center justify-between gap-3 rounded-lg border border-input px-3 py-2 text-sm">
+    <div className="flex flex-col gap-2 rounded-lg border border-input px-3 py-2 text-sm sm:flex-row sm:items-start sm:justify-between">
       <span className="font-medium">{label}</span>
       {!c ? (
         <span className="text-muted-foreground">—</span>
       ) : c.ok ? (
         <span className="text-primary">✅ အလုပ်လုပ်နေပါသည် ({(c.ms / 1000).toFixed(1)}s)</span>
       ) : (
-        <span className="truncate text-destructive" title={c.message}>
+        <span
+          className="min-w-0 whitespace-normal break-words text-destructive sm:max-w-[70%]"
+          title={c.message}
+        >
           ❌ {c.message}
         </span>
       )}

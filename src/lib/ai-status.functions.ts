@@ -62,12 +62,14 @@ export const checkSpeechFallbackStatus = createServerFn({ method: "POST" })
   .handler(async ({ context }) => {
     const { assertActiveAdmin } = await import("./admin-account-service.server");
     await assertActiveAdmin(context.supabase);
-    const { geminiDirectSpeech, hasGeminiKey } = await import("./gemini-direct.server");
-    return timed(async () => {
-      if (!hasGeminiKey()) throw new Error("GEMINI_API_KEY မသတ်မှတ်ရသေးပါ။");
-      const audio = await geminiDirectSpeech("မင်္ဂလာပါ", "Puck");
-      if (!audio)
-        throw new Error("Gemini အသံ မရပါ။ Server key၊ TTS model နှင့် Google quota ကို စစ်ပါ။");
-      return "Gemini အသံ fallback အလုပ်လုပ်ပါသည်။";
-    });
+    const { requestGeminiSpeech, describeSpeechFailure } = await import("./gemini-direct.server");
+    const started = Date.now();
+    const result = await requestGeminiSpeech("မင်္ဂလာပါ", "Puck");
+    return {
+      ok: result.ok,
+      message: result.ok
+        ? `Gemini အသံ fallback အလုပ်လုပ်ပါသည်။ (${result.model})`
+        : describeSpeechFailure(result),
+      ms: Date.now() - started,
+    };
   });
