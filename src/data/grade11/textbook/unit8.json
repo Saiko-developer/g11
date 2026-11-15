@@ -732,23 +732,28 @@
           "items": [
             {
               "id": "8-character-1",
-              "prompt": "Which character do you like more?"
+              "prompt": "Which character do you like more?",
+              "promptMy": "ဘယ်ဇာတ်ကောင်ကို ပိုကြိုက်သလဲ။"
             },
             {
               "id": "8-character-2",
-              "prompt": "What kind of person is he / she?"
+              "prompt": "What kind of person is he / she?",
+              "promptMy": "သူက ဘယ်လိုလူမျိုးလဲ။"
             },
             {
               "id": "8-character-3",
-              "prompt": "What kind of relationship does each character have with Johnsy?"
+              "prompt": "What kind of relationship does each character have with Johnsy?",
+              "promptMy": "ဇာတ်ကောင်တစ်ဦးစီက ဂျွန်စီနှင့် ဘယ်လိုဆက်ဆံရေးရှိသလဲ။"
             },
             {
               "id": "8-character-4",
-              "prompt": "What role does he / she play in the story?"
+              "prompt": "What role does he / she play in the story?",
+              "promptMy": "ဇာတ်လမ်းတွင် သူ ဘယ်လိုအခန်းကဏ္ဍက ပါဝင်သလဲ။"
             },
             {
               "id": "8-character-5",
-              "prompt": "Why do you like him / her better?"
+              "prompt": "Why do you like him / her better?",
+              "promptMy": "သူ့ကို ဘာကြောင့် ပိုကြိုက်သလဲ။"
             }
           ],
           "multiline": true
@@ -763,7 +768,8 @@
           "items": [
             {
               "id": "8-report-1",
-              "prompt": "Presentation notes"
+              "prompt": "Presentation notes",
+              "promptMy": "သူငယ်ချင်းနှစ်သက်သည့် ဇာတ်ကောင်အကြောင်း တင်ပြရန် မှတ်စုများ။"
             }
           ],
           "multiline": true
@@ -798,27 +804,33 @@
           "items": [
             {
               "id": "8-plan-1",
-              "prompt": "Who / what is the story about?"
+              "prompt": "Who / what is the story about?",
+              "promptMy": "ဇာတ်လမ်းသည် ဘယ်သူ သို့မဟုတ် ဘာအကြောင်းလဲ။"
             },
             {
               "id": "8-plan-2",
-              "prompt": "Where / when does the story take place?"
+              "prompt": "Where / when does the story take place?",
+              "promptMy": "ဘယ်အချိန်၊ ဘယ်နေရာမှာ ဖြစ်သလဲ။"
             },
             {
               "id": "8-plan-3",
-              "prompt": "What does the character want?"
+              "prompt": "What does the character want?",
+              "promptMy": "ဇာတ်ကောင်က ဘာကို လိုချင်သလဲ။"
             },
             {
               "id": "8-plan-4",
-              "prompt": "What problem does the character encounter?"
+              "prompt": "What problem does the character encounter?",
+              "promptMy": "ဘာပြဿနာ ကြုံရသလဲ။"
             },
             {
               "id": "8-plan-5",
-              "prompt": "How does the character solve the problem?"
+              "prompt": "How does the character solve the problem?",
+              "promptMy": "ပြဿနာကို ဘယ်လိုဖြေရှင်းသလဲ။"
             },
             {
               "id": "8-plan-6",
-              "prompt": "How does the story end?"
+              "prompt": "How does the story end?",
+              "promptMy": "ဇာတ်လမ်းက ဘယ်လိုဆုံးသလဲ။"
             }
           ],
           "multiline": true

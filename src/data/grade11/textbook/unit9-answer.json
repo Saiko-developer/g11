@@ -91,6 +91,131 @@
         103,
         104
       ]
+    },
+    "9-expressions-1": {
+      "answer": "inhale and exhale",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        102
+      ]
+    },
+    "9-expressions-2": {
+      "answer": "supine",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        102
+      ]
+    },
+    "9-expressions-3": {
+      "answer": "rancour and anger",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        102
+      ]
+    },
+    "9-expressions-4": {
+      "answer": "chill out",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        102
+      ]
+    },
+    "9-expressions-5": {
+      "answer": "raise and lower",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        102
+      ]
+    },
+    "9-expressions-6": {
+      "answer": "propelled",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        102
+      ]
+    },
+    "9-expressions-7": {
+      "answer": "soothe",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        102
+      ]
+    },
+    "9-expressions-8": {
+      "answer": "mend their broken relationship",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        102
+      ]
+    },
+    "9-expressions-9": {
+      "answer": "meet the deadline",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        102
+      ]
+    },
+    "9-expressions-10": {
+      "answer": "dwell on",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        102
+      ]
+    },
+    "9-comprehension-1": {
+      "answer": "Stress can take the form of anxiety, worry, fear, tension and pressure.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        100,
+        101
+      ]
+    },
+    "9-comprehension-2": {
+      "answer": "Stress can weaken our body’s immune defences, making us more susceptible to infections.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        100,
+        101
+      ]
+    },
+    "9-comprehension-3": {
+      "answer": "Laughing expands our ribcage, allowing our lungs to take in more air and transport more oxygen to the brain, heart, liver and other body parts.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        100,
+        101
+      ]
+    },
+    "9-comprehension-4": {
+      "answer": "We can consciously discard rancour and anger and recall pleasant thoughts.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        100,
+        101
+      ]
+    },
+    "9-comprehension-5": {
+      "answer": "We can experience calm by practising yoga or reciting a short prayer.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        100,
+        101
+      ]
     }
   }
 }

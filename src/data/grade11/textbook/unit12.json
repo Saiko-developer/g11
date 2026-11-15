@@ -1061,23 +1061,28 @@
           "items": [
             {
               "id": "12-interview-1",
-              "prompt": "Have you ever had a terrible experience in your life?"
+              "prompt": "Have you ever had a terrible experience in your life?",
+              "promptMy": "ဘဝမှာ ဆိုးရွားသော အတွေ့အကြုံ ရှိဖူးသလား။"
             },
             {
               "id": "12-interview-2",
-              "prompt": "When and where did it happen?"
+              "prompt": "When and where did it happen?",
+              "promptMy": "ဘယ်အချိန်၊ ဘယ်နေရာမှာ ဖြစ်သလဲ။"
             },
             {
               "id": "12-interview-3",
-              "prompt": "Who were you with at that time?"
+              "prompt": "Who were you with at that time?",
+              "promptMy": "အဲဒီအချိန် ဘယ်သူနှင့် အတူရှိသလဲ။"
             },
             {
               "id": "12-interview-4",
-              "prompt": "Tell me more about your experience."
+              "prompt": "Tell me more about your experience.",
+              "promptMy": "အတွေ့အကြုံအကြောင်း ပိုပြောပြပါ။"
             },
             {
               "id": "12-interview-5",
-              "prompt": "What was the hardest part of that incident and why?"
+              "prompt": "What was the hardest part of that incident and why?",
+              "promptMy": "အခက်ခဲဆုံးအပိုင်းက ဘာလဲ၊ ဘာကြောင့်လဲ။"
             }
           ],
           "multiline": true
@@ -1112,7 +1117,7 @@
           "items": [
             {
               "id": "12-functions-1",
-              "prompt": "2. ______",
+              "prompt": "2. The major problems with the use of the internet and the possible solutions to these problems will be addressed in this essay.",
               "choices": [
                 "a",
                 "b",
@@ -1128,7 +1133,7 @@
             },
             {
               "id": "12-functions-2",
-              "prompt": "3. ______",
+              "prompt": "3. A major problem with the use of the internet is that children have adopted a more inactive lifestyle as they are addicted to playing online games.",
               "choices": [
                 "a",
                 "b",
@@ -1144,7 +1149,7 @@
             },
             {
               "id": "12-functions-3",
-              "prompt": "4. ______",
+              "prompt": "4. They prefer to stay at home and immerse themselves in a virtual world, instead of going out to connect with the real people. This can harm their social abilities as well as their relationship with others.",
               "choices": [
                 "a",
                 "b",
@@ -1160,7 +1165,7 @@
             },
             {
               "id": "12-functions-4",
-              "prompt": "5. ______",
+              "prompt": "5. Another major problem is that people are facing data privacy and security problems.",
               "choices": [
                 "a",
                 "b",
@@ -1176,7 +1181,7 @@
             },
             {
               "id": "12-functions-5",
-              "prompt": "6. ______",
+              "prompt": "6. For example, personal information of internet users can be hacked by identity theft, resulting in financial loss.",
               "choices": [
                 "a",
                 "b",
@@ -1192,7 +1197,7 @@
             },
             {
               "id": "12-functions-6",
-              "prompt": "7. ______",
+              "prompt": "7. One possible solution for internet addicts is that their parents should encourage them to go out by organizing outdoor activities.",
               "choices": [
                 "a",
                 "b",
@@ -1208,7 +1213,7 @@
             },
             {
               "id": "12-functions-7",
-              "prompt": "8. ______",
+              "prompt": "8. To tackle the issue concerning data privacy and security, the government should take serious action against hacking personal data by imposing stricter cyber laws.",
               "choices": [
                 "a",
                 "b",
@@ -1224,7 +1229,7 @@
             },
             {
               "id": "12-functions-8",
-              "prompt": "9. ______",
+              "prompt": "9. However, its misuses can harm not only our social lives but also our environment.",
               "choices": [
                 "a",
                 "b",
@@ -1240,7 +1245,7 @@
             },
             {
               "id": "12-functions-9",
-              "prompt": "10. ______",
+              "prompt": "10. Therefore, with the right actions by individuals and governments, the internet can be made a safe place for everyone.",
               "choices": [
                 "a",
                 "b",
@@ -1267,12 +1272,13 @@
           "items": [
             {
               "id": "12-composition-1",
-              "prompt": "B. Write a problem-solution essay in about 200–250 words on the following.",
+              "prompt": "B. Write a problem-solution essay in about 200–250 words on the following. Teenagers and their parents often have an unhealthy relationship. What are the problems between them? What can they do to build a healthy one? You can begin your essay like this.",
               "multiline": true,
               "wordTarget": [
                 200,
                 250
-              ]
+              ],
+              "promptMy": "ဆယ်ကျော်သက်များနှင့် မိဘများကြား ဆက်ဆံရေး မပြေလည်တတ်ကြသည်။ သူတို့ကြား ဘာပြဿနာများရှိသလဲ။ ကောင်းမွန်သော ဆက်ဆံရေးတည်ဆောက်ရန် ဘာလုပ်နိုင်သလဲ။ စာလုံးရေ ၂၀၀ မှ ၂၅၀ ဖြင့် ပြဿနာနှင့် ဖြေရှင်းနည်းစာစီစာကုံး ရေးပါ။"
             }
           ],
           "multiline": true

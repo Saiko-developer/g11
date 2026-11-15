@@ -1,0 +1,327 @@
+{
+  "status": "Study suggestions derived from the repository’s machine-transcribed original recordings; not an official answer key. Cue evidence is shown on reveal. Unit 10 Q3 remains unkeyed because weekday/weekend wording is ambiguous.",
+  "items": {
+    "8-listen-1": {
+      "answer": "characters",
+      "unit": 8,
+      "audioSha256": "83493af05a1d3bb702c2049a5b1a2ab3ed9392ec06885786deca7068f19ce4c9",
+      "cueIds": ["g11-audio-8-3"],
+      "origin": "recording-caption-derived"
+    },
+    "8-listen-2": {
+      "answer": "theme",
+      "unit": 8,
+      "audioSha256": "83493af05a1d3bb702c2049a5b1a2ab3ed9392ec06885786deca7068f19ce4c9",
+      "cueIds": ["g11-audio-8-4"],
+      "origin": "recording-caption-derived"
+    },
+    "8-listen-3": {
+      "answer": "friendship",
+      "unit": 8,
+      "audioSha256": "83493af05a1d3bb702c2049a5b1a2ab3ed9392ec06885786deca7068f19ce4c9",
+      "cueIds": ["g11-audio-8-5"],
+      "origin": "recording-caption-derived"
+    },
+    "8-listen-4": {
+      "answer": "artists",
+      "unit": 8,
+      "audioSha256": "83493af05a1d3bb702c2049a5b1a2ab3ed9392ec06885786deca7068f19ce4c9",
+      "cueIds": ["g11-audio-8-7"],
+      "origin": "recording-caption-derived"
+    },
+    "8-listen-5": {
+      "answer": "falls ill",
+      "unit": 8,
+      "audioSha256": "83493af05a1d3bb702c2049a5b1a2ab3ed9392ec06885786deca7068f19ce4c9",
+      "cueIds": ["g11-audio-8-8"],
+      "origin": "recording-caption-derived"
+    },
+    "8-listen-6": {
+      "answer": "survive",
+      "unit": 8,
+      "audioSha256": "83493af05a1d3bb702c2049a5b1a2ab3ed9392ec06885786deca7068f19ce4c9",
+      "cueIds": ["g11-audio-8-11"],
+      "origin": "recording-caption-derived"
+    },
+    "8-listen-7": {
+      "answer": "sacrifice",
+      "unit": 8,
+      "audioSha256": "83493af05a1d3bb702c2049a5b1a2ab3ed9392ec06885786deca7068f19ce4c9",
+      "cueIds": ["g11-audio-8-16"],
+      "origin": "recording-caption-derived"
+    },
+    "8-listen-8": {
+      "answer": "love",
+      "unit": 8,
+      "audioSha256": "83493af05a1d3bb702c2049a5b1a2ab3ed9392ec06885786deca7068f19ce4c9",
+      "cueIds": ["g11-audio-8-17"],
+      "origin": "recording-caption-derived"
+    },
+    "9-main-1": {
+      "answer": "(b) Listening to music is good for stress management.",
+      "unit": 9,
+      "audioSha256": "ca874535ad8d862df0fd4d229469323221663ac25474752714fad18ae05eb2e1",
+      "cueIds": ["g11-audio-9-2", "g11-audio-9-7"],
+      "origin": "recording-caption-derived"
+    },
+    "9-statements-1": {
+      "answer": "Not mentioned",
+      "unit": 9,
+      "audioSha256": "ca874535ad8d862df0fd4d229469323221663ac25474752714fad18ae05eb2e1",
+      "cueIds": ["g11-audio-9-2"],
+      "origin": "recording-caption-derived"
+    },
+    "9-statements-2": {
+      "answer": "Mentioned",
+      "unit": 9,
+      "audioSha256": "ca874535ad8d862df0fd4d229469323221663ac25474752714fad18ae05eb2e1",
+      "cueIds": ["g11-audio-9-3", "g11-audio-9-4"],
+      "origin": "recording-caption-derived"
+    },
+    "9-statements-3": {
+      "answer": "Not mentioned",
+      "unit": 9,
+      "audioSha256": "ca874535ad8d862df0fd4d229469323221663ac25474752714fad18ae05eb2e1",
+      "cueIds": ["g11-audio-9-10"],
+      "origin": "recording-caption-derived"
+    },
+    "9-statements-4": {
+      "answer": "Not mentioned",
+      "unit": 9,
+      "audioSha256": "ca874535ad8d862df0fd4d229469323221663ac25474752714fad18ae05eb2e1",
+      "cueIds": ["g11-audio-9-11", "g11-audio-9-12"],
+      "origin": "recording-caption-derived"
+    },
+    "9-statements-5": {
+      "answer": "Mentioned",
+      "unit": 9,
+      "audioSha256": "ca874535ad8d862df0fd4d229469323221663ac25474752714fad18ae05eb2e1",
+      "cueIds": ["g11-audio-9-13", "g11-audio-9-14"],
+      "origin": "recording-caption-derived"
+    },
+    "9-statements-6": {
+      "answer": "Not mentioned",
+      "unit": 9,
+      "audioSha256": "ca874535ad8d862df0fd4d229469323221663ac25474752714fad18ae05eb2e1",
+      "cueIds": ["g11-audio-9-15"],
+      "origin": "recording-caption-derived"
+    },
+    "9-statements-7": {
+      "answer": "Mentioned",
+      "unit": 9,
+      "audioSha256": "ca874535ad8d862df0fd4d229469323221663ac25474752714fad18ae05eb2e1",
+      "cueIds": ["g11-audio-9-16"],
+      "origin": "recording-caption-derived"
+    },
+    "10-listen-1": {
+      "answer": "TRUE",
+      "unit": 10,
+      "audioSha256": "4d0573705b53507253cff30785fd37e85cb669495ab81b194670ac22963943bd",
+      "cueIds": ["g11-audio-10-3", "g11-audio-10-4", "g11-audio-10-8"],
+      "origin": "recording-caption-derived"
+    },
+    "10-listen-2": {
+      "answer": "TRUE",
+      "unit": 10,
+      "audioSha256": "4d0573705b53507253cff30785fd37e85cb669495ab81b194670ac22963943bd",
+      "cueIds": ["g11-audio-10-9"],
+      "origin": "recording-caption-derived"
+    },
+    "10-listen-4": {
+      "answer": "FALSE",
+      "unit": 10,
+      "audioSha256": "4d0573705b53507253cff30785fd37e85cb669495ab81b194670ac22963943bd",
+      "cueIds": ["g11-audio-10-10", "g11-audio-10-11"],
+      "origin": "recording-caption-derived"
+    },
+    "10-listen-5": {
+      "answer": "TRUE",
+      "unit": 10,
+      "audioSha256": "4d0573705b53507253cff30785fd37e85cb669495ab81b194670ac22963943bd",
+      "cueIds": ["g11-audio-10-2", "g11-audio-10-8"],
+      "origin": "recording-caption-derived"
+    },
+    "10-listen-6": {
+      "answer": "TRUE",
+      "unit": 10,
+      "audioSha256": "4d0573705b53507253cff30785fd37e85cb669495ab81b194670ac22963943bd",
+      "cueIds": ["g11-audio-10-12", "g11-audio-10-15"],
+      "origin": "recording-caption-derived"
+    },
+    "10-listen-7": {
+      "answer": "FALSE",
+      "unit": 10,
+      "audioSha256": "4d0573705b53507253cff30785fd37e85cb669495ab81b194670ac22963943bd",
+      "cueIds": ["g11-audio-10-2"],
+      "origin": "recording-caption-derived"
+    },
+    "10-listen-8": {
+      "answer": "FALSE",
+      "unit": 10,
+      "audioSha256": "4d0573705b53507253cff30785fd37e85cb669495ab81b194670ac22963943bd",
+      "cueIds": ["g11-audio-10-3", "g11-audio-10-4", "g11-audio-10-8"],
+      "origin": "recording-caption-derived"
+    },
+    "10-listen-9": {
+      "answer": "TRUE",
+      "unit": 10,
+      "audioSha256": "4d0573705b53507253cff30785fd37e85cb669495ab81b194670ac22963943bd",
+      "cueIds": ["g11-audio-10-13", "g11-audio-10-14", "g11-audio-10-15"],
+      "origin": "recording-caption-derived"
+    },
+    "11-listen-1": {
+      "answer": "a large and important wish",
+      "unit": 11,
+      "audioSha256": "35be2c0d494c75635b88aa288a781ff2f44f1614cacd2b210272d695f961015a",
+      "cueIds": ["g11-audio-11-5"],
+      "origin": "recording-caption-derived"
+    },
+    "11-listen-2": {
+      "answer": "our success",
+      "unit": 11,
+      "audioSha256": "35be2c0d494c75635b88aa288a781ff2f44f1614cacd2b210272d695f961015a",
+      "cueIds": ["g11-audio-11-9"],
+      "origin": "recording-caption-derived"
+    },
+    "11-listen-3": {
+      "answer": "excites",
+      "unit": 11,
+      "audioSha256": "35be2c0d494c75635b88aa288a781ff2f44f1614cacd2b210272d695f961015a",
+      "cueIds": ["g11-audio-11-10"],
+      "origin": "recording-caption-derived"
+    },
+    "11-listen-4": {
+      "answer": "willingness",
+      "unit": 11,
+      "audioSha256": "35be2c0d494c75635b88aa288a781ff2f44f1614cacd2b210272d695f961015a",
+      "cueIds": ["g11-audio-11-11"],
+      "origin": "recording-caption-derived"
+    },
+    "11-listen-5": {
+      "answer": "desires",
+      "unit": 11,
+      "audioSha256": "35be2c0d494c75635b88aa288a781ff2f44f1614cacd2b210272d695f961015a",
+      "cueIds": ["g11-audio-11-14"],
+      "origin": "recording-caption-derived"
+    },
+    "11-listen-6": {
+      "answer": "to dare",
+      "unit": 11,
+      "audioSha256": "35be2c0d494c75635b88aa288a781ff2f44f1614cacd2b210272d695f961015a",
+      "cueIds": ["g11-audio-11-21"],
+      "origin": "recording-caption-derived"
+    },
+    "11-listen-7": {
+      "answer": "proud of",
+      "unit": 11,
+      "audioSha256": "35be2c0d494c75635b88aa288a781ff2f44f1614cacd2b210272d695f961015a",
+      "cueIds": ["g11-audio-11-22"],
+      "origin": "recording-caption-derived"
+    },
+    "11-listen-8": {
+      "answer": "bravely",
+      "unit": 11,
+      "audioSha256": "35be2c0d494c75635b88aa288a781ff2f44f1614cacd2b210272d695f961015a",
+      "cueIds": ["g11-audio-11-23"],
+      "origin": "recording-caption-derived"
+    },
+    "11-listen-9": {
+      "answer": "courage",
+      "unit": 11,
+      "audioSha256": "35be2c0d494c75635b88aa288a781ff2f44f1614cacd2b210272d695f961015a",
+      "cueIds": ["g11-audio-11-24"],
+      "origin": "recording-caption-derived"
+    },
+    "11-listen-10": {
+      "answer": "overnight",
+      "unit": 11,
+      "audioSha256": "35be2c0d494c75635b88aa288a781ff2f44f1614cacd2b210272d695f961015a",
+      "cueIds": ["g11-audio-11-32", "g11-audio-11-33"],
+      "origin": "recording-caption-derived"
+    },
+    "12-match-1": {
+      "answer": "(b) Cyclone Nargis",
+      "unit": 12,
+      "audioSha256": "21793b6e85dab3bc2aecffe3dfaa9df68ec507dadb89d47d1796ac52901da30d",
+      "cueIds": ["g11-audio-12-8"],
+      "origin": "recording-caption-derived"
+    },
+    "12-match-2": {
+      "answer": "(c) COVID-19",
+      "unit": 12,
+      "audioSha256": "21793b6e85dab3bc2aecffe3dfaa9df68ec507dadb89d47d1796ac52901da30d",
+      "cueIds": ["g11-audio-12-21"],
+      "origin": "recording-caption-derived"
+    },
+    "12-match-3": {
+      "answer": "(a) Earthquake",
+      "unit": 12,
+      "audioSha256": "21793b6e85dab3bc2aecffe3dfaa9df68ec507dadb89d47d1796ac52901da30d",
+      "cueIds": ["g11-audio-12-35"],
+      "origin": "recording-caption-derived"
+    },
+    "12-statements-1": {
+      "answer": "FALSE",
+      "unit": 12,
+      "audioSha256": "21793b6e85dab3bc2aecffe3dfaa9df68ec507dadb89d47d1796ac52901da30d",
+      "cueIds": ["g11-audio-12-5"],
+      "origin": "recording-caption-derived"
+    },
+    "12-statements-2": {
+      "answer": "TRUE",
+      "unit": 12,
+      "audioSha256": "21793b6e85dab3bc2aecffe3dfaa9df68ec507dadb89d47d1796ac52901da30d",
+      "cueIds": ["g11-audio-12-8"],
+      "origin": "recording-caption-derived"
+    },
+    "12-statements-3": {
+      "answer": "NOT MENTIONED",
+      "unit": 12,
+      "audioSha256": "21793b6e85dab3bc2aecffe3dfaa9df68ec507dadb89d47d1796ac52901da30d",
+      "cueIds": ["g11-audio-12-8"],
+      "origin": "recording-caption-derived"
+    },
+    "12-statements-4": {
+      "answer": "TRUE",
+      "unit": 12,
+      "audioSha256": "21793b6e85dab3bc2aecffe3dfaa9df68ec507dadb89d47d1796ac52901da30d",
+      "cueIds": ["g11-audio-12-21", "g11-audio-12-22"],
+      "origin": "recording-caption-derived"
+    },
+    "12-statements-5": {
+      "answer": "TRUE",
+      "unit": 12,
+      "audioSha256": "21793b6e85dab3bc2aecffe3dfaa9df68ec507dadb89d47d1796ac52901da30d",
+      "cueIds": ["g11-audio-12-23"],
+      "origin": "recording-caption-derived"
+    },
+    "12-statements-6": {
+      "answer": "TRUE",
+      "unit": 12,
+      "audioSha256": "21793b6e85dab3bc2aecffe3dfaa9df68ec507dadb89d47d1796ac52901da30d",
+      "cueIds": ["g11-audio-12-26"],
+      "origin": "recording-caption-derived"
+    },
+    "12-statements-7": {
+      "answer": "FALSE",
+      "unit": 12,
+      "audioSha256": "21793b6e85dab3bc2aecffe3dfaa9df68ec507dadb89d47d1796ac52901da30d",
+      "cueIds": ["g11-audio-12-33"],
+      "origin": "recording-caption-derived"
+    },
+    "12-statements-8": {
+      "answer": "TRUE",
+      "unit": 12,
+      "audioSha256": "21793b6e85dab3bc2aecffe3dfaa9df68ec507dadb89d47d1796ac52901da30d",
+      "cueIds": ["g11-audio-12-36"],
+      "origin": "recording-caption-derived"
+    },
+    "12-statements-9": {
+      "answer": "TRUE",
+      "unit": 12,
+      "audioSha256": "21793b6e85dab3bc2aecffe3dfaa9df68ec507dadb89d47d1796ac52901da30d",
+      "cueIds": ["g11-audio-12-36"],
+      "origin": "recording-caption-derived"
+    }
+  }
+}

@@ -38,7 +38,11 @@ it("binds inventory to real unchanged files and preserves scan/transcription lim
   }
   expect(curriculumSection(11, 7, "reading")!.sourceFormat).toBe("text");
   expect(curriculumSection(11, 7, "reading")!.lessonTextBlocks).toBeGreaterThan(0);
-  expect(curriculumSection(11, 8, "reading")!.scanPages.length).toBeGreaterThan(0);
+  for (const unit of [8, 9, 10, 11, 12])
+    for (const skill of TEACHING_SKILLS) {
+      expect(curriculumSection(11, unit, skill)!.sourceFormat).toBe("text");
+      expect(curriculumSection(11, unit, skill)!.scanPages).toEqual([]);
+    }
   expect(
     curriculumInventory.filter((s) => s.classroomDelivery === "current-pilot").map((s) => s.id),
   ).toEqual(["g10-u1-reading"]);

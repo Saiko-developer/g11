@@ -160,7 +160,7 @@
             },
             {
               "id": "9-expressions-10",
-              "prompt": "10. You simply made a mistake; you don’t need to ______."
+              "prompt": "10. You simply made a mistake; you don’t need to ______ it."
             }
           ]
         }
@@ -195,43 +195,83 @@
           "items": [
             {
               "id": "9-confused-1",
-              "prompt": "1. One particular accident / incident that sticks in my mind is my first day at school."
+              "prompt": "1. One particular accident / incident that sticks in my mind is my first day at school.",
+              "choices": [
+                "accident",
+                "incident"
+              ]
             },
             {
               "id": "9-confused-2",
-              "prompt": "2. The museum is having a perspective / retrospective exhibit of the artist’s early works."
+              "prompt": "2. The museum is having a perspective / retrospective exhibit of the artist’s early works.",
+              "choices": [
+                "perspective",
+                "retrospective"
+              ]
             },
             {
               "id": "9-confused-3",
-              "prompt": "3. We are conscientious / conscious of the generation gap problems between youths and their parents."
+              "prompt": "3. We are conscientious / conscious of the generation gap problems between youths and their parents.",
+              "choices": [
+                "conscientious",
+                "conscious"
+              ]
             },
             {
               "id": "9-confused-4",
-              "prompt": "4. I didn’t mean to break it — it was an accident / incident."
+              "prompt": "4. I didn’t mean to break it — it was an accident / incident.",
+              "choices": [
+                "accident",
+                "incident"
+              ]
             },
             {
               "id": "9-confused-5",
-              "prompt": "5. The drought may seriously affect / effect the central part of Myanmar."
+              "prompt": "5. The drought may seriously affect / effect the central part of Myanmar.",
+              "choices": [
+                "affect",
+                "effect"
+              ]
             },
             {
               "id": "9-confused-6",
-              "prompt": "6. We drove along the muddy lane / line to reach the farmhouse."
+              "prompt": "6. We drove along the muddy lane / line to reach the farmhouse.",
+              "choices": [
+                "lane",
+                "line"
+              ]
             },
             {
               "id": "9-confused-7",
-              "prompt": "7. Today’s youths should be more conscientious / conscious about their own learning."
+              "prompt": "7. Today’s youths should be more conscientious / conscious about their own learning.",
+              "choices": [
+                "conscientious",
+                "conscious"
+              ]
             },
             {
               "id": "9-confused-8",
-              "prompt": "8. Modern farming methods can have an adverse affect / effect on the environment."
+              "prompt": "8. Modern farming methods can have an adverse affect / effect on the environment.",
+              "choices": [
+                "affect",
+                "effect"
+              ]
             },
             {
               "id": "9-confused-9",
-              "prompt": "9. The train was delayed because a tree had fallen across the lane / line."
+              "prompt": "9. The train was delayed because a tree had fallen across the lane / line.",
+              "choices": [
+                "lane",
+                "line"
+              ]
             },
             {
               "id": "9-confused-10",
-              "prompt": "10. Let’s look at the traffic congestion problem from a different perspective / retrospective."
+              "prompt": "10. Let’s look at the traffic congestion problem from a different perspective / retrospective.",
+              "choices": [
+                "perspective",
+                "retrospective"
+              ]
             }
           ]
         }
@@ -464,11 +504,13 @@
           "items": [
             {
               "id": "9-advice-1",
-              "prompt": "Asking for advice"
+              "prompt": "Asking for advice",
+              "promptMy": "အကြံတောင်းသည့် အသုံးအနှုန်းများ။"
             },
             {
               "id": "9-advice-2",
-              "prompt": "Giving advice"
+              "prompt": "Giving advice",
+              "promptMy": "အကြံပေးသည့် အသုံးအနှုန်းများ။"
             }
           ],
           "multiline": true
@@ -483,11 +525,13 @@
           "items": [
             {
               "id": "9-dialogue-1",
-              "prompt": "Dialogue 1"
+              "prompt": "Dialogue 1",
+              "promptMy": "ပထမရွေးထားသော ပြဿနာအတွက် စကားပြောခန်း။"
             },
             {
               "id": "9-dialogue-2",
-              "prompt": "Dialogue 2"
+              "prompt": "Dialogue 2",
+              "promptMy": "ဒုတိယရွေးထားသော ပြဿနာအတွက် စကားပြောခန်း။"
             }
           ],
           "multiline": true

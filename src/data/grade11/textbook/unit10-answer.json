@@ -153,6 +153,153 @@
       "sourcePages": [
         115
       ]
+    },
+    "10-gaps-1": {
+      "answer": "b",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112,
+        113
+      ]
+    },
+    "10-gaps-2": {
+      "answer": "f",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112,
+        113
+      ]
+    },
+    "10-gaps-3": {
+      "answer": "d",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112,
+        113
+      ]
+    },
+    "10-gaps-4": {
+      "answer": "a",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112,
+        113
+      ]
+    },
+    "10-gaps-5": {
+      "answer": "e",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112,
+        113
+      ]
+    },
+    "10-gaps-6": {
+      "answer": "c",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112,
+        113
+      ]
+    },
+    "10-causes-1": {
+      "answer": "Going to bed late, waking up repeatedly during the night, and waking up early for no apparent reason.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112
+      ]
+    },
+    "10-causes-2": {
+      "answer": "Depression, sleep apnea, hormone imbalances and other chronic illnesses.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112
+      ]
+    },
+    "10-causes-3": {
+      "answer": "Shift work, family obligations, demanding jobs, deliberately sacrificing sleep to pursue wealth, fame and success, and online game addiction.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112
+      ]
+    },
+    "10-comprehension-1": {
+      "answer": "Sleep is a natural state of rest characterized by reduced body movement and decreased awareness of surroundings. It can be interrupted by external stimulation.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112,
+        113
+      ]
+    },
+    "10-comprehension-2": {
+      "answer": "Insomnia is the inability to sleep, while sleep deprivation is the condition of not having enough sleep.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112,
+        113
+      ]
+    },
+    "10-comprehension-3": {
+      "answer": "They purposely deprive themselves of sleep in their pursuits of wealth, fame and success.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112,
+        113
+      ]
+    },
+    "10-comprehension-5": {
+      "answer": "Drugs are used when behavioural treatments do not work.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112,
+        113
+      ]
+    },
+    "10-comprehension-6": {
+      "answer": "It is important to limit the dosage because some people become dependent on sleeping medications.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112,
+        113
+      ]
+    },
+    "10-comprehension-7": {
+      "answer": "A quick daytime nap can make our brain sharper, more attentive, focused and productive.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        111,
+        112,
+        113
+      ]
     }
   }
 }

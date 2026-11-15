@@ -325,23 +325,70 @@
           "items": [
             {
               "id": "11-reporting-1",
-              "prompt": "1. The skin-care product (claims / mentions) that it can prevent moisture loss."
+              "prompt": "1. The skin-care product (claims / mentions) that it can prevent moisture loss.",
+              "choices": [
+                "claims",
+                "mentions"
+              ]
             },
             {
               "id": "11-reporting-2",
-              "prompt": "2. Researchers (claimed / proposed) new plans for dealing with climate change."
+              "prompt": "2. Researchers (claimed / proposed) new plans for dealing with climate change.",
+              "choices": [
+                "claimed",
+                "proposed"
+              ]
             },
             {
               "id": "11-reporting-3",
-              "prompt": "3. People who are pessimistic have the habit of (describing / pointing out) the weaknesses of others."
+              "prompt": "3. Those who are rather pessimistic have the habit of (describing / pointing out) the weaknesses of others.",
+              "choices": [
+                "describing",
+                "pointing out"
+              ]
             },
             {
               "id": "11-reporting-4",
-              "prompt": "4. Many (argue / describe) that music can be used to maintain and promote a better quality of life for older people."
+              "prompt": "4. Ko Ko (described / pointed out) his experiences in his new job in a letter to his parents.",
+              "choices": [
+                "described",
+                "pointed out"
+              ]
             },
             {
               "id": "11-reporting-5",
-              "prompt": "5. The doctor (claimed / said) that the patient should take vitamin supplements."
+              "prompt": "5. The scientists (mentioned / proposed) in their report the differences between organic food and genetically modified food.",
+              "choices": [
+                "mentioned",
+                "proposed"
+              ]
+            },
+            {
+              "id": "11-reporting-6",
+              "prompt": "6. Applicants must (propose / state) why they wish to apply for the scholarship.",
+              "promptMy": "ပညာသင်ဆုလျှောက်ထားသူများသည် လျှောက်ထားလိုသည့် အကြောင်းရင်းကို ဖော်ပြရမည်။",
+              "choices": [
+                "propose",
+                "state"
+              ]
+            },
+            {
+              "id": "11-reporting-7",
+              "prompt": "7. Many (argue / describe) that music can be used to maintain and promote a better quality of life for older people.",
+              "promptMy": "အသက်ကြီးသူများ၏ ဘဝအရည်အသွေးကို ထိန်းသိမ်းမြှင့်တင်ရန် ဂီတကို အသုံးပြုနိုင်ကြောင်း လူများစွာက အကြောင်းပြဆွေးနွေးကြသည်။",
+              "choices": [
+                "argue",
+                "describe"
+              ]
+            },
+            {
+              "id": "11-reporting-8",
+              "prompt": "8. The doctor (claimed / said) that the patient should take vitamin supplements.",
+              "promptMy": "လူနာသည် ဗီတာမင်ဖြည့်စွက်ဆေးများ သောက်သင့်ကြောင်း ဆရာဝန်က ပြောသည်။",
+              "choices": [
+                "claimed",
+                "said"
+              ]
             }
           ]
         },
@@ -680,19 +727,23 @@
           "items": [
             {
               "id": "11-dream-job-1",
-              "prompt": "What your dream job is"
+              "prompt": "What your dream job is",
+              "promptMy": "အိပ်မက်အလုပ်က ဘာလဲ။"
             },
             {
               "id": "11-dream-job-2",
-              "prompt": "Why you wish to have that job — any special reasons behind your dream job and who your role model is (if any)"
+              "prompt": "Why you wish to have that job — any special reasons behind your dream job and who your role model is (if any)",
+              "promptMy": "ထိုအလုပ်ကို ဘာကြောင့် လိုချင်သလဲ၊ အထူးအကြောင်းရင်းနှင့် စံပြပုဂ္ဂိုလ်ရှိလျှင် ဖော်ပြပါ။"
             },
             {
               "id": "11-dream-job-3",
-              "prompt": "What knowledge and skills you need in order to get your dream job"
+              "prompt": "What knowledge and skills you need in order to get your dream job",
+              "promptMy": "ထိုအလုပ်ရရန် ဘာဗဟုသုတနှင့် ကျွမ်းကျင်မှုများ လိုအပ်သလဲ။"
             },
             {
               "id": "11-dream-job-4",
-              "prompt": "What you are doing to fulfil your dream"
+              "prompt": "What you are doing to fulfil your dream",
+              "promptMy": "အိပ်မက်ပြည့်ရန် ယခု ဘာလုပ်နေသလဲ။"
             }
           ],
           "multiline": true
@@ -707,11 +758,13 @@
           "items": [
             {
               "id": "11-compare-1",
-              "prompt": "The most common dream job"
+              "prompt": "The most common dream job",
+              "promptMy": "အဖွဲ့တွင် အများဆုံးရွေးသည့် အိပ်မက်အလုပ်။"
             },
             {
               "id": "11-compare-2",
-              "prompt": "The most unusual dream job"
+              "prompt": "The most unusual dream job",
+              "promptMy": "အဖွဲ့တွင် အထူးခြားဆုံး အိပ်မက်အလုပ်။"
             }
           ],
           "multiline": true
@@ -739,35 +792,43 @@
           "items": [
             {
               "id": "11-plan-1",
-              "prompt": "What kind of invention is it?"
+              "prompt": "What kind of invention is it?",
+              "promptMy": "ဘာတီထွင်မှုမျိုးလဲ။"
             },
             {
               "id": "11-plan-2",
-              "prompt": "What is it made of?"
+              "prompt": "What is it made of?",
+              "promptMy": "ဘာနဲ့ ပြုလုပ်ထားသလဲ။"
             },
             {
               "id": "11-plan-3",
-              "prompt": "Who are the users you have in mind?"
+              "prompt": "Who are the users you have in mind?",
+              "promptMy": "ဘယ်သူတွေ အသုံးပြုဖို့ ရည်ရွယ်သလဲ။"
             },
             {
               "id": "11-plan-4",
-              "prompt": "How would you name it?"
+              "prompt": "How would you name it?",
+              "promptMy": "ဘယ်လို အမည်ပေးမလဲ။"
             },
             {
               "id": "11-plan-5",
-              "prompt": "How can it be used?"
+              "prompt": "How can it be used?",
+              "promptMy": "ဘယ်လို အသုံးပြုနိုင်သလဲ။"
             },
             {
               "id": "11-plan-6",
-              "prompt": "How much will it cost?"
+              "prompt": "How much will it cost?",
+              "promptMy": "ဘယ်လောက် ကုန်ကျမလဲ။"
             },
             {
               "id": "11-plan-7",
-              "prompt": "Is it cost-effective (Is it effective without costing a lot of money?)?"
+              "prompt": "Is it cost-effective (Is it effective without costing a lot of money?)?",
+              "promptMy": "ငွေကုန်ကြေးကျနှင့် နှိုင်းယှဉ်လျှင် ထိရောက်တန်ဖိုးရှိသလား။"
             },
             {
               "id": "11-plan-8",
-              "prompt": "What is the prospect (the possibility that it will have in the future) of your invention?"
+              "prompt": "What is the prospect (the possibility that it will have in the future) of your invention?",
+              "promptMy": "အနာဂတ်မှာ ဘယ်လို ဖြစ်လာနိုင်ခြေရှိသလဲ။"
             }
           ],
           "multiline": true

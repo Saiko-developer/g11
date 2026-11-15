@@ -156,11 +156,18 @@
           "items": [
             {
               "id": "10-causes-1",
-              "prompt": "Inappropriate sleep habits and personal choice"
+              "prompt": "Irregular sleep patterns",
+              "promptMy": "အိပ်ချိန်မမှန်ခြင်း"
             },
             {
               "id": "10-causes-2",
-              "prompt": "Medical problems"
+              "prompt": "Medical problems",
+              "promptMy": "ကျန်းမာရေးပြဿနာများ"
+            },
+            {
+              "id": "10-causes-3",
+              "prompt": "Others",
+              "promptMy": "အခြားအကြောင်းရင်းများ"
             }
           ],
           "table": true,
@@ -307,7 +314,7 @@
             },
             {
               "id": "10-complete-4",
-              "prompt": "4. Children should be treated well, as the feeling of rejection is ______ in childhood."
+              "prompt": "4. Children should be treated well, as the feeling of rejection is often ______ in childhood."
             },
             {
               "id": "10-complete-5",
@@ -576,27 +583,33 @@
           "items": [
             {
               "id": "10-interview-1",
-              "prompt": "How do you usually spend your leisure?"
+              "prompt": "How do you usually spend your leisure?",
+              "promptMy": "အားလပ်ချိန်ကို ပုံမှန် ဘယ်လိုသုံးသလဲ။"
             },
             {
               "id": "10-interview-2",
-              "prompt": "Which activities are important in your life?"
+              "prompt": "Which activities are important in your life?",
+              "promptMy": "ဘဝတွင် ဘယ်လှုပ်ရှားမှုများ အရေးကြီးသလဲ။"
             },
             {
               "id": "10-interview-3",
-              "prompt": "Which activity do you like doing most? Why?"
+              "prompt": "Which activity do you like doing most? Why?",
+              "promptMy": "ဘယ်လှုပ်ရှားမှုကို အကြိုက်ဆုံးလဲ၊ ဘာကြောင့်လဲ။"
             },
             {
               "id": "10-interview-4",
-              "prompt": "Do you have enough time to do what you want to do? Why?"
+              "prompt": "Do you have enough time to do what you want to do? Why?",
+              "promptMy": "လုပ်ချင်သည့်အလုပ်များအတွက် အချိန်လုံလောက်သလား၊ ဘာကြောင့်လဲ။"
             },
             {
               "id": "10-interview-5",
-              "prompt": "Do you think you make good use of your leisure?"
+              "prompt": "Do you think you make good use of your leisure?",
+              "promptMy": "အားလပ်ချိန်ကို ကောင်းစွာ အသုံးချသည်ဟု ထင်သလား။"
             },
             {
               "id": "10-interview-6",
-              "prompt": "Reporting back"
+              "prompt": "Reporting back",
+              "promptMy": "သူငယ်ချင်း၏ အဖြေများကို ပြန်လည်တင်ပြပါ။"
             }
           ],
           "multiline": true
@@ -624,23 +637,28 @@
           "items": [
             {
               "id": "10-plan-1",
-              "prompt": "Who is the mobile phone addict you know of?"
+              "prompt": "Who is the mobile phone addict you know of?",
+              "promptMy": "ကိုယ်သိသည့် ဖုန်းစွဲလမ်းသူက ဘယ်သူလဲ။"
             },
             {
               "id": "10-plan-2",
-              "prompt": "What signs of addiction does he / she have?"
+              "prompt": "What signs of addiction does he / she have?",
+              "promptMy": "စွဲလမ်းမှုလက္ခဏာတွေက ဘာလဲ။"
             },
             {
               "id": "10-plan-3",
-              "prompt": "How much time does he / she spend on his / her mobile?"
+              "prompt": "How much time does he / she spend on his / her mobile?",
+              "promptMy": "ဖုန်းပေါ်မှာ အချိန်ဘယ်လောက် သုံးသလဲ။"
             },
             {
               "id": "10-plan-4",
-              "prompt": "How does his / her addiction affect him / her and people around him / her?"
+              "prompt": "How does his / her addiction affect him / her and people around him / her?",
+              "promptMy": "သူနှင့် ပတ်ဝန်းကျင်လူတွေကို ဘယ်လိုထိခိုက်သလဲ။"
             },
             {
               "id": "10-plan-5",
-              "prompt": "How should he / she be treated?"
+              "prompt": "How should he / she be treated?",
+              "promptMy": "ဘယ်လို ကုသကူညီသင့်သလဲ။"
             }
           ],
           "multiline": true

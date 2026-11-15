@@ -1,0 +1,2572 @@
+{
+  "source": "Manually transcribed and compared with repository textbook scans. English preserves the printed edition; Burmese is a study translation. Original files retained as evidence, not rendered in lessons.",
+  "units": {
+    "8": {
+      "reading": [
+        {
+          "id": "8-reading-text-1",
+          "t": "h",
+          "page": 86,
+          "en": "PART I",
+          "my": "အပိုင်း ၁"
+        },
+        {
+          "id": "8-reading-text-2",
+          "t": "para",
+          "page": 86,
+          "en": "To Greenwich Village, which is a section of New York City, many people came who were interested in art. They liked the bohemian life of the village, and they enjoyed living among so many artists. The buildings and apartments were often very old and dirty, but this only added to the interest of the place.",
+          "my": "နယူးယောက်မြို့၏ တစ်စိတ်တစ်ပိုင်းဖြစ်သော ဂရင်းနစ်ချ်ဗီလစ်သို့ အနုပညာကို စိတ်ဝင်စားသူများစွာ ရောက်လာကြသည်။ သူတို့သည် ထိုရပ်ကွက်၏ စည်းမျဉ်းထုံးစံများအတိုင်း မနေဘဲ လွတ်လပ်ပေါ့ပါးစွာ နေထိုင်ပုံကို နှစ်သက်ကြပြီး အနုပညာရှင်များစွာကြား နေထိုင်ရခြင်းကို ပျော်ရွှင်ကြသည်။ အဆောက်အအုံနှင့် တိုက်ခန်းများမှာ မကြာခဏ အလွန်ဟောင်းနွမ်းညစ်ပတ်သော်လည်း ယင်းအချက်ကပင် ထိုနေရာကို ပိုစိတ်ဝင်စားဖွယ် ဖြစ်စေသည်။"
+        },
+        {
+          "id": "8-reading-text-3",
+          "t": "para",
+          "page": 86,
+          "en": "At the top of an old three-storey brick house, Sue and Johnsy had their studio. One of them was from the State of Maine, the other from California. They had met in the restaurant of an Eighth Street hotel. Both were artists who had recently come to New York to make their living.",
+          "my": "သုံးထပ်အုတ်တိုက်ဟောင်းတစ်လုံး၏ အပေါ်ဆုံးထပ်တွင် ဆူးနှင့် ဂျွန်စီတို့၏ ပန်းချီအလုပ်ခန်းရှိသည်။ တစ်ယောက်မှာ မိန်းပြည်နယ်မှဖြစ်ပြီး နောက်တစ်ယောက်မှာ ကယ်လီဖိုးနီးယားမှဖြစ်သည်။ သူတို့သည် အဋ္ဌမလမ်းရှိ ဟိုတယ်တစ်ခု၏ စားသောက်ဆိုင်တွင် တွေ့ဆုံခဲ့ကြသည်။ နှစ်ဦးစလုံးမှာ အသက်မွေးဝမ်းကျောင်းရန် နယူးယောက်သို့ မကြာသေးမီက ရောက်လာသော ပန်းချီဆရာမများဖြစ်ကြသည်။"
+        },
+        {
+          "id": "8-reading-text-4",
+          "t": "para",
+          "page": 86,
+          "en": "That was in May. In November, a cold, unseen stranger, whom the doctors called pneumonia, visited the city, touching one here and one there with his icy finger.",
+          "my": "ယင်းသည် မေလက ဖြစ်သည်။ နိုဝင်ဘာလတွင် ဆရာဝန်များက အဆုတ်ရောင်ရောဂါဟု ခေါ်သော အေးစက်ပြီး မမြင်ရသော သူစိမ်းတစ်ဦးသည် မြို့သို့ ရောက်လာကာ ရေခဲကဲ့သို့ အေးသောလက်ချောင်းဖြင့် ဒီတစ်ယောက်၊ ဟိုတစ်ယောက်ကို ထိတွေ့သွားသည်။"
+        },
+        {
+          "id": "8-reading-text-5",
+          "t": "para",
+          "page": 86,
+          "en": "He touched Johnsy and she lay, scarcely moving, on her painted iron bed, looking through the small window at the blank wall of the opposite building.",
+          "my": "ထိုသူစိမ်းသည် ဂျွန်စီကို ထိတွေ့လိုက်ရာ သူမသည် ဆေးသုတ်ထားသော သံခုတင်ပေါ်တွင် လှုပ်ရှားမှုမရှိသလောက် လဲလျောင်းနေရပြီး ပြတင်းပေါက်ငယ်မှတစ်ဆင့် မျက်နှာချင်းဆိုင် အဆောက်အအုံ၏ ပြောင်နေသော နံရံကို ကြည့်နေသည်။",
+          "highlights": [
+            "He"
+          ],
+          "sourceLine": 11
+        },
+        {
+          "id": "8-reading-text-6",
+          "t": "para",
+          "page": 86,
+          "en": "One morning the busy doctor invited Sue into the hall.",
+          "my": "တစ်မနက်တွင် အလုပ်များနေသော ဆရာဝန်က ဆူးကို စင်္ကြံထဲသို့ ခေါ်လိုက်သည်။"
+        },
+        {
+          "id": "8-reading-text-7",
+          "t": "para",
+          "page": 86,
+          "en": "“She has about one chance in ten to live,” he said as he shook down the mercury in his clinical thermometer. “And that one chance depends upon her desire to get better. But our little friend has made up her mind that she is going to die. Is she worrying about something?”",
+          "my": "ဆရာဝန်က သာမိုမီတာထဲမှ ပြဒါးကို အောက်ကျအောင် ခါရင်း “သူ့မှာ အသက်ရှင်နိုင်ခြေ ဆယ်ပုံတစ်ပုံလောက် ရှိတယ်။ အဲဒီအခွင့်အရေးကလည်း ပြန်ကျန်းမာချင်တဲ့ သူ့ဆန္ဒပေါ် မူတည်တယ်။ ဒါပေမဲ့ သူငယ်မလေးက သူသေတော့မယ်လို့ စိတ်ဆုံးဖြတ်ထားပြီ။ တစ်ခုခုအတွက် စိတ်ပူနေတာလား” ဟု မေးသည်။"
+        },
+        {
+          "id": "8-reading-text-8",
+          "t": "para",
+          "page": 86,
+          "en": "“She wanted to paint a picture of the Bay of Naples some day,” said Sue.",
+          "my": "“တစ်နေ့နေ့မှာ နေပယ်လ်ပင်လယ်အော်ပုံ ဆွဲချင်ခဲ့တာပါ” ဟု ဆူးက ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-9",
+          "t": "para",
+          "page": 86,
+          "en": "“No, something more important — a man perhaps?”",
+          "my": "“အဲဒါမဟုတ်ဘူး၊ ပိုအရေးကြီးတာတစ်ခုခု—အမျိုးသားတစ်ယောက်အကြောင်းများလား။”"
+        },
+        {
+          "id": "8-reading-text-10",
+          "t": "para",
+          "page": 86,
+          "en": "“No.”",
+          "my": "“မဟုတ်ပါဘူး။”"
+        },
+        {
+          "id": "8-reading-text-11",
+          "t": "para",
+          "page": 86,
+          "en": "“Well, perhaps it is a result of her fever and her general physical weakness. But when a patient begins to feel sure that she is going to die then I subtract fifty percent from the power of medicines. If you can succeed in making her interested in something, in asking, for instance, about the latest styles in women’s clothes, then I can promise you one-to-five chance for her instead of one-to-ten.” After the doctor had gone, Sue went into her own room and cried. Later, trying not to show her sadness, she went into Johnsy’s room, whistling.",
+          "my": "“ကောင်းပြီ၊ အဖျားနဲ့ တစ်ကိုယ်လုံး အားနည်းနေတာကြောင့် ဖြစ်နိုင်တယ်။ ဒါပေမဲ့ လူနာတစ်ယောက်က ကိုယ်သေတော့မယ်လို့ သေချာယူဆလာရင် ဆေးရဲ့အစွမ်းကို ငါ ငါးဆယ်ရာခိုင်နှုန်း လျှော့တွက်ရတယ်။ သူ့ကို တစ်ခုခု စိတ်ဝင်စားလာအောင်၊ ဥပမာ အမျိုးသမီးအဝတ်အစား နောက်ဆုံးဖက်ရှင်တွေ မေးလာအောင် လုပ်နိုင်ရင် အသက်ရှင်နိုင်ခြေ ဆယ်ပုံတစ်ပုံအစား ငါးပုံတစ်ပုံရှိမယ်လို့ အာမခံနိုင်တယ်။” ဆရာဝန်ထွက်သွားပြီးနောက် ဆူးသည် ကိုယ့်အခန်းထဲဝင်၍ ငိုသည်။ နောက်တော့ ဝမ်းနည်းမှုကို မပြရန် ကြိုးစားလျက် လေချွန်ရင်း ဂျွန်စီ့အခန်းထဲ ဝင်သွားသည်။",
+          "pages": [
+            86,
+            87
+          ]
+        },
+        {
+          "id": "8-reading-text-12",
+          "t": "para",
+          "page": 87,
+          "en": "Johnsy lay under the bedclothes, with her face towards the window. Sue stopped whistling, thinking Johnsy was asleep. But soon Sue heard a low sound, several times repeated. Sue went quickly to the bedside. Johnsy’s eyes were wide open. She was looking out of the window, and counting backwards.",
+          "my": "ဂျွန်စီသည် စောင်အောက်တွင် ပြတင်းပေါက်ဘက် မျက်နှာမူ၍ လဲလျောင်းနေသည်။ ဂျွန်စီအိပ်ပျော်နေသည်ဟု ထင်၍ ဆူးက လေချွန်ခြင်းကို ရပ်လိုက်သည်။ သို့သော် မကြာမီ တိုးတိုးအသံတစ်ခု အကြိမ်ကြိမ် ထွက်လာသည်ကို ကြားရသည်။ ဆူးက ခုတင်ဘေးသို့ အမြန်သွားသည်။ ဂျွန်စီ၏ မျက်လုံးများသည် ကျယ်ကျယ်ပွင့်နေပြီး ပြတင်းပေါက်အပြင်ကို ကြည့်လျက် နောက်ပြန်ရေတွက်နေသည်။"
+        },
+        {
+          "id": "8-reading-text-13",
+          "t": "para",
+          "page": 87,
+          "en": "“Twelve,” she said, and a little later, “eleven,” and then “ten and nine” and then “eight” — “seven.”",
+          "my": "“ဆယ့်နှစ်” ဟု သူမပြောသည်။ နည်းနည်းကြာတော့ “ဆယ့်တစ်”၊ ထို့နောက် “ဆယ်နဲ့ ကိုး”၊ ပြီးတော့ “ရှစ်”၊ “ခုနစ်” ဟု ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-14",
+          "t": "h",
+          "page": 87,
+          "en": "PART II",
+          "my": "အပိုင်း ၂"
+        },
+        {
+          "id": "8-reading-text-15",
+          "t": "para",
+          "page": 87,
+          "en": "Sue looked out of the window. What was Johnsy counting? There was only a grey backyard and the blank wall of the opposite house. An old, old vine, dead at the roots, climbed halfway up the wall. The cold breath of autumn had blown almost all the leaves from the vine until its branches were almost bare.",
+          "my": "ဆူးသည် ပြတင်းပေါက်အပြင်ကို ကြည့်သည်။ ဂျွန်စီ ဘာကို ရေတွက်နေတာလဲ။ အပြင်တွင် မီးခိုးရောင်အိမ်နောက်ဖေးဝင်းနှင့် မျက်နှာချင်းဆိုင်အိမ်၏ ပြောင်နေသော နံရံသာရှိသည်။ အမြစ်များသေနေသော အလွန်အိုဟောင်းသည့် နွယ်ပင်တစ်ပင်သည် နံရံတစ်ဝက်အထိ တက်နေသည်။ ဆောင်းဦး၏ အေးမြသောလေက နွယ်ရွက်များကို လွင့်ကျစေသဖြင့် အကိုင်းများသည် အရွက်မဲ့လုနီးပါး ဖြစ်နေသည်။"
+        },
+        {
+          "id": "8-reading-text-16",
+          "t": "para",
+          "page": 87,
+          "en": "“What is it, dear?” asked Sue.",
+          "my": "“ဘာလဲ ချစ်သူငယ်ချင်းရယ်” ဟု ဆူးက မေးသည်။"
+        },
+        {
+          "id": "8-reading-text-17",
+          "t": "para",
+          "page": 87,
+          "en": "“Six,” said Johnsy very quietly. “They are falling faster now. Three days ago, there were almost a hundred. It makes my head ache to count them. But now it’s easy. There goes another one. There are only five left now.” “Five what, dear? Tell me!” said Sue.",
+          "my": "“ခြောက်” ဟု ဂျွန်စီက အလွန်တိုးတိုး ပြောသည်။ “အခု ပိုမြန်မြန်ကြွေနေပြီ။ လွန်ခဲ့တဲ့ သုံးရက်က တစ်ရာနီးပါး ရှိခဲ့တယ်။ အဲဒါတွေကို ရေတွက်ရတာ ခေါင်းကိုက်တယ်။ အခုတော့ လွယ်သွားပြီ။ နောက်တစ်ရွက် ကြွေပြန်ပြီ။ အခု ငါးရွက်ပဲ ကျန်တော့တယ်။” ဆူးက “ဘာငါးခုလဲ၊ ပြောပြပါဦး” ဟု မေးသည်။"
+        },
+        {
+          "id": "8-reading-text-18",
+          "t": "para",
+          "page": 87,
+          "en": "“Leaves. The leaves of that vine. When the last leaf of that vine falls, I must go too. I’ve known that for three days. Didn’t the doctor tell you?”",
+          "my": "“အရွက်တွေ။ ဟိုနွယ်ပင်က အရွက်တွေ။ အဲဒီနွယ်ပင်ရဲ့ နောက်ဆုံးအရွက်ကြွေရင် ငါလည်း သွားရတော့မယ်။ ဒါကို သိနေတာ သုံးရက်ရှိပြီ။ ဆရာဝန်က မပြောဘူးလား။”"
+        },
+        {
+          "id": "8-reading-text-19",
+          "t": "para",
+          "page": 87,
+          "en": "“The doctor didn’t say any such thing. That is pure foolishness,” said Sue. “What connection have those old leaves with your getting well? And you used to love that old vine so much. Please don’t be silly! The doctor told me this morning that your chances of getting well soon were excellent. Now try to take some of your soup and let me get back to work so that I can make money to buy you some good port wine.”",
+          "my": "“ဆရာဝန်က အဲဒီလို ဘာမှမပြောဘူး။ လုံးဝ မိုက်မဲတဲ့အတွေးပဲ” ဟု ဆူးက ပြောသည်။ “အဲဒီအရွက်ဟောင်းတွေနဲ့ နင်ပြန်ကျန်းမာတာ ဘာဆိုင်လို့လဲ။ နင် အဲဒီနွယ်ပင်ကို အရမ်းချစ်ခဲ့တာပဲ။ မမိုက်စမ်းပါနဲ့။ နင် မကြာခင် ပြန်ကောင်းနိုင်ခြေ အရမ်းကောင်းတယ်လို့ ဒီမနက် ဆရာဝန်ပြောတယ်။ အခု စွပ်ပြုတ်နည်းနည်း သောက်ကြည့်ပါ။ နင့်အတွက် ဝိုင်ကောင်းကောင်း ဝယ်ပေးဖို့ ပိုက်ဆံရအောင် ငါ အလုပ်ပြန်လုပ်ပါရစေ။”"
+        },
+        {
+          "id": "8-reading-text-20",
+          "t": "para",
+          "page": 87,
+          "en": "“There’s no use buying any more wine,” said Johnsy, keeping her eyes fixed on the blank wall of the house opposite. “There goes another leaf. That leaves just four. I want to see the last one fall before it gets dark. Then I’ll go too.”",
+          "my": "ဂျွန်စီက မျက်နှာချင်းဆိုင်အိမ်နံရံကို မျက်စိမလွှဲဘဲ ကြည့်ရင်း “ဝိုင်ထပ်ဝယ်လည်း အကျိုးမရှိပါဘူး။ နောက်တစ်ရွက် ကြွေပြန်ပြီ။ လေးရွက်ပဲ ကျန်တော့တယ်။ မှောင်မသွားခင် နောက်ဆုံးအရွက်ကြွေတာကို မြင်ချင်တယ်။ ပြီးရင် ငါလည်း သွားတော့မယ်” ဟု ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-21",
+          "t": "para",
+          "page": 87,
+          "en": "“Johnsy, dear,” said Sue, bending over her, “will you promise to keep your eyes closed and not look out of the window until I have finished working? I must deliver these drawings tomorrow. I need the light; otherwise I would pull down the curtain.”",
+          "my": "ဆူးသည် ဂျွန်စီ့အပေါ် ကိုင်းညွတ်၍ “ဂျွန်စီရယ်၊ ငါ အလုပ်ပြီးတဲ့အထိ မျက်လုံးမှိတ်ပြီး ပြတင်းပေါက်အပြင် မကြည့်ပါဘူးလို့ ကတိပေးမလား။ ဒီပုံတွေကို မနက်ဖြန် အပ်ရမယ်။ အလင်းရောင်လိုလို့ပါ။ မဟုတ်ရင် လိုက်ကာချလိုက်မှာ” ဟု ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-22",
+          "t": "para",
+          "page": 87,
+          "en": "“Can’t you draw in your room?” said Johnsy coldly.",
+          "my": "“နင့်အခန်းမှာ ဆွဲလို့မရဘူးလား” ဟု ဂျွန်စီက အေးစက်စက် ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-23",
+          "t": "para",
+          "page": 87,
+          "en": "“I’d rather stay here with you,” said Sue.",
+          "my": "“နင်နဲ့ ဒီမှာပဲ နေချင်တယ်” ဟု ဆူးက ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-24",
+          "t": "para",
+          "page": 87,
+          "en": "“Besides, I don’t want you to keep looking at those silly leaves.”",
+          "my": "“နောက်ပြီး အဲဒီ အဓိပ္ပာယ်မရှိတဲ့ အရွက်တွေကို နင် ဆက်ကြည့်နေတာ ငါ မလိုချင်ဘူး။”"
+        },
+        {
+          "id": "8-reading-text-25",
+          "t": "para",
+          "page": 88,
+          "en": "“Tell me as soon as you have finished,” said Johnsy, closing her eyes and lying white and still. “Because I want to see the last leaf fall. I’m tired of waiting. I’m tired of thinking.”",
+          "my": "ဂျွန်စီသည် မျက်လုံးမှိတ်၍ ဖြူဖျော့ငြိမ်သက်စွာ လဲလျောင်းရင်း “ပြီးတာနဲ့ ပြောပါ။ နောက်ဆုံးအရွက်ကြွေတာ မြင်ချင်လို့။ စောင့်ရတာ ပင်ပန်းပြီ။ စဉ်းစားရတာလည်း ပင်ပန်းပြီ” ဟု ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-26",
+          "t": "para",
+          "page": 88,
+          "en": "“Try to sleep,” said Sue a little later. “I must go downstairs for a minute to get Mr Behrman who is going to sit as my model. But I will be right back. And don’t move and also please promise me not to look out of the window.”",
+          "my": "ခဏကြာတော့ ဆူးက “အိပ်ကြည့်ပါ။ ငါ့အတွက် မော်ဒယ်ထိုင်ပေးမယ့် မစ္စတာဘားမန်းကို ခေါ်ဖို့ အောက်ထပ် ခဏဆင်းရမယ်။ ချက်ချင်းပြန်လာမယ်။ မလှုပ်နဲ့နော်၊ ပြတင်းပေါက်အပြင် မကြည့်ပါဘူးလို့လည်း ကတိပေးပါ” ဟု ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-27",
+          "t": "para",
+          "page": 88,
+          "en": "Old Mr Behrman was a painter who lived on the first floor beneath them. He was more than sixty years old. Behrman was a failure in art. He had always wanted to paint a masterpiece, but he had never yet begun to paint it. For many years he had painted nothing, except now and then something in the line of commercial or advertising work. He earned a little money by serving as a model for those young artists who could not pay the price for regular models. He drank much whisky and when he was drunk, he always talked about the great masterpiece he was going to paint. He was a fierce, intense little man who considered himself as a watch-dog and protector for the two young artists living above him, of whom he was very fond.",
+          "my": "မစ္စတာဘားမန်းသည် သူတို့အောက် ပထမထပ်တွင် နေသော ပန်းချီဆရာကြီးဖြစ်သည်။ အသက်ခြောက်ဆယ်ကျော်ပြီ။ ပန်းချီပညာတွင် မအောင်မြင်ခဲ့သူဖြစ်သည်။ လက်ရာမြောက်ပန်းချီတစ်ကား အမြဲဆွဲလိုခဲ့သော်လည်း မစတင်ဖြစ်ခဲ့ပေ။ နှစ်ပေါင်းများစွာ ရံဖန်ရံခါ စီးပွားရေး သို့မဟုတ် ကြော်ငြာပုံများမှလွဲ၍ ဘာပုံမှ မဆွဲခဲ့ပေ။ ပုံမှန်မော်ဒယ်ခ မတတ်နိုင်သော ပန်းချီဆရာလူငယ်များအတွက် မော်ဒယ်အဖြစ် နေပေးကာ ပိုက်ဆံနည်းနည်း ရှာသည်။ ဝီစကီအလွန်သောက်ပြီး မူးလာလျှင် မိမိဆွဲမည့် လက်ရာမြောက်ပန်းချီအကြောင်း အမြဲပြောသည်။ စိတ်ပြင်းထန်ပြီး ဒေါသကြီးသော လူကောင်ငယ်တစ်ဦးဖြစ်ကာ မိမိအပေါ်ထပ်ရှိ အလွန်ခင်မင်သော ပန်းချီဆရာမနှစ်ဦးအတွက် မိမိကိုယ်ကို စောင့်ရှောက်ကာကွယ်သူဟု သတ်မှတ်ထားသည်။"
+        },
+        {
+          "id": "8-reading-text-28",
+          "t": "h",
+          "page": 88,
+          "en": "PART III",
+          "my": "အပိုင်း ၃"
+        },
+        {
+          "id": "8-reading-text-29",
+          "t": "para",
+          "page": 88,
+          "en": "Sue found Behrman in his poorly-lighted studio. In one corner of the room stood a blank canvas which had been waiting for twenty-five years to receive the first line of the promised masterpiece. Sue told him of the strange idea which Johnsy had concerning the last leaf, and Sue said that she feared that Johnsy would really die when the last leaf fell.",
+          "my": "ဆူးသည် အလင်းရောင်မကောင်းသော အလုပ်ခန်းတွင် ဘားမန်းကို တွေ့သည်။ အခန်းထောင့်တစ်နေရာတွင် ကတိပြုထားသော လက်ရာမြောက်ပန်းချီ၏ ပထမဆုံးမျဉ်းကို စောင့်နေသည်မှာ နှစ်ဆယ့်ငါးနှစ်ရှိပြီဖြစ်သော ကင်းဗတ်ဗလာတစ်ချပ် ထောင်ထားသည်။ ဆူးက နောက်ဆုံးအရွက်နှင့် ပတ်သက်သည့် ဂျွန်စီ၏ ထူးဆန်းသောအတွေးကို ပြောပြပြီး အရွက်ကြွေချိန်တွင် ဂျွန်စီ တကယ်သေသွားမည်ကို ကြောက်ကြောင်း ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-30",
+          "t": "para",
+          "page": 88,
+          "en": "Old Behrman shouted, “Are there people in the world who are foolish enough to die simply because leaves fall from an old vine? I have never heard of such a thing. Why do you permit such silly ideas to come into her mind? Oh, that poor little Miss Johnsy.”",
+          "my": "ဘားမန်းကြီးက “နွယ်ပင်အိုတစ်ပင်က အရွက်ကြွေရုံနဲ့ သေရမယ်လို့ တွေးလောက်အောင် မိုက်မဲသူ ကမ္ဘာပေါ်မှာ ရှိသေးလား။ ဒီလိုမျိုး ကြားတောင်မကြားဖူးဘူး။ ဒီလိုအတွေးတွေ သူ့စိတ်ထဲ ဝင်လာအောင် ဘာလို့ ခွင့်ပြုတာလဲ။ သနားစရာ ဂျွန်စီလေးရယ်” ဟု အော်ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-31",
+          "t": "para",
+          "page": 88,
+          "en": "“She is very ill and very weak,” explained Sue, “and the fever has left her mind full of strange ideas.”",
+          "my": "ဆူးက “သူ အလွန်နေမကောင်းဖြစ်ပြီး အားလည်း အရမ်းနည်းနေတယ်။ အဖျားကြောင့် သူ့စိတ်ထဲ ထူးဆန်းတဲ့အတွေးတွေ ပြည့်နေတာပါ” ဟု ရှင်းပြသည်။"
+        },
+        {
+          "id": "8-reading-text-32",
+          "t": "para",
+          "page": 88,
+          "en": "Johnsy was sleeping when they both went upstairs. Sue pulled down the curtain and motioned to Behrman to go into the other room. There they looked out of the window fearfully at the vine. Then they looked at each other for a moment without speaking. A cold rain was falling, mixed with snow. Behrman took a seat and prepared himself to pose for Sue as a model.",
+          "my": "သူတို့နှစ်ယောက် အပေါ်တက်လာချိန်တွင် ဂျွန်စီ အိပ်ပျော်နေသည်။ ဆူးက လိုက်ကာချ၍ အခြားအခန်းထဲသို့ ဝင်ရန် ဘားမန်းကို အမူအရာပြသည်။ ထိုအခန်းတွင် သူတို့သည် ပြတင်းပေါက်မှ နွယ်ပင်ကို စိုးရိမ်စိတ်ဖြင့် ကြည့်ကြသည်။ ထို့နောက် စကားမပြောဘဲ အချင်းချင်း ခဏကြည့်ကြသည်။ နှင်းနှင့်ရောသော အေးစက်သည့်မိုး ရွာနေသည်။ ဘားမန်းသည် ထိုင်ခုံတွင် ထိုင်ကာ ဆူး၏မော်ဒယ်အဖြစ် နေပေးရန် ပြင်ဆင်သည်။"
+        },
+        {
+          "id": "8-reading-text-33",
+          "t": "para",
+          "page": 88,
+          "en": "When Sue woke up the next morning, she found Johnsy with dull, wide open eyes, looking at the window.",
+          "my": "နောက်မနက် ဆူးနိုးလာသောအခါ ဂျွန်စီသည် အရောင်မတောက်သော မျက်လုံးများကို ကျယ်ကျယ်ဖွင့်လျက် ပြတင်းပေါက်ကို ကြည့်နေသည်။"
+        },
+        {
+          "id": "8-reading-text-34",
+          "t": "para",
+          "page": 88,
+          "en": "“Put up the curtain. I want to see,” Johnsy said quietly. Sue obeyed.",
+          "my": "ဂျွန်စီက “လိုက်ကာတင်ပေးပါ။ ကြည့်ချင်တယ်” ဟု တိုးတိုးပြောသည်။ ဆူးက လုပ်ပေးလိုက်သည်။"
+        },
+        {
+          "id": "8-reading-text-35",
+          "t": "para",
+          "page": 88,
+          "en": "But, oh, after the heavy rain and the strong wind, one leaf was still hanging on the vine. The last leaf. Still dark green, it hung from a branch some twenty feet above the ground.",
+          "my": "သို့သော် မိုးသည်းပြီး လေပြင်းတိုက်ပြီးသည့်နောက် နွယ်ပင်ပေါ်တွင် အရွက်တစ်ရွက် ကျန်နေသေးသည်။ နောက်ဆုံးအရွက်ဖြစ်သည်။ အစိမ်းရင့်ရောင် ရှိနေဆဲဖြစ်ပြီး မြေပြင်မှ ပေနှစ်ဆယ်ခန့်အမြင့်ရှိ အကိုင်းတစ်ခုမှ တွဲလောင်းကျနေသည်။",
+          "pages": [
+            88,
+            89
+          ]
+        },
+        {
+          "id": "8-reading-text-36",
+          "t": "para",
+          "page": 89,
+          "en": "“It is the last one,” said Johnsy. “I thought it would surely fall during the night. I heard the wind and the rain. It will fall today and I shall die at the same time.”",
+          "my": "ဂျွန်စီက “အဲဒါ နောက်ဆုံးအရွက်ပဲ။ ညက သေချာပေါက် ကြွေမယ်လို့ ထင်ခဲ့တာ။ လေနဲ့မိုးသံကို ကြားတယ်။ ဒီနေ့တော့ ကြွေမယ်၊ ငါလည်း တစ်ချိန်တည်း သေမယ်” ဟု ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-37",
+          "t": "para",
+          "page": 89,
+          "en": "“Dear Johnsy,” said Sue, placing her face close to Johnsy’s on the pillow. “Think of me if you won’t think of yourself. What shall I do?”",
+          "my": "ဆူးက ခေါင်းအုံးပေါ်ရှိ ဂျွန်စီ့မျက်နှာအနီး မိမိမျက်နှာကို ကပ်၍ “ဂျွန်စီရယ်၊ ကိုယ့်ကိုယ်ကို မစဉ်းစားချင်ရင် ငါ့ကို စဉ်းစားပေးပါ။ ငါ ဘာလုပ်ရမလဲ” ဟု ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-38",
+          "t": "para",
+          "page": 89,
+          "en": "The day passed slowly, and even through the growing darkness of the evening they could see the lone leaf still hanging from the branch against the wall. And then, with the coming of the night, the wind began to blow again, and the rain began to fall heavily.",
+          "my": "နေ့သည် ဖြည်းဖြည်းချင်း ကုန်သွားသည်။ ညနေမှောင်ရိပ် တိုးလာသော်လည်း နံရံနောက်ခံနှင့် အကိုင်းပေါ်တွင် တစ်ရွက်တည်း ကျန်နေသော အရွက်ကို မြင်နေရဆဲဖြစ်သည်။ ညရောက်လာသည့်အခါ လေပြန်တိုက်၍ မိုးလည်း သည်းထန်စွာ ပြန်ရွာလာသည်။"
+        },
+        {
+          "id": "8-reading-text-39",
+          "t": "para",
+          "page": 89,
+          "en": "But the next morning when Johnsy commanded that the curtain be raised again, the leaf was still there.",
+          "my": "သို့သော် နောက်မနက် ဂျွန်စီက လိုက်ကာပြန်တင်ခိုင်းသောအခါ အရွက်သည် ထိုနေရာတွင် ရှိနေဆဲဖြစ်သည်။"
+        },
+        {
+          "id": "8-reading-text-40",
+          "t": "para",
+          "page": 89,
+          "en": "Johnsy lay for a long time looking at it. And then she called to Sue.",
+          "my": "ဂျွန်စီသည် အရွက်ကို အချိန်ကြာကြာ ကြည့်ရင်း လဲလျောင်းနေသည်။ ထို့နောက် ဆူးကို ခေါ်လိုက်သည်။"
+        },
+        {
+          "id": "8-reading-text-41",
+          "t": "para",
+          "page": 89,
+          "en": "“I’ve been a bad girl, Sue,” said Johnsy. “Something has made the last leaf stay there just to show me how bad I was. It was a sin to want to die. You may bring me a little soup now — and then put some pillows behind me and I will sit up and watch you cook.”",
+          "my": "“ဆူးရယ်၊ ငါ မကောင်းတဲ့ကောင်မလေး ဖြစ်ခဲ့တယ်။ ငါ ဘယ်လောက်မကောင်းခဲ့သလဲဆိုတာ ပြဖို့ တစ်စုံတစ်ရာက နောက်ဆုံးအရွက်ကို အဲဒီမှာ နေစေခဲ့တယ်။ သေချင်တာ အပြစ်ရှိတဲ့အတွေးပဲ။ အခု စွပ်ပြုတ်နည်းနည်း ယူလာပေးပါ။ ပြီးရင် ငါ့နောက်မှာ ခေါင်းအုံးနည်းနည်း ခံပေးပါ။ ထိုင်ပြီး နင်ချက်တာ ကြည့်မယ်” ဟု ဂျွန်စီက ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-42",
+          "t": "para",
+          "page": 89,
+          "en": "An hour later Johnsy said, “Sue, some day I want to paint a picture of the Bay of Naples.”",
+          "my": "တစ်နာရီကြာပြီးနောက် ဂျွန်စီက “ဆူးရေ၊ တစ်နေ့နေ့မှာ နေပယ်လ်ပင်လယ်အော်ပုံ ဆွဲချင်တယ်” ဟု ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-43",
+          "t": "para",
+          "page": 89,
+          "en": "The doctor came in the afternoon. “You are doing fine,” he said, taking Johnsy’s thin hand in his. “In another week or so you will be perfectly well. And now I must go to see another patient downstairs. His name is Behrman. He is some kind of artist, I believe. Pneumonia, too. He is an old, weak man, and the attack is very severe. There is no hope for him, but I am sending him to the hospital in order to make him more comfortable.”",
+          "my": "နေ့လယ်တွင် ဆရာဝန်ရောက်လာသည်။ ဂျွန်စီ၏ ပိန်သောလက်ကို ကိုင်ကာ “ကောင်းလာပြီ။ နောက်တစ်ပတ်လောက်ဆို လုံးဝကျန်းမာတော့မယ်။ အခု အောက်ထပ်က လူနာတစ်ယောက်ကို သွားကြည့်ရဦးမယ်။ ဘားမန်းလို့ ခေါ်တယ်။ အနုပညာရှင်တစ်ဦးလို့ ထင်တယ်။ သူလည်း အဆုတ်ရောင်ပဲ။ အိုပြီး အားနည်းတယ်၊ ရောဂါဒဏ်လည်း အလွန်ပြင်းတယ်။ မျှော်လင့်ချက် မရှိတော့ဘူး။ ဒါပေမဲ့ ပိုသက်သာအောင် ဆေးရုံပို့မယ်” ဟု ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-44",
+          "t": "para",
+          "page": 89,
+          "en": "The next day, Sue came to the bed where Johnsy lay. “The doctor tells me that soon you will be perfectly well again,” Sue said, putting her arm around Johnsy. Johnsy smiled at her happily.",
+          "my": "နောက်နေ့တွင် ဆူးသည် ဂျွန်စီလဲနေသော ခုတင်နားသို့ လာသည်။ ဂျွန်စီကို ဖက်ရင်း “မကြာခင် နင် လုံးဝပြန်ကျန်းမာတော့မယ်လို့ ဆရာဝန်က ပြောတယ်” ဟု ဆူးက ဆိုသည်။ ဂျွန်စီက သူမကို ဝမ်းသာစွာ ပြုံးပြသည်။"
+        },
+        {
+          "id": "8-reading-text-45",
+          "t": "para",
+          "page": 89,
+          "en": "“Isn’t it wonderful?” Sue continued. “But now I have something important to tell you. Old Mr Behrman died in the hospital this morning of pneumonia. He was sick only two days. They found him in his room the morning of the first day helpless with pain and fever. His shoes and clothing were completely wet and icy cold. They couldn’t figure out where he had been on such a terrible night. And then they found a lantern, still lighted, a ladder, and some other things which showed that, during the wind and the rain, he had climbed up and painted a green leaf on the wall of the house opposite. Didn’t you think it was strange that the leaf never moved when the wind blew? Ah, darling, it was Behrman’s real masterpiece, — he painted it there the night that the last leaf fell.”",
+          "my": "ဆူးက “အံ့ဩဖို့ မကောင်းဘူးလား။ ဒါပေမဲ့ အရေးကြီးတာတစ်ခု ပြောစရာရှိတယ်။ ဘားမန်းကြီး ဒီမနက် ဆေးရုံမှာ အဆုတ်ရောင်နဲ့ ဆုံးသွားပြီ။ နှစ်ရက်ပဲ နေမကောင်းဖြစ်ခဲ့တာ။ ပထမနေ့မနက် သူ့အခန်းမှာ အဖျားနဲ့ နာကျင်မှုကြောင့် မလှုပ်ရှားနိုင်တာ တွေ့ကြတယ်။ ဖိနပ်နဲ့ အဝတ်တွေက လုံးဝစိုပြီး ရေခဲလို အေးနေတယ်။ အဲဒီလောက် ဆိုးတဲ့ညမှာ ဘယ်သွားခဲ့သလဲ မသိကြဘူး။ နောက်တော့ မီးလင်းနေဆဲ မီးအိမ်တစ်လုံး၊ လှေကားတစ်စင်းနဲ့ တခြားပစ္စည်းတွေကို တွေ့တယ်။ အဲဒါတွေက မိုးလေထဲမှာ သူ တက်ပြီး မျက်နှာချင်းဆိုင်အိမ်နံရံပေါ် သစ်ရွက်စိမ်းတစ်ရွက် ဆွဲခဲ့တာကို ဖော်ပြနေတယ်။ လေတိုက်လည်း အရွက်လုံးဝမလှုပ်တာ ထူးဆန်းတယ်လို့ မထင်မိဘူးလား။ ချစ်သူငယ်ချင်းရယ်၊ အဲဒါ ဘားမန်းရဲ့ တကယ့်လက်ရာမြောက်ပန်းချီပဲ။ တကယ့်နောက်ဆုံးအရွက်ကြွေတဲ့ညက အဲဒီမှာ သူဆွဲထားခဲ့တာ” ဟု ဆက်ပြောသည်။"
+        },
+        {
+          "id": "8-reading-text-46",
+          "t": "para",
+          "page": 89,
+          "en": "O. Henry",
+          "my": "အို ဟင်နရီ"
+        },
+        {
+          "id": "8-reading-text-47",
+          "t": "h",
+          "page": 90,
+          "en": "Glossary",
+          "my": "ဝေါဟာရအဘိဓာန်"
+        },
+        {
+          "id": "8-reading-text-48",
+          "t": "para",
+          "page": 90,
+          "en": "bohemian — living in a very informal or relaxed way without following accepted rules of behaviour",
+          "my": "စံသတ်မှတ်ထားသည့် အပြုအမူစည်းမျဉ်းများကို မလိုက်ဘဲ လွတ်လပ်ပေါ့ပါးစွာ နေထိုင်သော။"
+        },
+        {
+          "id": "8-reading-text-49",
+          "t": "para",
+          "page": 90,
+          "en": "figure out — work out; think about a problem or situation until you understand what has happened",
+          "my": "ပြဿနာ သို့မဟုတ် အခြေအနေကို နားလည်သည်အထိ စဉ်းစားအဖြေရှာသည်။"
+        },
+        {
+          "id": "8-reading-text-50",
+          "t": "para",
+          "page": 90,
+          "en": "masterpiece — a work of art such as a painting / film / movie / book, etc. that is an excellent or the best example of the artist’s work",
+          "my": "ပန်းချီ၊ ရုပ်ရှင်၊ စာအုပ် စသည့် အနုပညာရှင်၏ အကောင်းဆုံး သို့မဟုတ် ထူးချွန်သော လက်ရာ။"
+        },
+        {
+          "id": "8-reading-text-51",
+          "t": "para",
+          "page": 90,
+          "en": "pneumonia — a serious illness affecting one or both lungs that makes breathing difficult",
+          "my": "အဆုတ်တစ်ဖက် သို့မဟုတ် နှစ်ဖက်လုံးကို ထိခိုက်ကာ အသက်ရှူရခက်စေသော ပြင်းထန်သည့် အဆုတ်ရောင်ရောဂါ။"
+        },
+        {
+          "id": "8-reading-text-52",
+          "t": "para",
+          "page": 90,
+          "en": "port wine — a strong sweet wine, usually dark red, that is made in Portugal, usually drunk at the end of the meal",
+          "my": "ပေါ်တူဂီနိုင်ငံထုတ် အရောင်ရင့်နီပြီး အရက်ပြင်းသည့် ဝိုင်ချို။ အများအားဖြင့် အစာစားပြီးချိန် သောက်သည်။"
+        },
+        {
+          "id": "8-reading-text-53",
+          "t": "para",
+          "page": 90,
+          "en": "vine — any climbing plant with long thin stems",
+          "my": "ပင်စည်ရှည်သွယ်ပြီး တွယ်တက်သော နွယ်ပင်တစ်မျိုးမျိုး။"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "8-vocabulary-text-1",
+          "t": "h",
+          "page": 91,
+          "en": "Make and do",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "8-vocabulary-text-2",
+          "t": "para",
+          "page": 91,
+          "en": "“Make” means “create or prepare something”.",
+          "my": "တစ်ခုခုကို ဖန်တီးခြင်း သို့မဟုတ် ပြင်ဆင်ခြင်း။"
+        },
+        {
+          "id": "8-vocabulary-text-3",
+          "t": "para",
+          "page": 91,
+          "en": "“Do” means “perform an activity or a task”.",
+          "my": "အလုပ် သို့မဟုတ် လှုပ်ရှားမှုတစ်ခုကို လုပ်ဆောင်ခြင်း။"
+        },
+        {
+          "id": "8-vocabulary-text-4",
+          "t": "para",
+          "page": 91,
+          "en": "Sometimes they can be used interchangeably.",
+          "my": "တစ်ခါတစ်ရံ အစားထိုးသုံးနိုင်သည်။"
+        },
+        {
+          "id": "8-vocabulary-text-5",
+          "t": "para",
+          "page": 92,
+          "en": "The two artists had recently come to New York to make their living.",
+          "my": "ပန်းချီဆရာနှစ်ဦးသည် အသက်မွေးဝမ်းကျောင်းရန် နယူးယောက်သို့ မကြာသေးမီက ရောက်လာခဲ့သည်။"
+        },
+        {
+          "id": "8-vocabulary-text-6",
+          "t": "para",
+          "page": 92,
+          "en": "What are you doing? I’m making an omelette.",
+          "my": "ဘာလုပ်နေတာလဲ။ ကြက်ဥအုပ်ကြော် လုပ်နေတယ်။"
+        },
+        {
+          "id": "8-vocabulary-text-7",
+          "t": "para",
+          "page": 92,
+          "en": "What does he do for a living? He makes toys.",
+          "my": "သူ ဘာအလုပ်နဲ့ အသက်မွေးသလဲ။ အရုပ်တွေ လုပ်တယ်။"
+        },
+        {
+          "id": "8-vocabulary-text-8",
+          "t": "para",
+          "page": 92,
+          "en": "I’ll make/do the beds this morning, if you like.",
+          "my": "လိုချင်ရင် ဒီမနက် အိပ်ရာတွေ ငါသိမ်းပေးမယ်။"
+        },
+        {
+          "id": "8-vocabulary-text-9",
+          "t": "para",
+          "page": 92,
+          "en": "“Make” and “do” go with particular nouns and they are used in fixed phrases. e.g. make mistakes, do wrong.",
+          "my": "သတ်မှတ်နာမ်များနှင့် တွဲသုံးရသော စကားစုများ ဖြစ်သည်။ အမှားလုပ်သည်၊ မကောင်းမှုလုပ်သည်။"
+        },
+        {
+          "id": "8-vocabulary-text-10",
+          "t": "para",
+          "page": 92,
+          "en": "1. make an agreement · 2. do justice",
+          "my": "မူရင်းဖြည့်ပြီးသား ဥပမာများ—သဘောတူညီချက်ချသည်၊ တရားမျှတစွာ ဆောင်ရွက်သည်။"
+        }
+      ],
+      "grammar": [
+        {
+          "id": "8-grammar-text-1",
+          "t": "h",
+          "page": 93,
+          "en": "Reported Speech",
+          "my": "တစ်ဆင့်ပြန်ပြောသောစကား"
+        },
+        {
+          "id": "8-grammar-text-2",
+          "t": "para",
+          "page": 93,
+          "en": "‘Reported speech’, also called ‘indirect speech’, is used to report what someone has said or thought. No quotation marks are used.",
+          "my": "တစ်ဦးဦးပြောခဲ့သည့် သို့မဟုတ် တွေးခဲ့သည့်အရာကို ပြန်ပြောရန် သုံးသည်။ စကားပြောအဖွင့်အပိတ် သင်္ကေတများ မသုံးပါ။"
+        },
+        {
+          "id": "8-grammar-text-3",
+          "t": "para",
+          "page": 93,
+          "en": "If the reporting verb is in the present, the tense of the sentence does not change. The present tense is retained when the reported sentence deals with a general truth.",
+          "my": "ပြန်ပြောသည့်ကြိယာက ပစ္စုပ္ပန်ဖြစ်လျှင် ဝါကျကာလ မပြောင်းပါ။ ယေဘုယျအမှန်တရားကို ပြောလျှင်လည်း ပစ္စုပ္ပန်ကာလကို ဆက်ထားသည်။"
+        },
+        {
+          "id": "8-grammar-text-4",
+          "t": "para",
+          "page": 93,
+          "en": "If the reporting verb is in the past, the tense of the verb in the reported clause is changed as follows:",
+          "my": "ပြန်ပြောသည့်ကြိယာက အတိတ်ဖြစ်လျှင် နောက်ဝါကျရှိ ကြိယာကာလကို အောက်ပါအတိုင်း ပြောင်းသည်။"
+        },
+        {
+          "id": "8-grammar-text-5",
+          "t": "para",
+          "page": 93,
+          "en": "simple present → simple past",
+          "my": "ရိုးရိုးပစ္စုပ္ပန်မှ ရိုးရိုးအတိတ်သို့။"
+        },
+        {
+          "id": "8-grammar-text-6",
+          "t": "para",
+          "page": 93,
+          "en": "present continuous → past continuous",
+          "my": "ပစ္စုပ္ပန်ဆက်လက်မှ အတိတ်ဆက်လက်သို့။"
+        },
+        {
+          "id": "8-grammar-text-7",
+          "t": "para",
+          "page": 93,
+          "en": "present perfect → past perfect",
+          "my": "ပစ္စုပ္ပန်ပြီးစီးမှ အတိတ်ပြီးစီးသို့။"
+        },
+        {
+          "id": "8-grammar-text-8",
+          "t": "para",
+          "page": 93,
+          "en": "simple past → past perfect",
+          "my": "ရိုးရိုးအတိတ်မှ အတိတ်ပြီးစီးသို့။"
+        },
+        {
+          "id": "8-grammar-text-9",
+          "t": "para",
+          "page": 93,
+          "en": "past continuous → past perfect continuous",
+          "my": "အတိတ်ဆက်လက်မှ အတိတ်ပြီးစီးဆက်လက်သို့။"
+        },
+        {
+          "id": "8-grammar-text-10",
+          "t": "para",
+          "page": 93,
+          "en": "future tenses → future conditional tenses",
+          "my": "အနာဂတ်ကာလများမှ အနာဂတ်အခြေအနေပြကာလများသို့။"
+        },
+        {
+          "id": "8-grammar-text-11",
+          "t": "para",
+          "page": 93,
+          "en": "‘shall’ with a future reference → would; ‘shall’ in ‘offers’ and ‘suggestions’ → should",
+          "my": "အနာဂတ်ကို ရည်ညွှန်းသည့် အသုံးကို ပထမပုံစံ၊ ကမ်းလှမ်းအကြံပြုသည့် အသုံးကို ဒုတိယပုံစံသို့ ပြောင်းသည်။"
+        },
+        {
+          "id": "8-grammar-text-12",
+          "t": "para",
+          "page": 93,
+          "en": "‘must’ that shows necessity in the present → had to; ‘must’ that shows necessity in the future → would have to",
+          "my": "ပစ္စုပ္ပန်လိုအပ်ချက်နှင့် အနာဂတ်လိုအပ်ချက်တို့ကို ဖော်ပြသည့်ပုံစံများ ကွဲပြားစွာ ပြောင်းသည်။"
+        },
+        {
+          "id": "8-grammar-text-13",
+          "t": "para",
+          "page": 94,
+          "en": "When changing the direct speech to the reported speech, adverbs of time and place are changed as follows:",
+          "my": "တိုက်ရိုက်စကားမှ တစ်ဆင့်ပြန်ပြောရာတွင် အချိန်နှင့်နေရာပြ စကားများကို အောက်ပါအတိုင်း ပြောင်းသည်။"
+        },
+        {
+          "id": "8-grammar-text-14",
+          "t": "para",
+          "page": 94,
+          "en": "here → there; this → that; these → those; now → then",
+          "my": "ဒီနေရာမှ ဟိုနေရာ၊ ဤအရာမှ ထိုအရာ၊ ဤအရာများမှ ထိုအရာများ၊ ယခုမှ ထိုအချိန်သို့။"
+        },
+        {
+          "id": "8-grammar-text-15",
+          "t": "para",
+          "page": 94,
+          "en": "today → that day; tonight → that night; yesterday → the day before / the previous day",
+          "my": "ဒီနေ့မှ ထိုနေ့၊ ဒီညမှ ထိုည၊ မနေ့ကမှ ထိုနေ့မတိုင်မီနေ့သို့။"
+        },
+        {
+          "id": "8-grammar-text-16",
+          "t": "para",
+          "page": 94,
+          "en": "ago → before; tomorrow → the next day / the following day; next month / year → the following month / year",
+          "my": "လွန်ခဲ့သောမှ မတိုင်မီ၊ မနက်ဖြန်မှ နောက်နေ့၊ နောက်လ/နှစ်မှ နောက်တစ်လ/နှစ်သို့။"
+        },
+        {
+          "id": "8-grammar-text-17",
+          "t": "para",
+          "page": 94,
+          "en": "To introduce the reported clause in statements, ‘that’ is used. Johnsy said to Sue, “I want to paint the picture of the Bay of Naples one day.” → Johnsy told Sue that she wanted to paint the picture of the Bay of Naples one day.",
+          "my": "ဖော်ပြဝါကျကို ပြန်ပြောရာတွင် ဆက်စပ်စကားထည့်သုံးသည်။ “တစ်နေ့မှာ နေပယ်လ်ပင်လယ်အော်ပုံ ဆွဲချင်တယ်” ဟု ဂျွန်စီက ဆူးကို ပြောခဲ့ခြင်းကို ပြန်ဖော်ပြထားသည်။"
+        },
+        {
+          "id": "8-grammar-text-18",
+          "t": "para",
+          "page": 94,
+          "en": "To introduce the reported clause in Wh-questions, the question words are retained. Sue said to Johnsy, “What shall I do?” → Sue asked Johnsy what she should do.",
+          "my": "မေးခွန်းစကားလုံးပါသော မေးခွန်းတွင် ထိုစကားလုံးကို ဆက်ထားသည်။ “ငါ ဘာလုပ်ရမလဲ” ဟု ဆူးက ဂျွန်စီကို မေးခြင်းဖြစ်သည်။"
+        },
+        {
+          "id": "8-grammar-text-19",
+          "t": "para",
+          "page": 94,
+          "en": "To introduce the reported clause in Yes / No questions, ‘if / whether’ is used. “Can’t you draw in your room?” said Johnsy to Sue. → Johnsy asked Sue if / whether she couldn’t draw in her room.",
+          "my": "ဟုတ်/မဟုတ် မေးခွန်းတွင် ဖြစ်သလား မဖြစ်ဘူးလားဟူသည့် ဆက်စပ်စကားကို သုံးသည်။ ဂျွန်စီက ဆူးကို ကိုယ့်အခန်းတွင် ပန်းချီမဆွဲနိုင်ဘူးလားဟု မေးခြင်းဖြစ်သည်။"
+        },
+        {
+          "id": "8-grammar-text-20",
+          "t": "para",
+          "page": 94,
+          "en": "The questions in the reported speech must be changed to statements. “What connection have those old leaves with your getting well?” said Sue to Johnsy. → Sue asked Johnsy what connection those old leaves had with her getting well.",
+          "my": "ပြန်ပြောသောမေးခွန်းကို ဖော်ပြဝါကျအစီအစဉ်သို့ ပြောင်းရသည်။ ဆူးက အရွက်ဟောင်းများနှင့် ဂျွန်စီပြန်ကျန်းမာခြင်း မည်သို့ဆက်စပ်သလဲဟု မေးခဲ့သည်။"
+        },
+        {
+          "id": "8-grammar-text-21",
+          "t": "para",
+          "page": 94,
+          "en": "To introduce the reported clause in commands and requests, ‘to infinitive / not to infinitive’ is used. Sue said to Johnsy, “Don’t move and please promise me not to look out of the window.” → Sue told Johnsy not to move and to promise her not to look out of the window.",
+          "my": "အမိန့်နှင့် တောင်းဆိုချက်များတွင် လုပ်ရန်/မလုပ်ရန် ပုံစံကို သုံးသည်။ ဆူးက ဂျွန်စီကို မလှုပ်ရန်နှင့် ပြတင်းပေါက်အပြင် မကြည့်ရန် ကတိပေးခိုင်းခဲ့သည်။"
+        },
+        {
+          "id": "8-grammar-text-22",
+          "t": "h",
+          "page": 95,
+          "en": "Direct speech · Printed examples",
+          "my": "တိုက်ရိုက်စကား ပြန်ပြောင်းသည့် မူရင်းဥပမာများ"
+        },
+        {
+          "id": "8-grammar-text-23",
+          "t": "para",
+          "page": 95,
+          "en": "(a) Sue said that she feared that Johnsy would really die when the last leaf fell. → Sue said, “I fear that Johnsy will really die when the last leaf falls.”",
+          "my": "နောက်ဆုံးအရွက်ကြွေလျှင် ဂျွန်စီ တကယ်သေမည်ကို ကြောက်ကြောင်း ဆူးက ပြောခဲ့သည်။ → ဆူးက “နောက်ဆုံးအရွက်ကြွေရင် ဂျွန်စီ တကယ်သေသွားမှာ ငါကြောက်တယ်” ဟု ပြောသည်။"
+        },
+        {
+          "id": "8-grammar-text-24",
+          "t": "para",
+          "page": 95,
+          "en": "(b) The lady asked him why he was standing at the door of her house. → The lady said to him, “Why are you standing at the door of my house?”",
+          "my": "အမျိုးသမီးက သူမအိမ်တံခါးဝတွင် သူ ဘာကြောင့်ရပ်နေသလဲဟု မေးသည်။ → “ကျွန်မအိမ်တံခါးဝမှာ ဘာကြောင့်ရပ်နေတာလဲ” ဟု သူ့ကို မေးသည်။"
+        },
+        {
+          "id": "8-grammar-text-25",
+          "t": "para",
+          "page": 95,
+          "en": "(c) Nay Zaw asked Hnin Lei if / whether she liked to draw portraits or landscapes. → Nay Zaw said to Hnin Lei, “Do you like to draw portraits or landscapes?”",
+          "my": "နေဇော်က နှင်းလဲ့ကို လူပုံနှင့် ရှုခင်းပုံ မည်သည့်ပုံဆွဲရခြင်းကို ကြိုက်သလဲဟု မေးသည်။ → “လူပုံလား၊ ရှုခင်းပုံလား၊ ဘယ်ဟာဆွဲရတာ ကြိုက်လဲ” ဟု မေးသည်။"
+        },
+        {
+          "id": "8-grammar-text-26",
+          "t": "para",
+          "page": 95,
+          "en": "(d) Swe Swe told me to knock on the door before I came in. → Swe Swe said to me, “Please knock on the door before you come in.”",
+          "my": "ဆွေဆွေက အထဲမဝင်မီ တံခါးခေါက်ရန် ပြောသည်။ → “အထဲမဝင်ခင် တံခါးခေါက်ပါ” ဟု ကျွန်ုပ်ကို ပြောသည်။"
+        }
+      ],
+      "listening": [
+        {
+          "id": "8-listening-text-1",
+          "t": "h",
+          "page": 96,
+          "en": "A. Listen to the dialogue between two friends and complete the sentences.",
+          "my": "သူငယ်ချင်းနှစ်ဦး၏ စကားပြောကို နားထောင်ပြီး ကွက်လပ်များကို ဖြည့်ပါ။"
+        },
+        {
+          "id": "8-listening-text-2",
+          "t": "para",
+          "page": 96,
+          "en": "A: Ni Mar, do you like the short story “The Last Leaf”?",
+          "my": "နီမာရေ၊ နောက်ဆုံးသစ်ရွက် ဝတ္ထုတိုကို ကြိုက်သလား။"
+        },
+        {
+          "id": "8-listening-text-3",
+          "t": "para",
+          "page": 96,
+          "en": "B: Of course. I like the (1) ______ of the story, Sue, Johnsy and Behrman.",
+          "my": "ကြိုက်တာပေါ့။ ဆူး၊ ဂျွန်စီနဲ့ ဘားမန်းဆိုတဲ့ ဇာတ်လမ်းရဲ့ (၁) ______ ကို ကြိုက်တယ်။"
+        },
+        {
+          "id": "8-listening-text-4",
+          "t": "para",
+          "page": 96,
+          "en": "A: What do you think the (2) ______ of the story is?",
+          "my": "ဇာတ်လမ်းရဲ့ (၂) ______ က ဘာလို့ ထင်သလဲ။"
+        },
+        {
+          "id": "8-listening-text-5",
+          "t": "para",
+          "page": 96,
+          "en": "B: I think it’s about (3) ______. The characters share similar passions. All of them are (4) ______ and they love art. And when Johnsy (5) ______, Sue manages all her care. She also encourages her to think positively.",
+          "my": "(၃) ______ အကြောင်းလို့ ထင်တယ်။ ဇာတ်ကောင်တွေမှာ ဝါသနာတူကြတယ်။ အားလုံးက (၄) ______ တွေဖြစ်ပြီး အနုပညာကို ချစ်ကြတယ်။ ဂျွန်စီ (၅) ______ တဲ့အခါ ဆူးက ပြုစုစောင့်ရှောက်မှု အားလုံးကို စီစဉ်တယ်။ အပြုသဘောတွေးဖို့လည်း အားပေးတယ်။"
+        },
+        {
+          "id": "8-listening-text-6",
+          "t": "para",
+          "page": 96,
+          "en": "A: Mr Behrman helps Johnsy (6) ______, too. He takes the risk of falling ill — he paints a green leaf on the wall opposite in the heavy rain. That’s why I think the theme of the story is selfless sacrifice.",
+          "my": "ဘားမန်းကလည်း ဂျွန်စီကို (၆) ______ ဖို့ ကူညီတယ်။ မိုးသည်းထဲမှာ မျက်နှာချင်းဆိုင်နံရံပေါ် အရွက်စိမ်းပုံဆွဲပြီး နေမကောင်းဖြစ်နိုင်ခြေကို ခံယူခဲ့တယ်။ ဒါကြောင့် အဓိကအကြောင်းအရာက ကိုယ်ကျိုးမဖက် အနစ်နာခံခြင်းလို့ ထင်တယ်။"
+        },
+        {
+          "id": "8-listening-text-7",
+          "t": "para",
+          "page": 96,
+          "en": "B: Hmm, you’re right. Sue is also willing to (7) ______ her wishes and time for her friend.",
+          "my": "အင်း၊ မှန်တယ်။ ဆူးကလည်း သူငယ်ချင်းအတွက် ကိုယ့်ဆန္ဒနဲ့ အချိန်ကို (၇) ______ ဖို့ အသင့်ရှိတယ်။"
+        },
+        {
+          "id": "8-listening-text-8",
+          "t": "para",
+          "page": 96,
+          "en": "A: Yes, it proves that (8) ______ and kindness is more valuable than expensive material possessions.",
+          "my": "ဟုတ်တယ်၊ (၈) ______ နဲ့ ကြင်နာမှုက ဈေးကြီးတဲ့ ပစ္စည်းဥစ္စာတွေထက် တန်ဖိုးရှိကြောင်း ပြတယ်။"
+        },
+        {
+          "id": "8-listening-text-9",
+          "t": "para",
+          "page": 96,
+          "en": "B: Ah, I agree with you.",
+          "my": "အင်း၊ မင်းနဲ့ သဘောတူတယ်။"
+        }
+      ],
+      "speaking": [
+        {
+          "id": "8-speaking-text-1",
+          "t": "para",
+          "page": 96,
+          "en": "A: Ni Mar, do you like the short story “The Last Leaf”?",
+          "my": "နီမာရေ၊ နောက်ဆုံးသစ်ရွက် ဝတ္ထုတိုကို ကြိုက်သလား။"
+        },
+        {
+          "id": "8-speaking-text-2",
+          "t": "para",
+          "page": 96,
+          "en": "B: Of course. I like the (1) ______ of the story, Sue, Johnsy and Behrman.",
+          "my": "ကြိုက်တာပေါ့။ ဆူး၊ ဂျွန်စီနဲ့ ဘားမန်းဆိုတဲ့ ဇာတ်လမ်းရဲ့ (၁) ______ ကို ကြိုက်တယ်။"
+        },
+        {
+          "id": "8-speaking-text-3",
+          "t": "para",
+          "page": 96,
+          "en": "A: What do you think the (2) ______ of the story is?",
+          "my": "ဇာတ်လမ်းရဲ့ (၂) ______ က ဘာလို့ ထင်သလဲ။"
+        },
+        {
+          "id": "8-speaking-text-4",
+          "t": "para",
+          "page": 96,
+          "en": "B: I think it’s about (3) ______. The characters share similar passions. All of them are (4) ______ and they love art. And when Johnsy (5) ______, Sue manages all her care. She also encourages her to think positively.",
+          "my": "(၃) ______ အကြောင်းလို့ ထင်တယ်။ ဇာတ်ကောင်တွေမှာ ဝါသနာတူကြတယ်။ အားလုံးက (၄) ______ တွေဖြစ်ပြီး အနုပညာကို ချစ်ကြတယ်။ ဂျွန်စီ (၅) ______ တဲ့အခါ ဆူးက ပြုစုစောင့်ရှောက်မှု အားလုံးကို စီစဉ်တယ်။ အပြုသဘောတွေးဖို့လည်း အားပေးတယ်။"
+        },
+        {
+          "id": "8-speaking-text-5",
+          "t": "para",
+          "page": 96,
+          "en": "A: Mr Behrman helps Johnsy (6) ______, too. He takes the risk of falling ill — he paints a green leaf on the wall opposite in the heavy rain. That’s why I think the theme of the story is selfless sacrifice.",
+          "my": "ဘားမန်းကလည်း ဂျွန်စီကို (၆) ______ ဖို့ ကူညီတယ်။ မိုးသည်းထဲမှာ မျက်နှာချင်းဆိုင်နံရံပေါ် အရွက်စိမ်းပုံဆွဲပြီး နေမကောင်းဖြစ်နိုင်ခြေကို ခံယူခဲ့တယ်။ ဒါကြောင့် အဓိကအကြောင်းအရာက ကိုယ်ကျိုးမဖက် အနစ်နာခံခြင်းလို့ ထင်တယ်။"
+        },
+        {
+          "id": "8-speaking-text-6",
+          "t": "para",
+          "page": 96,
+          "en": "B: Hmm, you’re right. Sue is also willing to (7) ______ her wishes and time for her friend.",
+          "my": "အင်း၊ မှန်တယ်။ ဆူးကလည်း သူငယ်ချင်းအတွက် ကိုယ့်ဆန္ဒနဲ့ အချိန်ကို (၇) ______ ဖို့ အသင့်ရှိတယ်။"
+        },
+        {
+          "id": "8-speaking-text-7",
+          "t": "para",
+          "page": 96,
+          "en": "A: Yes, it proves that (8) ______ and kindness is more valuable than expensive material possessions.",
+          "my": "ဟုတ်တယ်၊ (၈) ______ နဲ့ ကြင်နာမှုက ဈေးကြီးတဲ့ ပစ္စည်းဥစ္စာတွေထက် တန်ဖိုးရှိကြောင်း ပြတယ်။"
+        },
+        {
+          "id": "8-speaking-text-8",
+          "t": "para",
+          "page": 96,
+          "en": "B: Ah, I agree with you.",
+          "my": "အင်း၊ မင်းနဲ့ သဘောတူတယ်။"
+        },
+        {
+          "id": "8-speaking-text-9",
+          "t": "h",
+          "page": 97,
+          "en": "Sue / Mr Behrman",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "8-speaking-text-10",
+          "t": "para",
+          "page": 97,
+          "en": "Sue: an artist; comes to Greenwich Village to make her living; very close to Johnsy; cares for Johnsy during her illness; informs Behrman about Johnsy’s illness; willing to devote all her energy in her care; supports her friend emotionally and financially.",
+          "my": "ဆူးသည် အသက်မွေးရန် ရောက်လာသည့် ပန်းချီဆရာမဖြစ်ပြီး ဂျွန်စီနှင့် ရင်းနှီးသည်။ နာမကျန်းချိန် ပြုစုကာ ဘားမန်းကို အသိပေးသည်။ အားအင်အပြည့်ဖြင့် ပြုစုပြီး စိတ်ပိုင်းနှင့် ငွေကြေးပိုင်း ကူညီသည်။"
+        },
+        {
+          "id": "8-speaking-text-11",
+          "t": "para",
+          "page": 97,
+          "en": "Mr Behrman: an unsuccessful artist because of his drinking problem; always wants to paint a masterpiece; kind-hearted; a good neighbour to Sue and Johnsy; goes outside at night in the rain to paint a green leaf; helps Johnsy get back her desire to live on.",
+          "my": "ဘားမန်းသည် အရက်သောက်ပြဿနာကြောင့် မအောင်မြင်သည့် ပန်းချီဆရာဖြစ်သည်။ လက်ရာမြောက်ပန်းချီဆွဲလိုပြီး စိတ်ကောင်းရှိသည့် အိမ်နီးချင်းဖြစ်သည်။ မိုးရွာသည့်ည အပြင်ထွက်၍ သစ်ရွက်စိမ်းပုံဆွဲကာ ဂျွန်စီ၏ အသက်ရှင်လိုစိတ် ပြန်ရအောင် ကူညီသည်။"
+        }
+      ],
+      "writing": [
+        {
+          "id": "8-writing-text-1",
+          "t": "h",
+          "page": 98,
+          "en": "Summarizing a short story",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "8-writing-text-2",
+          "t": "para",
+          "page": 97,
+          "en": "Summarizing means identifying the main idea and most important facts of a text and writing a brief overview. A good summary is short and to the point.",
+          "my": "အဓိကအယူအဆနှင့် အရေးကြီးဆုံးအချက်များကို ရွေးထုတ်ကာ တိုတိုရှင်းရှင်း ရေးခြင်းဖြစ်သည်။"
+        },
+        {
+          "id": "8-writing-text-3",
+          "t": "para",
+          "page": 98,
+          "en": "Cover the elements of a story (character, setting, conflict, resolution and plot) and present explicitly in our own words.",
+          "my": "ဇာတ်ကောင်၊ နောက်ခံ၊ ပြဿနာ၊ ဖြေရှင်းမှုနှင့် ဇာတ်လမ်းဖြစ်စဉ်တို့ကို ကိုယ့်စကားဖြင့် ထင်ရှားစွာ ဖော်ပြပါ။"
+        },
+        {
+          "id": "8-writing-text-4",
+          "t": "para",
+          "page": 98,
+          "en": "1. State the main message or gist of the story.",
+          "my": "အဓိကဆိုလိုရင်းကို ဖော်ပြပါ။"
+        },
+        {
+          "id": "8-writing-text-5",
+          "t": "para",
+          "page": 98,
+          "en": "2. Write about the setting of the story briefly.",
+          "my": "အချိန်နှင့်နေရာ နောက်ခံကို အကျဉ်းရေးပါ။"
+        },
+        {
+          "id": "8-writing-text-6",
+          "t": "para",
+          "page": 98,
+          "en": "3. Write about the main characters.",
+          "my": "အဓိကဇာတ်ကောင်များအကြောင်း ရေးပါ။"
+        },
+        {
+          "id": "8-writing-text-7",
+          "t": "para",
+          "page": 98,
+          "en": "4. Write about the conflict of the story.",
+          "my": "ဇာတ်လမ်း၏ ပြဿနာကို ရေးပါ။"
+        },
+        {
+          "id": "8-writing-text-8",
+          "t": "para",
+          "page": 98,
+          "en": "5. Write about how the conflict is resolved.",
+          "my": "ပြဿနာကို မည်သို့ဖြေရှင်းသည်ကို ရေးပါ။"
+        },
+        {
+          "id": "8-writing-text-9",
+          "t": "para",
+          "page": 98,
+          "en": "6. Restate the message or gist of the story in a slightly different way.",
+          "my": "ဆိုလိုရင်းကို စကားပြောင်း၍ ပြန်ဖော်ပြပါ။"
+        },
+        {
+          "id": "8-writing-text-10",
+          "t": "para",
+          "page": 98,
+          "en": "Note: Use transitions (first, then, next, when, however, but, etc.).",
+          "my": "ဖြစ်စဉ်ဆက်စပ်ပြ စကားလုံးများကို သုံးပါ။"
+        }
+      ]
+    },
+    "9": {
+      "reading": [
+        {
+          "id": "9-reading-text-1",
+          "t": "para",
+          "page": 100,
+          "en": "Today, like it or not, we are all in the fast lane of life’s super highway: appointments to keep, deadlines to meet, rush hour to beat, the last bus to catch, debts to settle, domestic problems to solve, broken relations to mend, just to mention a few. And the result? Stress.",
+          "my": "ယနေ့တွင် ကြိုက်သည်ဖြစ်စေ မကြိုက်သည်ဖြစ်စေ ကျွန်ုပ်တို့အားလုံးသည် ဘဝအမြန်လမ်း၏ အမြန်ဆုံးလမ်းကြောထဲတွင် ရှိနေကြသည်။ ချိန်းဆိုမှုများ မလွတ်စေရန်၊ သတ်မှတ်ချိန်မီ ပြီးစီးရန်၊ ရုံးတက်ဆင်းချိန် လူကျပ်မှုကို ရှောင်ရန်၊ နောက်ဆုံးဘတ်စ်ကား မီရန်၊ အကြွေးဆပ်ရန်၊ အိမ်တွင်းပြဿနာများ ဖြေရှင်းရန်နှင့် ပျက်စီးနေသော ဆက်ဆံရေးများ ပြုပြင်ရန် စသည့်အလုပ်များ ရှိသည်။ ဒါတွေ၏ ရလဒ်က ဘာလဲ။ စိတ်ဖိစီးမှုပင်ဖြစ်သည်။"
+        },
+        {
+          "id": "9-reading-text-2",
+          "t": "para",
+          "page": 100,
+          "en": "According to the Merriam-Webster Dictionary, stress, as a noun, is a state of mental tension and worry caused by problems in our life. For instance, the closer the exams, the more worried the students. Similarly, in a home, when a child falls ill, parents get anxious, and anxiety is a kind of stress. Thus, stress can come to any of us in the form of anxiety, worry, fear, tension, pressure, etc.",
+          "my": "မယ်ရီယမ်ဝက်ဘ်စတာ အဘိဓာန်အရ စိတ်ဖိစီးမှုဆိုသည့် နာမ်သည် ဘဝပြဿနာများကြောင့် ဖြစ်သော စိတ်တင်းကျပ်ပူပန်သည့် အခြေအနေဖြစ်သည်။ ဥပမာ စာမေးပွဲနီးလေ ကျောင်းသားများ ပိုပူပန်လေဖြစ်သည်။ ထိုနည်းတူ အိမ်တွင် ကလေးနေမကောင်းဖြစ်လျှင် မိဘများ စိုးရိမ်လာကြပြီး စိုးရိမ်ပူပန်ခြင်းသည် စိတ်ဖိစီးမှုတစ်မျိုးဖြစ်သည်။ ထို့ကြောင့် ကျွန်ုပ်တို့မည်သူမဆို စိုးရိမ်မှု၊ ပူပန်မှု၊ ကြောက်ရွံ့မှု၊ တင်းကျပ်မှု၊ ဖိအား စသည့်ပုံစံများဖြင့် စိတ်ဖိစီးမှု ကြုံနိုင်သည်။"
+        },
+        {
+          "id": "9-reading-text-3",
+          "t": "para",
+          "page": 100,
+          "en": "Psychologists say that stress is a common experience, and depending on how we react to it, stress can have either a positive or a negative effect. For example, an approaching examination is often stressful for most of us. However, if we let this stress drive us to study conscientiously with concentration, then it may be said to have a positive effect. If, on the other hand, we choose to dwell on the anxiety it has caused, it may be said to have a negative effect.",
+          "my": "စိတ်ပညာရှင်များက စိတ်ဖိစီးမှုသည် လူအများကြုံရသော အတွေ့အကြုံဖြစ်ပြီး ကျွန်ုပ်တို့ တုံ့ပြန်ပုံပေါ်မူတည်ကာ ကောင်းကျိုး သို့မဟုတ် ဆိုးကျိုး ဖြစ်စေနိုင်သည်ဟု ဆိုသည်။ စာမေးပွဲနီးလာခြင်းသည် လူအများအတွက် စိတ်ဖိစီးစရာဖြစ်သည်။ သို့သော် ထိုစိတ်ဖိစီးမှုကို အာရုံစူးစိုက်ပြီး တာဝန်ကျေစွာ စာကြိုးစားရန် တွန်းအားဖြစ်စေလျှင် ကောင်းကျိုးရှိသည်ဟု ဆိုနိုင်သည်။ တစ်ဖက်တွင် ယင်းကြောင့်ဖြစ်သော ပူပန်မှုကိုသာ ထပ်ခါတလဲလဲ တွေးနေလျှင် ဆိုးကျိုးရှိသည်ဟု ဆိုနိုင်သည်။"
+        },
+        {
+          "id": "9-reading-text-4",
+          "t": "para",
+          "page": 100,
+          "en": "Studies of stress by psychologists and doctors have revealed that stress can weaken our body’s immune defences, and when this happens, we become more susceptible to infections like colds and flu. This finding has led the researchers to recommend several ways to manage stress. The following seven ways to chill out, that is, to relax, are quite widely known today.",
+          "my": "စိတ်ပညာရှင်နှင့် ဆရာဝန်များ၏ လေ့လာမှုများအရ စိတ်ဖိစီးမှုသည် ကိုယ်ခံအားကို အားနည်းစေနိုင်ပြီး ထိုအခါ အအေးမိ၊ တုပ်ကွေးကဲ့သို့ ကူးစက်ရောဂါများ ဖြစ်လွယ်လာသည်။ ထိုတွေ့ရှိချက်ကြောင့် သုတေသီများက စိတ်ဖိစီးမှုကို ထိန်းချုပ်နိုင်သည့် နည်းအချို့ အကြံပြုခဲ့ကြသည်။ အောက်ပါ စိတ်အေးလက်အေး အနားယူနည်း ခုနစ်မျိုးမှာ ယနေ့ ကျယ်ကျယ်ပြန့်ပြန့် သိရှိကြသော နည်းများဖြစ်သည်။"
+        },
+        {
+          "id": "9-reading-text-5",
+          "t": "h",
+          "page": 100,
+          "en": "1. Stop whatever you’re doing.",
+          "my": "၁။ လုပ်နေသမျှကို ခဏရပ်ပါ။"
+        },
+        {
+          "id": "9-reading-text-6",
+          "t": "para",
+          "page": 100,
+          "en": "The moment you feel stressed, drop whatever you’re doing, close your eyes, sit still, and breathe in and breathe out slowly and rhythmically. This will slow down your heartbeat and you may even find a change in your perspective of things which seem to be worrying you.",
+          "my": "စိတ်ဖိစီးလာသည်နှင့် လုပ်နေသောအရာကို ရပ်လိုက်ပြီး မျက်စိမှိတ်၊ ငြိမ်ငြိမ်ထိုင်ကာ ဖြည်းဖြည်းနှင့် စည်းချက်မှန်မှန် အသက်ရှူသွင်းရှူထုတ်ပါ။ ထိုသို့လုပ်ခြင်းက နှလုံးခုန်နှုန်းကို နှေးစေပြီး ပူပန်စရာထင်ရသော အရာများအပေါ် ရှုမြင်ပုံ ပြောင်းလဲလာသည်ကိုပင် တွေ့နိုင်သည်။"
+        },
+        {
+          "id": "9-reading-text-7",
+          "t": "h",
+          "page": 101,
+          "en": "2. Laugh aloud.",
+          "my": "၂။ အသံထွက် ရယ်ပါ။"
+        },
+        {
+          "id": "9-reading-text-8",
+          "t": "para",
+          "page": 101,
+          "en": "Try to recall jokes that made you laugh or true incidents in your life that made you chortle. Laughing expands your ribcage, thereby letting your lungs take in more air to transport more oxygen to your brain, heart, liver and all parts of your body.",
+          "my": "ကိုယ့်ကို ရယ်စေခဲ့သော ဟာသများ သို့မဟုတ် ဘဝထဲက တကယ့်ရယ်စရာဖြစ်ရပ်များကို ပြန်သတိရကြည့်ပါ။ ရယ်ခြင်းက ရင်ဘတ်ရိုးအုံကို ကျယ်စေ၍ အဆုတ်ထဲ လေပိုဝင်စေသည်။ ထို့ကြောင့် ဦးနှောက်၊ နှလုံး၊ အသည်းနှင့် ကိုယ်ခန္ဓာအနှံ့သို့ အောက်ဆီဂျင် ပိုပို့ပေးနိုင်သည်။"
+        },
+        {
+          "id": "9-reading-text-9",
+          "t": "h",
+          "page": 101,
+          "en": "3. Listen to music.",
+          "my": "၃။ သီချင်းနားထောင်ပါ။"
+        },
+        {
+          "id": "9-reading-text-10",
+          "t": "para",
+          "page": 101,
+          "en": "Turn on your radio and tune in to your favourite station which regularly broadcasts the type of music that soothes you. Listen to it for anywhere between five and ten minutes. Music you like never fails to soothe you and thereby reduces stress, if not bring an end to it.",
+          "my": "ရေဒီယိုဖွင့်၍ ကိုယ့်ကို စိတ်ငြိမ်သက်စေသည့် တေးဂီတများ ပုံမှန်လွှင့်သော အကြိုက်ဆုံးအသံလွှင့်ဌာနကို ဖမ်းပါ။ ငါးမိနစ်မှ ဆယ်မိနစ်အတွင်း နားထောင်ပါ။ ကိုယ်နှစ်သက်သော ဂီတသည် စိတ်ကို အမြဲငြိမ်သက်စေပြီး စိတ်ဖိစီးမှုကို လုံးဝမပျောက်စေလျှင်တောင် လျော့ပါးစေသည်။"
+        },
+        {
+          "id": "9-reading-text-11",
+          "t": "h",
+          "page": 101,
+          "en": "4. Dwell on pleasant thoughts.",
+          "my": "၄။ နှစ်သက်ဖွယ်အတွေးများကို စဉ်းစားပါ။"
+        },
+        {
+          "id": "9-reading-text-12",
+          "t": "para",
+          "page": 101,
+          "en": "Recall pleasant or humorous incidents in your past or think about someone who cares much about you or someone you care much about. Sometimes, an unpleasant incident in one’s childhood can make one laugh in retrospect. All pleasant thoughts will certainly help you forget whatever is causing you stress at the moment. Take care to consciously discard all ill feelings such as rancour and anger.",
+          "my": "အတိတ်မှ ပျော်စရာ၊ ရယ်စရာအဖြစ်များကို ပြန်သတိရပါ။ ကိုယ့်ကို အလွန်ဂရုစိုက်သူ သို့မဟုတ် ကိုယ်ဂရုစိုက်သူတစ်ယောက်ကို စဉ်းစားပါ။ တစ်ခါတစ်ရံ ငယ်စဉ်က မနှစ်မြို့ဖွယ်အဖြစ်တစ်ခုကို ပြန်တွေးလျှင် ရယ်စရာဖြစ်လာနိုင်သည်။ နှစ်သက်ဖွယ်အတွေးများက လက်ရှိစိတ်ဖိစီးစေသည့် အရာကို မေ့နိုင်ရန် အမှန်ပင် ကူညီမည်။ မကျေနပ်ချက်နှင့် ဒေါသကဲ့သို့ မကောင်းသောခံစားချက်များကို သတိရှိရှိ ဖယ်ရှားရန် ဂရုစိုက်ပါ။"
+        },
+        {
+          "id": "9-reading-text-13",
+          "t": "h",
+          "page": 101,
+          "en": "5. Leave your desk.",
+          "my": "၅။ စားပွဲမှ ခဏထွက်ပါ။"
+        },
+        {
+          "id": "9-reading-text-14",
+          "t": "para",
+          "page": 101,
+          "en": "Get away from your ‘work station’. Take a brisk walk, preferably outdoors, for fifteen minutes or so. This should pace up your blood circulation, transporting oxygen to your tired muscles. The result will surprise you.",
+          "my": "အလုပ်လုပ်ရာနေရာမှ ထွက်လိုက်ပါ။ ဖြစ်နိုင်လျှင် အပြင်ဘက်တွင် ဆယ့်ငါးမိနစ်ခန့် ခပ်သွက်သွက် လမ်းလျှောက်ပါ။ ယင်းက သွေးလည်ပတ်မှုကို မြန်စေပြီး ပင်ပန်းနေသော ကြွက်သားများသို့ အောက်ဆီဂျင် ပို့ပေးမည်။ ရလဒ်ကြောင့် အံ့ဩရမည်။"
+        },
+        {
+          "id": "9-reading-text-15",
+          "t": "h",
+          "page": 101,
+          "en": "6. Take deep breaths.",
+          "my": "၆။ အသက်ပြင်းပြင်းရှူပါ။"
+        },
+        {
+          "id": "9-reading-text-16",
+          "t": "para",
+          "page": 101,
+          "en": "Take slow, deep breaths by inhaling about five seconds and exhaling about the same length of time. This type of breathing is similar to the breathing when practising yoga or reciting a short prayer. The calm you experience will amaze you.",
+          "my": "ငါးစက္ကန့်ခန့် အသက်ရှူသွင်းပြီး အချိန်အတူတူခန့် ရှူထုတ်ကာ ဖြည်းဖြည်းနက်နက် ရှူပါ။ ဤအသက်ရှူပုံသည် ယောဂကျင့်ခြင်း သို့မဟုတ် ဆုတောင်းစာတို ရွတ်ခြင်းတွင် ရှူပုံနှင့် ဆင်တူသည်။ ရရှိလာသည့် တည်ငြိမ်မှုက သင့်ကို အံ့ဩစေမည်။"
+        },
+        {
+          "id": "9-reading-text-17",
+          "t": "h",
+          "page": 101,
+          "en": "7. Relax your muscles while in bed.",
+          "my": "၇။ အိပ်ရာထဲတွင် ကြွက်သားများကို ဖြေလျှော့ပါ။"
+        },
+        {
+          "id": "9-reading-text-18",
+          "t": "para",
+          "page": 101,
+          "en": "When you wake up in the morning, before getting up but still lying supine, first tense your toes and relax them in turn for about four times; then rotate your feet clockwise and anti-clockwise in turn for about four times; next raise and lower your left and right legs in turn four times for each. Then only, get out of your bed. Physiotherapists say that these simple physical exercises give your blood circulation a good start for the day.",
+          "my": "မနက်နိုးသောအခါ အိပ်ရာမှ မထသေးဘဲ ပက်လက်လဲနေစဉ် ခြေချောင်းများကို တင်းပြီး ဖြေလျှော့ခြင်း လေးကြိမ်ခန့် လုပ်ပါ။ ထို့နောက် ခြေဖဝါးများကို နာရီလက်တံအတိုင်းနှင့် ပြောင်းပြန် တစ်လှည့်စီ လေးကြိမ်ခန့် လှည့်ပါ။ ပြီးလျှင် ဘယ်ခြေနှင့် ညာခြေကို တစ်လှည့်စီ လေးကြိမ်စီ မြှင့်ချလုပ်ပါ။ ထို့နောက်မှ အိပ်ရာထပါ။ ဤရိုးရှင်းသော လေ့ကျင့်ခန်းများသည် တစ်နေ့တာအတွက် သွေးလည်ပတ်မှုကို ကောင်းစွာ စတင်ပေးသည်ဟု ကိုယ်လက်ကုထုံးပညာရှင်များက ဆိုသည်။"
+        },
+        {
+          "id": "9-reading-text-19",
+          "t": "para",
+          "page": 101,
+          "en": "Whenever you find yourself propelled by stress to take an action, pause a while, choose one of the seven ways recommended above and chill out.",
+          "my": "စိတ်ဖိစီးမှုက တစ်ခုခုလုပ်ရန် တွန်းအားပေးနေကြောင်း သတိပြုမိတိုင်း ခဏနား၍ အထက်ပါ နည်းခုနစ်မျိုးမှ တစ်ခုကို ရွေးကာ စိတ်အေးအေး အနားယူပါ။"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "9-vocabulary-text-1",
+          "t": "h",
+          "page": 103,
+          "en": "Words often confused",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "9-vocabulary-text-2",
+          "t": "para",
+          "page": 103,
+          "en": "Some words sound alike or nearly alike but have different meanings and often cause trouble.",
+          "my": "အသံတူသော်လည်း အဓိပ္ပာယ်မတူသောကြောင့် မှားယွင်းလွယ်သည်။"
+        },
+        {
+          "id": "9-vocabulary-text-3",
+          "t": "para",
+          "page": 103,
+          "en": "breath (n) — amount of air that enters the lungs at one time; breathe (v) — take air into your lungs through your nose or mouth",
+          "my": "အသက်တစ်ရှိုက် (နာမ်) နှင့် အသက်ရှူသည် (ကြိယာ)။"
+        },
+        {
+          "id": "9-vocabulary-text-4",
+          "t": "para",
+          "page": 103,
+          "en": "affect (v) — produce a change in somebody / something; effect (n) — a change that somebody / something causes somebody / something else",
+          "my": "အကျိုးသက်ရောက်စေသည် (ကြိယာ) နှင့် အကျိုးသက်ရောက်မှု (နာမ်)။"
+        },
+        {
+          "id": "9-vocabulary-text-5",
+          "t": "para",
+          "page": 103,
+          "en": "accident (n) — an unpleasant event that happens unexpectedly and causes injury or damage; incident (n) — something that happens, especially something unusual or unpleasant",
+          "my": "မတော်တဆ ထိခိုက်မှုဖြစ်ရပ် နှင့် ထူးခြားသော သို့မဟုတ် မကောင်းသော ဖြစ်ရပ်။"
+        },
+        {
+          "id": "9-vocabulary-text-6",
+          "t": "para",
+          "page": 103,
+          "en": "conscientious (adj.) — taking care to do things carefully and correctly; conscious (adj.) — aware of something; noticing something",
+          "my": "တာဝန်ကျေပြီး ဂရုတစိုက်လုပ်သော နှင့် သိရှိသတိထားမိသော။"
+        },
+        {
+          "id": "9-vocabulary-text-7",
+          "t": "para",
+          "page": 103,
+          "en": "lane (n) — a narrow road in the country; line (n) — a railroad tract",
+          "my": "ကျေးလက်လမ်းကျဉ်း နှင့် ရထားလမ်း။"
+        },
+        {
+          "id": "9-vocabulary-text-8",
+          "t": "para",
+          "page": 103,
+          "en": "perspective (n) — a particular attitude toward something; ability to think about problems and decisions in a reasonable way; retrospective (adj.) — thinking about or connected with something that happened in the past, often with a different opinion",
+          "my": "ရှုထောင့်၊ ဆင်ခြင်စဉ်းစားနိုင်မှု နှင့် အတိတ်ကို ပြန်လည်သုံးသပ်သော။"
+        },
+        {
+          "id": "9-vocabulary-text-9",
+          "t": "para",
+          "page": 103,
+          "en": "Take slow, deep breaths by inhaling about five seconds.",
+          "my": "ငါးစက္ကန့်ခန့် ရှူသွင်းကာ ဖြည်းဖြည်းနက်နက် အသက်ရှူပါ။"
+        },
+        {
+          "id": "9-vocabulary-text-10",
+          "t": "para",
+          "page": 103,
+          "en": "She sits still, and breathes in and out slowly and rhythmically.",
+          "my": "သူမသည် ငြိမ်ငြိမ်ထိုင်ပြီး ဖြည်းဖြည်း စည်းချက်မှန်မှန် အသက်ရှူသွင်းရှူထုတ်သည်။"
+        },
+        {
+          "id": "9-vocabulary-text-11",
+          "t": "para",
+          "page": 103,
+          "en": "breath /breθ/ (n) · breathe /briːð/ (v)",
+          "my": "အသက်တစ်ရှိုက် ဟူသည့် နာမ်နှင့် အသက်ရှူသည် ဟူသည့် ကြိယာ၏ အသံထွက်များ။"
+        }
+      ],
+      "grammar": [
+        {
+          "id": "9-grammar-text-1",
+          "t": "h",
+          "page": 104,
+          "en": "The Future Tense: ‘Will’, ‘Going to’ and ‘Future Continuous’",
+          "my": "အနာဂတ်ကာလပုံစံများ"
+        },
+        {
+          "id": "9-grammar-text-2",
+          "t": "para",
+          "page": 104,
+          "en": "Will + V-infinitive is used to talk about a fixed future arrangement.",
+          "my": "သတ်မှတ်ထားသည့် အနာဂတ်အစီအစဉ်ကို ပြောရန် သုံးသည်။"
+        },
+        {
+          "id": "9-grammar-text-3",
+          "t": "para",
+          "page": 104,
+          "en": "The wedding will take place at the Pearl Hotel. / There won’t be a lecture tomorrow. / Will they provide lunch at the workshop?",
+          "my": "မင်္ဂလာပွဲကို ပုလဲဟိုတယ်တွင် ကျင်းပမည်။ မနက်ဖြန် ပို့ချချက်မရှိပါ။ အလုပ်ရုံဆွေးနွေးပွဲတွင် နေ့လယ်စာ ကျွေးမည်လား။"
+        },
+        {
+          "id": "9-grammar-text-4",
+          "t": "para",
+          "page": 104,
+          "en": "Will + V-infinitive is used for what you think or believe will happen in the future. It is commonly used with ‘I think’, ‘I’m sure’, ‘I expect’, ‘I believe’, etc.",
+          "my": "အနာဂတ်တွင် ဖြစ်မည်ဟု ထင်ခြင်း သို့မဟုတ် ယုံကြည်ခြင်းကို ပြောရန် သုံးသည်။ ထင်သည်၊ သေချာသည်၊ မျှော်လင့်သည်၊ ယုံကြည်သည် စသည့်စကားများနှင့် တွဲလေ့ရှိသည်။"
+        },
+        {
+          "id": "9-grammar-text-5",
+          "t": "para",
+          "page": 104,
+          "en": "I think Germany will win the World Cup. / Let’s have a quick breakfast. It won’t take long. / Will he accept the job offer? What do you think?",
+          "my": "ဂျာမနီ ကမ္ဘာ့ဖလားနိုင်မယ်လို့ ငါထင်တယ်။ မနက်စာ အမြန်စားကြစို့၊ အချိန်ကြာမှာ မဟုတ်ဘူး။ သူ အလုပ်ကမ်းလှမ်းချက်ကို လက်ခံမလား၊ မင်း ဘယ်လိုထင်သလဲ။"
+        },
+        {
+          "id": "9-grammar-text-6",
+          "t": "para",
+          "page": 104,
+          "en": "Will + V-infinitive is used for a future action decided to do at the moment of speaking.",
+          "my": "ပြောနေသည့်အချိန်မှ ဆုံးဖြတ်လိုက်သော အနာဂတ်လုပ်ရပ်အတွက် သုံးသည်။"
+        },
+        {
+          "id": "9-grammar-text-7",
+          "t": "para",
+          "page": 104,
+          "en": "I will check the essay again; there can be spelling mistakes. / Food, service and price — all are bad; I won’t go there again. / Which will you choose, the blue one or the red one?",
+          "my": "စာလုံးပေါင်းမှားနိုင်လို့ စာစီစာကုံးကို ပြန်စစ်မယ်။ အစားအသောက်၊ ဝန်ဆောင်မှုနဲ့ ဈေးအားလုံး မကောင်းလို့ အဲဒီကို ပြန်မသွားဘူး။ အပြာနဲ့အနီ ဘယ်ဟာရွေးမလဲ။"
+        },
+        {
+          "id": "9-grammar-text-8",
+          "t": "para",
+          "page": 104,
+          "en": "Will + V-infinitive is used for promises, requests, refusals, offers and predictions.",
+          "my": "ကတိ၊ တောင်းဆိုချက်၊ ငြင်းဆိုချက်၊ ကမ်းလှမ်းချက်နှင့် ခန့်မှန်းချက်များအတွက် သုံးသည်။"
+        },
+        {
+          "id": "9-grammar-text-9",
+          "t": "para",
+          "page": 104,
+          "en": "I’ll help you with your homework. / They won’t lend us any more money. / Will you buy some bread on your way home?",
+          "my": "အိမ်စာကို ကူညီမယ်။ သူတို့ ငွေထပ်မချေးတော့ဘူး။ အိမ်ပြန်လမ်းမှာ ပေါင်မုန့် ဝယ်ပေးမလား။"
+        },
+        {
+          "id": "9-grammar-text-10",
+          "t": "para",
+          "page": 104,
+          "en": "Be going to + V-infinitive is used to talk about something you intend to do in the future.",
+          "my": "အနာဂတ်တွင် လုပ်ရန် ရည်ရွယ်ထားသောအရာကို ပြောရန် သုံးသည်။"
+        },
+        {
+          "id": "9-grammar-text-11",
+          "t": "para",
+          "page": 104,
+          "en": "I am going to phone Shwe Sin tonight. / He is not going to join a private company. / What are you going to do when you leave school?",
+          "my": "ဒီည ရွှေစင်ကို ဖုန်းဆက်ဖို့ စီစဉ်ထားတယ်။ သူ ပုဂ္ဂလိကကုမ္ပဏီဝင်ဖို့ မရည်ရွယ်ထားဘူး။ ကျောင်းပြီးရင် ဘာလုပ်ဖို့ စီစဉ်ထားသလဲ။"
+        },
+        {
+          "id": "9-grammar-text-12",
+          "t": "para",
+          "page": 105,
+          "en": "Be going to + V-infinitive is used for predictions based on present evidence. The floor is wet. He is going to slip on it. / The sky is clear. It is not going to rain today. / He is very popular now. Is he going to win the best player award?",
+          "my": "လက်ရှိအထောက်အထားကို အခြေခံ၍ ခန့်မှန်းရာတွင် သုံးသည်။ ကြမ်းပြင်စိုနေ၍ သူချော်လဲတော့မည်။ မိုးကောင်းကင်ရှင်းနေ၍ ဒီနေ့ မိုးမရွာနိုင်ပေ။ သူ အခု လူကြိုက်များနေ၍ အကောင်းဆုံးကစားသမားဆု ရမည်လား။"
+        },
+        {
+          "id": "9-grammar-text-13",
+          "t": "para",
+          "page": 105,
+          "en": "The future continuous tense is used to talk about continuous events that we expect to happen in the future. This time next week, we will be relaxing on the sand! / We won’t be staying there for long. / Will you be waiting for me near the library?",
+          "my": "အနာဂတ်တွင် ဆက်လက်ဖြစ်နေမည်ဟု မျှော်လင့်သော ဖြစ်ရပ်အတွက် သုံးသည်။ နောက်အပတ် ဒီအချိန် သဲသောင်ပေါ်မှာ အနားယူနေကြမယ်။ အဲဒီမှာ အကြာကြီး နေမှာမဟုတ်ဘူး။ စာကြည့်တိုက်နားမှာ ငါ့ကို စောင့်နေမလား။"
+        },
+        {
+          "id": "9-grammar-text-14",
+          "t": "para",
+          "page": 105,
+          "en": "The future continuous tense is used for somebody’s plans or intentions (generally in questions). How many nights will you be staying at the hotel? / Will you be flying back or going by train?",
+          "my": "တစ်ဦးဦး၏ အစီအစဉ် သို့မဟုတ် ရည်ရွယ်ချက်ကို များသောအားဖြင့် မေးခွန်းပုံစံဖြင့် ပြောရန် သုံးသည်။ ဟိုတယ်မှာ ဘယ်နှည နေမလဲ။ လေယာဉ်နဲ့ ပြန်မလား၊ ရထားနဲ့လား။"
+        },
+        {
+          "id": "9-grammar-text-15",
+          "t": "para",
+          "page": 105,
+          "en": "Note: The present progressive tense can also be used when an action is promised, arranged or planned for the near future. We are moving to Taunggyi next week. / I’m not starting my new job till next Monday. / What are you doing this evening?",
+          "my": "မှတ်ချက်—မဝေးသောအနာဂတ်အတွက် ကတိပေး၊ စီစဉ်ထားလျှင် ပစ္စုပ္ပန်ဆက်လက်ကာလကိုလည်း သုံးနိုင်သည်။ နောက်အပတ် တောင်ကြီးပြောင်းမယ်။ အလုပ်သစ်ကို နောက်တနင်္လာမှ စမယ်။ ဒီညနေ ဘာလုပ်မလဲ။"
+        }
+      ],
+      "listening": [
+        {
+          "id": "9-listening-text-1",
+          "t": "h",
+          "page": 106,
+          "en": "A. Listen to the talk given by a psychologist and tick the main idea of the talk.",
+          "my": "စိတ်ပညာရှင်၏ ဟောပြောချက်ကို နားထောင်ပြီး အဓိကအကြောင်းအရာကို ရွေးပါ။"
+        },
+        {
+          "id": "9-listening-text-2",
+          "t": "h",
+          "page": 106,
+          "en": "B. Tick the statements that the psychologist makes.",
+          "my": "စိတ်ပညာရှင် ပြောကြားသော အဆိုများကို အမှန်ခြစ်ပါ။"
+        }
+      ],
+      "speaking": [
+        {
+          "id": "9-speaking-text-1",
+          "t": "para",
+          "page": 106,
+          "en": "A: Hi Thaw Zin. What happened to you? You look stressed.",
+          "my": "သော်ဇင်ရေ၊ ဘာဖြစ်တာလဲ။ စိတ်ဖိစီးနေသလိုပဲ။"
+        },
+        {
+          "id": "9-speaking-text-2",
+          "t": "para",
+          "page": 106,
+          "en": "B: Um, I have some problems at school. I can’t concentrate on my studies, so I never finish my assignments in time.",
+          "my": "အင်း၊ ကျောင်းမှာ ပြဿနာနည်းနည်းရှိတယ်။ စာမှာ အာရုံမစူးစိုက်နိုင်လို့ အိမ်စာတွေကို အချိန်မီ မပြီးဘူး။"
+        },
+        {
+          "id": "9-speaking-text-3",
+          "t": "para",
+          "page": 106,
+          "en": "A: If I were you, I’d take some time off to get some refreshment.",
+          "my": "ငါသာ မင်းနေရာမှာဆို စိတ်လန်းအောင် ခဏအနားယူမယ်။"
+        },
+        {
+          "id": "9-speaking-text-4",
+          "t": "para",
+          "page": 106,
+          "en": "B: Oh, I should have thought about that. And sometimes I feel depressed because of my bad friends. They’re always teasing me — body shaming and giving me all sorts of nicknames. What should I do?",
+          "my": "အဲဒါ စဉ်းစားသင့်တာပဲ။ တစ်ခါတလေ သူငယ်ချင်းဆိုးတွေကြောင့် စိတ်ကျတယ်။ ကိုယ်ခန္ဓာပုံစံကို လှောင်ပြီး နာမည်ပြောင်မျိုးစုံ ခေါ်တယ်။ ဘာလုပ်သင့်လဲ။"
+        },
+        {
+          "id": "9-speaking-text-5",
+          "t": "para",
+          "page": 107,
+          "en": "A: With such kind of friends, you’d better ignore them. Just stay away from them. It’s normal in life to face such problems.",
+          "my": "အဲဒီလိုသူငယ်ချင်းတွေကို လျစ်လျူရှုပြီး ဝေးဝေးနေလိုက်ပါ။ ဘဝမှာ ဒီလိုပြဿနာတွေ ရင်ဆိုင်ရတာ ပုံမှန်ပါပဲ။"
+        },
+        {
+          "id": "9-speaking-text-6",
+          "t": "para",
+          "page": 107,
+          "en": "B: Yes, you’re right. Thanks.",
+          "my": "ဟုတ်တယ်၊ မှန်တယ်။ ကျေးဇူးပဲ။"
+        },
+        {
+          "id": "9-speaking-text-7",
+          "t": "h",
+          "page": 107,
+          "en": "D. Study the following table.",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "9-speaking-text-8",
+          "t": "para",
+          "page": 107,
+          "en": "Asking for advice: What should I do? / What ought I to do? / What do you suggest? / What do you advise me to do? / If you were me, what would you do?",
+          "my": "အကြံတောင်းခြင်း—ဘာလုပ်သင့်သလဲ။ ဘာအကြံပေးချင်သလဲ။ မင်းသာ ငါ့နေရာမှာဆို ဘာလုပ်မလဲ။"
+        },
+        {
+          "id": "9-speaking-text-9",
+          "t": "para",
+          "page": 107,
+          "en": "Giving advice: If I were you, I would… / You’d better… / Why don’t you…? / You ought to / should…",
+          "my": "အကြံပေးခြင်း—ငါသာ မင်းနေရာမှာဆို…။ …လုပ်ရင်ကောင်းမယ်။ …လုပ်သင့်တယ်။"
+        },
+        {
+          "id": "9-speaking-text-10",
+          "t": "para",
+          "page": 107,
+          "en": "Accepting advice: Yes, you’re right. I’ll do that. / OK. I can do that. / Of course. I should have thought about that. / That’s true. I hadn’t thought about it.",
+          "my": "အကြံကို လက်ခံခြင်း—ဟုတ်တယ်၊ လုပ်လိုက်မယ်။ ဒါလုပ်နိုင်တယ်။ အဲဒါကို စဉ်းစားသင့်တာ။ အရင်က မတွေးမိဘူး။"
+        },
+        {
+          "id": "9-speaking-text-11",
+          "t": "h",
+          "page": 107,
+          "en": "Choose TWO problems",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "9-speaking-text-12",
+          "t": "para",
+          "page": 107,
+          "en": "You often have a bad headache.",
+          "my": "မကြာခဏ ပြင်းထန်စွာ ခေါင်းကိုက်သည်။"
+        },
+        {
+          "id": "9-speaking-text-13",
+          "t": "para",
+          "page": 107,
+          "en": "You can’t give up playing computer games.",
+          "my": "ကွန်ပျူတာဂိမ်းကစားခြင်းကို မစွန့်လွှတ်နိုင်။"
+        },
+        {
+          "id": "9-speaking-text-14",
+          "t": "para",
+          "page": 107,
+          "en": "You have a problem with a school subject.",
+          "my": "ကျောင်းဘာသာရပ်တစ်ခုတွင် အခက်အခဲရှိသည်။"
+        },
+        {
+          "id": "9-speaking-text-15",
+          "t": "para",
+          "page": 107,
+          "en": "You can’t sleep at night.",
+          "my": "ညအိပ်မပျော်။"
+        }
+      ],
+      "writing": [
+        {
+          "id": "9-writing-text-1",
+          "t": "h",
+          "page": 107,
+          "en": "Original letter · Hsu Latt → Hein Htet",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "9-writing-text-2",
+          "t": "para",
+          "page": 107,
+          "en": "Hi Hein Htet,",
+          "my": "ဟိန်းထက်ရေ၊"
+        },
+        {
+          "id": "9-writing-text-3",
+          "t": "para",
+          "page": 107,
+          "en": "My fourteen-year-old sister seems to spend all her time on social media. As she gets up late, she’s always absent at family mealtimes. Sometimes, she misses her breakfast. She doesn’t study hard for her exams and her scores are never good. I’m really worried about her. And I don’t know what to do. What do you advise me to do?",
+          "my": "အသက်ဆယ့်လေးနှစ်ရှိတဲ့ ညီမလေးက အချိန်အားလုံး လူမှုကွန်ရက်ပေါ်မှာပဲ သုံးနေသလိုပဲ။ အိပ်ရာထနောက်ကျလို့ မိသားစုထမင်းစားချိန်တွေမှာ အမြဲမရှိဘူး။ တစ်ခါတလေ မနက်စာမစားမိဘူး။ စာမကြိုးစားလို့ စာမေးပွဲအမှတ်တွေလည်း မကောင်းဘူး။ သူ့အတွက် အရမ်းစိတ်ပူတယ်။ ဘာလုပ်ရမှန်း မသိဘူး။ ဘာလုပ်သင့်တယ်လို့ အကြံပေးမလဲ။"
+        },
+        {
+          "id": "9-writing-text-4",
+          "t": "para",
+          "page": 107,
+          "en": "Many thanks in advance!\nHsu Latt",
+          "my": "ကြိုပြီး ကျေးဇူးတင်ပါတယ်။\nဆုလတ်"
+        }
+      ]
+    },
+    "10": {
+      "reading": [
+        {
+          "id": "10-reading-text-1",
+          "t": "h",
+          "page": 111,
+          "en": "Sleep",
+          "my": "အိပ်စက်ခြင်း"
+        },
+        {
+          "id": "10-reading-text-2",
+          "t": "para",
+          "page": 111,
+          "en": "Sleep is a natural state of rest characterized by reduced body movement and decreased awareness of surroundings. It is easily interrupted by external stimulation such as a loud noise. The exact purpose of sleep remains a mystery, so sleep researchers have made enormous strides in understanding how sleep occurs in humans and other animals, and the nature of sleep disorders.",
+          "my": "အိပ်စက်ခြင်းသည် ကိုယ်ခန္ဓာလှုပ်ရှားမှု လျော့နည်းပြီး ပတ်ဝန်းကျင်ကို သိရှိမှု နည်းလာသော သဘာဝအနားယူမှုအခြေအနေဖြစ်သည်။ ကျယ်လောင်သောအသံကဲ့သို့ ပြင်ပလှုံ့ဆော်မှုကြောင့် အလွယ်တကူ အနှောင့်အယှက် ဖြစ်နိုင်သည်။ အိပ်စက်ခြင်း၏ တိကျသောရည်ရွယ်ချက်မှာ ပဟေဠိဖြစ်နေဆဲဖြစ်သော်လည်း သုတေသီများသည် လူနှင့် အခြားတိရစ္ဆာန်များ မည်သို့အိပ်စက်ကြောင်းနှင့် အိပ်စက်မှုဆိုင်ရာရောဂါများ၏ သဘောသဘာဝကို နားလည်ရာတွင် များစွာတိုးတက်လာခဲ့သည်။",
+          "paragraph": 1
+        },
+        {
+          "id": "10-reading-text-3",
+          "t": "h",
+          "page": 111,
+          "en": "Sleep Deprivation",
+          "my": "အိပ်ရေးပျက်ခြင်း"
+        },
+        {
+          "id": "10-reading-text-4",
+          "t": "para",
+          "page": 111,
+          "en": "We all need sufficient sleep. According to sleep experts, young school-aged children are recommended to sleep 9 to 11 hours a night, teenagers 8 to 10 hours, young adults 7 to 9 hours, and older adults 7 to 8 hours. However, some people sleep less than they need to. Some suffer from insomnia, a condition of not being able to sleep. This leads to sleep deprivation, a condition of not having enough sleep. Irregular sleep deprivation is not a serious problem, but regular and continuous sleep deprivation can pose serious problems for many people, young and old in today’s fast-paced society.",
+          "my": "ကျွန်ုပ်တို့အားလုံး အိပ်ရေးဝရန် လိုသည်။ အိပ်စက်မှုကျွမ်းကျင်သူများအရ ကျောင်းနေအရွယ်ကလေးငယ်များသည် တစ်ည ၉ မှ ၁၁ နာရီ၊ ဆယ်ကျော်သက်များ ၈ မှ ၁၀ နာရီ၊ အရွယ်ရောက်လူငယ်များ ၇ မှ ၉ နာရီ၊ အသက်ပိုကြီးသူများ ၇ မှ ၈ နာရီ အိပ်သင့်သည်။ သို့သော် လူအချို့သည် လိုအပ်သည်ထက် လျော့အိပ်ကြသည်။ အချို့မှာ အိပ်မပျော်သောအခြေအနေဖြစ်သည့် အိပ်မပျော်ရောဂါ ခံစားရသည်။ ယင်းက အိပ်ရေးမဝခြင်းဖြစ်သော အိပ်ရေးပျက်မှုကို ဖြစ်စေသည်။ ရံဖန်ရံခါ အိပ်ရေးပျက်ခြင်းက ကြီးမားသည့်ပြဿနာမဟုတ်သော်လည်း ပုံမှန်ဆက်တိုက် အိပ်ရေးပျက်ခြင်းသည် ယနေ့လျင်မြန်သော လူ့အဖွဲ့အစည်းတွင် လူငယ်လူကြီးများစွာအတွက် ပြင်းထန်သောပြဿနာများ ဖြစ်စေနိုင်သည်။",
+          "paragraph": 2
+        },
+        {
+          "id": "10-reading-text-5",
+          "t": "h",
+          "page": 111,
+          "en": "Causes of Sleep Deprivation",
+          "my": "အိပ်ရေးပျက်ခြင်း၏ အကြောင်းရင်းများ"
+        },
+        {
+          "id": "10-reading-text-6",
+          "t": "para",
+          "page": 111,
+          "en": "A number of factors contribute to sleep deprivation. Going to bed late, waking up repeatedly during the night-time, or waking up early for no apparent reason can lead to sleep deprivation and the accumulation of sleep debt. Medical problems such as depression, sleep apnea, hormone imbalances, (1) ______. Moreover, shift work, family obligations or demanding jobs can be reasons for sleep deprivation. Another factor is that some regard sleep as wasted time and they purposely deprive themselves of sleep in their pursuits of wealth, fame and success. The one that is considered the most serious today is the online game addiction that poses risks of sleep deprivation to children and youths.",
+          "my": "အကြောင်းရင်းအချို့ကြောင့် အိပ်ရေးပျက်နိုင်သည်။ ညဉ့်နက်မှ အိပ်ခြင်း၊ ညဘက် အကြိမ်ကြိမ် နိုးခြင်း သို့မဟုတ် ထင်ရှားသောအကြောင်းရင်းမရှိဘဲ စောစောနိုးခြင်းသည် အိပ်ရေးပျက်မှုနှင့် အိပ်ရေးကြွေး စုပုံလာမှုကို ဖြစ်စေနိုင်သည်။ စိတ်ကျရောဂါ၊ အိပ်စဉ် အသက်ရှူရပ်ခြင်း၊ ဟော်မုန်းမညီမျှခြင်းကဲ့သို့ ကျန်းမာရေးပြဿနာများ၊ (၁) ______။ ထို့ပြင် အလှည့်ကျအလုပ်၊ မိသားစုတာဝန်များနှင့် အလုပ်ပိခြင်းတို့သည်လည်း အကြောင်းရင်းများ ဖြစ်နိုင်သည်။ အချို့က အိပ်ခြင်းကို အချိန်ဖြုန်းခြင်းဟု မှတ်ယူကာ ချမ်းသာမှု၊ ကျော်ကြားမှုနှင့် အောင်မြင်မှုကို ရှာဖွေရင်း ရည်ရွယ်ချက်ရှိရှိ အိပ်ချိန်လျှော့ကြသည်။ ယနေ့ အပြင်းထန်ဆုံးဟု ယူဆရသည်မှာ ကလေးနှင့် လူငယ်များကို အိပ်ရေးပျက်နိုင်ခြေ ဖြစ်စေသော အွန်လိုင်းဂိမ်းစွဲလမ်းမှု ဖြစ်သည်။",
+          "paragraph": 3,
+          "pages": [
+            111,
+            112
+          ]
+        },
+        {
+          "id": "10-reading-text-7",
+          "t": "para",
+          "page": 111,
+          "en": "Illustration labels: Family obligations · Waking up during night-time · Online games · Demanding jobs",
+          "my": "မူရင်းသရုပ်ဖော်ပုံအညွှန်းများ—မိသားစုတာဝန်များ၊ ညအချိန်နိုးခြင်း၊ အွန်လိုင်းဂိမ်းများ၊ အလုပ်ပိခြင်း။"
+        },
+        {
+          "id": "10-reading-text-8",
+          "t": "h",
+          "page": 112,
+          "en": "Effects of Sleep Deprivation",
+          "my": "အိပ်ရေးပျက်ခြင်း၏ သက်ရောက်မှုများ"
+        },
+        {
+          "id": "10-reading-text-9",
+          "t": "para",
+          "page": 112,
+          "en": "Sleep deprivation can negatively affect us. It can prevent the body from strengthening the immune system. As a result, it can take longer to recover from illness (2) ______. It can also form an excess of stress chemicals. Moreover, since (3) ______, sleep deprivation can increase the risk of heart disease. It can also affect the maintaining of blood pressure and sugar levels. When we are deprived of sleep, it is difficult for our brain to concentrate and form new memories, as sleep is believed to prepare the brain for learning. In addition, if someone consistently has sleep deprivation, his/her growth hormone is suppressed because growth hormone is normally released during sleep. Other serious effects include excessive daytime sleepiness, frustration and lack of concentration, extreme mood changes, and irritability which are often linked to serious accidents. As a result, sleep-deprived people are more likely to experience powerlessness, failure, low self-esteem, poor job or academic performance, and conflicts with co-workers.",
+          "my": "အိပ်ရေးပျက်ခြင်းသည် ဆိုးကျိုးပေးနိုင်သည်။ ကိုယ်ခံအားစနစ် အားကောင်းလာမှုကို ဟန့်တားနိုင်သည်။ ထို့ကြောင့် ရောဂါပျောက်ရန် ပိုကြာနိုင်ပြီး (၂) ______။ စိတ်ဖိစီးမှုဆိုင်ရာ ဓာတုပစ္စည်းများ ပိုထွက်စေနိုင်သည်။ ထို့ပြင် (၃) ______ ဖြစ်သောကြောင့် အိပ်ရေးပျက်ခြင်းက နှလုံးရောဂါဖြစ်နိုင်ခြေကို တိုးစေနိုင်သည်။ သွေးဖိအားနှင့် သွေးတွင်းသကြားဓာတ် ထိန်းသိမ်းမှုကိုလည်း ထိခိုက်နိုင်သည်။ အိပ်စက်ခြင်းသည် သင်ယူရန် ဦးနှောက်ကို ပြင်ဆင်ပေးသည်ဟု ယုံကြည်ထားသဖြင့် အိပ်ရေးပျက်လျှင် အာရုံစိုက်ခြင်းနှင့် မှတ်ဉာဏ်သစ် ဖွဲ့စည်းခြင်း ခက်လာသည်။ ဆက်တိုက် အိပ်ရေးပျက်သူတွင် ပုံမှန်အားဖြင့် အိပ်ချိန်၌ ထွက်သော ကြီးထွားမှုဟော်မုန်း ထုတ်လုပ်မှု လျော့ကျသည်။ အခြားပြင်းထန်သော သက်ရောက်မှုများမှာ နေ့ဘက် အလွန်အိပ်ငိုက်ခြင်း၊ စိတ်ပျက်ခြင်း၊ အာရုံမစူးစိုက်နိုင်ခြင်း၊ စိတ်အခြေအနေ အလွန်ပြောင်းလဲခြင်းနှင့် စိတ်တိုလွယ်ခြင်းတို့ဖြစ်ကာ ပြင်းထန်သော မတော်တဆမှုများနှင့် ဆက်စပ်လေ့ရှိသည်။ ထို့ကြောင့် အိပ်ရေးပျက်သူများသည် အားမရှိသကဲ့သို့ခံစားခြင်း၊ မအောင်မြင်ခြင်း၊ ကိုယ့်ကိုယ်ကို တန်ဖိုးထားမှုနည်းခြင်း၊ အလုပ် သို့မဟုတ် ပညာရေးစွမ်းဆောင်ရည် နိမ့်ခြင်းနှင့် လုပ်ဖော်ကိုင်ဖက်များနှင့် ပဋိပက္ခဖြစ်ခြင်းတို့ကို ပိုကြုံနိုင်သည်။",
+          "paragraph": 4
+        },
+        {
+          "id": "10-reading-text-10",
+          "t": "para",
+          "page": 112,
+          "en": "Illustration labels: Weak immune system · Risk of heart disease · Suppressed growth hormone · Increased blood pressure",
+          "my": "မူရင်းသရုပ်ဖော်ပုံအညွှန်းများ—ကိုယ်ခံအားနည်းခြင်း၊ နှလုံးရောဂါဖြစ်နိုင်ခြေ၊ ကြီးထွားမှုဟော်မုန်း လျော့ကျခြင်း၊ သွေးဖိအားတက်ခြင်း။"
+        },
+        {
+          "id": "10-reading-text-11",
+          "t": "h",
+          "page": 112,
+          "en": "Treatment",
+          "my": "ကုသမှု"
+        },
+        {
+          "id": "10-reading-text-12",
+          "t": "para",
+          "page": 112,
+          "en": "Sleep deprivation can be treated with behavioural treatments and medication. Sleep can be enhanced by undergoing behavioural treatments such as tensing and untensing the muscles in the body, mindfulness training, breathing exercises, controlling pre-bedtime activities and surroundings to ease sleeping patterns. Some sleep experts design a type of therapy to help patients understand (4) ______.",
+          "my": "အိပ်ရေးပျက်ခြင်းကို အပြုအမူဆိုင်ရာ ကုသမှုနှင့် ဆေးဝါးဖြင့် ကုသနိုင်သည်။ ကိုယ်ခန္ဓာကြွက်သားများ တင်းခြင်းဖြေလျှော့ခြင်း၊ သတိကပ်လေ့ကျင့်ခြင်း၊ အသက်ရှူလေ့ကျင့်ခန်း၊ အိပ်ရာမဝင်မီ လှုပ်ရှားမှုနှင့် ပတ်ဝန်းကျင်ကို ထိန်းညှိခြင်းကဲ့သို့ ကုသမှုများဖြင့် အိပ်စက်မှုပုံစံ ပိုကောင်းလာနိုင်သည်။ ကျွမ်းကျင်သူအချို့က လူနာများ နားလည်ရန် ကုထုံးတစ်မျိုး ဖန်တီးကြသည်၊ (၄) ______။",
+          "paragraph": 5
+        },
+        {
+          "id": "10-reading-text-13",
+          "t": "para",
+          "page": 113,
+          "en": "When behavioural treatments do not work, drugs can be used to help induce sleep. However, some people form a dependency on sleeping medications. Therefore, it is important to limit the dosage and behavioural treatments should be used as much as possible.",
+          "my": "အပြုအမူဆိုင်ရာ ကုသမှုများ မထိရောက်လျှင် အိပ်ပျော်စေရန် ဆေးသုံးနိုင်သည်။ သို့သော် အချို့သည် အိပ်ဆေးအပေါ် မှီခိုလာကြသည်။ ထို့ကြောင့် ဆေးပမာဏကို ကန့်သတ်ရန် အရေးကြီးပြီး အပြုအမူဆိုင်ရာ ကုသမှုများကို တတ်နိုင်သမျှ သုံးသင့်သည်။"
+        },
+        {
+          "id": "10-reading-text-14",
+          "t": "h",
+          "page": 113,
+          "en": "How to Have a Good Night’s Sleep",
+          "my": "ညဘက် ကောင်းစွာအိပ်ပျော်စေရန်"
+        },
+        {
+          "id": "10-reading-text-15",
+          "t": "para",
+          "page": 113,
+          "en": "Most of the negative effects of sleep deprivation can be overcome when sufficient sleep is obtained (5) ______.",
+          "my": "အိပ်ရေးဝသောအခါ အိပ်ရေးပျက်မှု၏ ဆိုးကျိုးအများစုကို ကျော်လွှားနိုင်သည်၊ (၅) ______။"
+        },
+        {
+          "id": "10-reading-text-16",
+          "t": "para",
+          "page": 113,
+          "en": "To have a good night’s sleep, sleep-deprived people are recommended by sleep experts to follow a routine for bed and wake-up times, carry out activities such as reading until they feel sleepy, go to bed when tired and avoid eating 2 to 3 hours before bedtime. Moreover, they should engage in regular exercise during the day, keep the bedroom quiet, dark and comfortable (6) ______. In addition to a good night’s sleep, a quick nap in the daytime can contribute towards making our brain sharper, more attentive, focused and more productive throughout the day.",
+          "my": "ညကောင်းစွာအိပ်နိုင်ရန် အိပ်ရေးပျက်သူများအား အိပ်ချိန်၊ နိုးချိန် မှန်မှန်ထားရန်၊ အိပ်ချင်လာသည်အထိ စာဖတ်ခြင်းကဲ့သို့ အလုပ်များလုပ်ရန်၊ ပင်ပန်းသောအခါ အိပ်ရာဝင်ရန်၊ မအိပ်မီ ၂ မှ ၃ နာရီအတွင်း အစားမစားရန် ကျွမ်းကျင်သူများက အကြံပြုသည်။ ထို့ပြင် နေ့ဘက် ပုံမှန်လေ့ကျင့်ခန်းလုပ်ပြီး အိပ်ခန်းကို တိတ်ဆိတ်၊ မှောင်မိုက်၊ သက်သောင့်သက်သာရှိအောင် ထားသင့်သည်၊ (၆) ______။ ညအိပ်ရေးဝခြင်းအပြင် နေ့ဘက် ခဏတစ်ဖြုတ် အိပ်ခြင်းသည် ဦးနှောက်ကို ပိုထက်မြက်၊ သတိရှိ၊ အာရုံစူးစိုက်၍ တစ်နေ့တာလုံး ပိုအလုပ်ဖြစ်စေနိုင်သည်။"
+        },
+        {
+          "id": "10-reading-text-17",
+          "t": "para",
+          "page": 113,
+          "en": "A good night’s sleep is vital to both our physical and emotional well-being. The better we sleep, the better we stay calm, controlled, and reasonable. There is no substitute for a good night’s sleep. Therefore, individuals of all ages should take great care to prevent constant sleep deprivation. Unfortunately, if you are suffering from sleep deprivation, you must seek help from medical professionals to receive proper treatments as soon as possible.",
+          "my": "ညအိပ်ရေးဝခြင်းသည် ကိုယ်နှင့် စိတ်ကျန်းမာရေးအတွက် အရေးပါသည်။ အိပ်ရေးပိုဝလေ ပိုတည်ငြိမ်၍ ကိုယ့်ကိုယ်ကို ထိန်းချုပ်နိုင်ပြီး ဆင်ခြင်တုံတရားရှိလေဖြစ်သည်။ ညကောင်းစွာအိပ်စက်ခြင်းကို အစားထိုးစရာ မရှိပါ။ ထို့ကြောင့် အသက်အရွယ်မရွေး အမြဲအိပ်ရေးပျက်ခြင်းမှ ကာကွယ်ရန် အထူးဂရုစိုက်သင့်သည်။ အကယ်၍ အိပ်ရေးပျက်ခြင်း ခံစားနေရလျှင် သင့်လျော်သည့်ကုသမှု အမြန်ဆုံးရရန် ဆေးဘက်ကျွမ်းကျင်သူများ၏ အကူအညီကို ရယူရမည်။"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "10-vocabulary-text-1",
+          "t": "h",
+          "page": 114,
+          "en": "Compound Adjectives",
+          "my": "ပေါင်းစပ်နာမဝိသေသနများ"
+        },
+        {
+          "id": "10-vocabulary-text-2",
+          "t": "para",
+          "page": 114,
+          "en": "Compound adjectives are formed with two words. They often have a hyphen (-). Many compound adjectives are formed from the past or present participles of verbs.",
+          "my": "စကားလုံးနှစ်လုံးကို ပေါင်းဖွဲ့ထားပြီး ဆက်မျဉ်းပါလေ့ရှိသည်။ အများအပြားကို ကြိယာ၏ အတိတ် သို့မဟုတ် လက်ရှိကြိယာဝိသေသပုံစံများမှ ဖွဲ့သည်။"
+        },
+        {
+          "id": "10-vocabulary-text-3",
+          "t": "para",
+          "page": 114,
+          "en": "Sleep deprivation is a common problem in today’s fast-paced society. (Sleep deprivation is common in society where people tend to expect everything to happen right away.)",
+          "my": "ယနေ့ အရာရာ ချက်ချင်းဖြစ်လာရန် မျှော်လင့်တတ်သည့် လျင်မြန်သောလူ့အဖွဲ့အစည်းတွင် အိပ်ရေးပျက်ခြင်းသည် အဖြစ်များသော ပြဿနာဖြစ်သည်။"
+        },
+        {
+          "id": "10-vocabulary-text-4",
+          "t": "para",
+          "page": 114,
+          "en": "We will have opportunities for participation in decision-making process. (We will have opportunities to participate in making decision.)",
+          "my": "ဆုံးဖြတ်ချက်ချမှတ်သည့် လုပ်ငန်းစဉ်တွင် ပါဝင်ရန် အခွင့်အရေးများ ရရှိမည်။"
+        }
+      ],
+      "grammar": [
+        {
+          "id": "10-grammar-text-1",
+          "t": "h",
+          "page": 116,
+          "en": "By + V-ing",
+          "my": "လုပ်ပုံလုပ်နည်းကို ပြသည့်ပုံစံ"
+        },
+        {
+          "id": "10-grammar-text-2",
+          "t": "para",
+          "page": 116,
+          "en": "We use ‘by + V-ing’ to say ‘how somebody does something’.",
+          "my": "တစ်ဦးဦးက တစ်ခုခုကို ဘယ်နည်းဖြင့် လုပ်သည်ဟု ဖော်ပြရန် သုံးသည်။"
+        },
+        {
+          "id": "10-grammar-text-3",
+          "t": "para",
+          "page": 116,
+          "en": "I turned on the alarm system. I press the ‘ON’ button. → I turned on the alarm system by pressing the ‘ON’ button.",
+          "my": "အချက်ပေးစနစ်ကို ဖွင့်ခဲ့သည်။ ဖွင့်ရန်ခလုတ်ကို နှိပ်သည်။ → ဖွင့်ရန်ခလုတ်ကို နှိပ်ခြင်းဖြင့် အချက်ပေးစနစ်ကို ဖွင့်ခဲ့သည်။"
+        },
+        {
+          "id": "10-grammar-text-4",
+          "t": "h",
+          "page": 116,
+          "en": "Present Participle (V-ing)",
+          "my": "လက်ရှိကြိယာဝိသေသပုံစံ"
+        },
+        {
+          "id": "10-grammar-text-5",
+          "t": "para",
+          "page": 116,
+          "en": "a. To give the result of an action. The flood swept the area. It left thousands of people homeless. → The flood swept the area, leaving thousands of people homeless.",
+          "my": "လုပ်ရပ်၏အကျိုးဆက်ကို ဖော်ပြရန်။ ရေကြီးမှုက ထိုဒေသကို ဖုံးလွှမ်းသွားပြီး လူထောင်ပေါင်းများစွာ အိုးမဲ့အိမ်မဲ့ ဖြစ်စေခဲ့သည်။"
+        },
+        {
+          "id": "10-grammar-text-6",
+          "t": "para",
+          "page": 116,
+          "en": "b. To give the reason for an action. I knew she was weak. I bought her some vitamins. → Knowing she was weak, I bought her some vitamins.",
+          "my": "လုပ်ရပ်၏အကြောင်းရင်းကို ဖော်ပြရန်။ သူမ အားနည်းမှန်းသိသောကြောင့် ဗီတာမင်အချို့ ဝယ်ပေးခဲ့သည်။"
+        },
+        {
+          "id": "10-grammar-text-7",
+          "t": "para",
+          "page": 116,
+          "en": "c. To talk about an action that happened at the same time as another action. The waiter stood at the door. He welcomed the visitors with a big smile. → The waiter stood at the door, welcoming the visitors with a big smile.",
+          "my": "တစ်ချိန်တည်းဖြစ်သော လုပ်ရပ်ကို ဖော်ပြရန်။ စားပွဲထိုးသည် တံခါးဝတွင် ရပ်ရင်း ဧည့်သည်များကို ပြုံးပြုံးရွှင်ရွှင် ကြိုဆိုသည်။"
+        },
+        {
+          "id": "10-grammar-text-8",
+          "t": "para",
+          "page": 116,
+          "en": "d. To add information about the subject of the main clause. Dolphins whistle, click, and squeak. They start from birth. → Dolphins whistle, click, and squeak, starting from birth.",
+          "my": "အဓိကဝါကျ၏ ပြုသူအကြောင်း ထပ်ဖြည့်ရန်။ လင်းပိုင်များသည် မွေးကတည်းက စတင်၍ လေချွန်သံ၊ တောက်သံနှင့် စူးရှသောအသံများ ပြုကြသည်။"
+        }
+      ],
+      "listening": [
+        {
+          "id": "10-listening-text-1",
+          "t": "h",
+          "page": 117,
+          "en": "A. Listen to Thu Thu, talking about how she spends her time. Read the statements and write TRUE or FALSE.",
+          "my": "သူသူ အချိန်အသုံးပြုပုံအကြောင်း နားထောင်၍ အဆိုတစ်ခုစီ မှန်၊ မှား ရွေးပါ။"
+        }
+      ],
+      "speaking": [
+        {
+          "id": "10-speaking-text-1",
+          "t": "h",
+          "page": 118,
+          "en": "Useful language",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "10-speaking-text-2",
+          "t": "para",
+          "page": 118,
+          "en": "Asking for information: How do you usually spend your leisure? / Which activities are important in your life? / Which activity do you like doing most? Why? / Do you have enough time to do what you want to do? Why? / Do you think you make good use of your leisure?",
+          "my": "အားလပ်ချိန်ကို ဘယ်လိုသုံးသလဲ။ ဘယ်လှုပ်ရှားမှုတွေ အရေးကြီးသလဲ။ ဘယ်ဟာကို အကြိုက်ဆုံးလဲ၊ ဘာကြောင့်လဲ။ လုပ်ချင်တာလုပ်ဖို့ အချိန်လုံလောက်သလား။ အားလပ်ချိန်ကို အကျိုးရှိရှိသုံးတယ်လို့ ထင်သလား။"
+        },
+        {
+          "id": "10-speaking-text-3",
+          "t": "para",
+          "page": 118,
+          "en": "Describing how you spend your time: I usually spend my leisure … / The important activities in my life are … because … / I like … (the) most because … / I (don’t) usually have enough time to do what I want because … / I (don’t) think so because …",
+          "my": "ကိုယ်လုပ်ပုံကို ရှင်းပြရာတွင် အလေ့အထ၊ အရေးကြီးသည့်အလုပ်နှင့် အကြောင်းရင်းကို တွဲပြောပါ။"
+        },
+        {
+          "id": "10-speaking-text-4",
+          "t": "para",
+          "page": 118,
+          "en": "Reporting back: He / She usually spends … / Important activities in his / her life are … / He / She likes … most / He / She doesn’t usually have enough time because … / He / She thinks / doesn’t think that he / she makes good use of his / her time because …",
+          "my": "သူငယ်ချင်းအကြောင်း ပြန်ပြောရာတွင် သူ၏အလေ့အထနှင့် အကြောင်းရင်းကို ပြန်လည်တင်ပြပါ။"
+        }
+      ],
+      "writing": [
+        {
+          "id": "10-writing-text-1",
+          "t": "h",
+          "page": 118,
+          "en": "Write a paragraph about ‘A mobile phone addict’, including answers to the following questions.",
+          "my": "စာအုပ်ပါ မေးခွန်းများ၏အဖြေများ ပါဝင်အောင် လက်ကိုင်ဖုန်းစွဲလမ်းသူတစ်ဦးအကြောင်း စာပိုဒ်ရေးပါ။"
+        }
+      ]
+    },
+    "11": {
+      "reading": [
+        {
+          "id": "11-reading-text-1",
+          "t": "para",
+          "page": 120,
+          "en": "According to the American writer Jack Kerouac, “All human beings are also dream beings. Dreaming ties all mankind together.” This observation is indeed true, for we all dream at one time or another. Very often, we dream in our sleep; and quite often, we dream in the daytime. Yet, do we truly know what a dream is or why we dream?",
+          "my": "အမေရိကန်စာရေးဆရာ ဂျက်ကဲရိုအက်၏ အဆိုအရ “လူအားလုံးသည် အိပ်မက်မက်သူများလည်း ဖြစ်ကြသည်။ အိပ်မက်မက်ခြင်းက လူသားအားလုံးကို ချိတ်ဆက်ပေးသည်။” ဤသုံးသပ်ချက်သည် အမှန်ပင် မှန်ကန်သည်။ အကြောင်းမှာ ကျွန်ုပ်တို့အားလုံး တစ်ချိန်မဟုတ်တစ်ချိန် အိပ်မက်မက်ကြသောကြောင့်ဖြစ်သည်။ အိပ်ပျော်နေစဉ် မကြာခဏ အိပ်မက်မက်ကြပြီး နေ့ဘက်တွင်လည်း မကြာခဏ စိတ်ကူးအိပ်မက်မက်ကြသည်။ သို့သော် အိပ်မက်ဆိုတာ ဘာလဲ၊ ဘာကြောင့်မက်သလဲကို တကယ်သိကြသလား။"
+        },
+        {
+          "id": "11-reading-text-2",
+          "t": "para",
+          "page": 120,
+          "en": "Psychologists say that dreaming is a mental activity that occurs during sleep. They also point out that dreams are more perceptual than conceptual, meaning that things are seen and heard rather than thought. Studies carried out by psychologists have revealed that in most dreams we see more than we hear, smell, taste or touch. Furthermore, most dreams are in the form of interrupted stories made up largely of memories, and scenes shift suddenly with hardly any connection between them.",
+          "my": "စိတ်ပညာရှင်များက အိပ်မက်မက်ခြင်းသည် အိပ်စက်စဉ်ဖြစ်သော စိတ်လှုပ်ရှားလုပ်ဆောင်မှုဟု ဆိုသည်။ အိပ်မက်များသည် အတွေးအယူအဆထက် အာရုံခံတွေ့မြင်မှု ပိုများကြောင်းလည်း ထောက်ပြသည်။ ဆိုလိုသည်မှာ အရာများကို တွေးခြင်းထက် မြင်၊ ကြားရခြင်း ပိုများသည်။ လေ့လာမှုများအရ အိပ်မက်အများစုတွင် ကြားခြင်း၊ နံ့ရခြင်း၊ အရသာခံခြင်းနှင့် ထိတွေ့ခြင်းတို့ထက် မြင်ခြင်းပိုများသည်။ ထို့ပြင် အိပ်မက်အများစုသည် မှတ်ဉာဏ်များဖြင့် အများအားဖြင့် ဖွဲ့စည်းထားသော အဆက်ပြတ်ဇာတ်လမ်းများဖြစ်ပြီး မြင်ကွင်းများသည် ဆက်စပ်မှုမရှိသလောက်ဖြင့် ရုတ်တရက် ပြောင်းလဲတတ်သည်။"
+        },
+        {
+          "id": "11-reading-text-3",
+          "t": "para",
+          "page": 120,
+          "en": "Sometimes, we wake up suddenly from a frightful dream in a cold sweat, our heart thumping wild. These fearsome dreams are called nightmares. Here again, to date, psychologists have not been able to explain satisfactorily why we have nightmares.",
+          "my": "တစ်ခါတစ်ရံ ကြောက်မက်ဖွယ်အိပ်မက်မှ ရုတ်တရက် နိုးလာရာ ချွေးစေးများထွက်ပြီး နှလုံး အပြင်းအထန်ခုန်နေတတ်သည်။ ဤကြောက်စရာအိပ်မက်များကို အိပ်မက်ဆိုးများဟု ခေါ်သည်။ အိပ်မက်ဆိုး ဘာကြောင့်မက်သည်ကိုလည်း ယနေ့အထိ စိတ်ပညာရှင်များက ကျေနပ်လောက်အောင် မရှင်းပြနိုင်သေးပေ။"
+        },
+        {
+          "id": "11-reading-text-4",
+          "t": "para",
+          "page": 120,
+          "en": "Some say that dreaming is nothing but a process of our brain trying to clear up the clutter that has accumulated in our head, somewhat like housewives sweeping and tidying up the house. Some others claim that dreams are prophetic, that is, they foretell the future. Pharaohs of ancient Egypt thought so, and Joseph, a biblical character in the Old Testament, interpreted not only his dreams but also of the Pharaohs. Even today there are people who believe that dreams are meaningful and tell something.",
+          "my": "အချို့က အိပ်မက်မက်ခြင်းသည် ဦးခေါင်းထဲ စုပုံနေသော အတွေးရှုပ်ထွေးမှုများကို ဦးနှောက်က ရှင်းလင်းရန် ကြိုးစားသည့် လုပ်ငန်းစဉ်မျှသာဖြစ်ပြီး အိမ်ရှင်မများ အိမ်ကို တံမြက်စည်းလှည်း၊ ရှင်းလင်းသကဲ့သို့ ဖြစ်သည်ဟု ဆိုသည်။ အခြားသူအချို့က အိပ်မက်များသည် အနာဂတ်ကို ကြိုပြောသော နိမိတ်များဖြစ်သည်ဟု ယူဆသည်။ ရှေးအီဂျစ်ဖာရောဘုရင်များကလည်း ထိုသို့ယူဆခဲ့ကြသည်။ ဓမ္မဟောင်းကျမ်းထဲမှ ဇာတ်ကောင် ဂျိုးဇက်သည် မိမိအိပ်မက်များသာမက ဖာရောဘုရင်တို့၏ အိပ်မက်များကိုပါ အနက်ဖော်ခဲ့သည်။ ယနေ့တွင်ပင် အိပ်မက်များ အဓိပ္ပာယ်ရှိပြီး တစ်ခုခုကို ဖော်ပြသည်ဟု ယုံကြည်သူများ ရှိနေသည်။",
+          "highlights": [
+            "so"
+          ],
+          "sourceLine": 17
+        },
+        {
+          "id": "11-reading-text-5",
+          "t": "para",
+          "page": 120,
+          "en": "What about the dreams we dream during the day while wide awake? Maybe because we do so, we have such expressions as ‘daydream’ (noun as well as verb) and ‘pipe dream’ (noun). To some, ‘daydreaming’ may have a negative connotation; however, few can deny that it is daydreaming that has led to great achievements in both the fields of arts and science and technology.",
+          "my": "နေ့ဘက် လုံးဝနိုးနေစဉ် မက်သော စိတ်ကူးအိပ်မက်များကရော ဘယ်လိုလဲ။ ထိုသို့လုပ်တတ်သောကြောင့်ပင် နာမ်နှင့် ကြိယာနှစ်မျိုးလုံးဖြစ်သည့် “နေ့ခင်းအိပ်မက်” နှင့် နာမ်ဖြစ်သည့် “မဖြစ်နိုင်သောစိတ်ကူး” ကဲ့သို့ အသုံးအနှုန်းများ ရှိလာခြင်း ဖြစ်နိုင်သည်။ အချို့အတွက် နေ့ခင်းစိတ်ကူးယဉ်ခြင်းသည် မကောင်းသောအဓိပ္ပာယ် သက်ရောက်နိုင်သော်လည်း အနုပညာနှင့် သိပ္ပံနည်းပညာ နှစ်ဖက်စလုံးတွင် ကြီးမားသောအောင်မြင်မှုများကို ယင်းက ဖြစ်ပေါ်စေခဲ့ကြောင်း ငြင်းနိုင်သူ နည်းသည်။"
+        },
+        {
+          "id": "11-reading-text-6",
+          "t": "para",
+          "page": 120,
+          "en": "Let’s take the moon for a start. To the ancient Greeks and Romans, the moon was a goddess. In time, man came to find out that the moon is a satellite of the earth, waxing and waning regularly in a 29½-day cycle. And there was a time the moon was beyond our reach. Then, the father of science fiction Jules Verne daydreamed of going to the moon, and this daydream led him to write ‘To the Moon and Back’. That was way back in 1874. Then, 95 years later, on July 20, 1969, Neil Armstrong, the American Astronaut, landed on the moon and became the first human being to step on the surface of the moon. It all began with a dream.",
+          "my": "လကို ဥပမာအဖြစ် စကြည့်ကြစို့။ ရှေးဂရိနှင့် ရောမလူမျိုးများအတွက် လသည် နတ်ဘုရားမတစ်ပါး ဖြစ်ခဲ့သည်။ အချိန်ကြာလာသောအခါ လူသားသည် လမှာ ကမ္ဘာ၏ အရံဂြိုဟ်ဖြစ်ပြီး ၂၉ ရက်ခွဲ စက်ဝန်းအတွင်း ပုံမှန် လဆန်းလဆုတ်ဖြစ်ကြောင်း သိလာသည်။ လကို ကျွန်ုပ်တို့ မရောက်နိုင်သောအချိန်လည်း ရှိခဲ့သည်။ နောက်တော့ သိပ္ပံစိတ်ကူးယဉ်စာပေ၏ ဖခင် ဂျူးလ်ဗန်းက လသို့သွားရန် စိတ်ကူးယဉ်ပြီး ယင်းကြောင့် “လသို့သွားပြီး ပြန်လာခြင်း” ကို ရေးခဲ့သည်။ ထိုအချိန်မှာ ၁၈၇၄ ခုနှစ် ဖြစ်သည်။ ၉၅ နှစ်အကြာ ၁၉၆၉ ဇူလိုင် ၂၀ ရက်တွင် အမေရိကန်အာကာသယာဉ်မှူး နီးလ်အမ်းစထရောင်းသည် လပေါ်ဆင်းသက်၍ လမျက်နှာပြင်ပေါ် ပထမဆုံးခြေချသူ ဖြစ်လာသည်။ အားလုံးသည် အိပ်မက်တစ်ခုမှ စတင်ခဲ့သည်။",
+          "pages": [
+            120,
+            121
+          ]
+        },
+        {
+          "id": "11-reading-text-7",
+          "t": "para",
+          "page": 121,
+          "en": "The last line of a well-known nursery rhyme says: “Life is but a dream.” Indeed, nobody knows what kind of ‘dream’ the composer had in mind; but the ‘dream’ in ‘daydream’ refers to ‘pleasant thoughts that make you forget about the present’. In real life, and in most cases, it is likely that a thought becomes a wish, and the wish becomes a dream, and the dream becomes a reality.",
+          "my": "လူသိများသော ကလေးကဗျာတစ်ပုဒ်၏ နောက်ဆုံးစာကြောင်းက “ဘဝဟာ အိပ်မက်တစ်ခုသာဖြစ်သည်” ဟု ဆိုသည်။ တေးရေးသူ၏စိတ်ထဲ မည်သည့်အိပ်မက်မျိုးကို ရည်ရွယ်သည်ကို မည်သူမျှ မသိပေ။ သို့သော် “နေ့ခင်းအိပ်မက်” ထဲမှ အိပ်မက်သည် လက်ရှိအချိန်ကို မေ့သွားစေသော နှစ်သက်ဖွယ်အတွေးများကို ဆိုလိုသည်။ လက်တွေ့ဘဝတွင် အများအားဖြင့် အတွေးတစ်ခုက ဆန္ဒ၊ ဆန္ဒက အိပ်မက်၊ အိပ်မက်က လက်တွေ့အဖြစ် ပြောင်းလာနိုင်သည်။"
+        },
+        {
+          "id": "11-reading-text-8",
+          "t": "para",
+          "page": 121,
+          "en": "Great paintings, great sculptures, great novels, great compositions, great plays all begin with a dream in the mind of the painter, the sculptor, the novelist, the musician, and the playwright. So do great inventions and discoveries. This is the way humankind advances from age to age. To gain further insight, it may do us well to pause and ponder the observations in the following eight quotations:",
+          "my": "ကြီးကျယ်သော ပန်းချီကား၊ ပန်းပု၊ ဝတ္ထု၊ တေးသီချင်းနှင့် ပြဇာတ်တို့အားလုံးသည် ပန်းချီဆရာ၊ ပန်းပုဆရာ၊ ဝတ္ထုရေးဆရာ၊ ဂီတသမားနှင့် ပြဇာတ်ရေးဆရာတို့၏ စိတ်ထဲက အိပ်မက်တစ်ခုမှ စတင်သည်။ ကြီးမားသောတီထွင်မှုနှင့် ရှာဖွေတွေ့ရှိမှုတို့လည်း ထိုနည်းတူပင်။ လူသားတို့သည် ထိုနည်းဖြင့် ခေတ်အဆက်ဆက် တိုးတက်လာကြသည်။ ပိုနားလည်ရန် အောက်ပါ ကိုးကားစကားရှစ်ခု၏ သုံးသပ်ချက်များကို ခဏရပ်၍ ဆင်ခြင်ကြည့်ခြင်းက အကျိုးရှိနိုင်သည်။"
+        },
+        {
+          "id": "11-reading-text-9",
+          "t": "para",
+          "page": 121,
+          "en": "1. You are never too old to set another goal or to dream a new dream. — Les Brown, American writer and motivator",
+          "my": "၁။ ရည်မှန်းချက်အသစ် ချမှတ်ရန် သို့မဟုတ် အိပ်မက်အသစ် မက်ရန် သင်သည် မည်သည့်အခါမျှ အသက်ကြီးလွန်းသူ မဟုတ်ပါ။ — လက်စ်ဘရောင်း၊ အမေရိကန်စာရေးဆရာနှင့် စိတ်ဓာတ်တက်ကြွစေသူ။"
+        },
+        {
+          "id": "11-reading-text-10",
+          "t": "para",
+          "page": 121,
+          "en": "2. To accomplish great things, we must not only act, but also dream; not only plan, but also believe. — Anatole France, French writer",
+          "my": "၂။ ကြီးမားသည့်အရာများကို ပြီးမြောက်ရန် လုပ်ဆောင်ရုံသာမက အိပ်မက်မက်ရမည်။ စီစဉ်ရုံသာမက ယုံကြည်ရမည်။ — အနာတိုလ်ဖရန့်စ်၊ ပြင်သစ်စာရေးဆရာ။"
+        },
+        {
+          "id": "11-reading-text-11",
+          "t": "para",
+          "page": 121,
+          "en": "3. We must teach our children to dream with their eyes open. — Harry Edwards, American sociologist",
+          "my": "၃။ ကျွန်ုပ်တို့၏ကလေးများကို မျက်လုံးဖွင့်လျက် စိတ်ကူးအိပ်မက်မက်တတ်ရန် သင်ပေးရမည်။ — ဟယ်ရီအက်ဒ်ဝပ်စ်၊ အမေရိကန်လူမှုဗေဒပညာရှင်။"
+        },
+        {
+          "id": "11-reading-text-12",
+          "t": "para",
+          "page": 121,
+          "en": "4. All our dreams can come true if we have the courage to pursue them. — Walt Disney, American motion-picture and television producer and writer",
+          "my": "၄။ အိပ်မက်များကို လိုက်လံအကောင်အထည်ဖော်ရန် သတ္တိရှိလျှင် ကျွန်ုပ်တို့၏အိပ်မက်အားလုံး အမှန်ဖြစ်လာနိုင်သည်။ — ဝေါ့လ်ဒစ္စနီ၊ အမေရိကန်ရုပ်ရှင်နှင့် ရုပ်မြင်သံကြားထုတ်လုပ်သူ၊ စာရေးဆရာ။"
+        },
+        {
+          "id": "11-reading-text-13",
+          "t": "para",
+          "page": 121,
+          "en": "5. Everything starts as somebody’s daydream. — Larry Niven, American science fiction writer",
+          "my": "၅။ အရာအားလုံးသည် တစ်ဦးဦး၏ စိတ်ကူးယဉ်အိပ်မက်အဖြစ် စတင်သည်။ — လယ်ရီနီဗင်၊ အမေရိကန်သိပ္ပံစိတ်ကူးယဉ်စာရေးဆရာ။"
+        },
+        {
+          "id": "11-reading-text-14",
+          "t": "para",
+          "page": 121,
+          "en": "6. When we can’t dream any longer, we die. — Emma Goldman, Russian writer",
+          "my": "၆။ အိပ်မက်ဆက်မမက်နိုင်တော့သောအခါ ကျွန်ုပ်တို့ သေဆုံးကြသည်။ — အမ်မာဂိုးလ်ဒ်မန်း၊ ရုရှားစာရေးဆရာမ။"
+        },
+        {
+          "id": "11-reading-text-15",
+          "t": "para",
+          "page": 121,
+          "en": "7. All men of action are dreamers. — James G. Huneker, American art critic and writer",
+          "my": "၇။ လက်တွေ့လုပ်ဆောင်သူအားလုံးသည် အိပ်မက်မက်သူများ ဖြစ်ကြသည်။ — ဂျိမ်းစ်ဂျီဟျူနက်ကာ၊ အမေရိကန်အနုပညာဝေဖန်ရေးနှင့် စာရေးဆရာ။"
+        },
+        {
+          "id": "11-reading-text-16",
+          "t": "para",
+          "page": 121,
+          "en": "8. If there were dreams to sell, what would you buy? — Thomas Lovell Beddoes, British poet",
+          "my": "၈။ အိပ်မက်များကို ရောင်းချလျှင် သင် ဘာကို ဝယ်မလဲ။ — သောမတ်စ်လိုဗဲလ်ဘက်ဒိုးစ်၊ ဗြိတိသျှကဗျာဆရာ။"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "11-vocabulary-text-1",
+          "t": "h",
+          "page": 123,
+          "en": "Reporting verbs",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "11-vocabulary-text-2",
+          "t": "para",
+          "page": 123,
+          "en": "Psychologists say that dreaming is a mental activity that occurs during sleep.",
+          "my": "အိပ်မက်မက်ခြင်းသည် အိပ်စက်စဉ်ဖြစ်သော စိတ်ပိုင်းဆိုင်ရာလုပ်ဆောင်မှုဟု စိတ်ပညာရှင်များက ဆိုသည်။"
+        },
+        {
+          "id": "11-vocabulary-text-3",
+          "t": "para",
+          "page": 123,
+          "en": "They also point out that dreams are more perceptual than conceptual.",
+          "my": "အိပ်မက်များသည် အယူအဆထက် အာရုံခံတွေ့မြင်မှု ပိုများကြောင်းလည်း သူတို့က ထောက်ပြသည်။"
+        },
+        {
+          "id": "11-vocabulary-text-4",
+          "t": "para",
+          "page": 123,
+          "en": "Some others claim that dreams are prophetic.",
+          "my": "အခြားသူအချို့က အိပ်မက်များ အနာဂတ်နိမိတ်ပြသည်ဟု ဆိုကြသည်။"
+        },
+        {
+          "id": "11-vocabulary-text-5",
+          "t": "para",
+          "page": 123,
+          "en": "argue — to give reasons for or against something",
+          "my": "အကြောင်းပြချက်ဖြင့် ထောက်ခံ၊ ကန့်ကွက်ဆွေးနွေးသည်"
+        },
+        {
+          "id": "11-vocabulary-text-6",
+          "t": "para",
+          "page": 123,
+          "en": "claim — to say that something is true although it has not been proved",
+          "my": "သက်သေမပြရသေးသော်လည်း မှန်သည်ဟု ဆိုသည်"
+        },
+        {
+          "id": "11-vocabulary-text-7",
+          "t": "para",
+          "page": 123,
+          "en": "describe — to say what something or someone is like",
+          "my": "ပုံသဏ္ဌာန်၊ အခြေအနေကို ဖော်ပြသည်"
+        },
+        {
+          "id": "11-vocabulary-text-8",
+          "t": "para",
+          "page": 123,
+          "en": "mention — to refer to something or someone",
+          "my": "ထည့်သွင်းဖော်ပြသည်"
+        },
+        {
+          "id": "11-vocabulary-text-9",
+          "t": "para",
+          "page": 123,
+          "en": "point out — to tell somebody something in order to give them information about it or make them notice it",
+          "my": "သိရှိသတိပြုမိစေရန် ထောက်ပြသည်"
+        },
+        {
+          "id": "11-vocabulary-text-10",
+          "t": "para",
+          "page": 123,
+          "en": "propose — to offer or suggest (a matter, subject, case, etc.) for consideration, acceptance, or action",
+          "my": "စဉ်းစားလက်ခံဆောင်ရွက်ရန် အဆိုပြုသည်"
+        },
+        {
+          "id": "11-vocabulary-text-11",
+          "t": "para",
+          "page": 123,
+          "en": "say — to state as an opinion or judgement",
+          "my": "အမြင်တစ်ခုကို ပြောသည်"
+        },
+        {
+          "id": "11-vocabulary-text-12",
+          "t": "para",
+          "page": 123,
+          "en": "state — to say or write something, especially clearly and carefully",
+          "my": "ရှင်းလင်းဂရုတစိုက် ထုတ်ဖော်ပြော၊ ရေးသည်"
+        },
+        {
+          "id": "11-vocabulary-text-13",
+          "t": "h",
+          "page": 124,
+          "en": "Degree adverbs",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "11-vocabulary-text-14",
+          "t": "para",
+          "page": 124,
+          "en": "Degree adverbs are used to show the intensity or degree of something. They can be used before adjectives, verbs, or other adverbs.",
+          "my": "အရာတစ်ခု၏ ပြင်းအား သို့မဟုတ် အတိုင်းအတာကို ဖော်ပြရန် သုံးပြီး နာမဝိသေသန၊ ကြိယာ သို့မဟုတ် အခြားကြိယာဝိသေသန ရှေ့တွင် သုံးနိုင်သည်။"
+        },
+        {
+          "id": "11-vocabulary-text-15",
+          "t": "para",
+          "page": 124,
+          "en": "almost — not quite; very nearly",
+          "my": "လုံးဝနီးပါး၊ မပြည့်မီသေး"
+        },
+        {
+          "id": "11-vocabulary-text-16",
+          "t": "para",
+          "page": 124,
+          "en": "1. Almost all the passengers on the ferry were from Thar Yar Gone Village.",
+          "my": "သင်္ဘောခရီးသည် အားလုံးနီးပါးသည် သာယာကုန်းရွာမှ ဖြစ်ကြသည်။"
+        },
+        {
+          "id": "11-vocabulary-text-17",
+          "t": "para",
+          "page": 124,
+          "en": "completely — in every way or as much as possible",
+          "my": "လုံးဝ၊ အပြည့်အဝ"
+        },
+        {
+          "id": "11-vocabulary-text-18",
+          "t": "para",
+          "page": 124,
+          "en": "2. I completely agree with what you said.",
+          "my": "မင်းပြောတာကို လုံးဝသဘောတူတယ်။"
+        },
+        {
+          "id": "11-vocabulary-text-19",
+          "t": "para",
+          "page": 124,
+          "en": "extremely — very",
+          "my": "အလွန်"
+        },
+        {
+          "id": "11-vocabulary-text-20",
+          "t": "para",
+          "page": 124,
+          "en": "3. The gems displayed in the emporium were extremely valuable.",
+          "my": "ပြပွဲတွင် ပြထားသော ရတနာများသည် အလွန်တန်ဖိုးကြီးသည်။"
+        },
+        {
+          "id": "11-vocabulary-text-21",
+          "t": "para",
+          "page": 124,
+          "en": "fairly — quite, but less than very",
+          "my": "အတော်အသင့်"
+        },
+        {
+          "id": "11-vocabulary-text-22",
+          "t": "para",
+          "page": 124,
+          "en": "4. My grandmother says that her family was fairly poor when she was a kid.",
+          "my": "အဘွားက ငယ်စဉ် မိသားစုအတော်ဆင်းရဲခဲ့သည်ဟု ပြောသည်။"
+        },
+        {
+          "id": "11-vocabulary-text-23",
+          "t": "para",
+          "page": 124,
+          "en": "largely — almost completely",
+          "my": "အများအားဖြင့်၊ လုံးဝနီးပါး"
+        },
+        {
+          "id": "11-vocabulary-text-24",
+          "t": "para",
+          "page": 124,
+          "en": "5. The economy of this town is largely based on mining.",
+          "my": "ဤမြို့၏ စီးပွားရေးသည် အများအားဖြင့် သတ္တုတူးဖော်ရေးအပေါ် အခြေခံသည်။"
+        },
+        {
+          "id": "11-vocabulary-text-25",
+          "t": "para",
+          "page": 124,
+          "en": "nearly — almost; not completely",
+          "my": "နီးပါး"
+        },
+        {
+          "id": "11-vocabulary-text-26",
+          "t": "para",
+          "page": 124,
+          "en": "6. We have been living in Yangon for nearly ten years.",
+          "my": "ရန်ကုန်မှာ နေထိုင်လာသည်မှာ ဆယ်နှစ်နီးပါး ရှိပြီ။"
+        },
+        {
+          "id": "11-vocabulary-text-27",
+          "t": "para",
+          "page": 124,
+          "en": "pretty (informal) — quite, but not extremely",
+          "my": "အတော်အသင့် (အရပ်သုံး)"
+        },
+        {
+          "id": "11-vocabulary-text-28",
+          "t": "para",
+          "page": 124,
+          "en": "7. I’m pretty sure we’ve met before. Were you at Nyi Nyi’s birthday party last week?",
+          "my": "အရင်က တွေ့ဖူးတယ်ဆိုတာ အတော်သေချာတယ်။ ပြီးခဲ့တဲ့အပတ် ညီညီ့မွေးနေ့ပွဲမှာ မင်းရှိခဲ့သလား။"
+        },
+        {
+          "id": "11-vocabulary-text-29",
+          "t": "para",
+          "page": 124,
+          "en": "rather — quite; to a slight degree",
+          "my": "အတော်၊ အနည်းငယ်"
+        },
+        {
+          "id": "11-vocabulary-text-30",
+          "t": "para",
+          "page": 124,
+          "en": "8. It’s rather hot today, isn’t it?",
+          "my": "ဒီနေ့ အတော်ပူတယ်နော်။"
+        },
+        {
+          "id": "11-vocabulary-text-31",
+          "t": "para",
+          "page": 125,
+          "en": "scarcely — only just, almost not",
+          "my": "မရှိသလောက်၊ လုနီးပါးသာ"
+        },
+        {
+          "id": "11-vocabulary-text-32",
+          "t": "para",
+          "page": 125,
+          "en": "9. My best friend and I scarcely see each other face to face; we only meet online.",
+          "my": "အချစ်ဆုံးသူငယ်ချင်းနှင့် ကျွန်ုပ်သည် လူချင်းတွေ့ရခဲပြီး အွန်လိုင်းတွင်သာ တွေ့ကြသည်။"
+        },
+        {
+          "id": "11-vocabulary-text-33",
+          "t": "para",
+          "page": 125,
+          "en": "slightly (formal) — to a small degree; not considerably",
+          "my": "အနည်းငယ် (တရားဝင်အသုံး)"
+        },
+        {
+          "id": "11-vocabulary-text-34",
+          "t": "para",
+          "page": 125,
+          "en": "10. Only a few passengers were slightly injured in the train accident.",
+          "my": "ရထားမတော်တဆမှုတွင် ခရီးသည်အနည်းငယ်သာ အနည်းငယ်ဒဏ်ရာရခဲ့သည်။"
+        }
+      ],
+      "grammar": [
+        {
+          "id": "11-grammar-text-1",
+          "t": "h",
+          "page": 125,
+          "en": "It is / It was …",
+          "my": "စကားလုံးအပိုင်းကို အလေးပေးခြင်း"
+        },
+        {
+          "id": "11-grammar-text-2",
+          "t": "para",
+          "page": 125,
+          "en": "We use ‘It is’ / ‘It was’ to emphasize particular words and expressions. The words to be emphasized are usually joined to the relative clause by ‘that’.",
+          "my": "သတ်မှတ်စကားလုံးနှင့် အသုံးအနှုန်းများကို အလေးပေးရန် သုံးသည်။ အလေးပေးသည့်အပိုင်းကို ပုံမှန်အားဖြင့် နောက်ဝါကျနှင့် ဆက်စပ်စကားဖြင့် ချိတ်သည်။"
+        },
+        {
+          "id": "11-grammar-text-3",
+          "t": "para",
+          "page": 125,
+          "en": "When a personal subject is emphasized, ‘who’ can be used instead of ‘that’.",
+          "my": "လူကို ပြုသူအဖြစ် အလေးပေးလျှင် လူကိုရည်ညွှန်းသော ဆက်စပ်စကားကို အစားထိုးသုံးနိုင်သည်။"
+        },
+        {
+          "id": "11-grammar-text-4",
+          "t": "para",
+          "page": 125,
+          "en": "When a plural subject is emphasized using ‘It is’ / ‘It was’, the plural verb is used for the subject, but ‘It is’ / ‘It was’ remains singular.",
+          "my": "အများကိန်းပြုသူကို အလေးပေးလျှင် ထိုပြုသူအတွက် အများကိန်းကြိယာသုံးသော်လည်း အစအလေးပေးပုံစံမှာ အနည်းကိန်းအတိုင်း ရှိနေသည်။"
+        },
+        {
+          "id": "11-grammar-text-5",
+          "t": "para",
+          "page": 125,
+          "en": "Education enables us to have a decent profession. → It is education that enables us to have a decent profession. (The underlined word is Education.)",
+          "my": "ပညာရေးက သင့်တင့်သော အသက်မွေးဝမ်းကျောင်း ရရှိစေသည်။ → သင့်တင့်သော အသက်မွေးဝမ်းကျောင်း ရရှိစေသည်မှာ ပညာရေးပင်ဖြစ်သည်။ မူရင်းတွင် ပညာရေးကို မျဉ်းသားထားသည်။"
+        },
+        {
+          "id": "11-grammar-text-6",
+          "t": "h",
+          "page": 126,
+          "en": "‘So’ and ‘Neither’",
+          "my": "တူညီသောအချက်ကို ပြန်မထပ်ဘဲ ပြောခြင်း"
+        },
+        {
+          "id": "11-grammar-text-7",
+          "t": "para",
+          "page": 126,
+          "en": "We use ‘so’ or ‘neither’ (a) to agree with somebody or (b) to add similar information without repeating the main verb.",
+          "my": "တစ်ဦးဦးကို သဘောတူရန် သို့မဟုတ် အဓိကကြိယာ မထပ်ဘဲ ဆင်တူအချက် ထပ်ထည့်ရန် သုံးသည်။"
+        },
+        {
+          "id": "11-grammar-text-8",
+          "t": "para",
+          "page": 126,
+          "en": "We use ‘so’ to agree or add similar information to affirmative statements; and ‘neither’, to the negative statements.",
+          "my": "အပြုဝါကျကို သဘောတူရန် ပထမပုံစံ၊ အငြင်းဝါကျကို သဘောတူရန် ဒုတိယပုံစံကို သုံးသည်။"
+        },
+        {
+          "id": "11-grammar-text-9",
+          "t": "para",
+          "page": 126,
+          "en": "After ‘so’ or ‘neither’, we use an auxiliary such as ‘be’, ‘have’, ‘can’, ‘do’, ‘does’ or ‘did’ instead of repeating all the words in a clause.",
+          "my": "ထိုစကားနောက်တွင် ဝါကျထဲက စကားလုံးအားလုံး ပြန်မထပ်ဘဲ သင့်တော်သော အကူကြိယာကို သုံးသည်။"
+        },
+        {
+          "id": "11-grammar-text-10",
+          "t": "para",
+          "page": 126,
+          "en": "(a) To agree with somebody without repeating the main verb: A: I am the youngest in my family. B: So am I. / A: Wind energy doesn’t cause air pollution. B: Neither does solar energy.",
+          "my": "အဓိကကြိယာ မထပ်ဘဲ သဘောတူခြင်း။ “ငါက မိသားစုမှာ အငယ်ဆုံးပဲ။” “ငါလည်း အတူတူပဲ။” “လေစွမ်းအင်က လေထုမညစ်ညမ်းစေဘူး။” “နေစွမ်းအင်လည်း မညစ်ညမ်းစေဘူး။”"
+        },
+        {
+          "id": "11-grammar-text-11",
+          "t": "para",
+          "page": 126,
+          "en": "(b) To add similar information without repeating the main verb: Great paintings, great sculptures, great novels, great compositions, great plays all begin with a dream in the mind of the painter, the sculptor, the novelist, the musician, and the playwright. So do great inventions and discoveries.",
+          "my": "ဆင်တူအချက် ထပ်ဖြည့်ခြင်း။ ပန်းချီ၊ ပန်းပု၊ ဝတ္ထု၊ တေးနှင့် ပြဇာတ်များသည် ဖန်တီးသူတို့၏ စိတ်ထဲက အိပ်မက်မှ စတင်သည်။ ကြီးမားသော တီထွင်မှုနှင့် ရှာဖွေတွေ့ရှိမှုတို့လည်း ထိုနည်းတူပင်။"
+        },
+        {
+          "id": "11-grammar-text-12",
+          "t": "para",
+          "page": 126,
+          "en": "Exercise B example: A: I’ve never been to Myitkyina. B: Neither have I.",
+          "my": "လေ့ကျင့်ခန်းဥပမာ—“ငါ မြစ်ကြီးနားကို တစ်ခါမှ မရောက်ဖူးဘူး။” “ငါလည်း မရောက်ဖူးဘူး။”"
+        },
+        {
+          "id": "11-grammar-text-13",
+          "t": "para",
+          "page": 127,
+          "en": "Exercise C example: Ko Soe and Ko Toe didn’t go to the music concert. → Ko Soe didn’t go to the music concert. Neither did Ko Toe.",
+          "my": "ကိုစိုးနှင့် ကိုတိုးသည် ဂီတဖျော်ဖြေပွဲသို့ မသွားခဲ့ကြ။ → ကိုစိုး မသွားခဲ့။ ကိုတိုးလည်း မသွားခဲ့။"
+        }
+      ],
+      "listening": [
+        {
+          "id": "11-listening-text-1",
+          "t": "h",
+          "page": 127,
+          "en": "A. Listen to a teacher talking about ‘The importance of having big dreams in life’ and complete the statements.",
+          "my": "ဘဝတွင် ကြီးမားသောအိပ်မက်ရှိခြင်း၏ အရေးပါမှုအကြောင်း ဆရာတစ်ဦးပြောကြားသည်ကို နားထောင်ပြီး အဆိုများကို ဖြည့်ပါ။"
+        }
+      ],
+      "speaking": [
+        {
+          "id": "11-speaking-text-1",
+          "t": "h",
+          "page": 128,
+          "en": "Useful language",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "11-speaking-text-2",
+          "t": "para",
+          "page": 128,
+          "en": "Introducing your dream job: My dream job is … / I want to be …",
+          "my": "အိပ်မက်အလုပ်ကို မိတ်ဆက်ပါ။"
+        },
+        {
+          "id": "11-speaking-text-3",
+          "t": "para",
+          "page": 128,
+          "en": "Why you wish to have that job: It is an interesting / challenging / decent / secure job. / It is a well-paid job. / My parents want me to … / I wish to be like …",
+          "my": "စိတ်ဝင်စားဖွယ်၊ စိန်ခေါ်မှုရှိ၊ သင့်တင့်၊ တည်ငြိမ်သောအလုပ်၊ လစာကောင်းခြင်း၊ မိဘဆန္ဒ သို့မဟုတ် စံပြပုဂ္ဂိုလ် စသည့် အကြောင်းရင်းများ။"
+        },
+        {
+          "id": "11-speaking-text-4",
+          "t": "para",
+          "page": 128,
+          "en": "What knowledge and skills you need to get your dream job: I must be proficient in Japanese / Italian. / I need to be able to speak English / Chinese well. / I need to use computer well. / I must know accounting. / I must be able to communicate effectively. / I must have meeting / telephoning / negotiating skills.",
+          "my": "လိုအပ်သည့် ဘာသာစကား၊ ကွန်ပျူတာ၊ စာရင်းကိုင်၊ ဆက်သွယ်ပြောဆိုမှုနှင့် ညှိနှိုင်းမှု ကျွမ်းကျင်မှုများကို ဖော်ပြပါ။",
+          "pages": [
+            128,
+            129
+          ]
+        },
+        {
+          "id": "11-speaking-text-5",
+          "t": "para",
+          "page": 128,
+          "en": "What you are doing: At the moment / Currently / Right now, I am attending / joining …",
+          "my": "ယခု လက်တွေ့တက်ရောက်သင်ယူနေသည့် အရာကို ပြောပါ။"
+        },
+        {
+          "id": "11-speaking-text-6",
+          "t": "h",
+          "page": 129,
+          "en": "Useful language",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "11-speaking-text-7",
+          "t": "para",
+          "page": 129,
+          "en": "Among the four / five / six of us, one / two of us want(s) to be … / Among us, Ko Toe wants to be … / The most common dream job we have is … / The most unusual dream job a group member has is …",
+          "my": "အဖွဲ့ဝင်အရေအတွက်၊ အလုပ်အလိုက် ရွေးသူအရေအတွက်၊ အများဆုံးနှင့် အထူးခြားဆုံး အိပ်မက်အလုပ်များကို နှိုင်းယှဉ်တင်ပြပါ။"
+        }
+      ],
+      "writing": [
+        {
+          "id": "11-writing-text-1",
+          "t": "h",
+          "page": 129,
+          "en": "In groups, think of a dream invention and write a description of it in about 200 words using the following questions.",
+          "my": "အဖွဲ့လိုက် စိတ်ကူးထဲမှ တီထွင်မှုတစ်ခုကို စဉ်းစား၍ စာအုပ်ပါမေးခွန်းများအတိုင်း စာလုံးရေ ၂၀၀ ခန့်ဖြင့် ဖော်ပြရေးသားပါ။"
+        }
+      ]
+    },
+    "12": {
+      "reading": [
+        {
+          "id": "12-reading-text-1",
+          "t": "para",
+          "page": 131,
+          "en": "Natural disasters are events that occur because of natural processes. They cause great and sudden damage, destruction and chaos in the world. They can take many forms and can generally be classified as geophysical, hydrological, climatological, meteorological, and biological.",
+          "my": "သဘာဝဘေးအန္တရာယ်များသည် သဘာဝဖြစ်စဉ်များကြောင့် ဖြစ်သော အဖြစ်အပျက်များဖြစ်သည်။ ကမ္ဘာပေါ်တွင် ကြီးမားပြီး ရုတ်တရက် ထိခိုက်ပျက်စီးမှု၊ ဖျက်ဆီးမှုနှင့် ဝရုန်းသုန်းကားအခြေအနေများ ဖြစ်စေသည်။ ပုံစံအမျိုးမျိုးရှိနိုင်ပြီး ယေဘုယျအားဖြင့် မြေထုဆိုင်ရာ၊ ရေထုဆိုင်ရာ၊ ရာသီဥတုဆိုင်ရာ၊ မိုးလေဝသဆိုင်ရာနှင့် ဇီဝဆိုင်ရာဟု ခွဲနိုင်သည်။",
+          "highlights": []
+        },
+        {
+          "id": "12-reading-text-2",
+          "t": "para",
+          "page": 131,
+          "en": "Earthquakes and tsunamis are very destructive geophysical disasters. An earthquake is the shaking or vibrating of the earth. An earthquake can range in size. Some are so weak that they go unnoticed, but some are so strong that they can even destroy an entire city. Some earthquakes can cause landslides and tsunamis. Tsunamis are very high waves in oceans and seas which are caused by the displacement of the ground. The high waves of a tsunami can reach coastlines within minutes. The main threat of a tsunami is that once you see it, you cannot outrun it.",
+          "my": "ငလျင်နှင့် ဆူနာမီတို့သည် အလွန်ဖျက်ဆီးနိုင်သော မြေထုဆိုင်ရာဘေးများဖြစ်သည်။ ငလျင်ဆိုသည်မှာ ကမ္ဘာမြေ လှုပ်ခါတုန်ခါခြင်းဖြစ်သည်။ ငလျင်၏ အရွယ်အစားသည် အမျိုးမျိုးရှိနိုင်သည်။ အချို့သည် မသိလိုက်လောက်အောင် အားပျော့သော်လည်း အချို့က တစ်မြို့လုံးကိုပင် ဖျက်ဆီးနိုင်လောက်အောင် အားပြင်းသည်။ ငလျင်အချို့သည် မြေပြိုခြင်းနှင့် ဆူနာမီကို ဖြစ်စေနိုင်သည်။ ဆူနာမီသည် မြေရွေ့လျားမှုကြောင့် သမုဒ္ဒရာနှင့် ပင်လယ်များတွင် ဖြစ်လာသော အလွန်မြင့်သည့်လှိုင်းများ ဖြစ်သည်။ ထိုလှိုင်းများသည် မိနစ်ပိုင်းအတွင်း ကမ်းခြေသို့ ရောက်နိုင်သည်။ အဓိကအန္တရာယ်မှာ မြင်ရပြီဆိုလျှင် ထိုလှိုင်းထက် မြန်အောင် ပြေးမလွတ်နိုင်ခြင်းဖြစ်သည်။",
+          "highlights": []
+        },
+        {
+          "id": "12-reading-text-3",
+          "t": "para",
+          "page": 131,
+          "en": "The most common hydrological disaster is floods. Too much rain usually causes floods. Floods also happen when the water level in streams, rivers, and seas becomes too high. Floods can destroy the infrastructure of a country such as buildings, transport, and economic growth. When they cannot be controlled, homes, livestock, crops and lives can be lost.",
+          "my": "အဖြစ်များဆုံး ရေထုဆိုင်ရာဘေးမှာ ရေကြီးခြင်းဖြစ်သည်။ မိုးများလွန်းခြင်းက ရေကြီးမှုကို ဖြစ်စေလေ့ရှိသည်။ ချောင်း၊ မြစ်နှင့် ပင်လယ်တို့၏ ရေမျက်နှာပြင် မြင့်လွန်းသောအခါလည်း ဖြစ်တတ်သည်။ ရေကြီးမှုသည် အဆောက်အအုံ၊ ပို့ဆောင်ရေးနှင့် စီးပွားရေးတိုးတက်မှုကဲ့သို့ နိုင်ငံ၏ အခြေခံအဆောက်အအုံကို ထိခိုက်ဖျက်ဆီးနိုင်သည်။ မထိန်းချုပ်နိုင်လျှင် နေအိမ်၊ မွေးမြူရေးတိရစ္ဆာန်၊ သီးနှံနှင့် လူ့အသက်များ ဆုံးရှုံးနိုင်သည်။",
+          "highlights": []
+        },
+        {
+          "id": "12-reading-text-4",
+          "t": "para",
+          "page": 131,
+          "en": "Droughts and wildfires are common climatological disasters. A drought happens when there has been no rain in a place for a long time. The land becomes too dry for us to grow any plants or vegetables. A drought may result in a famine. Forest fires or wildfires usually happen during the hot, dry summer. They may be started by human beings or by lightning. These huge fires spread easily because of extreme heat, and dry and windy conditions.",
+          "my": "မိုးခေါင်ခြင်းနှင့် တောမီးတို့သည် အဖြစ်များသော ရာသီဥတုဆိုင်ရာဘေးများဖြစ်သည်။ တစ်နေရာတွင် မိုးမရွာသည်မှာ ကြာလာသောအခါ မိုးခေါင်မှုဖြစ်သည်။ မြေသည် အပင်၊ ဟင်းသီးဟင်းရွက် စိုက်မရလောက်အောင် ခြောက်သွေ့လာသည်။ မိုးခေါင်မှုက အငတ်ဘေး ဖြစ်စေနိုင်သည်။ တောမီးများသည် ပူပြင်းခြောက်သွေ့သော နွေရာသီတွင် ဖြစ်လေ့ရှိပြီး လူ သို့မဟုတ် မိုးကြိုးကြောင့် စတင်နိုင်သည်။ အလွန်ပူခြင်း၊ ခြောက်သွေ့ခြင်းနှင့် လေပြင်းခြင်းကြောင့် မီးကြီးများ အလွယ်တကူ ပျံ့နှံ့သည်။",
+          "highlights": [
+            "famine"
+          ]
+        },
+        {
+          "id": "12-reading-text-5",
+          "t": "para",
+          "page": 131,
+          "en": "Hurricanes, cyclones and typhoons are the weather phenomena known as meteorological disasters. They are just different names used for tropical storms in different places. Hurricanes are formed over the North Atlantic and Northeast Pacific Oceans, cyclones over the South Pacific and Indian Oceans and typhoons over the Northwest Pacific Ocean. Another violent phenomenon of all atmospheric storms is the tornado. A tornado is a violent rotating column of air that extends from a thunderstorm to the ground. Tornados usually occur overland and they uproot trees, destroy houses, and even pick up and throw heavy items like train carriages. These storms can also wash away the fertile top soil.",
+          "my": "ဟာရီကိန်း၊ ဆိုင်ကလုန်းနှင့် တိုင်ဖွန်းတို့သည် မိုးလေဝသဆိုင်ရာဘေးများဟု ခေါ်သော ရာသီဥတုဖြစ်စဉ်များဖြစ်သည်။ နေရာအလိုက် အပူပိုင်းမုန်တိုင်းများကို အမည်ကွဲများဖြင့် ခေါ်ခြင်းသာဖြစ်သည်။ ဟာရီကိန်းသည် မြောက်အတ္တလန္တိတ်နှင့် အရှေ့မြောက်ပစိဖိတ်၊ ဆိုင်ကလုန်းသည် တောင်ပစိဖိတ်နှင့် အိန္ဒိယသမုဒ္ဒရာ၊ တိုင်ဖွန်းသည် အနောက်မြောက်ပစိဖိတ်ပေါ်တွင် ဖြစ်သည်။ ပြင်းထန်သော အခြားလေထုမုန်တိုင်းတစ်မျိုးမှာ လေဆင်နှာမောင်းဖြစ်သည်။ ယင်းသည် မိုးကြိုးမုန်တိုင်းမှ မြေပြင်အထိ ဆက်သွယ်လျက် ပြင်းထန်စွာ လည်ပတ်နေသော လေတိုင်ဖြစ်သည်။ အများအားဖြင့် ကုန်းမြေပေါ်တွင် ဖြစ်ကာ သစ်ပင်များကို အမြစ်ပါနှုတ်၊ အိမ်များကို ဖျက်ဆီးပြီး ရထားတွဲကဲ့သို့ လေးသောအရာများကိုပင် ပင့်တင်ပစ်ချနိုင်သည်။ ထိုမုန်တိုင်းများသည် မြေဆီလွှာအပေါ်ယံကိုလည်း တိုက်စားမျောပါစေနိုင်သည်။",
+          "highlights": [
+            "fertile"
+          ],
+          "pages": [
+            131,
+            132
+          ]
+        },
+        {
+          "id": "12-reading-text-6",
+          "t": "para",
+          "page": 132,
+          "en": "Biological disasters are diseases, disabilities or deaths on a large scale among humans, animals, and plants brought about by bacteria, viruses, and toxins. Widespread outbreaks of such diseases as malaria, dengue fever, plague, AIDS, and SARS are good examples of biological disasters. Such outbreaks can be in the form of an epidemic or a pandemic. An epidemic is a large number of cases of a particular disease happening at the same time in a particular community. A pandemic, on the other hand, is a disease that spreads over a country or the entire world. The outbreak of the coronavirus disease, referred to as COVID-19, is a pandemic that began in 2019. The spread is frighteningly extensive and most alarmingly swift.",
+          "my": "ဇီဝဆိုင်ရာဘေးများသည် ဘက်တီးရီးယား၊ ဗိုင်းရပ်စ်နှင့် အဆိပ်ဓာတ်များကြောင့် လူ၊ တိရစ္ဆာန်နှင့် အပင်များတွင် အကြီးအကျယ် ရောဂါ၊ မသန်စွမ်းမှု သို့မဟုတ် သေဆုံးမှု ဖြစ်ပေါ်ခြင်းဖြစ်သည်။ ငှက်ဖျား၊ သွေးလွန်တုပ်ကွေး၊ ပလိပ်၊ အေအိုင်ဒီအက်စ်နှင့် ဆားစ်ကဲ့သို့ ရောဂါများ ကျယ်ပြန့်စွာ ဖြစ်ပွားခြင်းသည် ဥပမာများဖြစ်သည်။ ထိုဖြစ်ပွားမှုများသည် ဒေသတွင်းကပ်ရောဂါ သို့မဟုတ် ကမ္ဘာ့ကပ်ရောဂါပုံစံ ဖြစ်နိုင်သည်။ ဒေသတွင်းကပ်ရောဂါသည် သတ်မှတ်အသိုင်းအဝိုင်းတစ်ခု၌ တစ်ချိန်တည်း ရောဂါတစ်မျိုး၏ လူနာအရေအတွက် များပြားစွာ ဖြစ်လာခြင်းဖြစ်သည်။ တစ်ဖက်တွင် ကမ္ဘာ့ကပ်ရောဂါသည် နိုင်ငံတစ်နိုင်ငံ သို့မဟုတ် ကမ္ဘာတစ်ဝန်း ပျံ့သောရောဂါဖြစ်သည်။ ကိုဗစ်-၁၉ ဟု ခေါ်သော ကိုရိုနာဗိုင်းရပ်စ်ရောဂါ ဖြစ်ပွားမှုသည် ၂၀၁၉ တွင် စတင်သည့် ကမ္ဘာ့ကပ်ရောဂါဖြစ်သည်။ ယင်းသည် ကြောက်စရာကောင်းလောက်အောင် ကျယ်ပြန့်ပြီး စိုးရိမ်ဖွယ် မြန်ဆန်စွာ ပျံ့နှံ့သည်။",
+          "highlights": [
+            "outbreak",
+            "epidemic",
+            "pandemic"
+          ]
+        },
+        {
+          "id": "12-reading-text-7",
+          "t": "para",
+          "page": 132,
+          "en": "Some natural disasters, however, are caused by human beings. When human beings destroy parts of nature such as forests, mangroves and coral reefs, they are destroying the natural barriers that protect us from tsunamis, droughts, landslides, floods and other disasters. Another disaster commonly caused by human beings is the wildfire. Most wildfires are caused by farmers when burning their fields to get rid of weeds before planting. Some careless people throw away burning cigarette butts or forget to put out their campfires. In addition, when human beings do not observe personal hygiene, have safe water supply and proper maintenance of sewage pipeline, or keep a watch on the rodent population, biological disasters such as cholera, hepatitis, diarrhea and dysentery can occur.",
+          "my": "သို့သော် သဘာဝဘေးအချို့သည် လူတို့ကြောင့် ဖြစ်သည်။ သစ်တော၊ ဒီရေတောနှင့် သန္တာကျောက်တန်းများကို ဖျက်ဆီးသောအခါ ဆူနာမီ၊ မိုးခေါင်မှု၊ မြေပြိုမှု၊ ရေကြီးမှုနှင့် အခြားဘေးများမှ ကာကွယ်ပေးသော သဘာဝအတားအဆီးများကို ဖျက်ဆီးနေခြင်းဖြစ်သည်။ လူတို့ကြောင့် အများအားဖြင့်ဖြစ်သော အခြားဘေးမှာ တောမီးဖြစ်သည်။ တောမီးအများစုသည် လယ်သမားများ စိုက်ပျိုးမည့်အချိန်မတိုင်မီ ပေါင်းရှင်းရန် လယ်ကို မီးရှို့ခြင်းကြောင့် ဖြစ်သည်။ ပေါ့ဆသူအချို့က မီးမငြိမ်းသေးသော ဆေးလိပ်တို ပစ်ချခြင်း သို့မဟုတ် စခန်းမီး မငြှိမ်းမိခြင်းတို့ လုပ်ကြသည်။ ထို့ပြင် တစ်ကိုယ်ရေသန့်ရှင်းမှု၊ သန့်ရှင်းသောရေ၊ မိလ္လာပိုက်ထိန်းသိမ်းမှုနှင့် ကြွက်အရေအတွက် စောင့်ကြည့်ထိန်းချုပ်မှုတို့ မရှိလျှင် ကာလဝမ်း၊ အသည်းရောင်၊ ဝမ်းလျှောနှင့် ဝမ်းကိုက်ကဲ့သို့ ဇီဝဆိုင်ရာဘေးများ ဖြစ်နိုင်သည်။",
+          "highlights": []
+        },
+        {
+          "id": "12-reading-text-8",
+          "t": "para",
+          "page": 132,
+          "en": "Natural disasters generally affect agricultural productivity and even lead to loss of lives and property. To reduce the damage caused by disasters, prevention and mitigation measures can be taken. For instance, disasters such as soil erosion, landslides, tsunamis and droughts can be prevented by planting trees. Similarly, the effects of earthquakes can be mitigated by using disaster resistant construction techniques. Therefore, having awareness, preparedness and early warning systems can be the solutions to avert disasters and minimize destruction.",
+          "my": "သဘာဝဘေးများသည် ယေဘုယျအားဖြင့် လယ်ယာထုတ်လုပ်မှုကို ထိခိုက်ပြီး အသက်နှင့် ပစ္စည်းဥစ္စာ ဆုံးရှုံးမှုကိုပင် ဖြစ်စေနိုင်သည်။ ထိခိုက်ပျက်စီးမှု လျော့နည်းရန် ကြိုတင်ကာကွယ်ခြင်းနှင့် ဘေးဒဏ်လျော့ပါးရေး နည်းလမ်းများ လုပ်ဆောင်နိုင်သည်။ ဥပမာ သစ်ပင်စိုက်ခြင်းဖြင့် မြေဆီလွှာတိုက်စားမှု၊ မြေပြိုမှု၊ ဆူနာမီနှင့် မိုးခေါင်မှုတို့ကို ကာကွယ်နိုင်သည်။ ထိုနည်းတူ ငလျင်ခံဆောက်လုပ်ရေးနည်းစနစ်များဖြင့် ငလျင်၏ သက်ရောက်မှုကို လျှော့နိုင်သည်။ ထို့ကြောင့် အသိပညာ၊ ကြိုတင်ပြင်ဆင်မှုနှင့် စောစီးသတိပေးစနစ်များသည် ဘေးကို ရှောင်ရှားပြီး ပျက်စီးမှုအနည်းဆုံးဖြစ်စေရန် ဖြေရှင်းနည်းများ ဖြစ်နိုင်သည်။",
+          "highlights": [
+            "mitigation",
+            "preparedness"
+          ]
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "12-vocabulary-text-1",
+          "t": "h",
+          "page": 133,
+          "en": "Vocabulary Related to Disasters",
+          "my": "ဘေးအန္တရာယ်နှင့် သက်ဆိုင်သော ဝေါဟာရများ"
+        },
+        {
+          "id": "12-vocabulary-text-2",
+          "t": "h",
+          "page": 134,
+          "en": "Phrasal Verbs with “Knock”, “Put” and “Wash”",
+          "my": "တွဲဖက်ကြိယာများ"
+        },
+        {
+          "id": "12-vocabulary-text-3",
+          "t": "para",
+          "page": 134,
+          "en": "A phrasal verb is a combination of words used as a verb. It is usually used with an idiomatic meaning. This meaning is often quite different from the literal meaning of the individual words.",
+          "my": "စကားလုံးများပေါင်း၍ ကြိယာအဖြစ် သုံးခြင်းဖြစ်သည်။ အများအားဖြင့် အထူးပေါင်းစပ်အဓိပ္ပာယ်ဖြင့် သုံးပြီး စကားလုံးတစ်လုံးချင်း၏ တိုက်ရိုက်အဓိပ္ပာယ်နှင့် အတော်ကွဲတတ်သည်။"
+        },
+        {
+          "id": "12-vocabulary-text-4",
+          "t": "para",
+          "page": 134,
+          "en": "The old houses in our village were knocked down by a strong earthquake last night.",
+          "my": "မနေ့ညက ငလျင်ပြင်းကြောင့် ရွာရှိ အိမ်ဟောင်းများ ပြိုကျခဲ့သည်။"
+        },
+        {
+          "id": "12-vocabulary-text-5",
+          "t": "para",
+          "page": 134,
+          "en": "Sometimes people are careless with their burning cigarette butts or forget to put out bonfires when they go camping.",
+          "my": "လူများသည် တစ်ခါတစ်ရံ မီးမငြိမ်းသေးသော ဆေးလိပ်တိုများကို ပေါ့ဆစွာ ကိုင်တွယ်ကြသည် သို့မဟုတ် စခန်းချချိန် မီးပုံငြှိမ်းရန် မေ့ကြသည်။"
+        },
+        {
+          "id": "12-vocabulary-text-6",
+          "t": "para",
+          "page": 134,
+          "en": "Storms can wash away the fertile top soil.",
+          "my": "မုန်တိုင်းများသည် အပေါ်ယံမြေဆီလွှာကို တိုက်စားမျောပါစေနိုင်သည်။"
+        }
+      ],
+      "grammar": [
+        {
+          "id": "12-grammar-text-1",
+          "t": "h",
+          "page": 136,
+          "en": "Modal Verbs: Can and Could",
+          "my": "ဖြစ်နိုင်ခြေနှင့် စွမ်းရည်ပြ အကူကြိယာများ"
+        },
+        {
+          "id": "12-grammar-text-2",
+          "t": "para",
+          "page": 136,
+          "en": "We use ‘can’ and ‘could’ to express possibility.",
+          "my": "ဖြစ်နိုင်ခြေကို ဖော်ပြရန် သုံးသည်။"
+        },
+        {
+          "id": "12-grammar-text-3",
+          "t": "para",
+          "page": 136,
+          "en": "can — to make general statements about what is possible in the present or future: It can be very hot in Yangon in March. (It is sometimes very hot in Yangon in March.)",
+          "my": "ပစ္စုပ္ပန် သို့မဟုတ် အနာဂတ်၌ ဖြစ်နိုင်သည့် ယေဘုယျအခြေအနေ။ ရန်ကုန်တွင် မတ်လအတွင်း အလွန်ပူနိုင်သည်။ တစ်ခါတစ်ရံ အလွန်ပူသည်ဟု ဆိုလိုသည်။"
+        },
+        {
+          "id": "12-grammar-text-4",
+          "t": "para",
+          "page": 136,
+          "en": "can — to express a strong possibility in the present or future: Our manager can be sensitive. (Sometimes our manager is sensitive. I know.)",
+          "my": "ပစ္စုပ္ပန် သို့မဟုတ် အနာဂတ်တွင် ဖြစ်နိုင်ခြေ ခိုင်မာမှု။ ကျွန်ုပ်တို့မန်နေဂျာသည် စိတ်ထိခိုက်လွယ်တတ်သည်။ တစ်ခါတစ်ရံ ထိုသို့ဖြစ်ကြောင်း သိထားသည်။"
+        },
+        {
+          "id": "12-grammar-text-5",
+          "t": "para",
+          "page": 136,
+          "en": "could — to make general statements about what was possible in the past: It could be very hot in Yangon in March. (It was sometimes very hot in Yangon in March.)",
+          "my": "အတိတ်တွင် ဖြစ်နိုင်ခဲ့သည့် ယေဘုယျအခြေအနေ။ ရန်ကုန်တွင် မတ်လ၌ တစ်ခါတစ်ရံ အလွန်ပူခဲ့သည်။"
+        },
+        {
+          "id": "12-grammar-text-6",
+          "t": "para",
+          "page": 136,
+          "en": "could — to express a weak possibility in the present or future: Our manager could be sensitive. (Perhaps our manager is sensitive. I don’t know.)",
+          "my": "ပစ္စုပ္ပန် သို့မဟုတ် အနာဂတ်၌ ဖြစ်နိုင်ခြေ မခိုင်မာမှု။ မန်နေဂျာ စိတ်ထိခိုက်လွယ်သူ ဖြစ်ချင်ဖြစ်နိုင်သည်၊ သေချာမသိဟု ဆိုလိုသည်။"
+        },
+        {
+          "id": "12-grammar-text-7",
+          "t": "para",
+          "page": 137,
+          "en": "We use ‘can’ and ‘could’ to talk about ability to do something.",
+          "my": "တစ်ခုခု လုပ်နိုင်သည့် စွမ်းရည်အကြောင်း ပြောရန် သုံးသည်။"
+        },
+        {
+          "id": "12-grammar-text-8",
+          "t": "para",
+          "page": 137,
+          "en": "can — to talk about ability to do something in the present or future: She can speak four languages.",
+          "my": "ပစ္စုပ္ပန် သို့မဟုတ် အနာဂတ်၌ လုပ်နိုင်စွမ်း။ သူမ ဘာသာစကားလေးမျိုး ပြောနိုင်သည်။"
+        },
+        {
+          "id": "12-grammar-text-9",
+          "t": "para",
+          "page": 137,
+          "en": "can — to talk about ability to do something at a specific time in the present or future: I can come to you tomorrow if you want me to.",
+          "my": "ပစ္စုပ္ပန် သို့မဟုတ် အနာဂတ်၏ သတ်မှတ်ချိန်တစ်ခုတွင် လုပ်နိုင်ခြင်း။ လာစေချင်ရင် မနက်ဖြန် မင်းဆီ လာနိုင်တယ်။"
+        },
+        {
+          "id": "12-grammar-text-10",
+          "t": "para",
+          "page": 137,
+          "en": "could — to talk about ability to do something in the past: She could swim when she was five.",
+          "my": "အတိတ်၌ လုပ်နိုင်ခဲ့သော စွမ်းရည်။ အသက်ငါးနှစ်တွင် သူမ ရေကူးနိုင်ခဲ့သည်။"
+        },
+        {
+          "id": "12-grammar-text-11",
+          "t": "h",
+          "page": 138,
+          "en": "‘So … that’ and ‘Such … that’",
+          "my": "အကျိုးဆက်ဖော်ပြခြင်း"
+        },
+        {
+          "id": "12-grammar-text-12",
+          "t": "para",
+          "page": 138,
+          "en": "We use ‘so … that’ and ‘such … that’ to show that there is a certain result.",
+          "my": "သတ်မှတ်အကျိုးဆက်တစ်ခု ဖြစ်လာကြောင်း ဖော်ပြရန် သုံးသည်။"
+        },
+        {
+          "id": "12-grammar-text-13",
+          "t": "para",
+          "page": 138,
+          "en": "‘So … that’ encloses an adjective or an adverb: so + adjective / adverb + that",
+          "my": "အလယ်တွင် နာမဝိသေသန သို့မဟုတ် ကြိယာဝိသေသန ပါသည်။"
+        },
+        {
+          "id": "12-grammar-text-14",
+          "t": "para",
+          "page": 138,
+          "en": "Some earthquakes are so weak that they go unnoticed. (Some earthquakes are very weak. So, they go unnoticed.)",
+          "my": "ငလျင်အချို့သည် အားပျော့လွန်းသဖြင့် မသိလိုက်ကြပေ။"
+        },
+        {
+          "id": "12-grammar-text-15",
+          "t": "para",
+          "page": 138,
+          "en": "It rained so heavily that the lowland areas were flooded. (It rained very heavily. So, the lowland areas were flooded.)",
+          "my": "မိုးသည်းလွန်းသဖြင့် မြေနိမ့်ဒေသများ ရေလွှမ်းခဲ့သည်။"
+        },
+        {
+          "id": "12-grammar-text-16",
+          "t": "para",
+          "page": 138,
+          "en": "‘So … that’ is used with quantifiers ‘many’, ‘few’, ‘much’ or ‘little’.",
+          "my": "အရေအတွက်များ၊ နည်း သို့မဟုတ် ပမာဏများ၊ နည်းကို ပြသော စကားလုံးများနှင့်လည်း သုံးသည်။"
+        },
+        {
+          "id": "12-grammar-text-17",
+          "t": "para",
+          "page": 138,
+          "en": "I have so many friends that I never get bored. / She earned so much money that she could buy a mansion.",
+          "my": "သူငယ်ချင်းများလွန်း၍ ဘယ်တော့မှ မပျင်းရ။ သူမ ငွေရှာရများလွန်း၍ အိမ်ကြီးဝယ်နိုင်ခဲ့သည်။"
+        },
+        {
+          "id": "12-grammar-text-18",
+          "t": "para",
+          "page": 139,
+          "en": "‘Such … that’ encloses a modified noun: such + (a / an) adjective + noun + that",
+          "my": "အလယ်တွင် နာမဝိသေသနဖြင့် အထူးပြုထားသော နာမ်ပါသည်။ ရေတွက်နိုင်သော အနည်းကိန်းနာမ်တွင် သင့်တော်သော နာမ်ရှေ့စကား ထည့်ရသည်။"
+        },
+        {
+          "id": "12-grammar-text-19",
+          "t": "para",
+          "page": 139,
+          "en": "It was such a good film that I saw it twice. (The film was very good. So, I saw it twice.)",
+          "my": "ရုပ်ရှင်ကောင်းလွန်း၍ နှစ်ခါကြည့်ခဲ့သည်။"
+        },
+        {
+          "id": "12-grammar-text-20",
+          "t": "para",
+          "page": 139,
+          "en": "It was such an interesting book that I could not put it down. (The book was very interesting. So, I could not put it down.)",
+          "my": "စာအုပ်စိတ်ဝင်စားဖွယ် ကောင်းလွန်း၍ ချမထားနိုင်ခဲ့။"
+        },
+        {
+          "id": "12-grammar-text-21",
+          "t": "para",
+          "page": 139,
+          "en": "It is such hot coffee that I can’t drink it. (The coffee is very hot. So, I can’t drink it.)",
+          "my": "ကော်ဖီပူလွန်း၍ မသောက်နိုင်ပါ။"
+        }
+      ],
+      "listening": [
+        {
+          "id": "12-listening-text-1",
+          "t": "h",
+          "page": 140,
+          "en": "A. Listen to a radio interview with three people and match the speakers with the disasters they have experienced.",
+          "my": "လူသုံးဦးနှင့် ရေဒီယိုအင်တာဗျူးကို နားထောင်ပြီး ပြောသူတစ်ဦးစီနှင့် ကြုံခဲ့သော ဘေးအန္တရာယ်ကို တွဲပါ။"
+        },
+        {
+          "id": "12-listening-text-2",
+          "t": "h",
+          "page": 140,
+          "en": "B. Listen again. Decide if the given statements are TRUE (T), FALSE (F) or NOT MENTIONED (NM).",
+          "my": "ထပ်မံနားထောင်၍ အဆိုတစ်ခုစီကို မှန်၊ မှား၊ သို့မဟုတ် မဖော်ပြထား ဟု ရွေးပါ။"
+        }
+      ],
+      "speaking": [
+        {
+          "id": "12-speaking-text-1",
+          "t": "h",
+          "page": 140,
+          "en": "Useful language",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "12-speaking-text-2",
+          "t": "para",
+          "page": 140,
+          "en": "Asking for information: Have you ever had a terrible experience in your life? / When and where did it happen? / Who were you with at that time? / Tell me more about your experience. / What was the hardest part of that incident and why?",
+          "my": "ဆိုးရွားသောအတွေ့အကြုံ ရှိဖူးသလား။ ဘယ်အချိန်၊ ဘယ်နေရာမှာလဲ။ ဘယ်သူနဲ့ရှိသလဲ။ ထပ်ပြောပြပါ။ အခက်ခဲဆုံးအပိုင်းက ဘာလဲ၊ ဘာကြောင့်လဲ။"
+        },
+        {
+          "id": "12-speaking-text-3",
+          "t": "para",
+          "page": 140,
+          "en": "Describing experience in the past: It happened … ago. / Last year, … / In 2018, … / I was living … / I was sleeping …",
+          "my": "အတိတ်ဖြစ်ရပ်ကို အချိန်ပြစကားနှင့် ရှင်းပြပါ။ ဖြစ်နေဆဲ နောက်ခံအခြေအနေကိုလည်း ဖော်ပြနိုင်သည်။"
+        },
+        {
+          "id": "12-speaking-text-4",
+          "t": "para",
+          "page": 140,
+          "en": "Responding to bad experience: That’s a shame! / I’m so sorry to hear that! / I’m sorry to hear such a terrible experience. / I’m very sorry — that must be awful / frustrating / scary / difficult. / I really don’t know what to say. I can’t believe it. I’m very sorry.",
+          "my": "စိတ်မကောင်းဖြစ်ကြောင်း၊ အလွန်ခက်ခဲကြောက်စရာ ဖြစ်ခဲ့မည်ကို နားလည်ကြောင်း ပြန်ပြောပါ။"
+        }
+      ],
+      "writing": [
+        {
+          "id": "12-writing-text-1",
+          "t": "h",
+          "page": 141,
+          "en": "Problem-solution Essay",
+          "my": "ပြဿနာနှင့် ဖြေရှင်းနည်း စာစီစာကုံး"
+        },
+        {
+          "id": "12-writing-text-2",
+          "t": "para",
+          "page": 141,
+          "en": "Problem-solution essays consider the problems of a particular situation, and give solutions to those problems.",
+          "my": "သတ်မှတ်အခြေအနေတစ်ခု၏ ပြဿနာများကို စဉ်းစား၍ ဖြေရှင်းနည်းများကို တင်ပြသော စာစီစာကုံးဖြစ်သည်။"
+        },
+        {
+          "id": "12-writing-text-3",
+          "t": "para",
+          "page": 141,
+          "en": "The widespread use of the internet has brought many problems. What do you think are the main problems associated with the use of the web? What solutions can you suggest?",
+          "my": "အင်တာနက် ကျယ်ပြန့်စွာအသုံးပြုမှုက ပြဿနာများစွာ ဖြစ်ပေါ်စေခဲ့သည်။ အင်တာနက်အသုံးပြုမှုနှင့် ဆက်စပ်သော အဓိကပြဿနာများကို ဘယ်လိုထင်သလဲ။ ဘာဖြေရှင်းနည်းများ အကြံပြုနိုင်သလဲ။"
+        },
+        {
+          "id": "12-writing-text-4",
+          "t": "para",
+          "page": 141,
+          "en": "The use of the internet has become a crucial part of our life as it provides us with several benefits and leads to a more convenient life. (1) However, there are still many drawbacks which are of great concern to us. (2) The major problems with the use of the internet and the possible solutions to these problems will be addressed in this essay.",
+          "my": "အင်တာနက်သည် အကျိုးကျေးဇူးများစွာပေးပြီး ဘဝကို ပိုအဆင်ပြေစေသဖြင့် ကျွန်ုပ်တို့ဘဝ၏ အရေးပါသောအစိတ်အပိုင်း ဖြစ်လာသည်။ (၁) သို့သော် ကျွန်ုပ်တို့ အလွန်စိုးရိမ်ရသော အားနည်းချက်များစွာ ရှိနေဆဲဖြစ်သည်။ (၂) ဤစာစီစာကုံးတွင် အင်တာနက်အသုံးပြုမှု၏ အဓိကပြဿနာများနှင့် ဖြစ်နိုင်သော ဖြေရှင်းနည်းများကို ဆွေးနွေးမည်။"
+        },
+        {
+          "id": "12-writing-text-5",
+          "t": "para",
+          "page": 141,
+          "en": "(3) A major problem with the use of the internet is that children have adopted a more inactive lifestyle as they are addicted to playing online games. (4) They prefer to stay at home and immerse themselves in a virtual world, instead of going out to connect with the real people. This can harm their social abilities as well as their relationship with others. (5) Another major problem is that people are facing data privacy and security problems. (6) For example, personal information of internet users can be hacked by identity theft, resulting in financial loss.",
+          "my": "(၃) အဓိကပြဿနာတစ်ခုမှာ ကလေးများ အွန်လိုင်းဂိမ်းစွဲလမ်း၍ လှုပ်ရှားမှုနည်းသော နေထိုင်မှုပုံစံကို လက်ခံလာခြင်းဖြစ်သည်။ (၄) တကယ့်လူများနှင့် အပြင်ထွက်ဆက်သွယ်မည့်အစား အိမ်တွင်နေပြီး စိတ်ကူးကမ္ဘာထဲ နစ်မြုပ်နေလိုကြသည်။ ယင်းက လူမှုဆက်ဆံရေးစွမ်းရည်နှင့် အခြားသူများနှင့် ဆက်ဆံရေးကို ထိခိုက်နိုင်သည်။ (၅) နောက်ထပ်အဓိကပြဿနာမှာ ဒေတာကိုယ်ရေးလုံခြုံမှုနှင့် လုံခြုံရေးပြဿနာများ ရင်ဆိုင်နေရခြင်းဖြစ်သည်။ (၆) ဥပမာ အင်တာနက်သုံးသူတို့၏ ကိုယ်ရေးအချက်အလက်များ ခိုးယူဖောက်ထွင်းခံရ၍ ငွေကြေးဆုံးရှုံးနိုင်သည်။"
+        },
+        {
+          "id": "12-writing-text-6",
+          "t": "para",
+          "page": 141,
+          "en": "It is important that actions are taken to combat these problems. (7) One possible solution for internet addicts is that their parents should encourage them to go out by organizing outdoor activities. (8) To tackle the issue concerning data privacy and security, the government should take serious action against hacking personal data by imposing stricter cyber laws.",
+          "my": "ပြဿနာများကို တိုက်ဖျက်ရန် အရေးယူဆောင်ရွက်ဖို့ အရေးကြီးသည်။ (၇) အင်တာနက်စွဲလမ်းသူများအတွက် ဖြေရှင်းနည်းတစ်ခုမှာ မိဘများက ပြင်ပလှုပ်ရှားမှုများ စီစဉ်၍ အပြင်ထွက်ရန် အားပေးသင့်ခြင်းဖြစ်သည်။ (၈) ဒေတာကိုယ်ရေးလုံခြုံမှုနှင့် လုံခြုံရေးကို ကိုင်တွယ်ရန် အစိုးရက ပိုတင်းကျပ်သော ဆိုက်ဘာဥပဒေများ ချမှတ်ကာ ကိုယ်ရေးဒေတာ ဖောက်ထွင်းမှုကို ပြင်းထန်စွာ အရေးယူသင့်သည်။"
+        },
+        {
+          "id": "12-writing-text-7",
+          "t": "para",
+          "page": 141,
+          "en": "To conclude, it can be said that the internet has brought many benefits to our lives. (9) However, its misuses can harm not only our social lives but also our environment. (10) Therefore, with the right actions by individuals and governments, the internet can be made a safe place for everyone.",
+          "my": "နိဂုံးချုပ်ရလျှင် အင်တာနက်သည် ဘဝအတွက် အကျိုးများစွာ ပေးခဲ့သည်ဟု ဆိုနိုင်သည်။ (၉) သို့သော် တလွဲအသုံးပြုမှုက လူမှုဘဝသာမက ပတ်ဝန်းကျင်ကိုပါ ထိခိုက်နိုင်သည်။ (၁၀) ထို့ကြောင့် တစ်ဦးချင်းနှင့် အစိုးရတို့ မှန်ကန်စွာ လုပ်ဆောင်ပါက အင်တာနက်ကို လူတိုင်းအတွက် လုံခြုံသောနေရာ ဖြစ်စေနိုင်သည်။"
+        },
+        {
+          "id": "12-writing-text-8",
+          "t": "h",
+          "page": 142,
+          "en": "Language phrases and textbook opening",
+          "my": "မူရင်းသင်ခန်းစာမှ အချက်များ"
+        },
+        {
+          "id": "12-writing-text-9",
+          "t": "para",
+          "page": 142,
+          "en": "Introducing problems: A major problem of … is … / A further problem of this is … / Another problem to consider is …",
+          "my": "အဓိကပြဿနာ၊ နောက်ထပ်ပြဿနာ၊ ထည့်စဉ်းစားရမည့် အခြားပြဿနာတို့ကို ဖော်ပြရန်။"
+        },
+        {
+          "id": "12-writing-text-10",
+          "t": "para",
+          "page": 142,
+          "en": "Note: If you are uncertain of the problem, you can add the modal verbs may / might, which are used to give more information about the main verb and are used for suggestions.",
+          "my": "မသေချာလျှင် ဖြစ်နိုင်ခြေပြစကားလုံးများကို ထည့်သုံးနိုင်သည်။"
+        },
+        {
+          "id": "12-writing-text-11",
+          "t": "para",
+          "page": 142,
+          "en": "Giving solutions: One possible solution is … / To tackle this issue … / The way forward could be to …",
+          "my": "ဖြေရှင်းနိုင်သည့်နည်းတစ်ခု၊ ပြဿနာကို ကိုင်တွယ်ရန်နည်းနှင့် ရှေ့ဆက်လုပ်နိုင်သည့်နည်းကို တင်ပြရန်။"
+        },
+        {
+          "id": "12-writing-text-12",
+          "t": "para",
+          "page": 142,
+          "en": "Teenagers and their parents often have an unhealthy relationship. This is not new. However, reasons for this may vary from one situation to the next. One important reason is that …",
+          "my": "ဆယ်ကျော်သက်နှင့် မိဘတို့၏ ဆက်ဆံရေး မပြေလည်ခြင်းသည် အသစ်အဆန်းမဟုတ်ပါ။ အကြောင်းရင်းများသည် အခြေအနေအလိုက် ကွာနိုင်သည်။ အရေးကြီးသော အကြောင်းရင်းတစ်ခုမှာ…။ ဤစာသားသည် မူရင်းစာအုပ်က ပေးထားသော အစရေးနည်းဖြစ်သည်။"
+        }
+      ]
+    }
+  },
+  "embeddedGroups": {
+    "8": [
+      "8-make-do",
+      "8-character",
+      "8-plan"
+    ],
+    "9": [
+      "9-confused",
+      "9-advice",
+      "9-dialogue",
+      "9-composition"
+    ],
+    "10": [
+      "10-interview"
+    ],
+    "11": [
+      "11-reporting",
+      "11-degree",
+      "11-dream-job",
+      "11-compare"
+    ],
+    "12": [
+      "12-interview",
+      "12-composition"
+    ]
+  }
+}

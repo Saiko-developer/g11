@@ -123,7 +123,7 @@
       ]
     },
     "11-reporting-4": {
-      "answer": "argue",
+      "answer": "described",
       "answerMy": null,
       "origin": "source-derived",
       "sourcePages": [
@@ -131,7 +131,7 @@
       ]
     },
     "11-reporting-5": {
-      "answer": "said",
+      "answer": "mentioned",
       "answerMy": null,
       "origin": "source-derived",
       "sourcePages": [
@@ -139,7 +139,7 @@
       ]
     },
     "11-degree-1": {
-      "answer": "scarcely",
+      "answer": "We scarcely had time to think and had to act immediately in times of emergency.",
       "answerMy": null,
       "origin": "source-derived",
       "sourcePages": [
@@ -147,7 +147,7 @@
       ]
     },
     "11-degree-2": {
-      "answer": "nearly",
+      "answer": "It’s been nearly three months since we last met.",
       "answerMy": null,
       "origin": "source-derived",
       "sourcePages": [
@@ -155,7 +155,7 @@
       ]
     },
     "11-degree-3": {
-      "answer": "fairly",
+      "answer": "He had been fairly good at drawing when he was at school.",
       "answerMy": null,
       "origin": "source-derived",
       "sourcePages": [
@@ -163,7 +163,7 @@
       ]
     },
     "11-degree-4": {
-      "answer": "extremely",
+      "answer": "You need an extremely powerful microscope to see tiny germs.",
       "answerMy": null,
       "origin": "source-derived",
       "sourcePages": [
@@ -171,7 +171,7 @@
       ]
     },
     "11-degree-5": {
-      "answer": "almost",
+      "answer": "Repairing the computer would cost almost as much as it would to buy a new one.",
       "answerMy": null,
       "origin": "source-derived",
       "sourcePages": [
@@ -179,7 +179,7 @@
       ]
     },
     "11-degree-6": {
-      "answer": "largely",
+      "answer": "The Dream-K music band is largely composed of young people.",
       "answerMy": null,
       "origin": "source-derived",
       "sourcePages": [
@@ -187,7 +187,7 @@
       ]
     },
     "11-degree-7": {
-      "answer": "completely",
+      "answer": "He had completely changed — I didn’t recognize him at all.",
       "answerMy": null,
       "origin": "source-derived",
       "sourcePages": [
@@ -195,7 +195,7 @@
       ]
     },
     "11-degree-8": {
-      "answer": "pretty",
+      "answer": "You need to book pretty early to get a good seat for the music concert.",
       "answerMy": null,
       "origin": "source-derived",
       "sourcePages": [
@@ -203,7 +203,7 @@
       ]
     },
     "11-degree-9": {
-      "answer": "slightly",
+      "answer": "The food Ni Ni ate this morning made her feel slightly sick.",
       "answerMy": null,
       "origin": "source-derived",
       "sourcePages": [
@@ -211,11 +211,89 @@
       ]
     },
     "11-degree-10": {
-      "answer": "rather",
+      "answer": "The train was rather crowded and we were a bit uncomfortable.",
       "answerMy": null,
       "origin": "source-derived",
       "sourcePages": [
         125
+      ]
+    },
+    "11-reporting-6": {
+      "answer": "state",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        124
+      ]
+    },
+    "11-reporting-7": {
+      "answer": "argue",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        124
+      ]
+    },
+    "11-reporting-8": {
+      "answer": "said",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        124
+      ]
+    },
+    "11-comprehension-1": {
+      "answer": "People dream during sleep and also during the daytime while wide awake.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        120,
+        121
+      ]
+    },
+    "11-comprehension-4": {
+      "answer": "“So” refers to the belief that dreams are prophetic and foretell the future.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        120,
+        121
+      ]
+    },
+    "11-comprehension-5": {
+      "answer": "The ancient Greeks and Romans regarded the moon as a goddess.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        120,
+        121
+      ]
+    },
+    "11-comprehension-6": {
+      "answer": "Reality begins with a thought which becomes a wish, then a dream, and finally a reality.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        120,
+        121
+      ]
+    },
+    "11-comprehension-7": {
+      "answer": "Great inventions and discoveries begin with a dream.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        120,
+        121
+      ]
+    },
+    "11-comprehension-8": {
+      "answer": "Humankind advances through creations, inventions and discoveries that begin with dreams.",
+      "answerMy": null,
+      "origin": "source-derived",
+      "sourcePages": [
+        120,
+        121
       ]
     }
   }

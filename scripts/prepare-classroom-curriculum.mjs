@@ -74,6 +74,12 @@ for (const grade of [10, 11])
           texts = skill === "listening" ? 1 : notes.length;
           sourceFiles.push(transcribed);
           scans = [];
+        } else if (unit >= 8 && unit <= 12) {
+          const transcribed = "src/data/grade11/textbook/upper-lesson-text.json";
+          const notes = "src/data/grade11/textbook/upper-study-support.json";
+          texts = read(transcribed).units[unit][skill].length;
+          sourceFiles.push(transcribed, notes);
+          scans = [];
         }
       }
       const questions = [...questionRecords(records).values()];

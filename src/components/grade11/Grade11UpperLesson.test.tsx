@@ -29,12 +29,12 @@ describe("Grade 11 Units 7–12 workspaces", () => {
     expect(hasGrade11Text(unit)).toBe(true);
     for (const kind of skills) {
       const view = render(<Grade11TextLesson unit={unit} kind={kind} />);
-      if (unit === 7)
-        expect(screen.queryByRole("complementary", { name: "Original textbook" })).toBeNull();
-      else {
-        expect(screen.getByRole("complementary", { name: "Original textbook" })).toBeVisible();
-        expect(screen.getAllByRole("img").length).toBeGreaterThan(0);
-      }
+      expect(screen.queryByRole("complementary", { name: "Original textbook" })).toBeNull();
+      expect(view.container.querySelector('img[src*="/grade11/upper/"]')).toBeNull();
+      if (unit >= 8)
+        expect(
+          screen.getByRole("article", { name: `Unit ${unit} ${kind} textbook text` }),
+        ).toBeVisible();
       expect(
         screen.queryByText("သင်ခန်းစာမှ ဆက်စပ်ဖြေဆိုထားသောအဖြေ — တရားဝင်အဖြေလွှာ မဟုတ်ပါ။"),
       ).toBeNull();
@@ -46,8 +46,10 @@ describe("Grade 11 Units 7–12 workspaces", () => {
           expect(screen.getAllByRole("button", { name: "Check Answer" })).toHaveLength(10);
           expect(screen.getAllByRole("button", { name: "Reveal Answer" })).toHaveLength(10);
         } else {
-          expect(screen.queryByRole("button", { name: "Check Answer" })).toBeNull();
-          expect(screen.queryByRole("button", { name: "Reveal Answer" })).toBeNull();
+          expect(screen.getAllByRole("button", { name: "Check Answer" }).length).toBeGreaterThan(0);
+          expect(screen.getAllByRole("button", { name: "Reveal Answer" }).length).toBeGreaterThan(
+            0,
+          );
         }
       }
       if (kind === "speaking" || kind === "listening") {
@@ -151,5 +153,16 @@ describe("Grade 11 Units 7–12 workspaces", () => {
     render(<Grade11UpperLesson unit={7} kind="writing" />);
     fireEvent.change(screen.getByRole("textbox"), { target: { value: "My draft" } });
     expect(screen.getByRole("textbox")).toHaveValue("My draft");
+  });
+  it("keeps the complete story and source emphasis readable when translations are hidden", () => {
+    render(<Grade11UpperLesson unit={8} kind="reading" />);
+    const article = screen.getByRole("article", { name: "Unit 8 reading textbook text" });
+    expect(article.textContent).toContain("the night that the last leaf fell");
+    expect(article.querySelector("mark")?.textContent).toBe("He");
+    expect(article.querySelector('[lang="my"]')).not.toBeNull();
+    fireEvent.click(within(article).getByRole("button", { name: "Hide Myanmar translation" }));
+    expect(article.querySelector('[lang="my"]')).toBeNull();
+    expect(article.textContent).toContain("the night that the last leaf fell");
+    expect(screen.getAllByRole("textbox").length).toBeGreaterThan(0);
   });
 });

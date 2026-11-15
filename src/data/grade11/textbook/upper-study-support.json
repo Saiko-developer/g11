@@ -1,0 +1,823 @@
+{
+  "source": "Manually compared with public/grade11/upper/page-N.jpg; PDF page numbers below. English is textbook text; Burmese is a study translation. Original scans remain available for complete passages, diagrams and examples.",
+  "groups": {
+    "8-terms": {
+      "page": 91,
+      "title": "Story elements · Word bank",
+      "rows": [
+        {
+          "en": "character",
+          "my": "ဇာတ်ကောင်"
+        },
+        {
+          "en": "conflict",
+          "my": "ပဋိပက္ခ / ပြဿနာ"
+        },
+        {
+          "en": "climax",
+          "my": "ဇာတ်ရှိန်အမြင့်ဆုံးအပိုင်း"
+        },
+        {
+          "en": "ending",
+          "my": "ဇာတ်သိမ်း"
+        },
+        {
+          "en": "resolution",
+          "my": "ပြဿနာဖြေရှင်းမှု"
+        },
+        {
+          "en": "setting",
+          "my": "အချိန်နှင့်နေရာ နောက်ခံ"
+        },
+        {
+          "en": "theme",
+          "my": "အဓိကအကြောင်းအရာ"
+        }
+      ]
+    },
+    "8-elements": {
+      "page": 91,
+      "title": "Worked example",
+      "rows": [
+        {
+          "en": "Place and time the story takes place → Part I",
+          "my": "ဇာတ်လမ်းဖြစ်ပွားသည့် အချိန်နှင့်နေရာ → အပိုင်း ၁"
+        }
+      ]
+    },
+    "8-make-do": {
+      "page": 91,
+      "title": "Make and do",
+      "rows": [
+        {
+          "en": "“Make” means “create or prepare something”.",
+          "my": "တစ်ခုခုကို ဖန်တီးခြင်း သို့မဟုတ် ပြင်ဆင်ခြင်း။"
+        },
+        {
+          "en": "“Do” means “perform an activity or a task”.",
+          "my": "အလုပ် သို့မဟုတ် လှုပ်ရှားမှုတစ်ခုကို လုပ်ဆောင်ခြင်း။"
+        },
+        {
+          "en": "Sometimes they can be used interchangeably.",
+          "my": "တစ်ခါတစ်ရံ အစားထိုးသုံးနိုင်သည်။"
+        },
+        {
+          "en": "The two artists had recently come to New York to make their living.",
+          "my": "ပန်းချီဆရာနှစ်ဦးသည် အသက်မွေးဝမ်းကျောင်းရန် နယူးယောက်သို့ မကြာသေးမီက ရောက်လာခဲ့သည်။"
+        },
+        {
+          "en": "What are you doing? I’m making an omelette.",
+          "my": "ဘာလုပ်နေတာလဲ။ ကြက်ဥအုပ်ကြော် လုပ်နေတယ်။"
+        },
+        {
+          "en": "What does he do for a living? He makes toys.",
+          "my": "သူ ဘာအလုပ်နဲ့ အသက်မွေးသလဲ။ အရုပ်တွေ လုပ်တယ်။"
+        },
+        {
+          "en": "I’ll make/do the beds this morning, if you like.",
+          "my": "လိုချင်ရင် ဒီမနက် အိပ်ရာတွေ ငါသိမ်းပေးမယ်။"
+        },
+        {
+          "en": "“Make” and “do” go with particular nouns and they are used in fixed phrases. e.g. make mistakes, do wrong.",
+          "my": "သတ်မှတ်နာမ်များနှင့် တွဲသုံးရသော စကားစုများ ဖြစ်သည်။ အမှားလုပ်သည်၊ မကောင်းမှုလုပ်သည်။"
+        },
+        {
+          "en": "1. make an agreement · 2. do justice",
+          "my": "မူရင်းဖြည့်ပြီးသား ဥပမာများ—သဘောတူညီချက်ချသည်၊ တရားမျှတစွာ ဆောင်ရွက်သည်။"
+        }
+      ],
+      "pages": [
+        91,
+        92
+      ]
+    },
+    "8-character": {
+      "page": 97,
+      "title": "Sue / Mr Behrman",
+      "rows": [
+        {
+          "en": "Sue: an artist; comes to Greenwich Village to make her living; very close to Johnsy; cares for Johnsy during her illness; informs Behrman about Johnsy’s illness; willing to devote all her energy in her care; supports her friend emotionally and financially.",
+          "my": "ဆူးသည် အသက်မွေးရန် ရောက်လာသည့် ပန်းချီဆရာမဖြစ်ပြီး ဂျွန်စီနှင့် ရင်းနှီးသည်။ နာမကျန်းချိန် ပြုစုကာ ဘားမန်းကို အသိပေးသည်။ အားအင်အပြည့်ဖြင့် ပြုစုပြီး စိတ်ပိုင်းနှင့် ငွေကြေးပိုင်း ကူညီသည်။"
+        },
+        {
+          "en": "Mr Behrman: an unsuccessful artist because of his drinking problem; always wants to paint a masterpiece; kind-hearted; a good neighbour to Sue and Johnsy; goes outside at night in the rain to paint a green leaf; helps Johnsy get back her desire to live on.",
+          "my": "ဘားမန်းသည် အရက်သောက်ပြဿနာကြောင့် မအောင်မြင်သည့် ပန်းချီဆရာဖြစ်သည်။ လက်ရာမြောက်ပန်းချီဆွဲလိုပြီး စိတ်ကောင်းရှိသည့် အိမ်နီးချင်းဖြစ်သည်။ မိုးရွာသည့်ည အပြင်ထွက်၍ သစ်ရွက်စိမ်းပုံဆွဲကာ ဂျွန်စီ၏ အသက်ရှင်လိုစိတ် ပြန်ရအောင် ကူညီသည်။"
+        }
+      ]
+    },
+    "8-plan": {
+      "page": 98,
+      "title": "Summarizing a short story",
+      "rows": [
+        {
+          "en": "Summarizing means identifying the main idea and most important facts of a text and writing a brief overview. A good summary is short and to the point.",
+          "my": "အဓိကအယူအဆနှင့် အရေးကြီးဆုံးအချက်များကို ရွေးထုတ်ကာ တိုတိုရှင်းရှင်း ရေးခြင်းဖြစ်သည်။"
+        },
+        {
+          "en": "Cover the elements of a story (character, setting, conflict, resolution and plot) and present explicitly in our own words.",
+          "my": "ဇာတ်ကောင်၊ နောက်ခံ၊ ပြဿနာ၊ ဖြေရှင်းမှုနှင့် ဇာတ်လမ်းဖြစ်စဉ်တို့ကို ကိုယ့်စကားဖြင့် ထင်ရှားစွာ ဖော်ပြပါ။"
+        },
+        {
+          "en": "1. State the main message or gist of the story.",
+          "my": "အဓိကဆိုလိုရင်းကို ဖော်ပြပါ။"
+        },
+        {
+          "en": "2. Write about the setting of the story briefly.",
+          "my": "အချိန်နှင့်နေရာ နောက်ခံကို အကျဉ်းရေးပါ။"
+        },
+        {
+          "en": "3. Write about the main characters.",
+          "my": "အဓိကဇာတ်ကောင်များအကြောင်း ရေးပါ။"
+        },
+        {
+          "en": "4. Write about the conflict of the story.",
+          "my": "ဇာတ်လမ်း၏ ပြဿနာကို ရေးပါ။"
+        },
+        {
+          "en": "5. Write about how the conflict is resolved.",
+          "my": "ပြဿနာကို မည်သို့ဖြေရှင်းသည်ကို ရေးပါ။"
+        },
+        {
+          "en": "6. Restate the message or gist of the story in a slightly different way.",
+          "my": "ဆိုလိုရင်းကို စကားပြောင်း၍ ပြန်ဖော်ပြပါ။"
+        },
+        {
+          "en": "Note: Use transitions (first, then, next, when, however, but, etc.).",
+          "my": "ဖြစ်စဉ်ဆက်စပ်ပြ စကားလုံးများကို သုံးပါ။"
+        }
+      ],
+      "pages": [
+        97,
+        98
+      ]
+    },
+    "9-expressions": {
+      "page": 102,
+      "title": "Expressions · Word bank",
+      "rows": [
+        {
+          "en": "chill out",
+          "my": "စိတ်အေးအေး အနားယူသည်"
+        },
+        {
+          "en": "inhale and exhale",
+          "my": "အသက်ရှူသွင်း၊ ရှူထုတ်သည်"
+        },
+        {
+          "en": "mend their broken relationship",
+          "my": "ပျက်စီးနေသော ဆက်ဆံရေးကို ပြုပြင်သည်"
+        },
+        {
+          "en": "raise and lower",
+          "my": "မြှင့်တင်၊ နှိမ့်ချသည်"
+        },
+        {
+          "en": "soothe",
+          "my": "စိတ်ငြိမ်သက်စေသည်"
+        },
+        {
+          "en": "dwell on",
+          "my": "တစ်ခုခုကို ထပ်ခါတွေးနေသည်"
+        },
+        {
+          "en": "meet the deadline",
+          "my": "သတ်မှတ်ချိန်မီ ပြီးစီးသည်"
+        },
+        {
+          "en": "rancour and anger",
+          "my": "မကျေနပ်ချက်နှင့် ဒေါသ"
+        },
+        {
+          "en": "propelled",
+          "my": "တွန်းအားပေးခံရသော"
+        },
+        {
+          "en": "supine",
+          "my": "ပက်လက်အနေအထား"
+        }
+      ]
+    },
+    "9-confused": {
+      "page": 103,
+      "title": "Words often confused",
+      "rows": [
+        {
+          "en": "Some words sound alike or nearly alike but have different meanings and often cause trouble.",
+          "my": "အသံတူသော်လည်း အဓိပ္ပာယ်မတူသောကြောင့် မှားယွင်းလွယ်သည်။"
+        },
+        {
+          "en": "breath (n) — amount of air that enters the lungs at one time; breathe (v) — take air into your lungs through your nose or mouth",
+          "my": "အသက်တစ်ရှိုက် (နာမ်) နှင့် အသက်ရှူသည် (ကြိယာ)။"
+        },
+        {
+          "en": "affect (v) — produce a change in somebody / something; effect (n) — a change that somebody / something causes somebody / something else",
+          "my": "အကျိုးသက်ရောက်စေသည် (ကြိယာ) နှင့် အကျိုးသက်ရောက်မှု (နာမ်)။"
+        },
+        {
+          "en": "accident (n) — an unpleasant event that happens unexpectedly and causes injury or damage; incident (n) — something that happens, especially something unusual or unpleasant",
+          "my": "မတော်တဆ ထိခိုက်မှုဖြစ်ရပ် နှင့် ထူးခြားသော သို့မဟုတ် မကောင်းသော ဖြစ်ရပ်။"
+        },
+        {
+          "en": "conscientious (adj.) — taking care to do things carefully and correctly; conscious (adj.) — aware of something; noticing something",
+          "my": "တာဝန်ကျေပြီး ဂရုတစိုက်လုပ်သော နှင့် သိရှိသတိထားမိသော။"
+        },
+        {
+          "en": "lane (n) — a narrow road in the country; line (n) — a railroad tract",
+          "my": "ကျေးလက်လမ်းကျဉ်း နှင့် ရထားလမ်း။"
+        },
+        {
+          "en": "perspective (n) — a particular attitude toward something; ability to think about problems and decisions in a reasonable way; retrospective (adj.) — thinking about or connected with something that happened in the past, often with a different opinion",
+          "my": "ရှုထောင့်၊ ဆင်ခြင်စဉ်းစားနိုင်မှု နှင့် အတိတ်ကို ပြန်လည်သုံးသပ်သော။"
+        }
+      ]
+    },
+    "9-advice": {
+      "page": 107,
+      "title": "D. Study the following table.",
+      "rows": [
+        {
+          "en": "Asking for advice: What should I do? / What ought I to do? / What do you suggest? / What do you advise me to do? / If you were me, what would you do?",
+          "my": "အကြံတောင်းခြင်း—ဘာလုပ်သင့်သလဲ။ ဘာအကြံပေးချင်သလဲ။ မင်းသာ ငါ့နေရာမှာဆို ဘာလုပ်မလဲ။"
+        },
+        {
+          "en": "Giving advice: If I were you, I would… / You’d better… / Why don’t you…? / You ought to / should…",
+          "my": "အကြံပေးခြင်း—ငါသာ မင်းနေရာမှာဆို…။ …လုပ်ရင်ကောင်းမယ်။ …လုပ်သင့်တယ်။"
+        },
+        {
+          "en": "Accepting advice: Yes, you’re right. I’ll do that. / OK. I can do that. / Of course. I should have thought about that. / That’s true. I hadn’t thought about it.",
+          "my": "အကြံကို လက်ခံခြင်း—ဟုတ်တယ်၊ လုပ်လိုက်မယ်။ ဒါလုပ်နိုင်တယ်။ အဲဒါကို စဉ်းစားသင့်တာ။ အရင်က မတွေးမိဘူး။"
+        }
+      ]
+    },
+    "9-dialogue": {
+      "page": 107,
+      "title": "Choose TWO problems",
+      "rows": [
+        {
+          "en": "You often have a bad headache.",
+          "my": "မကြာခဏ ပြင်းထန်စွာ ခေါင်းကိုက်သည်။"
+        },
+        {
+          "en": "You can’t give up playing computer games.",
+          "my": "ကွန်ပျူတာဂိမ်းကစားခြင်းကို မစွန့်လွှတ်နိုင်။"
+        },
+        {
+          "en": "You have a problem with a school subject.",
+          "my": "ကျောင်းဘာသာရပ်တစ်ခုတွင် အခက်အခဲရှိသည်။"
+        },
+        {
+          "en": "You can’t sleep at night.",
+          "my": "ညအိပ်မပျော်။"
+        }
+      ]
+    },
+    "9-composition": {
+      "page": 107,
+      "title": "Original letter · Hsu Latt → Hein Htet",
+      "rows": [
+        {
+          "en": "Hi Hein Htet,",
+          "my": "ဟိန်းထက်ရေ၊"
+        },
+        {
+          "en": "My fourteen-year-old sister seems to spend all her time on social media. As she gets up late, she’s always absent at family mealtimes. Sometimes, she misses her breakfast. She doesn’t study hard for her exams and her scores are never good. I’m really worried about her. And I don’t know what to do. What do you advise me to do?",
+          "my": "အသက်ဆယ့်လေးနှစ်ရှိတဲ့ ညီမလေးက အချိန်အားလုံး လူမှုကွန်ရက်ပေါ်မှာပဲ သုံးနေသလိုပဲ။ အိပ်ရာထနောက်ကျလို့ မိသားစုထမင်းစားချိန်တွေမှာ အမြဲမရှိဘူး။ တစ်ခါတလေ မနက်စာမစားမိဘူး။ စာမကြိုးစားလို့ စာမေးပွဲအမှတ်တွေလည်း မကောင်းဘူး။ သူ့အတွက် အရမ်းစိတ်ပူတယ်။ ဘာလုပ်ရမှန်း မသိဘူး။ ဘာလုပ်သင့်တယ်လို့ အကြံပေးမလဲ။"
+        },
+        {
+          "en": "Many thanks in advance!\nHsu Latt",
+          "my": "ကြိုပြီး ကျေးဇူးတင်ပါတယ်။\nဆုလတ်"
+        }
+      ]
+    },
+    "10-gaps": {
+      "page": 113,
+      "title": "Phrases (a–f)",
+      "rows": [
+        {
+          "en": "a. and change thought patterns behind certain unreasonable behaviours",
+          "my": "မသင့်လျော်သော အပြုအမူနောက်ကွယ်ရှိ တွေးပုံများကို ပြောင်းလဲရန်"
+        },
+        {
+          "en": "b. and other chronic illnesses can be causes of sleep deprivation too",
+          "my": "အခြားနာတာရှည်ရောဂါများလည်း အိပ်ရေးပျက်စေနိုင်သည်"
+        },
+        {
+          "en": "c. and pay off the sleep debt",
+          "my": "အိပ်ရေးကြွေးကို ပြန်ဖြည့်ရန်"
+        },
+        {
+          "en": "d. sleep helps the heart vessels to heal and rebuild",
+          "my": "အိပ်စက်ခြင်းသည် နှလုံးသွေးကြောများ ပြန်လည်ကောင်းမွန်ရန် ကူညီသည်"
+        },
+        {
+          "en": "e. and when the sleep-deprived people positively respond to treatments",
+          "my": "အိပ်ရေးပျက်သူများက ကုသမှုကို ကောင်းစွာတုံ့ပြန်သောအခါ"
+        },
+        {
+          "en": "f. and we have an increased risk of chronic illness",
+          "my": "နာတာရှည်ရောဂါ ဖြစ်နိုင်ခြေ ပိုများလာသည်"
+        }
+      ],
+      "choiceLabels": {
+        "a": "and change thought patterns behind certain unreasonable behaviours",
+        "b": "and other chronic illnesses can be causes of sleep deprivation too",
+        "c": "and pay off the sleep debt",
+        "d": "sleep helps the heart vessels to heal and rebuild",
+        "e": "and when the sleep-deprived people positively respond to treatments",
+        "f": "and we have an increased risk of chronic illness"
+      }
+    },
+    "10-compound": {
+      "page": 115,
+      "title": "Column B · Worked example: 1. brightly-lit",
+      "rows": [
+        {
+          "en": "rooted",
+          "my": "အမြစ်တွယ်သော"
+        },
+        {
+          "en": "witted",
+          "my": "ဉာဏ်ရှိသော"
+        },
+        {
+          "en": "established",
+          "my": "အခြေခိုင်သော"
+        },
+        {
+          "en": "minded",
+          "my": "စိတ်သဘောထားရှိသော"
+        },
+        {
+          "en": "lit",
+          "my": "အလင်းရောင်ရှိသော"
+        },
+        {
+          "en": "recognized",
+          "my": "အသိအမှတ်ပြုခံရသော"
+        },
+        {
+          "en": "respected",
+          "my": "လေးစားခံရသော"
+        },
+        {
+          "en": "fashioned",
+          "my": "ပုံစံရှိသော"
+        },
+        {
+          "en": "increasing",
+          "my": "တိုးပွားလာသော"
+        },
+        {
+          "en": "reaching",
+          "my": "ရောက်ရှိသက်ရောက်သော"
+        }
+      ]
+    },
+    "10-participle": {
+      "page": 116,
+      "title": "Present participle · Functions a–d",
+      "rows": [
+        {
+          "en": "a. to give the result of an action.",
+          "my": "လုပ်ရပ်၏ အကျိုးဆက်ကို ဖော်ပြရန်။"
+        },
+        {
+          "en": "b. to give the reason for an action.",
+          "my": "လုပ်ရပ်၏ အကြောင်းရင်းကို ဖော်ပြရန်။"
+        },
+        {
+          "en": "c. to talk about an action that happened at the same time as another action.",
+          "my": "အခြားလုပ်ရပ်နှင့် တစ်ချိန်တည်းဖြစ်သည့် လုပ်ရပ်ကို ဖော်ပြရန်။"
+        },
+        {
+          "en": "d. to add information about the subject of the main clause.",
+          "my": "အဓိကဝါကျ၏ ပြုသူအကြောင်း အချက်အလက်ထပ်ဖြည့်ရန်။"
+        },
+        {
+          "en": "We were hoping for better weather tomorrow. We decided to go on a picnic. → Hoping for better weather tomorrow, we decided to go on a picnic. (d)",
+          "my": "မနက်ဖြန် ရာသီဥတုပိုကောင်းရန် မျှော်လင့်လျက် ပျော်ပွဲစားထွက်ရန် ဆုံးဖြတ်ခဲ့ကြသည်။ မူရင်းဖြည့်ပြီးသား ဥပမာဖြစ်သည်။"
+        }
+      ],
+      "pages": [
+        116,
+        117
+      ]
+    },
+    "10-interview": {
+      "page": 118,
+      "title": "Useful language",
+      "rows": [
+        {
+          "en": "Asking for information: How do you usually spend your leisure? / Which activities are important in your life? / Which activity do you like doing most? Why? / Do you have enough time to do what you want to do? Why? / Do you think you make good use of your leisure?",
+          "my": "အားလပ်ချိန်ကို ဘယ်လိုသုံးသလဲ။ ဘယ်လှုပ်ရှားမှုတွေ အရေးကြီးသလဲ။ ဘယ်ဟာကို အကြိုက်ဆုံးလဲ၊ ဘာကြောင့်လဲ။ လုပ်ချင်တာလုပ်ဖို့ အချိန်လုံလောက်သလား။ အားလပ်ချိန်ကို အကျိုးရှိရှိသုံးတယ်လို့ ထင်သလား။"
+        },
+        {
+          "en": "Describing how you spend your time: I usually spend my leisure … / The important activities in my life are … because … / I like … (the) most because … / I (don’t) usually have enough time to do what I want because … / I (don’t) think so because …",
+          "my": "ကိုယ်လုပ်ပုံကို ရှင်းပြရာတွင် အလေ့အထ၊ အရေးကြီးသည့်အလုပ်နှင့် အကြောင်းရင်းကို တွဲပြောပါ။"
+        },
+        {
+          "en": "Reporting back: He / She usually spends … / Important activities in his / her life are … / He / She likes … most / He / She doesn’t usually have enough time because … / He / She thinks / doesn’t think that he / she makes good use of his / her time because …",
+          "my": "သူငယ်ချင်းအကြောင်း ပြန်ပြောရာတွင် သူ၏အလေ့အထနှင့် အကြောင်းရင်းကို ပြန်လည်တင်ပြပါ။"
+        }
+      ]
+    },
+    "11-quotations": {
+      "page": 122,
+      "title": "Column B · Implied meanings",
+      "rows": [
+        {
+          "en": "a. It is important to train our children to see the endless possibilities in making their dreams come true when they dream.",
+          "my": "ကလေးများကို အိပ်မက်အကောင်အထည်ဖော်နိုင်သည့် ဖြစ်နိုင်ခြေများ မြင်တတ်အောင် သင်ပေးရမည်။"
+        },
+        {
+          "en": "b. If we do not dream anymore, we will be like dead persons.",
+          "my": "အိပ်မက်မရှိတော့လျှင် သေနေသူများကဲ့သို့ ဖြစ်မည်။"
+        },
+        {
+          "en": "c. We can set new goals or we can dream about doing something new at any time in our lifetime even in old age.",
+          "my": "အသက်ကြီးသော်လည်း ရည်မှန်းချက်အသစ် ချမှတ်နိုင်သည်။"
+        },
+        {
+          "en": "d. If we really want to make our dreams happen, we need to be brave and persevering in making them a reality.",
+          "my": "အိပ်မက်အကောင်အထည်ဖော်ရန် သတ္တိနှင့် ဇွဲရှိရမည်။"
+        },
+        {
+          "en": "e. To succeed in doing great things, it is not enough to act but to dream; not enough to plan but believe in our plan.",
+          "my": "လုပ်ဆောင်ခြင်း၊ အိပ်မက်မက်ခြင်း၊ စီစဉ်ခြင်းနှင့် ယုံကြည်ခြင်းတို့ လိုအပ်သည်။"
+        },
+        {
+          "en": "f. Those who make their dreams a reality began as dreamers.",
+          "my": "အိပ်မက်အကောင်အထည်ဖော်သူများသည် အိပ်မက်မက်သူများအဖြစ် စတင်ခဲ့ကြသည်။"
+        },
+        {
+          "en": "g. If opportunities are given for you, which will you take?",
+          "my": "အခွင့်အလမ်းရလျှင် ဘယ်ဟာကို ရွေးမလဲ။"
+        },
+        {
+          "en": "h. All creations, discoveries and inventions in life had their beginnings in somebody’s dream.",
+          "my": "ဖန်တီးမှု၊ ရှာဖွေတွေ့ရှိမှုနှင့် တီထွင်မှုတို့သည် တစ်ဦးဦး၏ အိပ်မက်မှ စတင်ခဲ့သည်။"
+        }
+      ],
+      "choiceLabels": {
+        "a": "It is important to train our children to see the endless possibilities in making their dreams come true when they dream.",
+        "b": "If we do not dream anymore, we will be like dead persons.",
+        "c": "We can set new goals or we can dream about doing something new at any time in our lifetime even in old age.",
+        "d": "If we really want to make our dreams happen, we need to be brave and persevering in making them a reality.",
+        "e": "To succeed in doing great things, it is not enough to act but to dream; not enough to plan but believe in our plan.",
+        "f": "Those who make their dreams a reality began as dreamers.",
+        "g": "If opportunities are given for you, which will you take?",
+        "h": "All creations, discoveries and inventions in life had their beginnings in somebody’s dream."
+      }
+    },
+    "11-professions": {
+      "page": 122,
+      "title": "Worked example",
+      "rows": [
+        {
+          "en": "1. a painter → paintings",
+          "my": "ပန်းချီဆရာ → ပန်းချီကားများ။ နောက်ဆုံး သုံးနေရာတွင် ကိုယ်ရွေးသော ပညာရှင်နှင့် ဖန်တီးသည့်အရာကို နှစ်ခုလုံးရေးပါ။"
+        }
+      ]
+    },
+    "11-reporting": {
+      "page": 123,
+      "title": "Reporting verbs",
+      "rows": [
+        {
+          "en": "argue — to give reasons for or against something",
+          "my": "အကြောင်းပြချက်ဖြင့် ထောက်ခံ၊ ကန့်ကွက်ဆွေးနွေးသည်"
+        },
+        {
+          "en": "claim — to say that something is true although it has not been proved",
+          "my": "သက်သေမပြရသေးသော်လည်း မှန်သည်ဟု ဆိုသည်"
+        },
+        {
+          "en": "describe — to say what something or someone is like",
+          "my": "ပုံသဏ္ဌာန်၊ အခြေအနေကို ဖော်ပြသည်"
+        },
+        {
+          "en": "mention — to refer to something or someone",
+          "my": "ထည့်သွင်းဖော်ပြသည်"
+        },
+        {
+          "en": "point out — to tell somebody something in order to give them information about it or make them notice it",
+          "my": "သိရှိသတိပြုမိစေရန် ထောက်ပြသည်"
+        },
+        {
+          "en": "propose — to offer or suggest (a matter, subject, case, etc.) for consideration, acceptance, or action",
+          "my": "စဉ်းစားလက်ခံဆောင်ရွက်ရန် အဆိုပြုသည်"
+        },
+        {
+          "en": "say — to state as an opinion or judgement",
+          "my": "အမြင်တစ်ခုကို ပြောသည်"
+        },
+        {
+          "en": "state — to say or write something, especially clearly and carefully",
+          "my": "ရှင်းလင်းဂရုတစိုက် ထုတ်ဖော်ပြော၊ ရေးသည်"
+        }
+      ]
+    },
+    "11-degree": {
+      "page": 124,
+      "title": "Degree adverbs",
+      "rows": [
+        {
+          "en": "almost — not quite; very nearly",
+          "my": "လုံးဝနီးပါး၊ မပြည့်မီသေး"
+        },
+        {
+          "en": "completely — in every way or as much as possible",
+          "my": "လုံးဝ၊ အပြည့်အဝ"
+        },
+        {
+          "en": "extremely — very",
+          "my": "အလွန်"
+        },
+        {
+          "en": "fairly — quite, but less than very",
+          "my": "အတော်အသင့်"
+        },
+        {
+          "en": "largely — almost completely",
+          "my": "အများအားဖြင့်၊ လုံးဝနီးပါး"
+        },
+        {
+          "en": "nearly — almost; not completely",
+          "my": "နီးပါး"
+        },
+        {
+          "en": "pretty (informal) — quite, but not extremely",
+          "my": "အတော်အသင့် (အရပ်သုံး)"
+        },
+        {
+          "en": "rather — quite; to a slight degree",
+          "my": "အတော်၊ အနည်းငယ်"
+        },
+        {
+          "en": "scarcely — only just, almost not",
+          "my": "မရှိသလောက်၊ လုနီးပါးသာ"
+        },
+        {
+          "en": "slightly (formal) — to a small degree; not considerably",
+          "my": "အနည်းငယ် (တရားဝင်အသုံး)"
+        }
+      ],
+      "pages": [
+        124,
+        125
+      ]
+    },
+    "11-dream-job": {
+      "page": 128,
+      "title": "Useful language",
+      "rows": [
+        {
+          "en": "Introducing your dream job: My dream job is … / I want to be …",
+          "my": "အိပ်မက်အလုပ်ကို မိတ်ဆက်ပါ။"
+        },
+        {
+          "en": "Why you wish to have that job: It is an interesting / challenging / decent / secure job. / It is a well-paid job. / My parents want me to … / I wish to be like …",
+          "my": "စိတ်ဝင်စားဖွယ်၊ စိန်ခေါ်မှုရှိ၊ သင့်တင့်၊ တည်ငြိမ်သောအလုပ်၊ လစာကောင်းခြင်း၊ မိဘဆန္ဒ သို့မဟုတ် စံပြပုဂ္ဂိုလ် စသည့် အကြောင်းရင်းများ။"
+        },
+        {
+          "en": "What knowledge and skills you need to get your dream job: I must be proficient in Japanese / Italian. / I need to be able to speak English / Chinese well. / I need to use computer well. / I must know accounting. / I must be able to communicate effectively. / I must have meeting / telephoning / negotiating skills.",
+          "my": "လိုအပ်သည့် ဘာသာစကား၊ ကွန်ပျူတာ၊ စာရင်းကိုင်၊ ဆက်သွယ်ပြောဆိုမှုနှင့် ညှိနှိုင်းမှု ကျွမ်းကျင်မှုများကို ဖော်ပြပါ။"
+        },
+        {
+          "en": "What you are doing: At the moment / Currently / Right now, I am attending / joining …",
+          "my": "ယခု လက်တွေ့တက်ရောက်သင်ယူနေသည့် အရာကို ပြောပါ။"
+        }
+      ],
+      "pages": [
+        128,
+        129
+      ]
+    },
+    "11-compare": {
+      "page": 129,
+      "title": "Useful language",
+      "rows": [
+        {
+          "en": "Among the four / five / six of us, one / two of us want(s) to be … / Among us, Ko Toe wants to be … / The most common dream job we have is … / The most unusual dream job a group member has is …",
+          "my": "အဖွဲ့ဝင်အရေအတွက်၊ အလုပ်အလိုက် ရွေးသူအရေအတွက်၊ အများဆုံးနှင့် အထူးခြားဆုံး အိပ်မက်အလုပ်များကို နှိုင်းယှဉ်တင်ပြပါ။"
+        }
+      ]
+    },
+    "12-categories": {
+      "page": 133,
+      "title": "Disasters · Word bank",
+      "rows": [
+        {
+          "en": "tornado",
+          "my": "လေဆင်နှာမောင်း"
+        },
+        {
+          "en": "cholera",
+          "my": "ကာလဝမ်းရောဂါ"
+        },
+        {
+          "en": "landslide",
+          "my": "မြေပြိုမှု"
+        },
+        {
+          "en": "wildfire",
+          "my": "တောမီး"
+        },
+        {
+          "en": "plague",
+          "my": "ပလိပ်ရောဂါ"
+        },
+        {
+          "en": "malaria",
+          "my": "ငှက်ဖျားရောဂါ"
+        },
+        {
+          "en": "earthquake",
+          "my": "ငလျင်"
+        },
+        {
+          "en": "cyclone",
+          "my": "ဆိုင်ကလုန်းမုန်တိုင်း"
+        },
+        {
+          "en": "drought",
+          "my": "မိုးခေါင်မှု"
+        },
+        {
+          "en": "flood",
+          "my": "ရေကြီးမှု"
+        }
+      ]
+    },
+    "12-match-verbs": {
+      "page": 135,
+      "title": "Meanings (a–l)",
+      "rows": [
+        {
+          "en": "a. carry something away by the movement of water",
+          "my": "ရေစီးဖြင့် မျောပါသွားစေသည်"
+        },
+        {
+          "en": "b. start wearing something",
+          "my": "စတင်ဝတ်ဆင်သည်"
+        },
+        {
+          "en": "c. drink something after putting food or medicine in your mouth",
+          "my": "အစားအစာ သို့မဟုတ် ဆေးကို မျိုချရန် အရည်သောက်သည်"
+        },
+        {
+          "en": "d. clean something by using water",
+          "my": "ရေဖြင့် ဆေးကြောသည်"
+        },
+        {
+          "en": "e. stop working, usually at the end of the day",
+          "my": "ပုံမှန်အားဖြင့် နေ့ကုန်ချိန် အလုပ်ရပ်သည်"
+        },
+        {
+          "en": "f. spend time sociably or hang out with someone",
+          "my": "တစ်ယောက်ယောက်နှင့် ပေါင်းသင်းအချိန်ဖြုန်းသည်"
+        },
+        {
+          "en": "g. refuse to accept someone or something",
+          "my": "လက်မခံဘဲ ငြင်းပယ်သည်"
+        },
+        {
+          "en": "h. clean plates, cups, spoons, etc. after a meal",
+          "my": "စားပြီး ပန်းကန်ခွက်ယောက်များ ဆေးသည်"
+        },
+        {
+          "en": "i. demolish a building or part of a building",
+          "my": "အဆောက်အအုံကို ဖြိုချသည်"
+        },
+        {
+          "en": "j. stop something burning",
+          "my": "မီးငြိမ်းစေသည်"
+        },
+        {
+          "en": "k. delay doing something / postpone something",
+          "my": "နောက်ရွှေ့သည်"
+        },
+        {
+          "en": "l. put something in the place where you usually keep it when you are not using it",
+          "my": "မသုံးချိန် ပုံမှန်ထားသည့်နေရာတွင် သိမ်းထားသည်"
+        }
+      ],
+      "choiceLabels": {
+        "a": "carry something away by the movement of water",
+        "b": "start wearing something",
+        "c": "drink something after putting food or medicine in your mouth",
+        "d": "clean something by using water",
+        "e": "stop working, usually at the end of the day",
+        "f": "spend time sociably or hang out with someone",
+        "g": "refuse to accept someone or something",
+        "h": "clean plates, cups, spoons, etc. after a meal",
+        "i": "demolish a building or part of a building",
+        "j": "stop something burning",
+        "k": "delay doing something / postpone something",
+        "l": "put something in the place where you usually keep it when you are not using it"
+      }
+    },
+    "12-interview": {
+      "page": 140,
+      "title": "Useful language",
+      "rows": [
+        {
+          "en": "Asking for information: Have you ever had a terrible experience in your life? / When and where did it happen? / Who were you with at that time? / Tell me more about your experience. / What was the hardest part of that incident and why?",
+          "my": "ဆိုးရွားသောအတွေ့အကြုံ ရှိဖူးသလား။ ဘယ်အချိန်၊ ဘယ်နေရာမှာလဲ။ ဘယ်သူနဲ့ရှိသလဲ။ ထပ်ပြောပြပါ။ အခက်ခဲဆုံးအပိုင်းက ဘာလဲ၊ ဘာကြောင့်လဲ။"
+        },
+        {
+          "en": "Describing experience in the past: It happened … ago. / Last year, … / In 2018, … / I was living … / I was sleeping …",
+          "my": "အတိတ်ဖြစ်ရပ်ကို အချိန်ပြစကားနှင့် ရှင်းပြပါ။ ဖြစ်နေဆဲ နောက်ခံအခြေအနေကိုလည်း ဖော်ပြနိုင်သည်။"
+        },
+        {
+          "en": "Responding to bad experience: That’s a shame! / I’m so sorry to hear that! / I’m sorry to hear such a terrible experience. / I’m very sorry — that must be awful / frustrating / scary / difficult. / I really don’t know what to say. I can’t believe it. I’m very sorry.",
+          "my": "စိတ်မကောင်းဖြစ်ကြောင်း၊ အလွန်ခက်ခဲကြောက်စရာ ဖြစ်ခဲ့မည်ကို နားလည်ကြောင်း ပြန်ပြောပါ။"
+        }
+      ]
+    },
+    "12-functions": {
+      "page": 141,
+      "title": "Functions (a–j) · Worked example: (1) = f",
+      "rows": [
+        {
+          "en": "a. gives details of the second problem",
+          "my": "ဒုတိယပြဿနာ အသေးစိတ်"
+        },
+        {
+          "en": "b. gives a solution to the first problem",
+          "my": "ပထမပြဿနာ ဖြေရှင်းနည်း"
+        },
+        {
+          "en": "c. restates the problems",
+          "my": "ပြဿနာများကို ပြန်ဖော်ပြခြင်း"
+        },
+        {
+          "en": "d. recommends possible solutions",
+          "my": "ဖြေရှင်းနိုင်သည့်နည်းများ အကြံပြုခြင်း"
+        },
+        {
+          "en": "e. gives a solution to the second problem",
+          "my": "ဒုတိယပြဿနာ ဖြေရှင်းနည်း"
+        },
+        {
+          "en": "f. paraphrases the question",
+          "my": "မေးခွန်းကို အဓိပ္ပာယ်မပြောင်းဘဲ စကားပြောင်းရေးခြင်း"
+        },
+        {
+          "en": "g. introduces the first problem",
+          "my": "ပထမပြဿနာ မိတ်ဆက်ခြင်း"
+        },
+        {
+          "en": "h. introduces the second problem",
+          "my": "ဒုတိယပြဿနာ မိတ်ဆက်ခြင်း"
+        },
+        {
+          "en": "i. introduces the main points that will be discussed in the main body paragraphs",
+          "my": "အဓိကစာကိုယ်တွင် ဆွေးနွေးမည့် အချက်များ မိတ်ဆက်ခြင်း"
+        },
+        {
+          "en": "j. gives details of the first problem",
+          "my": "ပထမပြဿနာ အသေးစိတ်"
+        }
+      ],
+      "choiceLabels": {
+        "a": "gives details of the second problem",
+        "b": "gives a solution to the first problem",
+        "c": "restates the problems",
+        "d": "recommends possible solutions",
+        "e": "gives a solution to the second problem",
+        "f": "paraphrases the question",
+        "g": "introduces the first problem",
+        "h": "introduces the second problem",
+        "i": "introduces the main points that will be discussed in the main body paragraphs",
+        "j": "gives details of the first problem"
+      }
+    },
+    "12-composition": {
+      "page": 142,
+      "title": "Language phrases and textbook opening",
+      "rows": [
+        {
+          "en": "Introducing problems: A major problem of … is … / A further problem of this is … / Another problem to consider is …",
+          "my": "အဓိကပြဿနာ၊ နောက်ထပ်ပြဿနာ၊ ထည့်စဉ်းစားရမည့် အခြားပြဿနာတို့ကို ဖော်ပြရန်။"
+        },
+        {
+          "en": "Note: If you are uncertain of the problem, you can add the modal verbs may / might, which are used to give more information about the main verb and are used for suggestions.",
+          "my": "မသေချာလျှင် ဖြစ်နိုင်ခြေပြစကားလုံးများကို ထည့်သုံးနိုင်သည်။"
+        },
+        {
+          "en": "Giving solutions: One possible solution is … / To tackle this issue … / The way forward could be to …",
+          "my": "ဖြေရှင်းနိုင်သည့်နည်းတစ်ခု၊ ပြဿနာကို ကိုင်တွယ်ရန်နည်းနှင့် ရှေ့ဆက်လုပ်နိုင်သည့်နည်းကို တင်ပြရန်။"
+        },
+        {
+          "en": "Teenagers and their parents often have an unhealthy relationship. This is not new. However, reasons for this may vary from one situation to the next. One important reason is that …",
+          "my": "ဆယ်ကျော်သက်နှင့် မိဘတို့၏ ဆက်ဆံရေး မပြေလည်ခြင်းသည် အသစ်အဆန်းမဟုတ်ပါ။ အကြောင်းရင်းများသည် အခြေအနေအလိုက် ကွာနိုင်သည်။ အရေးကြီးသော အကြောင်းရင်းတစ်ခုမှာ…။ ဤစာသားသည် မူရင်းစာအုပ်က ပေးထားသော အစရေးနည်းဖြစ်သည်။"
+        }
+      ]
+    }
+  },
+  "itemNotes": {
+    "12-verb-forms-11": "ဤမူရင်းဝါကျရှိ “to see him again” နှင့် ပေးထားသော တွဲဖက်ကြိယာများ အသုံးအနှုန်း မကိုက်ညီမှုရှိသည်။ မူရင်းကို ထိန်းထားပြီး ပုံသေအဖြေတစ်ခု မသတ်မှတ်ထားပါ။",
+    "10-listen-3": "မေးခွန်းတွင် weekdays ဟုရေးထားသော်လည်း အသံတွင် weekends ဟု ဖော်ပြထားသည်။ အသံကို ပြန်နားထောင်ပြီး အဓိပ္ပာယ်နှင့် ဆက်စပ်စဉ်းစားပါ။"
+  }
+}

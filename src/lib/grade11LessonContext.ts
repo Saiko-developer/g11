@@ -1,3 +1,4 @@
+import { upperStudyContext } from "./grade11UpperStudy";
 import { UNIT7_TEXT, unit7Reference } from "./grade11Unit7";
 import { UNIT1_SECTIONS } from "./grade11Unit1";
 import { UNIT2_SECTIONS } from "./grade11Unit2";
@@ -44,6 +45,7 @@ export function grade11LessonContext(unit: number, kind: G11SkillKind) {
     text = content.sources
       .map((s) => `Textbook page ${s.page - 5}:\n${pages[s.page]?.text ?? ""}`)
       .join("\n\n");
+    if (unit >= 8) text = upperStudyContext(unit, kind);
     if (unit === 7) {
       text = unit7Reference(kind);
       if (kind === "reading")
@@ -95,12 +97,12 @@ export function grade11LessonContext(unit: number, kind: G11SkillKind) {
     }
     text = selected.map((b) => `[${b.id}] ${b.x}`).join("\n");
   }
-  if (kind === "listening" || kind === "speaking")
+  if ((kind === "listening" || kind === "speaking") && !(isUpperUnit(unit) && unit >= 8))
     text +=
       "\nSupplied recording transcript:\n" +
       getGrade11Captions(unit)
         .map((c) => c.en)
         .join("\n");
-  const context = `Grade 11 English · Unit ${unit} · ${kind}\n${passageIndex ? `Reading passage paragraphs in display order (including the introductory paragraph; printed heading blanks are NOT paragraph numbers):\n${passageIndex}\n\n` : ""}Textbook questions:\n${questions.map(indexedQuestion).join("\n")}\nOriginal textbook reference (OCR may contain recognition errors; never invent missing information):\n${text}`;
+  const context = `Grade 11 English · Unit ${unit} · ${kind}\n${passageIndex ? `Reading passage paragraphs in display order (including the introductory paragraph; printed heading blanks are NOT paragraph numbers):\n${passageIndex}\n\n` : ""}Textbook questions:\n${questions.map(indexedQuestion).join("\n")}\nOriginal textbook reference (use the supplied manually transcribed material when available; never invent missing information):\n${text}`;
   return { context, questions };
 }
