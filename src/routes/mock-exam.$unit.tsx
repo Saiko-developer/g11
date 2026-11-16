@@ -56,9 +56,16 @@ export const Route = createFileRoute("/mock-exam/$unit")({
       ],
     };
   },
-  validateSearch: (s: Record<string, unknown>): { units?: string; sections?: string; count?: number; grade?: number } => ({
+  validateSearch: (
+    s: Record<string, unknown>,
+  ): { units?: string; sections?: string; count?: number; grade?: number } => ({
     grade: Number(s.grade) === 11 ? 11 : undefined,
-    units: typeof s.units === "string" ? s.units : typeof s.units === "number" ? String(s.units) : undefined,
+    units:
+      typeof s.units === "string"
+        ? s.units
+        : typeof s.units === "number"
+          ? String(s.units)
+          : undefined,
     sections: typeof s.sections === "string" ? s.sections : undefined,
     count: Number(s.count) === 5 ? 5 : Number(s.count) === 10 ? 10 : undefined,
   }),
@@ -79,10 +86,13 @@ function useUnitMeta(units: number[], grade = 10) {
         ? `Units ${units.join(", ")} Combined Exam`
         : (nodes[0]?.title ?? `Unit ${units[0]}`);
     const topics = nodes
-      .map((n) => `Unit ${n.number} (${n.title}) — ${n.skills.map((s) => `${s.label}: ${s.detail}`).join("; ")}`)
+      .map(
+        (n) =>
+          `Unit ${n.number} (${n.title}) — ${n.skills.map((s) => `${s.label}: ${s.detail}`).join("; ")}`,
+      )
       .join(" || ");
     return { title, topics };
-  }, [units.join(","), grade]);
+  }, [units, grade]);
 }
 
 function MockExamPage() {
@@ -91,10 +101,20 @@ function MockExamPage() {
   const search = Route.useSearch();
   const unitNumber = Number(unit);
   const config = useMemo(
-    () => normalizeConfig({ units: search.units, sections: search.sections, count: search.count, grade: search.grade }, unitNumber),
+    () =>
+      normalizeConfig(
+        {
+          units: search.units,
+          sections: search.sections,
+          count: search.count,
+          grade: search.grade,
+        },
+        unitNumber,
+      ),
     [search.units, search.sections, search.count, search.grade, unitNumber],
   );
-  const unitLabel = config.units.length > 1 ? `Units ${config.units.join(", ")}` : `Unit ${config.units[0]}`;
+  const unitLabel =
+    config.units.length > 1 ? `Units ${config.units.join(", ")}` : `Unit ${config.units[0]}`;
   const meta = useUnitMeta(config.units, config.grade ?? 10);
 
   const [paper, setPaper] = useState<MockExamPaper | null>(null);
@@ -108,34 +128,49 @@ function MockExamPage() {
   const [needsSignIn, setNeedsSignIn] = useState(false);
 
   const generate = useMemo(
-    () => async (fresh = false) => {
-      setLoading(true);
-      setError(null);
-      setPaper(null);
-      setShowAnswers(false);
-      try {
-        const res = await fetch("/api/mock-exam", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${(await supabase.auth.getSession()).data.session?.access_token ?? ""}`,
-          },
-          body: JSON.stringify({ unit: config.units[0], unitTitle: meta.title, topics: meta.topics, fresh, units: config.units, sections: config.sections, count: config.count, grade: config.grade }),
-        });
-        setNeedsSignIn(res.status === 401);
-        const raw = (await res.json()) as { paper?: MockExamPaper; quota?: ExamQuota; error?: string };
-        if (raw.quota) setQuota(raw.quota);
-        if (!res.ok || !raw.paper) throw new Error(raw.error ?? "Could not generate the exam paper");
-        const data = raw.paper;
-        setPaper(data);
-        setSeconds((data.durationMinutes ?? 120) * 60);
-        setRunning(true);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Something went wrong");
-      } finally {
-        setLoading(false);
-      }
-    },
+    () =>
+      async (fresh = false) => {
+        setLoading(true);
+        setError(null);
+        setPaper(null);
+        setShowAnswers(false);
+        try {
+          const res = await fetch("/api/mock-exam", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${(await supabase.auth.getSession()).data.session?.access_token ?? ""}`,
+            },
+            body: JSON.stringify({
+              unit: config.units[0],
+              unitTitle: meta.title,
+              topics: meta.topics,
+              fresh,
+              units: config.units,
+              sections: config.sections,
+              count: config.count,
+              grade: config.grade,
+            }),
+          });
+          setNeedsSignIn(res.status === 401);
+          const raw = (await res.json()) as {
+            paper?: MockExamPaper;
+            quota?: ExamQuota;
+            error?: string;
+          };
+          if (raw.quota) setQuota(raw.quota);
+          if (!res.ok || !raw.paper)
+            throw new Error(raw.error ?? "Could not generate the exam paper");
+          const data = raw.paper;
+          setPaper(data);
+          setSeconds((data.durationMinutes ?? 120) * 60);
+          setRunning(true);
+        } catch (err) {
+          setError(err instanceof Error ? err.message : "Something went wrong");
+        } finally {
+          setLoading(false);
+        }
+      },
     [config, meta.title, meta.topics],
   );
 
@@ -149,11 +184,13 @@ function MockExamPage() {
     return () => window.clearInterval(id);
   }, [running, seconds]);
 
-  const limitReached = !!quota && quota.limit >= 0 && quota.used >= quota.limit && (quota.extra ?? 0) <= 0;
+  const limitReached =
+    !!quota && quota.limit >= 0 && quota.used >= quota.limit && (quota.extra ?? 0) <= 0;
 
   // Students: answer key download unlocks 30 min after the paper was generated;
   // on-screen answers unlock only after they submit their paper for grading.
-  const isStaff = !!quota && (quota.limit < 0 || quota.role === "teacher" || quota.role === "admin");
+  const isStaff =
+    !!quota && (quota.limit < 0 || quota.role === "teacher" || quota.role === "admin");
   const storeKey = paper ? `mockexam:${unitNumber}:${paper.title}` : null;
   const [genAt, setGenAt] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -223,10 +260,20 @@ function MockExamPage() {
             >
               <Clock className="h-4 w-4" /> {clock}
             </span>
-            <Button variant="outline" size="sm" onClick={() => setRunning((r) => !r)} disabled={!paper}>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setRunning((r) => !r)}
+              disabled={!paper}
+            >
               {running ? "Pause" : "Start"}
             </Button>
-            <Button variant="outline" size="sm" onClick={() => void generate(true)} disabled={loading || limitReached}>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => void generate(true)}
+              disabled={loading || limitReached}
+            >
               <RefreshCw className="h-4 w-4" /> New paper
             </Button>
             {quota && (
@@ -237,7 +284,11 @@ function MockExamPage() {
               </span>
             )}
             {isStaff && paper && (
-              <Button variant={editing ? "default" : "outline"} size="sm" onClick={() => setEditing((v) => !v)}>
+              <Button
+                variant={editing ? "default" : "outline"}
+                size="sm"
+                onClick={() => setEditing((v) => !v)}
+              >
                 <Pencil className="h-4 w-4" /> {editing ? "ပြင်ပြီးပါပြီ" : "Edit Paper"}
               </Button>
             )}
@@ -260,14 +311,22 @@ function MockExamPage() {
               size="sm"
               className="border-primary/50 text-primary hover:bg-primary/10 hover:text-primary"
               disabled={!paper || !keyUnlocked}
-              title={keyUnlocked ? undefined : "စာမေးပွဲချိန်၏ ထက်ဝက်ပြည့်မှ (သို့) အဖြေလွှာတင်ပြီးမှ ဖွင့်ပါမည်"}
+              title={
+                keyUnlocked
+                  ? undefined
+                  : "စာမေးပွဲချိန်၏ ထက်ဝက်ပြည့်မှ (သို့) အဖြေလွှာတင်ပြီးမှ ဖွင့်ပါမည်"
+              }
               onClick={() => setKeyOpen(true)}
             >
-              {keyUnlocked ? <FileCheck2 className="h-4 w-4" /> : <Lock className="h-4 w-4" />} View Answer Key
+              {keyUnlocked ? <FileCheck2 className="h-4 w-4" /> : <Lock className="h-4 w-4" />} View
+              Answer Key
               {!keyUnlocked && paper && <span className="font-mono text-xs">({keyWait})</span>}
             </Button>
-            <AnswerKeyDialog paper={keyUnlocked ? paper : null} open={keyOpen && keyUnlocked} onOpenChange={setKeyOpen} />
-
+            <AnswerKeyDialog
+              paper={keyUnlocked ? paper : null}
+              open={keyOpen && keyUnlocked}
+              onOpenChange={setKeyOpen}
+            />
           </div>
         </header>
 
@@ -282,8 +341,14 @@ function MockExamPage() {
         {error && needsSignIn && (
           <div className="mt-8 rounded-2xl border border-border bg-card p-6 text-center text-sm">
             <p className="font-semibold">စာမေးပွဲဖြေရန် အရင် Sign in ဝင်ပါ</p>
-            <p className="mt-1 text-muted-foreground">Please sign in to generate your mock exam paper.</p>
-            <Button className="mt-3" size="sm" onClick={() => void signInWithGoogle(window.location.href)}>
+            <p className="mt-1 text-muted-foreground">
+              Please sign in to generate your mock exam paper.
+            </p>
+            <Button
+              className="mt-3"
+              size="sm"
+              onClick={() => void signInWithGoogle(window.location.href)}
+            >
               Google ဖြင့် ဝင်ရန်
             </Button>
           </div>
@@ -293,7 +358,12 @@ function MockExamPage() {
           <div className="mt-8 rounded-2xl border border-destructive/40 bg-destructive/10 p-6 text-sm">
             <p className="font-semibold">Could not generate the paper.</p>
             <p className="mt-1 text-muted-foreground">{error}</p>
-            <Button className="mt-3" size="sm" onClick={() => void generate()} disabled={limitReached}>
+            <Button
+              className="mt-3"
+              size="sm"
+              onClick={() => void generate()}
+              disabled={limitReached}
+            >
               Try again
             </Button>
           </div>
@@ -339,7 +409,13 @@ function Answer({ show, children }: { show: boolean; children: React.ReactNode }
   );
 }
 
-export function SectionCard({ section, showAnswers }: { section: ExamSection; showAnswers: boolean }) {
+export function SectionCard({
+  section,
+  showAnswers,
+}: {
+  section: ExamSection;
+  showAnswers: boolean;
+}) {
   return (
     <section className="rounded-2xl border border-border bg-card p-5">
       <header className="mb-3 flex flex-wrap items-baseline justify-between gap-2 border-b border-border/70 pb-3">
@@ -357,6 +433,33 @@ export function SectionCard({ section, showAnswers }: { section: ExamSection; sh
   );
 }
 
+function Sentence({ text, underline }: { text: string; underline?: string }) {
+  const index = underline ? text.indexOf(underline) : -1;
+  return index < 0 ? (
+    <>{text}</>
+  ) : (
+    <>
+      {text.slice(0, index)}
+      <u>{underline}</u>
+      {text.slice(index + underline!.length)}
+    </>
+  );
+}
+function PassageText({ text }: { text: string }) {
+  return (
+    <>
+      {text
+        .split(/(\*\*.+?\*\*)/g)
+        .map((part, i) =>
+          part.startsWith("**") && part.endsWith("**") ? (
+            <strong key={i}>{part.slice(2, -2)}</strong>
+          ) : (
+            part
+          ),
+        )}
+    </>
+  );
+}
 function SectionBody({ section, showAnswers }: { section: ExamSection; showAnswers: boolean }) {
   switch (section.type) {
     case "fill":
@@ -396,7 +499,7 @@ function SectionBody({ section, showAnswers }: { section: ExamSection; showAnswe
         <ol className="space-y-2 text-sm">
           {section.items.map((i) => (
             <li key={i.number}>
-              {i.number}. {i.sentence}{" "}
+              {i.number}. <Sentence text={i.sentence} underline={i.underline} />{" "}
               <span className="font-medium text-primary">[{i.instruction}]</span>
               <Answer show={showAnswers}>{i.answer}</Answer>
             </li>
@@ -426,7 +529,9 @@ function SectionBody({ section, showAnswers }: { section: ExamSection; showAnswe
     case "passage":
       return (
         <div className="space-y-4 text-sm">
-          <p className="rounded-xl bg-secondary/50 p-4 leading-relaxed">{section.passage}</p>
+          <p className="rounded-xl bg-secondary/50 p-4 leading-relaxed">
+            <PassageText text={section.passage} />
+          </p>
           <div>
             <p className="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-primary">
               Part A (5 marks)
@@ -446,10 +551,12 @@ function SectionBody({ section, showAnswers }: { section: ExamSection; showAnswe
     case "passage_extended":
       return (
         <div className="space-y-4 text-sm">
-          <p className="rounded-xl bg-secondary/50 p-4 leading-relaxed">{section.passage}</p>
+          <p className="rounded-xl bg-secondary/50 p-4 leading-relaxed">
+            <PassageText text={section.passage} />
+          </p>
           <div>
             <p className="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-              Part A (5 marks) — match each definition with a boldfaced word
+              Part A (5 marks) — match each definition with a boldfaced word. There is an extra.
             </p>
             <ol className="space-y-1.5">
               {section.definitions.map((d) => (
@@ -490,7 +597,11 @@ function SectionBody({ section, showAnswers }: { section: ExamSection; showAnswe
           <ol className="space-y-2">
             {section.prompts.map((p, i) => (
               <li key={i} className="rounded-lg bg-secondary/50 p-3">
-                ({String.fromCharCode(97 + i)}) {p}
+                {i > 0 && section.id === "VIII" && (
+                  <p className="mb-3 text-center font-bold">(OR)</p>
+                )}
+                {section.id !== "VIII" && `(${String.fromCharCode(97 + i)}) `}
+                {p}
               </li>
             ))}
           </ol>
@@ -527,7 +638,7 @@ function QaList({
   return (
     <div>
       <p className="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-primary">{title}</p>
-      <ol className="space-y-2">
+      <ol className="space-y-2 whitespace-pre-line">
         {items.map((q) => (
           <li key={q.number}>
             {q.number}. {q.question}

@@ -10,7 +10,7 @@ import type { GradeResult } from "@/routes/api/grade-exam";
 /** Marks handwritten answer photos (data URLs) against a paper with answers. Throws on failure. */
 export async function gradePaper(paper: MockExamPaper, images: string[]): Promise<GradeResult> {
   const body = { paper };
-        const system = `You are Sayar Owl, a kind but STRICT Grade 10 Myanmar English examiner who marks like a real matriculation examiner.
+        const system = `You are Sayar Owl, a kind but STRICT Grade ${paper.grade === 11 ? 11 : 10} Myanmar English examiner who marks like a real matriculation examiner.
 The student wrote answers by hand on paper and uploaded photos (pages in order). Read the handwriting carefully, letter by letter.
 Use the ANSWER KEY JSON below as a guide, but judge like an experienced human teacher, not a string matcher.
 

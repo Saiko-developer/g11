@@ -14,10 +14,10 @@ describe("exam builder totals", () => {
   it("sections I-III with 5 questions each is 15 marks", () => {
     expect(examTotals({ sections: ["I", "II", "III"], count: 5 }).marks).toBe(15);
   });
-  it("Grade 11 full paper is 100 marks and 120 minutes", () => {
+  it("Grade 11 full paper is 100 marks and 180 minutes", () => {
     expect(examTotals({ sections: [...ALL_SECTION_IDS], count: 10, grade: 11 })).toEqual({
       marks: 100,
-      minutes: 120,
+      minutes: 180,
     });
   });
   it("Grade 11 essay section alone is 15 marks", () => {

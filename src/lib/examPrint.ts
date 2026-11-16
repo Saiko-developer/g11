@@ -22,7 +22,9 @@ const STYLES = `
   .doc-head h1 { font-size: 19pt; margin: 0 0 4px; letter-spacing: .01em; }
   .doc-head .sub { font-size: 10.5pt; letter-spacing: .12em; text-transform: uppercase; color: #444; }
   .doc-head .meta { font-size: 10.5pt; margin-top: 8px; color: #222; }
-  section { margin: 0 0 26px; page-break-inside: avoid; }
+  section { margin: 0 0 26px; }
+  h2, .part { break-after: avoid; }
+  ol.items > li, .prompt { break-inside: avoid; }
   h2 { font-size: 13pt; margin: 0 0 2px; border-bottom: 1px solid #999; padding-bottom: 4px;
        display: flex; justify-content: space-between; gap: 12px; }
   h2 .marks { font-size: 10pt; font-weight: normal; text-transform: uppercase; letter-spacing: .1em; color: #555; }
@@ -33,8 +35,8 @@ const STYLES = `
   .options { color: #333; margin: 3px 0 0 18px; }
   .options span { margin-right: 22px; }
   .passage { border: 1px solid #bbb; padding: 12px 14px; margin: 8px 0 4px; text-align: justify; }
-  .bank { border: 1px dashed #666; padding: 8px 12px; margin: 8px 0; }
-  .bank b { display: block; font-size: 9.5pt; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px; }
+  .bank { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px 12px; border: 1px solid #666; padding: 8px 12px; margin: 8px 0; }
+  .bank b { grid-column: 1 / -1; display: block; font-size: 9.5pt; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px; }
   .bank span { margin-right: 20px; }
   .prompt { border-left: 3px solid #888; padding: 4px 12px; margin: 0 0 8px; }
   .note { font-size: 10pt; color: #444; }
@@ -43,10 +45,10 @@ const STYLES = `
                 text-transform: uppercase; letter-spacing: .18em; font-size: 10pt; font-weight: bold; }
   .sample-box { border: 1px solid #999; background: #fafafa; padding: 10px 12px; margin: 8px 0 12px; }
   .sample-label { font-size: 9pt; font-weight: bold; text-transform: uppercase; letter-spacing: .1em; color: #555; margin-bottom: 6px; }
-  .sample-text { font-size: 11pt; line-height: 1.55; }
+  .sample-text { white-space: pre-line; font-size: 11pt; line-height: 1.55; }
 `;
 
-function questionBody(s: ExamSection): string {
+export function questionBody(s: ExamSection): string {
   const fill = (items: { number: number; sentence: string; hint?: string }[]) =>
     `<ol class="items">${items
       .map(
@@ -75,30 +77,35 @@ function questionBody(s: ExamSection): string {
       return `<ol class="items">${s.items
         .map(
           (i) =>
-            `<li>${i.number}. ${esc(i.sentence)} <strong>[${esc(i.instruction)}]</strong></li>`,
+            `<li>${i.number}. ${i.underline && i.sentence.includes(i.underline) ? esc(i.sentence).replace(esc(i.underline), `<u>${esc(i.underline)}</u>`) : esc(i.sentence)} <strong>(${esc(i.instruction)})</strong></li>`,
         )
         .join("")}</ol>`;
     case "poetry":
-      return `<p><strong>${esc(s.poemTitle)}</strong></p><div class="part">Part A</div>${fill(
+      return `<p><strong>${esc(s.poemTitle)}</strong></p><div class="part">(A) — 5 marks</div>${fill(
         s.partA,
-      )}<div class="part">Part B</div>${qa(s.partB)}`;
+      )}<div class="part">(B) — 5 marks</div>${qa(s.partB)}`;
     case "passage":
-      return `<div class="passage">${esc(s.passage)}</div><div class="part">Part A</div>${fill(
+      return `<div class="passage">${esc(s.passage)}</div><div class="part">(A) — 5 marks</div>${fill(
         s.partA,
-      )}<div class="part">Part B</div>${qa(s.partB)}`;
+      )}<div class="part">(B) — 5 marks</div>${qa(s.partB)}`;
     case "passage_extended":
-      return `<div class="passage">${bold(s.passage)}</div><div class="part">Part A — match each definition with a boldfaced word</div><ol class="items">${s.definitions
+      return `<div class="passage">${bold(s.passage)}</div><div class="part">(A) — 5 marks · Match each definition with a boldfaced word. There is an extra.</div><ol class="items">${s.definitions
         .map((d) => `<li>${d.number}. ${esc(d.definition)}</li>`)
-        .join("")}</ol><div class="part">Part B</div>${qa(s.partB)}`;
+        .join("")}</ol><div class="part">(B) — 10 marks</div>${qa(s.partB)}`;
     case "functional":
-      return `${bank("Word bank", s.wordBank)}<div class="part">Part A</div><ol class="items">${s.dialogue
+      return `${bank("Word bank", s.wordBank)}<div class="part">(A) — 5 marks</div><ol class="items">${s.dialogue
         .map((t) => `<li><strong>${esc(t.speaker)}:</strong> ${esc(t.text)}</li>`)
-        .join("")}</ol>${bank("Phrase bank", s.phraseBank)}<div class="part">Part B</div>${qa(
+        .join(
+          "",
+        )}</ol>${bank("Phrase bank", s.phraseBank)}<div class="part">(B) — 5 marks</div>${qa(
         s.matches,
       )}`;
     case "writing":
       return `${s.prompts
-        .map((p, i) => `<div class="prompt">(${String.fromCharCode(97 + i)}) ${esc(p)}</div>`)
+        .map(
+          (p, i) =>
+            `${i > 0 && s.id === "VIII" ? '<p style="text-align:center;font-weight:bold">(OR)</p>' : ""}<div class="prompt">${s.id === "VIII" ? "" : `(${String.fromCharCode(97 + i)}) `}${esc(p)}</div>`,
+        )
         .join("")}<p class="note">Maximum ${s.maxWords} words.</p>`;
     default:
       return "";
@@ -118,17 +125,17 @@ function answerBody(s: ExamSection): string {
       return list(s.items.map((i) => ({ n: i.number, a: i.answer })));
     case "poetry":
     case "passage":
-      return `<div class="part">Part A</div>${list(
+      return `<div class="part">(A) — 5 marks</div>${list(
         s.partA.map((i) => ({ n: i.number, a: i.answer })),
-      )}<div class="part">Part B</div>${list(s.partB.map((q) => ({ n: q.number, a: q.answer })))}`;
+      )}<div class="part">(B) — 5 marks</div>${list(s.partB.map((q) => ({ n: q.number, a: q.answer })))}`;
     case "passage_extended":
-      return `<div class="part">Part A</div>${list(
+      return `<div class="part">(A) — 5 marks</div>${list(
         s.definitions.map((d) => ({ n: d.number, a: d.answer })),
-      )}<div class="part">Part B</div>${list(s.partB.map((q) => ({ n: q.number, a: q.answer })))}`;
+      )}<div class="part">(B) — 10 marks</div>${list(s.partB.map((q) => ({ n: q.number, a: q.answer })))}`;
     case "functional":
-      return `<div class="part">Part A</div>${list(
-        s.dialogue.filter((t) => t.answer).map((t) => ({ n: t.number, a: t.answer as string })),
-      )}<div class="part">Part B</div>${list(s.matches.map((q) => ({ n: q.number, a: q.answer })))}`;
+      return `<div class="part">(A) — 5 marks</div>${list(
+        s.dialogue.filter((t) => t.answer).map((t, i) => ({ n: i + 1, a: t.answer as string })),
+      )}<div class="part">(B) — 5 marks</div>${list(s.matches.map((q) => ({ n: q.number, a: q.answer })))}`;
     case "writing": {
       const samples = s.sampleAnswers?.filter(
         (a): a is string => typeof a === "string" && a.trim().length > 0,
@@ -233,14 +240,16 @@ async function renderImage(html: string, format: "png" | "jpeg"): Promise<Blob> 
 export function downloadExamPaper(paper: MockExamPaper, format: DownloadFormat = "pdf") {
   const head = `<div class="doc-head"><div class="sub">Sayar Owl Academy · Grade ${paper.grade === 11 ? 11 : 10} English</div>
     <h1>${esc(paper.title)}</h1>
+    <p>ENGLISH · PRACTICE EXAMINATION</p>
+    <p>WRITE YOUR ANSWERS IN THE ANSWER BOOKLET.<br>ANSWER ALL QUESTIONS.</p>
     <div class="meta">Unit ${esc(paper.unit)} · Total marks: ${esc(
       paper.totalMarks,
-    )} · Time allowed: ${esc(paper.durationMinutes)} minutes</div>
+    )} · Time allowed: ${paper.durationMinutes === 180 ? "3 hours" : `${esc(paper.durationMinutes)} minutes`}</div>
     <div class="meta">Name: _________________________&nbsp;&nbsp;&nbsp;Class: ____________&nbsp;&nbsp;&nbsp;Date: ____________</div></div>`;
   const body = paper.sections
     .map(
       (s) =>
-        `<section><h2><span>Section ${esc(s.id)}. ${esc(s.title)}</span><span class="marks">${esc(
+        `<section><h2><span>${esc(s.id)}. ${esc(s.title)}</span><span class="marks">${esc(
           s.marks,
         )} marks</span></h2><p class="instructions">${esc(
           s.instructions,
@@ -262,7 +271,7 @@ export function answerKeyHtml(paper: MockExamPaper): string {
   const body = paper.sections
     .map(
       (s) =>
-        `<section><h2><span>Section ${esc(s.id)}. ${esc(s.title)}</span><span class="marks">${esc(
+        `<section><h2><span>${esc(s.id)}. ${esc(s.title)}</span><span class="marks">${esc(
           s.marks,
         )} marks</span></h2>${answerBody(s)}</section>`,
     )

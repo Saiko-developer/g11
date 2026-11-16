@@ -96,7 +96,7 @@ export const SECTION_SPECS: SectionSpec[] = [
 /** Grade 11 paper: Section V is the textbook (seen) passage, Section IX essay is 15 marks. */
 export const G11_SECTION_SPECS: SectionSpec[] = SECTION_SPECS.map((s) =>
   s.id === "IV"
-    ? { ...s, label: "Poetry", labelMy: "ကဗျာ" }
+    ? { ...s, label: "Verse & Textbook Questions", labelMy: "ကဗျာနှင့် သင်ခန်းစာမေးခွန်းများ" }
     : s.id === "V"
       ? { ...s, label: "Textbook Reading Passage (Seen)", labelMy: "သင်ခန်းစာ စာဖတ်ခန်း" }
       : s.id === "IX"
@@ -125,12 +125,12 @@ export function sectionMarks(spec: SectionSpec, count: 5 | 10) {
   return spec.countable ? count : spec.marks;
 }
 
-/** Total marks and minutes for a selection. Full paper = 95 (G10) / 100 (G11) marks; Grade 10 180 minutes, Grade 11 120 minutes. */
+/** Total marks and minutes for a selection. Full paper = 95 (G10) / 100 (G11) marks; Grade 10 180 minutes, Grade 11 180 minutes. */
 export function examTotals(c: Pick<ExamConfig, "sections" | "count" | "grade">) {
   const grade = c.grade ?? 10;
   const chosen = sectionSpecs(grade).filter((s) => c.sections.includes(s.id));
   if (chosen.length === ALL_SECTION_IDS.length && c.count === 10)
-    return { marks: grade === 11 ? 100 : 95, minutes: grade === 11 ? 120 : 180 };
+    return { marks: grade === 11 ? 100 : 95, minutes: 180 };
   const marks = chosen.reduce((t, s) => t + sectionMarks(s, c.count), 0);
   const minutes = chosen.reduce(
     (t, s) => t + (s.countable && c.count === 5 ? Math.ceil(s.minutes / 2) : s.minutes),
@@ -164,5 +164,5 @@ export function normalizeConfig(
 
 export function configKey(c: ExamConfig) {
   const base = `${c.units.join(",")}|${c.sections.join(",")}|${c.count}`;
-  return c.grade === 11 ? `g11|${base}` : `g10-v2|${base}`;
+  return c.grade === 11 ? `g11-v2|${base}` : `g10-v2|${base}`;
 }

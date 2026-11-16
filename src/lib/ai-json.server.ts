@@ -11,6 +11,7 @@ export async function generateJson<T>(opts: {
   system: string;
   prompt: string;
   signal?: AbortSignal;
+  maxOutputTokens?: number;
 }): Promise<T> {
   const modelId =
     process.env.LOVABLE_JSON_MODEL?.trim() ||
@@ -19,9 +20,11 @@ export async function generateJson<T>(opts: {
 
   const result = streamText({
     model: getChatModel(modelId),
-    maxOutputTokens: 8000,
+    maxOutputTokens: opts.maxOutputTokens ?? 8000,
     maxRetries: 0,
-    abortSignal: opts.signal ? AbortSignal.any([opts.signal, AbortSignal.timeout(90000)]) : AbortSignal.timeout(90000),
+    abortSignal: opts.signal
+      ? AbortSignal.any([opts.signal, AbortSignal.timeout(90000)])
+      : AbortSignal.timeout(90000),
     system: withTone`${opts.system}\n\nReply with raw JSON only. No markdown fences, no commentary.`,
     prompt: opts.prompt,
   });

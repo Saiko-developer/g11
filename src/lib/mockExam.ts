@@ -14,9 +14,26 @@ export type TransformItem = {
   number: number;
   sentence: string;
   instruction: string;
+  underline?: string;
   answer: string;
 };
-export type QaItem = { number: number; question: string; answer: string };
+export type QaItem = {
+  number: number;
+  question: string;
+  answer: string;
+  sourceUnit?: number;
+  sourceEvidence?: string;
+};
+export type LetterScenario = {
+  kind: "personal" | "formal";
+  writerName: string;
+  writerAddress: string;
+  recipientName: string;
+  recipientAddress?: string;
+  relationship: string;
+  purpose: string;
+  points: string[];
+};
 export type DefinitionItem = { number: number; definition: string; answer: string };
 export type DialogueTurn = { number: number; speaker: string; text: string; answer?: string };
 
@@ -95,6 +112,7 @@ export type ExamSection =
       type: "writing";
       maxWords: number;
       prompts: string[];
+      letterScenarios?: LetterScenario[];
       /** Optional sample answers aligned with each prompt (a, b, c…). */
       sampleAnswers?: string[];
     };
