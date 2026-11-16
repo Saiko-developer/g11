@@ -1,4 +1,4 @@
-import { sectionSpecs, type ExamConfig } from "./examBlueprint";
+import { ALL_SECTION_IDS, sectionSpecs, type ExamConfig, type SectionId } from "./examBlueprint";
 import type { MockExamPaper, LetterScenario } from "./mockExam";
 import type { Grade11ExamSource } from "./grade11ExamSource.server";
 const normalize = (s: string) =>
@@ -32,13 +32,34 @@ export function letterPrompt(s: LetterScenario): string {
   if (s.kind === "formal") requireFormat(s.recipientAddress?.trim(), "formal recipient address");
   return `You are ${s.writerName}. You live at ${s.writerAddress}. Write a letter to ${s.recipientName}, ${s.relationship}${s.recipientAddress ? `, at ${s.recipientAddress}` : ""}, ${s.purpose}. In your letter, ${s.points.join("; ")}.`;
 }
+/** Accept display numbering variants, while never guessing a missing section by position. */
+export function normalizeExamSectionId(value: unknown): SectionId | null {
+  if (typeof value !== "string" && typeof value !== "number") return null;
+  const text = String(value)
+    .normalize("NFKC")
+    .trim()
+    .replace(/^section[\s:._-]*/i, "");
+  const match = text.match(/^([IVX]+|[1-9])(?=$|[\s.):\]_-])/i);
+  if (!match) return null;
+  const token = match[1].toUpperCase();
+  const id = /^[1-9]$/.test(token) ? ALL_SECTION_IDS[Number(token) - 1] : token;
+  return ALL_SECTION_IDS.includes(id as SectionId) ? (id as SectionId) : null;
+}
 /** Reject malformed generated papers before they can be recorded or consume an exam allowance. */
 export function applyGrade11Format(
   paper: MockExamPaper,
   config: ExamConfig,
   source: Grade11ExamSource,
 ) {
-  requireFormat(paper.sections.length === config.sections.length, "section count");
+  requireFormat(
+    Array.isArray(paper.sections) && paper.sections.length === config.sections.length,
+    "section count",
+  );
+  for (const section of paper.sections) {
+    const id = normalizeExamSectionId(section.id);
+    requireFormat(id, "unrecognized section identifier");
+    section.id = id;
+  }
   requireFormat(
     new Set(paper.sections.map((s) => s.id)).size === config.sections.length,
     "duplicate sections",

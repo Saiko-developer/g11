@@ -181,6 +181,10 @@ ${sectionLines}
 
 Return ONLY JSON of this shape:
 {"title":string,"unit":${unit},"unitTopics":string,"totalMarks":${totals.marks},"durationMinutes":${totals.minutes},"sections":[ ...one object per section above... ]}
+SECTION IDENTIFIERS ARE LITERAL ROMAN-NUMERAL STRINGS, not titles, Arabic numbers or type names.
+Expected section ids in order: ${JSON.stringify(config.sections)}.
+When requested, section I MUST have "id":"I" and "type":"fill". When requested, section VIII MUST have "id":"VIII" and "type":"writing".
+Do not omit, duplicate or replace any requested section.
 Section object shapes by type:
 fill: {"id","title","marks","instructions","type":"fill","items":[{"number","sentence","hint","answer"}]}
 mcq: {"id","title","marks","instructions","type":"mcq","items":[{"number","sentence","options":[{"label":"A","text"},{"label":"B","text"},{"label":"C","text"}],"answer":"A"}]}
@@ -202,6 +206,7 @@ No conversational text.`;
             prompt: `Generate the ${unitLabel} exam paper now. Title: ${unitTitle}. Topics: ${topics}`,
           });
           if (!paper?.sections?.length) throw new Error("Empty exam paper");
+          if (g11Source) applyGrade11Format(paper, config, g11Source);
           if (seenPassage) {
             for (const s of paper.sections as unknown as { id?: string; passage?: string }[]) {
               if (s.id === "V") s.passage = seenPassage;
@@ -261,7 +266,6 @@ No conversational text.`;
             });
             section.partB = [...g10Source.readingQuestions, { ...poemQuestion, number: 10 }];
           }
-          if (g11Source) applyGrade11Format(paper, config, g11Source);
           paper.totalMarks = totals.marks;
           paper.durationMinutes = totals.minutes;
           paper.units = config.units;

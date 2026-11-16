@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyGrade11Format, letterPrompt } from "./grade11ExamFormat";
+import { applyGrade11Format, letterPrompt, normalizeExamSectionId } from "./grade11ExamFormat";
 import { grade11ExamSource } from "./grade11ExamSource.server";
 import { questionBody } from "./examPrint";
 import type { MockExamPaper, ExamSection, LetterScenario } from "./mockExam";
@@ -64,6 +64,57 @@ const letters = (): ExamSection => ({
   sampleAnswers: ["A personal model letter.", "A formal model letter."],
 });
 describe("Grade 11 exam paper contract", () => {
+  it.each([
+    "I",
+    "I.",
+    "Section I",
+    "section: 1",
+    1,
+    "Ⅰ",
+    "1. Vocabulary Completion",
+    "I — Vocabulary Completion",
+  ])("accepts section I numbering variant %s", (value) => {
+    expect(normalizeExamSectionId(value)).toBe("I");
+    const section: ExamSection = {
+      id: value as string,
+      type: "fill",
+      title: "Vocabulary",
+      instructions: "",
+      marks: 10,
+      items: Array.from({ length: 10 }, (_, i) => ({
+        number: i + 1,
+        sentence: "A ______ sentence.",
+        hint: "t",
+        answer: "test",
+      })),
+    };
+    const p = paper(section);
+    applyGrade11Format(p, { grade: 11, units: [1], sections: ["I"], count: 10 }, source);
+    expect(p.sections[0].id).toBe("I");
+  });
+  it.each([null, undefined, "", "X", "10", "Intro", "IIIA", "Section VIIIa"])(
+    "does not guess invalid or missing section ids: %s",
+    (value) => {
+      expect(normalizeExamSectionId(value)).toBeNull();
+    },
+  );
+  it("rejects duplicated sections after normalization", () => {
+    const p = paper(letters());
+    p.sections = [
+      { ...letters(), id: "VIII" },
+      { ...letters(), id: "8" },
+    ];
+    expect(() =>
+      applyGrade11Format(p, { grade: 11, units: [1], sections: ["VIII", "IX"], count: 10 }, source),
+    ).toThrow("duplicate sections");
+  });
+  it("still rejects a genuinely missing section I instead of relabeling another section", () => {
+    const p = paper(letters());
+    expect(() =>
+      applyGrade11Format(p, { grade: 11, units: [1], sections: ["I"], count: 10 }, source),
+    ).toThrow("missing section I");
+  });
+
   it("creates detailed alternatives with correct marks, word limit and OR in print", () => {
     const p = paper(letters());
     apply(p);
