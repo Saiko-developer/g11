@@ -12,5 +12,8 @@ it("configures English grammar video topics for all twelve Grade 11 units", () =
     }
   }
   expect(catalog[1][0].url).toContain("mOlFrmsOpzU");
-  expect(catalog[2].find((v) => v.url.includes("IaslvsYxFVU"))).toMatchObject({ start: 660, end: 1229 });
+  expect(catalog[2].find((v) => v.url.includes("IaslvsYxFVU"))).toMatchObject({
+    start: 660,
+    end: 1229,
+  });
 });
