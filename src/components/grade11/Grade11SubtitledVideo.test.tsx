@@ -65,9 +65,13 @@ function clock(seconds: number) {
 it("uses source time without synthetic subtitle delay; handles pause, gaps, backwards seeks and end", async () => {
   await setup();
   expect(options.playerVars).toMatchObject({ autoplay: 0, start: 34, end: 50 });
-  expect(seek).toHaveBeenCalledWith(34, true);
+  const frame = screen.getByTitle("Test") as HTMLIFrameElement;
+  expect(new URL(frame.src).searchParams.get("start")).toBe("34");
+  expect(new URL(frame.src).searchParams.get("end")).toBe("50");
+  expect(new URL(frame.src).searchParams.get("controls")).toBe("1");
+  expect(seek).not.toHaveBeenCalled();
   expect(play).not.toHaveBeenCalled();
-  expect(pause).toHaveBeenCalledTimes(1);
+  expect(pause).not.toHaveBeenCalled();
   const caption = screen.getByRole("status", { name: "Myanmar video subtitle" });
   clock(34);
   expect(within(caption).getByText("ပထမစာတန်း")).toBeVisible();
@@ -146,4 +150,50 @@ it("bounds an otherwise untimed final cue only with the actual video duration", 
   expect(screen.getByText("နောက်မှတွေ့မယ်")).toBeVisible();
   clock(60);
   expect(screen.queryByText("နောက်မှတွေ့မယ်")).toBeNull();
+});
+
+it("shows a playable native iframe and Play button even before the subtitle API loads", () => {
+  mocks.load.mockReturnValue(new Promise(() => {}));
+  const { container } = render(
+    <Grade11SubtitledVideo
+      videoId="abcdefghijk"
+      title="Native fallback"
+      subtitles={cues}
+      start={34}
+      end={50}
+    />,
+  );
+  const frame = container.querySelector("iframe")!;
+  expect(frame).toBeVisible();
+  const url = new URL(frame.src);
+  expect(url.searchParams.get("autoplay")).toBe("0");
+  expect(url.searchParams.get("controls")).toBe("1");
+  expect(url.searchParams.get("enablejsapi")).toBe("1");
+  fireEvent.click(screen.getByRole("button", { name: "▶ ဗီဒီယို ဖွင့်မယ်" }));
+  expect(new URL(frame.src).searchParams.get("autoplay")).toBe("1");
+  expect(new URL(frame.src).searchParams.get("start")).toBe("34");
+});
+it("keeps native playback available after the caption API fails", async () => {
+  mocks.load.mockRejectedValue(new Error("Blocked API"));
+  const { container } = render(
+    <Grade11SubtitledVideo videoId="abcdefghijk" title="Native fallback" subtitles={cues} />,
+  );
+  await act(async () => {});
+  expect(container.querySelector("iframe")).toBeVisible();
+  expect(screen.getByRole("button", { name: "ပြန်ချိတ်မယ်" })).toBeVisible();
+  fireEvent.click(screen.getByRole("button", { name: "▶ ဗီဒီယို ဖွင့်မယ်" }));
+  expect(new URL(container.querySelector("iframe")!.src).searchParams.get("autoplay")).toBe("1");
+});
+it("plays, pauses and replays the clipped lesson only on explicit user actions", async () => {
+  await setup();
+  expect(play).not.toHaveBeenCalled();
+  expect(pause).not.toHaveBeenCalled();
+  fireEvent.click(screen.getByRole("button", { name: "▶ ဗီဒီယို ဖွင့်မယ်" }));
+  expect(play).toHaveBeenCalledTimes(1);
+  fireEvent.click(screen.getByRole("button", { name: "⏸ ခဏရပ်မယ်" }));
+  expect(pause).toHaveBeenCalledTimes(1);
+  clock(50);
+  fireEvent.click(screen.getByRole("button", { name: "▶ ဗီဒီယို ဖွင့်မယ်" }));
+  expect(seek).toHaveBeenLastCalledWith(34, true);
+  expect(play).toHaveBeenCalledTimes(2);
 });

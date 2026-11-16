@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Grade11SubtitledVideo } from "./Grade11SubtitledVideo";
 import { GRADE11_VIDEO_SUBTITLES, GRADE11_VIDEO_SUBTITLE_TAILS } from "@/lib/grade11VideoSubtitles";
 import { Play } from "lucide-react";
@@ -39,13 +39,14 @@ export function Grade11GrammarVideos({ unit }: { unit: number }) {
 
 function UnitGrammarVideos({ unit }: { unit: number }) {
   const [active, setActive] = useState(0);
+  const plainFrame = useRef<HTMLIFrameElement>(null);
   const videos = catalog[String(unit)] ?? [];
   if (!videos.length) return null;
   const video = videos[Math.min(active, videos.length - 1)];
   const id = youtubeId(video.url);
   const start = Number.isSafeInteger(video.start) && video.start! >= 0 ? video.start! : 0;
   const end = Number.isSafeInteger(video.end) && video.end! > start ? video.end : undefined;
-  const params = new URLSearchParams({ rel: "0", autoplay: "0" });
+  const params = new URLSearchParams({ rel: "0", autoplay: "0", controls: "1", playsinline: "1" });
   if (start) params.set("start", String(start));
   if (end) params.set("end", String(end));
   const source = `https://www.youtube.com/watch?v=${id}${start ? `&t=${start}s` : ""}`;
@@ -100,16 +101,32 @@ function UnitGrammarVideos({ unit }: { unit: number }) {
           end={end}
         />
       ) : id ? (
-        <div className="mt-2 aspect-video w-full overflow-hidden rounded-xl bg-muted">
-          <iframe
-            key={`${id}:${start}:${end ?? ""}`}
-            className="h-full w-full"
-            src={`https://www.youtube-nocookie.com/embed/${id}?${params}`}
-            title={video.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-          />
+        <div className="mt-2 space-y-3">
+          <div className="relative aspect-video min-h-[202px] w-full overflow-hidden rounded-xl bg-muted">
+            <iframe
+              ref={plainFrame}
+              key={`${id}:${start}:${end ?? ""}`}
+              className="absolute inset-0 h-full w-full"
+              src={`https://www.youtube-nocookie.com/embed/${id}?${params}`}
+              title={video.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+              loading="lazy"
+            />
+          </div>
+          <button
+            type="button"
+            className="rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground"
+            onClick={() => {
+              if (!plainFrame.current) return;
+              const url = new URL(plainFrame.current.src);
+              url.searchParams.set("autoplay", "1");
+              plainFrame.current.src = url.href;
+            }}
+          >
+            ▶ ဗီဒီယို ဖွင့်မယ်
+          </button>
         </div>
       ) : (
         <p lang="my" className="mt-2 rounded-xl bg-muted p-4 text-sm text-muted-foreground">
@@ -126,7 +143,7 @@ function UnitGrammarVideos({ unit }: { unit: number }) {
           href={source}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 inline-block text-sm font-medium text-primary underline underline-offset-4"
+          className="mt-3 inline-flex rounded-xl border border-primary/30 px-4 py-3 text-sm font-semibold text-primary"
         >
           YouTube မှာဖွင့်ကြည့်မယ် ↗
         </a>

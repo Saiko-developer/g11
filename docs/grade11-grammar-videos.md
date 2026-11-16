@@ -19,7 +19,7 @@ Sources include the YouTube descriptions linked in the catalog, the official Oxf
 
 ## Myanmar subtitle integration
 
-Grade 11 now has a source-clock subtitle player for the exact existing Grade 10 recordings `W3HdjN3cLiM` (Unit 2 Simple/Continuous) and `fDnXWxXZekw` (Unit 7 Passive), plus sixteen user-supplied translated recordings listed below. Grade 10 translations, timestamps and video selection are unchanged. Both grades now explicitly start paused; only this initial-play behavior of the shared Grade 10 player is changed. Tracks are bundled and reused without per-student translation/API calls.
+Grade 11 now has a source-clock subtitle player for the exact existing Grade 10 recordings `W3HdjN3cLiM` (Unit 2 Simple/Continuous) and `fDnXWxXZekw` (Unit 7 Passive), plus sixteen user-supplied translated recordings listed below. Grade 10 translations, timestamps and video selection are unchanged. Both grades load without autoplay. The shared Grade 10 player explicitly pauses on ready; Grade 11 uses a native paused embed as described below. Tracks are bundled and reused without per-student translation/API calls.
 
 Timing behavior:
 - Native YouTube clock sampled every 100ms; no simulated playback timer and no blanket 0.5-second delay.
@@ -93,6 +93,15 @@ Six further uploaded files and two inline user-message transcripts add eight tra
 
 The By upload begins at 00:16: its opening 16 seconds remain uncaptained rather than inventing missing text or shifting the source time. Participle clauses begin at the supplied 1-second marker. Nonspoken headings/`Sync to video time` footers are excluded from cues. The eight final cues use actual YouTube duration, with no guessed end. Translations retain the lesson meaning and source timing; English ASR artifacts remain in evidence. These examples support textbook learning and do not replace textbook rules or exercises.
 
-Manual playback is now explicit for both grades: `autoplay=0` for plain iframe embeds and API players, plus `pauseVideo()` on ready. Grade 11 seeks to the configured clip start before pausing. Page load and topic switching do not call `playVideo()`. Clicking Play or selecting a transcript cue is intentional student interaction; transcript navigation can start playback. All existing Grade 10 caption timing rules remain unchanged.
+Manual playback is explicit for both grades: `autoplay=0` for plain iframe embeds and API players. Grade 10 additionally pauses on ready. Grade 11's initial clip position is encoded in the native iframe URL; its ready callback no longer pauses or seeks, so it cannot interrupt a student who has already pressed native Play. Page load and topic switching do not call `playVideo()`. Clicking Play or selecting a transcript cue is intentional student interaction; transcript navigation can start playback. All existing Grade 10 caption timing rules remain unchanged.
 
 Regression checks cover both Grade 10 embed paths, Grade 11 initial pause, user-triggered transcript playback, every supplied source marker/translation and all eight new topic views on desktop/mobile. Provider media is mocked during browser checks; live listening verification is still not claimed.
+
+
+### Playback availability correction
+
+The previous Grade 11 player depended on the caption API to create a video at all and hid the video when that connection failed. It also offered no app-level Play control. The corrected player creates a native YouTube iframe immediately, enables native controls, and attaches subtitle synchronization to that existing iframe when the API is ready. Caption failure leaves the iframe visible and provides a caption retry independently of the direct YouTube link.
+
+Both subtitled and plain Grade 11 videos now have a prominent Play button. For a ready caption player it calls `playVideo()`; before readiness or after caption failure it requests native playback with `autoplay=1` only in the explicit click handler. Initial load and topic changes retain `autoplay=0`. A ready player offers Pause and replays from the selected clip start after its end. Source start/end limits remain intact. The iframe carries the page origin, a standard origin-sending referrer policy and native controls. Its host fills a positioned container with at least 200px height so controls cannot collapse behind percentage-height wrappers.
+
+Regression tests deliberately block the caption API and verify that the native iframe, Play action and direct YouTube action remain present. Browser checks also measure the mobile frame height, test user-triggered Play/Pause, preserve clipped plain-video start/end values and verify source-clock captions. The media itself is a fixture in these checks; actual YouTube network availability is not certified.

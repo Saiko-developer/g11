@@ -34,11 +34,11 @@ describe("Grade 11 grammar video links", () => {
   it("embeds teacher YouTube links and switches between multiple lessons", () => {
     const { container } = render(<Grade11GrammarVideos unit={2} />);
     expect(container.querySelector("iframe")?.src).toBe(
-      "https://www.youtube-nocookie.com/embed/abcdefghijk?rel=0&autoplay=0",
+      "https://www.youtube-nocookie.com/embed/abcdefghijk?rel=0&autoplay=0&controls=1&playsinline=1",
     );
     fireEvent.click(screen.getByRole("button", { name: "Second grammar video" }));
     expect(container.querySelector("iframe")?.src).toBe(
-      "https://www.youtube-nocookie.com/embed/ABCDEFGHIJK?rel=0&autoplay=0",
+      "https://www.youtube-nocookie.com/embed/ABCDEFGHIJK?rel=0&autoplay=0&controls=1&playsinline=1",
     );
   });
   it("does not embed unrelated websites", () => {
@@ -51,7 +51,7 @@ it("bounds the long lesson to the selected chapter and remounts the same video o
   const { container } = render(<Grade11GrammarVideos unit={4} />);
   const first = container.querySelector("iframe");
   expect(first?.src).toBe(
-    "https://www.youtube-nocookie.com/embed/abcdefghijk?rel=0&autoplay=0&start=660&end=1229",
+    "https://www.youtube-nocookie.com/embed/abcdefghijk?rel=0&autoplay=0&controls=1&playsinline=1&start=660&end=1229",
   );
   expect(screen.getByText(/11:00–20:29 · 9:29/)).toBeVisible();
   expect(screen.getByRole("link").getAttribute("href")).toBe(
@@ -70,4 +70,14 @@ it("starts at the first topic when navigating to another unit", () => {
     "true",
   );
   expect(container.querySelector("iframe")?.src).toContain("start=660&end=1229");
+});
+
+it("offers a visible Play action without starting the plain video on page load", () => {
+  const { container } = render(<Grade11GrammarVideos unit={2} />);
+  const frame = container.querySelector("iframe")!;
+  expect(new URL(frame.src).searchParams.get("autoplay")).toBe("0");
+  fireEvent.click(screen.getByRole("button", { name: "▶ ဗီဒီယို ဖွင့်မယ်" }));
+  expect(new URL(frame.src).searchParams.get("autoplay")).toBe("1");
+  fireEvent.click(screen.getByRole("button", { name: "Second grammar video" }));
+  expect(new URL(container.querySelector("iframe")!.src).searchParams.get("autoplay")).toBe("0");
 });

@@ -63,13 +63,33 @@ export function Grade11SubtitledVideo({
       setReady(false);
       setTime(null);
     };
+    // Native playback must not depend on the caption API being reachable.
+    const frame = document.createElement("iframe");
+    const params = new URLSearchParams({
+      autoplay: "0",
+      controls: "1",
+      playsinline: "1",
+      rel: "0",
+      enablejsapi: "1",
+      origin: location.origin,
+      start: String(start),
+    });
+    if (end !== undefined) params.set("end", String(end));
+    frame.src = `https://www.youtube-nocookie.com/embed/${videoId}?${params}`;
+    frame.title = title;
+    frame.width = "100%";
+    frame.height = "100%";
+    frame.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = "strict-origin-when-cross-origin";
+    container?.replaceChildren(frame);
     loadYouTubeIframeApi()
       .then((api) => {
         if (cancelled || !container) return;
-        const mount = document.createElement("div");
-        container.replaceChildren(mount);
         const vars: Record<string, number | string> = {
           autoplay: 0,
+          controls: 1,
           playsinline: 1,
           rel: 0,
           start,
@@ -78,7 +98,7 @@ export function Grade11SubtitledVideo({
         };
         if (end !== undefined) vars.end = end;
         readyTimeout = setTimeout(fail, 15000);
-        player.current = new api.Player(mount, {
+        player.current = new api.Player(frame, {
           videoId,
           width: "100%",
           height: "100%",
@@ -90,9 +110,8 @@ export function Grade11SubtitledVideo({
               initialized = true;
               clearTimeout(readyTimeout);
               setReady(true);
-              // Seek without autoplay. Every subsequent caption follows the real source clock.
-              player.current?.seekTo(start, true);
-              player.current?.pauseVideo();
+              // The iframe URL already sets the clip start and autoplay=0.
+              // Do not pause/seek here: the student may have already clicked native Play.
               poll = setInterval(() => {
                 const p = player.current;
                 if (!p) return;
@@ -130,7 +149,7 @@ export function Grade11SubtitledVideo({
       player.current = null;
       container?.replaceChildren();
     };
-  }, [videoId, start, end, attempt, untimedTail]);
+  }, [videoId, title, start, end, attempt, untimedTail]);
   const activeIndex = time === null ? -1 : activeVideoSubtitle(cues, time);
   const active = activeIndex < 0 ? null : cues[activeIndex];
   const seek = (seconds: number) => {
@@ -143,21 +162,54 @@ export function Grade11SubtitledVideo({
   };
   return (
     <div className="mt-3 space-y-3" aria-label={`${title} with Myanmar subtitles`}>
-      <div className="aspect-video min-h-[200px] w-full overflow-hidden rounded-xl border border-border bg-muted [&_iframe]:h-full [&_iframe]:w-full">
-        <div ref={host} className={failed ? "hidden" : "h-full w-full"} title={title} />
-        {failed && (
-          <div role="status" className="p-4 text-sm">
-            Video player ကို ချိတ်ဆက်မရသေးပါ။ အောက်ပါ YouTube link မှ ဖွင့်ကြည့်နိုင်ပါတယ်။
-            <button
-              type="button"
-              className="mt-2 block underline"
-              onClick={() => setAttempt((n) => n + 1)}
-            >
-              ပြန်ချိတ်မယ်
-            </button>
-          </div>
+      <div className="relative aspect-video min-h-[202px] w-full overflow-hidden rounded-xl border border-border bg-muted">
+        <div ref={host} className="absolute inset-0 [&_iframe]:h-full [&_iframe]:w-full" />
+      </div>
+      <div className="flex flex-wrap items-center gap-2">
+        <button
+          type="button"
+          className="rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground"
+          onClick={() => {
+            if (ready && player.current) {
+              if (end !== undefined && player.current.getCurrentTime() >= end)
+                player.current.seekTo(start, true);
+              player.current.playVideo();
+            } else {
+              // Explicit user gesture: native playback still works when the caption API is blocked.
+              const frame = host.current?.querySelector("iframe");
+              if (frame) {
+                const url = new URL(frame.src);
+                url.searchParams.set("autoplay", "1");
+                frame.src = url.href;
+              }
+            }
+          }}
+        >
+          ▶ ဗီဒီယို ဖွင့်မယ်
+        </button>
+        {ready && (
+          <button
+            type="button"
+            className="rounded-xl border px-4 py-3 text-sm"
+            onClick={() => player.current?.pauseVideo()}
+          >
+            ⏸ ခဏရပ်မယ်
+          </button>
         )}
       </div>
+      {failed && (
+        <div role="status" className="rounded-xl border p-3 text-sm">
+          မြန်မာစာတန်းချိတ်ဆက်မှု မရသေးပါ။ Video ကို အပေါ်က Play ခလုတ် သို့မဟုတ် YouTube link မှ
+          ဖွင့်နိုင်ပါတယ်။
+          <button
+            type="button"
+            className="mt-2 block underline"
+            onClick={() => setAttempt((n) => n + 1)}
+          >
+            ပြန်ချိတ်မယ်
+          </button>
+        </div>
+      )}
       <div
         role="status"
         aria-live="polite"
@@ -181,7 +233,7 @@ export function Grade11SubtitledVideo({
             {!enabled
               ? "မြန်မာစာတန်း ပိတ်ထားသည်။"
               : failed
-                ? "Video မချိတ်ဆက်နိုင်သေးပါ။"
+                ? "မြန်မာစာတန်းချိတ်ဆက်မှု မရသေးပါ။"
                 : !ready
                   ? "Video ချိတ်ဆက်နေသည်…"
                   : time === null
