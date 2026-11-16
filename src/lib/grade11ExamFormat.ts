@@ -1,3 +1,4 @@
+import { buildTextbookVerseCompletion } from "./examVerse";
 import { ALL_SECTION_IDS, sectionSpecs, type ExamConfig, type SectionId } from "./examBlueprint";
 import type { MockExamPaper, LetterScenario } from "./mockExam";
 import type { Grade11ExamSource } from "./grade11ExamSource.server";
@@ -108,6 +109,7 @@ export function applyGrade11Format(
             "grammar instruction / underline",
           );
     } else if (s.type === "poetry") {
+      s.partA = buildTextbookVerseCompletion(source.poems);
       number(s.partA, 5);
       number(s.partB, 5, 6);
       for (const q of s.partA)

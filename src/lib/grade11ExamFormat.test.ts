@@ -18,7 +18,19 @@ const scenario: LetterScenario = {
 };
 const source = {
   readings: [{ unit: 1, passage: "Dolphins live in rivers. They eat fish." }],
-  poems: [{ title: "Test", lines: ["The trees give shade", "Beside the river bank"] }],
+  poems: [
+    {
+      title: "Test",
+      lines: [
+        "The trees give shade",
+        "Beside the river bank",
+        "The flowers bloom bright",
+        "Under the stars at night",
+        "Birds sing in spring",
+        "Hear the bells ring",
+      ],
+    },
+  ],
 };
 function paper(section: ExamSection): MockExamPaper {
   return {
@@ -162,7 +174,13 @@ describe("Grade 11 exam paper contract", () => {
         },
       ],
     };
+    s.partA = []; // The AI is explicitly asked not to transcribe verse.
     apply(paper(s));
+    expect(s.partA).toHaveLength(5);
+    s.partA = [{ number: 1, sentence: "An invented ______ verse.", answer: "wrong" }];
+    apply(paper(s));
+    expect(s.partA).toHaveLength(5);
+    expect(s.partA.every((item) => !item.sentence.includes("invented"))).toBe(true);
     expect(s.partB.map((q) => q.number)).toEqual([6, 7, 8, 9, 10]);
     s.partB[0].sourceEvidence = "Invented text";
     expect(() => apply(paper(s))).toThrow("source evidence");
