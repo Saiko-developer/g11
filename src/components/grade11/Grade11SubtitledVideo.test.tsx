@@ -4,6 +4,7 @@ import { Grade11SubtitledVideo } from "./Grade11SubtitledVideo";
 const mocks = vi.hoisted(() => ({ load: vi.fn() }));
 vi.mock("@/lib/youtubeIframeApi", () => ({ loadYouTubeIframeApi: mocks.load }));
 let time = 0;
+let duration = 0;
 let options: { playerVars: Record<string, number>; events: { onReady(): void; onError(): void } };
 const seek = vi.fn();
 const play = vi.fn();
@@ -18,6 +19,7 @@ beforeEach(() => {
   vi.useFakeTimers();
   vi.clearAllMocks();
   time = 0;
+  duration = 0;
   mocks.load.mockResolvedValue({
     Player: class {
       constructor(_el: HTMLElement, opts: typeof options) {
@@ -25,6 +27,9 @@ beforeEach(() => {
       }
       getCurrentTime() {
         return time;
+      }
+      getDuration() {
+        return duration;
       }
       seekTo = seek;
       playVideo = play;
@@ -119,4 +124,25 @@ it("shows a recoverable connection failure without keeping a misleading old capt
   expect(screen.getByRole("button", { name: "ပြန်ချိတ်မယ်" })).toBeVisible();
   act(() => options.events.onReady());
   expect(vi.getTimerCount()).toBe(0);
+});
+
+it("bounds an otherwise untimed final cue only with the actual video duration", async () => {
+  render(
+    <Grade11SubtitledVideo
+      videoId="abcdefghijk"
+      title="Tail test"
+      subtitles={cues.slice(0, 2)}
+      start={34}
+      untimedTail={{ start: 50, en: "Goodbye", my: "နောက်မှတွေ့မယ်" }}
+    />,
+  );
+  await act(async () => {});
+  act(() => options.events.onReady());
+  clock(50);
+  expect(screen.queryByText("နောက်မှတွေ့မယ်")).toBeNull(); // Metadata absent: do not invent an end.
+  duration = 60;
+  clock(50);
+  expect(screen.getByText("နောက်မှတွေ့မယ်")).toBeVisible();
+  clock(60);
+  expect(screen.queryByText("နောက်မှတွေ့မယ်")).toBeNull();
 });

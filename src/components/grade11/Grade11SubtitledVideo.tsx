@@ -1,6 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { SubtitleLine } from "@/data/unit1VideoSubtitles";
-import { activeVideoSubtitle, clipVideoSubtitles } from "@/lib/grade11VideoSubtitles";
+import {
+  activeVideoSubtitle,
+  clipVideoSubtitles,
+  type UntimedVideoSubtitle,
+} from "@/lib/grade11VideoSubtitles";
 import { loadYouTubeIframeApi, type YouTubeVideoPlayer } from "@/lib/youtubeIframeApi";
 const fmt = (seconds: number) =>
   `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
@@ -9,18 +13,28 @@ export function Grade11SubtitledVideo({
   videoId,
   title,
   subtitles,
+  untimedTail,
   start = 0,
   end,
 }: {
   videoId: string;
   title: string;
   subtitles: readonly SubtitleLine[];
+  untimedTail?: UntimedVideoSubtitle;
   start?: number;
   end?: number;
 }) {
   const host = useRef<HTMLDivElement>(null);
   const player = useRef<YouTubeVideoPlayer | null>(null);
-  const cues = useMemo(() => clipVideoSubtitles(subtitles, start, end), [subtitles, start, end]);
+  const [duration, setDuration] = useState<number | undefined>();
+  const cues = useMemo(() => {
+    // The source's final cue has no supplied end. Only actual YouTube metadata may bound it.
+    const complete =
+      untimedTail && duration !== undefined && duration > untimedTail.start
+        ? [...subtitles, { ...untimedTail, end: duration }]
+        : subtitles;
+    return clipVideoSubtitles(complete, start, end);
+  }, [subtitles, untimedTail, duration, start, end]);
   const [time, setTime] = useState<number | null>(null);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -37,6 +51,7 @@ export function Grade11SubtitledVideo({
     let readyTimeout: ReturnType<typeof setTimeout> | undefined;
     const container = host.current;
     setTime(null);
+    setDuration(undefined);
     setReady(false);
     setFailed(false);
     const fail = () => {
@@ -79,6 +94,15 @@ export function Grade11SubtitledVideo({
               poll = setInterval(() => {
                 const p = player.current;
                 if (!p) return;
+                if (untimedTail) {
+                  const sourceDuration = p.getDuration?.();
+                  if (
+                    sourceDuration !== undefined &&
+                    Number.isFinite(sourceDuration) &&
+                    sourceDuration > 0
+                  )
+                    setDuration(sourceDuration);
+                }
                 const seconds = p.getCurrentTime();
                 if (!Number.isFinite(seconds)) return;
                 if (end !== undefined && seconds >= end) {
@@ -104,7 +128,7 @@ export function Grade11SubtitledVideo({
       player.current = null;
       container?.replaceChildren();
     };
-  }, [videoId, start, end, attempt]);
+  }, [videoId, start, end, attempt, untimedTail]);
   const activeIndex = time === null ? -1 : activeVideoSubtitle(cues, time);
   const active = activeIndex < 0 ? null : cues[activeIndex];
   const seek = (seconds: number) => {

@@ -2,7 +2,7 @@
 
 The separate Grade 11 catalog (`src/data/grade11/grammarVideos.json`) now configures supplementary English-language lessons for all twelve units. It uses the existing Grade 10 topic-tab/responsive-player pattern. Existing textbook material, exercises, approved classroom narration, Grade 10 video configuration and subtitles are unchanged. New videos do not claim synchronized Burmese transcripts that have not been authored/reviewed.
 
-Unit 1 Both…and uses the user-selected `mOlFrmsOpzU`. Its title was checked on YouTube; channel attribution is deliberately omitted because the accessible page did not expose a reliable author field.
+Unit 1 Both…and uses the user-selected `mOlFrmsOpzU`. Its title was checked on YouTube. Channel attribution now follows the user's supplied transcript introduction, “English with M”.
 
 ## Short present-tense lessons
 
@@ -19,7 +19,7 @@ Sources include the YouTube descriptions linked in the catalog, the official Oxf
 
 ## Myanmar subtitle integration
 
-Grade 11 now has a source-clock subtitle player for the exact existing Grade 10 recordings `W3HdjN3cLiM` (Unit 2 Simple/Continuous) and `fDnXWxXZekw` (Unit 7 Passive). The Grade 10 player, translations, timestamps and configuration are unchanged. Tracks are bundled and reused without per-student translation/API calls.
+Grade 11 now has a source-clock subtitle player for the exact existing Grade 10 recordings `W3HdjN3cLiM` (Unit 2 Simple/Continuous) and `fDnXWxXZekw` (Unit 7 Passive), plus the user-supplied translated Both…and recording `mOlFrmsOpzU` (Unit 1). The Grade 10 player, translations, timestamps and configuration are unchanged. Tracks are bundled and reused without per-student translation/API calls.
 
 Timing behavior:
 - Native YouTube clock sampled every 100ms; no simulated playback timer and no blanket 0.5-second delay.
@@ -35,6 +35,17 @@ The existing Simple/Continuous source has a backwards marker at 80 seconds after
 
 ### Remaining content work
 
-There are 22 topic entries / 20 unique YouTube recordings in the catalog. Only two recordings have reusable timed Myanmar tracks in the repository. The remaining 18 recordings, including Both…and and Lucy's Present Perfect excerpt, still require source timed English captions and a checked Myanmar translation. They show an explicit subtitle-unavailable note rather than unrelated or fabricated captions. This change is the player and the two available tracks, not a claim that every Grade 11 video now has a new translated transcript. Source `.srt` / `.vtt` files are needed to complete those tracks reliably.
+There are 22 topic entries / 20 unique YouTube recordings in the catalog. Three recordings now have timed Myanmar tracks. The remaining 17 recordings, including Lucy's Present Perfect excerpt, still require source timed English captions and a checked Myanmar translation. They show an explicit subtitle-unavailable note rather than unrelated or fabricated captions. Source `.srt` / `.vtt` files are needed to complete those tracks reliably.
 
 Verification covers cue boundaries/gaps, absolute-time clipping, backwards seeks, pause behavior, transcript seeking, clip end, stale callback cleanup, loader timeout/retry and exact-video matching. Browser checks use a controlled YouTube clock; live media playback and word-level listening verification remain unverified.
+
+
+### Unit 1 Both…and: user-supplied transcript
+
+The exact original upload is preserved as `src/data/grade11/videoSubtitles/mOlFrmsOpzU.source.txt`, SHA-256 `9ca1486bf6039cdddb23e7504a3029761b107c71b86d347a614c47068c51024a`. Its 159 markers are strictly increasing from 00:00 to 19:59. Redundant copy/paste formatting such as `0:099 seconds` is parsed as 00:09; numeric timestamps are not shifted or interpolated.
+
+The corresponding JSON contains 158 bounded English/Myanmar cues and a translated final tail starting at 19:59. Each bounded end is exactly the next supplied start. The tail has no invented end: the player appends it only after YouTube's actual `getDuration()` returns a duration beyond 19:59. If metadata is unavailable, the tail is not presented as a timed caption. Full-video mode remains available; the transcript includes all correlative-conjunction sections, not just Both…and.
+
+The original ASR spelling `gerand` is normalized to `gerund` in displayed English. The original file is untouched. At 16:13 the source's example says `consultant`, then its explanation says `consultants`; the original example is retained without guessing an unheard correction. Myanmar translation preserves the grammar meaning; timestamps remain source-based, not independently corrected through live audio listening.
+
+Source-integrity tests compare every bounded timestamp and English cue with the original upload, check Myanmar coverage and chapter transitions, and exercise tail metadata arriving late. Existing subtitle/player tests continue to cover pause, backwards seek, gaps and cleanup.

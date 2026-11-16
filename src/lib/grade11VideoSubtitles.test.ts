@@ -5,12 +5,16 @@ import {
   GRADE11_VIDEO_SUBTITLES,
 } from "./grade11VideoSubtitles";
 it("only reuses exact video-ID tracks with valid, ordered, non-overlapping timestamps", () => {
-  expect(Object.keys(GRADE11_VIDEO_SUBTITLES)).toEqual(["W3HdjN3cLiM", "fDnXWxXZekw"]);
+  expect(Object.keys(GRADE11_VIDEO_SUBTITLES)).toEqual([
+    "mOlFrmsOpzU",
+    "W3HdjN3cLiM",
+    "fDnXWxXZekw",
+  ]);
   for (const track of Object.values(GRADE11_VIDEO_SUBTITLES)) {
     expect(() => clipVideoSubtitles(track, 0)).not.toThrow();
     expect(track.length).toBeGreaterThan(50);
   }
-  expect(GRADE11_VIDEO_SUBTITLES.mOlFrmsOpzU).toBeUndefined();
+  expect(GRADE11_VIDEO_SUBTITLES.mOlFrmsOpzU).toHaveLength(158);
 });
 it("clips against absolute source times without rebasing captions to zero", () => {
   const cues = clipVideoSubtitles(GRADE11_VIDEO_SUBTITLES.W3HdjN3cLiM, 34, 606);

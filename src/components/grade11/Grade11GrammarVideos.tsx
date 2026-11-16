@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Grade11SubtitledVideo } from "./Grade11SubtitledVideo";
-import { GRADE11_VIDEO_SUBTITLES } from "@/lib/grade11VideoSubtitles";
+import { GRADE11_VIDEO_SUBTITLES, GRADE11_VIDEO_SUBTITLE_TAILS } from "@/lib/grade11VideoSubtitles";
 import { Play } from "lucide-react";
 import videosByUnit from "@/data/grade11/grammarVideos.json";
 
@@ -95,6 +95,7 @@ function UnitGrammarVideos({ unit }: { unit: number }) {
           videoId={id}
           title={video.title}
           subtitles={GRADE11_VIDEO_SUBTITLES[id]}
+          untimedTail={GRADE11_VIDEO_SUBTITLE_TAILS[id]}
           start={start}
           end={end}
         />

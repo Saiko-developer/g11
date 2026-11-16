@@ -1,6 +1,7 @@
 // Grade 11 loader; the established Grade 10 player and timing behavior remain untouched.
 export type YouTubeVideoPlayer = {
   getCurrentTime(): number;
+  getDuration?(): number;
   seekTo(seconds: number, allowSeekAhead: boolean): void;
   playVideo(): void;
   pauseVideo(): void;
