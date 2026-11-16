@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Grade11SubtitledVideo } from "./Grade11SubtitledVideo";
+import { GRADE11_VIDEO_SUBTITLES } from "@/lib/grade11VideoSubtitles";
 import { Play } from "lucide-react";
 import videosByUnit from "@/data/grade11/grammarVideos.json";
 
@@ -87,7 +89,16 @@ function UnitGrammarVideos({ unit }: { unit: number }) {
           {video.noteMy}
         </p>
       )}
-      {id ? (
+      {id && GRADE11_VIDEO_SUBTITLES[id] ? (
+        <Grade11SubtitledVideo
+          key={`${id}:${start}:${end ?? ""}`}
+          videoId={id}
+          title={video.title}
+          subtitles={GRADE11_VIDEO_SUBTITLES[id]}
+          start={start}
+          end={end}
+        />
+      ) : id ? (
         <div className="mt-2 aspect-video w-full overflow-hidden rounded-xl bg-muted">
           <iframe
             key={`${id}:${start}:${end ?? ""}`}
@@ -102,6 +113,11 @@ function UnitGrammarVideos({ unit }: { unit: number }) {
       ) : (
         <p lang="my" className="mt-2 rounded-xl bg-muted p-4 text-sm text-muted-foreground">
           ဗီဒီယို မထည့်ရသေးပါ။
+        </p>
+      )}
+      {id && !GRADE11_VIDEO_SUBTITLES[id] && (
+        <p lang="my" className="mt-2 text-xs text-muted-foreground">
+          ဤဗီဒီယိုအတွက် အချိန်ကိုက် မြန်မာစာတန်း မရရှိသေးပါ။
         </p>
       )}
       {id && (
