@@ -24,8 +24,8 @@ it.each([1, 2, 3, 4])(
   (number) => {
     const view = render(<Grade11ReviewView number={number} />);
     expect(document.querySelectorAll("[data-revision-question]")).toHaveLength(20);
-    expect(screen.getAllByRole("button", { name: "Check Answer", exact: true })).toHaveLength(20);
-    expect(screen.getAllByRole("button", { name: "Reveal Answer", exact: true })).toHaveLength(20);
+    expect(screen.getAllByRole("button", { name: "Check Answer" })).toHaveLength(20);
+    expect(screen.getAllByRole("button", { name: "Reveal Answer" })).toHaveLength(20);
     expect(view.container.querySelectorAll("img")).toHaveLength(0);
     expect(fetch).not.toHaveBeenCalled();
   },

@@ -2,7 +2,14 @@ import { useState } from "react";
 import { Play } from "lucide-react";
 import videosByUnit from "@/data/grade11/grammarVideos.json";
 
-type Video = { title: string; url: string };
+type Video = {
+  title: string;
+  url: string;
+  channel?: string;
+  start?: number;
+  end?: number;
+  noteMy?: string;
+};
 const catalog = videosByUnit as Record<string, Video[]>;
 
 function youtubeId(value: string) {
@@ -25,11 +32,23 @@ function youtubeId(value: string) {
 
 /** Same video section pattern as Grade 10, with a separate Grade 11 catalog. */
 export function Grade11GrammarVideos({ unit }: { unit: number }) {
+  return <UnitGrammarVideos key={unit} unit={unit} />;
+}
+
+function UnitGrammarVideos({ unit }: { unit: number }) {
   const [active, setActive] = useState(0);
   const videos = catalog[String(unit)] ?? [];
   if (!videos.length) return null;
   const video = videos[Math.min(active, videos.length - 1)];
   const id = youtubeId(video.url);
+  const start = Number.isSafeInteger(video.start) && video.start! >= 0 ? video.start! : 0;
+  const end = Number.isSafeInteger(video.end) && video.end! > start ? video.end : undefined;
+  const params = new URLSearchParams({ rel: "0" });
+  if (start) params.set("start", String(start));
+  if (end) params.set("end", String(end));
+  const source = `https://www.youtube.com/watch?v=${id}${start ? `&t=${start}s` : ""}`;
+  const time = (seconds: number) =>
+    `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
   return (
     <section
       className="mt-5 rounded-2xl border border-border bg-card p-5"
@@ -54,12 +73,26 @@ export function Grade11GrammarVideos({ unit }: { unit: number }) {
         </div>
       )}
       <p className="mt-3 text-sm font-semibold">{video.title}</p>
+      {video.channel && (
+        <p className="mt-1 text-xs text-muted-foreground">{video.channel} · English</p>
+      )}
+      {(start > 0 || end) && (
+        <p lang="my" className="mt-2 rounded-lg bg-primary/5 px-3 py-2 text-sm">
+          ရွေးထားသောအပိုင်း · {time(start)}
+          {end ? `–${time(end)} · ${time(end - start)}` : " မှစတင်မည်"}
+        </p>
+      )}
+      {video.noteMy && (
+        <p lang="my" className="mt-2 text-sm text-muted-foreground">
+          {video.noteMy}
+        </p>
+      )}
       {id ? (
         <div className="mt-2 aspect-video w-full overflow-hidden rounded-xl bg-muted">
           <iframe
-            key={id}
+            key={`${id}:${start}:${end ?? ""}`}
             className="h-full w-full"
-            src={`https://www.youtube-nocookie.com/embed/${id}?rel=0`}
+            src={`https://www.youtube-nocookie.com/embed/${id}?${params}`}
             title={video.title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -70,6 +103,16 @@ export function Grade11GrammarVideos({ unit }: { unit: number }) {
         <p lang="my" className="mt-2 rounded-xl bg-muted p-4 text-sm text-muted-foreground">
           ဗီဒီယို မထည့်ရသေးပါ။
         </p>
+      )}
+      {id && (
+        <a
+          href={source}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-block text-sm font-medium text-primary underline underline-offset-4"
+        >
+          YouTube မှာဖွင့်ကြည့်မယ် ↗
+        </a>
       )}
     </section>
   );
