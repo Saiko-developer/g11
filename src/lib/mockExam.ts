@@ -21,8 +21,22 @@ export type DefinitionItem = { number: number; definition: string; answer: strin
 export type DialogueTurn = { number: number; speaker: string; text: string; answer?: string };
 
 export type ExamSection =
-  | { id: string; title: string; marks: number; instructions: string; type: "fill"; items: FillItem[] }
-  | { id: string; title: string; marks: number; instructions: string; type: "mcq"; items: McqItem[] }
+  | {
+      id: string;
+      title: string;
+      marks: number;
+      instructions: string;
+      type: "fill";
+      items: FillItem[];
+    }
+  | {
+      id: string;
+      title: string;
+      marks: number;
+      instructions: string;
+      type: "mcq";
+      items: McqItem[];
+    }
   | {
       id: string;
       title: string;
@@ -86,6 +100,7 @@ export type ExamSection =
     };
 
 export type MockExamPaper = {
+  grade?: 10 | 11;
   title: string;
   unit: number;
   unitTopics: string;

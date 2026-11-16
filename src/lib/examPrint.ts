@@ -29,7 +29,7 @@ const STYLES = `
   .instructions { font-style: italic; color: #333; margin: 8px 0 12px; font-size: 11pt; }
   .part { font-size: 10pt; font-weight: bold; text-transform: uppercase; letter-spacing: .1em; margin: 14px 0 6px; }
   ol.items { list-style: none; padding: 0; margin: 0; }
-  ol.items > li { margin: 0 0 10px; }
+  ol.items > li { margin: 0 0 10px; white-space: pre-line; }
   .options { color: #333; margin: 3px 0 0 18px; }
   .options span { margin-right: 22px; }
   .passage { border: 1px solid #bbb; padding: 12px 14px; margin: 8px 0 4px; text-align: justify; }
@@ -73,7 +73,10 @@ function questionBody(s: ExamSection): string {
         .join("")}</ol>`;
     case "transformation":
       return `<ol class="items">${s.items
-        .map((i) => `<li>${i.number}. ${esc(i.sentence)} <strong>[${esc(i.instruction)}]</strong></li>`)
+        .map(
+          (i) =>
+            `<li>${i.number}. ${esc(i.sentence)} <strong>[${esc(i.instruction)}]</strong></li>`,
+        )
         .join("")}</ol>`;
     case "poetry":
       return `<p><strong>${esc(s.poemTitle)}</strong></p><div class="part">Part A</div>${fill(
@@ -127,7 +130,9 @@ function answerBody(s: ExamSection): string {
         s.dialogue.filter((t) => t.answer).map((t) => ({ n: t.number, a: t.answer as string })),
       )}<div class="part">Part B</div>${list(s.matches.map((q) => ({ n: q.number, a: q.answer })))}`;
     case "writing": {
-      const samples = s.sampleAnswers?.filter((a): a is string => typeof a === "string" && a.trim().length > 0);
+      const samples = s.sampleAnswers?.filter(
+        (a): a is string => typeof a === "string" && a.trim().length > 0,
+      );
       if (samples && samples.length > 0) {
         return `${samples
           .map(
@@ -174,7 +179,11 @@ export type DownloadFormat = "pdf" | "doc" | "png" | "jpeg";
 
 function deliver(html: string, title: string, format: DownloadFormat) {
   if (format === "pdf") return printHtml(html);
-  const safe = title.replace(/[^\w\- ]+/g, "").trim().replace(/\s+/g, "_") || "exam";
+  const safe =
+    title
+      .replace(/[^\w\- ]+/g, "")
+      .trim()
+      .replace(/\s+/g, "_") || "exam";
   if (format === "doc") {
     const docHtml = html.replace(
       "<html>",
@@ -222,7 +231,7 @@ async function renderImage(html: string, format: "png" | "jpeg"): Promise<Blob> 
 }
 
 export function downloadExamPaper(paper: MockExamPaper, format: DownloadFormat = "pdf") {
-  const head = `<div class="doc-head"><div class="sub">Sayar Owl Academy · Grade 10 English</div>
+  const head = `<div class="doc-head"><div class="sub">Sayar Owl Academy · Grade ${paper.grade === 11 ? 11 : 10} English</div>
     <h1>${esc(paper.title)}</h1>
     <div class="meta">Unit ${esc(paper.unit)} · Total marks: ${esc(
       paper.totalMarks,
@@ -238,11 +247,15 @@ export function downloadExamPaper(paper: MockExamPaper, format: DownloadFormat =
         )}</p>${questionBody(s)}</section>`,
     )
     .join("");
-  deliver(wrap(`${paper.title} — Question Paper`, head, body), `${paper.title} Question Paper`, format);
+  deliver(
+    wrap(`${paper.title} — Question Paper`, head, body),
+    `${paper.title} Question Paper`,
+    format,
+  );
 }
 
 export function answerKeyHtml(paper: MockExamPaper): string {
-  const head = `<div class="doc-head"><div class="sub">Sayar Owl Academy · Grade 10 English</div>
+  const head = `<div class="doc-head"><div class="sub">Sayar Owl Academy · Grade ${paper.grade === 11 ? 11 : 10} English</div>
     <h1>${esc(paper.title)}</h1>
     <div class="meta">Unit ${esc(paper.unit)} · Total marks: ${esc(paper.totalMarks)}</div></div>
     <div class="key-banner">Answer Key — Teacher&rsquo;s Guide</div>`;
