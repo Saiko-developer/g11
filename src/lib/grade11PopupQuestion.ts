@@ -27,10 +27,10 @@ export function grade11PopupQuestion(context: string, spoken: string): string | 
     /(?:exercise|question|number|no\.?|နံပါတ်|မေးခွန်း|လေ့ကျင့်ခန်း)\s*(?:no\.?|number|နံပါတ်)?\s*(\d{1,2})(?!\d)/i,
   )?.[1];
   if (!number) return null;
-  const group = text.match(/(?:exercise|လေ့ကျင့်ခန်း)\s*([A-E])\b/i)?.[1]?.toUpperCase();
+  const group = text.match(/(?:exercise|လေ့ကျင့်ခန်း)\s*([A-Z])\b/i)?.[1]?.toUpperCase();
   const entries = [
     ...context.matchAll(
-      /^\[(?:Exercise ([A-E]) · )?Question (\d+) \| source ([^\]]+)\] ([^\n]*)\n([^\n]*)/gm,
+      /^\[(?:Exercise ([A-Z]) · )?Question (\d+) \| source ([^\]]+)\] ([^\n]*)\n([^\n]*)/gm,
     ),
   ].filter((entry) => Number(entry[2]) === Number(number) && (!group || entry[1] === group));
   if (entries.length !== 1) return null;

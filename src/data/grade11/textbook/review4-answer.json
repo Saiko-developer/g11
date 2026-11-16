@@ -1,0 +1,256 @@
+{
+  "official_answer_key": false,
+  "note": "Source-derived study suggestions, not a publisher answer key. Accept equivalent valid wording for rewrites.",
+  "sections": [
+    {
+      "code": "A",
+      "items": [
+        {
+          "blockId": "review4-A-1",
+          "question": "The houses in our street are (brightly-lit / old-fashioned) on the full moon day of Thadingyut.",
+          "questionMy": "သီတင်းကျွတ်လပြည့်နေ့တွင် ကျွန်ုပ်တို့လမ်းရှိ အိမ်များသည် မီးရောင်များဖြင့် လင်းထိန်နေသည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "brightly-lit",
+          "answerMy": "မီးရောင်လင်းထိန်သော",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-A-2",
+          "question": "The COVID-19 pandemic has done (far-reaching / deep-rooted) harm to the world.",
+          "questionMy": "COVID-19 ကပ်ရောဂါက ကမ္ဘာကို ကျယ်ပြန့်သော ထိခိုက်မှု ဖြစ်စေခဲ့သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "far-reaching",
+          "answerMy": "ကျယ်ကျယ်ပြန့်ပြန့် သက်ရောက်သော",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-A-3",
+          "question": "My uncle is a (quick-witted / highly-respected) person who has the ability to understand things and respond to questions quickly.",
+          "questionMy": "ဦးလေးသည် အကြောင်းအရာကို နားလည်ပြီး မေးခွန်းကို လျင်မြန်စွာ ပြန်ဖြေနိုင်သူ ဖြစ်သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "quick-witted",
+          "answerMy": "ဉာဏ်သွက်သော",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-A-4",
+          "question": "Many doctors (claim / propose) that there is firm evidence that links smoking with lung cancer.",
+          "questionMy": "ဆေးလိပ်သောက်ခြင်းနှင့် အဆုတ်ကင်ဆာ ဆက်စပ်ကြောင်း ခိုင်မာသော အထောက်အထားရှိသည်ဟု ဆရာဝန်များစွာ အခိုင်အမာ ပြောသည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "claim",
+          "answerMy": "အခိုင်အမာ ပြောဆိုသည်",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-A-5",
+          "question": "The principal (mentioned / described) in his speech that teachers in his school are training students to become confident and thoughtful people.",
+          "questionMy": "ကျောင်းမှဆရာများက ကျောင်းသားများကို ယုံကြည်မှုရှိ၍ စဉ်းစားဆင်ခြင်တတ်သူများ ဖြစ်အောင် လေ့ကျင့်ပေးနေကြောင်း ကျောင်းအုပ်က မိန့်ခွန်းတွင် ထည့်ပြောသည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "mentioned",
+          "answerMy": "ထည့်သွင်းဖော်ပြခဲ့သည်",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-A-6",
+          "question": "Our teacher often (explains / states) to us the effects of drug addiction and (points out / mentions) the disadvantages of it.",
+          "questionMy": "ဆရာက မူးယစ်ဆေးစွဲခြင်း၏ သက်ရောက်မှုကို ရှင်းပြပြီး ဆိုးကျိုးများကို ထောက်ပြလေ့ရှိသည်။ အဖြေ၂ခုကို ကော်မာဖြင့် ခွဲရေးပါ။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "explains, points out",
+          "answerMy": "ရှင်းပြသည်၊ ထောက်ပြသည်",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-A-7",
+          "question": "Natural disasters, such as a long period of drought, flooding and plant disease can result in a (famine / pandemic).",
+          "questionMy": "ကာလကြာမိုးခေါင်ခြင်း၊ ရေကြီးခြင်းနှင့် အပင်ရောဂါကဲ့သို့ သဘာဝဘေးများကြောင့် အငတ်ဘေး ဖြစ်နိုင်သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "famine",
+          "answerMy": "အငတ်ဘေး",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-A-8",
+          "question": "Disaster (outbreak / preparedness) refers to measures taken to prepare for and reduce the effects of disasters.",
+          "questionMy": "ဘေးအန္တရာယ်အတွက် အသင့်ပြင်ဆင်မှုဆိုသည်မှာ ကြိုတင်ပြင်ဆင်၍ သက်ရောက်မှုလျှော့ချသည့် နည်းလမ်းများ ဖြစ်သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "preparedness",
+          "answerMy": "ကြိုတင်အသင့်ပြင်ဆင်မှု",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-A-9",
+          "question": "The topsoil of the mountainside has been almost completely (washed away / washed up).",
+          "questionMy": "တောင်စောင်းရှိ မြေဆီလွှာသည် လုံးဝနီးပါး ရေတိုက်စားခံရသည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "washed away",
+          "answerMy": "ရေတိုက်စားသွားသော",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-A-10",
+          "question": "In cases of large fires, special high-pressure hoses are used to (put off / put out) them.",
+          "questionMy": "မီးကြီးလောင်ရာတွင် ဖိအားမြင့်ပိုက်များကို မီးငြှိမ်းသတ်ရန် သုံးသည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "put out",
+          "answerMy": "မီးငြှိမ်းသတ်သည်",
+          "sourcePages": [
+            143
+          ]
+        }
+      ]
+    },
+    {
+      "code": "B",
+      "items": [
+        {
+          "blockId": "review4-B-1",
+          "question": "We have this spacious hall. We knocked two rooms into one. (Combine the sentences using ‘by + V-ing’ construction.)",
+          "questionMy": "အခန်းနှစ်ခန်းကို တစ်ခန်းဖြစ်အောင် နံရံဖယ်၍ ဤခန်းမကျယ် ရလာသည်။ by + V-ing သုံးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "We have this spacious hall by knocking two rooms into one.",
+          "answerMy": "အခန်းနှစ်ခန်းကို တစ်ခန်းဖြစ်အောင် ပြုလုပ်၍ ဤခန်းမကျယ် ရလာသည်။",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-B-2",
+          "question": "Our teacher tried to finish marking our essays. She stayed behind after office hours yesterday. (Combine the sentences using ‘by + V-ing’ construction.)",
+          "questionMy": "ဆရာမသည် မနေ့က ရုံးချိန်ကျော်သည်အထိ နေပြီး စာစီစာကုံးများကို စစ်ပြီးစီးရန် ကြိုးစားသည်။ by + V-ing သုံးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "Our teacher tried to finish marking our essays by staying behind after office hours yesterday.",
+          "answerMy": "မနေ့က ရုံးချိန်ကျော်နေပြီး စာစီစာကုံးများကို စစ်ပြီးစီးရန် ကြိုးစားသည်။",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-B-3",
+          "question": "Mg Mg walked to school. He whistled and swung his school bag. (Combine the sentences using ‘V-ing’ construction.)",
+          "questionMy": "မောင်မောင်သည် လေချွန်ပြီး ကျောင်းလွယ်အိတ်ကို လွှဲရင်း ကျောင်းသို့ လမ်းလျှောက်သွားသည်။ V-ing သုံးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "Mg Mg walked to school whistling and swinging his school bag.",
+          "answerMy": "လေချွန်ပြီး လွယ်အိတ်လွှဲရင်း ကျောင်းသို့ လမ်းလျှောက်သွားသည်။",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-B-4",
+          "question": "Thandar was sitting in the classroom. She fiddled around with the things on her desk. (Combine the sentences using ‘V-ing’ construction.)",
+          "questionMy": "သန္တာသည် စားပွဲပေါ်ပစ္စည်းများကို ဟိုကိုင်ဒီကိုင် လုပ်ရင်း စာသင်ခန်း၌ ထိုင်နေသည်။ V-ing သုံးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "Thandar was sitting in the classroom fiddling around with the things on her desk.",
+          "answerMy": "စားပွဲပေါ်ပစ္စည်းများကို ဟိုကိုင်ဒီကိုင် လုပ်ရင်း ထိုင်နေသည်။",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-B-5",
+          "question": "I learnt many life lessons from my mistakes and failures. (Rewrite the sentence using ‘It is’ / ‘It was’ emphasizing the underlined words.)",
+          "questionMy": "ကျွန်ုပ်၏ အမှားနှင့် ကျရှုံးမှုများမှ ဘဝသင်ခန်းစာများစွာ သင်ယူခဲ့သည်။ မျဉ်းသားထားသော အပိုင်းကို It is / It was ဖြင့် အလေးပေးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "It was from my mistakes and failures that I learnt many life lessons.",
+          "answerMy": "ကျွန်ုပ် ဘဝသင်ခန်းစာရခဲ့သည်မှာ မိမိအမှားနှင့် ကျရှုံးမှုများမှ ဖြစ်သည်။",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-B-6",
+          "question": "Poor sleep can affect memory, judgement and mood. (Rewrite the sentence using ‘It is’ / ‘It was’ emphasizing the underlined words.)",
+          "questionMy": "အိပ်စက်မှုမကောင်းခြင်းက မှတ်ဉာဏ်၊ ဆုံးဖြတ်နိုင်စွမ်းနှင့် စိတ်ခံစားမှုကို သက်ရောက်နိုင်သည်။ မျဉ်းသားထားသော Poor sleep ကို အလေးပေးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "It is poor sleep that can affect memory, judgement and mood.",
+          "answerMy": "မှတ်ဉာဏ်၊ ဆုံးဖြတ်နိုင်စွမ်းနှင့် စိတ်ခံစားမှုကို သက်ရောက်နိုင်သည်မှာ အိပ်စက်မှုမကောင်းခြင်း ဖြစ်သည်။",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-B-7",
+          "question": "He is not surprised that Marlar got good grades in the examination. (Agree with the speaker using ‘So … I’ or ‘Neither … I’.)",
+          "questionMy": "မာလာ စာမေးပွဲအမှတ်ကောင်းရခြင်းကို သူ အံ့ဩခြင်းမရှိပါ။ So … I သို့မဟုတ် Neither … I ဖြင့် သဘောတူပါ။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "Neither am I.",
+          "answerMy": "ကျွန်ုပ်လည်း မအံ့ဩပါ။",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-B-8",
+          "question": "My uncle can imitate the cries of birds. (Agree with the statement using ‘So … I’ or ‘Neither … I’.)",
+          "questionMy": "ဦးလေးသည် ငှက်အော်သံများကို တုပနိုင်သည်။ So … I သို့မဟုတ် Neither … I ဖြင့် သဘောတူပါ။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "So can I.",
+          "answerMy": "ကျွန်ုပ်လည်း တုပနိုင်သည်။",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-B-9",
+          "question": "Daw Lay is a good cook. I love all the dishes she cooks. (Combine the sentences using ‘such … that’.)",
+          "questionMy": "ဒေါ်လေးသည် အချက်အပြုတ်ကောင်း၍ သူချက်သမျှဟင်းများကို ကျွန်ုပ် နှစ်သက်သည်။ such … that သုံးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "Daw Lay is such a good cook that I love all the dishes she cooks.",
+          "answerMy": "ဒေါ်လေးသည် အလွန်ချက်ကောင်းသဖြင့် သူချက်သမျှကို နှစ်သက်သည်။",
+          "sourcePages": [
+            143
+          ]
+        },
+        {
+          "blockId": "review4-B-10",
+          "question": "The packaging of the candies is very attractive. Most children like them. (Combine the sentences using ‘so … that’.)",
+          "questionMy": "သကြားလုံးထုပ်ပိုးပုံသည် ဆွဲဆောင်မှုရှိ၍ ကလေးအများစု နှစ်သက်ကြသည်။ so … that သုံးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "The packaging of the candies is so attractive that most children like them.",
+          "answerMy": "ထုပ်ပိုးပုံသည် အလွန်ဆွဲဆောင်မှုရှိသဖြင့် ကလေးအများစု နှစ်သက်ကြသည်။",
+          "sourcePages": [
+            143
+          ]
+        }
+      ]
+    }
+  ]
+}

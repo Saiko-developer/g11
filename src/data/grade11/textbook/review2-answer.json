@@ -1,0 +1,256 @@
+{
+  "official_answer_key": false,
+  "note": "Source-derived study suggestions, not a publisher answer key. Accept equivalent valid wording for rewrites.",
+  "sections": [
+    {
+      "code": "A",
+      "items": [
+        {
+          "blockId": "review2-A-1",
+          "question": "The popular foreign ______ chains in my town are KFC, Lotteria, Pizza Hut, and Burger King.",
+          "questionMy": "ကျွန်ုပ်တို့မြို့ရှိ နာမည်ကြီး နိုင်ငံခြား ______ ဆိုင်ခွဲများမှာ KFC၊ Lotteria၊ Pizza Hut နှင့် Burger King တို့ ဖြစ်သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "fast food",
+          "answerMy": "အမြန်စားအစားအစာ",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-A-2",
+          "question": "______ is food that has been refined as little as possible and is free from additives or other artificial substances.",
+          "questionMy": "______ ဆိုသည်မှာ အတတ်နိုင်ဆုံး ပြုပြင်မှုနည်းပြီး ဖြည့်စွက်ပစ္စည်းနှင့် အခြားလူလုပ်ပစ္စည်းများ ကင်းသော အစားအစာ ဖြစ်သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "Whole food",
+          "answerMy": "အလွန်အကျွံ ပြုပြင်မထားသော သဘာဝအစားအစာ",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-A-3",
+          "question": "You can shop over the internet; ______ you can pay your bills.",
+          "questionMy": "အင်တာနက်မှ ဈေးဝယ်နိုင်သည်။ ______ ဘေလ်များလည်း ပေးချေနိုင်သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "additionally",
+          "answerMy": "ထို့အပြင်",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-A-4",
+          "question": "You can put on weight by over-eating, ______ you can control your weight by limiting your intake of fats and added sugar.",
+          "questionMy": "အလွန်အကျွံစားလျှင် ကိုယ်အလေးချိန် တက်နိုင်သည်။ ______ အဆီနှင့် ထပ်ထည့်သကြားကို လျှော့စား၍ ကိုယ်အလေးချိန် ထိန်းနိုင်သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "nevertheless",
+          "answerMy": "သို့ရာတွင်",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-A-5",
+          "question": "The ______ people in this area are said to have worshipped mountains and giant trees in their surroundings.",
+          "questionMy": "ဤဒေသရှိ ______ လူများသည် ပတ်ဝန်းကျင်ရှိ တောင်နှင့် သစ်ပင်ကြီးများကို ကိုးကွယ်ခဲ့ကြသည်ဟု ဆိုသည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "primitive",
+          "answerMy": "ရှေးဦးခေတ်က",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-A-6",
+          "question": "The monuments in Bagan are a vital part of the ______ heritage of Myanmar people.",
+          "questionMy": "ပုဂံရှိ ရှေးဟောင်းအဆောက်အအုံများသည် မြန်မာလူမျိုးတို့၏ ______ အမွေအနှစ်တွင် အရေးပါသော အစိတ်အပိုင်း ဖြစ်သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "cultural",
+          "answerMy": "ယဉ်ကျေးမှုဆိုင်ရာ",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-A-7",
+          "question": "Salmon are a ______ fish; they spend their lives in both fresh and salt water.",
+          "questionMy": "ဆယ်လ်မွန်သည် ______ ငါးမျိုး ဖြစ်သည်။ ၎င်းတို့သည် ရေချိုနှင့် ရေငန် နှစ်မျိုးလုံးတွင် နေထိုင်သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "unique",
+          "answerMy": "ထူးခြားသော",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-A-8",
+          "question": "Our package tour will ______ all of the top tourist sites in Myanmar.",
+          "questionMy": "ကျွန်ုပ်တို့၏ ခရီးစဉ်အစီအစဉ်သည် မြန်မာနိုင်ငံရှိ ထိပ်တန်းခရီးသွားနေရာအားလုံးကို ______ မည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "encompass",
+          "answerMy": "အကျုံးဝင်ပါဝင်စေသည်",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-A-9",
+          "question": "The National Museum in Yangon ______ an extensive collection of ancient Myanmar artifacts, ornaments and works of art.",
+          "questionMy": "ရန်ကုန်ရှိ အမျိုးသားပြတိုက်သည် မြန်မာ့ရှေးဟောင်းပစ္စည်း၊ အဆင်တန်ဆာနှင့် အနုပညာလက်ရာ အစုအဝေးများကို ______ သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "showcases",
+          "answerMy": "ခင်းကျင်းပြသသည်",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-A-10",
+          "question": "Our restaurant ______ all the food items at reasonable prices.",
+          "questionMy": "ကျွန်ုပ်တို့စားသောက်ဆိုင်သည် အစားအစာအားလုံးကို သင့်တင့်သောဈေးနှုန်းဖြင့် ______ သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "offers",
+          "answerMy": "ရောင်းချပေးသည်",
+          "sourcePages": [
+            73
+          ]
+        }
+      ]
+    },
+    {
+      "code": "B",
+      "items": [
+        {
+          "blockId": "review2-B-1",
+          "question": "My brother working for an online banking company is very busy. He cannot even drop me a line or give me a call. (Combine the sentences using ‘too … to’.)",
+          "questionMy": "အွန်လိုင်းဘဏ်ကုမ္ပဏီ၌ လုပ်သော အစ်ကိုသည် အလွန်အလုပ်များသည်။ စာတိုပို့ရန် သို့မဟုတ် ဖုန်းခေါ်ရန်ပင် မအားပါ။ too … to သုံး၍ ပေါင်းပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "My brother working for an online banking company is too busy to even drop me a line or give me a call.",
+          "answerMy": "အစ်ကိုသည် စာတိုပို့ရန် သို့မဟုတ် ဖုန်းခေါ်ရန်ပင် မအားလောက်အောင် အလုပ်များသည်။",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-B-2",
+          "question": "Ko Gyi’s grades are not high enough to gain admission to the University of Yangon. (Rewrite the sentence using ‘too … to’.)",
+          "questionMy": "ကိုကြီး၏အမှတ်များသည် ရန်ကုန်တက္ကသိုလ်ဝင်ခွင့်ရရန် မမြင့်မားလုံလောက်ပါ။ too … to သုံးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "Ko Gyi’s grades are too low to gain admission to the University of Yangon.",
+          "answerMy": "အမှတ်များသည် ဝင်ခွင့်ရရန် အလွန်နိမ့်နေသည်။",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-B-3",
+          "question": "The village is too far to reach by bicycle. (Rewrite the sentence using ‘enough to’.)",
+          "questionMy": "ထိုရွာသည် စက်ဘီးဖြင့် ရောက်နိုင်ရန် ဝေးလွန်းသည်။ enough to သုံးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "The village is not near enough to reach by bicycle.; The village is not close enough to reach by bicycle.",
+          "answerMy": "စက်ဘီးဖြင့် ရောက်နိုင်လောက်အောင် မနီးပါ။",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-B-4",
+          "question": "The sky is covered with dark clouds. (be going to rain very soon) (Rewrite the sentence using ‘as if’ and the words given in brackets.)",
+          "questionMy": "ကောင်းကင်၌ မိုးတိမ်မည်းများ ဖုံးနေသည်။ မကြာမီမိုးရွာမည့်ပုံ ဖြစ်သည်။ as if နှင့် ကွင်းပါစကားလုံးများ သုံးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "The sky is covered with dark clouds as if it is going to rain very soon.",
+          "answerMy": "မကြာမီမိုးရွာတော့မည့်အလား မိုးတိမ်မည်းများ ဖုံးနေသည်။",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-B-5",
+          "question": "The dog came towards me wagging its tail. (be its master) (Rewrite the sentence using ‘as if’ and the words given in brackets.)",
+          "questionMy": "ခွေးက အမြီးနှံ့ရင်း ကျွန်ုပ်ထံ လာသည်။ ကျွန်ုပ်က ၎င်း၏သခင်ဖြစ်သည့်အလား as if သုံးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "The dog came towards me wagging its tail as if I were its master.",
+          "answerMy": "ကျွန်ုပ်ကို ၎င်း၏သခင်ဟု ထင်သည့်အလား အမြီးနှံ့ရင်း လာသည်။",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-B-6",
+          "question": "I can’t function well the whole day. I don’t have a proper breakfast. (Join the sentences using ‘without + V-ing construction’.)",
+          "questionMy": "မနက်စာကောင်းကောင်း မစားရလျှင် တစ်နေ့လုံး ကောင်းစွာမလုပ်ဆောင်နိုင်ပါ။ without + V-ing သုံး၍ ဆက်ပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "I can’t function well the whole day without having a proper breakfast.",
+          "answerMy": "မနက်စာကောင်းကောင်း မစားဘဲ တစ်နေ့လုံး ကောင်းစွာ မလုပ်ဆောင်နိုင်ပါ။",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-B-7",
+          "question": "May Thu bought an i-Pad with the pocket money she had saved. She did not ask her parents for money. (Combine the sentences using ‘without + V-ing construction’.)",
+          "questionMy": "မေသူသည် စုထားသောမုန့်ဖိုးဖြင့် i-Pad ဝယ်သည်။ မိဘများထံ ငွေမတောင်းပါ။ without + V-ing သုံးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "May Thu bought an i-Pad with the pocket money she had saved without asking her parents for money.",
+          "answerMy": "မိဘများထံ ငွေမတောင်းဘဲ စုထားသည့်မုန့်ဖိုးဖြင့် ဝယ်သည်။",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-B-8",
+          "question": "The dogs have been trained to sniff out drugs. They are very useful to policemen. (Combine the sentences using a participle phrase.)",
+          "questionMy": "ခွေးများကို မူးယစ်ဆေးရှာဖွေရန် လေ့ကျင့်ထားသည်။ ရဲများအတွက် အသုံးဝင်သည်။ participle phrase သုံးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "The dogs trained to sniff out drugs are very useful to policemen.",
+          "answerMy": "မူးယစ်ဆေးရှာဖွေရန် လေ့ကျင့်ထားသော ခွေးများသည် ရဲများအတွက် အသုံးဝင်သည်။",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-B-9",
+          "question": "Psychologists who have clinical skills can help people manage stressful situations. (Rewrite the sentence omitting the relative pronoun.)",
+          "questionMy": "လက်တွေ့ကုသမှု ကျွမ်းကျင်သော စိတ်ပညာရှင်များသည် ဖိစီးမှုအခြေအနေများကို စီမံရန် ကူညီနိုင်သည်။ relative pronoun ချန်၍ ပြန်ရေးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "Psychologists having clinical skills can help people manage stressful situations.",
+          "answerMy": "လက်တွေ့ကုသမှု ကျွမ်းကျင်သော စိတ်ပညာရှင်များက ဖိစီးမှုကို စီမံရန် ကူညီနိုင်သည်။",
+          "sourcePages": [
+            73
+          ]
+        },
+        {
+          "blockId": "review2-B-10",
+          "question": "Children who are properly trained when young will never go wrong. (Rewrite the sentence omitting the relative pronoun.)",
+          "questionMy": "ငယ်စဉ်က စနစ်တကျ လေ့ကျင့်ပေးထားသော ကလေးများသည် လမ်းမှားမသွားပါ။ relative pronoun ချန်ပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "Children properly trained when young will never go wrong.",
+          "answerMy": "ငယ်စဉ်က စနစ်တကျ လေ့ကျင့်ပေးထားသော ကလေးများ လမ်းမှားမသွားပါ။",
+          "sourcePages": [
+            73
+          ]
+        }
+      ]
+    }
+  ]
+}

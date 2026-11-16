@@ -19,7 +19,7 @@ const letter: Record<G11SkillKind, string> = {
   writing: "E",
 };
 function indexedQuestion(question: { id: string; question: string; instructions: string }) {
-  const group = question.instructions.match(/^(?:Exercise\s+)?([A-E])[.)]\s/i)?.[1]?.toUpperCase();
+  const group = question.instructions.match(/^(?:Exercise\s+)?([A-Z])[.)]\s/i)?.[1]?.toUpperCase();
   const number = question.question.match(/^(\d+|[a-z])[.)]\s/i)?.[1];
   return `[${group ? `Exercise ${group} · ` : ""}${number ? `Question ${number}` : "Textbook task"} | source ${question.id}] ${question.instructions}\n${question.question}`;
 }

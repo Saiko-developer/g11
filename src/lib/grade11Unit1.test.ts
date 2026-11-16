@@ -81,7 +81,7 @@ describe("Grade 11 Unit 1 source fidelity", () => {
       expect(existsSync(`public${url}`)).toBe(true);
       expect(block.x).not.toContain("[illegible]");
     }
-    expect(UNIT1_KEYS["1C-71"].answer).toContain("before delivering his speech");
+    expect(UNIT1_KEYS["1C-71"].answer).toContain("before submitting it to the teacher");
     expect(unit1ScanUrl(1)).toBeNull();
   });
 });

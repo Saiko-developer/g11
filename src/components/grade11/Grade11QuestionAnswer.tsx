@@ -1,3 +1,4 @@
+import { isAnswerMatch } from "@/lib/answerMatch";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,6 +15,7 @@ export function Grade11QuestionAnswer({
   value,
   onChange,
   fullSentence = false,
+  preferLocalMatch = false,
 }: {
   question: string;
   instructions: string;
@@ -22,8 +24,10 @@ export function Grade11QuestionAnswer({
   value: string;
   onChange: (value: string) => void;
   fullSentence?: boolean;
+  preferLocalMatch?: boolean;
 }) {
   const [revealed, setRevealed] = useState(false);
+  const [localChecked, setLocalChecked] = useState<string | null>(null);
   if (answerKey && !fullSentence)
     return (
       <Grade11SourceAnswer
@@ -46,18 +50,29 @@ export function Grade11QuestionAnswer({
         placeholder="Write your answer…"
       />
       <div className="flex flex-wrap items-start gap-2">
-        <Grade11AIReview
-          question={question}
-          instructions={instructions}
-          context={context}
-          answer={value}
-          checkLabel="Check Answer"
-          compact
-        />
+        {preferLocalMatch && answerKey && isAnswerMatch(value, answerKey.answer) ? (
+          <Button size="sm" variant="outline" onClick={() => setLocalChecked(value)}>
+            Check Answer
+          </Button>
+        ) : (
+          <Grade11AIReview
+            question={question}
+            instructions={instructions}
+            context={context}
+            answer={value}
+            checkLabel="Check Answer"
+            compact
+          />
+        )}
         <Button size="sm" variant="ghost" onClick={() => setRevealed((old) => !old)}>
           {revealed ? "Hide Answer" : "Reveal Answer"}
         </Button>
       </div>
+      {localChecked === value && (
+        <p role="status" className="text-sm text-primary">
+          ✅ အဖြေမှန်ပါတယ်။
+        </p>
+      )}
       {revealed && (
         <div className="rounded-xl border border-primary/25 bg-primary/5 p-3 text-sm leading-relaxed">
           {answerKey ? (

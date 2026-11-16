@@ -1,0 +1,210 @@
+{
+  "title": "Cloud Zoo",
+  "author": "Norma Gillett",
+  "sourcePage": 74,
+  "textbookPage": 69,
+  "source_file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+  "stanzas": [
+    [
+      {
+        "english": "I thought I saw a cloud whale",
+        "myanmar": "တိမ်ဝေလငါးတစ်ကောင်ကို မြင်မိတယ်လို့ ထင်ခဲ့တယ်။"
+      },
+      {
+        "english": "Sail through a sea of blue;",
+        "myanmar": "ပြာလဲ့နေတဲ့ ကောင်းကင်ပင်လယ်ထဲ ရွက်လွှင့်သွားနေသလိုပေါ့။"
+      },
+      {
+        "english": "It changed into an elephant",
+        "myanmar": "အဲဒီတိမ်က ဆင်တစ်ကောင်ပုံ ပြောင်းသွားတယ်။"
+      },
+      {
+        "english": "Of most unusual hue,",
+        "myanmar": "အရောင်အသွေးကလည်း ထူးခြားလှတယ်။"
+      },
+      {
+        "english": "And even as I marvelled,",
+        "myanmar": "အံ့ဩငေးမောနေတုန်းမှာပဲ၊"
+      },
+      {
+        "english": "It split itself in two.",
+        "myanmar": "နှစ်ပိုင်းကွဲသွားပြန်တယ်။"
+      }
+    ],
+    [
+      {
+        "english": "I watched a long white serpent",
+        "myanmar": "ရှည်လျားဖြူဖွေးတဲ့ တိမ်မြွေကို ငေးကြည့်နေမိတယ်။"
+      },
+      {
+        "english": "Winding its cloudy way,",
+        "myanmar": "တိမ်လမ်းကြောင်းအတိုင်း တွန့်ကွေးလျှောသွားရင်း၊"
+      },
+      {
+        "english": "To pounce upon a cloud frog",
+        "myanmar": "တိမ်ဖားတစ်ကောင်ပေါ် ခုန်အုပ်ဖို့ပေါ့။"
+      },
+      {
+        "english": "That unsuspecting lay.",
+        "myanmar": "အန္တရာယ်ကိုမသိဘဲ လှဲနေတဲ့ ဖားလေးပေါ်ကိုလေ။"
+      },
+      {
+        "english": "The little frog became a bird",
+        "myanmar": "ဖားလေးက ငှက်တစ်ကောင်အဖြစ် ပြောင်းသွားပြီး၊"
+      },
+      {
+        "english": "And slowly flew away.",
+        "myanmar": "ဖြည်းဖြည်းချင်း ပျံထွက်သွားတယ်။"
+      }
+    ],
+    [
+      {
+        "english": "All afternoon I watched them, —",
+        "myanmar": "နေ့လယ်တစ်ခင်းလုံး သူတို့ကို ကြည့်နေမိတယ်။"
+      },
+      {
+        "english": "Such magic as they knew!",
+        "myanmar": "သူတို့တတ်တဲ့ မှော်ပညာက အံ့ဖွယ်ပါပဲ။"
+      },
+      {
+        "english": "I saw a white rhinoceros,",
+        "myanmar": "ဖြူဖွေးတဲ့ ကြံ့တစ်ကောင်ကိုလည်း မြင်ခဲ့တယ်။"
+      },
+      {
+        "english": "And white flamingos, too,",
+        "myanmar": "ဖြူဖွေးတဲ့ ဖလမင်ဂိုငှက်တွေကိုလည်း မြင်ခဲ့တယ်။"
+      },
+      {
+        "english": "Till evening shut her deep blue tent",
+        "myanmar": "ညနေခင်းက နက်ပြာရောင်တဲကို ပိတ်လိုက်ချိန်အထိပေါ့၊"
+      },
+      {
+        "english": "Over my private zoo.",
+        "myanmar": "ကျွန်ုပ်ရဲ့ ကိုယ်ပိုင်တိမ်တိရစ္ဆာန်ဥယျာဉ်အပေါ်မှာလေ။"
+      }
+    ]
+  ],
+  "glossary": [
+    {
+      "word": "marvelled",
+      "meaning": "became filled with surprise, wonder, or amazed curiosity",
+      "meaningMy": "အံ့ဩစိတ်၊ သိချင်စိတ်တို့ဖြင့် ငေးမောမိသည်"
+    },
+    {
+      "word": "serpent",
+      "meaning": "snake",
+      "meaningMy": "မြွေ"
+    },
+    {
+      "word": "unsuspecting",
+      "meaning": "not aware of any danger or threat",
+      "meaningMy": "အန္တရာယ် သို့မဟုတ် ခြိမ်းခြောက်မှုကို မသိသော"
+    }
+  ],
+  "groups": [
+    {
+      "code": "Pre-reading",
+      "instruction": "Pre-reading",
+      "instructionMy": "ကဗျာမဖတ်မီ စဉ်းစားဆွေးနွေးရန်",
+      "items": [
+        {
+          "id": "poem2-Pre-reading-1",
+          "number": 1,
+          "question": "Do you like looking at clouds? Why?",
+          "translationMy": "တိမ်တွေကို ကြည့်ရတာ နှစ်သက်သလား။ ဘာကြောင့်လဲ။",
+          "sourcePage": 74
+        },
+        {
+          "id": "poem2-Pre-reading-2",
+          "number": 2,
+          "question": "What colours and shapes of clouds have you seen?",
+          "translationMy": "မည်သည့်အရောင်နှင့် ပုံသဏ္ဌာန်ရှိသော တိမ်တွေကို မြင်ဖူးသလဲ။",
+          "sourcePage": 74
+        },
+        {
+          "id": "poem2-Pre-reading-3",
+          "number": 3,
+          "question": "When do we usually see dark clouds?",
+          "translationMy": "တိမ်မည်းတွေကို များသောအားဖြင့် ဘယ်အချိန် မြင်ရသလဲ။",
+          "sourcePage": 74
+        }
+      ]
+    },
+    {
+      "code": "A",
+      "instruction": "Answer the following questions.",
+      "instructionMy": "အောက်ပါမေးခွန်းများကို ဖြေပါ။",
+      "items": [
+        {
+          "id": "poem2-A-1",
+          "number": 1,
+          "question": "According to the poet, what shapes of animals do the clouds have?",
+          "translationMy": "ကဗျာဆရာမအရ တိမ်များက မည်သည့်တိရစ္ဆာန်ပုံများ ဖြစ်နေသလဲ။",
+          "sourcePage": 74
+        },
+        {
+          "id": "poem2-A-2",
+          "number": 2,
+          "question": "What are the rhyming words used in each stanza?",
+          "translationMy": "ကဗျာပိုဒ်တစ်ပိုဒ်စီတွင် ကာရန်ညီသည့် စကားလုံးများက ဘာတွေလဲ။",
+          "sourcePage": 74
+        },
+        {
+          "id": "poem2-A-3",
+          "number": 3,
+          "question": "In what lines are the rhyming words found?",
+          "translationMy": "ကာရန်ညီစကားလုံးများကို မည်သည့်ကြောင်းများတွင် တွေ့ရသလဲ။",
+          "sourcePage": 74
+        },
+        {
+          "id": "poem2-A-4",
+          "number": 4,
+          "question": "Find the verbs in the poem that show movements.",
+          "translationMy": "လှုပ်ရှားမှုကို ပြသည့် ကြိယာများကို ကဗျာထဲမှ ရှာပါ။",
+          "sourcePage": 74
+        }
+      ]
+    },
+    {
+      "code": "B",
+      "instruction": "Complete the following table with the phrases that show the movement of the animals as found in the poem. The first one is done for you as an example.",
+      "instructionMy": "ကဗျာထဲမှ တိရစ္ဆာန်တို့၏ လှုပ်ရှားမှုကို ဖော်ပြသည့် စကားစုများဖြင့် ဇယားကို ဖြည့်ပါ။ ပထမတစ်ခုကို နမူနာ ဖြည့်ထားသည်။",
+      "items": [
+        {
+          "id": "poem2-B-1",
+          "number": 1,
+          "question": "b. serpent — Movement: ______",
+          "translationMy": "မြွေ၏ လှုပ်ရှားမှုကို ဖော်ပြသော စကားစုရေးပါ။",
+          "sourcePage": 74
+        },
+        {
+          "id": "poem2-B-2",
+          "number": 2,
+          "question": "c. bird — Movement: ______",
+          "translationMy": "ငှက်၏ လှုပ်ရှားမှုကို ဖော်ပြသော စကားစုရေးပါ။",
+          "sourcePage": 74
+        }
+      ],
+      "example": {
+        "english": "Animal: whale → Movement: sail through a sea of blue",
+        "myanmar": "တိရစ္ဆာန်: ဝေလငါး → ပြာလဲ့သော ကောင်းကင်ပင်လယ်ထဲ ရွက်လွှင့်သွားခြင်း"
+      }
+    },
+    {
+      "code": "C",
+      "instruction": "Compose a four-line verse on ‘Cloud …’. The title of your verse can be ‘Cloud Beach’ / ‘Cloud Mountains’, etc. Think of any clouds you have seen and what they look like.",
+      "instructionMy": "Cloud … ခေါင်းစဉ်ဖြင့် လေးကြောင်းကဗျာ ရေးပါ။ Cloud Beach၊ Cloud Mountains စသည့် ခေါင်းစဉ်ရွေးနိုင်သည်။ မြင်ဖူးသောတိမ်များနှင့် ၎င်းတို့၏ပုံသဏ္ဌာန်ကို စဉ်းစားပါ။",
+      "items": [
+        {
+          "id": "poem2-C-1",
+          "number": 1,
+          "question": "Compose your own four-line verse on ‘Cloud …’.",
+          "translationMy": "တိမ်ပုံသဏ္ဌာန်ကို စိတ်ကူး၍ ကိုယ်ပိုင်လေးကြောင်းကဗျာ ရေးပါ။",
+          "writing": true,
+          "lineTarget": 4,
+          "sourcePage": 74
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "official_answer_key": false,
+  "note": "Source-derived study suggestions, not a publisher answer key. Accept equivalent valid wording for rewrites.",
+  "sections": [
+    {
+      "code": "A",
+      "items": [
+        {
+          "blockId": "review3-A-1",
+          "question": "Never do what is not right and never say what is not true. (correct / the opposite of ‘left’)",
+          "questionMy": "မမှန်ကန်သောအရာကို မလုပ်နှင့်။ မမှန်သောစကားကို မပြောနှင့်။ right ၏ အဓိပ္ပာယ်ကို ရွေးပါ။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "correct",
+          "answerMy": "မှန်ကန်သော",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-A-2",
+          "question": "U Nyo was a great gambler, and he finally lost all his wealth. (had something taken away from somebody / failed to win)",
+          "questionMy": "ဦးညိုသည် လောင်းကစားအလွန်လုပ်သူဖြစ်ပြီး နောက်ဆုံး ဥစ္စာအားလုံး ဆုံးရှုံးခဲ့သည်။ lost ၏ အဓိပ္ပာယ်ကို ရွေးပါ။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "had something taken away from somebody",
+          "answerMy": "ပိုင်ဆိုင်ရာကို ဆုံးရှုံးလိုက်ရခြင်း",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-A-3",
+          "question": "Although there were power cuts, the factory continued to function normally. (have a specific role or purpose / work or operate)",
+          "questionMy": "မီးပြတ်သော်လည်း စက်ရုံသည် ပုံမှန် ဆက်လည်ပတ်သည်။ function ၏ အဓိပ္ပာယ်ကို ရွေးပါ။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "work or operate",
+          "answerMy": "လည်ပတ်လုပ်ဆောင်သည်",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-A-4",
+          "question": "The teacher asked the students to form groups of six to do a project. (be arranged in a shape / begin to exist or to be seen)",
+          "questionMy": "ဆရာက စီမံကိန်းလုပ်ရန် ကျောင်းသားများကို ခြောက်ယောက်စီ အုပ်စုဖွဲ့ခိုင်းသည်။ form ၏ အဓိပ္ပာယ်ကို ရွေးပါ။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "be arranged in a shape",
+          "answerMy": "အုပ်စုဖွဲ့စည်းစီစဉ်သည်",
+          "sourcePages": [
+            108
+          ]
+        }
+      ]
+    },
+    {
+      "code": "B",
+      "items": [
+        {
+          "blockId": "review3-B-1",
+          "question": "Stop tapping the table; you are (doing / making) so much noise.",
+          "questionMy": "စားပွဲကို ခေါက်မနေပါနှင့်။ ဆူညံသံများစွာ ဖြစ်စေနေသည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "making",
+          "answerMy": "ဆူညံသံ ပြုလုပ်သည်",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-B-2",
+          "question": "The chef is an expert at (doing / making) pizza.",
+          "questionMy": "စားဖိုမှူးသည် ပီဇာပြုလုပ်ရာတွင် ကျွမ်းကျင်သူ ဖြစ်သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "making",
+          "answerMy": "ပီဇာ ပြုလုပ်သည်",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-B-3",
+          "question": "We must not (do / make) what we like; instead, we must learn to like what we do.",
+          "questionMy": "ကြိုက်တာကိုသာ မလုပ်သင့်ပါ။ လုပ်နေတာကို နှစ်သက်တတ်အောင် သင်ယူသင့်သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "do",
+          "answerMy": "လုပ်ဆောင်သည်",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-B-4",
+          "question": "The novel is based on the real-life (accident / incident) of a girl in our town.",
+          "questionMy": "ဝတ္ထုသည် ကျွန်ုပ်တို့မြို့ရှိ မိန်းကလေးတစ်ဦး၏ တကယ့်ဘဝဖြစ်ရပ်အပေါ် အခြေခံထားသည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "incident",
+          "answerMy": "ဖြစ်ရပ်",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-B-5",
+          "question": "Many teenagers these days are very (conscious / conscientious) of fashion trends.",
+          "questionMy": "ယနေ့ ဆယ်ကျော်သက်များစွာသည် ဖက်ရှင်ခေတ်ရေစီးကြောင်းကို အလွန်သတိထားကြသည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "conscious",
+          "answerMy": "သတိထားသိရှိသော",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-B-6",
+          "question": "Parents should be aware that an unhappy home environment can (affect / effect) their children’s behaviour.",
+          "questionMy": "မပျော်ရွှင်သော အိမ်ပတ်ဝန်းကျင်က ကလေးတို့၏ အပြုအမူကို သက်ရောက်နိုင်ကြောင်း မိဘများ သတိပြုသင့်သည်။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "affect",
+          "answerMy": "သက်ရောက်သည်",
+          "sourcePages": [
+            108
+          ]
+        }
+      ]
+    },
+    {
+      "code": "C",
+      "items": [
+        {
+          "blockId": "review3-C-1",
+          "question": "A strong wind drove the fishing boat away from its course. (Change the sentence into the passive voice.)",
+          "questionMy": "လေပြင်းက ငါးဖမ်းလှေကို လမ်းကြောင်းလွဲစေခဲ့သည်။ passive voice ပြောင်းပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "The fishing boat was driven away from its course by a strong wind.",
+          "answerMy": "ငါးဖမ်းလှေသည် လေပြင်းကြောင့် လမ်းကြောင်းလွဲသွားခဲ့သည်။",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-C-2",
+          "question": "Scientists believe that some towns can be under water if the ocean level continues to rise. (Change the sentence into the passive voice beginning with ‘It’.)",
+          "questionMy": "ပင်လယ်ရေမျက်နှာပြင် ဆက်တက်ပါက မြို့အချို့ ရေအောက်ရောက်နိုင်သည်ဟု သိပ္ပံပညာရှင်များ ယုံကြည်သည်။ It ဖြင့်စသော passive ပြောင်းပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "It is believed that some towns can be under water if the ocean level continues to rise.",
+          "answerMy": "ပင်လယ်ရေမျက်နှာပြင် ဆက်တက်လျှင် မြို့အချို့ ရေအောက်ရောက်နိုင်သည်ဟု ယုံကြည်ကြသည်။",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-C-3",
+          "question": "People say that we can explain the past, but cannot predict the future. (Change the sentence into the passive voice beginning with ‘It’.)",
+          "questionMy": "လူတို့က အတိတ်ကို ရှင်းပြနိုင်သော်လည်း အနာဂတ်ကို မခန့်မှန်းနိုင်ဟု ဆိုကြသည်။ It ဖြင့်စသော passive ပြောင်းပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "It is said that we can explain the past, but cannot predict the future.",
+          "answerMy": "အတိတ်ကို ရှင်းပြနိုင်သော်လည်း အနာဂတ်ကို မခန့်မှန်းနိုင်ဟု ဆိုကြသည်။",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-C-4",
+          "question": "Ko Toe said, “I left home in a hurry and forgot to bring my lunch box.” (Change the sentence into the reported speech.)",
+          "questionMy": "ကိုတိုးက အိမ်မှ အလျင်စလိုထွက်လာ၍ ထမင်းဘူးယူဖို့ မေ့ခဲ့သည်ဟု ပြောသည်။ reported speech ပြောင်းပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "Ko Toe said that he had left home in a hurry and had forgotten to bring his lunch box.",
+          "answerMy": "ကိုတိုးက အလျင်စလို အိမ်မှထွက်လာပြီး ထမင်းဘူးယူရန် မေ့ခဲ့ကြောင်း ပြောသည်။",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-C-5",
+          "question": "The teacher said, “Try to improve your handwriting, Ko Soe.” (Change the sentence into the reported speech.)",
+          "questionMy": "ဆရာက ကိုစိုးကို လက်ရေးကောင်းအောင် ကြိုးစားရန် ပြောသည်။ reported speech ပြောင်းပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "The teacher told Ko Soe to try to improve his handwriting.",
+          "answerMy": "ဆရာက ကိုစိုးအား လက်ရေးကောင်းအောင် ကြိုးစားရန် ပြောသည်။",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-C-6",
+          "question": "Zaw Zaw said to Hla Min, “When did you get to school this morning?” (Change the sentence into the reported speech.)",
+          "questionMy": "ဇော်ဇော်က လှမင်းအား ဒီမနက် ဘယ်အချိန် ကျောင်းရောက်သလဲဟု မေးသည်။ reported speech ပြောင်းပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "Zaw Zaw asked Hla Min when he had got to school that morning.",
+          "answerMy": "ဇော်ဇော်က လှမင်းအား ထိုမနက် ဘယ်အချိန် ကျောင်းရောက်ခဲ့သလဲဟု မေးသည်။",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-C-7",
+          "question": "Tayza said to Thiha, “Are you doing anything over the weekend?” (Change the sentence into the reported speech.)",
+          "questionMy": "တေဇက သီဟကို စနေတနင်္ဂနွေတွင် တစ်ခုခုလုပ်ရန် ရှိသလားဟု မေးသည်။ reported speech ပြောင်းပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "Tayza asked Thiha if he was doing anything over the weekend.; Tayza asked Thiha whether he was doing anything over the weekend.",
+          "answerMy": "တေဇက သီဟအား စနေတနင်္ဂနွေတွင် တစ်ခုခုလုပ်နေမလားဟု မေးသည်။",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-C-8",
+          "question": "Don’t worry. I ______ (join) you for dinner next Saturday without fail. (Complete the sentence with the correct future tense.)",
+          "questionMy": "စိတ်မပူပါနှင့်။ လာမည့်စနေနေ့ ညစာကို သေချာပေါက် အတူစားမည်။ မှန်ကန်သည့် အနာဂတ်ကာလပုံစံ ဖြည့်ပါ။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "will join",
+          "answerMy": "ကတိပေးသော will join",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-C-9",
+          "question": "I have a meeting at 5 p.m. and I ______ (be) late for dinner. (Complete the sentence with the correct future tense.)",
+          "questionMy": "ညနေငါးနာရီ အစည်းအဝေးရှိသဖြင့် ညစာနောက်ကျမည်။ အနာဂတ်ကာလပုံစံ ဖြည့်ပါ။",
+          "status": "source-derived",
+          "kind": "closed",
+          "answer": "am going to be; will be",
+          "answerMy": "နောက်ကျမည်ဟု ခန့်မှန်းခြင်း",
+          "sourcePages": [
+            108
+          ]
+        },
+        {
+          "blockId": "review3-C-10",
+          "question": "By the time you arrive, we ______ (enjoy) our dinner. (Complete the sentence with the correct future tense.)",
+          "questionMy": "သင်ရောက်ချိန်တွင် ကျွန်ုပ်တို့ ညစာစားနေမည် သို့မဟုတ် စားပြီးဖြစ်မည်။ အခြေအနေအလိုက် ကာလပုံစံရွေးပါ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "will be enjoying; will have enjoyed",
+          "answerMy": "ရောက်ချိန်တွင် စားနေဆဲလား၊ စားပြီးပြီလားဆိုသည့် အဓိပ္ပာယ်အလိုက် ပုံစံကွာနိုင်သည်။",
+          "sourcePages": [
+            108
+          ]
+        }
+      ]
+    }
+  ]
+}

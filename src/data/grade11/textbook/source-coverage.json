@@ -1,0 +1,1195 @@
+{
+  "edition": "The three user-supplied Grade 11 English New Syllabus PDFs; 144 PDF pages. Page evidence is retained for comparison, not rendered as lesson images.",
+  "files": [
+    {
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "sha256": "4ed3ca84b0c0ff96e4a3f8fe12e229252433bc72337d85ab0d18d4adba7aef50",
+      "pages": 48,
+      "offset": 0
+    },
+    {
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "sha256": "edddb08167cb37110e8ca5b659d337c9096835d35c5e1b334e2a7d9479abe61e",
+      "pages": 48,
+      "offset": 48
+    },
+    {
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "sha256": "494d2e1934633c6d34fcdddc2758e15aff1983e3c124fa8fe03c1ae556d20955",
+      "pages": 48,
+      "offset": 96
+    }
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 1,
+      "printedPage": null,
+      "evidence": "/grade11/source/page-001.jpg",
+      "sha256": "d4604b167596aa123addcf951eb89090a8ba9dddce33d86ff9a52c2c79f987ef"
+    },
+    {
+      "page": 2,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 2,
+      "printedPage": null,
+      "evidence": "/grade11/source/page-002.jpg",
+      "sha256": "928ad50d2dd7010b2768e8b1185994a0ae7fe8fad5366ad9c53a55651ab15e5c"
+    },
+    {
+      "page": 3,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 3,
+      "printedPage": null,
+      "evidence": "/grade11/source/page-003.jpg",
+      "sha256": "8f1d5528621e824161ebd7fe7e10ca33543fbb22285ce1c22cbd49c24c7887fe"
+    },
+    {
+      "page": 4,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 4,
+      "printedPage": null,
+      "evidence": "/grade11/source/page-004.jpg",
+      "sha256": "6fa701ca7ed26d7085b6351612c689decb4a3345b161d7a7e6f5f5a8d49df0c2"
+    },
+    {
+      "page": 5,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 5,
+      "printedPage": null,
+      "evidence": "/grade11/source/page-005.jpg",
+      "sha256": "203b5cbb91b9d2915a5231d39a62a62a9c6dcd6d4e2927f138e0ff13007d1a43"
+    },
+    {
+      "page": 6,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 6,
+      "printedPage": null,
+      "evidence": "/grade11/source/page-006.jpg",
+      "sha256": "c544ca56565163166706112bc6e5cb4727fea2ea57978f64bfbacb44c57a0e51"
+    },
+    {
+      "page": 7,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 7,
+      "printedPage": 2,
+      "evidence": "/grade11/pages/g11-p07.jpg",
+      "sha256": "865eb891f3b01a2d5756cc47f3bad8098a801f816b64037d1731f9eb932f3afb"
+    },
+    {
+      "page": 8,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 8,
+      "printedPage": 3,
+      "evidence": "/grade11/pages/g11-p08.jpg",
+      "sha256": "a43fad430675593e8175fdd9613593ced15547dfade55e4692deeea20110c1a1"
+    },
+    {
+      "page": 9,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 9,
+      "printedPage": 4,
+      "evidence": "/grade11/pages/g11-p09.jpg",
+      "sha256": "0ec1f7a144921c6ac7005129c9c8b69d77e615b6c1ba1e0ab3f079284cc728a7"
+    },
+    {
+      "page": 10,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 10,
+      "printedPage": 5,
+      "evidence": "/grade11/pages/g11-p10.jpg",
+      "sha256": "636e156bb959c2b70b5143044ab2029fd74535b9e21a794de61ed6a1ccc46d16"
+    },
+    {
+      "page": 11,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 11,
+      "printedPage": 6,
+      "evidence": "/grade11/pages/g11-p11.jpg",
+      "sha256": "8b8f319627f9c5d53edfb93bcec38f5f5206e50cefadaf32dfcf052178910d2c"
+    },
+    {
+      "page": 12,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 12,
+      "printedPage": 7,
+      "evidence": "/grade11/pages/g11-p12.jpg",
+      "sha256": "2ade0e68e44dec0376708276c85109321fae7d589817fc9b603efc8bb5b8c70a"
+    },
+    {
+      "page": 13,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 13,
+      "printedPage": 8,
+      "evidence": "/grade11/pages/g11-p13.jpg",
+      "sha256": "c7ebb8c653754abdc862361cbb34d17833cc3367303f38fefefe9ffee65e0217"
+    },
+    {
+      "page": 14,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 14,
+      "printedPage": 9,
+      "evidence": "/grade11/pages/g11-p14.jpg",
+      "sha256": "f343b0fcd49f958dd71a39fe8a8dfd1916aea7e272f3256f705921689ed9460a"
+    },
+    {
+      "page": 15,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 15,
+      "printedPage": 10,
+      "evidence": "/grade11/pages/g11-p15.jpg",
+      "sha256": "b04d3c1a719dbaf569c2b1c27a22afd465bb017d28725130a821c476ce44a3aa"
+    },
+    {
+      "page": 16,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 16,
+      "printedPage": 11,
+      "evidence": "/grade11/pages/g11-p16.jpg",
+      "sha256": "df8223f87b6c76767a1a075cb845349c0dcb3d04770f8bf676f75f1ecf32a4a2"
+    },
+    {
+      "page": 17,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 17,
+      "printedPage": 12,
+      "evidence": "/grade11/pages/g11-p17.jpg",
+      "sha256": "767196b6da36d3319d0227e31632febf39561a06f478dafbe857ea1f7b6c577d"
+    },
+    {
+      "page": 18,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 18,
+      "printedPage": 13,
+      "evidence": "/grade11/pages/g11-p18.jpg",
+      "sha256": "8dcff3e1dd8fbf1dca1d8c556b6003e83e96f237943124553af8685698eaddbb"
+    },
+    {
+      "page": 19,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 19,
+      "printedPage": 14,
+      "evidence": "/grade11/pages/g11-p19.jpg",
+      "sha256": "e6fe99949af49350c389b94215cbdf45ff0bcfb88a0830d3b7e5a4e98fa3a849"
+    },
+    {
+      "page": 20,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 20,
+      "printedPage": 15,
+      "evidence": "/grade11/pages/g11-p20.jpg",
+      "sha256": "3fbd44bfe017a18e9d40bf98953c5067c602b241563d136a09bc6f0fadbc1c13"
+    },
+    {
+      "page": 21,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 21,
+      "printedPage": 16,
+      "evidence": "/grade11/pages/g11-p21.jpg",
+      "sha256": "b1ade21be7926d5820a9c8d81f8829e8b7049c840e5623e74b30d1252a8a6955"
+    },
+    {
+      "page": 22,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 22,
+      "printedPage": 17,
+      "evidence": "/grade11/pages/g11-p22.jpg",
+      "sha256": "99148085c3e7eec834c09fd690bb92990b329aa5babb908d7a98fbb0b5cf459d"
+    },
+    {
+      "page": 23,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 23,
+      "printedPage": 18,
+      "evidence": "/grade11/pages/g11-p23.jpg",
+      "sha256": "a3a156074a80478f0b43ebd08908192ba16db2591ea2454b5b1589e65a4737c2"
+    },
+    {
+      "page": 24,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 24,
+      "printedPage": 19,
+      "evidence": "/grade11/pages/g11-p24.jpg",
+      "sha256": "a99136ef1d1e2e0b35fd7e7d43cc16746de090b092d169f9ef8fc92782879212"
+    },
+    {
+      "page": 25,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 25,
+      "printedPage": 20,
+      "evidence": "/grade11/pages/g11-p25.jpg",
+      "sha256": "79a558455c7c6383823482554bafb0aef508b2cae371200b1a075cf33345ec29"
+    },
+    {
+      "page": 26,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 26,
+      "printedPage": 21,
+      "evidence": "/grade11/pages/g11-p26.jpg",
+      "sha256": "3627a69fb03f8116cf6d217fef25f7ab54a0c4f3e02b719ff1c7412cc5fb899f"
+    },
+    {
+      "page": 27,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 27,
+      "printedPage": 22,
+      "evidence": "/grade11/pages/g11-p27.jpg",
+      "sha256": "9a519abe8e6709a709b55ffe7799b7d8ad550bbd0051d9b0aad83ec2ce743919"
+    },
+    {
+      "page": 28,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 28,
+      "printedPage": 23,
+      "evidence": "/grade11/pages/g11-p28.jpg",
+      "sha256": "003b6e70ecb99b6f43dc67c0c664bd510ff16c81b28f3a574ebb050435ecdff9"
+    },
+    {
+      "page": 29,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 29,
+      "printedPage": 24,
+      "evidence": "/grade11/pages/g11-p29.jpg",
+      "sha256": "04b12a0d880878205759d2f95a9110c18ae19d0a4e4f7b64a1704f31befb09e4"
+    },
+    {
+      "page": 30,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 30,
+      "printedPage": 25,
+      "evidence": "/grade11/pages/g11-p30.jpg",
+      "sha256": "a69064ddc7c157f9f8e0f040b4286ec1b6da698e94e312c627bbbd5292fb5e5c"
+    },
+    {
+      "page": 31,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 31,
+      "printedPage": 26,
+      "evidence": "/grade11/pages/g11-p31.jpg",
+      "sha256": "b2f4e753a9eaa4557f8a80649b27e18700002db0f95ca4f77d48c18a4e982700"
+    },
+    {
+      "page": 32,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 32,
+      "printedPage": 27,
+      "evidence": "/grade11/pages/g11-p32.jpg",
+      "sha256": "c6acfd63a62755d0357c6a9c2f4b7c92980029e816b9076b5a05ccf57d684d5c"
+    },
+    {
+      "page": 33,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 33,
+      "printedPage": 28,
+      "evidence": "/grade11/pages/g11-p33.jpg",
+      "sha256": "f2c71e587e07ed08ff1434bf6e8ac0b8c3452bcce2311850bcf23c15d628c710"
+    },
+    {
+      "page": 34,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 34,
+      "printedPage": 29,
+      "evidence": "/grade11/pages/g11-p34.jpg",
+      "sha256": "84e464e53d54d876563c62b669bd33a18e48b69044d49504d53ca7b23273e82d"
+    },
+    {
+      "page": 35,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 35,
+      "printedPage": 30,
+      "evidence": "/grade11/pages/g11-p35.jpg",
+      "sha256": "137941ab5f7c4b74e682f5f9d9717ec9800f44a3edd801a64f9baf7390c6aba7"
+    },
+    {
+      "page": 36,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 36,
+      "printedPage": 31,
+      "evidence": "/grade11/pages/g11-p36.jpg",
+      "sha256": "223f3ffcf30ceea769ca6ca02557a093b3ac4581660a42579581224f33765ac5"
+    },
+    {
+      "page": 37,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 37,
+      "printedPage": 32,
+      "evidence": "/grade11/pages/g11-p37.jpg",
+      "sha256": "13228302987ac266b44f1997bb447db1ad54aef2ee8af3171ae2070fca7f339f"
+    },
+    {
+      "page": 38,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 38,
+      "printedPage": 33,
+      "evidence": "/grade11/pages/g11-p38.jpg",
+      "sha256": "e8c787ffa4ad4d339ab82dc4104c8eac19b8b7cbd931131201a2c365db9f23ac"
+    },
+    {
+      "page": 39,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 39,
+      "printedPage": 34,
+      "evidence": "/grade11/pages/g11-p39.jpg",
+      "sha256": "433e055d0a62614ceae73ca0e8067a3b1f7681b31fe190530db3433a40c4c6f5"
+    },
+    {
+      "page": 40,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 40,
+      "printedPage": 35,
+      "evidence": "/grade11/pages/g11-p40.jpg",
+      "sha256": "bc95a536822a004a74c8649c36e2e5f266005a780350e89c5aedae0df8bfb823"
+    },
+    {
+      "page": 41,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 41,
+      "printedPage": 36,
+      "evidence": "/grade11/pages/g11-p41.jpg",
+      "sha256": "5a3961f0d826d4bf1767d1a96146a7771498639775bfc92d4b93a41876f28ef0"
+    },
+    {
+      "page": 42,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 42,
+      "printedPage": 37,
+      "evidence": "/grade11/pages/g11-p42.jpg",
+      "sha256": "8912a54c416335e3f79c16b4a1032abeb670e7331cf3e8499f107162c3cdc3f7"
+    },
+    {
+      "page": 43,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 43,
+      "printedPage": 38,
+      "evidence": "/grade11/pages/g11-p43.jpg",
+      "sha256": "77ef1c2e961bc83e11dd468a743eefccdf9145f91dcc558dd1589032365cab21"
+    },
+    {
+      "page": 44,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 44,
+      "printedPage": 39,
+      "evidence": "/grade11/pages/g11-p44.jpg",
+      "sha256": "10e662307c888700a1015019a7399a6fdd2d78092389b9e71acf861bf7d735e0"
+    },
+    {
+      "page": 45,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 45,
+      "printedPage": 40,
+      "evidence": "/grade11/pages/g11-p45.jpg",
+      "sha256": "2f579a1c1d1a018e91e40e203c7a1d385cd5fbb2e7055af45c40f90a1c1c42e7"
+    },
+    {
+      "page": 46,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 46,
+      "printedPage": 41,
+      "evidence": "/grade11/pages/g11-p46.jpg",
+      "sha256": "f13253956bab1bc9f24443bac1bf0b57c9e5d17dc82aa1c2a57ab1275b5fc939"
+    },
+    {
+      "page": 47,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 47,
+      "printedPage": 42,
+      "evidence": "/grade11/pages/g11-p47.jpg",
+      "sha256": "e287274d91a93a7966d53a54b912e09c799072fbc6fb63427ae51fb242235d68"
+    },
+    {
+      "page": 48,
+      "file": "13575. Grade (11) English New Syllabus-1-48.pdf",
+      "pdfPage": 48,
+      "printedPage": 43,
+      "evidence": "/grade11/pages/g11-p48.jpg",
+      "sha256": "269e0dc1918f2b108f657efe32f83275a11816e81070c3db017f0310058da2a5"
+    },
+    {
+      "page": 49,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 1,
+      "printedPage": 44,
+      "evidence": "/grade11/source/page-049.jpg",
+      "sha256": "5197a93ae119fe9b6daf67dc36cf0da5328ebf60bebccb2c7914678a73abb49b"
+    },
+    {
+      "page": 50,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 2,
+      "printedPage": 45,
+      "evidence": "/grade11/source/page-050.jpg",
+      "sha256": "63b1ff670eab5d758a830bc1d2bbfc946cd6a8d17079c1002fb5affbf0c40392"
+    },
+    {
+      "page": 51,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 3,
+      "printedPage": 46,
+      "evidence": "/grade11/source/page-051.jpg",
+      "sha256": "e28d76f26b6b472634dc4f1ac121444b004113acb144b746a9bc1beaf42d4236"
+    },
+    {
+      "page": 52,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 4,
+      "printedPage": 47,
+      "evidence": "/grade11/source/page-052.jpg",
+      "sha256": "912cf3b25eb249fd3113f4ff2c49d756706121df27917150cf59fa44fcf2ad03"
+    },
+    {
+      "page": 53,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 5,
+      "printedPage": 48,
+      "evidence": "/grade11/source/page-053.jpg",
+      "sha256": "e0a86f3b71c71ea927fcc59a948cc93e9fb34153144696cf2b57a0ef3cd72668"
+    },
+    {
+      "page": 54,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 6,
+      "printedPage": 49,
+      "evidence": "/grade11/source/page-054.jpg",
+      "sha256": "c4f0fccd08a86066eed1eab340b4aabfd75c7f050c758b6fa4d33520bda9325c"
+    },
+    {
+      "page": 55,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 7,
+      "printedPage": 50,
+      "evidence": "/grade11/source/page-055.jpg",
+      "sha256": "ff36e867aa1d8f4d2d811b08a39e53aa2045442137ad712f8b7289828cfc8de7"
+    },
+    {
+      "page": 56,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 8,
+      "printedPage": 51,
+      "evidence": "/grade11/source/page-056.jpg",
+      "sha256": "25a059b2ec7c125ecc9795e5db14544b9e676d21cd63b71fe0deaad3e60be9cc"
+    },
+    {
+      "page": 57,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 9,
+      "printedPage": 52,
+      "evidence": "/grade11/source/page-057.jpg",
+      "sha256": "651c9be64d237fba271f495f3077f0f1e573f687e0a8ba8fb45c01956b2e1876"
+    },
+    {
+      "page": 58,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 10,
+      "printedPage": 53,
+      "evidence": "/grade11/source/page-058.jpg",
+      "sha256": "90eecb8bd53c78351174e46fbe15506e4b8318c61a17e97963c2d8b11c5d0de0"
+    },
+    {
+      "page": 59,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 11,
+      "printedPage": 54,
+      "evidence": "/grade11/source/page-059.jpg",
+      "sha256": "3cbf47f84ccf27a6db64cf2e881ef8be6b99be3845dedfd88abc2bd0c0a73f2d"
+    },
+    {
+      "page": 60,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 12,
+      "printedPage": 55,
+      "evidence": "/grade11/source/page-060.jpg",
+      "sha256": "20aaa6b446f7f660b005693e99bae6e20380a964d3feaac365ce5b82622bfdda"
+    },
+    {
+      "page": 61,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 13,
+      "printedPage": 56,
+      "evidence": "/grade11/source/page-061.jpg",
+      "sha256": "e7795d7f891f179005ac0ab93e04951d33a6153db5974d5ff0f5edd8bf8fa150"
+    },
+    {
+      "page": 62,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 14,
+      "printedPage": 57,
+      "evidence": "/grade11/source/page-062.jpg",
+      "sha256": "fb90034c33053f994e411b6cdb97b4f1bfe1f8b391042288080b3ff9f23ad6a3"
+    },
+    {
+      "page": 63,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 15,
+      "printedPage": 58,
+      "evidence": "/grade11/source/page-063.jpg",
+      "sha256": "54b120acf55b6b7287837738d969c170d29488e595f449c6be21b50e549e4ff2"
+    },
+    {
+      "page": 64,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 16,
+      "printedPage": 59,
+      "evidence": "/grade11/source/page-064.jpg",
+      "sha256": "96153ce175664d557e7bf39c510028059782c0ffba3711aa19cb7b8fffd8cc79"
+    },
+    {
+      "page": 65,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 17,
+      "printedPage": 60,
+      "evidence": "/grade11/source/page-065.jpg",
+      "sha256": "c884c64fc00bda50eaaf083e53d03ca9b0ccf3701e963882c053dfad581a600d"
+    },
+    {
+      "page": 66,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 18,
+      "printedPage": 61,
+      "evidence": "/grade11/source/page-066.jpg",
+      "sha256": "742c6dbab8e6cdaaecb16d1e4552b24bb640304b7a05274801af70cd3b963c9b"
+    },
+    {
+      "page": 67,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 19,
+      "printedPage": 62,
+      "evidence": "/grade11/source/page-067.jpg",
+      "sha256": "755e9690e3818eac3f77f6aa8de1481375bbdd88af5a9fc7cd297d4474880660"
+    },
+    {
+      "page": 68,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 20,
+      "printedPage": 63,
+      "evidence": "/grade11/source/page-068.jpg",
+      "sha256": "ca3a6d50733f63db4e6a003b25c3fb727ee9edc87ed85cb90a773fd7b5872d39"
+    },
+    {
+      "page": 69,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 21,
+      "printedPage": 64,
+      "evidence": "/grade11/source/page-069.jpg",
+      "sha256": "a9ba05f89dd093ec46e07027c51174e1cbb0015a691db1eaccee4fc5f08e3e8e"
+    },
+    {
+      "page": 70,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 22,
+      "printedPage": 65,
+      "evidence": "/grade11/source/page-070.jpg",
+      "sha256": "0399c3bab038fe217f2bd02bb2ff134d58d5fabec66c2f423fa80e2b750224de"
+    },
+    {
+      "page": 71,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 23,
+      "printedPage": 66,
+      "evidence": "/grade11/source/page-071.jpg",
+      "sha256": "612dcc34a412dffbe50d5d35d0cec320c2939647e1348e760d8558b8d3450339"
+    },
+    {
+      "page": 72,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 24,
+      "printedPage": 67,
+      "evidence": "/grade11/source/page-072.jpg",
+      "sha256": "eed7aad163d496fee538e9cee598deb9bbb99774275cb8896a8bde518d518a6c"
+    },
+    {
+      "page": 73,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 25,
+      "printedPage": 68,
+      "evidence": "/grade11/source/page-073.jpg",
+      "sha256": "e5db51d1af0c82608148fb92ea82a51ecf18304ee3f93e123f8af28ebb60adde"
+    },
+    {
+      "page": 74,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 26,
+      "printedPage": 69,
+      "evidence": "/grade11/source/page-074.jpg",
+      "sha256": "fdcb6befbe36cf5e38dd14630e98b028726b7a564cd96f2cf2768255c2a1dc62"
+    },
+    {
+      "page": 75,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 27,
+      "printedPage": 70,
+      "evidence": "/grade11/source/page-075.jpg",
+      "sha256": "dacff95bc35225a3346aa626639947e5f5343e064d2ee492f5b35f56c8b06dac"
+    },
+    {
+      "page": 76,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 28,
+      "printedPage": 71,
+      "evidence": "/grade11/upper/page-76.jpg",
+      "sha256": "bcdb347cc4f9b497aa5c6659fe63da4d6672ef224773d536a0adf2d927c31821"
+    },
+    {
+      "page": 77,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 29,
+      "printedPage": 72,
+      "evidence": "/grade11/upper/page-77.jpg",
+      "sha256": "f087af62b868cdf5aaa0b3adeb3428c826cdb8ac2b5b5d863d610ce504d15cb0"
+    },
+    {
+      "page": 78,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 30,
+      "printedPage": 73,
+      "evidence": "/grade11/upper/page-78.jpg",
+      "sha256": "f54230c6e55a822b0c56d1935d41cb2a9aed88aed20589036b473628f411fe30"
+    },
+    {
+      "page": 79,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 31,
+      "printedPage": 74,
+      "evidence": "/grade11/upper/page-79.jpg",
+      "sha256": "c2171d0e5755d175d076190edeeeb1b5f45721ae9acceb0f62d6a99a177b7dfd"
+    },
+    {
+      "page": 80,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 32,
+      "printedPage": 75,
+      "evidence": "/grade11/upper/page-80.jpg",
+      "sha256": "3760159f119a155e96535c773015c6acd16ac9f52e876db9e7024a239cffb67d"
+    },
+    {
+      "page": 81,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 33,
+      "printedPage": 76,
+      "evidence": "/grade11/upper/page-81.jpg",
+      "sha256": "1b2deaa57944fcd2de9728b814863e65088ce2cc73ffed5a14b5d6774409d95d"
+    },
+    {
+      "page": 82,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 34,
+      "printedPage": 77,
+      "evidence": "/grade11/upper/page-82.jpg",
+      "sha256": "14776bb4f3e3db3f700a928b69274a0d947f67c728d2e8b8f6b6f1c61ad4efb7"
+    },
+    {
+      "page": 83,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 35,
+      "printedPage": 78,
+      "evidence": "/grade11/upper/page-83.jpg",
+      "sha256": "bf33613663fb60b192cb8b428f5cb4d4a7a5f46624ac2e3886ca781d876f10ac"
+    },
+    {
+      "page": 84,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 36,
+      "printedPage": 79,
+      "evidence": "/grade11/upper/page-84.jpg",
+      "sha256": "6e260064e727917d300e615871f11863d6b4e0a75191f7d7a0077689fedcef95"
+    },
+    {
+      "page": 85,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 37,
+      "printedPage": 80,
+      "evidence": "/grade11/source/page-085.jpg",
+      "sha256": "cd143d898a5f9a07f725f162fe91bf1ac1b60348c131a4cb5f5c9fe4e9ab83ad"
+    },
+    {
+      "page": 86,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 38,
+      "printedPage": 81,
+      "evidence": "/grade11/upper/page-86.jpg",
+      "sha256": "5fffefe2a8dfc80d9ae36e2b7f240eafb2fe42da005bb3c0c0110feb77619d70"
+    },
+    {
+      "page": 87,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 39,
+      "printedPage": 82,
+      "evidence": "/grade11/upper/page-87.jpg",
+      "sha256": "86dc871827f50d796ee51c7631d42926e592f56640d8f7c48442af6037ad920c"
+    },
+    {
+      "page": 88,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 40,
+      "printedPage": 83,
+      "evidence": "/grade11/upper/page-88.jpg",
+      "sha256": "5c7d59ae3520731656ad9ab92c0106f126b139babff7e3c9fe8961df7f14a627"
+    },
+    {
+      "page": 89,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 41,
+      "printedPage": 84,
+      "evidence": "/grade11/upper/page-89.jpg",
+      "sha256": "5cbb7dcdd033886bb17b4a1a138092277185a19b6d3b8eb5db77e11c0e22e01a"
+    },
+    {
+      "page": 90,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 42,
+      "printedPage": 85,
+      "evidence": "/grade11/upper/page-90.jpg",
+      "sha256": "912e84cdc71f3bc71db98b1eebf7c3a7ee66ba8a378986355adeadbb922e9449"
+    },
+    {
+      "page": 91,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 43,
+      "printedPage": 86,
+      "evidence": "/grade11/upper/page-91.jpg",
+      "sha256": "7458cd10ae8b8f81762107f3c329c71715ee0f375de81a5ee3597430f1ede77c"
+    },
+    {
+      "page": 92,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 44,
+      "printedPage": 87,
+      "evidence": "/grade11/upper/page-92.jpg",
+      "sha256": "5853e441d78fd3afa3bf93a12f5fe95c499738707cceec62cc0a161fb2ffea74"
+    },
+    {
+      "page": 93,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 45,
+      "printedPage": 88,
+      "evidence": "/grade11/upper/page-93.jpg",
+      "sha256": "ff366b72c8330dde81a97d1c7de9cc58d45282a423976a5526a5c426e8916ea7"
+    },
+    {
+      "page": 94,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 46,
+      "printedPage": 89,
+      "evidence": "/grade11/upper/page-94.jpg",
+      "sha256": "8785a1b5e6b669c4d40c02931a1894ebd9e8d9e65b721fafdeb39c4e986596c1"
+    },
+    {
+      "page": 95,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 47,
+      "printedPage": 90,
+      "evidence": "/grade11/upper/page-95.jpg",
+      "sha256": "6a4fe0269598683e74b57253f32d0e4d13dd9d884695a75a789ef164b940f8d4"
+    },
+    {
+      "page": 96,
+      "file": "13575. Grade (11) English New Syllabus-49-96.pdf",
+      "pdfPage": 48,
+      "printedPage": 91,
+      "evidence": "/grade11/upper/page-96.jpg",
+      "sha256": "1e83ed78b151220880a97525f407916c84c1570580a18f1953b5a96cb08c99ed"
+    },
+    {
+      "page": 97,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 1,
+      "printedPage": 92,
+      "evidence": "/grade11/upper/page-97.jpg",
+      "sha256": "6a0f9ed500a55d23d06f11983ea4ed49589445302f0a8072286e7ceacbb525e1"
+    },
+    {
+      "page": 98,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 2,
+      "printedPage": 93,
+      "evidence": "/grade11/upper/page-98.jpg",
+      "sha256": "533e2844497473c7301d3bf71b18826a00c3cbb8b743d4d3f55bec0641b002bc"
+    },
+    {
+      "page": 99,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 3,
+      "printedPage": 94,
+      "evidence": "/grade11/source/page-099.jpg",
+      "sha256": "aed4f33ada83f68ccbec4bd2b15663e5eaf0ade33f2b7d126cdd8f0963836c65"
+    },
+    {
+      "page": 100,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 4,
+      "printedPage": 95,
+      "evidence": "/grade11/upper/page-100.jpg",
+      "sha256": "3e08c7908bb39d99da3b368d5e0509a3ba39e974e14554b3484914fe14553847"
+    },
+    {
+      "page": 101,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 5,
+      "printedPage": 96,
+      "evidence": "/grade11/upper/page-101.jpg",
+      "sha256": "c8e36a320ce71052a38a248bdc62c97e0e525b48c5567f1457136b9ac9e55672"
+    },
+    {
+      "page": 102,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 6,
+      "printedPage": 97,
+      "evidence": "/grade11/upper/page-102.jpg",
+      "sha256": "f0c48978117a722a90de057bdb11381824cf6b42b6a6200a669c27cee732cc2f"
+    },
+    {
+      "page": 103,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 7,
+      "printedPage": 98,
+      "evidence": "/grade11/upper/page-103.jpg",
+      "sha256": "d2d8f9d42f148f9ff9139d80839450fdd70c5a3aa7578a15f0f6719463398ac9"
+    },
+    {
+      "page": 104,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 8,
+      "printedPage": 99,
+      "evidence": "/grade11/upper/page-104.jpg",
+      "sha256": "c354c299cf04a7ac8ea70538373cf2a65afed63d42af57202e71a7aedbe7d994"
+    },
+    {
+      "page": 105,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 9,
+      "printedPage": 100,
+      "evidence": "/grade11/upper/page-105.jpg",
+      "sha256": "d471c53c0ddea373d4c1936189ea4b20fc5a0e35218859cf3f27d497779493dd"
+    },
+    {
+      "page": 106,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 10,
+      "printedPage": 101,
+      "evidence": "/grade11/upper/page-106.jpg",
+      "sha256": "ad460e2b6495cc710b62f46bbb1f86f65e7d90f8d020b466a66c5e5e7d914205"
+    },
+    {
+      "page": 107,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 11,
+      "printedPage": 102,
+      "evidence": "/grade11/upper/page-107.jpg",
+      "sha256": "c55b33d36be147d54c923fc8c2d346c6a69bccaa1297f26cd53103a259f5ad36"
+    },
+    {
+      "page": 108,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 12,
+      "printedPage": 103,
+      "evidence": "/grade11/source/page-108.jpg",
+      "sha256": "fbc31b418ff15f673161de9c28ecf896d2f76e47903690aec1d73f614da3e0e3"
+    },
+    {
+      "page": 109,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 13,
+      "printedPage": 104,
+      "evidence": "/grade11/source/page-109.jpg",
+      "sha256": "6b07b5c29425f125deaec7d9a92dd6ee079b061c5b166f37c2bf1baf68d6d01b"
+    },
+    {
+      "page": 110,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 14,
+      "printedPage": 105,
+      "evidence": "/grade11/source/page-110.jpg",
+      "sha256": "c8abd2b9dc5ae340f3af9a300b18d910b62a603e03e8dac8cc648b02df1e7097"
+    },
+    {
+      "page": 111,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 15,
+      "printedPage": 106,
+      "evidence": "/grade11/upper/page-111.jpg",
+      "sha256": "1721e721d9ac2592da5b3cbb32cd643a119956cca1c0fcfc9d401df7c07dd992"
+    },
+    {
+      "page": 112,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 16,
+      "printedPage": 107,
+      "evidence": "/grade11/upper/page-112.jpg",
+      "sha256": "c56c70cf09c0e628bd18f91d9e7bc808b1245d81bfc3137bbca5f8103667fac7"
+    },
+    {
+      "page": 113,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 17,
+      "printedPage": 108,
+      "evidence": "/grade11/upper/page-113.jpg",
+      "sha256": "9d897da727dd5408e7b5b896343d38ddd1c84f50a5d66ec75b29eccbd08a6553"
+    },
+    {
+      "page": 114,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 18,
+      "printedPage": 109,
+      "evidence": "/grade11/upper/page-114.jpg",
+      "sha256": "8338fb8d4c0a613ed021e5aaa7b517df0895dbb26330b60a586373c6989f4b88"
+    },
+    {
+      "page": 115,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 19,
+      "printedPage": 110,
+      "evidence": "/grade11/upper/page-115.jpg",
+      "sha256": "6f6c7738307471eb5afc390eb4119831661288e716d1c5db90f9b66834fdf46d"
+    },
+    {
+      "page": 116,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 20,
+      "printedPage": 111,
+      "evidence": "/grade11/upper/page-116.jpg",
+      "sha256": "fcb19d2ca075701a2f7dc9c7a12d40f19dd3d9656ca30d2f225337ce0fea6f75"
+    },
+    {
+      "page": 117,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 21,
+      "printedPage": 112,
+      "evidence": "/grade11/upper/page-117.jpg",
+      "sha256": "9047cb55f07aa62bbee3ce8f664b41862fab1c3d8dace261d14a19dbcff9eef1"
+    },
+    {
+      "page": 118,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 22,
+      "printedPage": 113,
+      "evidence": "/grade11/upper/page-118.jpg",
+      "sha256": "7b5d9cb962489e457bcf7ac3e5d68db0029999123bdff654b02d284182e6b90c"
+    },
+    {
+      "page": 119,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 23,
+      "printedPage": 114,
+      "evidence": "/grade11/source/page-119.jpg",
+      "sha256": "a39424670d66f180165d0dde19a2a16e67e2e99c1b4347352ebd895a0a4c3836"
+    },
+    {
+      "page": 120,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 24,
+      "printedPage": 115,
+      "evidence": "/grade11/upper/page-120.jpg",
+      "sha256": "d2c68260706a96267de1953a43c4b13bcf9aa85d6f4297886f199984b38704d1"
+    },
+    {
+      "page": 121,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 25,
+      "printedPage": 116,
+      "evidence": "/grade11/upper/page-121.jpg",
+      "sha256": "812458916a784f6edc98fdc752bb89573e6c6ce450a50c34cabdb41c6eb724af"
+    },
+    {
+      "page": 122,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 26,
+      "printedPage": 117,
+      "evidence": "/grade11/upper/page-122.jpg",
+      "sha256": "5b481507cb897be5ab4726d9648cc6eea759a6540ab24d7623f438203ec6d709"
+    },
+    {
+      "page": 123,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 27,
+      "printedPage": 118,
+      "evidence": "/grade11/upper/page-123.jpg",
+      "sha256": "833b542069c93eb7ca149ba3a56d1ac7b14eea0b628cb5a66e5739af4a424273"
+    },
+    {
+      "page": 124,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 28,
+      "printedPage": 119,
+      "evidence": "/grade11/upper/page-124.jpg",
+      "sha256": "bdba2b668b3b89a9cd7ec08174d89fd016f5a709464c03ad670fb8261fb6fad5"
+    },
+    {
+      "page": 125,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 29,
+      "printedPage": 120,
+      "evidence": "/grade11/upper/page-125.jpg",
+      "sha256": "f60ed1d380472e7a9e0ef336e1d315d065317669927c14888a5f80f930b29ff2"
+    },
+    {
+      "page": 126,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 30,
+      "printedPage": 121,
+      "evidence": "/grade11/upper/page-126.jpg",
+      "sha256": "392ca24dba04e4566e4038b0911b9580cefcd374172c720345476ca8ecaafe8e"
+    },
+    {
+      "page": 127,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 31,
+      "printedPage": 122,
+      "evidence": "/grade11/upper/page-127.jpg",
+      "sha256": "987179c4de662e3c633ace9fa441fa06a320eeb3156e2fe5c2f1f4ae6c3b2fea"
+    },
+    {
+      "page": 128,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 32,
+      "printedPage": 123,
+      "evidence": "/grade11/upper/page-128.jpg",
+      "sha256": "c66f9f711fee878ae89ee9121fa8396bcb93bdb483fa24512533035d9b70a748"
+    },
+    {
+      "page": 129,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 33,
+      "printedPage": 124,
+      "evidence": "/grade11/upper/page-129.jpg",
+      "sha256": "9099c03b29ba0fea108f516e9ae401ab08b3d38b0ca6fb61175dd2dfad094c60"
+    },
+    {
+      "page": 130,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 34,
+      "printedPage": 125,
+      "evidence": "/grade11/source/page-130.jpg",
+      "sha256": "5151e25227847d19b70d9c68cb02984f7d194ad091ac6708212a683a1f6b2c39"
+    },
+    {
+      "page": 131,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 35,
+      "printedPage": 126,
+      "evidence": "/grade11/upper/page-131.jpg",
+      "sha256": "84ca2d8d595763e8951502fe2f1be82c800084218757e6f7b3e8a90ceef71318"
+    },
+    {
+      "page": 132,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 36,
+      "printedPage": 127,
+      "evidence": "/grade11/upper/page-132.jpg",
+      "sha256": "18bfbf7d5137f7935b2c9c720c9a59bbb4989b11a894899cf352a4297bb0dd3a"
+    },
+    {
+      "page": 133,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 37,
+      "printedPage": 128,
+      "evidence": "/grade11/upper/page-133.jpg",
+      "sha256": "a918bc0cab5b198ebbd98209534d8b0e7320e2352a05da019e1567b747f94e82"
+    },
+    {
+      "page": 134,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 38,
+      "printedPage": 129,
+      "evidence": "/grade11/upper/page-134.jpg",
+      "sha256": "6d7f2a04cb50abd55a50a0c019817d758837b02df9c49056341b078d546887aa"
+    },
+    {
+      "page": 135,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 39,
+      "printedPage": 130,
+      "evidence": "/grade11/upper/page-135.jpg",
+      "sha256": "1cf227fd92212b4cc060ccca3823fbb7306ec6d5316ae7c87105387e8c01f4f4"
+    },
+    {
+      "page": 136,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 40,
+      "printedPage": 131,
+      "evidence": "/grade11/upper/page-136.jpg",
+      "sha256": "8fa883b9d0e13b8a4bd4c5af28984195b90b102567844d960c99fe7628f67e4a"
+    },
+    {
+      "page": 137,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 41,
+      "printedPage": 132,
+      "evidence": "/grade11/upper/page-137.jpg",
+      "sha256": "7e9bc8e5ec4ba4ab4b459700203297fe16b2e71ee71045fd7f52084789c0dcf4"
+    },
+    {
+      "page": 138,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 42,
+      "printedPage": 133,
+      "evidence": "/grade11/upper/page-138.jpg",
+      "sha256": "bdc89a6c0f082c9746225a7ed2d1939fcbfd9bce6e01600e0c53ea8893648555"
+    },
+    {
+      "page": 139,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 43,
+      "printedPage": 134,
+      "evidence": "/grade11/upper/page-139.jpg",
+      "sha256": "f8718b0a07447061b9644d466e546ab942920ba7c2389a396673ef1ffb66de09"
+    },
+    {
+      "page": 140,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 44,
+      "printedPage": 135,
+      "evidence": "/grade11/upper/page-140.jpg",
+      "sha256": "ab13877c4d8444783c2ca7c2544cd8f2d16afa4dea7ece19171c7fdbd88b8d9b"
+    },
+    {
+      "page": 141,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 45,
+      "printedPage": 136,
+      "evidence": "/grade11/upper/page-141.jpg",
+      "sha256": "e5f390378c04542934eefc5986a2ad53467a1a165e01efa98778838e0c233128"
+    },
+    {
+      "page": 142,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 46,
+      "printedPage": 137,
+      "evidence": "/grade11/upper/page-142.jpg",
+      "sha256": "5fa055ab6408b61155fadde24f6200c5ebb7f2f98eb6893d55c4c19ab52a92bf"
+    },
+    {
+      "page": 143,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 47,
+      "printedPage": 138,
+      "evidence": "/grade11/source/page-143.jpg",
+      "sha256": "ac76702c78d9939a867db95c52afd40eb05c44913d8fef56c0c70b2b1d46a407"
+    },
+    {
+      "page": 144,
+      "file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+      "pdfPage": 48,
+      "printedPage": 139,
+      "evidence": "/grade11/source/page-144.jpg",
+      "sha256": "f58e84ca2de215cb1cdcc8fe8e3a56907152fb496e73a1cf8e9b278c8a779ec8"
+    }
+  ],
+  "sourceLimitations": [
+    {
+      "page": 15,
+      "note": "Faded text in two Myanmar Star Tortoise notes is explicitly marked rather than invented."
+    },
+    {
+      "page": 79,
+      "note": "Part of Unit 7 vocabulary item 1 is faded in the source; existing uncertainty note retained."
+    },
+    {
+      "page": 109,
+      "note": "Right edge crops some Leisure B instructions/example endings; study restatements explicitly marked."
+    },
+    {
+      "page": 32,
+      "note": "The wording around Unit 3 vocabulary B8 is faded. Existing teacher-supplied laboratory wording is retained, not claimed as freshly verified from the scan."
+    }
+  ]
+}

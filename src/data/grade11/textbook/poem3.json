@@ -1,0 +1,243 @@
+{
+  "title": "Leisure",
+  "author": "W. H. Davies",
+  "sourcePage": 109,
+  "textbookPage": 104,
+  "source_file": "13575. Grade (11) English New Syllabus-97-144.pdf",
+  "stanzas": [
+    [
+      {
+        "english": "What is this life if, full of care,",
+        "myanmar": "ပူပန်မှုတွေနဲ့ ပြည့်နေတဲ့ ဒီဘဝဟာ ဘယ်လိုဘဝမျိုးလဲ၊"
+      },
+      {
+        "english": "We have no time to stand and stare.",
+        "myanmar": "ရပ်ပြီး ငေးကြည့်ဖို့ အချိန်တောင် မရှိရင်ပေါ့။"
+      }
+    ],
+    [
+      {
+        "english": "No time to stand beneath the boughs",
+        "myanmar": "သစ်ကိုင်းများအောက်မှာ ရပ်နေဖို့ အချိန်မရှိ၊"
+      },
+      {
+        "english": "And stare as long as sheep or cows.",
+        "myanmar": "သိုးတွေ၊ နွားတွေလို ကြာကြာငေးကြည့်ဖို့လည်း အချိန်မရှိ။"
+      }
+    ],
+    [
+      {
+        "english": "No time to see, when woods we pass,",
+        "myanmar": "တောကို ဖြတ်သွားတဲ့အခါ ကြည့်ဖို့ အချိန်မရှိ၊"
+      },
+      {
+        "english": "Where squirrels hide their nuts in grass.",
+        "myanmar": "ရှဉ့်တွေက မြက်ထဲ အခွံမာသီးဝှက်ထားတဲ့ နေရာတွေကိုလေ။"
+      }
+    ],
+    [
+      {
+        "english": "No time to see, in broad daylight,",
+        "myanmar": "နေ့ခင်းကြောင်တောင်မှာ ကြည့်ဖို့ အချိန်မရှိ၊"
+      },
+      {
+        "english": "Streams full of stars like skies at night.",
+        "myanmar": "ညကောင်းကင်ကြယ်တွေလို တောက်ပနေတဲ့ စမ်းချောင်းတွေကိုလေ။"
+      }
+    ],
+    [
+      {
+        "english": "No time to turn at Beauty’s glance,",
+        "myanmar": "အလှတရားရဲ့ အကြည့်ဆုံရာကို လှည့်ကြည့်ဖို့ အချိန်မရှိ၊"
+      },
+      {
+        "english": "And watch her feet, how they can dance.",
+        "myanmar": "သူမရဲ့ ခြေလှမ်းတွေ ကခုန်ပုံကို ကြည့်ဖို့လည်း အချိန်မရှိ။"
+      }
+    ],
+    [
+      {
+        "english": "No time to wait till her mouth can",
+        "myanmar": "သူမရဲ့နှုတ်ခမ်းက အပြုံးပြည့်လာမယ့်အထိ၊"
+      },
+      {
+        "english": "Enrich that smile her eyes began.",
+        "myanmar": "မျက်ဝန်းကစတဲ့ အပြုံးကို ပိုလှအောင် လုပ်ချိန်အထိ စောင့်ဖို့ အချိန်မရှိ။"
+      }
+    ],
+    [
+      {
+        "english": "A poor life this if, full of care,",
+        "myanmar": "ပူပန်မှုတွေနဲ့ ပြည့်ပြီး ဆင်းရဲနွမ်းပါးတဲ့ ဘဝပါပဲ၊"
+      },
+      {
+        "english": "We have no time to stand and stare.",
+        "myanmar": "ရပ်ပြီး ငေးကြည့်ဖို့ အချိန်တောင် မရှိရင်လေ။"
+      }
+    ]
+  ],
+  "glossary": [
+    {
+      "word": "boughs",
+      "meaning": "branches of trees",
+      "meaningMy": "သစ်ကိုင်းများ"
+    },
+    {
+      "word": "enrich",
+      "meaning": "to add beauty to something",
+      "meaningMy": "ပိုမိုလှပပြည့်စုံစေသည်"
+    },
+    {
+      "word": "glance",
+      "meaning": "a quick look at something",
+      "meaningMy": "တစ်ချက်လှမ်းကြည့်ခြင်း"
+    }
+  ],
+  "groups": [
+    {
+      "code": "Pre-reading",
+      "instruction": "Pre-reading",
+      "instructionMy": "ကဗျာမဖတ်မီ စဉ်းစားဆွေးနွေးရန်",
+      "items": [
+        {
+          "id": "poem3-Pre-reading-1",
+          "number": 1,
+          "question": "What do you usually do if you have some free time?",
+          "translationMy": "အားလပ်ချိန်ရလျှင် ဘာလုပ်လေ့ရှိသလဲ။",
+          "sourcePage": 109
+        },
+        {
+          "id": "poem3-Pre-reading-2",
+          "number": 2,
+          "question": "What is your favourite leisure activity? Why is it your favourite?",
+          "translationMy": "အနှစ်သက်ဆုံး အားလပ်ချိန်လှုပ်ရှားမှုက ဘာလဲ။ ဘာကြောင့် နှစ်သက်သလဲ။",
+          "sourcePage": 109
+        }
+      ]
+    },
+    {
+      "code": "A",
+      "instruction": "Read the poem and answer the following questions.",
+      "instructionMy": "ကဗျာကိုဖတ်၍ မေးခွန်းများ ဖြေပါ။",
+      "items": [
+        {
+          "id": "poem3-A-1",
+          "number": 1,
+          "question": "What is the concern of the poet?",
+          "translationMy": "ကဗျာဆရာ စိုးရိမ်သည့်အရာက ဘာလဲ။",
+          "sourcePage": 109
+        },
+        {
+          "id": "poem3-A-2",
+          "number": 2,
+          "question": "What does the word ‘woods’ in the third couplet mean?",
+          "translationMy": "တတိယနှစ်ကြောင်းပိုဒ်ရှိ woods သည် ဘာကို ဆိုလိုသလဲ။",
+          "sourcePage": 109
+        },
+        {
+          "id": "poem3-A-3",
+          "number": 3,
+          "question": "Why does the poet capitalize the word ‘Beauty’ in line 9?",
+          "translationMy": "နဝမကြောင်းရှိ Beauty ကို ဘာကြောင့် စာလုံးအကြီးဖြင့် ရေးသလဲ။",
+          "sourcePage": 109
+        },
+        {
+          "id": "poem3-A-4",
+          "number": 4,
+          "question": "Who does the pronoun ‘her’ in the sixth couplet refer to?",
+          "translationMy": "ဆဋ္ဌမနှစ်ကြောင်းပိုဒ်ရှိ her က ဘယ်သူ့ကို ရည်ညွှန်းသလဲ။",
+          "sourcePage": 109
+        },
+        {
+          "id": "poem3-A-5",
+          "number": 5,
+          "question": "Why does the poet repeat the phrase ‘no time’ in the poem?",
+          "translationMy": "no time ကို ဘာကြောင့် ထပ်ခါတလဲလဲ သုံးသလဲ။",
+          "sourcePage": 109
+        },
+        {
+          "id": "poem3-A-6",
+          "number": 6,
+          "question": "Is it important to have leisure? Give reasons for your answer.",
+          "translationMy": "အားလပ်ချိန်ရှိရန် အရေးကြီးသလား။ အကြောင်းပြချက်ပေးပါ။",
+          "sourcePage": 109
+        },
+        {
+          "id": "poem3-A-7",
+          "number": 7,
+          "question": "Suggest two beneficial activities on how to spend leisure.",
+          "translationMy": "အားလပ်ချိန်တွင် အကျိုးရှိစွာလုပ်နိုင်သည့် လှုပ်ရှားမှုနှစ်ခု အကြံပြုပါ။",
+          "sourcePage": 109
+        }
+      ]
+    },
+    {
+      "code": "B",
+      "instruction": "Read what the poet thinks when we do not have time to do and give a suggestion for each situation using ‘must’, ‘should’ or ‘have to’. One is done for you as an example.",
+      "instructionMy": "ကဗျာဆရာ ဖော်ပြထားသော အခြေအနေတစ်ခုစီအတွက် must၊ should သို့မဟုတ် have to သုံး၍ အကြံပြုချက် ရေးပါ။ နမူနာတစ်ခု ပေးထားသည်။",
+      "items": [
+        {
+          "id": "poem3-B-1",
+          "number": 1,
+          "question": "We have no time to stand and stare at things around us like sheep or cows.",
+          "translationMy": "သိုး၊ နွားတို့လို ပတ်ဝန်းကျင်ကို ရပ်၍ ငေးကြည့်ဖို့ အချိန်မရှိပါ။",
+          "sourcePage": 109
+        },
+        {
+          "id": "poem3-B-2",
+          "number": 2,
+          "question": "We have no time to see squirrels hiding their nuts when we pass through woods.",
+          "translationMy": "တောကို ဖြတ်သွားရာတွင် ရှဉ့်တို့ အခွံမာသီးဝှက်ပုံကို ကြည့်ဖို့ အချိန်မရှိပါ။",
+          "sourcePage": 109
+        },
+        {
+          "id": "poem3-B-3",
+          "number": 3,
+          "question": "We have no time to see the beautiful shimmering streams in the sunlight.",
+          "translationMy": "နေရောင်အောက်တွင် တလက်လက်လှပနေသော စမ်းချောင်းများကို ကြည့်ဖို့ အချိန်မရှိပါ။",
+          "sourcePage": 109
+        },
+        {
+          "id": "poem3-B-4",
+          "number": 4,
+          "question": "We have no time to observe the movements of things in nature like the movements of trees, flowers and animals.",
+          "translationMy": "သစ်ပင်၊ ပန်းနှင့် တိရစ္ဆာန်များကဲ့သို့ သဘာဝရှိ အရာတို့၏ လှုပ်ရှားမှုကို စောင့်ကြည့်ဖို့ အချိန်မရှိပါ။",
+          "sourcePage": 109
+        },
+        {
+          "id": "poem3-B-5",
+          "number": 5,
+          "question": "We have no leisure to do what we want.",
+          "translationMy": "မိမိလုပ်ချင်တာကို လုပ်ဖို့ အားလပ်ချိန်မရှိပါ။",
+          "sourcePage": 109
+        }
+      ],
+      "sourceNote": "မူရင်း PDF ၏ ညာဘက်အနားတွင် ညွှန်ကြားချက်၊ နမူနာနှင့် အချို့ဝါကျအဆုံးများ ဖြတ်တောက်နေသည်။ ဖတ်ရှုရသည့် အဓိပ္ပာယ်ကို အခြေခံ၍ ဤ task စာသားအချို့ကို ပြန်စီထားခြင်းဖြစ်ပြီး မူရင်းစာသားအတိအကျဟု မဆိုထားပါ။",
+      "example": {
+        "english": "We have no time to admire nature.\nWe must find time to enjoy the beauty of nature. (or)\nWe should visit the countryside and enjoy its beauty. (or)\nWe have to try to escape from our busy city lives and relax at natural surroundings.",
+        "myanmar": "သဘာဝကို ခံစားကြည့်ရှုဖို့ အချိန်မရှိပါ။\nသဘာဝအလှကို ခံစားရန် အချိန်ရှာရမည်။ သို့မဟုတ် တောရွာသို့ လည်ပတ်သင့်သည်။ သို့မဟုတ် အလုပ်များသောမြို့ပြဘဝမှ ခဏခွာပြီး သဘာဝပတ်ဝန်းကျင်၌ အနားယူရမည်။"
+      }
+    },
+    {
+      "code": "C",
+      "instruction": "Write a rhyming couplet on things that we have no time to do as in the example.",
+      "instructionMy": "နမူနာကဲ့သို့ မိမိအချိန်မရ၍ မလုပ်နိုင်သည့်အရာအကြောင်း ကာရန်ညီနှစ်ကြောင်းကဗျာ ရေးပါ။",
+      "items": [
+        {
+          "id": "poem3-C-1",
+          "number": 1,
+          "question": "Write your own rhyming couplet.",
+          "translationMy": "ကိုယ်ပိုင်ကာရန်ညီနှစ်ကြောင်းကဗျာ ရေးပါ။",
+          "writing": true,
+          "lineTarget": 2,
+          "sourcePage": 109
+        }
+      ],
+      "example": {
+        "english": "No time to talk to family members\nAnd have our meals with pleasures",
+        "myanmar": "မိသားစုဝင်များနှင့် စကားပြောဖို့ အချိန်မရှိ၊\nအေးအေးချမ်းချမ်း ထမင်းစားဖို့လည်း အချိန်မရှိ။"
+      }
+    }
+  ],
+  "sourceNote": "ဤကဗျာ၏ ညာဘက်စာမျက်နှာအနား အနည်းငယ် ဖြတ်တောက်နေသည်။ Exercise B ရှိ ဖတ်မရသော အဆုံးပိုင်းများကို source note ဖြင့် ခွဲပြထားသည်။"
+}

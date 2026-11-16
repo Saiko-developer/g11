@@ -1284,8 +1284,8 @@
       },
       {
         "t": "q",
-        "x": "7. The speaker looked at the audience and took a deep breath. Then, he delivered his speech.",
-        "my": "7. ဟောပြောသူသည် ပရိသတ်ကိုကြည့်ပြီး အသက်ပြင်းပြင်းရှူခဲ့သည်။ ထို့နောက် သူ၏မိန့်ခွန်းကို ပြောခဲ့သည်။",
+        "x": "7. She went through her assignment again. She submitted it to the teacher.",
+        "my": "၇။ သူမသည် အိမ်စာကို နောက်တစ်ကြိမ် ပြန်စစ်ပြီး ဆရာထံ တင်ခဲ့သည်။",
         "id": "1C-71",
         "area": "exercise",
         "sourcePage": 13
@@ -1726,9 +1726,9 @@
         "sourcePage": 15
       },
       {
-        "t": "scan",
-        "x": "",
-        "my": "",
+        "t": "line",
+        "x": "reasons: commonly eaten by people; exported [source text unclear] in neighbouring countries; loss of habitats",
+        "my": "အကြောင်းရင်းများ — လူတို့စားသုံးခြင်း၊ အိမ်နီးချင်းနိုင်ငံများသို့ တင်ပို့ခြင်း၊ နေရင်းဒေသများ ပျောက်ဆုံးခြင်း။ (မူရင်းစာသား၏ အလယ်ပိုင်းအချို့ မရှင်းလင်းပါ။)",
         "id": "1E-17",
         "area": "lesson",
         "sourcePage": 15,
@@ -1741,6 +1741,14 @@
         "id": "1E-18",
         "area": "lesson",
         "sourcePage": 15
+      },
+      {
+        "id": "1E-19",
+        "t": "line",
+        "area": "lesson",
+        "sourcePage": 15,
+        "x": "to release the tortoises back into the wildlife sanctuaries [source text unclear] recovered from illegal trade",
+        "my": "တရားမဝင်ကုန်သွယ်မှုမှ ပြန်လည်ကယ်တင်ရရှိသော လိပ်များကို တောရိုင်းတိရစ္ဆာန်ဘေးမဲ့တောများသို့ ပြန်လွှတ်ရန်။ (မူရင်းစာကြောင်း၏ အလယ်ပိုင်းအချို့ မရှင်းလင်းပါ။)"
       },
       {
         "t": "line",

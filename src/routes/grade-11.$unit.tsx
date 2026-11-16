@@ -1,7 +1,8 @@
+import { G11_REVISION_PAGES, grade11RevisionContext } from "@/lib/grade11Revision";
 import { Grade11UnitPage } from "@/components/grade11/Grade11UnitPage";
 import { UPPER_PAGES } from "@/lib/grade11Upper";
 import { TRAVEL_PAGES } from "@/lib/grade11Travel";
-import { Grade11Review1View, Grade11Poem1View } from "@/components/grade11/Grade11Revision";
+import { Grade11ReviewView, Grade11PoemView } from "@/components/grade11/Grade11Revision";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -11,33 +12,60 @@ import { Grade11PopupTutor } from "@/components/grade11/Grade11PopupTutor";
 
 export const Route = createFileRoute("/grade-11/$unit")({
   loader: ({ params }) => {
-    const unit = getG11Unit(params.unit) ?? TRAVEL_PAGES[params.unit] ?? UPPER_PAGES[params.unit];
+    const unit =
+      G11_REVISION_PAGES[params.unit] ??
+      getG11Unit(params.unit) ??
+      TRAVEL_PAGES[params.unit] ??
+      UPPER_PAGES[params.unit];
     if (!unit) throw notFound();
     return { unit };
   },
   head: ({ loaderData }) => {
-    const t = loaderData ? `Grade 11 ${loaderData.unit.no}: ${loaderData.unit.title} — Sayar Owl` : "Grade 11 — Sayar Owl";
-    const d = loaderData ? `${loaderData.unit.title} (${loaderData.unit.mmTitle}) — Grade 11 English lesson with quizzes.` : "Grade 11 English lesson.";
+    const t = loaderData
+      ? `Grade 11 ${loaderData.unit.no}: ${loaderData.unit.title} — Sayar Owl`
+      : "Grade 11 — Sayar Owl";
+    const d = loaderData
+      ? `${loaderData.unit.title} (${loaderData.unit.mmTitle}) — Grade 11 English lesson with quizzes.`
+      : "Grade 11 English lesson.";
     return {
       meta: [
-        { title: t }, { name: "description", content: d },
-        { property: "og:title", content: t }, { property: "og:description", content: d },
-        { property: "og:type", content: "article" }, { name: "twitter:card", content: "summary_large_image" },
+        { title: t },
+        { name: "description", content: d },
+        { property: "og:title", content: t },
+        { property: "og:description", content: d },
+        { property: "og:type", content: "article" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
     };
   },
   notFoundComponent: () => (
-    <div className="p-10 text-center">Unit not found. <Link to="/grade-11" className="text-primary underline">Back</Link></div>
+    <div className="p-10 text-center">
+      Unit not found.{" "}
+      <Link to="/grade-11" className="text-primary underline">
+        Back
+      </Link>
+    </div>
   ),
   component: UnitPage,
 });
 
 function UnitPage() {
   const { unit } = Route.useLoaderData();
-  const tabs = [...(unit.reading ? ["Reading"] : []), ...unit.sections.map((s) => s.title.split(":")[0])];
+  const tabs = [
+    ...(unit.reading ? ["Reading"] : []),
+    ...unit.sections.map((s) => s.title.split(":")[0]),
+  ];
   const [tab, setTab] = useState(0);
-  if (/^unit-(?:[1-9]|1[0-2])$/.test(unit.id)) return <Grade11UnitPage key={unit.id} unitNumber={Number(unit.id.slice(5))} title={unit.title} mmTitle={unit.mmTitle} />;
-  if (unit.id === "review-1" || unit.id === "poem-1") return <SourceExtraPage poem={unit.id === "poem-1"} />;
+  if (/^unit-(?:[1-9]|1[0-2])$/.test(unit.id))
+    return (
+      <Grade11UnitPage
+        key={unit.id}
+        unitNumber={Number(unit.id.slice(5))}
+        title={unit.title}
+        mmTitle={unit.mmTitle}
+      />
+    );
+  if (/^(review|poem)-[1-4]$/.test(unit.id)) return <SourceExtraPage id={unit.id} />;
   const readingOffset = unit.reading ? 1 : 0;
   const section = tab >= readingOffset ? unit.sections[tab - readingOffset] : null;
 
@@ -45,17 +73,25 @@ function UnitPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
       <main className="mx-auto max-w-4xl px-4 py-6">
-        <Link to="/grade-11" className="text-sm text-primary">← Grade 11 Units</Link>
+        <Link to="/grade-11" className="text-sm text-primary">
+          ← Grade 11 Units
+        </Link>
         <p className="mt-3 text-sm font-semibold text-primary">{unit.no}</p>
         <h1 className="text-3xl font-bold">{unit.title}</h1>
         <p className="text-muted-foreground">{unit.mmTitle}</p>
         {!unit.ready && (
-          <div className="mt-4 rounded-lg border border-border bg-muted p-3 text-sm">🔜 ဒီသင်ခန်းစာကို မကြာမီ အပြည့်အစုံ ထည့်သွင်းပေးပါမည်။</div>
+          <div className="mt-4 rounded-lg border border-border bg-muted p-3 text-sm">
+            🔜 ဒီသင်ခန်းစာကို မကြာမီ အပြည့်အစုံ ထည့်သွင်းပေးပါမည်။
+          </div>
         )}
         <div className="mt-5 flex flex-wrap gap-2">
           {tabs.map((t, i) => (
-            <button key={i} type="button" onClick={() => setTab(i)}
-              className={`rounded-full border px-3 py-1.5 text-sm ${tab === i ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card hover:bg-muted"}`}>
+            <button
+              key={i}
+              type="button"
+              onClick={() => setTab(i)}
+              className={`rounded-full border px-3 py-1.5 text-sm ${tab === i ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card hover:bg-muted"}`}
+            >
               {t}
             </button>
           ))}
@@ -65,12 +101,16 @@ function UnitPage() {
             <>
               <h2 className="text-xl font-semibold">{unit.reading.title}</h2>
               <div className="mt-3 space-y-3 leading-relaxed">
-                {unit.reading.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+                {unit.reading.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
               </div>
               <h3 className="mt-5 font-semibold">Key words</h3>
               <ul className="mt-2 grid gap-2 sm:grid-cols-2">
                 {unit.reading.vocab.map((v) => (
-                  <li key={v.word} className="rounded-md bg-muted px-3 py-2 text-sm"><b>{v.word}</b> — {v.mm}</li>
+                  <li key={v.word} className="rounded-md bg-muted px-3 py-2 text-sm">
+                    <b>{v.word}</b> — {v.mm}
+                  </li>
                 ))}
               </ul>
               <h3 className="mt-5 font-semibold">Comprehension</h3>
@@ -82,13 +122,23 @@ function UnitPage() {
               <h2 className="text-xl font-semibold">{section.title}</h2>
               <p className="text-sm text-muted-foreground">{section.mm}</p>
               <ul className="mt-3 list-disc space-y-1.5 pl-5">
-                {section.points.map((p, i) => <li key={i}>{p}</li>)}
+                {section.points.map((p, i) => (
+                  <li key={i}>{p}</li>
+                ))}
               </ul>
-              {section.quiz && (<><h3 className="mt-5 font-semibold">Practice</h3><G11QuizBlock key={tab} items={section.quiz} /></>)}
+              {section.quiz && (
+                <>
+                  <h3 className="mt-5 font-semibold">Practice</h3>
+                  <G11QuizBlock key={tab} items={section.quiz} />
+                </>
+              )}
             </>
           )}
         </section>
-        <Link to="/tutor" className="mt-5 inline-flex rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">
+        <Link
+          to="/tutor"
+          className="mt-5 inline-flex rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
+        >
           🦉 ဆရာဇီးကွက်ကို မေးမည်
         </Link>
       </main>
@@ -96,7 +146,25 @@ function UnitPage() {
   );
 }
 
-function SourceExtraPage({ poem }: { poem: boolean }) {
-  const title = poem ? "Poem 1 — Bridges" : "Review 1";
-  return <div className="min-h-screen bg-background text-foreground"><SiteHeader /><main className="mx-auto max-w-6xl px-4 py-6"><Link to="/grade-11" className="text-sm text-primary">← Grade 11 Units</Link><h1 className="mt-4 text-3xl font-bold">{title}</h1><div className="mt-5" data-saya-home-section>{poem ? <Grade11Poem1View /> : <Grade11Review1View />}</div><Grade11PopupTutor key={title} lessonContext={`Grade 11 English · ${title}`} /></main></div>;
+function SourceExtraPage({ id }: { id: string }) {
+  const unit = G11_REVISION_PAGES[id];
+  const number = Number(id.split("-")[1]);
+  const poetry = id.startsWith("poem-");
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <SiteHeader />
+      <main className="mx-auto max-w-6xl px-4 py-6">
+        <Link to="/grade-11" className="text-sm text-primary">
+          ← Grade 11 Units
+        </Link>
+        <h1 className="mt-4 text-3xl font-bold">
+          {poetry ? `${unit.no} — ${unit.title}` : unit.title}
+        </h1>
+        <div className="mt-5" data-saya-home-section>
+          {poetry ? <Grade11PoemView number={number} /> : <Grade11ReviewView number={number} />}
+        </div>
+        <Grade11PopupTutor key={id} lessonContext={grade11RevisionContext(id)} />
+      </main>
+    </div>
+  );
 }

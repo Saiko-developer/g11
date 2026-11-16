@@ -1,0 +1,206 @@
+{
+  "official_answer_key": false,
+  "note": "Study suggestions derived from the printed poem, not a publisher answer key. Interpretations and personal/creative work are not exact-match exercises.",
+  "sections": [
+    {
+      "code": "Pre-reading",
+      "items": [
+        {
+          "blockId": "poem3-Pre-reading-1",
+          "question": "What do you usually do if you have some free time?",
+          "questionMy": "အားလပ်ချိန်ရလျှင် ဘာလုပ်လေ့ရှိသလဲ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            109
+          ]
+        },
+        {
+          "blockId": "poem3-Pre-reading-2",
+          "question": "What is your favourite leisure activity? Why is it your favourite?",
+          "questionMy": "အနှစ်သက်ဆုံး အားလပ်ချိန်လှုပ်ရှားမှုက ဘာလဲ။ ဘာကြောင့် နှစ်သက်သလဲ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            109
+          ]
+        }
+      ]
+    },
+    {
+      "code": "A",
+      "items": [
+        {
+          "blockId": "poem3-A-1",
+          "question": "What is the concern of the poet?",
+          "questionMy": "ကဗျာဆရာ စိုးရိမ်သည့်အရာက ဘာလဲ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "The poet is concerned that our busy, worried lives leave no time to enjoy nature and beauty.",
+          "answerMy": "အလုပ်နှင့် ပူပန်မှုများကြောင့် သဘာဝအလှကို ခံစားဖို့ အချိန်မရှိခြင်းကို စိုးရိမ်သည်။",
+          "sourcePages": [
+            109
+          ]
+        },
+        {
+          "blockId": "poem3-A-2",
+          "question": "What does the word ‘woods’ in the third couplet mean?",
+          "questionMy": "တတိယနှစ်ကြောင်းပိုဒ်ရှိ woods သည် ဘာကို ဆိုလိုသလဲ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "It means a forest or an area covered with trees.",
+          "answerMy": "သစ်တော သို့မဟုတ် သစ်ပင်များရှိသော နေရာကို ဆိုလိုသည်။",
+          "sourcePages": [
+            109
+          ]
+        },
+        {
+          "blockId": "poem3-A-3",
+          "question": "Why does the poet capitalize the word ‘Beauty’ in line 9?",
+          "questionMy": "နဝမကြောင်းရှိ Beauty ကို ဘာကြောင့် စာလုံးအကြီးဖြင့် ရေးသလဲ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "He personifies beauty as a woman, giving the abstract idea a human form.",
+          "answerMy": "အလှတရားကို အမျိုးသမီးတစ်ဦးအဖြစ် တင်စားထားသောကြောင့် ဖြစ်သည်။",
+          "sourcePages": [
+            109
+          ]
+        },
+        {
+          "blockId": "poem3-A-4",
+          "question": "Who does the pronoun ‘her’ in the sixth couplet refer to?",
+          "questionMy": "ဆဋ္ဌမနှစ်ကြောင်းပိုဒ်ရှိ her က ဘယ်သူ့ကို ရည်ညွှန်းသလဲ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "It refers to Beauty, personified as a woman.",
+          "answerMy": "အမျိုးသမီးတစ်ဦးအဖြစ် တင်စားထားသော အလှတရားကို ရည်ညွှန်းသည်။",
+          "sourcePages": [
+            109
+          ]
+        },
+        {
+          "blockId": "poem3-A-5",
+          "question": "Why does the poet repeat the phrase ‘no time’ in the poem?",
+          "questionMy": "no time ကို ဘာကြောင့် ထပ်ခါတလဲလဲ သုံးသလဲ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "The repetition emphasizes how constantly busy people are and how much beauty they miss.",
+          "answerMy": "လူတို့၏ မအားလပ်မှုနှင့် လွတ်သွားသော အလှတရားများကို အလေးပေးရန် ဖြစ်သည်။",
+          "sourcePages": [
+            109
+          ]
+        },
+        {
+          "blockId": "poem3-A-6",
+          "question": "Is it important to have leisure? Give reasons for your answer.",
+          "questionMy": "အားလပ်ချိန်ရှိရန် အရေးကြီးသလား။ အကြောင်းပြချက်ပေးပါ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            109
+          ]
+        },
+        {
+          "blockId": "poem3-A-7",
+          "question": "Suggest two beneficial activities on how to spend leisure.",
+          "questionMy": "အားလပ်ချိန်တွင် အကျိုးရှိစွာလုပ်နိုင်သည့် လှုပ်ရှားမှုနှစ်ခု အကြံပြုပါ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            109
+          ]
+        }
+      ]
+    },
+    {
+      "code": "B",
+      "items": [
+        {
+          "blockId": "poem3-B-1",
+          "question": "We have no time to stand and stare at things around us like sheep or cows.",
+          "questionMy": "သိုး၊ နွားတို့လို ပတ်ဝန်းကျင်ကို ရပ်၍ ငေးကြည့်ဖို့ အချိန်မရှိပါ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            109
+          ]
+        },
+        {
+          "blockId": "poem3-B-2",
+          "question": "We have no time to see squirrels hiding their nuts when we pass through woods.",
+          "questionMy": "တောကို ဖြတ်သွားရာတွင် ရှဉ့်တို့ အခွံမာသီးဝှက်ပုံကို ကြည့်ဖို့ အချိန်မရှိပါ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            109
+          ]
+        },
+        {
+          "blockId": "poem3-B-3",
+          "question": "We have no time to see the beautiful shimmering streams in the sunlight.",
+          "questionMy": "နေရောင်အောက်တွင် တလက်လက်လှပနေသော စမ်းချောင်းများကို ကြည့်ဖို့ အချိန်မရှိပါ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            109
+          ]
+        },
+        {
+          "blockId": "poem3-B-4",
+          "question": "We have no time to observe the movements of things in nature like the movements of trees, flowers and animals.",
+          "questionMy": "သစ်ပင်၊ ပန်းနှင့် တိရစ္ဆာန်များကဲ့သို့ သဘာဝရှိ အရာတို့၏ လှုပ်ရှားမှုကို စောင့်ကြည့်ဖို့ အချိန်မရှိပါ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            109
+          ]
+        },
+        {
+          "blockId": "poem3-B-5",
+          "question": "We have no leisure to do what we want.",
+          "questionMy": "မိမိလုပ်ချင်တာကို လုပ်ဖို့ အားလပ်ချိန်မရှိပါ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            109
+          ]
+        }
+      ]
+    },
+    {
+      "code": "C",
+      "items": [
+        {
+          "blockId": "poem3-C-1",
+          "question": "Write your own rhyming couplet.",
+          "questionMy": "ကိုယ်ပိုင်ကာရန်ညီနှစ်ကြောင်းကဗျာ ရေးပါ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            109
+          ]
+        }
+      ]
+    }
+  ]
+}

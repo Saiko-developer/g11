@@ -1,0 +1,184 @@
+{
+  "official_answer_key": false,
+  "note": "Study suggestions derived from the printed poem, not a publisher answer key. Interpretations and personal/creative work are not exact-match exercises.",
+  "sections": [
+    {
+      "code": "Pre-reading",
+      "items": [
+        {
+          "blockId": "poem4-Pre-reading-1",
+          "question": "Have you ever seen snow?",
+          "questionMy": "နှင်းကို မြင်ဖူးသလား။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            144
+          ]
+        },
+        {
+          "blockId": "poem4-Pre-reading-2",
+          "question": "How do you feel when you see a beautiful scene in nature?",
+          "questionMy": "လှပသောသဘာဝရှုခင်းကို မြင်လျှင် ဘယ်လိုခံစားရသလဲ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            144
+          ]
+        },
+        {
+          "blockId": "poem4-Pre-reading-3",
+          "question": "If you see a beautiful scene, do you stop to enjoy the beauty?",
+          "questionMy": "လှပသောရှုခင်းကို တွေ့လျှင် ရပ်ပြီး အလှခံစားကြည့်သလား။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            144
+          ]
+        },
+        {
+          "blockId": "poem4-Pre-reading-4",
+          "question": "Where do you usually go when you want to have peace of mind?",
+          "questionMy": "စိတ်အေးချမ်းချင်လျှင် ဘယ်နေရာသို့ သွားလေ့ရှိသလဲ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            144
+          ]
+        }
+      ]
+    },
+    {
+      "code": "A",
+      "items": [
+        {
+          "blockId": "poem4-A-1",
+          "question": "Who is the speaker of the poem?",
+          "questionMy": "ကဗျာထဲမှ ပြောသူက ဘယ်သူလဲ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "The speaker is a traveller who stops by the woods with his horse.",
+          "answerMy": "မြင်းနှင့်အတူ တောအုပ်နား ရပ်ကြည့်နေသော ခရီးသွားတစ်ဦး ဖြစ်သည်။",
+          "sourcePages": [
+            144
+          ]
+        },
+        {
+          "blockId": "poem4-A-2",
+          "question": "Where does the owner of the woods live?",
+          "questionMy": "တောအုပ်ပိုင်ရှင်သည် ဘယ်မှာ နေသလဲ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "He lives in the village.",
+          "answerMy": "ရွာထဲတွင် နေသည်။",
+          "sourcePages": [
+            144
+          ]
+        },
+        {
+          "blockId": "poem4-A-3",
+          "question": "Why does the speaker stop by the woods?",
+          "questionMy": "ပြောသူသည် တောအုပ်နား ဘာကြောင့် ရပ်သလဲ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "He stops to watch the woods fill up with snow and enjoy their beauty.",
+          "answerMy": "တောအုပ်ကို နှင်းဖုံးလာပုံနှင့် အလှကို ကြည့်ခံစားရန် ရပ်သည်။",
+          "sourcePages": [
+            144
+          ]
+        },
+        {
+          "blockId": "poem4-A-4",
+          "question": "Why does the horse give his harness bells a shake?",
+          "questionMy": "မြင်းသည် ဇက်ကြိုးခေါင်းလောင်းကို ဘာကြောင့် လှုပ်ခတ်သလဲ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "The horse seems to ask whether stopping there is a mistake, since there is no farmhouse nearby.",
+          "answerMy": "အနီး၌ လယ်တောအိမ်မရှိဘဲ ရပ်နေသည်မှာ မှားနေသလားဟု မေးသည့်အလား ဖြစ်သည်။",
+          "sourcePages": [
+            144
+          ]
+        },
+        {
+          "blockId": "poem4-A-5",
+          "question": "What sound can the speaker hear besides the ringing of the bells?",
+          "questionMy": "ခေါင်းလောင်းသံအပြင် ဘယ်အသံကို ကြားရသလဲ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "He hears the sweep of the easy wind and the downy snowflakes.",
+          "answerMy": "လေပြေညင်းနှင့် နူးညံ့သော နှင်းပွင့်များ၏ ရွေ့လျားသံကို ကြားရသည်။",
+          "sourcePages": [
+            144
+          ]
+        },
+        {
+          "blockId": "poem4-A-6",
+          "question": "Why doesn’t he stop for long to enjoy the beauty of nature?",
+          "questionMy": "သဘာဝအလှကို ခံစားရန် ဘာကြောင့် ကြာကြာမရပ်သလဲ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "He has promises to keep and miles to travel before he can sleep.",
+          "answerMy": "တည်ရမည့်ကတိများနှင့် မအိပ်မီ ဆက်သွားရမည့်ခရီး ရှိနေသောကြောင့် ဖြစ်သည်။",
+          "sourcePages": [
+            144
+          ]
+        },
+        {
+          "blockId": "poem4-A-7",
+          "question": "What rhyming words are used in each stanza?",
+          "questionMy": "ကဗျာပိုဒ်တစ်ပိုဒ်စီတွင် ကာရန်ညီစကားလုံးများက ဘာတွေလဲ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "Stanza 1: know, though, snow. Stanza 2: queer, near, year. Stanza 3: shake, mistake, flake. Stanza 4: deep, keep, sleep, sleep.",
+          "answerMy": "ပထမပိုဒ် know/though/snow၊ ဒုတိယပိုဒ် queer/near/year၊ တတိယပိုဒ် shake/mistake/flake၊ နောက်ဆုံးပိုဒ် deep/keep/sleep/sleep တို့ ကာရန်ညီသည်။",
+          "sourcePages": [
+            144
+          ]
+        },
+        {
+          "blockId": "poem4-A-8",
+          "question": "What feeling do you get after reading the poem?",
+          "questionMy": "ကဗျာဖတ်ပြီး ဘယ်လိုခံစားရသလဲ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            144
+          ]
+        },
+        {
+          "blockId": "poem4-A-9",
+          "question": "What message does the poet want to give to the readers?",
+          "questionMy": "ကဗျာဆရာက စာဖတ်သူကို ဘယ်သတင်းစကား ပေးချင်သလဲ။",
+          "status": "source-derived",
+          "kind": "suggested",
+          "answer": "One possible interpretation is that we can appreciate beauty, but must also fulfil our promises and responsibilities. Other interpretations need evidence from the poem.",
+          "answerMy": "သဘာဝအလှကို ခံစားနိုင်သော်လည်း ကတိနှင့်တာဝန်များကိုလည်း ဖြည့်ဆည်းရမည်ဟု ယူဆနိုင်သည်။ အခြားအမြင်များကိုလည်း ကဗျာအထောက်အထားနှင့် ရှင်းနိုင်သည်။",
+          "sourcePages": [
+            144
+          ]
+        },
+        {
+          "blockId": "poem4-A-10",
+          "question": "Think of a place (or a person or things) that you can’t help stopping and watching for some time. Then, write a four-line verse as in the second stanza of the poem ‘Stopping by Woods on a Snowy Evening’ using the clues given in brackets.",
+          "questionMy": "မရပ်ဘဲမကြည့်ဘဲ မနေနိုင်သော နေရာ၊ လူ သို့မဟုတ် အရာတစ်ခုကို စဉ်းစားပါ။ ကွင်းပါသဲလွန်စအတိုင်း ဒုတိယပိုဒ်ပုံစံ လေးကြောင်းကဗျာ ရေးပါ။",
+          "status": "personal-response",
+          "kind": "suggested",
+          "answer": null,
+          "answerMy": null,
+          "sourcePages": [
+            144
+          ]
+        }
+      ]
+    }
+  ]
+}
