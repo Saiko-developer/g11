@@ -64,9 +64,10 @@ function clock(seconds: number) {
 }
 it("uses source time without synthetic subtitle delay; handles pause, gaps, backwards seeks and end", async () => {
   await setup();
-  expect(options.playerVars).toMatchObject({ start: 34, end: 50 });
+  expect(options.playerVars).toMatchObject({ autoplay: 0, start: 34, end: 50 });
   expect(seek).toHaveBeenCalledWith(34, true);
   expect(play).not.toHaveBeenCalled();
+  expect(pause).toHaveBeenCalledTimes(1);
   const caption = screen.getByRole("status", { name: "Myanmar video subtitle" });
   clock(34);
   expect(within(caption).getByText("ပထမစာတန်း")).toBeVisible();

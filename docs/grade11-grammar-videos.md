@@ -19,7 +19,7 @@ Sources include the YouTube descriptions linked in the catalog, the official Oxf
 
 ## Myanmar subtitle integration
 
-Grade 11 now has a source-clock subtitle player for the exact existing Grade 10 recordings `W3HdjN3cLiM` (Unit 2 Simple/Continuous) and `fDnXWxXZekw` (Unit 7 Passive), plus eight user-supplied translated recordings listed below. The Grade 10 player, translations, timestamps and configuration are unchanged. Tracks are bundled and reused without per-student translation/API calls.
+Grade 11 now has a source-clock subtitle player for the exact existing Grade 10 recordings `W3HdjN3cLiM` (Unit 2 Simple/Continuous) and `fDnXWxXZekw` (Unit 7 Passive), plus sixteen user-supplied translated recordings listed below. Grade 10 translations, timestamps and video selection are unchanged. Both grades now explicitly start paused; only this initial-play behavior of the shared Grade 10 player is changed. Tracks are bundled and reused without per-student translation/API calls.
 
 Timing behavior:
 - Native YouTube clock sampled every 100ms; no simulated playback timer and no blanket 0.5-second delay.
@@ -35,7 +35,7 @@ The existing Simple/Continuous source has a backwards marker at 80 seconds after
 
 ### Remaining content work
 
-There are 22 topic entries / 20 unique YouTube recordings in the catalog. Ten recordings now have timed Myanmar tracks. The remaining 10 recordings, including Lucy's Present Perfect excerpt, still require source timed English captions and a checked Myanmar translation. They show an explicit subtitle-unavailable note rather than unrelated or fabricated captions. Source `.srt` / `.vtt` files are needed to complete those tracks reliably.
+There are 22 topic entries / 20 unique YouTube recordings in the catalog. Eighteen recordings now have timed Myanmar tracks. The remaining two recordings (Lucy's Unit 2 Present Perfect excerpt and Unit 11's cleft-sentence video) still require source timed English captions and a checked Myanmar translation. They show an explicit subtitle-unavailable note rather than unrelated or fabricated captions. Source `.srt` / `.vtt` files are needed to complete those tracks reliably.
 
 Verification covers cue boundaries/gaps, absolute-time clipping, backwards seeks, pause behavior, transcript seeking, clip end, stale callback cleanup, loader timeout/retry and exact-video matching. Browser checks use a controlled YouTube clock; live media playback and word-level listening verification remain unverified.
 
@@ -74,3 +74,25 @@ Two excerpt boundaries now follow supplied markers rather than earlier approxima
 The gerund video's classification of some -ing constructions is its own terminology. The translation preserves its lesson meaning; it does not replace textbook rules or existing exercises. Existing Grade 10 subtitles and classroom audio/scripts are unchanged.
 
 Seven-topic browser checks also exercise the two reused topic views, absolute source-clock captions, mobile width, transcript visibility, source video IDs and Unit 5 clip boundaries. The clock is controlled for verification; live video/audio alignment remains unverified.
+
+
+### Eight further transcripts and manual playback
+
+Six further uploaded files and two inline user-message transcripts add eight tracks, with 503 supplied start markers in total. Uploaded originals are copied unchanged; inline excerpts are normalized to human-readable timestamp/text pairs and identified by `sourceFormat: inline-human-time`. Their English wording and timestamps follow the message. Every JSON records the hash of its corresponding retained evidence file.
+
+| Topic | Video ID | Markers | View |
+| --- | --- | ---: | --- |
+| As if / As though | TItI5ucoZnA | 9 | Unit 6 |
+| Impersonal passive | MpsrdpUKOTA | 57 | Unit 7 |
+| Reported speech | eplQBhE0-Hg | 60 | Unit 8 |
+| Future simple / continuous | 1zWuafmkCJ8 | 154 | Unit 9 |
+| By | HivYxhaER3o | 72 | Unit 10 |
+| Participle clauses | H8E5EF0IEN0 | 25 | Unit 10 |
+| Can / Could | TqES1mwxjpI | 69 | Unit 12 |
+| So / Such … that | JUQZxGkRW04 | 57 | Unit 12 |
+
+The By upload begins at 00:16: its opening 16 seconds remain uncaptained rather than inventing missing text or shifting the source time. Participle clauses begin at the supplied 1-second marker. Nonspoken headings/`Sync to video time` footers are excluded from cues. The eight final cues use actual YouTube duration, with no guessed end. Translations retain the lesson meaning and source timing; English ASR artifacts remain in evidence. These examples support textbook learning and do not replace textbook rules or exercises.
+
+Manual playback is now explicit for both grades: `autoplay=0` for plain iframe embeds and API players, plus `pauseVideo()` on ready. Grade 11 seeks to the configured clip start before pausing. Page load and topic switching do not call `playVideo()`. Clicking Play or selecting a transcript cue is intentional student interaction; transcript navigation can start playback. All existing Grade 10 caption timing rules remain unchanged.
+
+Regression checks cover both Grade 10 embed paths, Grade 11 initial pause, user-triggered transcript playback, every supplied source marker/translation and all eight new topic views on desktop/mobile. Provider media is mocked during browser checks; live listening verification is still not claimed.

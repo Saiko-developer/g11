@@ -1,0 +1,424 @@
+{
+  "videoId": "TqES1mwxjpI",
+  "source": "User-provided Pasted text.txt",
+  "sourceFormat": "youtube-copy",
+  "sourceSha256": "d3f41de695b828dfa13ef8f89f9648bcd94982cb1725713c166847d9e239eb4a",
+  "timingBasis": "Original source start markers; each end is the next source marker. No offset or interpolation.",
+  "cues": [
+    {
+      "start": 1,
+      "end": 10,
+      "en": "Hello, I'm Oli. Welcome to Oxford Online English. In this lesson, you can learn about using modal verbs to express ability.",
+      "my": "မင်္ဂလာပါ၊ ကျွန်တော် Oli ပါ။ Oxford Online English မှ ကြိုဆိုပါတယ်။ ဒီသင်ခန်းစာမှာ စွမ်းရည်ဖော်ပြဖို့ modal verb သုံးပုံ လေ့လာကြမယ်။"
+    },
+    {
+      "start": 10,
+      "end": 18,
+      "en": "If you don't know what modal verbs are, or why you should care about them, watch this lesson, which gives you an introduction to the topic.",
+      "my": "Modal verb ဆိုတာ ဘာလဲ၊ ဘာကြောင့်အရေးကြီးလဲ မသိသေးရင် မိတ်ဆက်သင်ခန်းစာကို ကြည့်နိုင်ပါတယ်။"
+    },
+    {
+      "start": 18,
+      "end": 26,
+      "en": "So in this lesson, we're going to focus on using the verbs 'can' and 'could' to talk about ability.",
+      "my": "ဒီသင်ခန်းစာမှာတော့ လုပ်နိုင်စွမ်းအကြောင်း ပြောဖို့ can နဲ့ could ကို အဓိကထားပါမယ်။"
+    },
+    {
+      "start": 26,
+      "end": 30,
+      "en": "You will also learn about the verbs 'be able to' and 'managed to'.",
+      "my": "Be able to နဲ့ managed to ဆိုတဲ့ verb အသုံးတွေကိုလည်း လေ့လာရပါမယ်။"
+    },
+    {
+      "start": 30,
+      "end": 43,
+      "en": "These verbs are not modal verbs, but we can't use 'can' or 'could' in every situation to talk about ability, so we sometimes need to use a different, non-modal verb.",
+      "my": "ဒါတွေက modal verb မဟုတ်ပါဘူး။ Can၊ could ကို စွမ်းရည်ဖော်ပြရာ အခြေအနေအားလုံးမှာ မသုံးနိုင်လို့ တစ်ခါတလေ အခြားကြိယာကို သုံးရတာပါ။"
+    },
+    {
+      "start": 43,
+      "end": 54,
+      "en": "First of all, let's look at using 'can' and 'could' to talk about ability. You can use 'can' to talk about abilities in the present or the future.",
+      "my": "ပထမဆုံး can၊ could နဲ့ စွမ်းရည်ဖော်ပြပုံ ကြည့်ပါ။ Can ကို လက်ရှိ ဒါမှမဟုတ် အနာဂတ်လုပ်နိုင်စွမ်းအတွက် သုံးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 54,
+      "end": 67,
+      "en": "For example: \"She can speak Spanish very well.\" Or: \"Can you come with us on Saturday?\" You can also use 'could' to talk about general abilities in the past.",
+      "my": "“She can speak Spanish very well.” “Can you come with us on Saturday?” လို့ ပြောနိုင်ပါတယ်။ Could ကတော့ အတိတ်က ယေဘုယျလုပ်နိုင်စွမ်းအတွက်ပါ။"
+    },
+    {
+      "start": 67,
+      "end": 78,
+      "en": "For example: \"I could run much faster when I was younger.\" 'When I was younger' is a general ability, so I could run faster any time I wanted.",
+      "my": "“I could run much faster when I was younger.” ငယ်တုန်းက ပိုမြန်မြန်ပြေးနိုင်ခဲ့တယ်။ လုပ်ချင်တဲ့အချိန်တိုင်း လုပ်နိုင်ခဲ့တဲ့ ယေဘုယျစွမ်းရည်ပါ။"
+    },
+    {
+      "start": 78,
+      "end": 88,
+      "en": "\"She could play the violin when she was a child.\" Again, this is a general ability about a longer period in the past.",
+      "my": "“She could play the violin when she was a child.” ကလေးဘဝမှာ တယောတီးနိုင်ခဲ့တယ်။ အတိတ်က ကာလတစ်ခုလုံးအတွင်းရှိ စွမ်းရည်ကို ပြောတာပါ။"
+    },
+    {
+      "start": 88,
+      "end": 91,
+      "en": "This is quite simple, and I'm sure you're familiar with it.",
+      "my": "ဒါက ရိုးရှင်းပြီး သင်သိပြီးသား ဖြစ်မယ်ထင်ပါတယ်။"
+    },
+    {
+      "start": 91,
+      "end": 100,
+      "en": "However, there are many situations where you can't use 'can' or 'could' to talk about ability, and we need to use a different verb.",
+      "my": "ဒါပေမဲ့ can၊ could ကို စွမ်းရည်အတွက် မသုံးနိုင်တဲ့ အခြေအနေတွေရှိလို့ တခြား verb ကို လိုပါတယ်။"
+    },
+    {
+      "start": 100,
+      "end": 107,
+      "en": "One of these verbs is 'be able to'. Generally, 'can' and 'be able to' have the same meaning.",
+      "my": "အဲဒီတစ်ခုက be able to ပါ။ ယေဘုယျအားဖြင့် can နဲ့ be able to က အဓိပ္ပာယ်တူပါတယ်။"
+    },
+    {
+      "start": 107,
+      "end": 114,
+      "en": "So, you can usually use either verb without any difference in meaning: \"She can speak",
+      "my": "ဒါကြောင့် အများအားဖြင့် နှစ်မျိုးထဲက တစ်ခုကို ရွေးသုံးနိုင်ပါတယ်။ “She can speak…”"
+    },
+    {
+      "start": 114,
+      "end": 122,
+      "en": "Spanish very well,\" or: \"She's able to speak Spanish very well.\" These two sentences have the same meaning.",
+      "my": "“…Spanish very well.” နဲ့ “She’s able to speak Spanish very well.” တို့က အဓိပ္ပာယ်တူပါတယ်။"
+    },
+    {
+      "start": 122,
+      "end": 134,
+      "en": "\"I could run much faster when I was younger,\" or: \"I was able to run much faster when I was younger.\" Again, there's no difference in meaning between these two sentences.",
+      "my": "“I could run much faster when I was younger.” နဲ့ “I was able to run much faster when I was younger.” တို့လည်း အဓိပ္ပာယ် မကွာပါဘူး။"
+    },
+    {
+      "start": 134,
+      "end": 139,
+      "en": "However, you can't use 'can' or 'could' in every verb tense.",
+      "my": "ဒါပေမဲ့ can၊ could ကို tense အားလုံးနဲ့ မသုံးနိုင်ပါဘူး။"
+    },
+    {
+      "start": 139,
+      "end": 148,
+      "en": "If you want to use, for example, the present perfect form, there's no form of 'can' or 'could' which you can use.",
+      "my": "ဥပမာ present perfect ပုံစံကို သုံးချင်ရင် can၊ could မှာ အဲဒီ tense ပုံစံ မရှိပါဘူး။"
+    },
+    {
+      "start": 148,
+      "end": 154,
+      "en": "So in these cases, you need to use a form of 'be able to'.",
+      "my": "ဒီလိုအခြေအနေမှာ be able to ရဲ့ သက်ဆိုင်ရာပုံစံကို သုံးရပါတယ်။"
+    },
+    {
+      "start": 154,
+      "end": 164,
+      "en": "For example: \"He's been able to swim since he was two years old.\" There's no way to use 'can' or 'could' in this sentence and keep the same meaning.",
+      "my": "“He’s been able to swim since he was two years old.” နှစ်နှစ်သားကတည်းက ရေကူးနိုင်ခဲ့တယ်။ အဓိပ္ပာယ်အတူတူနဲ့ ဒီနေရာမှာ can၊ could ကို သုံးလို့မရပါဘူး။"
+    },
+    {
+      "start": 164,
+      "end": 166,
+      "en": "We have to use 'be able to'.",
+      "my": "Be able to ကိုပဲ သုံးရပါတယ်။"
+    },
+    {
+      "start": 166,
+      "end": 176,
+      "en": "\"I like being able to choose my own working hours.\" After the verb 'like', we need a verb with '-ing', so we need to use 'be able to'.",
+      "my": "“I like being able to choose my own working hours.” ကိုယ့်အလုပ်ချိန်ကို ရွေးနိုင်တာကို ကြိုက်တယ်။ ဒီဥပမာမှာ like နောက် -ing ပုံစံသုံးဖို့ be able to ကို ပြောင်းသုံးရပါတယ်။"
+    },
+    {
+      "start": 176,
+      "end": 184,
+      "en": "Again, there's no way to use 'can' or 'could' in this sentence. There are many cases like this.",
+      "my": "ဒီဝါကျမှာလည်း can၊ could နဲ့ ပြောလို့မရပါဘူး။ ဒီလိုအခြေအနေတွေ အများကြီး ရှိပါတယ်။"
+    },
+    {
+      "start": 184,
+      "end": 191,
+      "en": "Generally, if you have a choice, it's better to use 'can' or 'could', because it makes your sentence simpler and shorter.",
+      "my": "ယေဘုယျအားဖြင့် နှစ်မျိုးလုံး ရွေးသုံးနိုင်ရင် can၊ could က ပိုတိုပြီး ရိုးရှင်းလို့ ပိုသင့်တော်ပါတယ်။"
+    },
+    {
+      "start": 191,
+      "end": 199,
+      "en": "We sometimes choose to use 'be able to', even when 'can' or 'could' are possible, because it sounds more formal.",
+      "my": "တစ်ခါတလေ can၊ could သုံးလို့ရပေမယ့် ပိုတရားဝင်ဆန်အောင် be able to ကို ရွေးသုံးတတ်ပါတယ်။"
+    },
+    {
+      "start": 199,
+      "end": 208,
+      "en": "OK, now let's look at ability in the past: 'could' vs. 'be able to'. This gets a little bit more complicated.",
+      "my": "အခု အတိတ်လုပ်နိုင်စွမ်းအတွက် could နဲ့ be able to ကို ကြည့်ကြမယ်။ နည်းနည်းပိုရှုပ်လာပါမယ်။"
+    },
+    {
+      "start": 208,
+      "end": 217,
+      "en": "Let's look at an example sentence: \"The traffic was really bad, but we could catch our train.\" Does it sound right to you?",
+      "my": "“The traffic was really bad, but we could catch our train.” ယာဉ်ကြောအရမ်းကျပ်ပေမယ့် ရထားမီခဲ့တယ်ဆိုတဲ့ ဝါကျက မှန်သလို ခံစားရလား။"
+    },
+    {
+      "start": 217,
+      "end": 220,
+      "en": "What do you think?",
+      "my": "ဘယ်လိုထင်သလဲ။"
+    },
+    {
+      "start": 220,
+      "end": 228,
+      "en": "If you said it sounds wrong, you're actually correct; this sentence is not right, it's not possible. Do you know why?",
+      "my": "မမှန်သလိုခံစားရတယ်ဆိုရင် အဲဒါမှန်ပါတယ်။ ဒီဝါကျမှာ could သုံးတာ မသင့်တော်ပါဘူး။ ဘာကြောင့်လဲ။"
+    },
+    {
+      "start": 228,
+      "end": 238,
+      "en": "The answer is this sentence is talking about a specific ability at a specific moment in the past.",
+      "my": "အတိတ်က အချိန်တစ်ခု၊ အခြေအနေတစ်ခုမှာ အောင်မြင်စွာ လုပ်နိုင်ခဲ့တာကို ပြောနေလို့ပါ။"
+    },
+    {
+      "start": 238,
+      "end": 244,
+      "en": "In this case, you can't use 'could'; you need to use a different verb.",
+      "my": "ဒီအခြေအနေမှာ could အစား တခြားပုံစံ လိုပါတယ်။"
+    },
+    {
+      "start": 244,
+      "end": 249,
+      "en": "You could say: \"The traffic was really bad, but we were able to catch our train.\"",
+      "my": "“The traffic was really bad, but we were able to catch our train.” လို့ ပြောနိုင်ပါတယ်။"
+    },
+    {
+      "start": 249,
+      "end": 260,
+      "en": "Or: \"The traffic was really bad, but we managed to catch our train.\" In both of these sentences, we're talking about one moment, one train.",
+      "my": "ဒါမှမဟုတ် “The traffic was really bad, but we managed to catch our train.” လို့ ပြောပါ။ တစ်ချိန်၊ ရထားတစ်စီးအကြောင်းကို ပြောတာပါ။"
+    },
+    {
+      "start": 260,
+      "end": 272,
+      "en": "It's a specific situation; that means we can't use 'could'; we must use 'be able to' or 'managed to'.",
+      "my": "သီးသန့်အခြေအနေဖြစ်လို့ could အစား be able to ဒါမှမဟုတ် managed to ကို သုံးရပါတယ်။"
+    },
+    {
+      "start": 272,
+      "end": 284,
+      "en": "Let's look at some more examples. \"It was hard work, but we managed to finish everything on time.\" That means we finished something specific, at a specific moment.",
+      "my": "နောက်ဥပမာ — “It was hard work, but we managed to finish everything on time.” ခက်ခဲပေမယ့် အချိန်မီပြီးအောင် လုပ်နိုင်ခဲ့တယ်။ အချိန်တစ်ခုက သီးသန့်ဖြစ်ရပ်ပါ။"
+    },
+    {
+      "start": 284,
+      "end": 295,
+      "en": "\"Our car broke down on the way, but luckily I was able to fix it.\" I fixed it at a specific moment; it wasn't a general thing.",
+      "my": "“Our car broke down on the way, but luckily I was able to fix it.” လမ်းမှာ ကားပျက်ပေမယ့် ကံကောင်းလို့ ပြင်နိုင်ခဲ့တယ်။ ယေဘုယျစွမ်းရည်မဟုတ်ပါဘူး။"
+    },
+    {
+      "start": 295,
+      "end": 300,
+      "en": "There's one more important point here, which makes it even a little bit more complicated.",
+      "my": "နည်းနည်းပိုရှုပ်စေမယ့် အရေးကြီးတဲ့ အချက်တစ်ခု ကျန်ပါသေးတယ်။"
+    },
+    {
+      "start": 300,
+      "end": 308,
+      "en": "This difference between general and specific situations only applies to positive sentences.",
+      "my": "ယေဘုယျနဲ့ သီးသန့်အခြေအနေကြားက ဒီကွာခြားချက်ဟာ အတည်ဝါကျအတွက်ပဲ ဖြစ်ပါတယ်။"
+    },
+    {
+      "start": 308,
+      "end": 313,
+      "en": "If your sentence is negative, there's no difference between 'could' and 'be able to'.",
+      "my": "အငြင်းဝါကျဆိုရင် could နဲ့ be able to ကြားမှာ ဒီကွာခြားချက် မရှိပါဘူး။"
+    },
+    {
+      "start": 313,
+      "end": 319,
+      "en": "It's like most other cases: you can choose which verb to use and it doesn't matter.",
+      "my": "တခြားအခြေအနေတွေလိုပဲ ကိုယ်နှစ်သက်တဲ့ verb ကို ရွေးသုံးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 319,
+      "end": 324,
+      "en": "\"It was hard work, and we couldn't finish everything on time.\"",
+      "my": "“It was hard work, and we couldn’t finish everything on time.” ခက်ခဲလို့ အချိန်မီပြီးအောင် မလုပ်နိုင်ခဲ့ဘူး။"
+    },
+    {
+      "start": 324,
+      "end": 331,
+      "en": "Or: \"It was hard work, and we weren't able to finish everything on time.\"",
+      "my": "ဒါမှမဟုတ် “It was hard work, and we weren’t able to finish everything on time.” လို့ ပြောနိုင်ပါတယ်။"
+    },
+    {
+      "start": 331,
+      "end": 341,
+      "en": "Because these sentences are negative, it doesn't matter if the situation is general or specific; it's now possible to use both forms: 'couldn't' or 'weren't able to'.",
+      "my": "အငြင်းဝါကျဖြစ်လို့ ယေဘုယျအခြေအနေလား၊ သီးသန့်အခြေအနေလား အရေးမကြီးတော့ဘဲ couldn’t ရော weren’t able to ရော သုံးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 341,
+      "end": 345,
+      "en": "Again, there's no difference in meaning in this case.",
+      "my": "ဒီနေရာမှာ အဓိပ္ပာယ်လည်း မကွာပါဘူး။"
+    },
+    {
+      "start": 345,
+      "end": 353,
+      "en": "So, to review, 'can/could' or 'be able to' generally have the same meaning, unless you're",
+      "my": "အကျဉ်းချုပ် — can/could နဲ့ be able to က ပုံမှန်အားဖြင့် အဓိပ္ပာယ်တူပါတယ်။ ခြွင်းချက်က…"
+    },
+    {
+      "start": 353,
+      "end": 359,
+      "en": "talking about a specific situation in the past, and the sentence is positive.",
+      "my": "အတိတ်က သီးသန့်အခြေအနေကို အတည်ဝါကျနဲ့ ပြောတဲ့အခါပါ။"
+    },
+    {
+      "start": 359,
+      "end": 367,
+      "en": "If you're not sure about this, remember you can always use 'be able to' in every case and never be wrong.",
+      "my": "မသေချာရင် ဒီနှိုင်းယှဉ်နေတဲ့အခြေအနေတွေမှာ be able to ကို သုံးထားနိုင်တယ်ဆိုတာ မှတ်ထားပါ။"
+    },
+    {
+      "start": 367,
+      "end": 374,
+      "en": "Next, let's look at 'could' in more detail. 'Could' has two meanings.",
+      "my": "Could ကို ပိုအသေးစိတ် ကြည့်ပါမယ်။ Could မှာ အဓိပ္ပာယ်နှစ်မျိုး ရှိပါတယ်။"
+    },
+    {
+      "start": 374,
+      "end": 388,
+      "en": "Look at two sentences: \"I couldn't help you because I had too much to do.\" \"I couldn't help you even if I wanted to.\" In these two sentences, the verb 'could' is used in different ways.",
+      "my": "“I couldn’t help you because I had too much to do.” နဲ့ “I couldn’t help you even if I wanted to.” မှာ could ကို မတူတဲ့အဓိပ္ပာယ်နဲ့ သုံးထားပါတယ်။"
+    },
+    {
+      "start": 388,
+      "end": 397,
+      "en": "Can you see the difference? Here's a question to check your understanding: how would you use 'be able to' in these two sentences?",
+      "my": "ကွာခြားချက် မြင်ပါသလား။ နားလည်မှုစစ်ဖို့ ဒီနှစ်ဝါကျကို be able to နဲ့ ဘယ်လိုပြောင်းမလဲ စဉ်းစားပါ။"
+    },
+    {
+      "start": 397,
+      "end": 402,
+      "en": "If you want to think about your answer, pause the video and think about it.",
+      "my": "စဉ်းစားချင်ရင် video ကို Pause လုပ်နိုင်ပါတယ်။"
+    },
+    {
+      "start": 402,
+      "end": 410,
+      "en": "In the first sentence, \"I couldn't help you because I had too much to do,\" the meaning is past.",
+      "my": "ပထမဝါကျ “I couldn’t help you because I had too much to do.” မှာ အတိတ်သဘော ဖြစ်ပါတယ်။"
+    },
+    {
+      "start": 410,
+      "end": 418,
+      "en": "If we use 'be able to', we would say: \"I wasn't able to help you because I had too much to do.\"",
+      "my": "Be able to သုံးရင် “I wasn’t able to help you because I had too much to do.” လို့ ပြောရပါမယ်။"
+    },
+    {
+      "start": 418,
+      "end": 424,
+      "en": "In the second sentence, 'could' has a hypothetical or conditional meaning.",
+      "my": "ဒုတိယဝါကျမှာတော့ could က စိတ်ကူးအခြေအနေ ဒါမှမဟုတ် conditional သဘော ဖြစ်ပါတယ်။"
+    },
+    {
+      "start": 424,
+      "end": 432,
+      "en": "To use 'be able to', we would say, \"I wouldn't be able to help you even if I wanted to.\"",
+      "my": "“I wouldn’t be able to help you even if I wanted to.” ကူညီချင်ခဲ့ရင်တောင် ကူညီနိုင်မှာ မဟုတ်ဘူးလို့ ပြောင်းရပါတယ်။"
+    },
+    {
+      "start": 432,
+      "end": 439,
+      "en": "So 'could' can have two different meanings; a past meaning and a hypothetical meaning.",
+      "my": "ဒါကြောင့် could မှာ အတိတ်သဘောနဲ့ စိတ်ကူးအခြေအနေသဘော ဆိုတဲ့ အဓိပ္ပာယ်နှစ်မျိုး ရှိပါတယ်။"
+    },
+    {
+      "start": 439,
+      "end": 446,
+      "en": "You need to use the context of the sentence or the situation to understand what 'could' means.",
+      "my": "ဝါကျနဲ့ အခြေအနေအရ could ရဲ့ အဓိပ္ပာယ်ကို နားလည်ဖို့ လိုပါတယ်။"
+    },
+    {
+      "start": 446,
+      "end": 457,
+      "en": "For example: \"Why couldn't he do it last week?\" The time marker 'last week' shows you that this sentence is past, and that 'could' has a past meaning.",
+      "my": "“Why couldn’t he do it last week?” မှာ last week ဆိုတဲ့အချိန်ကြောင့် အတိတ်ကို ပြောနေတယ်ဆိုတာ သိနိုင်ပါတယ်။"
+    },
+    {
+      "start": 457,
+      "end": 468,
+      "en": "\"We could work together, if you wanted.\" Again, the end of the sentence with 'if' shows you that 'could' has a hypothetical meaning.",
+      "my": "“We could work together, if you wanted.” မှာ if ပါတဲ့ နောက်ပိုင်းကြောင့် စိတ်ကူးအခြေအနေသဘော ဖြစ်တာ သိနိုင်ပါတယ်။"
+    },
+    {
+      "start": 468,
+      "end": 478,
+      "en": "OK, let's review the important points from this lesson. You can use 'can' or 'could' to talk about abilities in the past, present or future.",
+      "my": "အရေးကြီးတဲ့အချက်တွေ ပြန်စုကြမယ်။ Can၊ could ကို အတိတ်၊ လက်ရှိ၊ အနာဂတ်လုပ်နိုင်စွမ်းအကြောင်း ပြောဖို့ သုံးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 478,
+      "end": 483,
+      "en": "'Can/could' and 'be able to' usually have the same meaning.",
+      "my": "Can/could နဲ့ be able to က အများအားဖြင့် အဓိပ္ပာယ်တူပါတယ်။"
+    },
+    {
+      "start": 483,
+      "end": 489,
+      "en": "Sometimes you need to use 'be able to', for example if you need to use a verb with '-ing',",
+      "my": "တစ်ခါတလေ -ing ပုံစံလိုတဲ့အခါမျိုးမှာ be able to ကို သုံးဖို့ လိုပါတယ်။"
+    },
+    {
+      "start": 489,
+      "end": 498,
+      "en": "or if you need to use the present perfect tense, or some other tense where 'can/could' don't exist.",
+      "my": "Present perfect ဒါမှမဟုတ် can/could ပုံစံမရှိတဲ့ အခြား tense လိုတဲ့အခါလည်း အဲဒီလိုပဲ ဖြစ်ပါတယ်။"
+    },
+    {
+      "start": 498,
+      "end": 504,
+      "en": "In the past, 'could' and 'was/were able to' are sometimes different.",
+      "my": "အတိတ်မှာ could နဲ့ was/were able to တို့က တစ်ခါတလေ ကွာခြားပါတယ်။"
+    },
+    {
+      "start": 504,
+      "end": 514,
+      "en": "If you are talking about a specific situation, and the sentence is positive, you can only use 'was/were able to', or 'managed to'.",
+      "my": "သီးသန့်အခြေအနေတစ်ခုကို အတည်ဝါကျနဲ့ပြောရင် was/were able to ဒါမှမဟုတ် managed to ကို သုံးရပါတယ်။"
+    },
+    {
+      "start": 514,
+      "end": 518,
+      "en": "Finally, 'could' can have two different meanings.",
+      "my": "နောက်ဆုံး could မှာ အဓိပ္ပာယ်နှစ်မျိုး ရှိနိုင်ပါတယ်။"
+    },
+    {
+      "start": 518,
+      "end": 528,
+      "en": "It can have a past meaning, the same as 'was/were able to', or it can have a hypothetical meaning, like 'would be able to'.",
+      "my": "Was/were able to နဲ့တူတဲ့ အတိတ်သဘော ဒါမှမဟုတ် would be able to လို စိတ်ကူးအခြေအနေသဘော ဖြစ်နိုင်ပါတယ်။"
+    },
+    {
+      "start": 528,
+      "end": 536,
+      "en": "OK, that's the end of the lesson. I hope it was useful for you. If you want to see the full version of this lesson, you can check it out on our website.",
+      "my": "ဒီသင်ခန်းစာက ဒီလောက်ပါပဲ။ အသုံးဝင်မယ်လို့ မျှော်လင့်ပါတယ်။ သင်ခန်းစာအပြည့်ကို ဝက်ဘ်ဆိုက်မှာ ကြည့်နိုင်ပါတယ်။"
+    },
+    {
+      "start": 536,
+      "end": 547,
+      "en": "The full lesson includes a text, so you can read and review everything. There's also a quiz to help you practise the topic and check that you've understood everything.",
+      "my": "အဲဒီမှာ စာသားအပြည့် ဖတ်ပြီး ပြန်လေ့လာနိုင်သလို နားလည်မှုစစ်ဖို့ quiz လည်း ပါပါတယ်။"
+    }
+  ],
+  "untimedTail": {
+    "start": 547,
+    "en": "OK, that's all. Thanks again for watching, and I'll see you next time. Bye bye!",
+    "my": "ဒါပါပဲ။ ကြည့်ရှုပေးလို့ ကျေးဇူးတင်ပါတယ်။ နောက်မှတွေ့မယ်။ နုတ်ဆက်ပါတယ်။",
+    "reason": "Source supplies the start only. Display its end only when the real YouTube video duration is available."
+  },
+  "sourceNotes": []
+}

@@ -17,6 +17,14 @@ const expected: Record<string, number> = {
   ethbBja46v4: 42,
   aIklwvL605c: 108,
   a1oOYN4H5zo: 55,
+  TItI5ucoZnA: 9,
+  MpsrdpUKOTA: 57,
+  "eplQBhE0-Hg": 60,
+  "1zWuafmkCJ8": 154,
+  HivYxhaER3o: 72,
+  H8E5EF0IEN0: 25,
+  TqES1mwxjpI: 69,
+  JUQZxGkRW04: 57,
 };
 it.each(SUPPLIED_GRADE11_SUBTITLE_TRACKS)(
   "preserves exact user timestamps and complete translation for $videoId",
@@ -26,9 +34,20 @@ it.each(SUPPLIED_GRADE11_SUBTITLE_TRACKS)(
       "utf8",
     );
     expect(createHash("sha256").update(source).digest("hex")).toBe(track.sourceSha256);
-    const rows = [
-      ...source.matchAll(/^(\d+):(\d{2})(\d+ (?:minutes?(?:, \d+ seconds?)?|seconds?))(.*)$/gm),
-    ];
+    const rows =
+      "sourceFormat" in track && track.sourceFormat === "inline-human-time"
+        ? [...source.matchAll(/^(?:(\d+) minutes?, )?(\d+) seconds\n([^\n]*)/gm)].map((row) => [
+            row[0],
+            row[1] ?? "0",
+            String(Number(row[2])).padStart(2, "0"),
+            "",
+            row[3],
+          ])
+        : [
+            ...source.matchAll(
+              /^(\d+):(\d{2})(\d+ (?:minutes?(?:, \d+ seconds?)?|seconds?))(.*)$/gm,
+            ),
+          ];
     expect(rows).toHaveLength(expected[track.videoId]);
     expect(track.cues).toHaveLength(rows.length - 1);
     rows.slice(0, -1).forEach((row, i) => {

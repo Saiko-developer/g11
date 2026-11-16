@@ -1,0 +1,64 @@
+{
+  "videoId": "TItI5ucoZnA",
+  "source": "User message inline transcript",
+  "sourceFormat": "inline-human-time",
+  "sourceSha256": "ceeac1b60c949bc07120102215923cf76b728eea3194775b6ab30f0ea840673f",
+  "timingBasis": "Original source start markers; each end is the next source marker. No offset or interpolation.",
+  "cues": [
+    {
+      "start": 0,
+      "end": 3,
+      "en": "Hi, I’m Georgina from BBC Learning English.",
+      "my": "မင်္ဂလာပါ၊ ကျွန်မက BBC Learning English မှ Georgina ပါ။"
+    },
+    {
+      "start": 3,
+      "end": 8,
+      "en": "Have you ever wondered about the difference between ‘as if’ and ‘as though'?",
+      "my": "As if နဲ့ as though ဘာကွာသလဲလို့ စဉ်းစားဖူးသလား။"
+    },
+    {
+      "start": 8,
+      "end": 18,
+      "en": "We use ‘as if’ and ‘as though’ to make comparisons about an imaginary situation or a possible situation that might be true.",
+      "my": "စိတ်ကူးအခြေအနေ ဒါမှမဟုတ် တကယ်ဖြစ်နိုင်တဲ့ အခြေအနေတစ်ခုနဲ့ နှိုင်းယှဉ်ပြဖို့ as if နဲ့ as though ကို သုံးပါတယ်။"
+    },
+    {
+      "start": 18,
+      "end": 26,
+      "en": "To make comparisons about an imaginary situation, we use the past tense for the verb following ‘as if’ or ‘as though’.",
+      "my": "တကယ်မဟုတ်တဲ့ စိတ်ကူးအခြေအနေနဲ့ နှိုင်းယှဉ်ရင် as if ဒါမှမဟုတ် as though နောက်က verb ကို past tense သုံးပါတယ်။"
+    },
+    {
+      "start": 26,
+      "end": 34,
+      "en": "'He acted as if he didn’t hear anything, but he did.' 'They feel as though they weren’t appreciated, but they were.'",
+      "my": "‘He acted as if he didn’t hear anything, but he did.’ တကယ်ကြားပေမယ့် မကြားသလို ဟန်ဆောင်ခဲ့တယ်။ ‘They feel as though they weren’t appreciated, but they were.’ တကယ်အသိအမှတ်ပြုခံရပေမယ့် မခံရသလို ခံစားနေကြတယ်။"
+    },
+    {
+      "start": 34,
+      "end": 43,
+      "en": "To make comparisons about a possible situation that might be true, we use the present tense for the verb following ‘as if’ or ‘as though’.",
+      "my": "တကယ်ဖြစ်နိုင်တဲ့ အခြေအနေနဲ့ နှိုင်းယှဉ်တဲ့ ဒီဥပမာတွေမှာတော့ as if ဒါမှမဟုတ် as though နောက် present tense ကို သုံးပါတယ်။"
+    },
+    {
+      "start": 43,
+      "end": 46,
+      "en": "'He speaks as if he knows a lot about cooking.",
+      "my": "‘He speaks as if he knows a lot about cooking.’ ချက်ပြုတ်တာကို အများကြီးသိသလို သူပြောနေတယ်။"
+    },
+    {
+      "start": 46,
+      "end": 56,
+      "en": "He must love it!' 'Let’s ask her for directions. She looks as though she lives here.' My stomach is rumbling as if I didn’t have any breakfast, but I did!",
+      "my": "ချက်ပြုတ်တာကို သူ တော်တော်ကြိုက်မှာပဲ။ ‘Let’s ask her for directions. She looks as though she lives here.’ သူမ ဒီမှာနေတဲ့ပုံပဲ၊ လမ်းမေးကြမယ်။ ကျွန်မက မနက်စာစားထားပေမယ့် မစားထားသလို ဗိုက်မြည်နေတယ်။"
+    }
+  ],
+  "untimedTail": {
+    "start": 56,
+    "en": "Bye",
+    "my": "နုတ်ဆက်ပါတယ်။",
+    "reason": "Source supplies the start only. Display its end only when the real YouTube video duration is available."
+  },
+  "sourceNotes": []
+}

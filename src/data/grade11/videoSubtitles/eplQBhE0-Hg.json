@@ -1,0 +1,370 @@
+{
+  "videoId": "eplQBhE0-Hg",
+  "source": "User-provided Pasted text.txt",
+  "sourceFormat": "youtube-copy",
+  "sourceSha256": "e2cf05dea42fcdd97913fc433ff782b2cf8c6ad47bde9e2dcf5694ec113a3a23",
+  "timingBasis": "Original source start markers; each end is the next source marker. No offset or interpolation.",
+  "cues": [
+    {
+      "start": 2,
+      "end": 11,
+      "en": "(upbeat music) - Hello, lovely students.",
+      "my": "(တေးဂီတသံ) မင်္ဂလာပါ၊ ချစ်စရာကျောင်းသားကျောင်းသူတို့ရေ။"
+    },
+    {
+      "start": 11,
+      "end": 18,
+      "en": "And welcome back to English With Lucy. Today, we are going to talk about reported speech.",
+      "my": "English with Lucy မှ ပြန်လည်ကြိုဆိုပါတယ်။ ဒီနေ့ reported speech၊ တစ်ဆင့်ပြန်ပြောသောစကားအကြောင်း ပြောကြမယ်။"
+    },
+    {
+      "start": 18,
+      "end": 29,
+      "en": "Reported speech can seem really complicated at first, but my goal in this lesson is to make it really easy and understandable for you so that you can use it with confidence.",
+      "my": "အစမှာ reported speech က ရှုပ်ထွေးသလို ထင်နိုင်ပါတယ်။ ဒါပေမဲ့ ယုံကြည်မှုရှိရှိ သုံးနိုင်အောင် လွယ်ကူနားလည်အောင် ရှင်းပြပေးဖို့ ရည်ရွယ်ပါတယ်။"
+    },
+    {
+      "start": 29,
+      "end": 33,
+      "en": "To assist you, I've also created a free PDF that goes with this lesson.",
+      "my": "အထောက်အကူဖြစ်ဖို့ ဒီသင်ခန်းစာနဲ့တွဲတဲ့ PDF ကို အခမဲ့ ပြင်ဆင်ထားပါတယ်။"
+    },
+    {
+      "start": 33,
+      "end": 38,
+      "en": "It covers everything we're going to discuss today, and it has a quiz.",
+      "my": "ဒီနေ့ဆွေးနွေးမယ့်အချက်အားလုံး ပါဝင်ပြီး quiz လည်း ပါပါတယ်။"
+    },
+    {
+      "start": 38,
+      "end": 44,
+      "en": "So you can test your understanding and put what you've learned into practise. One of the most important parts.",
+      "my": "ဒါကြောင့် နားလည်မှုစစ်ပြီး သင်ထားတာကို လက်တွေ့လေ့ကျင့်နိုင်ပါတယ်။ ဒါက အရေးကြီးဆုံးအပိုင်းတွေထဲက တစ်ခုပါ။"
+    },
+    {
+      "start": 44,
+      "end": 51,
+      "en": "If you'd like to download the free PDF, just click on the link in the description box, you enter your name and your email address.",
+      "my": "PDF အခမဲ့ယူချင်ရင် description ထဲက link ကို နှိပ်ပြီး နာမည်နဲ့ အီးမေးလ် ထည့်ပါ။"
+    },
+    {
+      "start": 51,
+      "end": 57,
+      "en": "You sign up to my mailing list and the PDF will arrive instantaneously in your inbox.",
+      "my": "ကျွန်မရဲ့ mailing list မှာ စာရင်းသွင်းပြီးတာနဲ့ PDF ကို အီးမေးလ်ထဲမှာ လက်ခံရရှိပါမယ်။"
+    },
+    {
+      "start": 57,
+      "end": 70,
+      "en": "Every week after that you will automatically receive all of my free lesson PDFs and quizzes along with all of my news, course offers and updates.",
+      "my": "နောက်အပတ်တွေမှာလည်း PDF၊ quiz၊ သင်တန်းကမ်းလှမ်းချက်နဲ့ သတင်းအသစ်တွေကို အလိုအလျောက် လက်ခံရရှိပါမယ်။"
+    },
+    {
+      "start": 70,
+      "end": 76,
+      "en": "All right, let's get started with the lesson. Firstly, let's take a look at direct speech.",
+      "my": "သင်ခန်းစာ စကြမယ်။ ပထမဆုံး direct speech၊ တိုက်ရိုက်စကားကို ကြည့်ပါ။"
+    },
+    {
+      "start": 76,
+      "end": 85,
+      "en": "The speech is, I like chocolate. Then we have to follow a couple of simple rules. Number one, we have to add a reporting verb.",
+      "my": "“I like chocolate.” ကျွန်မ ချောကလက်ကြိုက်တယ်ဆိုတဲ့ စကားပါ။ ရိုးရိုးစည်းမျဉ်းတချို့ လိုက်နာရပါမယ်။ ပထမ reporting verb ထည့်ပါ။"
+    },
+    {
+      "start": 85,
+      "end": 93,
+      "en": "Number two, and this one's really important. We have to backshift our tenses by one.",
+      "my": "ဒုတိယ — အရေးကြီးပါတယ်၊ tense ကို တစ်ဆင့်နောက်ပြန် ပြောင်းရပါမယ်။"
+    },
+    {
+      "start": 93,
+      "end": 101,
+      "en": "And number three, we have to change the pronouns. This sounds very complicated. Let's put it into practise.",
+      "my": "တတိယ — pronoun တွေကို ပြောင်းရပါမယ်။ ရှုပ်သလိုထင်ရပေမယ့် လက်တွေ့လုပ်ကြည့်ရအောင်။"
+    },
+    {
+      "start": 101,
+      "end": 103,
+      "en": "It's easier to see it.",
+      "my": "ဥပမာနဲ့ကြည့်ရင် ပိုလွယ်ပါတယ်။"
+    },
+    {
+      "start": 103,
+      "end": 110,
+      "en": "If we want to change that into reported speech, she said that she liked chocolate.",
+      "my": "Reported speech ပြောင်းမယ်ဆိုရင် “She said that she liked chocolate.” သူမ ချောကလက်ကြိုက်တယ်လို့ ပြောခဲ့တယ်။"
+    },
+    {
+      "start": 110,
+      "end": 121,
+      "en": "We've added the reporting verb, she said, we've back shifted our tense, like, liked and we've changed the pronouns, I has gone to she.",
+      "my": "She said ဆိုတဲ့ reporting verb ထည့်ပြီး like ကို liked ပြောင်း၊ I ကို she ဆိုပြီး pronoun ပြောင်းထားပါတယ်။"
+    },
+    {
+      "start": 121,
+      "end": 129,
+      "en": "The most common reporting verbs are to say and to tell, which are conjugated to said and told.",
+      "my": "အသုံးအများဆုံး reporting verb တွေက say နဲ့ tell ဖြစ်ပြီး past ပုံစံက said နဲ့ told ပါ။"
+    },
+    {
+      "start": 129,
+      "end": 136,
+      "en": "Remember to always include your reporting verbs when using reported speech. A couple more examples.",
+      "my": "Reported speech သုံးရင် reporting verb ထည့်ဖို့ အမြဲမှတ်ထားပါ။ နောက်ထပ်ဥပမာတွေ ကြည့်ပါ။"
+    },
+    {
+      "start": 136,
+      "end": 145,
+      "en": "She said that she loved the movie. That here is optional. She said she loved the movie. She said that she loved the movie.",
+      "my": "“She said that she loved the movie.” ဒီမှာ that ကို ထည့်လည်းရ၊ မထည့်လည်းရပါတယ်။ “She said she loved the movie.” လို့လည်း ရပါတယ်။"
+    },
+    {
+      "start": 145,
+      "end": 152,
+      "en": "You can use whichever you'd like. They said they ate breakfast. They said that they ate breakfast.",
+      "my": "ကိုယ်နှစ်သက်ရာကို သုံးနိုင်ပါတယ်။ “They said they ate breakfast.” ဒါမှမဟုတ် “They said that they ate breakfast.”"
+    },
+    {
+      "start": 152,
+      "end": 160,
+      "en": "We can also use the structure to say to someone, Robert said to his teacher that he finished the assignment.",
+      "my": "Say to someone ပုံစံကိုလည်း သုံးနိုင်ပါတယ်။ “Robert said to his teacher that he finished the assignment.”"
+    },
+    {
+      "start": 160,
+      "end": 169,
+      "en": "Robert said to his teacher that he had finished the assignment or Alison said to her mother that she was feeling ill.",
+      "my": "“Robert said to his teacher that he had finished the assignment.” ဒါမှမဟုတ် “Alison said to her mother that she was feeling ill.” လို့ သုံးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 169,
+      "end": 178,
+      "en": "When we use tell, we must always remember to add in the person we're reporting to. We use the structure tell plus who we're reporting to.",
+      "my": "Tell သုံးရင် ဘယ်သူ့ကို ပြန်ပြောသလဲဆိုတဲ့ လူကို ထည့်ရတာ မှတ်ထားပါ။ Tell + စကားပြောခံရသူ ဆိုတဲ့ပုံစံပါ။"
+    },
+    {
+      "start": 178,
+      "end": 186,
+      "en": "She told me that she loved the movie. They told us that they had eaten breakfast.",
+      "my": "“She told me that she loved the movie.” “They told us that they had eaten breakfast.” ဒီမှာ me နဲ့ us ကို ထည့်ထားပါတယ်။"
+    },
+    {
+      "start": 186,
+      "end": 190,
+      "en": "So let's talk about that backshift in tenses.",
+      "my": "အခု tense နောက်ပြန်ပြောင်းခြင်းကို ကြည့်ကြမယ်။"
+    },
+    {
+      "start": 190,
+      "end": 194,
+      "en": "When we use reported speech, we're changing the perspective.",
+      "my": "Reported speech သုံးတဲ့အခါ ပြောသူရဲ့ အမြင်နေရာကို ပြောင်းထားတာပါ။"
+    },
+    {
+      "start": 194,
+      "end": 201,
+      "en": "English has 12 basic tenses that can be broken down into three groups, the past, the present and the future.",
+      "my": "အင်္ဂလိပ်မှာ အခြေခံ tense ၁၂ မျိုးရှိပြီး past၊ present၊ future ဆိုတဲ့ အုပ်စုသုံးခု ခွဲနိုင်ပါတယ်။"
+    },
+    {
+      "start": 201,
+      "end": 209,
+      "en": "It might sound like a lot of changes, but I've created a list for you. You can download the PDF and keep that list with you.",
+      "my": "ပြောင်းစရာတွေ အများကြီးလို ထင်နိုင်ပေမယ့် စာရင်းပြုစုထားပါတယ်။ PDF ကို ဒေါင်းလုဒ်လုပ်ပြီး အဲဒီစာရင်းကို သိမ်းထားနိုင်ပါတယ်။"
+    },
+    {
+      "start": 209,
+      "end": 211,
+      "en": "I've also got it on screen now.",
+      "my": "အခု screen ပေါ်မှာလည်း ပြထားပါတယ်။"
+    },
+    {
+      "start": 211,
+      "end": 218,
+      "en": "Focus now on the past perfect and the past perfect continuous. You will see that there are no changes.",
+      "my": "Past perfect နဲ့ past perfect continuous ကို သတိထားကြည့်ပါ။ အဲဒီနှစ်မျိုးက မပြောင်းပါဘူး။"
+    },
+    {
+      "start": 218,
+      "end": 223,
+      "en": "This is because we can't really go any further back in the past. I had been doing my homework.",
+      "my": "အတိတ်ထဲကို ဒီထက်နောက်ပြန်သွားလို့ မရတော့လို့ပါ။ “I had been doing my homework.”"
+    },
+    {
+      "start": 223,
+      "end": 231,
+      "en": "Lucy said that she had been doing her homework, no change to the tense. The future tenses are also really easy.",
+      "my": "“Lucy said that she had been doing her homework.” ဆိုပြီး tense မပြောင်းပါဘူး။ Future tense တွေကလည်း လွယ်ပါတယ်။"
+    },
+    {
+      "start": 231,
+      "end": 239,
+      "en": "They all use will, and they simply changes to would. I will be going to university next year.",
+      "my": "Will ပါတဲ့ ပုံစံတွေမှာ will ကို would ပြောင်းရုံပါပဲ။ “I will be going to university next year.”"
+    },
+    {
+      "start": 239,
+      "end": 246,
+      "en": "Lucy said that she would be going to university next year. I think those six tenses are a gift from the grammar gods.",
+      "my": "“Lucy said that she would be going to university next year.” အဲဒီ tense ခြောက်မျိုးကတော့ သဒ္ဒါနတ်ဘုရားပေးတဲ့ လက်ဆောင်လိုပါပဲ။"
+    },
+    {
+      "start": 246,
+      "end": 250,
+      "en": "(laughs) You just have to focus on the first six.",
+      "my": "(ရယ်သံ) ပထမခြောက်မျိုးကိုပဲ ပိုအာရုံစိုက်ရမှာပါ။"
+    },
+    {
+      "start": 250,
+      "end": 256,
+      "en": "I'm going to give you some examples in direct speech and I want you to change them into reported speech.",
+      "my": "Direct speech ဥပမာတချို့ ပေးမယ်။ Reported speech အဖြစ် ပြောင်းကြည့်ပါ။"
+    },
+    {
+      "start": 256,
+      "end": 264,
+      "en": "I'm going to give you a few seconds, but feel free to pause the video. And let's look at the present simple to past simple.",
+      "my": "စဉ်းစားချိန် စက္ကန့်အနည်းငယ် ပေးပါမယ်။ လိုရင် video ကို Pause လုပ်နိုင်ပါတယ်။ Present simple ကနေ past simple ကို စပြောင်းကြမယ်။"
+    },
+    {
+      "start": 264,
+      "end": 271,
+      "en": "For all of these, I'm going to say I, and you have to change it to Lucy said that she.",
+      "my": "ဥပမာအားလုံးမှာ I လို့ပြောမယ်။ “Lucy said that she…” လို့ ပြောင်းရပါမယ်။"
+    },
+    {
+      "start": 271,
+      "end": 284,
+      "en": "So the first one, I want to buy a car. You need to start it with Lucy said that she. I'll give you a few seconds.",
+      "my": "ပထမ — “I want to buy a car.” “Lucy said that she…” နဲ့ စပါ။ စဉ်းစားချိန် နည်းနည်းပေးမယ်။"
+    },
+    {
+      "start": 284,
+      "end": 293,
+      "en": "Lucy said that she wanted to buy a car, present simple to past simple. Let's try it present continuous to past continuous.",
+      "my": "“Lucy said that she wanted to buy a car.” Present simple ကနေ past simple ပါ။ အခု present continuous ကနေ past continuous ပြောင်းကြည့်မယ်။"
+    },
+    {
+      "start": 293,
+      "end": 302,
+      "en": "I am doing my homework. I'll give you a couple of seconds.",
+      "my": "“I am doing my homework.” စက္ကန့်အနည်းငယ် စဉ်းစားကြည့်ပါ။"
+    },
+    {
+      "start": 302,
+      "end": 309,
+      "en": "Lucy said that she was doing her homework. What about present perfect to past perfect?",
+      "my": "“Lucy said that she was doing her homework.” Present perfect ကနေ past perfect ကိုကော ဘယ်လိုပြောင်းမလဲ။"
+    },
+    {
+      "start": 309,
+      "end": 317,
+      "en": "I have finished my homework.",
+      "my": "“I have finished my homework.”"
+    },
+    {
+      "start": 317,
+      "end": 331,
+      "en": "Lucy said that she had finished her homework, past simple to past perfect. I washed the dishes.",
+      "my": "“Lucy said that she had finished her homework.” အခု past simple ကနေ past perfect ပါ။ “I washed the dishes.”"
+    },
+    {
+      "start": 331,
+      "end": 339,
+      "en": "Lucy said that she had washed the dished. Those are the hard ones. Let's try a couple with will and would.",
+      "my": "“Lucy said that she had washed the dishes.” ဒါတွေက နည်းနည်းခက်တဲ့အပိုင်းတွေပါ။ Will နဲ့ would ပါတဲ့ ဥပမာတွေ စမ်းကြည့်မယ်။"
+    },
+    {
+      "start": 339,
+      "end": 348,
+      "en": "I will call you later. Lucy said that she would call you later.",
+      "my": "“I will call you later.” “Lucy said that she would call you later.”"
+    },
+    {
+      "start": 348,
+      "end": 351,
+      "en": "Now as always with English, there are some exceptions.",
+      "my": "အင်္ဂလိပ်မှာ ထုံးစံအတိုင်း ခြွင်းချက်တွေလည်း ရှိပါတယ်။"
+    },
+    {
+      "start": 351,
+      "end": 359,
+      "en": "With reported speech, we usually don't change the tense if the information is current and ongoing, like a habit.",
+      "my": "အချက်အလက်က အခုထိမှန်နေဆဲ၊ ဆက်ဖြစ်နေဆဲ၊ အကျင့်လိုအရာမျိုးဆိုရင် reported speech မှာ tense ကို ပုံမှန်အားဖြင့် မပြောင်းပါဘူး။"
+    },
+    {
+      "start": 359,
+      "end": 367,
+      "en": "I love my parents. Lucy said that she loves her parents. I still love my parents is ongoing.",
+      "my": "“I love my parents.” “Lucy said that she loves her parents.” အခုထိ မိဘတွေကို ချစ်နေဆဲဖြစ်လို့ပါ။"
+    },
+    {
+      "start": 367,
+      "end": 375,
+      "en": "So we might keep it in the present tense. Right, that is it for your introduction to reported speech.",
+      "my": "ဒါကြောင့် present tense ကို ဆက်ထားနိုင်ပါတယ်။ Reported speech မိတ်ဆက်အတွက် ဒီလောက်ပါပဲ။"
+    },
+    {
+      "start": 375,
+      "end": 383,
+      "en": "Now it's time to review everything you've learned and put it into practise. I have got some exercises for you on the PDF.",
+      "my": "အခု သင်ထားတာအားလုံး ပြန်လေ့လာပြီး လက်တွေ့လေ့ကျင့်ရပါမယ်။ PDF မှာ လေ့ကျင့်ခန်းတွေ ပါပါတယ်။"
+    },
+    {
+      "start": 383,
+      "end": 387,
+      "en": "Just click on the link in the description box and sign up to my mailing list.",
+      "my": "Description ထဲက link ကို နှိပ်ပြီး mailing list မှာ စာရင်းသွင်းနိုင်ပါတယ်။"
+    },
+    {
+      "start": 387,
+      "end": 392,
+      "en": "If you're interested in taking my pronunciation course, you can click on the link in the description box.",
+      "my": "အသံထွက်သင်တန်းကို စိတ်ဝင်စားရင်လည်း description ထဲက link ကို ကြည့်နိုင်ပါတယ်။"
+    },
+    {
+      "start": 392,
+      "end": 398,
+      "en": "I teach British English pronunciation, the modern RP accent, that is my accent.",
+      "my": "ကျွန်မရဲ့ accent ဖြစ်တဲ့ modern RP ဗြိတိသျှအင်္ဂလိပ် အသံထွက်ကို သင်ပေးပါတယ်။"
+    },
+    {
+      "start": 398,
+      "end": 405,
+      "en": "And you can get 10% off if you use the code, YouTube10 at checkout. Don't forget to connect with me on all of my social media.",
+      "my": "ငွေရှင်းတဲ့အခါ YouTube10 ကုဒ်သုံးရင် ၁၀ ရာခိုင်နှုန်း လျှော့ဈေးရပါတယ်။ Social media တွေမှာလည်း ချိတ်ဆက်ဖို့ မမေ့ပါနဲ့။"
+    },
+    {
+      "start": 405,
+      "end": 412,
+      "en": "I've got my Instagram and I've got my personal channel where I upload vlogs of our life here in the English countryside.",
+      "my": "Instagram နဲ့ အင်္ဂလိပ်ကျေးလက်ဒေသက ကျွန်မတို့နေ့စဉ်ဘဝ vlog တွေ တင်တဲ့ personal channel လည်း ရှိပါတယ်။"
+    },
+    {
+      "start": 412,
+      "end": 422,
+      "en": "And all of the vlogs are fully subtitled so you can use them for listening practise and you can use them to acquire that much needed vocabulary in context.",
+      "my": "Vlog အားလုံးမှာ စာတန်းအပြည့် ပါလို့ နားထောင်လေ့ကျင့်ဖို့နဲ့ အခြေအနေအတွင်းမှာ စကားလုံးအသစ် သင်ယူဖို့ သုံးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 422,
+      "end": 430,
+      "en": "I've also got my website Englishwithlucy.co.uk, or I've got a fab pronunciation tool and lots of my previous lessons.",
+      "my": "Englishwithlucy.co.uk မှာ အသံထွက်လေ့ကျင့်ကိရိယာနဲ့ အရင်သင်ခန်းစာတွေ အများကြီးရှိပါတယ်။"
+    },
+    {
+      "start": 430,
+      "end": 433,
+      "en": "I will see you soon for another lesson.",
+      "my": "နောက်သင်ခန်းစာမှာ ပြန်တွေ့မယ်။"
+    }
+  ],
+  "untimedTail": {
+    "start": 433,
+    "en": "(upbeat music)",
+    "my": "(တေးဂီတသံ)",
+    "reason": "Source supplies the start only. Display its end only when the real YouTube video duration is available."
+  },
+  "sourceNotes": []
+}

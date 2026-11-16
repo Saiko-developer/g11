@@ -6,6 +6,14 @@ import infinitives from "@/data/grade11/videoSubtitles/szb4FJHakIk.json";
 import tooEnough from "@/data/grade11/videoSubtitles/ethbBja46v4.json";
 import inversion from "@/data/grade11/videoSubtitles/aIklwvL605c.json";
 import relativePronouns from "@/data/grade11/videoSubtitles/a1oOYN4H5zo.json";
+import asIf from "@/data/grade11/videoSubtitles/TItI5ucoZnA.json";
+import impersonalPassive from "@/data/grade11/videoSubtitles/MpsrdpUKOTA.json";
+import reportedSpeech from "@/data/grade11/videoSubtitles/eplQBhE0-Hg.json";
+import future from "@/data/grade11/videoSubtitles/1zWuafmkCJ8.json";
+import byMethod from "@/data/grade11/videoSubtitles/HivYxhaER3o.json";
+import participles from "@/data/grade11/videoSubtitles/H8E5EF0IEN0.json";
+import ability from "@/data/grade11/videoSubtitles/TqES1mwxjpI.json";
+import soSuch from "@/data/grade11/videoSubtitles/JUQZxGkRW04.json";
 import type { SubtitleLine } from "@/data/unit1VideoSubtitles";
 import { UNIT2_GRAMMAR_SUBTITLES } from "@/data/unit2GrammarSubtitles";
 import { UNIT7_ACTIVE_PASSIVE_SUBTITLES } from "@/data/unit7ActivePassiveSubtitles";
@@ -19,6 +27,14 @@ export const SUPPLIED_GRADE11_SUBTITLE_TRACKS = [
   tooEnough,
   inversion,
   relativePronouns,
+  asIf,
+  impersonalPassive,
+  reportedSpeech,
+  future,
+  byMethod,
+  participles,
+  ability,
+  soSuch,
 ];
 
 /** Exact video IDs only: never attach a similar topic's translation to another recording. */

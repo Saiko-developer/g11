@@ -69,6 +69,7 @@ export function Grade11SubtitledVideo({
         const mount = document.createElement("div");
         container.replaceChildren(mount);
         const vars: Record<string, number | string> = {
+          autoplay: 0,
           playsinline: 1,
           rel: 0,
           start,
@@ -91,6 +92,7 @@ export function Grade11SubtitledVideo({
               setReady(true);
               // Seek without autoplay. Every subsequent caption follows the real source clock.
               player.current?.seekTo(start, true);
+              player.current?.pauseVideo();
               poll = setInterval(() => {
                 const p = player.current;
                 if (!p) return;

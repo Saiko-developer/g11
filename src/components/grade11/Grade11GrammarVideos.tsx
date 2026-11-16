@@ -45,7 +45,7 @@ function UnitGrammarVideos({ unit }: { unit: number }) {
   const id = youtubeId(video.url);
   const start = Number.isSafeInteger(video.start) && video.start! >= 0 ? video.start! : 0;
   const end = Number.isSafeInteger(video.end) && video.end! > start ? video.end : undefined;
-  const params = new URLSearchParams({ rel: "0" });
+  const params = new URLSearchParams({ rel: "0", autoplay: "0" });
   if (start) params.set("start", String(start));
   if (end) params.set("end", String(end));
   const source = `https://www.youtube.com/watch?v=${id}${start ? `&t=${start}s` : ""}`;

@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import type { SubtitleLine } from "@/data/unit1VideoSubtitles";
 
-type YTPlayer = { getCurrentTime: () => number; seekTo: (s: number, a: boolean) => void; playVideo: () => void; destroy: () => void };
+type YTPlayer = {
+  getCurrentTime: () => number;
+  seekTo: (s: number, a: boolean) => void;
+  playVideo: () => void;
+  pauseVideo?: () => void;
+  destroy: () => void;
+};
 
 declare global {
   interface Window {
@@ -29,7 +35,17 @@ function loadYouTubeApi(): Promise<void> {
 
 const fmt = (t: number) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, "0")}`;
 
-export function SyncedVideoPlayer({ youtubeId, title, subtitles, burmeseOnly = false }: { youtubeId: string; title: string; subtitles: SubtitleLine[]; burmeseOnly?: boolean }) {
+export function SyncedVideoPlayer({
+  youtubeId,
+  title,
+  subtitles,
+  burmeseOnly = false,
+}: {
+  youtubeId: string;
+  title: string;
+  subtitles: SubtitleLine[];
+  burmeseOnly?: boolean;
+}) {
   const hostRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<YTPlayer | null>(null);
   const [time, setTime] = useState(0);
@@ -46,7 +62,8 @@ export function SyncedVideoPlayer({ youtubeId, title, subtitles, burmeseOnly = f
         videoId: youtubeId,
         width: "100%",
         height: "100%",
-        playerVars: { playsinline: 1, rel: 0, modestbranding: 1, cc_load_policy: 0 },
+        playerVars: { autoplay: 0, playsinline: 1, rel: 0, modestbranding: 1, cc_load_policy: 0 },
+        events: { onReady: (event: { target: YTPlayer }) => event.target.pauseVideo?.() },
       });
       timer = setInterval(() => {
         const p = playerRef.current;
@@ -70,7 +87,12 @@ export function SyncedVideoPlayer({ youtubeId, title, subtitles, burmeseOnly = f
     if (t >= subtitles[i].start) activeIdx = i;
     else break;
   }
-  if (activeIdx === subtitles.length - 1 && activeIdx >= 0 && t >= subtitles[activeIdx].end + LAST_HOLD) activeIdx = -1;
+  if (
+    activeIdx === subtitles.length - 1 &&
+    activeIdx >= 0 &&
+    t >= subtitles[activeIdx].end + LAST_HOLD
+  )
+    activeIdx = -1;
   const active = activeIdx >= 0 ? subtitles[activeIdx] : null;
 
   const seek = (s: number) => {
@@ -85,24 +107,37 @@ export function SyncedVideoPlayer({ youtubeId, title, subtitles, burmeseOnly = f
         <div ref={hostRef} title={title} />
       </div>
 
-      <div className="min-h-[5.5rem] rounded-xl border border-primary/40 bg-primary/5 p-4 text-center" aria-live="polite">
+      <div
+        className="min-h-[5.5rem] rounded-xl border border-primary/40 bg-primary/5 p-4 text-center"
+        aria-live="polite"
+      >
         {active ? (
           <>
             <p className="text-base font-semibold leading-relaxed text-foreground">{active.my}</p>
             {showEn && <p className="mt-1 text-sm text-muted-foreground">{active.en}</p>}
           </>
         ) : (
-          <p className="text-sm text-muted-foreground">▶ ဗီဒီယိုကို ဖွင့်လိုက်ရင် မြန်မာ စာတန်းထိုး ဒီမှာ ပေါ်လာပါမယ်။</p>
+          <p className="text-sm text-muted-foreground">
+            ▶ ဗီဒီယိုကို ဖွင့်လိုက်ရင် မြန်မာ စာတန်းထိုး ဒီမှာ ပေါ်လာပါမယ်။
+          </p>
         )}
       </div>
 
       <div className="flex flex-wrap gap-2">
         {!burmeseOnly && (
-          <button type="button" onClick={() => setShowEn((v) => !v)} className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium hover:bg-accent">
+          <button
+            type="button"
+            onClick={() => setShowEn((v) => !v)}
+            className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium hover:bg-accent"
+          >
             {showEn ? "English ဖျောက်မယ်" : "English ပြမယ်"}
           </button>
         )}
-        <button type="button" onClick={() => setShowScript((v) => !v)} className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium hover:bg-accent">
+        <button
+          type="button"
+          onClick={() => setShowScript((v) => !v)}
+          className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium hover:bg-accent"
+        >
           {showScript ? "စာသားအပြည့် ပိတ်မယ်" : "📜 စာသားအပြည့် ကြည့်မယ်"}
         </button>
       </div>
@@ -118,7 +153,9 @@ export function SyncedVideoPlayer({ youtubeId, title, subtitles, burmeseOnly = f
               >
                 <span className="mr-2 font-mono text-xs text-primary">{fmt(l.start)}</span>
                 <span className="font-medium">{l.my}</span>
-                {showEn && <span className="block pl-10 text-xs text-muted-foreground">{l.en}</span>}
+                {showEn && (
+                  <span className="block pl-10 text-xs text-muted-foreground">{l.en}</span>
+                )}
               </button>
             </li>
           ))}
