@@ -1,0 +1,553 @@
+{
+  "videoId": "POFfLs0Uaio",
+  "source": "User-provided Pasted text.txt",
+  "sourceSha256": "47c3f7fbe4a996ca84155864f83755cc739d0c3ff6267904ba2f0fbc1ff0968d",
+  "timingBasis": "Original source start markers; each end is the next source marker. No offset or interpolation.",
+  "cues": [
+    {
+      "start": 1,
+      "end": 11,
+      "en": "Hi, I'm Kasia. Welcome to Oxford Online English. In this lesson, you can learn about the modal verbs must, have to and should.",
+      "my": "မင်္ဂလာပါ၊ ကျွန်မ Kasia ပါ။ Oxford Online English မှ ကြိုဆိုပါတယ်။ ဒီသင်ခန်းစာမှာ must၊ have to နဲ့ should ဆိုတဲ့ အကူကြိယာတွေကို လေ့လာပါမယ်။"
+    },
+    {
+      "start": 11,
+      "end": 18,
+      "en": "Do you know the difference between 'must', 'have to' and 'should'? English learners often mix up these three verbs.",
+      "my": "Must၊ have to နဲ့ should တို့ရဲ့ ကွာခြားချက်ကို သိပါသလား။ အင်္ဂလိပ်စာလေ့လာသူတွေ ဒီသုံးမျိုးကို ရောထွေးတတ်ပါတယ်။"
+    },
+    {
+      "start": 18,
+      "end": 28,
+      "en": "In this lesson, you can learn how to use must, have to and should correctly in English.",
+      "my": "ဒီသင်ခန်းစာမှာ must၊ have to နဲ့ should ကို အင်္ဂလိပ်လို မှန်မှန်ကန်ကန် သုံးနည်း လေ့လာရပါမယ်။"
+    },
+    {
+      "start": 28,
+      "end": 37,
+      "en": "Must and have to are both used to talk about obligations: things you cannot choose not to do.",
+      "my": "Must နဲ့ have to နှစ်ခုလုံးကို မလုပ်မဖြစ်တဲ့ တာဝန်နဲ့ လိုအပ်ချက်တွေအကြောင်း ပြောဖို့ သုံးပါတယ်။ မလုပ်ဘဲ ရွေးချယ်လို့မရတဲ့ အရာတွေပါ။"
+    },
+    {
+      "start": 37,
+      "end": 42,
+      "en": "For example: We must talk to her before she leaves.",
+      "my": "ဥပမာ — “We must talk to her before she leaves.” သူမ မသွားခင် ကျွန်တော်တို့ စကားပြောရမယ်။"
+    },
+    {
+      "start": 42,
+      "end": 47,
+      "en": "I have to go into work early tomorrow.",
+      "my": "“I have to go into work early tomorrow.” မနက်ဖြန် အလုပ်ကို စောစောသွားရမယ်။"
+    },
+    {
+      "start": 47,
+      "end": 57,
+      "en": "If you say, We must talk to her before she leaves, you mean that you think this is very important, and you need to do it.",
+      "my": "“We must talk to her before she leaves.” လို့ပြောရင် ဒါက အလွန်အရေးကြီးတယ်လို့ ကိုယ်တိုင်ယူဆပြီး လုပ်ဖို့လိုတယ်လို့ ဆိုလိုတာပါ။"
+    },
+    {
+      "start": 57,
+      "end": 66,
+      "en": "When you say, I have to go into work early tomorrow, you mean that you have no choice.",
+      "my": "“I have to go into work early tomorrow.” လို့ပြောရင်တော့ တခြားရွေးချယ်စရာ မရှိလို့ပါ။"
+    },
+    {
+      "start": 66,
+      "end": 73,
+      "en": "These are both obligations, but they’re slightly different. Can you see how they’re different?",
+      "my": "နှစ်ခုလုံးက မလုပ်မဖြစ်အရာတွေဖြစ်ပေမယ့် နည်းနည်းကွာပါတယ်။ ကွာခြားပုံကို မြင်ပါသလား။"
+    },
+    {
+      "start": 73,
+      "end": 82,
+      "en": "The first obligation is more personal, which is why you use must. You feel that it’s necessary and important to talk to her before she leaves.",
+      "my": "ပထမတစ်ခုမှာ ကိုယ်ပိုင်ခံယူချက် ပိုပါလို့ must ကို သုံးတာပါ။ သူမ မသွားခင် စကားပြောဖို့ လိုအပ်ပြီး အရေးကြီးတယ်လို့ ကိုယ်တိုင်ခံစားရပါတယ်။"
+    },
+    {
+      "start": 82,
+      "end": 88,
+      "en": "The obligation comes from you and your feelings. What about have to?",
+      "my": "လုပ်ရမယ်ဆိုတဲ့ သဘောက ကိုယ့်ဆန္ဒနဲ့ ခံစားချက်ကနေ လာပါတယ်။ Have to ကတော့ ဘယ်လိုလဲ။"
+    },
+    {
+      "start": 88,
+      "end": 97,
+      "en": "The second obligation is more situational, which is why you use have to.",
+      "my": "ဒုတိယတစ်ခုက အခြေအနေကြောင့် ဖြစ်တာပိုများလို့ have to ကို သုံးတာပါ။"
+    },
+    {
+      "start": 97,
+      "end": 107,
+      "en": "It’s necessary to go into work early tomorrow, maybe because you have to meet a client, or you have some important work to finish.",
+      "my": "ဖောက်သည်နဲ့တွေ့ရမှာ ဒါမှမဟုတ် အရေးကြီးတဲ့အလုပ် ပြီးအောင်လုပ်ရမှာကြောင့် မနက်ဖြန် စောစောရုံးသွားဖို့ လိုတာ ဖြစ်နိုင်ပါတယ်။"
+    },
+    {
+      "start": 107,
+      "end": 113,
+      "en": "The obligation comes from the situation, not from you.",
+      "my": "မဖြစ်မနေလိုအပ်ချက်က ကိုယ့်ဆန္ဒကနေမဟုတ်ဘဲ အခြေအနေကနေ လာတာပါ။"
+    },
+    {
+      "start": 113,
+      "end": 120,
+      "en": "Let’s see some more examples: I must pay him back like I promised.",
+      "my": "နောက်ဥပမာတွေ ကြည့်ပါ။ “I must pay him back like I promised.” ကတိပေးထားသလို သူ့ကို ငွေပြန်ဆပ်ရမယ်။"
+    },
+    {
+      "start": 120,
+      "end": 129,
+      "en": "--> You made a promise, and now it’s important to you personally to keep your promise and pay him back.",
+      "my": "ကိုယ်တိုင်ကတိပေးထားတာမို့ ကတိတည်ပြီး ငွေပြန်ဆပ်ဖို့ ကိုယ့်အတွက် အရေးကြီးနေတာပါ။"
+    },
+    {
+      "start": 129,
+      "end": 140,
+      "en": "He has to do a lot of homework every week. --> He needs to do a lot of homework because the school gives him a lot of homework.",
+      "my": "“He has to do a lot of homework every week.” ကျောင်းက အိမ်စာများများပေးလို့ သူ အပတ်တိုင်း အိမ်စာအများကြီး လုပ်ရတာပါ။"
+    },
+    {
+      "start": 140,
+      "end": 149,
+      "en": "It’s rare to use must to talk about obligations in spoken English. Native English speakers use have to much more in conversation.",
+      "my": "စကားပြောအင်္ဂလိပ်မှာ မဖြစ်မနေလိုအပ်ချက်အတွက် must ကို သုံးတာ သိပ်မများပါဘူး။ မိခင်ဘာသာစကားအဖြစ် သုံးသူတွေက have to ကို ပိုသုံးပါတယ်။"
+    },
+    {
+      "start": 149,
+      "end": 155,
+      "en": "However, you can use must to talk about obligations in formal or written English.",
+      "my": "ဒါပေမဲ့ တရားဝင်စာရေးသားမှုတွေမှာ မဖြစ်မနေလိုအပ်ချက်ကို must နဲ့ ဖော်ပြနိုင်ပါတယ်။"
+    },
+    {
+      "start": 155,
+      "end": 166,
+      "en": "For example: All passengers must have a valid ticket. Candidates must arrive no later than five minutes before the scheduled start time.",
+      "my": "ဥပမာ — “All passengers must have a valid ticket.” ခရီးသည်အားလုံး သက်တမ်းရှိလက်မှတ် ကိုင်ဆောင်ရမည်။ “Candidates must arrive no later than five minutes before the scheduled start time.” ဖြေဆိုသူများ သတ်မှတ်စချိန်မတိုင်မီ အနည်းဆုံး ငါးမိနစ်စောရောက်ရမည်။"
+    },
+    {
+      "start": 166,
+      "end": 175,
+      "en": "Want an easy answer to this? Here’s an easy answer: use have to when you speak.",
+      "my": "လွယ်လွယ်မှတ်ချင်သလား။ စကားပြောတဲ့အခါ have to ကို သုံးပါ။"
+    },
+    {
+      "start": 175,
+      "end": 182,
+      "en": "Using must to talk about obligations can sound very formal and strange in spoken English.",
+      "my": "မဖြစ်မနေလိုအပ်ချက်အတွက် must ကို စကားပြောမှာသုံးရင် တစ်ခါတလေ အလွန်တရားဝင်ဆန်ပြီး ထူးဆန်းသလို ခံစားရနိုင်ပါတယ်။"
+    },
+    {
+      "start": 182,
+      "end": 187,
+      "en": "If you use have to when you speak, you’ll never be wrong!",
+      "my": "ဒီလိုပြောချင်ရင် have to သုံးထားတာက အဆင်ပြေပါတယ်။"
+    },
+    {
+      "start": 187,
+      "end": 195,
+      "en": "You can use must to talk about obligations in your written English if you’re writing something more formal.",
+      "my": "တရားဝင်တဲ့စာ ရေးတဲ့အခါတော့ မဖြစ်မနေလိုအပ်ချက်ကို must နဲ့ ဖော်ပြနိုင်ပါတယ်။"
+    },
+    {
+      "start": 195,
+      "end": 203,
+      "en": "This doesn’t mean that you won’t hear must in conversation; actually, you’ll hear it a lot. Why is this?",
+      "my": "ဒါပေမဲ့ စကားပြောမှာ must ကို လုံးဝမကြားရဘူးလို့ မဆိုလိုပါဘူး။ တကယ်တော့ မကြာခဏကြားရပါတယ်။ ဘာကြောင့်လဲ။"
+    },
+    {
+      "start": 203,
+      "end": 212,
+      "en": "Didn’t we just tell you not to use must in spoken English? It’s because must has many other meanings, too.",
+      "my": "စကားပြောမှာ must မသုံးဖို့ ပြောခဲ့တာ မဟုတ်ဘူးလား။ Must မှာ အခြားအဓိပ္ပာယ်တွေလည်း ရှိနေလို့ပါ။"
+    },
+    {
+      "start": 212,
+      "end": 221,
+      "en": "Using must to talk about obligations is rare in spoken English, but you can use it for many other things. Okay, you’ve seen how must and have to are different.",
+      "my": "မဖြစ်မနေလိုအပ်ချက်အတွက် must ကို သုံးတာရှားပေမယ့် အခြားအကြောင်းအရာတွေမှာ သုံးနိုင်ပါတယ်။ အခု must နဲ့ have to ကွာခြားပုံ သိပြီနော်။"
+    },
+    {
+      "start": 221,
+      "end": 230,
+      "en": "What about mustn’t and don’t have to? Wait, what? We just talked about must and have to.",
+      "my": "Mustn’t နဲ့ don’t have to ကတော့ ဘယ်လိုလဲ။ ခုနကလည်း must နဲ့ have to ကို ပြောခဲ့ပြီးပြီ မဟုတ်လား။"
+    },
+    {
+      "start": 230,
+      "end": 238,
+      "en": "Isn’t this the same? Not at all. Must and have to aren’t exactly the same, but they are quite similar.",
+      "my": "အတူတူပဲ မဟုတ်ဘူးလား။ မဟုတ်ပါဘူး။ Must နဲ့ have to က လုံးဝတူတာမဟုတ်ပေမယ့် ဆင်တူပါတယ်။"
+    },
+    {
+      "start": 238,
+      "end": 244,
+      "en": "However, the negatives—mustn’t and don’t have to—are completely different.",
+      "my": "ဒါပေမဲ့ အငြင်းပုံစံ mustn’t နဲ့ don’t have to တို့ကတော့ အဓိပ္ပာယ် လုံးဝကွာပါတယ်။"
+    },
+    {
+      "start": 244,
+      "end": 254,
+      "en": "Look at two sentences: Visitors must not touch the paintings. You don’t have to be here before ten.",
+      "my": "ဝါကျနှစ်ခုကို ကြည့်ပါ။ “Visitors must not touch the paintings.” ဧည့်သည်များ ပန်းချီကားများကို မထိရ။ “You don’t have to be here before ten.” ဆယ်နာရီမတိုင်ခင် ဒီကိုရောက်နေဖို့ မလိုပါဘူး။"
+    },
+    {
+      "start": 254,
+      "end": 260,
+      "en": "Can you tell the difference? Must not means that something is forbidden.",
+      "my": "ကွာခြားချက်ကို မြင်ပါသလား။ Must not က တားမြစ်ထားတာကို ဆိုလိုပါတယ်။"
+    },
+    {
+      "start": 260,
+      "end": 265,
+      "en": "You are not allowed to do this.",
+      "my": "ဒါကို လုပ်ခွင့်မရှိပါဘူး။"
+    },
+    {
+      "start": 265,
+      "end": 274,
+      "en": "If you’re in a museum, and the sign says Visitors must not touch the paintings, then don’t touch the paintings!",
+      "my": "ပြတိုက်မှာ “Visitors must not touch the paintings.” ဆိုတဲ့ ဆိုင်းဘုတ်ရှိရင် ပန်းချီကားတွေကို မထိရပါဘူး။"
+    },
+    {
+      "start": 274,
+      "end": 283,
+      "en": "Don’t have to means that something is not necessary. You can choose to do something or not.",
+      "my": "Don’t have to ကတော့ လုပ်ဖို့မလိုအပ်တာပါ။ လုပ်မလား၊ မလုပ်ဘူးလား ကိုယ်တိုင်ရွေးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 283,
+      "end": 292,
+      "en": "If we have plans, and I tell you, You don’t have to be here before ten, then you can be here before ten if you want.",
+      "my": "ကျွန်မတို့ချိန်းထားပြီး “You don’t have to be here before ten.” လို့ပြောရင် ကိုယ်လာချင်ရင် ဆယ်နာရီမတိုင်ခင်လည်း လာနိုင်ပါတယ်။"
+    },
+    {
+      "start": 292,
+      "end": 297,
+      "en": "You can come at nine, at eight, or whenever you want. It’s your choice.",
+      "my": "ကိုးနာရီဖြစ်ဖြစ်၊ ရှစ်နာရီဖြစ်ဖြစ် ကိုယ်လာချင်တဲ့အချိန် လာနိုင်ပါတယ်။ ကိုယ့်ရွေးချယ်မှုပါ။"
+    },
+    {
+      "start": 297,
+      "end": 305,
+      "en": "Let’s see some more examples: Passengers must not talk to the driver while the bus is moving.",
+      "my": "နောက်ဥပမာ — “Passengers must not talk to the driver while the bus is moving.” ဘတ်စ်ကား မောင်းနေစဉ် ယာဉ်မောင်းကို ခရီးသည်များ စကားမပြောရ။"
+    },
+    {
+      "start": 305,
+      "end": 314,
+      "en": "--> It’s forbidden to talk to the driver while the bus is moving; you aren’t allowed to do this. You don’t have to finish it today.",
+      "my": "ကားမောင်းနေစဉ် ယာဉ်မောင်းနဲ့ စကားပြောတာ တားမြစ်ထားတာပါ။ လုပ်ခွင့်မရှိပါဘူး။ “You don’t have to finish it today.” ကိုလည်း ကြည့်ပါ။"
+    },
+    {
+      "start": 314,
+      "end": 320,
+      "en": "--> You can finish it today if you want to, but you can also leave it until later if you want. It’s your choice.",
+      "my": "ဒီနေ့ ပြီးချင်ရင် ပြီးအောင်လုပ်နိုင်ပေမယ့် နောက်မှလုပ်ဖို့ ချန်ထားလည်းရပါတယ်။ ကိုယ်တိုင်ရွေးနိုင်တာပါ။"
+    },
+    {
+      "start": 320,
+      "end": 331,
+      "en": "Like must, must not is more common in formal or written English. In spoken English, it’s more common to use can’t.",
+      "my": "Must လိုပဲ must not ကိုလည်း တရားဝင်စာတွေမှာ ပိုသုံးပါတယ်။ စကားပြောမှာတော့ can’t ကို ပိုသုံးတတ်ပါတယ်။"
+    },
+    {
+      "start": 331,
+      "end": 339,
+      "en": "For example, you might see a sign saying: Mobile phones must not be used while driving.",
+      "my": "ဥပမာ ဆိုင်းဘုတ်မှာ “Mobile phones must not be used while driving.” ယာဉ်မောင်းနေစဉ် မိုဘိုင်းဖုန်း မသုံးရလို့ တွေ့နိုင်ပါတယ်။"
+    },
+    {
+      "start": 339,
+      "end": 347,
+      "en": "But, if you were talking, you’d probably say: You can’t use your phone while you’re driving.",
+      "my": "စကားပြောရင်တော့ “You can’t use your phone while you’re driving.” မောင်းနေတဲ့အချိန် ဖုန်းမသုံးရဘူးလို့ ပြောတတ်ပါတယ်။"
+    },
+    {
+      "start": 347,
+      "end": 354,
+      "en": "On the other hand, don’t have to is common in both spoken and written English.",
+      "my": "Don’t have to ကိုတော့ စကားပြောနဲ့ စာရေး နှစ်မျိုးလုံးမှာ အသုံးများပါတယ်။"
+    },
+    {
+      "start": 354,
+      "end": 362,
+      "en": "So now you’ve seen the difference between must and have to, but what about should?",
+      "my": "Must နဲ့ have to ကွာခြားပုံ သိပြီဆိုတော့ should က ဘယ်လိုလဲ။"
+    },
+    {
+      "start": 362,
+      "end": 369,
+      "en": "Remember that must and have to can be used to talk about obligations. Should is different.",
+      "my": "Must နဲ့ have to တို့ကို မဖြစ်မနေလိုအပ်ချက်အတွက် သုံးနိုင်တယ်ဆိုတာ မှတ်ထားပါ။ Should ကတော့ မတူပါဘူး။"
+    },
+    {
+      "start": 369,
+      "end": 372,
+      "en": "You use should to give advice or express your opinion.",
+      "my": "အကြံပေးဖို့ ဒါမှမဟုတ် ကိုယ့်အမြင်ဖော်ပြဖို့ should ကို သုံးပါတယ်။"
+    },
+    {
+      "start": 372,
+      "end": 380,
+      "en": "For example: You should go to bed earlier. Then you wouldn’t feel so tired all the time. --> This is my advice.",
+      "my": "“You should go to bed earlier. Then you wouldn’t feel so tired all the time.” စောစောအိပ်သင့်တယ်၊ ဒါဆို အမြဲပင်ပန်းနေတော့မှာ မဟုတ်ဘူး။ ဒါက ကျွန်မရဲ့အကြံပါ။"
+    },
+    {
+      "start": 380,
+      "end": 389,
+      "en": "I think it’s better for you to do this, but it isn’t necessary. It’s not an obligation, so you still have a choice.",
+      "my": "ဒီလိုလုပ်တာ ပိုကောင်းမယ်လို့ ထင်ပေမယ့် မဖြစ်မနေလိုအပ်ချက် မဟုတ်ပါဘူး။ လုပ်မလားဆိုတာ ကိုယ်တိုင်ရွေးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 389,
+      "end": 394,
+      "en": "He should do more work if he wants to get promoted. --> This is my opinion.",
+      "my": "“He should do more work if he wants to get promoted.” ရာထူးတိုးချင်ရင် အလုပ်ပိုလုပ်သင့်တယ်။ ဒါက ကျွန်မအမြင်ပါ။"
+    },
+    {
+      "start": 394,
+      "end": 401,
+      "en": "I don’t think he needs to do it, and I don’t necessarily care if he does this or not.",
+      "my": "သူ မဖြစ်မနေလုပ်ရမယ်လို့ မဆိုလိုပါဘူး။ လုပ်မလုပ်ကိုလည်း ကိုယ်က မဖြစ်မနေအရေးထားနေတာ မဟုတ်ပါဘူး။"
+    },
+    {
+      "start": 401,
+      "end": 405,
+      "en": "You can’t use should to talk about obligations or rules.",
+      "my": "မဖြစ်မနေလိုက်နာရတဲ့ တာဝန်နဲ့ စည်းမျဉ်းအတွက် should ကို မသုံးရပါဘူး။"
+    },
+    {
+      "start": 405,
+      "end": 411,
+      "en": "When you say, You should… You mean that the person has a choice.",
+      "my": "“You should…” လို့ပြောရင် တစ်ဖက်လူမှာ ရွေးချယ်ခွင့်ရှိတယ်လို့ ဆိုလိုပါတယ်။"
+    },
+    {
+      "start": 411,
+      "end": 419,
+      "en": "You’re giving your opinion or some advice. However, must can also be used to give advice.",
+      "my": "ကိုယ့်အမြင် ဒါမှမဟုတ် အကြံကို ပေးနေတာပါ။ ဒါပေမဲ့ must ကိုလည်း အကြံပေးရာမှာ သုံးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 419,
+      "end": 425,
+      "en": "For example: You must try the fish. It’s delicious!",
+      "my": "“You must try the fish. It’s delicious!” ငါးဟင်းကို မဖြစ်မနေ စမ်းစားကြည့်ပါ၊ အရမ်းအရသာရှိတယ်။"
+    },
+    {
+      "start": 425,
+      "end": 430,
+      "en": "Actually, you can also use have to to give advice.",
+      "my": "တကယ်တော့ have to ကိုလည်း အကြံပေးရာမှာ သုံးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 430,
+      "end": 436,
+      "en": "You could also say: You have to try the fish. It’s delicious!",
+      "my": "“You have to try the fish. It’s delicious!” လို့လည်း ပြောနိုင်ပါတယ်။"
+    },
+    {
+      "start": 436,
+      "end": 443,
+      "en": "Can you tell the difference between using should to give advice, and using must or have to?",
+      "my": "Should နဲ့အကြံပေးတာနဲ့ must ဒါမှမဟုတ် have to နဲ့အကြံပေးတာ ဘယ်လိုကွာသလဲ။"
+    },
+    {
+      "start": 443,
+      "end": 450,
+      "en": "Giving advice with must or have to is stronger and more emphatic than giving advice with should.",
+      "my": "Must ဒါမှမဟုတ် have to နဲ့ပြောတာက should နဲ့ပြောတာထက် ပိုပြင်းပြင်းထန်ထန် အလေးပေးပါတယ်။"
+    },
+    {
+      "start": 450,
+      "end": 454,
+      "en": "If you say: You should try the fish.",
+      "my": "“You should try the fish.” လို့ပြောရင်…"
+    },
+    {
+      "start": 454,
+      "end": 463,
+      "en": "This sounds quite neutral, but if you say: You must try the fish! Or, You have to try the fish!",
+      "my": "သာမန်အကြံပေးသလိုပါပဲ။ “You must try the fish!” ဒါမှမဟုတ် “You have to try the fish!” လို့ပြောရင်တော့…"
+    },
+    {
+      "start": 463,
+      "end": 469,
+      "en": "These sound much stronger. You’re more excited about what you’re saying. You really like that fish!",
+      "my": "ပိုပြင်းထန်ပါတယ်။ ပြောတဲ့အကြောင်းအရာအပေါ် ပိုစိတ်လှုပ်ရှားပြီး အဲဒီငါးဟင်းကို အရမ်းကြိုက်နေတဲ့သဘောပါ။"
+    },
+    {
+      "start": 469,
+      "end": 478,
+      "en": "So, you can use must, have to or should to give advice or express opinions.",
+      "my": "ဒါကြောင့် must၊ have to၊ should သုံးမျိုးလုံးနဲ့ အကြံပေးနိုင်၊ ကိုယ့်အမြင်ကို ဖော်ပြနိုင်ပါတယ်။"
+    },
+    {
+      "start": 478,
+      "end": 484,
+      "en": "Using must or have to expresses stronger feelings than just using should.",
+      "my": "Must နဲ့ have to က should သုံးတာထက် ခံစားချက်ပိုပြင်းထန်ကြောင်း ပြပါတယ်။"
+    },
+    {
+      "start": 484,
+      "end": 491,
+      "en": "However, if you want to give negative advice, only shouldn’t is possible.",
+      "my": "ဒါပေမဲ့ မလုပ်သင့်ဘူးလို့ အကြံပေးချင်ရင်တော့ shouldn’t ကိုပဲ သုံးရပါတယ်။"
+    },
+    {
+      "start": 491,
+      "end": 499,
+      "en": "For example: You shouldn’t eat so much chocolate at once—you’ll make yourself sick!",
+      "my": "“You shouldn’t eat so much chocolate at once—you’ll make yourself sick!” ချောကလက်အများကြီး တစ်ခါတည်း မစားသင့်ဘူး၊ နေမကောင်းဖြစ်သွားနိုင်တယ်။"
+    },
+    {
+      "start": 499,
+      "end": 505,
+      "en": "You shouldn’t take the job unless you’re sure it’s what you want.",
+      "my": "“You shouldn’t take the job unless you’re sure it’s what you want.” ကိုယ်တကယ်လိုချင်တဲ့အလုပ်ဆိုတာ မသေချာရင် အဲဒီအလုပ်ကို မရွေးသင့်ဘူး။"
+    },
+    {
+      "start": 505,
+      "end": 512,
+      "en": "In negative sentences, you can only use shouldn’t to give advice or express your opinion.",
+      "my": "အငြင်းဝါကျမှာ အကြံပေးခြင်း၊ ကိုယ့်အမြင်ဖော်ပြခြင်းအတွက် shouldn’t ကို သုံးရပါတယ်။"
+    },
+    {
+      "start": 512,
+      "end": 517,
+      "en": "You can’t use mustn’t or don’t have to with this meaning.",
+      "my": "ဒီအဓိပ္ပာယ်နဲ့ mustn’t ဒါမှမဟုတ် don’t have to ကို မသုံးရပါဘူး။"
+    },
+    {
+      "start": 517,
+      "end": 525,
+      "en": "At this point, you’ve seen how to use must, have to and should to talk about obligations or advice.",
+      "my": "အခု must၊ have to၊ should နဲ့ မဖြစ်မနေလိုအပ်ချက် ဒါမှမဟုတ် အကြံပေးပုံတွေကို သိခဲ့ပြီနော်။"
+    },
+    {
+      "start": 525,
+      "end": 535,
+      "en": "Let’s put everything together by comparing all three verbs.",
+      "my": "သုံးမျိုးလုံးကို နှိုင်းယှဉ်ပြီး ပြန်စုစည်းကြမယ်။"
+    },
+    {
+      "start": 535,
+      "end": 545,
+      "en": "Use must for: Obligations you feel strongly about: I must remember to send him a birthday card.",
+      "my": "ကိုယ်တိုင် အလေးထားတဲ့ မဖြစ်မနေလိုအပ်ချက်အတွက် must ကို သုံးပါ။ “I must remember to send him a birthday card.” သူ့ကို မွေးနေ့ကတ်ပို့ဖို့ မမေ့ရဘူး။"
+    },
+    {
+      "start": 545,
+      "end": 553,
+      "en": "Obligations in formal, written English: All employees must wash hands.",
+      "my": "တရားဝင်ရေးထားတဲ့ စည်းမျဉ်းတွေအတွက်လည်း သုံးပါတယ်။ “All employees must wash hands.” ဝန်ထမ်းအားလုံး လက်ဆေးရမည်။"
+    },
+    {
+      "start": 553,
+      "end": 560,
+      "en": "Strong advice: You must read it—it’s an amazing story!",
+      "my": "အလေးအနက်အကြံပေးရာမှာလည်း သုံးပါတယ်။ “You must read it—it’s an amazing story!” အံ့ဩစရာကောင်းတဲ့ ဝတ္ထုမို့ မဖြစ်မနေဖတ်ကြည့်ပါ။"
+    },
+    {
+      "start": 560,
+      "end": 568,
+      "en": "Saying something is forbidden, if you use mustn’t: Children must not be left unattended.",
+      "my": "Mustn’t သုံးရင် တားမြစ်ထားတာကို ဖော်ပြပါတယ်။ “Children must not be left unattended.” ကလေးများကို အစောင့်အရှောက်မရှိဘဲ မထားရ။"
+    },
+    {
+      "start": 568,
+      "end": 575,
+      "en": "Remember that mustn’t or must not are more formal, and in spoken English it’s more common to say can’t.",
+      "my": "Mustn’t နဲ့ must not က ပိုတရားဝင်ဆန်ပြီး စကားပြောမှာတော့ can’t ကို ပိုသုံးတတ်တယ်ဆိုတာ မှတ်ထားပါ။"
+    },
+    {
+      "start": 575,
+      "end": 580,
+      "en": "Next, what about have to?",
+      "my": "နောက်တစ်ခု have to က ဘယ်လိုလဲ။"
+    },
+    {
+      "start": 580,
+      "end": 592,
+      "en": "You use have to for: Obligations which depend on rules or circumstances: I have to wear glasses because I can’t see so clearly.",
+      "my": "စည်းမျဉ်း ဒါမှမဟုတ် အခြေအနေအရ မဖြစ်မနေလိုတဲ့အရာတွေမှာ သုံးပါ။ “I have to wear glasses because I can’t see so clearly.” ကောင်းကောင်းမမြင်လို့ မျက်မှန်တပ်ရတယ်။"
+    },
+    {
+      "start": 592,
+      "end": 598,
+      "en": "Most obligations in spoken English: Do you have to work tomorrow?",
+      "my": "စကားပြောမှာ မဖြစ်မနေလိုအပ်ချက် အများစုအတွက် သုံးပါတယ်။ “Do you have to work tomorrow?” မနက်ဖြန် အလုပ်လုပ်ရမှာလား။"
+    },
+    {
+      "start": 598,
+      "end": 607,
+      "en": "Saying something is not necessary: You don’t have to do this if you don’t want to.",
+      "my": "မလိုအပ်ဘူးဆိုတာလည်း ဖော်ပြပါတယ်။ “You don’t have to do this if you don’t want to.” မလုပ်ချင်ရင် ဒါကို လုပ်ဖို့မလိုဘူး။"
+    },
+    {
+      "start": 607,
+      "end": 617,
+      "en": "Strong advice: You have to try this ice cream! Using have to for strong advice sounds more conversational than using must.",
+      "my": "“You have to try this ice cream!” ဒီရေခဲမုန့်ကို မဖြစ်မနေ စမ်းစားကြည့်ပါ။ အလေးအနက်အကြံပေးတဲ့ have to က must ထက် ပိုစကားပြောဆန်ပါတယ်။"
+    },
+    {
+      "start": 617,
+      "end": 620,
+      "en": "Finally, should.",
+      "my": "နောက်ဆုံး should ပါ။"
+    },
+    {
+      "start": 620,
+      "end": 628,
+      "en": "You can use should for: Giving advice: You should try once more—I’m sure you can get it.",
+      "my": "အကြံပေးဖို့ သုံးနိုင်ပါတယ်။ “You should try once more—I’m sure you can get it.” နောက်တစ်ကြိမ် ထပ်ကြိုးစားသင့်တယ်၊ လုပ်နိုင်မယ်လို့ ယုံတယ်။"
+    },
+    {
+      "start": 628,
+      "end": 635,
+      "en": "Giving negative advice: You shouldn’t work so hard. Take a break sometimes!",
+      "my": "မလုပ်သင့်ကြောင်း အကြံပေးဖို့လည်း သုံးပါတယ်။ “You shouldn’t work so hard. Take a break sometimes!” အလုပ်အလွန်အကျွံ မလုပ်သင့်ဘူး၊ တစ်ခါတလေ နားပါ။"
+    },
+    {
+      "start": 635,
+      "end": 641,
+      "en": "Giving your opinion: If they make us work overtime, they should pay us for it.",
+      "my": "အမြင်ဖော်ပြဖို့လည်း သုံးပါတယ်။ “If they make us work overtime, they should pay us for it.” အချိန်ပိုလုပ်ခိုင်းရင် အချိန်ပိုကြေး ပေးသင့်တယ်။"
+    },
+    {
+      "start": 641,
+      "end": 648,
+      "en": "One last point: these three verbs can also be used to talk about probability and certainty.",
+      "my": "နောက်ဆုံးအချက်တစ်ခု — ဒီကြိယာသုံးမျိုးကို ဖြစ်နိုင်ခြေနဲ့ သေချာမှုအကြောင်း ပြောဖို့လည်း သုံးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 648,
+      "end": 656,
+      "en": "In this video, we focused on talking about obligations and giving advice, but these verbs can also be used in other ways.",
+      "my": "ဒီဗီဒီယိုမှာ မဖြစ်မနေလိုအပ်ချက်နဲ့ အကြံပေးပုံကို အဓိကပြောပေမယ့် အခြားသုံးနည်းတွေလည်း ရှိပါတယ်။"
+    },
+    {
+      "start": 656,
+      "end": 663,
+      "en": "So now you’ve seen how to use must, have to and should in different ways. Want more practice with this topic?",
+      "my": "Must၊ have to၊ should တို့ကို အခြေအနေမတူတာတွေမှာ သုံးပုံသိခဲ့ပြီနော်။ ဒီအကြောင်းကို ထပ်လေ့ကျင့်ချင်သလား။"
+    },
+    {
+      "start": 663,
+      "end": 672,
+      "en": "Check out the full lesson on our website: Oxford Online English.com. You can read the script and practice with a quiz.",
+      "my": "OxfordOnlineEnglish.com က သင်ခန်းစာအပြည့်ကို ကြည့်ပါ။ စာသားဖတ်ပြီး quiz နဲ့ လေ့ကျင့်နိုင်ပါတယ်။"
+    }
+  ],
+  "untimedTail": {
+    "start": 672,
+    "en": "Thanks for watching! See you next time!",
+    "my": "ကြည့်ရှုပေးလို့ ကျေးဇူးတင်ပါတယ်။ နောက်မှတွေ့မယ်။",
+    "reason": "Source supplies the start only. Display its end only when the real YouTube video duration is available."
+  },
+  "sourceNotes": [
+    "Original English wording and numeric markers retained, including ASR imperfections.",
+    "Chapter headings and copied Sync to video time controls are not spoken cues.",
+    "On-screen example text not included in the supplied transcript is not invented."
+  ]
+}

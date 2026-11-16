@@ -1,0 +1,661 @@
+{
+  "videoId": "aIklwvL605c",
+  "source": "User-provided Pasted text.txt",
+  "sourceSha256": "e7c7fc1448e01cd41d296efbdbdca191e2104c51051f56878915107c6cc62698",
+  "timingBasis": "Original source start markers; each end is the next source marker. No offset or interpolation.",
+  "cues": [
+    {
+      "start": 1,
+      "end": 7,
+      "en": "Hi everyone. I'm Jennifer from English with  Jennifer here with another grammar lesson.  ",
+      "my": "မင်္ဂလာပါ။ ကျွန်မက English with Jennifer မှ Jennifer ပါ။ နောက်ထပ် သဒ္ဒါသင်ခန်းစာတစ်ခုနဲ့ ပြန်လာပါတယ်။"
+    },
+    {
+      "start": 7,
+      "end": 14,
+      "en": "I'll start with a tip. When you study grammar,  don't be afraid to ask questions. In fact,  ",
+      "my": "အကြံလေးတစ်ခုနဲ့ စပါမယ်။ သဒ္ဒါလေ့လာတဲ့အခါ မေးခွန်းမေးဖို့ မကြောက်ပါနဲ့။ တကယ်တော့…"
+    },
+    {
+      "start": 14,
+      "end": 19,
+      "en": "when you leave a lesson, you should have  answers to some very important questions,  ",
+      "my": "သင်ခန်းစာပြီးတဲ့အခါ အရေးကြီးတဲ့ မေးခွန်းတချို့ရဲ့ အဖြေကို သိထားသင့်ပါတယ်။"
+    },
+    {
+      "start": 19,
+      "end": 31,
+      "en": "like what? What did I just learn? Why? Why do  I need this grammar? How? How do I form it?  ",
+      "my": "ဘာတွေသင်လိုက်ရလဲ။ ဘာကြောင့် ဒီသဒ္ဒါကို လိုတာလဲ။ ဘယ်လိုဖွဲ့စည်းရမလဲ။"
+    },
+    {
+      "start": 31,
+      "end": 40,
+      "en": "When? When do I use this grammar? Children often  make wonderful learners because they're curious.  ",
+      "my": "ဘယ်အချိန်မှာ ဒီသဒ္ဒါကို သုံးရမလဲ။ ကလေးတွေက စူးစမ်းလိုစိတ်ရှိလို့ သင်ယူရာမှာ ကောင်းတတ်ပါတယ်။"
+    },
+    {
+      "start": 40,
+      "end": 47,
+      "en": "Let's not lose our curiosity. Ask questions  till you get the answers you need. Right now,  ",
+      "my": "ကျွန်မတို့လည်း စူးစမ်းလိုစိတ် မပျောက်ပါစေနဲ့။ လိုတဲ့အဖြေရတဲ့အထိ မေးခွန်းမေးပါ။ အခုတော့…"
+    },
+    {
+      "start": 47,
+      "end": 61,
+      "en": "I'm going to try my best to satisfy your  curiosity about subject-verb inversion in English.",
+      "my": "အင်္ဂလိပ်စာက subject-verb inversion၊ ကတ္တားနဲ့ကြိယာ နေရာပြောင်းခြင်းအကြောင်း သင်သိချင်တာကို အကောင်းဆုံး ရှင်းပြပါမယ်။"
+    },
+    {
+      "start": 61,
+      "end": 66,
+      "en": "Statement word order is subject +  verb. In all my earlier questions,  ",
+      "my": "ရိုးရိုးအဆိုဝါကျမှာ subject + verb ဆိုတဲ့ အစဉ်အတိုင်း ရှိပါတယ်။ အစောပိုင်းက မေးခွန်းတွေအားလုံးမှာတော့…"
+    },
+    {
+      "start": 66,
+      "end": 77,
+      "en": "I used subject-verb inversion. I flipped the two  around: verb + subject. What did I just learn?  ",
+      "my": "Subject-verb inversion သုံးထားပါတယ်။ Verb + subject ဆိုပြီး နေရာပြောင်းလိုက်တာပါ။ “What did I just learn?”"
+    },
+    {
+      "start": 77,
+      "end": 87,
+      "en": "Why do I need this grammar? How  do I form it? When do I use it?",
+      "my": "“Why do I need this grammar?” “How do I form it?” “When do I use it?” တို့ကို ကြည့်ပါ။"
+    },
+    {
+      "start": 87,
+      "end": 94,
+      "en": "We also use subject-verb inversion in  tag questions and negative questions.  ",
+      "my": "Tag question နဲ့ အငြင်းမေးခွန်းတွေမှာလည်း subject-verb inversion ကို သုံးပါတယ်။"
+    },
+    {
+      "start": 94,
+      "end": 105,
+      "en": "You understand, don't you? This isn't difficult,  is it? Wouldn't you like to learn something new?",
+      "my": "“You understand, don’t you?” “This isn’t difficult, is it?” “Wouldn’t you like to learn something new?”"
+    },
+    {
+      "start": 105,
+      "end": 112,
+      "en": "So, subject-verb inversion is a way we  make questions different from statements.  ",
+      "my": "ဒါကြောင့် subject-verb inversion က မေးခွန်းဝါကျကို ရိုးရိုးအဆိုဝါကျနဲ့ ကွဲပြားစေတဲ့ နည်းတစ်ခုပါ။"
+    },
+    {
+      "start": 112,
+      "end": 119,
+      "en": "One exception would be embedded questions.  Embedded questions aren't real questions.  ",
+      "my": "ခြွင်းချက်တစ်ခုက embedded questions တွေပါ။ Embedded question က တကယ့်မေးခွန်း မဟုတ်ပါဘူး။"
+    },
+    {
+      "start": 119,
+      "end": 130,
+      "en": "They're a type of noun clause inside a  larger statement or inside a question.   I've told you what inversion is.",
+      "my": "ပိုကြီးတဲ့ အဆိုဝါကျ ဒါမှမဟုတ် မေးခွန်းထဲမှာပါတဲ့ noun clause တစ်မျိုးပါ။ “I’ve told you what inversion is.”"
+    },
+    {
+      "start": 130,
+      "end": 138,
+      "en": "\"What inversion is\" is an embedded question.  This noun clause is the object of the verb.",
+      "my": "“What inversion is” က embedded question ပါ။ ဒီ noun clause က verb ရဲ့ object ဖြစ်ပါတယ်။"
+    },
+    {
+      "start": 138,
+      "end": 146,
+      "en": "Would you like to know where else inversion is  used? I am asking a real question, but inside  ",
+      "my": "“Would you like to know where else inversion is used?” ဆိုရင် တကယ့်မေးခွန်း မေးနေတာပါ။ ဒါပေမဲ့ အတွင်းမှာ…"
+    },
+    {
+      "start": 146,
+      "end": 156,
+      "en": "this question is an embedded question. The noun  clause again is acting as the object of a verb.  ",
+      "my": "Embedded question တစ်ခု ပါပါတယ်။ အဲဒီ noun clause ကလည်း verb ရဲ့ object အဖြစ် လုပ်ဆောင်နေပါတယ်။"
+    },
+    {
+      "start": 156,
+      "end": 169,
+      "en": "You can watch my lessons on embedded  questions if you need to review.   Just remember they aren't real questions, so  they use statement word order: subject + verb.",
+      "my": "ပြန်လေ့လာဖို့လိုရင် embedded question သင်ခန်းစာတွေကို ကြည့်နိုင်ပါတယ်။ တကယ့်မေးခွန်းမဟုတ်လို့ subject + verb ဆိုတဲ့ အဆိုဝါကျအစဉ်ကို သုံးတာ မှတ်ထားပါ။"
+    },
+    {
+      "start": 169,
+      "end": 175,
+      "en": "Besides questions (real questions), there  are half dozen other cases where we see  ",
+      "my": "တကယ့်မေးခွန်းတွေအပြင် subject-verb inversion တွေ့ရတဲ့ အခြားအခြေအနေ ခြောက်မျိုးလောက်လည်း ရှိပါတယ်။"
+    },
+    {
+      "start": 175,
+      "end": 182,
+      "en": "subject-verb inversion. Let's go  through them, shall we? We can use \"so\"  ",
+      "my": "တစ်ခုချင်း ကြည့်ကြမယ်။ So ကိုလည်းကောင်း…"
+    },
+    {
+      "start": 182,
+      "end": 189,
+      "en": "and \"neither\" to make additions. In conversation,  we use \"so\" and \"neither\" to agree with someone  ",
+      "my": "Neither ကိုလည်းကောင်း အချက်တူတစ်ခု ထပ်ဖြည့်ပြောဖို့ သုံးနိုင်ပါတယ်။ စကားပြောမှာ တစ်ဖက်လူနဲ့ သဘောတူတဲ့အခါ…"
+    },
+    {
+      "start": 189,
+      "end": 200,
+      "en": "about something. And inversion is needed.  Haley likes watching movies at home. So do I.",
+      "my": "So နဲ့ neither ကို သုံးပြီး inversion လုပ်ရပါတယ်။ “Haley likes watching movies at home.” “So do I.” ကျွန်မလည်း ကြိုက်တယ်။"
+    },
+    {
+      "start": 200,
+      "end": 207,
+      "en": "Jacob doesn't like crowded  movie theaters. Neither do I.",
+      "my": "“Jacob doesn’t like crowded movie theaters.” “Neither do I.” လူကျပ်တဲ့ရုပ်ရှင်ရုံကို ကျွန်မလည်း မကြိုက်ဘူး။"
+    },
+    {
+      "start": 207,
+      "end": 212,
+      "en": "We use \"so\" for affirmative statements  and \"neither: for negative statements.  ",
+      "my": "အတည်ဝါကျအတွက် so၊ အငြင်းဝါကျအတွက် neither ကို သုံးပါတယ်။"
+    },
+    {
+      "start": 212,
+      "end": 220,
+      "en": "Both words are followed by a helping verb and then  a noun or a subject pronoun. You remember these  ",
+      "my": "နှစ်ခုလုံးရဲ့နောက်မှာ helping verb၊ ပြီးတော့ noun ဒါမှမဟုတ် subject pronoun လာပါတယ်။ ဒီပုံစံတွေကို…"
+    },
+    {
+      "start": 220,
+      "end": 231,
+      "en": "patterns, don't you? Let's practice. Complete  these additions. Use the correct verb + subject.",
+      "my": "မှတ်မိပါသလား။ လေ့ကျင့်ကြမယ်။ မှန်ကန်တဲ့ verb + subject နဲ့ ဖြည့်ပါ။"
+    },
+    {
+      "start": 231,
+      "end": 242,
+      "en": "I love musicals. So do I.",
+      "my": "“I love musicals.” “So do I.” တေးဂီတရုပ်ရှင်တွေကို ကျွန်မလည်း ကြိုက်တယ်။"
+    },
+    {
+      "start": 242,
+      "end": 251,
+      "en": "I'm not crazy about horror  films with a lot of violence.",
+      "my": "“I’m not crazy about horror films with a lot of violence.” အကြမ်းဖက်မှုများတဲ့ သရဲရုပ်ရှင်တွေကို ကျွန်မ သိပ်မကြိုက်ဘူး။"
+    },
+    {
+      "start": 251,
+      "end": 264,
+      "en": "Neither am I. I've never walked out  of a theater in the middle of a movie.",
+      "my": "“Neither am I.” ကျွန်မလည်း မကြိုက်ဘူး။ “I’ve never walked out of a theater in the middle of a movie.” ရုပ်ရှင်မပြီးခင် ရုံထဲကနေ တစ်ခါမှ မထွက်ဖူးဘူး။"
+    },
+    {
+      "start": 264,
+      "end": 277,
+      "en": "Neither have I. For a long time, I didn't know  that Hugh Jackman could sing.",
+      "my": "“Neither have I.” ကျွန်မလည်း မထွက်ဖူးဘူး။ “For a long time, I didn’t know that Hugh Jackman could sing.” Hugh Jackman သီချင်းဆိုနိုင်တာကို အကြာကြီး မသိခဲ့ဘူး။"
+    },
+    {
+      "start": 277,
+      "end": 290,
+      "en": "Neither did I. I've always appreciated  Michael J. Fox as an actor.",
+      "my": "“Neither did I.” ကျွန်မလည်း မသိခဲ့ဘူး။ “I’ve always appreciated Michael J. Fox as an actor.” သူ့ကို သရုပ်ဆောင်အဖြစ် အမြဲအသိအမှတ်ပြုခဲ့တယ်။"
+    },
+    {
+      "start": 290,
+      "end": 304,
+      "en": "So have I. Okay. Try two more. Tom Hanks hasn't  played many villains, and neither...",
+      "my": "“So have I.” ကျွန်မလည်း အတူတူပါပဲ။ နောက်နှစ်ခု စမ်းပါ။ “Tom Hanks hasn’t played many villains, and neither…”"
+    },
+    {
+      "start": 304,
+      "end": 318,
+      "en": "and neither has George Clooney. Jennifer Lawrence has starred  in a sci-fi movie, and so...",
+      "my": "“…has George Clooney.” George Clooney လည်း လူဆိုးဇာတ်ရုပ် သိပ်မသရုပ်ဆောင်ဖူးဘူး။ “Jennifer Lawrence has starred in a sci-fi movie, and so…”"
+    },
+    {
+      "start": 318,
+      "end": 322,
+      "en": "and so has Anne Hathaway.",
+      "my": "“…has Anne Hathaway.” Anne Hathaway လည်း သိပ္ပံစိတ်ကူးယဉ်ရုပ်ရှင်မှာ အဓိကပါဝင်ဖူးတယ်။"
+    },
+    {
+      "start": 322,
+      "end": 329,
+      "en": "\"Nor\" is one of the coordinating conjunctions  in English. It's one of the FANBOYS: for,  ",
+      "my": "Nor က coordinating conjunction တစ်လုံးပါ။ FANBOYS ဆိုတဲ့ for၊"
+    },
+    {
+      "start": 329,
+      "end": 341,
+      "en": "and, nor, but, or, yet, so. \"Nor\" allows us to  make an addition -- a negative addition. It joins  ",
+      "my": "And၊ nor၊ but၊ or၊ yet၊ so အတွဲထဲမှာ ပါပါတယ်။ Nor နဲ့ အငြင်းသဘောရှိတဲ့ အချက်တစ်ခုကို ထပ်ဖြည့်နိုင်ပါတယ်။"
+    },
+    {
+      "start": 341,
+      "end": 349,
+      "en": "two independent clauses together, and they form a  compound sentence. The first clause is negative,  ",
+      "my": "Independent clause နှစ်ခုကို ဆက်ပြီး compound sentence ဖြစ်စေပါတယ်။ ပထမ clause က အငြင်းဖြစ်ပြီး…"
+    },
+    {
+      "start": 349,
+      "end": 357,
+      "en": "and we add another idea that also carries a  negative meaning. I do not like movies with  ",
+      "my": "နောက်ထပ် အငြင်းသဘောပါတဲ့ အချက်တစ်ခုကို ထပ်ပေါင်းတာပါ။ “I do not like movies with…”"
+    },
+    {
+      "start": 357,
+      "end": 366,
+      "en": "a lot of violence, nor do I care for strong  vulgarity -- meaning a lot of swearing. \"I do  ",
+      "my": "“…a lot of violence, nor do I care for strong vulgarity.” အကြမ်းဖက်မှုများတဲ့ ရုပ်ရှင်တွေကို မကြိုက်သလို ရိုင်းပြတဲ့စကားတွေကိုလည်း မနှစ်သက်ဘူး။"
+    },
+    {
+      "start": 366,
+      "end": 375,
+      "en": "not like\" -- that's negative. \"Nor do I care\" --  meaning \"I don't care for that kind of language.\"",
+      "my": "“I do not like” က အငြင်းပါ။ “Nor do I care” ဆိုတာ အဲဒီလိုစကားတွေကိုလည်း မကြိုက်ဘူးလို့ ဆိုလိုပါတယ်။"
+    },
+    {
+      "start": 375,
+      "end": 385,
+      "en": "The movie did not offer a happy ending, nor did it  aim to inspire any hope, but it provoked thought.",
+      "my": "“The movie did not offer a happy ending, nor did it aim to inspire any hope, but it provoked thought.” ပျော်ရွှင်စရာဇာတ်သိမ်းနဲ့ မျှော်လင့်ချက်မပေးပေမယ့် စဉ်းစားစရာ ဖြစ်စေခဲ့တယ်။"
+    },
+    {
+      "start": 385,
+      "end": 397,
+      "en": "In this sentence, I actually have  two coordinating conjunctions:   \"nor\" and \"but.\" \"But\" creates a contrast.  \"Nor\" allows an addition, a negative addition.  ",
+      "my": "ဒီဝါကျမှာ nor နဲ့ but ဆိုတဲ့ coordinating conjunction နှစ်ခု ပါပါတယ်။ But က ဆန့်ကျင်ဘက်အချက်ကို ပြပြီး nor က အငြင်းအချက်တစ်ခု ထပ်ဖြည့်ပေးပါတယ်။"
+    },
+    {
+      "start": 397,
+      "end": 407,
+      "en": "I have three independent clauses. The clause  with \"nor\" has subject-verb inversion.",
+      "my": "Independent clause သုံးခုရှိပါတယ်။ Nor ပါတဲ့ clause မှာ subject-verb inversion ရှိပါတယ်။"
+    },
+    {
+      "start": 407,
+      "end": 412,
+      "en": "When we use subject-verb inversion,  note the use of helping verbs.  ",
+      "my": "Subject-verb inversion သုံးတဲ့အခါ helping verb သုံးထားပုံကို သတိထားပါ။"
+    },
+    {
+      "start": 412,
+      "end": 420,
+      "en": "These are the same verbs we use to form questions.  Also, note that I don't use any contractions.  ",
+      "my": "မေးခွန်းဖွဲ့ရာမှာ သုံးတဲ့ helping verb တွေနဲ့ အတူတူပါပဲ။ Contraction၊ အတိုကောက်ပုံစံတွေ မသုံးထားတာလည်း သတိပြုပါ။"
+    },
+    {
+      "start": 420,
+      "end": 429,
+      "en": "I use full forms. That's because \"nor\" is rather  formal. You won't use it much in everyday English.",
+      "my": "အပြည့်အစုံပုံစံကို သုံးပါတယ်။ Nor က ပိုတရားဝင်ဆန်လို့ နေ့စဉ်စကားပြောမှာ သိပ်မသုံးပါဘူး။"
+    },
+    {
+      "start": 429,
+      "end": 459,
+      "en": "Can you complete this sentence? You  can put your idea in the comments.",
+      "my": "ဒီဝါကျကို ဖြည့်နိုင်မလား။ ကိုယ့်အကြံကို comment မှာ ရေးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 459,
+      "end": 470,
+      "en": "If you watched my playlist  on conditional sentences,   you'll know that not all conditionals use \"if.\"  In formal English, we can create conditionals  ",
+      "my": "Conditional sentence playlist ကို ကြည့်ဖူးရင် conditional အားလုံးမှာ if မသုံးဘူးဆိုတာ သိမှာပါ။ တရားဝင်အင်္ဂလိပ်မှာ conditional ကို…"
+    },
+    {
+      "start": 470,
+      "end": 478,
+      "en": "with the help of subject-verb inversion. We do  this with the past perfect, like \"had known,  ",
+      "my": "Subject-verb inversion နဲ့ ဖွဲ့နိုင်ပါတယ်။ “Had known” လို past perfect၊"
+    },
+    {
+      "start": 478,
+      "end": 486,
+      "en": "had done,\" with the modal verb \"should,\"  and with \"were\" + the infinitive.  ",
+      "my": "“Had done” လို past perfect၊ should ဆိုတဲ့ modal verb နဲ့ were + infinitive တို့ကို သုံးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 486,
+      "end": 497,
+      "en": "Look. Had I known that Hugh Jackman could sing  and dance, I would have been even more impressed.",
+      "my": "“Had I known that Hugh Jackman could sing and dance, I would have been even more impressed.” သူ သီချင်းဆို၊ ကနိုင်တာ သိခဲ့ရင် ပိုတောင်အထင်ကြီးမိမှာပါ။"
+    },
+    {
+      "start": 497,
+      "end": 510,
+      "en": "Should you need to review, you  could refer to the other grammar   lessons I recommend in the video description.",
+      "my": "“Should you need to review, you could refer to the other grammar lessons I recommend in the video description.” ပြန်လေ့လာဖို့လိုရင် description ထဲက သင်ခန်းစာတွေကို ကြည့်နိုင်ပါတယ်။"
+    },
+    {
+      "start": 510,
+      "end": 517,
+      "en": "Were I to write a film script, I  would make it with a happy ending.",
+      "my": "“Were I to write a film script, I would make it with a happy ending.” ရုပ်ရှင်ဇာတ်ညွှန်းရေးဖြစ်ရင် ပျော်ရွှင်စရာဇာတ်သိမ်း ထည့်မှာပါ။"
+    },
+    {
+      "start": 517,
+      "end": 525,
+      "en": "Whether I use inversion or not, this combination  of \"were\" + an infinitive suggests that it's  ",
+      "my": "Inversion လုပ်လုပ် မလုပ်လုပ် were + infinitive ပုံစံက ဒီအရာ…"
+    },
+    {
+      "start": 525,
+      "end": 538,
+      "en": "highly unlikely. I'm probably  not going to write a film script,   but if I ever did... were I to write a  film script, I would have a happy ending.",
+      "my": "ဖြစ်နိုင်ခြေ အလွန်နည်းတယ်လို့ ပြပါတယ်။ ကျွန်မ ရုပ်ရှင်ဇာတ်ညွှန်းရေးဖြစ်ဖို့ မများပါဘူး။ ရေးဖြစ်ခဲ့ရင်တော့ ပျော်ရွှင်စရာဇာတ်သိမ်း ထည့်မှာပါ။"
+    },
+    {
+      "start": 538,
+      "end": 575,
+      "en": "Practice with me. Rewrite these conditionals with   subject-verb inversion. We're  going to make them more formal.",
+      "my": "အတူလေ့ကျင့်ကြမယ်။ ဒီ conditional ဝါကျတွေကို subject-verb inversion နဲ့ ပြန်ရေးပြီး ပိုတရားဝင်ဆန်အောင် ပြောင်းကြမယ်။"
+    },
+    {
+      "start": 575,
+      "end": 582,
+      "en": "Answers. Had they bought tickets online,  they would have gotten better seats.",
+      "my": "အဖြေတွေပါ။ “Had they bought tickets online, they would have gotten better seats.” အွန်လိုင်းက လက်မှတ်ဝယ်ခဲ့ရင် ထိုင်ခုံပိုကောင်း ရခဲ့မှာပါ။"
+    },
+    {
+      "start": 582,
+      "end": 591,
+      "en": "Should you ever have to leave a movie before  it is over, be quiet as you exit the theater.  ",
+      "my": "“Should you ever have to leave a movie before it is over, be quiet as you exit the theater.” ရုပ်ရှင်မပြီးခင် ထွက်ရရင် တိတ်တိတ်ထွက်ပါ။"
+    },
+    {
+      "start": 591,
+      "end": 603,
+      "en": "Were Jennifer to be invited to co-star with  Brad Pitt in a movie, she would readily accept.",
+      "my": "“Were Jennifer to be invited to co-star with Brad Pitt in a movie, she would readily accept.” Brad Pitt နဲ့တွဲသရုပ်ဆောင်ဖို့ ဖိတ်ခံရရင် Jennifer က ဝမ်းသာစွာ လက်ခံမှာပါ။"
+    },
+    {
+      "start": 603,
+      "end": 611,
+      "en": "\"Here,\" \"there,\" and prepositional phrases help  us create adverbials that answer the questions  ",
+      "my": "Here၊ there နဲ့ prepositional phrase တွေက adverbial အဖြစ် ဘယ်နေရာ…"
+    },
+    {
+      "start": 611,
+      "end": 620,
+      "en": "where? and when? In literature, like fairy tales,  subject-verb inversion is sometimes used. It  ",
+      "my": "ဘယ်အချိန်ဆိုတဲ့ မေးခွန်းတွေကို ဖြေပေးနိုင်ပါတယ်။ နတ်သမီးပုံပြင်လို စာပေထဲမှာ subject-verb inversion ကို တစ်ခါတလေ သုံးတတ်ပါတယ်။"
+    },
+    {
+      "start": 620,
+      "end": 630,
+      "en": "doesn't sound like everyday English. To my ears,  it sounds poetic and at times musical. Listen.  ",
+      "my": "နေ့စဉ်စကားပြောပုံတော့ မဟုတ်ပါဘူး။ နားထောင်ရတာ ကဗျာဆန်ပြီး တစ်ခါတလေ တေးသံလို ခံစားရပါတယ်။ နားထောင်ကြည့်ပါ။"
+    },
+    {
+      "start": 630,
+      "end": 638,
+      "en": "There on the other side of the  rainbow was a shining pot of gold.",
+      "my": "“There on the other side of the rainbow was a shining pot of gold.” သက်တံတစ်ဖက်ခြမ်းမှာ ရွှေအိုးတစ်လုံး တောက်ပလျက်ရှိနေခဲ့တယ်။"
+    },
+    {
+      "start": 638,
+      "end": 646,
+      "en": "Deep in the dark forest lived an evil witch.",
+      "my": "“Deep in the dark forest lived an evil witch.” မှောင်မိုက်တဲ့တောနက်ထဲမှာ စုန်းမဆိုးတစ်ယောက် နေထိုင်ခဲ့တယ်။"
+    },
+    {
+      "start": 646,
+      "end": 652,
+      "en": "So, why is inversion happening? It's a  tool we can use in descriptive writing.  ",
+      "my": "ဘာကြောင့် inversion သုံးတာလဲ။ သရုပ်ဖော်စာရေးသားမှုမှာ အသုံးချနိုင်တဲ့ နည်းတစ်ခုပါ။"
+    },
+    {
+      "start": 652,
+      "end": 659,
+      "en": "These place adverbials are at the front of the  sentence. When we have adverbials of time and  ",
+      "my": "နေရာပြ adverbial တွေကို ဝါကျရှေ့ဆုံးမှာ ထားပါတယ်။ အချိန်ပြ ဒါမှမဟုတ်…"
+    },
+    {
+      "start": 659,
+      "end": 666,
+      "en": "place in this initial position, we can use  inversion. And, of course, I can say, \"An  ",
+      "my": "နေရာပြအပိုင်းကို ရှေ့ဆုံးမှာ ထားတဲ့အခါ inversion သုံးနိုင်ပါတယ်။ ရိုးရိုးပြန်ပြောရင် “An…”"
+    },
+    {
+      "start": 666,
+      "end": 674,
+      "en": "evil witch lived deep in the dark forest,\"  but it doesn't sound as exciting, does it?  ",
+      "my": "“…evil witch lived deep in the dark forest.” လို့ ပြောနိုင်ပေမယ့် ပထမပုံစံလောက် စိတ်လှုပ်ရှားစရာ မကောင်းဘူးနော်။"
+    },
+    {
+      "start": 674,
+      "end": 690,
+      "en": "I get the feeling that the structure builds up  anticipation. We want to know what is on the other   side of the rainbow. Who lived in the forest? And  were waiting to get that key piece of information.",
+      "my": "ဒီတည်ဆောက်ပုံက သိချင်စိတ်ကို တဖြည်းဖြည်းမြှင့်တင်ပေးသလိုပါပဲ။ သက်တံတစ်ဖက်မှာ ဘာရှိလဲ၊ တောထဲမှာ ဘယ်သူနေသလဲဆိုတဲ့ အဓိကအချက်ကို စောင့်သိချင်လာစေပါတယ်။"
+    },
+    {
+      "start": 690,
+      "end": 701,
+      "en": "But we don't have to turn to children's  books for examples of inversion.   Everyday statements with \"here\"  and \"there\" use inversion.",
+      "my": "Inversion ဥပမာတွေကို ကလေးစာအုပ်တွေမှာပဲ ရှာဖို့မလိုပါဘူး။ Here နဲ့ there ပါတဲ့ နေ့စဉ်သုံးဝါကျတွေမှာလည်း ရှိပါတယ်။"
+    },
+    {
+      "start": 701,
+      "end": 711,
+      "en": "Here comes the train. Stand up. Here's the money I owe you.",
+      "my": "“Here comes the train.” ရထားလာပြီ။ မတ်တပ်ရပ်ပါ။ “Here’s the money I owe you.” သင့်ကို ပေးရမယ့်ငွေ ဒီမှာပါ။"
+    },
+    {
+      "start": 711,
+      "end": 717,
+      "en": "Ah! There goes my bus. I missed it again.",
+      "my": "“Ah! There goes my bus. I missed it again.” အဲဒီမှာ ကျွန်မစီးမယ့်ဘတ်စ်ကား သွားပြီ၊ ထပ်လွတ်သွားပြန်ပြီ။"
+    },
+    {
+      "start": 717,
+      "end": 725,
+      "en": "Here's an expression you can learn. It uses  subject-verb inversion. Here goes nothing.  ",
+      "my": "ဒီစကားရပ်ကိုလည်း မှတ်ထားနိုင်ပါတယ်။ Subject-verb inversion သုံးထားပါတယ်။ “Here goes nothing.”"
+    },
+    {
+      "start": 725,
+      "end": 732,
+      "en": "We say this when we're about to take a risk and  try something new. It's difficult in some way. We  ",
+      "my": "စွန့်စားပြီး အသစ်တစ်ခု စမ်းလုပ်တော့မယ့်အခါ ပြောပါတယ်။ တစ်နည်းနည်းနဲ့ ခက်ခဲနေပြီး…"
+    },
+    {
+      "start": 732,
+      "end": 740,
+      "en": "suspect that it's going to be unpleasant. We may  meet with failure. Here goes nothing. For example,  ",
+      "my": "အဆင်မပြေဖြစ်နိုင်တယ်၊ ကျရှုံးနိုင်တယ်လို့ ထင်နေတဲ့အခါပါ။ “Here goes nothing.” ဥပမာ…"
+    },
+    {
+      "start": 740,
+      "end": 746,
+      "en": "I invite you to go roller-skating. You've never  roller-skated before. You put on your skates,  ",
+      "my": "Roller-skating စီးဖို့ ကျွန်မက ဖိတ်တယ်ဆိုပါစို့။ သင်က တစ်ခါမှ မစီးဖူးဘူး။ စကိတ်ဖိနပ်စီးပြီး…"
+    },
+    {
+      "start": 746,
+      "end": 757,
+      "en": "you stand up, and you say, \"Here goes nothing!\"  You're saying, \"Well, let's see how this goes.\"",
+      "my": "မတ်တပ်ရပ်ကာ “Here goes nothing!” လို့ ပြောနိုင်ပါတယ်။ ဘယ်လိုဖြစ်မလဲ စမ်းကြည့်တာပေါ့ ဆိုတဲ့သဘောပါ။"
+    },
+    {
+      "start": 757,
+      "end": 762,
+      "en": "Earlier I told you about the coordinating  conjunction \"nor.\" It joins two independent  ",
+      "my": "အစောပိုင်းမှာ independent clause နှစ်ခုကို ဆက်ပေးတဲ့ nor ဆိုတဲ့ coordinating conjunction အကြောင်း ပြောခဲ့ပါတယ်။"
+    },
+    {
+      "start": 762,
+      "end": 769,
+      "en": "clauses together. There's also a correlative  conjunction. It's made up of two parts:  ",
+      "my": "အပိုင်းနှစ်ခုနဲ့ ဖွဲ့ထားတဲ့ correlative conjunction လည်း ရှိပါတယ်။"
+    },
+    {
+      "start": 769,
+      "end": 776,
+      "en": "\"not only...but also...\" is an example. It's  an example of a correlative conjunction.  ",
+      "my": "Not only…but also က correlative conjunction ဥပမာတစ်ခုပါ။"
+    },
+    {
+      "start": 776,
+      "end": 787,
+      "en": "If you start a sentence with \"not only,\"  you need inversion in the first part.   \"But also\" is a continuation.  You're adding an idea.  ",
+      "my": "ဝါကျကို not only နဲ့ စရင် ပထမပိုင်းမှာ inversion လိုပါတယ်။ But also ကတော့ အကြောင်းအရာတစ်ခု ထပ်ဖြည့်ဆက်တာပါ။"
+    },
+    {
+      "start": 787,
+      "end": 796,
+      "en": "Not only this, but also that. In the first  clause, you must invert the subject and verb.",
+      "my": "ဒီအရာသာမက ဟိုအရာလည်း ပါတယ်ဆိုတဲ့သဘောပါ။ ပထမ clause မှာ subject နဲ့ verb နေရာပြောင်းရပါတယ်။"
+    },
+    {
+      "start": 796,
+      "end": 806,
+      "en": "Not only was Robin Williams a hilarious comedian,  but he was also an incredibly talented actor.",
+      "my": "“Not only was Robin Williams a hilarious comedian, but he was also an incredibly talented actor.” သူက အလွန်ရယ်စရာကောင်းတဲ့ ဟာသပညာရှင်သာမက ထူးချွန်တဲ့သရုပ်ဆောင်လည်း ဖြစ်ခဲ့တယ်။"
+    },
+    {
+      "start": 806,
+      "end": 815,
+      "en": "Not only could he do comedy, but he could  also pull your heartstrings in dramatic roles.",
+      "my": "“Not only could he do comedy, but he could also pull your heartstrings in dramatic roles.” ဟာသသာမက ဒရာမာဇာတ်ရုပ်တွေနဲ့လည်း စိတ်ထိခိုက်ခံစားစေနိုင်ခဲ့တယ်။"
+    },
+    {
+      "start": 815,
+      "end": 834,
+      "en": "With a correlative conjunction,  we need parallel structure.   Look how the two parts have parallel  grammar. The two sides are equal.",
+      "my": "Correlative conjunction သုံးရင် parallel structure လိုပါတယ်။ နှစ်ဖက်မှာ သဒ္ဒါတည်ဆောက်ပုံတူပြီး အဆင့်ညီပုံကို ကြည့်ပါ။"
+    },
+    {
+      "start": 834,
+      "end": 866,
+      "en": "How would you finish these sentences?  You can put your ideas in the comments,   and remember that first part has inversion.",
+      "my": "ဒီဝါကျတွေကို ဘယ်လိုဆုံးအောင်ရေးမလဲ။ ကိုယ့်အကြံကို comment မှာ ရေးနိုင်ပါတယ်။ ပထမပိုင်းမှာ inversion ရှိတာ မှတ်ထားပါ။"
+    },
+    {
+      "start": 866,
+      "end": 874,
+      "en": "Let's continue with negative structures. Many  negative adverbs can start a sentence. We use this  ",
+      "my": "အငြင်းပုံစံတွေနဲ့ ဆက်ကြမယ်။ အငြင်းသဘောဆောင်တဲ့ adverb အများကြီးကို ဝါကျရှေ့ဆုံးမှာ ထားနိုင်ပါတယ်။"
+    },
+    {
+      "start": 874,
+      "end": 883,
+      "en": "initial position for emphasis, and this position  forces us to use subject-verb inversion. I have a  ",
+      "my": "အလေးပေးချင်လို့ ရှေ့ဆုံးမှာ ထားတာပါ။ ဒီနေရာချထားပုံကြောင့် subject-verb inversion လုပ်ရပါတယ်။ ကျွန်မမှာ…"
+    },
+    {
+      "start": 883,
+      "end": 898,
+      "en": "full lesson on negative adverbs and inversion.  I'll put the link in the video description.   Right now, let's review several examples.  As I give each example, spot the inversion.",
+      "my": "Negative adverb နဲ့ inversion အကြောင်း သင်ခန်းစာအပြည့် ရှိပါတယ်။ Link ကို description မှာ ထည့်ပေးမယ်။ အခု ဥပမာတချို့ ပြန်ကြည့်ပြီး inversion ကို ရှာပါ။"
+    },
+    {
+      "start": 898,
+      "end": 909,
+      "en": "Seldom do comedies win awards  for best picture of the year.",
+      "my": "“Seldom do comedies win awards for best picture of the year.” ဟာသရုပ်ရှင်တွေ တစ်နှစ်တာအကောင်းဆုံးဇာတ်ကားဆု ရခဲတယ်။"
+    },
+    {
+      "start": 909,
+      "end": 920,
+      "en": "Rarely do actors make short acceptance  speeches when they win an award.",
+      "my": "“Rarely do actors make short acceptance speeches when they win an award.” သရုပ်ဆောင်တွေ ဆုလက်ခံစကားကို တိုတိုပြောတာ ရှားတယ်။"
+    },
+    {
+      "start": 920,
+      "end": 934,
+      "en": "Hardly had the movie begun when someone  in our row exited to use the restroom.",
+      "my": "“Hardly had the movie begun when someone in our row exited to use the restroom.” ရုပ်ရှင်စတာနဲ့ ကျွန်မတို့တန်းက တစ်ယောက် အိမ်သာသွားဖို့ ထွက်သွားတယ်။"
+    },
+    {
+      "start": 934,
+      "end": 948,
+      "en": "Not for a moment did the fast-paced action  let up. It was one thrill after another.",
+      "my": "“Not for a moment did the fast-paced action let up.” လျင်မြန်တဲ့လှုပ်ရှားမှုတွေ တစ်ခဏတောင် အရှိန်မလျော့ခဲ့ဘူး။ စိတ်လှုပ်ရှားစရာတစ်ခုပြီးတစ်ခု ဖြစ်နေခဲ့တယ်။"
+    },
+    {
+      "start": 948,
+      "end": 957,
+      "en": "Never have I cried so much while watching a movie.",
+      "my": "“Never have I cried so much while watching a movie.” ရုပ်ရှင်ကြည့်ရင်း ဒီလောက်ငိုဖူးတာ တစ်ခါမှမရှိဘူး။"
+    },
+    {
+      "start": 957,
+      "end": 973,
+      "en": "Little did anyone realize at the time of filming   that Strictly Ballroom would  become a worldwide success.",
+      "my": "“Little did anyone realize at the time of filming that Strictly Ballroom would become a worldwide success.” ရိုက်ကူးစဉ်က ဒီဇာတ်ကား ကမ္ဘာတစ်ဝန်း အောင်မြင်လာမယ်လို့ ဘယ်သူမှ သိပ်မထင်ခဲ့ကြဘူး။"
+    },
+    {
+      "start": 973,
+      "end": 997,
+      "en": "Can you use subject-verb  inversion in these sentences?",
+      "my": "ဒီဝါကျတွေမှာ subject-verb inversion ကို သုံးနိုင်မလား။"
+    },
+    {
+      "start": 997,
+      "end": 1004,
+      "en": "Answers. Rarely do movie  productions stay within budget.",
+      "my": "အဖြေတွေပါ။ “Rarely do movie productions stay within budget.” ရုပ်ရှင်ထုတ်လုပ်ရေးတွေ သတ်မှတ်အသုံးစရိတ်အတွင်း နေတတ်တာ ရှားတယ်။"
+    },
+    {
+      "start": 1004,
+      "end": 1014,
+      "en": "Not even for a second did they  question the director's decision.",
+      "my": "“Not even for a second did they question the director’s decision.” ဒါရိုက်တာရဲ့ ဆုံးဖြတ်ချက်ကို တစ်စက္ကန့်လေးတောင် သူတို့ သံသယမထားခဲ့ဘူး။"
+    },
+    {
+      "start": 1014,
+      "end": 1030,
+      "en": "Adverb clauses with \"only\" in the initial position   also call for subject-verb inversion, but  the inversion happens in the main clause,   later in the sentence. Can you spot  the inversion in these examples?",
+      "my": "Only ပါတဲ့ adverb clause ကို ဝါကျရှေ့ဆုံးမှာ ထားရင်လည်း inversion လိုပါတယ်။ ဒါပေမဲ့ inversion က နောက်ပိုင်း main clause မှာ ဖြစ်တာပါ။ ဥပမာတွေမှာ ရှာကြည့်ပါ။"
+    },
+    {
+      "start": 1030,
+      "end": 1040,
+      "en": "Only if I'm really scared by a movie  will I sleep with the light on.",
+      "my": "“Only if I’m really scared by a movie will I sleep with the light on.” ရုပ်ရှင်ကြောင့် တကယ်ကြောက်နေမှပဲ မီးဖွင့်ပြီး အိပ်မယ်။"
+    },
+    {
+      "start": 1040,
+      "end": 1054,
+      "en": "Only after the parents checked under the bed for  monsters did the little boy agree to sleep alone.",
+      "my": "“Only after the parents checked under the bed for monsters did the little boy agree to sleep alone.” မိဘတွေ အိပ်ရာအောက်မှာ ဘီလူးရှိမရှိ စစ်ပေးပြီးမှ ကောင်လေးက တစ်ယောက်တည်း အိပ်ဖို့ သဘောတူတယ်။"
+    },
+    {
+      "start": 1054,
+      "end": 1076,
+      "en": "Can you finish this sentence?  It can be movie-related or not.   Put your sentence in the comments.",
+      "my": "ဒီဝါကျကို ဆုံးအောင်ရေးနိုင်မလား။ ရုပ်ရှင်နဲ့ဆိုင်ဆိုင် မဆိုင်ဆိုင် ရပါတယ်။ ကိုယ့်ဝါကျကို comment မှာ ရေးပါ။"
+    },
+    {
+      "start": 1076,
+      "end": 1082,
+      "en": "We'll end here. Hopefully, you understand what  inversion is and when we use it. For example,  ",
+      "my": "ဒီမှာပဲ နားကြမယ်။ Inversion ဆိုတာ ဘာလဲ၊ ဘယ်အချိန်မှာ သုံးသလဲဆိုတာ နားလည်လာမယ်လို့ မျှော်လင့်ပါတယ်။ ဥပမာ…"
+    },
+    {
+      "start": 1082,
+      "end": 1088,
+      "en": "in real questions and in formal conditional  sentences. I hope you also understand how we  ",
+      "my": "တကယ့်မေးခွန်းတွေနဲ့ တရားဝင် conditional sentence တွေမှာ သုံးပါတယ်။ နောက်ပြီး…"
+    },
+    {
+      "start": 1088,
+      "end": 1104,
+      "en": "use inversion to emphasize negative ideas. You can  check out other lessons in my grammar playlist,   and please remember to like and share this video.  As always, thanks for watching and happy studies!",
+      "my": "အငြင်းအကြောင်းအရာတွေကို အလေးပေးဖို့ inversion သုံးပုံကိုလည်း နားလည်မယ်လို့ မျှော်လင့်ပါတယ်။ Grammar playlist က အခြားသင်ခန်းစာတွေကိုလည်း ကြည့်နိုင်ပါတယ်။ Like နဲ့ Share လုပ်ပေးပါ။ ကျေးဇူးတင်ပါတယ်၊ ပျော်ရွှင်စွာ လေ့လာနိုင်ပါစေ။"
+    },
+    {
+      "start": 1104,
+      "end": 1109,
+      "en": "Follow me on Facebook, Twitter, and  Instagram. Why not join me on Patreon?  ",
+      "my": "Facebook၊ Twitter နဲ့ Instagram မှာ Follow လုပ်နိုင်ပါတယ်။ Patreon မှာလည်း ပါဝင်နိုင်ပါတယ်။"
+    }
+  ],
+  "untimedTail": {
+    "start": 1109,
+    "en": "And don't forget to subscribe on YouTube.",
+    "my": "YouTube မှာ Subscribe လုပ်ဖို့လည်း မမေ့ပါနဲ့။",
+    "reason": "Source supplies the start only. Display its end only when the real YouTube video duration is available."
+  },
+  "sourceNotes": [
+    "Original English wording and numeric markers retained, including ASR imperfections.",
+    "Chapter headings and copied Sync to video time controls are not spoken cues.",
+    "On-screen example text not included in the supplied transcript is not invented."
+  ]
+}

@@ -1,11 +1,31 @@
 import bothAnd from "@/data/grade11/videoSubtitles/mOlFrmsOpzU.json";
+import beforeAfter from "@/data/grade11/videoSubtitles/TTez4kyqjYU.json";
+import mustHaveTo from "@/data/grade11/videoSubtitles/POFfLs0Uaio.json";
+import gerunds from "@/data/grade11/videoSubtitles/PhwGtNzdDmc.json";
+import infinitives from "@/data/grade11/videoSubtitles/szb4FJHakIk.json";
+import tooEnough from "@/data/grade11/videoSubtitles/ethbBja46v4.json";
+import inversion from "@/data/grade11/videoSubtitles/aIklwvL605c.json";
+import relativePronouns from "@/data/grade11/videoSubtitles/a1oOYN4H5zo.json";
 import type { SubtitleLine } from "@/data/unit1VideoSubtitles";
 import { UNIT2_GRAMMAR_SUBTITLES } from "@/data/unit2GrammarSubtitles";
 import { UNIT7_ACTIVE_PASSIVE_SUBTITLES } from "@/data/unit7ActivePassiveSubtitles";
 
+export const SUPPLIED_GRADE11_SUBTITLE_TRACKS = [
+  bothAnd,
+  beforeAfter,
+  mustHaveTo,
+  gerunds,
+  infinitives,
+  tooEnough,
+  inversion,
+  relativePronouns,
+];
+
 /** Exact video IDs only: never attach a similar topic's translation to another recording. */
 export const GRADE11_VIDEO_SUBTITLES: Record<string, readonly SubtitleLine[]> = {
-  mOlFrmsOpzU: bothAnd.cues,
+  ...Object.fromEntries(
+    SUPPLIED_GRADE11_SUBTITLE_TRACKS.map((track) => [track.videoId, track.cues]),
+  ),
   // Source has a backwards 80s marker after 115s, corrupting both adjacent intervals.
   // Leave 115–124s blank until source audio can be checked; do not guess a replacement.
   W3HdjN3cLiM: UNIT2_GRAMMAR_SUBTITLES.filter(
@@ -15,9 +35,10 @@ export const GRADE11_VIDEO_SUBTITLES: Record<string, readonly SubtitleLine[]> = 
 };
 
 export type UntimedVideoSubtitle = Pick<SubtitleLine, "start" | "en" | "my">;
-export const GRADE11_VIDEO_SUBTITLE_TAILS: Record<string, UntimedVideoSubtitle> = {
-  mOlFrmsOpzU: bothAnd.untimedTail,
-};
+export const GRADE11_VIDEO_SUBTITLE_TAILS: Record<string, UntimedVideoSubtitle> =
+  Object.fromEntries(
+    SUPPLIED_GRADE11_SUBTITLE_TRACKS.map((track) => [track.videoId, track.untimedTail]),
+  );
 
 export function clipVideoSubtitles(
   subtitles: readonly SubtitleLine[],

@@ -19,7 +19,7 @@ Sources include the YouTube descriptions linked in the catalog, the official Oxf
 
 ## Myanmar subtitle integration
 
-Grade 11 now has a source-clock subtitle player for the exact existing Grade 10 recordings `W3HdjN3cLiM` (Unit 2 Simple/Continuous) and `fDnXWxXZekw` (Unit 7 Passive), plus the user-supplied translated Both…and recording `mOlFrmsOpzU` (Unit 1). The Grade 10 player, translations, timestamps and configuration are unchanged. Tracks are bundled and reused without per-student translation/API calls.
+Grade 11 now has a source-clock subtitle player for the exact existing Grade 10 recordings `W3HdjN3cLiM` (Unit 2 Simple/Continuous) and `fDnXWxXZekw` (Unit 7 Passive), plus eight user-supplied translated recordings listed below. The Grade 10 player, translations, timestamps and configuration are unchanged. Tracks are bundled and reused without per-student translation/API calls.
 
 Timing behavior:
 - Native YouTube clock sampled every 100ms; no simulated playback timer and no blanket 0.5-second delay.
@@ -35,7 +35,7 @@ The existing Simple/Continuous source has a backwards marker at 80 seconds after
 
 ### Remaining content work
 
-There are 22 topic entries / 20 unique YouTube recordings in the catalog. Three recordings now have timed Myanmar tracks. The remaining 17 recordings, including Lucy's Present Perfect excerpt, still require source timed English captions and a checked Myanmar translation. They show an explicit subtitle-unavailable note rather than unrelated or fabricated captions. Source `.srt` / `.vtt` files are needed to complete those tracks reliably.
+There are 22 topic entries / 20 unique YouTube recordings in the catalog. Ten recordings now have timed Myanmar tracks. The remaining 10 recordings, including Lucy's Present Perfect excerpt, still require source timed English captions and a checked Myanmar translation. They show an explicit subtitle-unavailable note rather than unrelated or fabricated captions. Source `.srt` / `.vtt` files are needed to complete those tracks reliably.
 
 Verification covers cue boundaries/gaps, absolute-time clipping, backwards seeks, pause behavior, transcript seeking, clip end, stale callback cleanup, loader timeout/retry and exact-video matching. Browser checks use a controlled YouTube clock; live media playback and word-level listening verification remain unverified.
 
@@ -49,3 +49,28 @@ The corresponding JSON contains 158 bounded English/Myanmar cues and a translate
 The original ASR spelling `gerand` is normalized to `gerund` in displayed English. The original file is untouched. At 16:13 the source's example says `consultant`, then its explanation says `consultants`; the original example is retained without guessing an unheard correction. Myanmar translation preserves the grammar meaning; timestamps remain source-based, not independently corrected through live audio listening.
 
 Source-integrity tests compare every bounded timestamp and English cue with the original upload, check Myanmar coverage and chapter transitions, and exercise tail metadata arriving late. Existing subtitle/player tests continue to cover pause, backwards seek, gaps and cleanup.
+
+
+### Seven additional user-supplied transcripts
+
+All seven uploads are preserved byte-for-byte in `src/data/grade11/videoSubtitles/<videoId>.source.txt`. Each corresponding JSON records its SHA-256, every original English marker, Myanmar translation, and an open-ended final cue resolved from actual YouTube duration. Source-integrity tests compare every start/end and English string with the uploaded source. No global subtitle delay, rebasing, interpolation or word-level precision is invented.
+
+| Topic | Video ID | Supplied markers | Reused views |
+| --- | --- | ---: | --- |
+| Before / After / While | TTez4kyqjYU | 86 | Unit 1 |
+| Must / Have to / Should | POFfLs0Uaio | 90 | Unit 2 |
+| Gerund functions | PhwGtNzdDmc | 58 | Units 3 and 6 |
+| To-infinitives (user's second gerund file) | szb4FJHakIk | 47 | Unit 3 |
+| Too / Enough | ethbBja46v4 | 42 | Unit 4 |
+| Subject–verb inversion | aIklwvL605c | 108 | Units 5 and 11 |
+| Relative pronouns / omission | a1oOYN4H5zo | 55 | Unit 5 |
+
+There are 486 new source markers: 479 cues ending at the next source marker and seven final cues whose ends remain runtime metadata. Nonspoken chapter headings and copied `Sync to video time` UI footers are retained in source evidence but not spoken captions. English is preserved as supplied, including ASR artifacts. Myanmar renders obvious spoken punctuation naturally. On-screen examples not spoken in the transcript are not invented.
+
+Two excerpt boundaries now follow supplied markers rather than earlier approximate chapter metadata:
+- Unit 5 full-verb inversion: 10:03–11:57 (603–717 seconds). The `Here goes nothing` transition begins at 717 and is excluded.
+- Unit 11 So/Neither: 2:55–5:22 (175–322 seconds), retaining the complete supplied introduction to `so`.
+
+The gerund video's classification of some -ing constructions is its own terminology. The translation preserves its lesson meaning; it does not replace textbook rules or existing exercises. Existing Grade 10 subtitles and classroom audio/scripts are unchanged.
+
+Seven-topic browser checks also exercise the two reused topic views, absolute source-clock captions, mobile width, transcript visibility, source video IDs and Unit 5 clip boundaries. The clock is controlled for verification; live video/audio alignment remains unverified.

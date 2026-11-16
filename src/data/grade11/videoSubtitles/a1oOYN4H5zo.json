@@ -1,0 +1,343 @@
+{
+  "videoId": "a1oOYN4H5zo",
+  "source": "User-provided Pasted text.txt",
+  "sourceSha256": "8a4b4857a6761a435a6d1f5e44ec576b37e35b4d1d46091cc6da0b53313105d0",
+  "timingBasis": "Original source start markers; each end is the next source marker. No offset or interpolation.",
+  "cues": [
+    {
+      "start": 1,
+      "end": 18,
+      "en": "Hi everyone. It’s Jennifer and I’m here with our next lesson on adjective clauses.",
+      "my": "မင်္ဂလာပါ။ ကျွန်မ Jennifer ပါ။ Adjective clause အကြောင်း နောက်ထပ်သင်ခန်းစာနဲ့ ပြန်လာပါတယ်။"
+    },
+    {
+      "start": 18,
+      "end": 23,
+      "en": "There’s always a day when we realize we didn’t know as much as we thought we did.",
+      "my": "ကိုယ်ထင်ထားသလောက် မသိခဲ့ဘူးဆိုတာ သဘောပေါက်လာတဲ့ နေ့တစ်နေ့တော့ အမြဲရှိတတ်ပါတယ်။"
+    },
+    {
+      "start": 23,
+      "end": 35,
+      "en": "That’s true about almost anything, right? Whether we’re talking about English grammar or your friend’s personal interests, there’s always more to discover.",
+      "my": "အကြောင်းအရာတော်တော်များများမှာ ဒီလိုပါပဲနော်။ အင်္ဂလိပ်သဒ္ဒါဖြစ်ဖြစ် သူငယ်ချင်းတစ်ယောက်ရဲ့ ဝါသနာဖြစ်ဖြစ် အသစ်ရှာတွေ့စရာတွေ အမြဲရှိပါတယ်။"
+    },
+    {
+      "start": 35,
+      "end": 42,
+      "en": "Maybe the reason why we didn’t know everything before is because we didn’t ask enough questions!",
+      "my": "အရင်က အားလုံးမသိခဲ့တဲ့ အကြောင်းရင်းက မေးခွန်းတွေ လုံလုံလောက်လောက် မမေးခဲ့လို့ ဖြစ်နိုင်ပါတယ်။"
+    },
+    {
+      "start": 42,
+      "end": 50,
+      "en": "Well, let’s start asking more questions about adjective clauses. We’ll start with this question:",
+      "my": "Adjective clause နဲ့ပတ်သက်ပြီး မေးခွန်းတွေ ထပ်မေးကြရအောင်။ ပထမမေးခွန်းက…"
+    },
+    {
+      "start": 50,
+      "end": 59,
+      "en": "Are WHICH, THAT, and WHO the only relative pronouns we can use to form adjective clauses?",
+      "my": "Adjective clause ဖွဲ့ဖို့ relative pronoun အဖြစ် which၊ that နဲ့ who သုံးခုပဲ သုံးနိုင်တာလား။"
+    },
+    {
+      "start": 59,
+      "end": 66,
+      "en": "No, they're not. So it’s time to learn about other relative pronouns.",
+      "my": "မဟုတ်ပါဘူး။ ဒါကြောင့် တခြား relative pronoun တွေကို လေ့လာကြမယ်။"
+    },
+    {
+      "start": 66,
+      "end": 72,
+      "en": "First, WHO vs. WHOM. Does anyone use WHOM anymore?",
+      "my": "ပထမဆုံး who နဲ့ whom ပါ။ အခုခေတ်မှာ whom ကို သုံးသေးလား။"
+    },
+    {
+      "start": 72,
+      "end": 79,
+      "en": "Yes, but we mostly see it in writing. That's because WHOM is rather formal.",
+      "my": "သုံးပါတယ်။ ဒါပေမဲ့ whom က တရားဝင်ဆန်လို့ စာရေးတဲ့နေရာမှာ ပိုတွေ့ရပါတယ်။"
+    },
+    {
+      "start": 79,
+      "end": 94,
+      "en": "We can only use WHOM to refer to people and only when it’s an object.",
+      "my": "Whom ကို လူအတွက်ပဲ သုံးနိုင်ပြီး object ဖြစ်တဲ့အခါမှ သုံးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 94,
+      "end": 98,
+      "en": "That’s correct, but it sounds rather formal.",
+      "my": "အဲဒီပုံစံက မှန်ပေမယ့် တရားဝင်ဆန်ပါတယ်။"
+    },
+    {
+      "start": 98,
+      "end": 111,
+      "en": "In everyday English, most speakers would prefer alternative wording:",
+      "my": "နေ့စဉ်စကားပြောမှာ လူအများစုက အခြားစကားလုံးအစီအစဉ်နဲ့ ပြောတာကို ပိုနှစ်သက်တတ်ပါတယ်။"
+    },
+    {
+      "start": 111,
+      "end": 140,
+      "en": "That's a little more natural, but it still sounds quite formal. Here are some less formal variations.",
+      "my": "ဒီပုံစံက နည်းနည်းပိုသဘာဝကျပေမယ့် တရားဝင်ဆန်နေသေးတယ်။ ပိုစကားပြောဆန်တဲ့ ပုံစံတွေကို ကြည့်ပါ။"
+    },
+    {
+      "start": 140,
+      "end": 149,
+      "en": "So notice that the sentence automatically becomes less formal when we move the preposition to the end.",
+      "my": "Preposition ကို နောက်ဆုံးကို ရွှေ့လိုက်တဲ့အခါ ဝါကျက အလိုအလျောက် ပိုစကားပြောဆန်လာတာ သတိပြုပါ။"
+    },
+    {
+      "start": 149,
+      "end": 158,
+      "en": "That last sentence is the one I’d use in everyday English. Do you see the relative pronoun?",
+      "my": "နောက်ဆုံးဝါကျက နေ့စဉ်စကားပြောမှာ ကျွန်မသုံးမယ့်ပုံစံပါ။ Relative pronoun ကို မြင်ရလား။"
+    },
+    {
+      "start": 158,
+      "end": 167,
+      "en": "You don’t, do you? That’s because we can omit the relative pronoun when it’s an object (not a subject)",
+      "my": "မမြင်ရဘူးနော်။ Subject မဟုတ်ဘဲ object ဖြစ်တဲ့ relative pronoun ကို ချန်ထားနိုင်လို့ပါ။"
+    },
+    {
+      "start": 167,
+      "end": 174,
+      "en": "and when the adjective clause is necessary to identify the head noun.",
+      "my": "ဒါပေမဲ့ adjective clause က head noun ကို ဘယ်သူ၊ ဘယ်အရာဆိုတာ ခွဲသတ်မှတ်ဖို့ လိုအပ်ရပါမယ်။"
+    },
+    {
+      "start": 174,
+      "end": 184,
+      "en": "In other words, we have an identify, defining, or restrictive clause.",
+      "my": "တစ်နည်းအားဖြင့် identifying၊ defining ဒါမှမဟုတ် restrictive clause ဖြစ်ရပါတယ်။"
+    },
+    {
+      "start": 184,
+      "end": 204,
+      "en": "Let's do a quick check.",
+      "my": "လျင်လျင်မြန်မြန် စစ်ကြည့်ကြမယ်။"
+    },
+    {
+      "start": 204,
+      "end": 213,
+      "en": "We can omit these relative pronouns and only these two. Why? Because they function as objects.",
+      "my": "ဒီ relative pronoun နှစ်ခုပဲ ချန်ထားနိုင်ပါတယ်။ ဘာကြောင့်လဲ။ Object အဖြစ် သုံးထားလို့ပါ။"
+    },
+    {
+      "start": 213,
+      "end": 220,
+      "en": "And they're in identifying clauses. We need those adjective clauses to identify the head noun.",
+      "my": "ပြီးတော့ identifying clause ထဲမှာ ပါပါတယ်။ Head noun ကို ခွဲသတ်မှတ်ဖို့ အဲဒီ adjective clause တွေ လိုအပ်ပါတယ်။"
+    },
+    {
+      "start": 220,
+      "end": 225,
+      "en": "So they're identifying, defining, or restrictive clauses.",
+      "my": "ဒါကြောင့် identifying၊ defining ဒါမှမဟုတ် restrictive clause တွေ ဖြစ်ပါတယ်။"
+    },
+    {
+      "start": 225,
+      "end": 237,
+      "en": "If we take out those relative pronouns, the sentences sound less formal (even more informal).",
+      "my": "ဒီ relative pronoun တွေကို ဖြုတ်လိုက်ရင် ဝါကျတွေက ပိုပြီး စကားပြောဆန်လာပါတယ်။"
+    },
+    {
+      "start": 237,
+      "end": 251,
+      "en": "What about WHO vs. WHOSE? Look at this example.",
+      "my": "Who နဲ့ whose ကတော့ ဘယ်လိုလဲ။ ဒီဥပမာကို ကြည့်ပါ။"
+    },
+    {
+      "start": 251,
+      "end": 261,
+      "en": "No other relative pronoun would work in that sentence. WHOSE can’t be replaced by another pronoun because WHOSE is possessive.",
+      "my": "အဲဒီဝါကျမှာ တခြား relative pronoun ကို အစားထိုးလို့ မရပါဘူး။ Whose က အပိုင်ဆိုင်ပြတဲ့အတွက် တခြား pronoun နဲ့ အစားမထိုးနိုင်ပါဘူး။"
+    },
+    {
+      "start": 261,
+      "end": 267,
+      "en": "Whose advice? My friend’s. My friend’s advice is valuable.",
+      "my": "ဘယ်သူ့အကြံလဲ။ ကျွန်မသူငယ်ချင်းရဲ့ အကြံပါ။ သူငယ်ချင်းရဲ့အကြံက တန်ဖိုးရှိပါတယ်။"
+    },
+    {
+      "start": 267,
+      "end": 280,
+      "en": "We can use WHOSE + noun as the subject or object in an adjective clause.",
+      "my": "Whose + noun ကို adjective clause ထဲမှာ subject ဒါမှမဟုတ် object အဖြစ် သုံးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 280,
+      "end": 286,
+      "en": "Do you remember what I said at the beginning of this lesson...about not knowing everything?",
+      "my": "သင်ခန်းစာအစမှာ အားလုံးမသိနိုင်ဘူးဆိုတဲ့ အကြောင်း ပြောခဲ့တာ မှတ်မိသလား။"
+    },
+    {
+      "start": 286,
+      "end": 298,
+      "en": "I said: There’s a relative pronoun in that sentence.",
+      "my": "ကျွန်မပြောခဲ့တဲ့ ဝါကျထဲမှာ relative pronoun တစ်လုံး ပါပါတယ်။"
+    },
+    {
+      "start": 298,
+      "end": 301,
+      "en": "The relative pronoun is WHEN.",
+      "my": "အဲဒီ relative pronoun က when ပါ။"
+    },
+    {
+      "start": 301,
+      "end": 310,
+      "en": "Which day was I referring to? The day when you realize you didn’t know as much as you thought you did.",
+      "my": "ဘယ်နေ့ကို ရည်ညွှန်းတာလဲ။ ကိုယ်ထင်ထားသလောက် မသိခဲ့ဘူးဆိုတာ သဘောပေါက်လာတဲ့ နေ့ကိုပါ။"
+    },
+    {
+      "start": 310,
+      "end": 319,
+      "en": "We can also use WHEN, WHERE, and WHY as relative pronouns (also called \"relative adverbs\") in adjective clauses.",
+      "my": "When၊ where နဲ့ why ကိုလည်း adjective clause ထဲမှာ သုံးနိုင်ပါတယ်။ ဒါတွေကို relative adverb လို့လည်း ခေါ်ပါတယ်။"
+    },
+    {
+      "start": 319,
+      "end": 324,
+      "en": "WHEN, WHERE, and WHY have limited use, of course.",
+      "my": "When၊ where၊ why တို့က သုံးနိုင်တဲ့အခြေအနေ သတ်မှတ်ချက်တွေ ရှိပါတယ်။"
+    },
+    {
+      "start": 324,
+      "end": 334,
+      "en": "WHEN is for time periods. Possible head nouns are day, moment, season...",
+      "my": "When က အချိန်ကာလအတွက်ပါ။ Head noun အဖြစ် day၊ moment၊ season စတာတွေ ရှိနိုင်ပါတယ်။"
+    },
+    {
+      "start": 334,
+      "end": 345,
+      "en": "WHERE is for places. Possible head nouns are place, point, room...",
+      "my": "Where က နေရာအတွက်ပါ။ Head noun အဖြစ် place၊ point၊ room စတာတွေ ရှိနိုင်ပါတယ်။"
+    },
+    {
+      "start": 345,
+      "end": 355,
+      "en": "WHY is for reasons, so a very common head noun is \"reason.\" A reason why... The reason why...",
+      "my": "Why က အကြောင်းရင်းအတွက်ပါ။ ဒါကြောင့် အသုံးများတဲ့ head noun က reason ဖြစ်ပါတယ်။ A reason why၊ the reason why တို့ပါ။"
+    },
+    {
+      "start": 355,
+      "end": 365,
+      "en": "Let me share some examples of adjective clauses with the relative pronouns (adverbs) WHEN, WHERE, and WHY.",
+      "my": "When၊ where၊ why ဆိုတဲ့ relative pronoun သို့မဟုတ် adverb တွေနဲ့ adjective clause ဥပမာတွေကို ကြည့်ကြမယ်။"
+    },
+    {
+      "start": 365,
+      "end": 377,
+      "en": "Here's an example with WHEN.",
+      "my": "When နဲ့ ဥပမာတစ်ခုပါ။"
+    },
+    {
+      "start": 377,
+      "end": 386,
+      "en": "Note we often drop the relative pronouns WHEN, WHERE, and WHY in identifying clauses.",
+      "my": "Identifying clause တွေမှာ when၊ where၊ why ကို မကြာခဏ ချန်ထားတတ်တာ သတိပြုပါ။"
+    },
+    {
+      "start": 386,
+      "end": 397,
+      "en": "Next, let's look at an example of WHERE.",
+      "my": "နောက်တော့ where နဲ့ ဥပမာတစ်ခုကို ကြည့်ကြမယ်။"
+    },
+    {
+      "start": 397,
+      "end": 402,
+      "en": "Note that it's possible to replace WHERE with another relative pronoun.",
+      "my": "Where ကို တခြား relative pronoun နဲ့ အစားထိုးနိုင်တာ သတိပြုပါ။"
+    },
+    {
+      "start": 402,
+      "end": 409,
+      "en": "A place is a thing, so we could say: Everyone needs a place in which they can relax.",
+      "my": "နေရာကလည်း အရာတစ်ခုဖြစ်လို့ “Everyone needs a place in which they can relax.” လို့ ပြောနိုင်ပါတယ်။"
+    },
+    {
+      "start": 409,
+      "end": 420,
+      "en": "OR: Everyone needs a place which they can relax in. But WHERE is the preferred choice in everyday English. It's also more concise.",
+      "my": "“Everyone needs a place which they can relax in.” လို့လည်း ပြောနိုင်ပါတယ်။ ဒါပေမဲ့ နေ့စဉ်စကားပြောမှာ where ကို ပိုနှစ်သက်ကြပြီး ပိုတိုတောင်းရှင်းလင်းပါတယ်။"
+    },
+    {
+      "start": 420,
+      "end": 427,
+      "en": "This is very important to note: you can't always use WHERE every time you'r referring to a place.",
+      "my": "အရေးကြီးတဲ့အချက်တစ်ခုက နေရာအကြောင်း ရည်ညွှန်းတိုင်း where ကို အမြဲမသုံးနိုင်ပါဘူး။"
+    },
+    {
+      "start": 427,
+      "end": 436,
+      "en": "You can only use the relative pronoun WHERE when you can rewrite the idea using THERE.",
+      "my": "အဓိပ္ပာယ်ကို there သုံးပြီး ပြန်ဖော်ပြနိုင်တဲ့အခါမှ relative pronoun where ကို သုံးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 436,
+      "end": 444,
+      "en": "So let's look at our original example.",
+      "my": "မူရင်းဥပမာကို ပြန်ကြည့်ပါ။"
+    },
+    {
+      "start": 444,
+      "end": 454,
+      "en": "We can restate this idea and say: Everyone needs a place. They can relax THERE...meaning in that place.",
+      "my": "“Everyone needs a place. They can relax there.” လို့ ပြန်ဖော်ပြနိုင်ပါတယ်။ လူတိုင်း အနားယူနိုင်တဲ့ နေရာတစ်ခုလိုတယ်။ There က အဲဒီနေရာမှာလို့ ဆိုလိုပါတယ်။"
+    },
+    {
+      "start": 454,
+      "end": 467,
+      "en": "So consider this next example. Can we easily restate this idea with THERE?",
+      "my": "နောက်ဥပမာကို ကြည့်ပါ။ ဒီအကြောင်းအရာကို there နဲ့ လွယ်လွယ် ပြန်ဖော်ပြနိုင်သလား။"
+    },
+    {
+      "start": 467,
+      "end": 474,
+      "en": "No. So it's best to keep the relative pronoun THAT in this sentence.",
+      "my": "မရပါဘူး။ ဒါကြောင့် ဒီဝါကျမှာ relative pronoun that ကို ဆက်ထားတာ အကောင်းဆုံးပါ။"
+    },
+    {
+      "start": 474,
+      "end": 484,
+      "en": "Here's an example with the relative pronoun WHY.",
+      "my": "Why ဆိုတဲ့ relative pronoun နဲ့ ဥပမာတစ်ခုပါ။"
+    },
+    {
+      "start": 484,
+      "end": 497,
+      "en": "Here we can drop the relative pronoun WHY. The head noun is clear and the sentence makes sense without it.",
+      "my": "ဒီမှာ why ကို ချန်ထားနိုင်ပါတယ်။ Head noun က ရှင်းလင်းပြီး why မပါလည်း ဝါကျအဓိပ္ပာယ် ပြည့်စုံပါတယ်။"
+    },
+    {
+      "start": 497,
+      "end": 507,
+      "en": "Why don't you create some examples? I’ll offer some corrections as time allows, but please help one another. Read other people's comments.",
+      "my": "ကိုယ်ပိုင်ဥပမာတွေ ဖန်တီးကြည့်ပါ။ အချိန်ရသလို ပြင်ဆင်ပေးပါမယ်။ အချင်းချင်းလည်း ကူညီပြီး တခြားသူတွေရဲ့ comment တွေကို ဖတ်ကြည့်ပါ။"
+    },
+    {
+      "start": 507,
+      "end": 536,
+      "en": "You can finish these sentences:",
+      "my": "ဒီဝါကျတွေကို ဆုံးအောင် ဖြည့်ရေးနိုင်ပါတယ်။"
+    },
+    {
+      "start": 536,
+      "end": 542,
+      "en": "That's all for now. If you found this lesson helpful, please remember to like this video.",
+      "my": "ဒီနေ့အတွက် ဒီလောက်ပါပဲ။ သင်ခန်းစာအသုံးဝင်တယ်ဆိုရင် Like ပေးဖို့ မမေ့ပါနဲ့။"
+    }
+  ],
+  "untimedTail": {
+    "start": 542,
+    "en": "As always, thanks for watching and happy studies!",
+    "my": "ပုံမှန်အတိုင်းပဲ ကြည့်ရှုပေးလို့ ကျေးဇူးတင်ပါတယ်။ ပျော်ရွှင်စွာ လေ့လာနိုင်ပါစေ။",
+    "reason": "Source supplies the start only. Display its end only when the real YouTube video duration is available."
+  },
+  "sourceNotes": [
+    "Original English wording and numeric markers retained, including ASR imperfections.",
+    "Chapter headings and copied Sync to video time controls are not spoken cues.",
+    "On-screen example text not included in the supplied transcript is not invented."
+  ]
+}
