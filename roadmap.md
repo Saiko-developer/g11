@@ -1,4 +1,3 @@
-# Uploaded-paper AI marking
 # Grade 11 mock-exam repair
 - [ ] Prevent poem quotation and MCQ label formatting errors without weakening textbook validation.
 - [ ] Run regression tests and verify the signed-in exam generation flow; no production deployment.
