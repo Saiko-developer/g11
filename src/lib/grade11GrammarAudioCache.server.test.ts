@@ -35,8 +35,15 @@ const body = {
   voice: "sarah",
   speed: 1,
 };
+function wavBytes(size = 2048) {
+  const u = new Uint8Array(size);
+  u.set([82, 73, 70, 70], 0);
+  u.set([87, 65, 86, 69], 8);
+  u.fill(7, 44);
+  return u;
+}
 const audio = () =>
-  new Response(new Uint8Array(2048), {
+  new Response(wavBytes(), {
     headers: { "Content-Type": "audio/wav", "X-TTS-Provider": "gemini" },
   });
 
@@ -82,7 +89,7 @@ it("never caches student text, other voices, errors or fallback speech", async (
   await grade11GrammarAudio(request, body, failed, store);
   expect(failed).toHaveBeenCalledTimes(2);
   const fallback = vi.fn(
-    async () => new Response(new Uint8Array(2048), { headers: { "X-TTS-Provider": "openai" } }),
+    async () => new Response(wavBytes(), { headers: { "X-TTS-Provider": "openai" } }),
   );
   await grade11GrammarAudio(request, body, fallback, store);
   await grade11GrammarAudio(request, body, fallback, store);
@@ -121,4 +128,17 @@ it("does not generate billable audio when the claim service is down", async () =
   const response = await grade11GrammarAudio(request, body, generate, store, { waitMs: 0 });
   expect(response.status).toBe(503);
   expect(generate).not.toHaveBeenCalled();
+});
+
+it("never serves a zero-filled saved file and regenerates it", async () => {
+  const { grade11GrammarAudio, grade11AudioHash } = await import("./grade11GrammarAudioCache.server");
+  const files = new Map<string, ArrayBuffer>();
+  files.set(await grade11AudioHash(body.text), new Uint8Array(2048).buffer);
+  const store = fakeStore(files);
+  store.claim = async () => "owner";
+  const generate = vi.fn(async () => audio());
+  const res = await grade11GrammarAudio(request, body, generate, store);
+  expect(res.headers.get("X-Grade11-Audio-Cache")).toBe("miss");
+  expect(generate).toHaveBeenCalledTimes(1);
+  expect(new Uint8Array(await res.arrayBuffer())[0]).toBe(82);
 });

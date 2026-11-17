@@ -117,6 +117,15 @@ let memoryBytes = 0;
 const MAX_BYTES = 24 * 1024 * 1024;
 const MAX_CLIP = 8 * 1024 * 1024;
 const MIN_CLIP = 1024;
+/** Real WAV: RIFF/WAVE header plus non-silent sample data. Rejects zero-filled or truncated files. */
+export function isPlayableWav(bytes: ArrayBuffer | null): bytes is ArrayBuffer {
+  if (!bytes || bytes.byteLength < MIN_CLIP || bytes.byteLength > MAX_CLIP) return false;
+  const u = new Uint8Array(bytes);
+  const tag = (o: number) => String.fromCharCode(u[o], u[o + 1], u[o + 2], u[o + 3]);
+  if (tag(0) !== "RIFF" || tag(8) !== "WAVE") return false;
+  for (let i = 44; i < u.length; i++) if (u[i] !== 0) return true;
+  return false;
+}
 const quiet = (task: Promise<unknown>) => task.catch(() => undefined);
 const remember = (hash: string, bytes: ArrayBuffer) => {
   while (memoryBytes + bytes.byteLength > MAX_BYTES && memory.size) {
@@ -164,7 +173,12 @@ export async function grade11GrammarAudio(
   const shared = !!job;
   if (!job) {
     job = (async () => {
-      const stored = await store.read(hash).catch(() => null);
+      let stored = await store.read(hash).catch(() => null);
+      if (stored && !isPlayableWav(stored)) {
+        // Corrupt saved file: mark it failed so it is regenerated instead of served.
+        await quiet(store.fail(hash, "corrupt stored audio"));
+        stored = null;
+      }
       if (stored) {
         void quiet(store.stat("hit", hash));
         return { bytes: stored, result: "hit" };
@@ -175,7 +189,7 @@ export async function grade11GrammarAudio(
         const deadline = Date.now() + (options.waitMs ?? 25000);
         do {
           const ready = await store.read(hash).catch(() => null);
-          if (ready) {
+          if (isPlayableWav(ready)) {
             void quiet(store.stat("hit", hash));
             return { bytes: ready, result: "hit" };
           }
@@ -194,8 +208,8 @@ export async function grade11GrammarAudio(
         return { bytes: null, response, result: "uncached" };
       }
       const bytes = await response.arrayBuffer();
-      if (bytes.byteLength < MIN_CLIP || bytes.byteLength > MAX_CLIP) {
-        void quiet(store.fail(hash, `invalid size ${bytes.byteLength}`));
+      if (!isPlayableWav(bytes)) {
+        void quiet(store.fail(hash, `invalid audio ${bytes.byteLength}`));
         void quiet(store.stat("error", hash));
         return { bytes, result: "uncached" };
       }
