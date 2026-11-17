@@ -30,6 +30,12 @@ function geminiFallbackModel(): LanguageModelV3 | null {
   return createGoogleGenerativeAI({ apiKey: key })(modelId);
 }
 
+/** Log only the status of the backup failure (never keys or bodies) so quota limits are diagnosable. */
+function logBackupFailure(failure: unknown) {
+  const f = failure as { statusCode?: number; name?: string };
+  console.warn("[ai] gemini fallback failed", { status: f?.statusCode ?? null, name: f?.name ?? null });
+}
+
 /** Fail over once before any generated content is delivered; never replay partial output. */
 export function withGeminiFallback(
   primary: LanguageModelV3,
@@ -57,6 +63,7 @@ export function withGeminiFallback(
           return await backup.doGenerate(options);
         } catch (failure) {
           if (options.abortSignal?.aborted) throw failure;
+          logBackupFailure(failure);
           throw providerFailure();
         }
       }
@@ -154,6 +161,7 @@ export function withGeminiFallback(
           };
         } catch (failure) {
           if (options.abortSignal?.aborted) throw failure;
+          logBackupFailure(failure);
           throw providerFailure();
         }
       }
