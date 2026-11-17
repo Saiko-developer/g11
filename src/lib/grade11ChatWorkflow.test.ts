@@ -79,6 +79,7 @@ describe("shared tutor workflow keeps Grade 10 defaults and supports Grade 11", 
     });
     expect(vi.mocked(streamText).mock.calls[0][0].system).toContain("SOURCE END");
     vi.stubEnv("LOVABLE_API_KEY", "");
+    vi.stubEnv("GEMINI_API_KEY", "");
     const response = await post({ request: request({ grade: 11, messages: [] }) });
     expect(response.status).toBe(503);
     expect((await response.json()).error).toBe("ai_unavailable");
