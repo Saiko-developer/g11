@@ -46,11 +46,28 @@ export function normalizeExamSectionId(value: unknown): SectionId | null {
   const id = /^[1-9]$/.test(token) ? ALL_SECTION_IDS[Number(token) - 1] : token;
   return ALL_SECTION_IDS.includes(id as SectionId) ? (id as SectionId) : null;
 }
+/** Choose the quotation before generation so the model interprets these exact lines. */
+export function selectPoemInterpretation(source: Grade11ExamSource, random = Math.random) {
+  const pairs = source.poems.flatMap((poem) =>
+    poem.lines.slice(0, -1).flatMap((line, i) => {
+      const next = poem.lines[i + 1];
+      return line.trim() && next?.trim()
+        ? [{ title: poem.title, question: `What do these lines mean?\n${line}\n${next}` }]
+        : [];
+    }),
+  );
+  const pair = pairs[Math.floor(random() * pairs.length)];
+  requireFormat(pair, "available textbook poem pair");
+  return pair;
+}
+const optionLabel = (value: string) =>
+  value.trim().match(/^\(?([ABC])\)?[.):]?$/i)?.[1]?.toUpperCase();
 /** Reject malformed generated papers before they can be recorded or consume an exam allowance. */
 export function applyGrade11Format(
   paper: MockExamPaper,
   config: ExamConfig,
   source: Grade11ExamSource,
+  interpretation?: ReturnType<typeof selectPoemInterpretation>,
 ) {
   requireFormat(
     Array.isArray(paper.sections) && paper.sections.length === config.sections.length,
@@ -93,7 +110,17 @@ export function applyGrade11Format(
       for (const item of s.items)
         requireFormat(item.sentence?.trim() && item.answer?.trim(), "question and answer");
       if (s.type === "mcq")
-        for (const item of s.items)
+        for (const item of s.items) {
+          if (Array.isArray(item.options)) {
+            for (const option of item.options) {
+              const label = typeof option.label === "string" ? optionLabel(option.label) : undefined;
+              if (label) option.label = label;
+            }
+            const label = optionLabel(item.answer);
+            const matches = item.options.filter((o) => o.text?.trim() === item.answer.trim());
+            if (label) item.answer = label;
+            else if (matches.length === 1) item.answer = matches[0].label;
+          }
           requireFormat(
             item.options?.length === 3 &&
               ["A", "B", "C"].every((label) =>
@@ -102,6 +129,7 @@ export function applyGrade11Format(
               ["A", "B", "C"].includes(item.answer),
             "MCQ choices",
           );
+        }
       if (s.type === "transformation")
         for (const item of s.items)
           requireFormat(
@@ -130,11 +158,15 @@ export function applyGrade11Format(
             source.readings.some(
               (r) =>
                 r.unit === q.sourceUnit &&
-                normalize(r.passage).includes(normalize(q.sourceEvidence!)),
+                normalize(r.passage).includes(normalize(q.sourceEvidence ?? "")),
             ),
           "Reading answer source evidence",
         );
       const q = s.partB[4];
+      if (interpretation) {
+        q.question = interpretation.question;
+        s.poemTitle = interpretation.title;
+      }
       requireFormat(
         q.answer?.trim() &&
           /what do these lines mean/i.test(q.question) &&
@@ -182,7 +214,7 @@ export function applyGrade11Format(
       requireFormat(
         blanks.length === 5 &&
           new Set(blanks.map((t) => t.answer)).size === 5 &&
-          blanks.every((t) => t.text.includes("______") && s.wordBank.includes(t.answer!)),
+          blanks.every((t) => t.text.includes("______") && s.wordBank.includes(t.answer ?? "")),
         "five dialogue blanks",
       );
       s.dialogue.forEach((t, i) => {

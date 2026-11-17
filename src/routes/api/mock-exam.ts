@@ -15,7 +15,7 @@ import {
 } from "@/lib/examBlueprint";
 import { grade10ExamSource } from "@/lib/grade10ExamSource.server";
 import { grade11ExamSource } from "@/lib/grade11ExamSource.server";
-import { applyGrade11Format } from "@/lib/grade11ExamFormat";
+import { applyGrade11Format, selectPoemInterpretation } from "@/lib/grade11ExamFormat";
 
 type Body = {
   unit?: number;
@@ -126,6 +126,9 @@ export const Route = createFileRoute("/api/mock-exam")({
             { status: 422 },
           );
         const g11Source = g11 ? await grade11ExamSource(config.units) : null;
+        const interpretation = g11Source && config.sections.includes("IV")
+          ? selectPoemInterpretation(g11Source)
+          : undefined;
         const seenPassage = g11
           ? (g11Source?.readings[Math.floor(Math.random() * g11Source.readings.length)]?.passage ??
             "")
@@ -148,10 +151,11 @@ export const Route = createFileRoute("/api/mock-exam")({
         };
         if (g11) {
           LINES.II +=
-            " Include a balanced mix of idioms, phrasal verbs, vocabulary, conjunctions, relative pronouns, prepositions and verb tenses/conditionals, across selected units.";
+            ' Include a balanced mix of idioms, phrasal verbs, vocabulary, conjunctions, relative pronouns, prepositions and verb tenses/conditionals, across selected units. Each item MUST have exactly three options with labels "A", "B", "C" and a nonempty text; answer MUST be exactly one of "A", "B", "C", not the option text.';
           LINES.III = `III Sentence Transformation — ${n} marks, type transformation: ${n} sentence rewriting questions, each with sentence, bracketed instruction and answer. Spread grammar rules across the selected units; avoid repeating one transformation. Include applicable no matter, not only/but also, clefts, introductory phrases, relatives, coordination, apposition, reported speech and passive voice only where taught. For emphasis questions set underline to the exact target substring in sentence; never lose the emphasized words.`;
           LINES.IV =
             "IV Verse Completion and Textbook Questions — 10 marks, type poetry. Part A is built directly from original textbook verse by the server. Return partA: [] and do NOT generate or copy any completion verse or answers. The server inserts exactly five two-line completion questions. Part B: questions 6–9 are four factual Reading questions across selected units, with full-sentence answers. Each must include sourceUnit and sourceEvidence (an exact supporting quotation from the supplied passage). Question 10 asks What do these lines mean? followed by two consecutive original textbook verse lines and an interpretation answer. Use only the supplied textbook source data.";
+          if (interpretation) LINES.IV += ` Question 10 is selected by the server: ${untrusted("selected_poem_question", JSON.stringify(interpretation))}. Set partB[4].question to this exact question and provide a full-sentence interpretation of THESE TWO LINES only. Do not select other lines. The server restores the exact quotation without changing your answer.`;
           LINES.V +=
             " Choose a coherent multi-paragraph passage from the supplied textbook text. Number A 1–5 and B 6–10.";
           LINES.VI =
@@ -206,7 +210,7 @@ No conversational text.`;
             prompt: `Generate the ${unitLabel} exam paper now. Title: ${unitTitle}. Topics: ${topics}`,
           });
           if (!paper?.sections?.length) throw new Error("Empty exam paper");
-          if (g11Source) applyGrade11Format(paper, config, g11Source);
+          if (g11Source) applyGrade11Format(paper, config, g11Source, interpretation);
           if (seenPassage) {
             for (const s of paper.sections as unknown as { id?: string; passage?: string }[]) {
               if (s.id === "V") s.passage = seenPassage;

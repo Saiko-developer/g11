@@ -1,3 +1,8 @@
+# Grade 11 mock-exam repair
+- [x] Prevent poem quotation and MCQ label formatting errors without weakening textbook validation.
+- [x] Run 33 regression tests; preview build passes; no production deployment.
+- [ ] Verify a newly generated full paper in the signed-in preview — blocked: requesting account has used its 2 daily exams; verified the real 429 allowance response without altering quotas.
+
 # Uploaded-paper AI marking
 - [x] Read uploaded PDF, Word and image question papers with student answer photos.
 - [x] Add optional private marking guide and render question files in the exam room.

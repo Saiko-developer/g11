@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyGrade11Format, letterPrompt, normalizeExamSectionId } from "./grade11ExamFormat";
+import { applyGrade11Format, letterPrompt, normalizeExamSectionId, selectPoemInterpretation } from "./grade11ExamFormat";
 import { grade11ExamSource } from "./grade11ExamSource.server";
 import { questionBody } from "./examPrint";
 import type { MockExamPaper, ExamSection, LetterScenario } from "./mockExam";
@@ -76,6 +76,46 @@ const letters = (): ExamSection => ({
   sampleAnswers: ["A personal model letter.", "A formal model letter."],
 });
 describe("Grade 11 exam paper contract", () => {
+  it("restores the preselected exact two-line quotation while keeping its generated interpretation", () => {
+    const selected = selectPoemInterpretation(source, () => 0);
+    expect(selected.question).toBe("What do these lines mean?\nThe trees give shade\nBeside the river bank");
+    const s: ExamSection = {
+      id: "IV", type: "poetry", title: "", marks: 10, instructions: "", poemTitle: "", partA: [],
+      partB: [
+        ...Array.from({ length: 4 }, () => ({ number: 0, question: "Where do dolphins live?", answer: "In rivers.", sourceUnit: 1, sourceEvidence: "Dolphins live in rivers." })),
+        { number: 0, question: "Explain the shade near the bank.", answer: "The trees shelter the river bank." },
+      ],
+    };
+    applyGrade11Format(paper(s), { grade: 11, units: [1], sections: ["IV"], count: 10 }, source, selected);
+    expect(s.partB[4]).toEqual({ number: 10, question: selected.question, answer: "The trees shelter the river bank." });
+    expect(s.poemTitle).toBe("Test");
+    s.partB[4].answer = "";
+    expect(() => applyGrade11Format(paper(s), { grade: 11, units: [1], sections: ["IV"], count: 10 }, source, selected)).toThrow("two-line poem interpretation");
+  });
+  it("still rejects invented poem quotations when no server selection was supplied", () => {
+    const s: ExamSection = {
+      id: "IV", type: "poetry", title: "", marks: 10, instructions: "", poemTitle: "", partA: [],
+      partB: [
+        ...Array.from({ length: 4 }, () => ({ number: 0, question: "Where?", answer: "In rivers.", sourceUnit: 1, sourceEvidence: "Dolphins live in rivers." })),
+        { number: 0, question: "What do these lines mean? Invented verse.", answer: "An invented interpretation." },
+      ],
+    };
+    expect(() => apply(paper(s))).toThrow("two-line poem interpretation");
+  });
+  it("normalizes unambiguous MCQ label formatting and exact option-text answers without guessing", () => {
+    const s: ExamSection = {
+      id: "II", type: "mcq", title: "", marks: 10, instructions: "",
+      items: Array.from({ length: 10 }, () => ({ number: 0, sentence: "They ______ fish.", options: [{ label: "(a)", text: "eat" }, { label: "B.", text: "eats" }, { label: "c", text: "eating" }], answer: "eat" })),
+    };
+    apply(paper(s));
+    expect(s.items[0].options.map(o => o.label)).toEqual(["A", "B", "C"]);
+    expect(s.items[0].answer).toBe("A");
+    s.items[0].answer = "not an option";
+    expect(() => apply(paper(s))).toThrow("MCQ choices");
+    s.items[0].answer = "A";
+    s.items[0].options.pop();
+    expect(() => apply(paper(s))).toThrow("MCQ choices");
+  });
   it.each([
     "I",
     "I.",
