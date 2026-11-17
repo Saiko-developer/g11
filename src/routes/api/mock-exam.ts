@@ -16,6 +16,7 @@ import {
 import { grade10ExamSource } from "@/lib/grade10ExamSource.server";
 import { grade11ExamSource } from "@/lib/grade11ExamSource.server";
 import { applyGrade11Format, selectPoemInterpretation } from "@/lib/grade11ExamFormat";
+import { providerUnavailable } from "@/lib/ai-provider.server";
 
 type Body = {
   unit?: number;
@@ -288,6 +289,11 @@ No conversational text.`;
         } catch (error) {
           console.error("[mock-exam]", error);
           const msg = error instanceof Error ? error.message : "unknown";
+          if (msg.includes("AI provider unavailable")) {
+            const unavailable = providerUnavailable();
+            const safe = await unavailable.json() as { message: string };
+            return Response.json({ error: safe.message }, { status: unavailable.status });
+          }
           const status =
             msg.includes("429") || msg.toLowerCase().includes("rate limit")
               ? 429
