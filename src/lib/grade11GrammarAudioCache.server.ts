@@ -209,7 +209,7 @@ export async function grade11GrammarAudio(
       }
       const bytes = await response.arrayBuffer();
       if (!isPlayableWav(bytes)) {
-        void quiet(store.fail(hash, `invalid audio ${bytes.byteLength}`));
+        void quiet(store.fail(hash, `invalid audio ${(bytes as ArrayBuffer).byteLength}`));
         void quiet(store.stat("error", hash));
         return { bytes, result: "uncached" };
       }
