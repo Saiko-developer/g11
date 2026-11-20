@@ -39,6 +39,8 @@ export function pcm16Wav(bytes: Uint8Array) {
       channels === 1
         ? input.getInt16(i * 2, true)
         : Math.round((input.getInt16(i * 4, true) + input.getInt16(i * 4 + 2, true)) / 2);
+  if (!pcm.some((sample) => Math.abs(sample) > 1))
+    throw Error("Silent WAV cannot be published as teaching narration");
   return { pcm, rate, duration: pcm.length / rate };
 }
 /** Inspect complete Layer III frames, not a renamed WAV or a single sync byte. */

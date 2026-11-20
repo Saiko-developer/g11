@@ -16,6 +16,11 @@ describe("permanent audio codec and archive", () => {
     const { writeFile } = await import("node:fs/promises");
     await writeFile("/tmp/saya-owl-codec-test.mp3", output.bytes);
   });
+  it("rejects an otherwise valid zero-filled cached narration", () => {
+    const wav = syntheticWav();
+    wav.fill(0, 44);
+    expect(() => wavToMp3(wav)).toThrow("Silent WAV");
+  });
   it("rejects malformed/truncated WAV, renamed WAV and truncated MP3", () => {
     expect(() => pcm16Wav(new Uint8Array(44))).toThrow();
     expect(() => pcm16Wav(syntheticWav().subarray(0, 100))).toThrow();

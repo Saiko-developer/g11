@@ -16,7 +16,7 @@ Repository evidence:
 
 The pilot enables generation only for **Grade 11 Unit 1 Grammar**: 44 walkthrough chunks plus 12 classroom audio steps. Classroom generation additionally requires the existing script publication/review workflow. Other grades/units are inventory only until the pilot is accepted. Exact scripts can be reviewed in the Audio Manager; queue confirmation is approval to narrate that fixed script, not permission to edit it.
 
-We did not inspect hosted database contents. The old ready indexes are reported as “ready (validated on reuse)”; a file is not declared usable until the worker actually reads and validates it. Actual existing/missing files, voice quality and historical provider/model cannot be verified offline.
+We did not inspect hosted database contents. Read-only connector discovery found no active matching project: the repository uses Lovable Cloud, while the connected Supabase project is inactive and different. No server service credential is available in this workspace; no hosted SQL was executed. The old ready indexes are reported as “ready (validated on reuse)”; a file is not declared usable until the worker actually reads and validates it. Actual existing/missing files, voice quality and historical provider/model cannot be verified offline.
 
 ## Architecture and guarantees
 
@@ -96,10 +96,10 @@ Still requiring an approved hosted pilot: actual legacy WAV availability, hosted
 
 ## Development verification results
 
-- Full suite: **853 tests passed in 111 files** on the serial run. An earlier parallel run hit the existing Grade11Unit1Workspace five-second timeout; its isolated retry passed all four tests and the serial full run passed. No timeout was increased and no unrelated reading implementation was changed.
+- Full suite: **858 tests passed in 111 files** on the final serial run after merging the latest `origin/main`. An earlier parallel run hit the existing Grade11Unit1Workspace five-second timeout; its isolated retry passed all four tests and the serial full run passed. No timeout was increased and no unrelated reading implementation was changed.
 - Audio/UI plus existing TTS/cache/classroom regression selection: **54 tests passed**.
 - TypeScript, changed-file ESLint and production build passed.
 - Disposable SQL checks passed, including persisted per-provider Retry-After and protection against a broad pre-existing storage policy.
 - Real Chromium mobile guest/auth-boundary checks passed. Admin component interactions used local fixtures; no hosted admin session was used.
 - Pilot narration generated: **0**. Pilot cache conversions/reuse against hosted storage: **0**. Only synthetic PCM was encoded locally for codec/archive verification.
-- No hosted migration, deployment, scheduler installation or bulk generation was performed.
+- No hosted migration, deployment, scheduler installation or bulk generation was performed. The feature branch includes the latest main changes through `77baecc`; main itself was not changed by this work.
