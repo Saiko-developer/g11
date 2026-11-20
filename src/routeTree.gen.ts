@@ -19,6 +19,8 @@ import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as TeachingSetupRouteImport } from './routes/teaching-setup'
 import { Route as TutorRouteImport } from './routes/tutor'
 import { Route as ApiAnswerHintRouteImport } from './routes/api/answer-hint'
+import { Route as ApiAudioManagerRouteImport } from './routes/api/audio-manager'
+import { Route as ApiAudioWorkerRouteImport } from './routes/api/audio-worker'
 import { Route as ApiAutoGradeRouteImport } from './routes/api/auto-grade'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiChatHomeRouteImport } from './routes/api/chat-home'
@@ -100,6 +102,16 @@ const TutorRoute = TutorRouteImport.update({
 const ApiAnswerHintRoute = ApiAnswerHintRouteImport.update({
   id: '/api/answer-hint',
   path: '/api/answer-hint',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAudioManagerRoute = ApiAudioManagerRouteImport.update({
+  id: '/api/audio-manager',
+  path: '/api/audio-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAudioWorkerRoute = ApiAudioWorkerRouteImport.update({
+  id: '/api/audio-worker',
+  path: '/api/audio-worker',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAutoGradeRoute = ApiAutoGradeRouteImport.update({
@@ -274,6 +286,8 @@ export interface FileRoutesByFullPath {
   '/teaching-setup': typeof TeachingSetupRoute
   '/tutor': typeof TutorRoute
   '/api/answer-hint': typeof ApiAnswerHintRoute
+  '/api/audio-manager': typeof ApiAudioManagerRoute
+  '/api/audio-worker': typeof ApiAudioWorkerRoute
   '/api/auto-grade': typeof ApiAutoGradeRoute
   '/api/chat': typeof ApiChatRoute
   '/api/chat-home': typeof ApiChatHomeRoute
@@ -318,6 +332,8 @@ export interface FileRoutesByTo {
   '/teaching-setup': typeof TeachingSetupRoute
   '/tutor': typeof TutorRoute
   '/api/answer-hint': typeof ApiAnswerHintRoute
+  '/api/audio-manager': typeof ApiAudioManagerRoute
+  '/api/audio-worker': typeof ApiAudioWorkerRoute
   '/api/auto-grade': typeof ApiAutoGradeRoute
   '/api/chat': typeof ApiChatRoute
   '/api/chat-home': typeof ApiChatHomeRoute
@@ -362,6 +378,8 @@ export interface FileRoutesById {
   '/teaching-setup': typeof TeachingSetupRoute
   '/tutor': typeof TutorRoute
   '/api/answer-hint': typeof ApiAnswerHintRoute
+  '/api/audio-manager': typeof ApiAudioManagerRoute
+  '/api/audio-worker': typeof ApiAudioWorkerRoute
   '/api/auto-grade': typeof ApiAutoGradeRoute
   '/api/chat': typeof ApiChatRoute
   '/api/chat-home': typeof ApiChatHomeRoute
@@ -408,6 +426,8 @@ export interface FileRouteTypes {
     | '/teaching-setup'
     | '/tutor'
     | '/api/answer-hint'
+    | '/api/audio-manager'
+    | '/api/audio-worker'
     | '/api/auto-grade'
     | '/api/chat'
     | '/api/chat-home'
@@ -452,6 +472,8 @@ export interface FileRouteTypes {
     | '/teaching-setup'
     | '/tutor'
     | '/api/answer-hint'
+    | '/api/audio-manager'
+    | '/api/audio-worker'
     | '/api/auto-grade'
     | '/api/chat'
     | '/api/chat-home'
@@ -495,6 +517,8 @@ export interface FileRouteTypes {
     | '/teaching-setup'
     | '/tutor'
     | '/api/answer-hint'
+    | '/api/audio-manager'
+    | '/api/audio-worker'
     | '/api/auto-grade'
     | '/api/chat'
     | '/api/chat-home'
@@ -540,6 +564,8 @@ export interface RootRouteChildren {
   TeachingSetupRoute: typeof TeachingSetupRoute
   TutorRoute: typeof TutorRoute
   ApiAnswerHintRoute: typeof ApiAnswerHintRoute
+  ApiAudioManagerRoute: typeof ApiAudioManagerRoute
+  ApiAudioWorkerRoute: typeof ApiAudioWorkerRoute
   ApiAutoGradeRoute: typeof ApiAutoGradeRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiChatHomeRoute: typeof ApiChatHomeRoute
@@ -642,6 +668,20 @@ declare module '@tanstack/react-router' {
       path: '/api/answer-hint'
       fullPath: '/api/answer-hint'
       preLoaderRoute: typeof ApiAnswerHintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/audio-manager': {
+      id: '/api/audio-manager'
+      path: '/api/audio-manager'
+      fullPath: '/api/audio-manager'
+      preLoaderRoute: typeof ApiAudioManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/audio-worker': {
+      id: '/api/audio-worker'
+      path: '/api/audio-worker'
+      fullPath: '/api/audio-worker'
+      preLoaderRoute: typeof ApiAudioWorkerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/auto-grade': {
@@ -896,6 +936,8 @@ const rootRouteChildren: RootRouteChildren = {
   TeachingSetupRoute: TeachingSetupRoute,
   TutorRoute: TutorRoute,
   ApiAnswerHintRoute: ApiAnswerHintRoute,
+  ApiAudioManagerRoute: ApiAudioManagerRoute,
+  ApiAudioWorkerRoute: ApiAudioWorkerRoute,
   ApiAutoGradeRoute: ApiAutoGradeRoute,
   ApiChatRoute: ApiChatRoute,
   ApiChatHomeRoute: ApiChatHomeRoute,

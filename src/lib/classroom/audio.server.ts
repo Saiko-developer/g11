@@ -25,6 +25,9 @@ export async function classroomAudioIdentity(lesson: ReadingLesson, cursor: numb
 }
 export async function readClassroomAudio(lesson: ReadingLesson, cursor: number): Promise<Response> {
   const { hash, path } = await classroomAudioIdentity(lesson, cursor);
+  const { approvedMp3 } = await import("@/lib/permanent-audio/playback.server");
+  const approved = await approvedMp3(hash);
+  if (approved) return approved;
   const { data, error } = await supabaseAdmin
     .from("classroom_audio" as never)
     .select("state,lease_until,created_at,attempts")
@@ -49,6 +52,11 @@ export async function readClassroomAudio(lesson: ReadingLesson, cursor: number):
 }
 export async function prepareClassroomAudio(lesson: ReadingLesson, cursor: number) {
   const { hash, path, text } = await classroomAudioIdentity(lesson, cursor);
+  if (process.env.AUDIO_MP3_PILOT_PLAYBACK === "true") {
+    const { approvedMp3 } = await import("@/lib/permanent-audio/playback.server");
+    const approved = await approvedMp3(hash, true);
+    if (approved) return approved;
+  }
   // The generic speech service caps input at 3500 characters. Never silently truncate a class.
   if (!text.trim() || text.length > 3500)
     return Response.json({ error: "narration_script_too_long" }, { status: 422 });

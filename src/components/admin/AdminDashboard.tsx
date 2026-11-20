@@ -53,8 +53,15 @@ type Section =
   | "requests"
   | "support"
   | "announcements"
-  | "teaching";
+  | "teaching"
+  | "audio";
 const NAV = [
+  {
+    id: "audio",
+    label: "Audio Manager",
+    icon: BookOpen,
+    subtitle: "Permanent MP3 library, review and downloads.",
+  },
   {
     id: "teaching",
     label: "Teaching setup",
@@ -168,6 +175,7 @@ export function AdminDashboard({
   initialSection?: Section;
   panels: Record<"payments" | "ai" | "requests" | "support" | "announcements", ReactNode> & {
     teaching?: ReactNode;
+    audio?: ReactNode;
   };
 }) {
   const [section, setSection] = useState<Section>(initialSection);

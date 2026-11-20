@@ -1,3 +1,4 @@
+import { AudioManager } from "@/components/admin/AudioManager";
 import { TeachingSetup } from "@/components/classroom/TeachingSetup";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -156,6 +157,7 @@ function Dashboard({
       onAction={onAction}
       panels={{
         teaching: <TeachingSetup />,
+        audio: <AudioManager />,
         ai: (
           <div className="space-y-4">
             <AdminAiStatus />

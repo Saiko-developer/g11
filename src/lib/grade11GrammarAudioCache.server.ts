@@ -66,7 +66,9 @@ export function supabaseAudioStore(): AudioStore {
       return data ? await data.arrayBuffer() : null;
     },
     async claim(hash, unit) {
-      const { data, error } = await (await admin()).rpc("grade11_audio_claim", {
+      const { data, error } = await (
+        await admin()
+      ).rpc("grade11_audio_claim", {
         p_hash: hash,
         p_unit: unit,
       });
@@ -95,7 +97,9 @@ export function supabaseAudioStore(): AudioStore {
         .eq("hash", hash);
     },
     async fail(hash, message) {
-      await (await admin())
+      await (
+        await admin()
+      )
         .from("grade11_grammar_audio")
         .update({
           status: "failed",
@@ -111,7 +115,10 @@ export function supabaseAudioStore(): AudioStore {
   };
 }
 
-const pending = new Map<string, Promise<{ bytes: ArrayBuffer | null; response?: Response; result: string }>>();
+const pending = new Map<
+  string,
+  Promise<{ bytes: ArrayBuffer | null; response?: Response; result: string }>
+>();
 const memory = new Map<string, ArrayBuffer>();
 let memoryBytes = 0;
 const MAX_BYTES = 24 * 1024 * 1024;
@@ -148,12 +155,18 @@ export async function grade11GrammarAudio(
   options: { waitMs?: number; pollMs?: number } = {},
 ): Promise<Response> {
   const unit = authored().get(body.text);
-  if (body.voice !== "sarah" || (body.speed ?? 1) !== 1 || body.provider || !unit) return generate();
+  if (body.voice !== "sarah" || (body.speed ?? 1) !== 1 || body.provider || !unit)
+    return generate();
   let hash: string;
   try {
     hash = await grade11AudioHash(body.text);
   } catch {
     return generate();
+  }
+  if (process.env.AUDIO_MP3_PILOT_PLAYBACK === "true") {
+    const { approvedMp3 } = await import("./permanent-audio/playback.server");
+    const approved = await approvedMp3(hash);
+    if (approved) return approved;
   }
   const cached = memory.get(hash);
   if (cached) {
@@ -188,7 +201,12 @@ export async function grade11GrammarAudio(
       void quiet(store.stat("miss", hash));
       const response = await generate();
       if (!response.ok || response.headers.get("X-TTS-Provider") !== "gemini") {
-        void quiet(store.fail(hash, `provider ${response.status} ${response.headers.get("X-TTS-Provider") ?? ""}`));
+        void quiet(
+          store.fail(
+            hash,
+            `provider ${response.status} ${response.headers.get("X-TTS-Provider") ?? ""}`,
+          ),
+        );
         void quiet(store.stat("error", hash));
         // Fallback voice or error goes back to this student only; nothing is cached.
         return { bytes: null, response, result: "uncached" };

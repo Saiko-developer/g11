@@ -47,6 +47,7 @@ export type SpeechInput = {
   speed?: number;
   provider?: "openai" | string;
   signal?: AbortSignal;
+  fetcher?: typeof fetch;
 };
 
 /** Keep each caller's preferred voice; all callers can recover using the owner's Gemini key. */
@@ -56,6 +57,7 @@ export async function generateSpeech({
   speed,
   provider,
   signal,
+  fetcher = fetch,
 }: SpeechInput): Promise<Response> {
   const lovableKey = process.env.LOVABLE_API_KEY?.trim();
   const clean = sanitizeForSpeech(text);
@@ -77,7 +79,7 @@ export async function generateSpeech({
   const gateway = async (openai: boolean): Promise<Response | null> => {
     if (!lovableKey || signal?.aborted) return null;
     try {
-      const upstream = await fetch("https://ai.gateway.lovable.dev/v1/audio/speech", {
+      const upstream = await fetcher("https://ai.gateway.lovable.dev/v1/audio/speech", {
         method: "POST",
         signal: signal
           ? AbortSignal.any([signal, AbortSignal.timeout(provider === "gemini" ? 60000 : 15000)])
@@ -134,7 +136,7 @@ export async function generateSpeech({
   if (primary) return primary;
   if (signal?.aborted) return cancelled();
   // Includes explicit OpenAI requests from Grade 10/11 speaking and Gemini-only classrooms.
-  const pcm = await geminiDirectSpeech(input, geminiVoice, fetch, signal);
+  const pcm = await geminiDirectSpeech(input, geminiVoice, fetcher, signal);
   if (signal?.aborted) return cancelled();
   if (pcm) return wav(pcm);
   // Keep legacy alternative voice for general callers, but avoid the same exhausted gateway.
