@@ -24,3 +24,4 @@
 - Reading-classroom progress, publication and daily-study storage must be applied through the migration runner, not review drafts; reads remain caller-scoped and completion saves use server-only RPCs — prevents unavailable classrooms and cross-account writes.
 
 - Shared classroom narration has no daily clip-count quota (migration 0008). Keep approved canonical scripts, private cache reuse and unique per-hash generation claims; do not reintroduce 20-clip limits or next-day quota messages. Other account credit and daily study-plan rules are separate.
+- Approved MP3 lesson audio is served by default; set AUDIO_MP3_PILOT_PLAYBACK="false" to fall back to the WAV cache — makes permanent MP3s the primary source without losing the kill switch.

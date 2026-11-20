@@ -6,6 +6,7 @@ import { sanitizeForSpeech } from "./sanitizeSpeech";
 import type { AudioStore, ClaimResult } from "./grade11GrammarAudioCache.server";
 
 beforeEach(() => {
+  vi.stubEnv("AUDIO_MP3_PILOT_PLAYBACK", "false"); // these tests cover the WAV cache path
   vi.resetModules();
   vi.stubGlobal("crypto", webcrypto);
 });

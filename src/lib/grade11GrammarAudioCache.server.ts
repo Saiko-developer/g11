@@ -172,7 +172,7 @@ export async function grade11GrammarAudio(
   } catch {
     return generate();
   }
-  if (process.env.AUDIO_MP3_PILOT_PLAYBACK === "true") {
+  if (process.env.AUDIO_MP3_PILOT_PLAYBACK !== "false") {
     const { approvedMp3 } = await import("./permanent-audio/playback.server");
     const approved = await approvedMp3(hash);
     if (approved) return approved;

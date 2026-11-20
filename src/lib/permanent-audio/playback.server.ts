@@ -5,7 +5,7 @@ export async function approvedMp3(
   scriptHash: string,
   metadataOnly = false,
 ): Promise<Response | null> {
-  if (process.env.AUDIO_MP3_PILOT_PLAYBACK !== "true") return null;
+  if (process.env.AUDIO_MP3_PILOT_PLAYBACK === "false") return null;
   let approvedFound = false;
   const unavailable = () =>
     Response.json(
