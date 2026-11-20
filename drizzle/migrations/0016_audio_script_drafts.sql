@@ -1,0 +1,45 @@
+ALTER TABLE public.lesson_mp3_catalog ADD COLUMN script_draft text CHECK (length(script_draft) BETWEEN 1 AND 3500);
+ALTER TABLE public.lesson_mp3_versions ADD COLUMN script_text text;
+CREATE FUNCTION public.lesson_mp3_enqueue_draft(p_clip text,p_user uuid,p_script text) RETURNS uuid LANGUAGE plpgsql SECURITY INVOKER SET search_path=public AS $$
+DECLARE c lesson_mp3_catalog; v uuid;
+BEGIN
+ SELECT * INTO STRICT c FROM lesson_mp3_catalog WHERE id=p_clip FOR UPDATE;
+ IF c.script_draft IS DISTINCT FROM p_script OR nullif(trim(p_script),'') IS NULL THEN RAISE EXCEPTION 'Script draft changed'; END IF;
+ IF EXISTS(SELECT 1 FROM lesson_mp3_jobs WHERE clip_id=p_clip AND state IN ('queued','running')) THEN RAISE EXCEPTION 'Clip already queued or processing'; END IF;
+ UPDATE lesson_mp3_versions SET status='rejected',updated_at=now() WHERE clip_id=p_clip AND status='pending';
+ INSERT INTO lesson_mp3_versions(clip_id,script_hash,script_version,script_text,created_by)
+ VALUES(p_clip,c.script_hash,'edited-'||gen_random_uuid(),p_script,p_user) RETURNING id INTO v;
+ INSERT INTO lesson_mp3_jobs(version_id,clip_id,regenerate) VALUES(v,p_clip,true);
+ UPDATE lesson_mp3_catalog SET script_draft=NULL WHERE id=p_clip;
+ RETURN v;
+END $$;
+CREATE FUNCTION public.lesson_mp3_claim_selection(p_clips text[]) RETURNS SETOF public.lesson_mp3_jobs LANGUAGE plpgsql SECURITY INVOKER SET search_path=public AS $$
+DECLARE c lesson_mp3_control; j lesson_mp3_jobs;
+BEGIN
+ SELECT * INTO c FROM lesson_mp3_control WHERE id=1 FOR UPDATE;
+ IF c.lease_until>now() OR c.blocked_until>now() OR c.next_request_at>now() THEN RETURN; END IF;
+ -- An expired paid request is uncertain: do NOT automatically issue it again.
+ UPDATE lesson_mp3_jobs SET state='interrupted',updated_at=now() WHERE state='running' AND lease_until<now();
+ UPDATE lesson_mp3_versions v SET status='failed',last_error='Worker interrupted; resume checks stored audio before any new request',updated_at=now()
+ FROM lesson_mp3_jobs expired_job WHERE expired_job.version_id=v.id AND expired_job.state='interrupted' AND v.status='generating';
+ SELECT * INTO j FROM lesson_mp3_jobs WHERE state='queued' AND clip_id=ANY(p_clips) ORDER BY created_at FOR UPDATE SKIP LOCKED LIMIT 1;
+ IF NOT FOUND THEN RETURN; END IF;
+ UPDATE lesson_mp3_jobs SET state='running',token=gen_random_uuid(),lease_until=now()+interval '10 minutes',attempts=attempts+1,updated_at=now() WHERE id=j.id RETURNING * INTO j;
+ UPDATE lesson_mp3_control SET lease_until=j.lease_until WHERE id=1;
+ UPDATE lesson_mp3_versions SET status='generating',last_error=NULL,updated_at=now() WHERE id=j.version_id;
+ RETURN NEXT j;
+END $$;
+REVOKE ALL ON FUNCTION public.lesson_mp3_enqueue_draft(text,uuid,text),public.lesson_mp3_claim_selection(text[]) FROM PUBLIC,anon,authenticated;
+GRANT EXECUTE ON FUNCTION public.lesson_mp3_enqueue_draft(text,uuid,text),public.lesson_mp3_claim_selection(text[]) TO service_role;
+ALTER TABLE public.lesson_mp3_catalog ADD COLUMN removed_from_lesson boolean NOT NULL DEFAULT false;
+
+CREATE FUNCTION public.lesson_mp3_approve_selection(p_versions uuid[], p_user uuid)
+RETURNS void LANGUAGE plpgsql SECURITY INVOKER SET search_path=public AS $$
+DECLARE v uuid;
+BEGIN
+ FOREACH v IN ARRAY p_versions LOOP
+  PERFORM public.lesson_mp3_review(v,p_user,'approve');
+ END LOOP;
+END $$;
+REVOKE ALL ON FUNCTION public.lesson_mp3_approve_selection(uuid[],uuid) FROM PUBLIC,anon,authenticated;
+GRANT EXECUTE ON FUNCTION public.lesson_mp3_approve_selection(uuid[],uuid) TO service_role;

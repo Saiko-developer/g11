@@ -134,7 +134,7 @@ export function Grade11GrammarExplanation({ unit }: { unit: number }) {
 
 const chunks = grade11OralChunks;
 
-async function fetchClip(text: string, signal: AbortSignal): Promise<Blob> {
+async function fetchClip(text: string, signal: AbortSignal): Promise<Blob | null> {
   const controller = new AbortController();
   const cancel = () => controller.abort();
   signal.addEventListener("abort", cancel, { once: true });
@@ -152,7 +152,7 @@ async function fetchClip(text: string, signal: AbortSignal): Promise<Blob> {
       body: JSON.stringify({ text, voice: "sarah", speed: 1.0, lessonCache: "grade11-grammar" }),
     });
     if (!response.ok) throw new Error(`TTS ${response.status}`);
-    return await response.blob();
+    return response.status === 204 ? null : await response.blob();
   } catch (error) {
     if (expired) throw new Error("Voice request timed out");
     throw error;
@@ -162,7 +162,7 @@ async function fetchClip(text: string, signal: AbortSignal): Promise<Blob> {
   }
 }
 
-type ClipResult = { blob: Blob; error?: never } | { error: unknown; blob?: never };
+type ClipResult = { blob: Blob | null; error?: never } | { error: unknown; blob?: never };
 const prepare = (text: string, signal: AbortSignal): Promise<ClipResult> =>
   fetchClip(text, signal).then(
     (blob) => ({ blob }),
@@ -212,6 +212,7 @@ export function Grade11OralPlayer({
         if (run !== generation.current) return;
         if (result.error !== undefined) throw result.error;
         pending = i + 1 < queue.length ? prepare(queue[i + 1].text, controller.signal) : null;
+        if (!result.blob) continue;
         await new Promise<void>((resolve, reject) => {
           const url = URL.createObjectURL(result.blob!);
           const player = new Audio(url);

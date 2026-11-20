@@ -11,7 +11,11 @@ try {
  CREATE TABLE storage.objects(id uuid DEFAULT gen_random_uuid(),bucket_id text,name text);ALTER TABLE storage.objects ENABLE ROW LEVEL SECURITY;
  GRANT USAGE ON SCHEMA storage TO anon,authenticated,service_role;GRANT ALL ON storage.objects TO anon,authenticated,service_role;
  CREATE POLICY existing_permissive_policy ON storage.objects FOR ALL TO authenticated USING(true) WITH CHECK(true);`);
+  await db.exec(
+    "INSERT INTO storage.buckets(id,name,public) VALUES ('saya-owl-lesson-audio','saya-owl-lesson-audio',false)",
+  );
   await db.exec(await readFile("drizzle/migrations/0014_permanent_mp3_audio.sql", "utf8"));
+  await db.exec(await readFile("drizzle/migrations/0016_audio_script_drafts.sql", "utf8"));
   const uid = "00000000-0000-4000-8000-000000000001";
   await db.exec(
     `INSERT INTO lesson_mp3_catalog(id,grade,unit,lesson_id,section,segment_id,segment_order,script_hash,script_version) VALUES('pilot',11,1,'unit1','grammar','one',1,'hash','v1');`,
@@ -78,13 +82,37 @@ try {
     }),
     true,
   );
-  await db.query(`SELECT lesson_mp3_review($1,$2,'approve')`, [id, uid]);
+  await db.query(`SELECT lesson_mp3_approve_selection(ARRAY[$1]::uuid[],$2)`, [id, uid]);
   assert.equal(
     (await db.query(`SELECT approved_version FROM lesson_mp3_catalog WHERE id='pilot'`)).rows[0]
       .approved_version,
     id,
   );
   assert.equal(await enqueue(), id, "ordinary enqueue must not regenerate approved audio");
+  await db.exec(
+    "UPDATE lesson_mp3_catalog SET script_draft='Updated teaching draft' WHERE id='pilot'",
+  );
+  const edited = (
+    await db.query("SELECT lesson_mp3_enqueue_draft('pilot',$1,'Updated teaching draft') AS id", [
+      uid,
+    ])
+  ).rows[0].id;
+  assert.equal(
+    (await db.query("SELECT script_text FROM lesson_mp3_versions WHERE id=$1", [edited])).rows[0]
+      .script_text,
+    "Updated teaching draft",
+  );
+  assert.equal(
+    (await db.query("SELECT approved_version FROM lesson_mp3_catalog WHERE id='pilot'")).rows[0]
+      .approved_version,
+    id,
+  );
+  assert.equal(
+    (await db.query("SELECT * FROM lesson_mp3_claim_selection(ARRAY['other'])")).rows.length,
+    0,
+  );
+  await db.query("DELETE FROM lesson_mp3_jobs WHERE version_id=$1", [edited]);
+  await db.query("DELETE FROM lesson_mp3_versions WHERE id=$1", [edited]);
   const replacement = await enqueue(true);
   assert.notEqual(replacement, id);
   assert.equal(

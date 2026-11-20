@@ -37,10 +37,21 @@ export function AudioManager() {
     [unit, setUnit] = useState("1"),
     [lesson, setLesson] = useState("g11-u1-grammar-walkthrough"),
     [section, setSection] = useState("grammar"),
-    [status, setStatus] = useState(""),
+    [status, setStatus] = useState("pending"),
     [selected, setSelected] = useState<string[]>([]),
     [preview, setPreview] = useState(""),
-    [message, setMessage] = useState("");
+    [previewVersion, setPreviewVersion] = useState(""),
+    [message, setMessage] = useState(""),
+    [page, setPage] = useState(0),
+    [review, setReview] = useState<string[]>([]),
+    [editing, setEditing] = useState<string | null>(null),
+    [script, setScript] = useState("");
+  const post = (action: string, ids: string[], script?: string) =>
+    requestJson("/api/audio-manager", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action, ids, script, confirmed: true }),
+    });
   const refresh = async () => {
     try {
       setData(await requestJson("/api/audio-manager"));
@@ -68,11 +79,75 @@ export function AudioManager() {
           (!unit || c.unit === Number(unit)) &&
           (!lesson || c.lesson_id === lesson) &&
           (!section ||
-            (section === "classroom" ? c.source === "classroom" : c.section === section)) &&
-          (!status || state(c) === status),
+            (section === "classroom" ? c.source === "classroom" : c.section === section)),
       ) ?? [],
-    [data, grade, unit, lesson, section, status],
+    [data, grade, unit, lesson, section],
   );
+  const visible = filtered.filter((c) => !status || state(c) === status);
+  const pageIndex = Math.min(page, Math.max(0, Math.ceil(visible.length / 10) - 1));
+  const reviewIds = filtered.flatMap((c) =>
+    c.versions[0]?.status === "pending" ? [c.versions[0].id] : [],
+  );
+  const selectedReview = reviewIds.filter((id) => review.includes(id));
+  const queue = filtered
+    .filter((c) => c.pilot && c.jobs.some((j) => j.state === "queued"))
+    .map((c) => c.id);
+  const processQueue = async () => {
+    if (
+      !window.confirm(
+        "Process the selected lesson queue? Missing WAV files may require TTS credits.",
+      )
+    )
+      return;
+    setBusy(true);
+    setError("");
+    try {
+      for (let i = 0; i < queue.length; i++) {
+        let result = await post("process-selection", queue);
+        if (result.state === "idle" && result.retryInMs) {
+          setMessage("Waiting for the next provider slot…");
+          await new Promise((resolve) => setTimeout(resolve, result.retryInMs));
+          result = await post("process-selection", queue);
+        }
+        await refresh();
+        if (result.state !== "pending") {
+          setMessage(
+            result.message ?? "Queue paused. Check pacing or an active worker before resuming.",
+          );
+          return;
+        }
+        setMessage(`Processed ${i + 1} of ${queue.length} queued clips`);
+      }
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  };
+  const editAction = async (action: "save-script" | "queue-script", id: string) => {
+    if (
+      action === "queue-script" &&
+      !window.confirm("Queue revised narration? This may use TTS credits.")
+    )
+      return;
+    setBusy(true);
+    setError("");
+    try {
+      await post(action, [id], script);
+      await refresh();
+      if (action === "queue-script") setEditing(null);
+      setMessage(action === "save-script" ? "Draft saved" : "Revised narration queued");
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  };
+  const playable = visible.flatMap((clip) => {
+    const version = clip.versions.find((v) => v.storage_path);
+    return version ? [version.id] : [];
+  });
+  const previewIndex = playable.indexOf(previewVersion);
   const stats = useMemo(
     () => ({
       total: filtered.length,
@@ -80,8 +155,8 @@ export function AudioManager() {
       approved: filtered.filter((c) => c.approved_version).length,
       missing: filtered.filter((c) => !c.versions.length).length,
       failed: filtered.filter((c) => c.versions[0]?.status === "failed").length,
-      generating: filtered.filter((c) => ["queued", "generating"].includes(c.versions[0]?.status))
-        .length,
+      queued: filtered.filter((c) => c.versions[0]?.status === "queued").length,
+      generating: filtered.filter((c) => c.versions[0]?.status === "generating").length,
       pending: filtered.filter((c) => c.versions[0]?.status === "pending").length,
     }),
     [filtered],
@@ -106,6 +181,7 @@ export function AudioManager() {
       );
       await refresh();
       setSelected([]);
+      setReview([]);
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -125,6 +201,7 @@ export function AudioManager() {
         url = URL.createObjectURL(blob);
       if (previewOnly) {
         setPreview(url);
+        setPreviewVersion(new URL(path, window.location.origin).searchParams.get("version") ?? "");
         return;
       }
       const name =
@@ -164,6 +241,7 @@ export function AudioManager() {
         onChange={(e) => {
           set(e.target.value);
           setSelected([]);
+          setPage(0);
         }}
       >
         <option value="">All</option>
@@ -282,7 +360,30 @@ export function AudioManager() {
           value={approved}
         />
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="sticky top-0 z-10 flex flex-wrap gap-2 border-b bg-background py-3">
+        <Button disabled={busy || !queue.length} onClick={() => void processQueue()}>
+          Process Unit Queue ({queue.length})
+        </Button>
+        <Button
+          disabled={busy || !selectedReview.length}
+          onClick={() =>
+            void run("approve", selectedReview, "Approve the selected reviewed MP3 files?")
+          }
+        >
+          Approve selected ({selectedReview.length})
+        </Button>
+        {unit && grade && (data?.unitArchiveParts[`${grade}-${unit}`] ?? 0) > 0 && (
+          <Button
+            variant="outline"
+            disabled={busy}
+            onClick={() =>
+              void file(`/api/audio-manager?format=zip&grade=${grade}&unit=${unit}&part=0`)
+            }
+          >
+            Download Unit ZIP
+            {(data?.unitArchiveParts[`${grade}-${unit}`] ?? 0) > 1 ? " · part 1" : ""}
+          </Button>
+        )}
         <Button
           variant="outline"
           disabled={busy}
@@ -301,15 +402,12 @@ export function AudioManager() {
           onClick={() =>
             void run(
               "enqueue",
-              filtered
-                .filter((c) => c.pilot && !c.versions.length)
-                .slice(0, 3)
-                .map((c) => c.id),
-              "Queue up to 3 missing pilot clips? Confirm you reviewed these fixed scripts. Existing WAV is reused first; missing audio may use provider credits.",
+              filtered.filter((c) => c.pilot && !c.versions.length).map((c) => c.id),
+              "Queue all missing pilot clips in the current scope? Confirm you reviewed these fixed scripts. Existing WAV is reused first; missing audio may use provider credits.",
             )
           }
         >
-          Generate missing (up to 3)
+          Prepare missing audio
         </Button>
         <Button
           disabled={busy || !selected.length}
@@ -336,19 +434,6 @@ export function AudioManager() {
         >
           Regenerate selected
         </Button>
-        <Button
-          variant="outline"
-          disabled={busy}
-          onClick={() =>
-            void run(
-              "work",
-              [],
-              "Process one queued job now? This can generate audio using provider credits. Scheduled workers can also process queued jobs.",
-            )
-          }
-        >
-          Process one queued clip
-        </Button>
       </div>
       {data?.control?.blocked_until && Date.parse(data.control.blocked_until) > Date.now() && (
         <p className="rounded-lg border p-3 text-sm">
@@ -361,27 +446,69 @@ export function AudioManager() {
         batches. Resume checks stored files only; Retry can spend credits. No audio is generated by
         preview, approval, download or replay.
       </p>
-      {preview && (
-        <audio className="w-full" controls src={preview} aria-label="Admin audio preview" />
-      )}
-      <div className="space-y-3">
-        {filtered.map((clip) => {
+      <div className="flex flex-wrap gap-2" aria-label="Clip status">
+        {[
+          ["pending", "Review"],
+          ["approved", "Approved"],
+          ["queued", "Queue"],
+          ["failed", "Failed"],
+          ["", "All"],
+        ].map(([key, label]) => (
+          <Button
+            key={label}
+            size="sm"
+            variant={status === key ? "default" : "outline"}
+            onClick={() => {
+              setStatus(key);
+              setPage(0);
+            }}
+          >
+            {label} ({key ? filtered.filter((c) => state(c) === key).length : filtered.length})
+          </Button>
+        ))}
+        {status === "pending" && reviewIds.length > 0 && (
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => setReview(selectedReview.length === reviewIds.length ? [] : reviewIds)}
+          >
+            {selectedReview.length === reviewIds.length
+              ? "Clear review selection"
+              : "Select all for review"}
+          </Button>
+        )}
+      </div>
+      {!visible.length && <p className="text-sm text-muted-foreground">No clips in this view.</p>}
+      <div className="space-y-2">
+        {visible.slice(pageIndex * 10, pageIndex * 10 + 10).map((clip) => {
           const latest = clip.versions[0],
             asset = clip.versions.find((v) => v.storage_path);
           return (
-            <article key={clip.id} className="rounded-xl border bg-card p-4">
+            <article key={clip.id} className="rounded-lg border bg-card px-3 py-2">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <label className="flex items-center gap-2 font-medium">
                   <input
                     type="checkbox"
-                    checked={selected.includes(clip.id)}
+                    checked={
+                      latest?.status === "pending"
+                        ? review.includes(latest.id)
+                        : selected.includes(clip.id)
+                    }
                     disabled={busy || !clip.pilot}
-                    onChange={() => select(clip.id)}
+                    onChange={() =>
+                      latest?.status === "pending"
+                        ? setReview((ids) =>
+                            ids.includes(latest.id)
+                              ? ids.filter((id) => id !== latest.id)
+                              : [...ids, latest.id],
+                          )
+                        : select(clip.id)
+                    }
                   />
                   {clip.lesson_id} · {clip.segment_order}
                 </label>
                 <span className="rounded-full bg-primary/5 px-3 py-1 text-xs">
-                  {state(clip)}
+                  {clip.removed_from_lesson ? "Removed from lesson" : state(clip)}
                   {!clip.pilot ? " · inventory only" : ""}
                 </span>
               </div>
@@ -390,8 +517,68 @@ export function AudioManager() {
                 {clip.legacyReady ? "ready (validated on reuse)" : "not marked ready"}
               </p>
               <details className="mt-2 text-sm">
-                <summary>Review exact teaching script</summary>
-                <p className="mt-2 whitespace-pre-wrap leading-relaxed">{clip.script}</p>
+                <summary>Script and details</summary>
+                {clip.pilot && clip.source === "walkthrough" && (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    disabled={busy}
+                    onClick={() => {
+                      setEditing(clip.id);
+                      setScript(clip.script_draft ?? latest?.script_text ?? clip.script);
+                    }}
+                  >
+                    Edit script
+                  </Button>
+                )}
+                {clip.pilot && clip.source === "walkthrough" && (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    disabled={busy}
+                    onClick={() =>
+                      void run(
+                        clip.removed_from_lesson ? "restore-script" : "remove-script",
+                        [clip.id],
+                        clip.removed_from_lesson
+                          ? "Restore this narration in the lesson?"
+                          : "Skip this narration in the student lesson? The file and history are kept.",
+                      )
+                    }
+                  >
+                    {clip.removed_from_lesson ? "Restore to lesson" : "Remove from lesson"}
+                  </Button>
+                )}
+                {editing === clip.id && (
+                  <div className="space-y-2">
+                    <textarea
+                      aria-label="Teaching narration draft"
+                      className="w-full rounded border bg-background p-2"
+                      rows={6}
+                      maxLength={3500}
+                      value={script}
+                      onChange={(e) => setScript(e.target.value)}
+                    />
+                    <Button
+                      disabled={busy || !script.trim()}
+                      onClick={() => void editAction("save-script", clip.id)}
+                    >
+                      Save draft
+                    </Button>
+                    <Button
+                      disabled={busy || !clip.script_draft || script.trim() !== clip.script_draft}
+                      onClick={() => void editAction("queue-script", clip.id)}
+                    >
+                      Queue updated audio
+                    </Button>
+                    <Button variant="ghost" onClick={() => setEditing(null)}>
+                      Close
+                    </Button>
+                  </div>
+                )}
+                <p className="mt-2 whitespace-pre-wrap leading-relaxed">
+                  {asset?.script_text ?? clip.script}
+                </p>
               </details>
               {latest?.last_error && (
                 <p className="mt-2 text-sm text-destructive">{latest.last_error}</p>
@@ -421,20 +608,6 @@ export function AudioManager() {
                       }
                     >
                       Approve
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      disabled={busy}
-                      onClick={() =>
-                        void run(
-                          "reject",
-                          [latest.id],
-                          "Reject this version? The file is retained for review.",
-                        )
-                      }
-                    >
-                      Reject
                     </Button>
                   </>
                 )}
@@ -523,11 +696,62 @@ export function AudioManager() {
           );
         })}
       </div>
+      {preview && (
+        <div className="sticky bottom-0 z-20 flex flex-wrap items-center gap-2 rounded-lg border bg-background p-2">
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={busy || previewIndex < 1}
+            onClick={() =>
+              void file(`/api/audio-manager?version=${playable[previewIndex - 1]}`, true)
+            }
+          >
+            Previous clip
+          </Button>
+          <audio
+            className="min-w-48 flex-1"
+            controls
+            src={preview}
+            aria-label="Admin audio preview"
+          />
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={busy || previewIndex < 0 || previewIndex + 1 >= playable.length}
+            onClick={() =>
+              void file(`/api/audio-manager?version=${playable[previewIndex + 1]}`, true)
+            }
+          >
+            Next clip
+          </Button>
+          <Button size="sm" variant="ghost" onClick={() => setPreview("")}>
+            Close player
+          </Button>
+        </div>
+      )}
+      {visible.length > 10 && (
+        <div className="flex items-center gap-3">
+          <Button variant="outline" disabled={!pageIndex} onClick={() => setPage(pageIndex - 1)}>
+            Previous page
+          </Button>
+          <span>
+            {pageIndex * 10 + 1}–{Math.min(visible.length, (pageIndex + 1) * 10)} of{" "}
+            {visible.length}
+          </span>
+          <Button
+            variant="outline"
+            disabled={(pageIndex + 1) * 10 >= visible.length}
+            onClick={() => setPage(pageIndex + 1)}
+          >
+            Next page
+          </Button>
+        </div>
+      )}
       <div className="rounded-xl border p-4">
         <h3 className="font-semibold">Approved MP3 downloads</h3>
         <p className="mb-3 text-sm text-muted-foreground">
-          Archives contain a manifest and stored MP3 files. Maximum 20 clips / 32 MB per part.
-          Downloads never generate audio.
+          Archives contain a manifest and stored MP3 files. Archives split at 32 MB. Grade archives
+          also split at 20 clips. Downloads never generate audio.
         </p>
         {grade && (
           <div className="flex flex-wrap gap-2">

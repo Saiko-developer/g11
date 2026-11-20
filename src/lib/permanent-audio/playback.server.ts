@@ -18,15 +18,16 @@ export async function approvedMp3(
   try {
     const { data: clips, error } = await audioDb()
       .from("lesson_mp3_catalog")
-      .select("approved_version")
+      .select("*")
       .eq("script_hash", scriptHash)
       .eq("grade", 11)
       .eq("unit", 1)
       .eq("section", "grammar")
-      .not("approved_version", "is", null)
       .limit(1);
     if (error) return unavailable();
-    if (!clips?.[0]) return null;
+    if (clips?.[0]?.removed_from_lesson)
+      return new Response(null, { status: 204, headers: { "Cache-Control": "no-store" } });
+    if (!clips?.[0]?.approved_version) return null;
     approvedFound = true;
     const { data: version } = await audioDb()
       .from("lesson_mp3_versions")
@@ -47,7 +48,7 @@ export async function approvedMp3(
     return new Response(bytes.slice().buffer as ArrayBuffer, {
       headers: {
         "Content-Type": "audio/mpeg",
-        "Cache-Control": "private, max-age=86400",
+        "Cache-Control": "private, no-store",
         "X-Lesson-Audio": "approved-mp3",
       },
     });

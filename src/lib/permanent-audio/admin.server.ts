@@ -77,6 +77,7 @@ export async function audioManagerGet(request: Request) {
     const catalog = await rows<AudioCatalogRow>("lesson_mp3_catalog"),
       versions = await rows<AudioVersion>("lesson_mp3_versions");
     const ready = catalog
+      .filter((clip) => !clip.removed_from_lesson)
       .flatMap((clip) => {
         const v = versions.find(
           (v) =>
@@ -99,6 +100,8 @@ export async function audioManagerGet(request: Request) {
         return Response.json({ error: "Invalid archive selection" }, { status: 400 });
       const parts = archiveParts(
         ready.filter((v) => v.clip.grade === grade && (!unit || v.clip.unit === unit)),
+        undefined,
+        unit ? 200 : 20,
       );
       const part = Number(url.searchParams.get("part") ?? 0);
       if (!Number.isInteger(part) || !parts[part])
@@ -194,7 +197,11 @@ export async function audioManagerGet(request: Request) {
           [10, 11].flatMap((g) =>
             Array.from({ length: 12 }, (_, i) => [
               `${g}-${i + 1}`,
-              archiveParts(ready.filter((v) => v.clip.grade === g && v.clip.unit === i + 1)).length,
+              archiveParts(
+                ready.filter((v) => v.clip.grade === g && v.clip.unit === i + 1),
+                undefined,
+                200,
+              ).length,
             ]),
           ),
         ),
@@ -229,15 +236,21 @@ const actionSchema = z.object({
     "resume",
     "retry",
     "work",
+    "save-script",
+    "queue-script",
+    "process-selection",
+    "remove-script",
+    "restore-script",
   ]),
-  ids: z.array(z.string().min(1).max(150)).max(5).default([]),
+  ids: z.array(z.string().min(1).max(150)).max(200).default([]),
+  script: z.string().trim().min(1).max(3500).optional(),
   confirmed: z.boolean().default(false),
 });
 export async function audioManagerPost(request: Request) {
   const access = await audioAdmin(request);
   if (access instanceof Response) return access;
   const raw = await request.text();
-  if (raw.length > 4000) return Response.json({ error: "Request too large" }, { status: 413 });
+  if (raw.length > 34000) return Response.json({ error: "Request too large" }, { status: 413 });
   const parsed = actionSchema.safeParse(
     (() => {
       try {
@@ -289,6 +302,80 @@ export async function audioManagerPost(request: Request) {
       return Response.json({ registered: catalog.length });
     }
     if (!ids.length) throw Error("Select at least one clip or version");
+    if (action === "process-selection") {
+      if (ids.some((id) => !catalog.find((c) => c.id === id)?.pilot))
+        throw Error("Selection is outside the pilot");
+      const result = await workOneAudioJob(ids);
+      if (result.state === "idle") {
+        const { data } = await audioDb()
+          .from("lesson_mp3_control")
+          .select("next_request_at,blocked_until")
+          .eq("id", 1)
+          .single();
+        const blocked = Date.parse(data?.blocked_until ?? "") > Date.now();
+        const wait = Date.parse(data?.next_request_at ?? "") - Date.now();
+        return Response.json({
+          ...result,
+          retryInMs: !blocked && wait > 0 && wait <= 60000 ? wait + 250 : null,
+        });
+      }
+      return Response.json(result);
+    }
+    if (action === "remove-script" || action === "restore-script") {
+      const clip = catalog.find((c) => c.id === ids[0]);
+      if (ids.length !== 1 || !clip?.pilot || clip.source !== "walkthrough")
+        throw Error("Choose one walkthrough clip");
+      const { error } = await audioDb()
+        .from("lesson_mp3_catalog")
+        .update({ removed_from_lesson: action === "remove-script" })
+        .eq("id", clip.id)
+        .select("id")
+        .single();
+      if (error) throw Error("Could not update lesson visibility. Check migration 0016.");
+      return Response.json({ ok: true, action });
+    }
+    if (action === "save-script" || action === "queue-script") {
+      const [id] = ids;
+      const script = parsed.data.script;
+      const clip = catalog.find((c) => c.id === id);
+      if (ids.length !== 1 || !clip?.pilot || clip.source !== "walkthrough" || !script)
+        throw Error("Select one Grade 11 Unit 1 walkthrough clip and enter a script");
+      if (action === "save-script") {
+        const { error } = await audioDb()
+          .from("lesson_mp3_catalog")
+          .update({ script_draft: script })
+          .eq("id", id)
+          .select("id")
+          .single();
+        if (error) throw Error("Draft could not be saved. Check migration 0016.");
+      } else {
+        await rpc("lesson_mp3_enqueue_draft", {
+          p_clip: id,
+          p_user: access.userId,
+          p_script: script,
+        });
+      }
+      return Response.json({ ok: true, action });
+    }
+    if (action === "approve" && ids.length > 1) {
+      const versions = [...new Set(ids)].sort();
+      if (versions.some((id) => !z.string().uuid().safeParse(id).success))
+        throw Error("Invalid audio version");
+      for (let offset = 0; offset < versions.length; offset += 6) {
+        await Promise.all(
+          versions.slice(offset, offset + 6).map(async (id) => {
+            const row = await version(id);
+            if (row?.status !== "pending" || !row.storage_path)
+              throw Error("Only pending versions can be approved in a batch");
+            const bytes = await stored(row.storage_path);
+            if (!bytes || inspectMp3(bytes).bytes !== row.bytes)
+              throw Error("MP3 file missing or invalid");
+          }),
+        );
+      }
+      await rpc("lesson_mp3_approve_selection", { p_versions: versions, p_user: access.userId });
+      return Response.json({ ok: true, action, message: `Approved ${versions.length} clips` });
+    }
     for (const id of ids) {
       if (action === "enqueue" || action === "regenerate") {
         const clip = catalog.find((c) => c.id === id);

@@ -34,6 +34,7 @@ describe("Audio Manager UI", () => {
   it("shows actual returned counts and exact script without starting generation", async () => {
     const fetcher = vi.spyOn(globalThis, "fetch").mockResolvedValue(Response.json(data));
     render(<AudioManager />);
+    fireEvent.click(await screen.findByRole("button", { name: "All (1)" }));
     await screen.findByText("g11-u1-grammar-walkthrough · 1");
     expect(screen.getByText("Original fixed teaching narration")).toBeTruthy();
     expect(screen.getByRole("progressbar").getAttribute("max")).toBe("1");
@@ -47,11 +48,12 @@ describe("Audio Manager UI", () => {
       );
     const confirm = vi.spyOn(window, "confirm").mockReturnValue(false);
     render(<AudioManager />);
+    fireEvent.click(await screen.findByRole("button", { name: "All (1)" }));
     await screen.findByText("g11-u1-grammar-walkthrough · 1");
-    fireEvent.click(screen.getByRole("button", { name: "Generate missing (up to 3)" }));
+    fireEvent.click(screen.getByRole("button", { name: "Prepare missing audio" }));
     expect(fetcher.mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(0);
     confirm.mockReturnValue(true);
-    fireEvent.click(screen.getByRole("button", { name: "Generate missing (up to 3)" }));
+    fireEvent.click(screen.getByRole("button", { name: "Prepare missing audio" }));
     await waitFor(() =>
       expect(fetcher.mock.calls.some(([, init]) => init?.method === "POST")).toBe(true),
     );

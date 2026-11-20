@@ -1,6 +1,7 @@
 export type AudioVersion = {
   id: string;
   clip_id: string;
+  script_text?: string | null;
   script_hash: string;
   script_version: string;
   status: "queued" | "generating" | "pending" | "approved" | "rejected" | "failed";
@@ -25,6 +26,8 @@ export type AudioCatalogRow = {
   segment_order: number;
   script_hash: string;
   script_version: string;
+  removed_from_lesson?: boolean;
+  script_draft?: string | null;
   approved_version: string | null;
 };
 export type AudioJob = {

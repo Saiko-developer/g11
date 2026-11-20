@@ -13,8 +13,11 @@ export function retryAfterSeconds(value: string | null, now = Date.now()) {
   const seconds = Number.isFinite(n) ? n : Math.ceil((Date.parse(value) - now) / 1000);
   return Number.isFinite(seconds) ? Math.max(0, seconds) : null;
 }
-export async function workOneAudioJob() {
-  const jobs = await rpc<AudioJob[]>("lesson_mp3_claim");
+export async function workOneAudioJob(clipIds?: string[]) {
+  const jobs = await rpc<AudioJob[]>(
+    clipIds ? "lesson_mp3_claim_selection" : "lesson_mp3_claim",
+    clipIds ? { p_clips: clipIds } : {},
+  );
   const job = jobs[0];
   if (!job) return { state: "idle" };
   const checkpoint = async (patch: Record<string, unknown>) => {
@@ -34,6 +37,7 @@ export async function workOneAudioJob() {
       row = await version(job.version_id);
     if (!clip || !clip.pilot || !row || row.script_hash !== clip.script_hash)
       throw Error("Pilot script changed or clip is outside the enabled pilot");
+    const script = row.script_text ?? clip.text;
     const base = `grade-${clip.grade}/unit-${String(clip.unit).padStart(2, "0")}/${clip.section}/${row.id}`;
     // Deterministic paths recover a completed upload even if the worker died before checkpointing.
     const mp3Path = `${base}/audio.mp3`,
@@ -62,7 +66,7 @@ export async function workOneAudioJob() {
         throw Error(
           "No stored audio found. Explicit Retry Failed confirmation is required before a new paid request.",
         );
-      if (!clip.text.trim() || clip.text.length > 3500)
+      if (!script.trim() || script.length > 3500)
         throw Error("Script exceeds the existing speech input limit");
       const pacedFetch: typeof fetch = async (input, init) => {
         const gateway = String(input).includes("ai.gateway.lovable.dev");
@@ -90,7 +94,7 @@ export async function workOneAudioJob() {
             p_model: model,
             p_interval: configured("AUDIO_MP3_INTERVAL_SECONDS", 30, 20, 3600),
             p_daily: configured("AUDIO_MP3_DAILY_REQUESTS", 10, 1, 100000),
-            p_tokens: Math.ceil(clip.text.length * 3),
+            p_tokens: Math.ceil(script.length * 3),
             p_tpm: configured("AUDIO_MP3_INPUT_TOKENS_PER_MINUTE", 10000, 1000, 10000000),
           });
           if (permit?.id) break;
@@ -136,7 +140,7 @@ export async function workOneAudioJob() {
       };
       // Same prompts, Puck mapping, provider order and direct Gemini fallback as ordinary speech.
       const result = await generateSpeech({
-        text: clip.text,
+        text: script,
         voice: "sarah",
         provider: clip.source === "classroom" ? "gemini" : undefined,
         speed: 1,
