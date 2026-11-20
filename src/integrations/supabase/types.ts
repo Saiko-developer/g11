@@ -872,6 +872,258 @@ export type Database = {
         }
         Relationships: []
       }
+      lesson_mp3_catalog: {
+        Row: {
+          approved_version: string | null
+          created_at: string
+          grade: number
+          id: string
+          lesson_id: string
+          script_hash: string
+          script_version: string
+          section: string
+          segment_id: string
+          segment_order: number
+          unit: number
+        }
+        Insert: {
+          approved_version?: string | null
+          created_at?: string
+          grade: number
+          id: string
+          lesson_id: string
+          script_hash: string
+          script_version: string
+          section: string
+          segment_id: string
+          segment_order: number
+          unit: number
+        }
+        Update: {
+          approved_version?: string | null
+          created_at?: string
+          grade?: number
+          id?: string
+          lesson_id?: string
+          script_hash?: string
+          script_version?: string
+          section?: string
+          segment_id?: string
+          segment_order?: number
+          unit?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lesson_mp3_approved_fk"
+            columns: ["approved_version"]
+            isOneToOne: false
+            referencedRelation: "lesson_mp3_versions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lesson_mp3_control: {
+        Row: {
+          blocked_until: string | null
+          id: number
+          lease_until: string | null
+          next_request_at: string | null
+          provider_next: Json
+        }
+        Insert: {
+          blocked_until?: string | null
+          id: number
+          lease_until?: string | null
+          next_request_at?: string | null
+          provider_next?: Json
+        }
+        Update: {
+          blocked_until?: string | null
+          id?: number
+          lease_until?: string | null
+          next_request_at?: string | null
+          provider_next?: Json
+        }
+        Relationships: []
+      }
+      lesson_mp3_events: {
+        Row: {
+          created_at: string
+          detail: string | null
+          http_status: number | null
+          id: string
+          input_tokens_estimate: number | null
+          kind: string
+          model: string | null
+          provider: string | null
+          version_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          detail?: string | null
+          http_status?: number | null
+          id?: string
+          input_tokens_estimate?: number | null
+          kind: string
+          model?: string | null
+          provider?: string | null
+          version_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          detail?: string | null
+          http_status?: number | null
+          id?: string
+          input_tokens_estimate?: number | null
+          kind?: string
+          model?: string | null
+          provider?: string | null
+          version_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lesson_mp3_events_version_id_fkey"
+            columns: ["version_id"]
+            isOneToOne: false
+            referencedRelation: "lesson_mp3_versions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lesson_mp3_jobs: {
+        Row: {
+          allow_generation: boolean
+          attempts: number
+          clip_id: string
+          created_at: string
+          id: string
+          lease_until: string | null
+          regenerate: boolean
+          state: string
+          token: string | null
+          updated_at: string
+          version_id: string
+        }
+        Insert: {
+          allow_generation?: boolean
+          attempts?: number
+          clip_id: string
+          created_at?: string
+          id?: string
+          lease_until?: string | null
+          regenerate?: boolean
+          state?: string
+          token?: string | null
+          updated_at?: string
+          version_id: string
+        }
+        Update: {
+          allow_generation?: boolean
+          attempts?: number
+          clip_id?: string
+          created_at?: string
+          id?: string
+          lease_until?: string | null
+          regenerate?: boolean
+          state?: string
+          token?: string | null
+          updated_at?: string
+          version_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lesson_mp3_jobs_clip_id_fkey"
+            columns: ["clip_id"]
+            isOneToOne: false
+            referencedRelation: "lesson_mp3_catalog"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lesson_mp3_jobs_version_id_fkey"
+            columns: ["version_id"]
+            isOneToOne: true
+            referencedRelation: "lesson_mp3_versions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lesson_mp3_versions: {
+        Row: {
+          bytes: number
+          clip_id: string
+          created_at: string
+          created_by: string | null
+          duration: number | null
+          format: string
+          id: string
+          last_error: string | null
+          model: string | null
+          provider: string | null
+          raw_bytes: number
+          raw_path: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          script_hash: string
+          script_version: string
+          status: string
+          storage_path: string | null
+          updated_at: string
+          voice: string
+        }
+        Insert: {
+          bytes?: number
+          clip_id: string
+          created_at?: string
+          created_by?: string | null
+          duration?: number | null
+          format?: string
+          id?: string
+          last_error?: string | null
+          model?: string | null
+          provider?: string | null
+          raw_bytes?: number
+          raw_path?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          script_hash: string
+          script_version: string
+          status?: string
+          storage_path?: string | null
+          updated_at?: string
+          voice?: string
+        }
+        Update: {
+          bytes?: number
+          clip_id?: string
+          created_at?: string
+          created_by?: string | null
+          duration?: number | null
+          format?: string
+          id?: string
+          last_error?: string | null
+          model?: string | null
+          provider?: string | null
+          raw_bytes?: number
+          raw_path?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          script_hash?: string
+          script_version?: string
+          status?: string
+          storage_path?: string | null
+          updated_at?: string
+          voice?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lesson_mp3_versions_clip_id_fkey"
+            columns: ["clip_id"]
+            isOneToOne: false
+            referencedRelation: "lesson_mp3_catalog"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       payment_settings: {
         Row: {
           account_name: string | null
@@ -1513,6 +1765,63 @@ export type Database = {
         Args: { _code: string; _name: string }
         Returns: string
       }
+      lesson_mp3_backoff: {
+        Args: {
+          p_job: string
+          p_provider: string
+          p_seconds: number
+          p_token: string
+        }
+        Returns: boolean
+      }
+      lesson_mp3_checkpoint: {
+        Args: { p_job: string; p_patch: Json; p_token: string }
+        Returns: boolean
+      }
+      lesson_mp3_claim: {
+        Args: never
+        Returns: {
+          allow_generation: boolean
+          attempts: number
+          clip_id: string
+          created_at: string
+          id: string
+          lease_until: string | null
+          regenerate: boolean
+          state: string
+          token: string | null
+          updated_at: string
+          version_id: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "lesson_mp3_jobs"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
+      lesson_mp3_enqueue: {
+        Args: { p_clip: string; p_regenerate?: boolean; p_user: string }
+        Returns: string
+      }
+      lesson_mp3_reserve: {
+        Args: {
+          p_daily: number
+          p_interval: number
+          p_job: string
+          p_model: string
+          p_provider: string
+          p_token: string
+          p_tokens: number
+          p_tpm: number
+        }
+        Returns: Json
+      }
+      lesson_mp3_review: {
+        Args: { p_action: string; p_user: string; p_version: string }
+        Returns: undefined
+      }
+      lesson_mp3_stats: { Args: never; Returns: Json }
       mm_today: { Args: never; Returns: string }
       my_access: { Args: never; Returns: Json }
       my_classes: {

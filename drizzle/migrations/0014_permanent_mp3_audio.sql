@@ -36,8 +36,8 @@ ALTER TABLE public.lesson_mp3_control ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.lesson_mp3_events ENABLE ROW LEVEL SECURITY;
 REVOKE ALL ON public.lesson_mp3_catalog,public.lesson_mp3_versions,public.lesson_mp3_jobs,public.lesson_mp3_control,public.lesson_mp3_events FROM anon,authenticated;
 GRANT ALL ON public.lesson_mp3_catalog,public.lesson_mp3_versions,public.lesson_mp3_jobs,public.lesson_mp3_control,public.lesson_mp3_events TO service_role;
-INSERT INTO storage.buckets(id,name,public,file_size_limit,allowed_mime_types)
- VALUES('saya-owl-lesson-audio','saya-owl-lesson-audio',false,33554432,ARRAY['audio/mpeg','audio/wav']) ON CONFLICT(id) DO UPDATE SET public=false,file_size_limit=EXCLUDED.file_size_limit,allowed_mime_types=EXCLUDED.allowed_mime_types;
+-- (bucket created via storage tool) INSERT INTO storage.buckets(id,name,public,file_size_limit,allowed_mime_types)
+-- (bucket created via storage tool)  VALUES('saya-owl-lesson-audio','saya-owl-lesson-audio',false,33554432,ARRAY['audio/mpeg','audio/wav']) ON CONFLICT(id) DO UPDATE SET public=false,file_size_limit=EXCLUDED.file_size_limit,allowed_mime_types=EXCLUDED.allowed_mime_types;
 -- Restrictive policy also protects this bucket from unrelated permissive client policies.
 CREATE POLICY lesson_mp3_private_server_only ON storage.objects AS RESTRICTIVE FOR ALL TO anon,authenticated USING(bucket_id<>'saya-owl-lesson-audio') WITH CHECK(bucket_id<>'saya-owl-lesson-audio');
 CREATE FUNCTION public.lesson_mp3_enqueue(p_clip text,p_user uuid,p_regenerate boolean DEFAULT false) RETURNS uuid LANGUAGE plpgsql SECURITY INVOKER SET search_path=public AS $$

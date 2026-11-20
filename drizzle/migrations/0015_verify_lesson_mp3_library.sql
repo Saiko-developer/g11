@@ -1,0 +1,1 @@
+COMMENT ON TABLE public.lesson_mp3_catalog IS 'Permanent lesson MP3 catalog (migration 0014).';
