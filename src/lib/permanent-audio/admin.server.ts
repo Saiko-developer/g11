@@ -304,7 +304,7 @@ export async function audioManagerPost(request: Request) {
     if (!ids.length) throw Error("Select at least one clip or version");
     if (action === "process-selection") {
       if (ids.some((id) => !catalog.find((c) => c.id === id)?.pilot))
-        throw Error("Selection is outside the pilot");
+        throw Error("Select Grade 11 Grammar clips");
       const result = await workOneAudioJob(ids);
       if (result.state === "idle") {
         const { data } = await audioDb()
@@ -339,7 +339,7 @@ export async function audioManagerPost(request: Request) {
       const script = parsed.data.script;
       const clip = catalog.find((c) => c.id === id);
       if (ids.length !== 1 || !clip?.pilot || clip.source !== "walkthrough" || !script)
-        throw Error("Select one Grade 11 Unit 1 walkthrough clip and enter a script");
+        throw Error("Select one Grade 11 Grammar walkthrough clip and enter a script");
       if (action === "save-script") {
         const { error } = await audioDb()
           .from("lesson_mp3_catalog")
@@ -379,10 +379,10 @@ export async function audioManagerPost(request: Request) {
     for (const id of ids) {
       if (action === "enqueue" || action === "regenerate") {
         const clip = catalog.find((c) => c.id === id);
-        if (!clip?.pilot) throw Error("Only Grade 11 Unit 1 Grammar is enabled for the pilot");
+        if (!clip?.pilot) throw Error("Audio preparation is available for Grade 11 Grammar");
         if (clip.source === "classroom") {
-          const lesson = getMethodLesson(11, 1, "grammar");
-          if (!lesson || !(await publishedLesson(lesson)))
+          const lesson = getMethodLesson(clip.grade, clip.unit, "grammar");
+          if (!lesson || lesson.id !== clip.lesson_id || !(await publishedLesson(lesson)))
             throw Error("Review and publish the classroom script in Teaching setup first");
         }
         await rpc("lesson_mp3_enqueue", {
@@ -409,7 +409,7 @@ export async function audioManagerPost(request: Request) {
           });
         } else {
           if (!catalog.find((c) => c.id === row.clip_id)?.pilot)
-            throw Error("Version is outside the pilot");
+            throw Error("Version is outside Grade 11 Grammar");
           const { data: job, error } = await audioDb()
             .from("lesson_mp3_jobs")
             .update({

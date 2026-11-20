@@ -41,7 +41,7 @@ export function audioCatalog(): Promise<AudioClip[]> {
         source: "walkthrough",
         legacy_bucket: "grade11-grammar-audio",
         legacy_path: `clips/${hash}.wav`,
-        pilot: item.unit === 1,
+        pilot: true,
       });
     }
     for (const lesson of [...methodLessons, ...readingLessons])
@@ -61,7 +61,7 @@ export function audioCatalog(): Promise<AudioClip[]> {
           source: "classroom",
           legacy_bucket: "classroom-narration",
           legacy_path: item.path,
-          pilot: lesson.grade === 11 && lesson.unit === 1 && lesson.section === "grammar",
+          pilot: lesson.grade === 11 && lesson.section === "grammar",
         });
       }
     return clips;

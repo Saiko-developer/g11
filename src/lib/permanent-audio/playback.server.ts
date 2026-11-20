@@ -1,6 +1,6 @@
 import { audioDb, stored } from "./store.server";
 import { inspectMp3 } from "./codec.server";
-/** Read-only and opt-in for the pilot. Fail back to the existing WAV player, never generate here. */
+/** Read approved Grade 11 Grammar audio, with legacy playback for clips outside the library. */
 export async function approvedMp3(
   scriptHash: string,
   metadataOnly = false,
@@ -21,7 +21,6 @@ export async function approvedMp3(
       .select("*")
       .eq("script_hash", scriptHash)
       .eq("grade", 11)
-      .eq("unit", 1)
       .eq("section", "grammar")
       .limit(1);
     if (error) return unavailable();

@@ -36,7 +36,7 @@ export async function workOneAudioJob(clipIds?: string[]) {
     const clip = (await audioCatalog()).find((c) => c.id === job.clip_id),
       row = await version(job.version_id);
     if (!clip || !clip.pilot || !row || row.script_hash !== clip.script_hash)
-      throw Error("Pilot script changed or clip is outside the enabled pilot");
+      throw Error("Script changed or clip is outside Grade 11 Grammar");
     const script = row.script_text ?? clip.text;
     const base = `grade-${clip.grade}/unit-${String(clip.unit).padStart(2, "0")}/${clip.section}/${row.id}`;
     // Deterministic paths recover a completed upload even if the worker died before checkpointing.

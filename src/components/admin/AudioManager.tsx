@@ -274,7 +274,7 @@ export function AudioManager() {
         <div>
           <h2 className="text-2xl font-bold">Permanent MP3 Audio Library</h2>
           <p className="text-sm text-muted-foreground">
-            Pilot: Grade 11 · Unit 1 · Grammar. Existing scripts, Puck voice and WAV caches are
+            Grade 11 · Grammar · Units 1–12. Existing scripts, Puck voice and WAV caches are
             preserved.
           </p>
         </div>
@@ -366,8 +366,13 @@ export function AudioManager() {
           value={approved}
         />
       </div>
+      {!unit && (
+        <p className="text-sm text-muted-foreground">
+          Choose a unit to prepare or process its queue.
+        </p>
+      )}
       <div className="sticky top-0 z-10 flex flex-wrap gap-2 border-b bg-background py-3">
-        <Button disabled={busy || !queue.length} onClick={() => void processQueue()}>
+        <Button disabled={busy || !unit || !queue.length} onClick={() => void processQueue()}>
           Process Unit Queue ({queue.length})
         </Button>
         <Button
@@ -404,12 +409,12 @@ export function AudioManager() {
           Register / update catalog
         </Button>
         <Button
-          disabled={busy || !filtered.some((c) => c.pilot && !c.versions.length)}
+          disabled={busy || !unit || !filtered.some((c) => c.pilot && !c.versions.length)}
           onClick={() =>
             void run(
               "enqueue",
               filtered.filter((c) => c.pilot && !c.versions.length).map((c) => c.id),
-              "Queue all missing pilot clips in the current scope? Confirm you reviewed these fixed scripts. Existing WAV is reused first; missing audio may use provider credits.",
+              "Queue missing clips for the selected unit and filters? Confirm you reviewed these fixed scripts. Existing WAV is reused first; missing audio may use provider credits.",
             )
           }
         >
@@ -421,7 +426,7 @@ export function AudioManager() {
             void run(
               "enqueue",
               selected,
-              "Queue selected pilot clips? Confirm their fixed scripts are approved for narration. Provider credits may be used only when cached audio is missing.",
+              "Queue selected clips? Confirm their fixed scripts are approved for narration. Provider credits may be used only when cached audio is missing.",
             )
           }
         >
