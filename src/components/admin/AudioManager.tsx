@@ -97,7 +97,16 @@ export function AudioManager() {
     () => (activeLesson ? scopedClips.filter((c) => c.lesson_id === activeLesson) : scopedClips),
     [activeLesson, scopedClips],
   );
-  const visible = filtered.filter((c) => !status || state(c) === status);
+  const visible = filtered
+    .filter((c) => !status || state(c) === status)
+    .sort(
+      (a, b) =>
+        a.grade - b.grade ||
+        a.unit - b.unit ||
+        a.lesson_id.localeCompare(b.lesson_id) ||
+        a.segment_order - b.segment_order ||
+        a.id.localeCompare(b.id),
+    );
   const pageIndex = Math.min(page, Math.max(0, Math.ceil(visible.length / 10) - 1));
   const reviewIds = filtered.flatMap((c) =>
     c.versions[0]?.status === "pending" ? [c.versions[0].id] : [],
