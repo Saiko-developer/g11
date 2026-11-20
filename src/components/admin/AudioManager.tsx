@@ -71,17 +71,31 @@ export function AudioManager() {
     },
     [preview],
   );
-  const filtered = useMemo(
+  const scopedClips = useMemo(
     () =>
       data?.clips.filter(
         (c) =>
           (!grade || c.grade === Number(grade)) &&
           (!unit || c.unit === Number(unit)) &&
-          (!lesson || c.lesson_id === lesson) &&
           (!section ||
             (section === "classroom" ? c.source === "classroom" : c.section === section)),
       ) ?? [],
-    [data, grade, unit, lesson, section],
+    [data, grade, unit, section],
+  );
+  const lessonOptions = [
+    ...new Map(
+      scopedClips.map((c) => {
+        const kind = c.source === "walkthrough" ? "Textbook walkthrough" : "AI classroom";
+        const prefix = !grade || !unit ? `Grade ${c.grade} · Unit ${c.unit} · ` : "";
+        const skill = !section || section === "classroom" ? `${c.section} · ` : "";
+        return [c.lesson_id, { value: c.lesson_id, label: prefix + skill + kind }] as const;
+      }),
+    ).values(),
+  ].sort((a, b) => a.label.localeCompare(b.label, undefined, { numeric: true }));
+  const activeLesson = lessonOptions.some((option) => option.value === lesson) ? lesson : "";
+  const filtered = useMemo(
+    () => (activeLesson ? scopedClips.filter((c) => c.lesson_id === activeLesson) : scopedClips),
+    [activeLesson, scopedClips],
   );
   const visible = filtered.filter((c) => !status || state(c) === status);
   const pageIndex = Math.min(page, Math.max(0, Math.ceil(visible.length / 10) - 1));
@@ -313,26 +327,18 @@ export function AudioManager() {
           Array.from({ length: 12 }, (_, i) => ({ value: String(i + 1), label: `Unit ${i + 1}` })),
         )}
         {filter(
-          "Lesson",
-          lesson,
-          setLesson,
-          [
-            ...new Set(
-              data?.clips
-                .filter((c) => !grade || c.grade === Number(grade))
-                .map((c) => c.lesson_id),
-            ),
-          ].map((id) => ({ value: id, label: id })),
-        )}
-        {filter(
           "Section",
           section,
-          setSection,
+          (value) => {
+            setSection(value);
+            setLesson("");
+          },
           ["reading", "grammar", "vocabulary", "writing", "classroom"].map((s) => ({
             value: s,
             label: s,
           })),
         )}
+        {lessonOptions.length > 1 && filter("Lesson", activeLesson, setLesson, lessonOptions)}
         {filter(
           "Status",
           status,
