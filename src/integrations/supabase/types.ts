@@ -402,30 +402,39 @@ export type Database = {
       }
       classroom_audio: {
         Row: {
+          attempts: number
           bytes: number | null
           created_at: string
+          generation_token: string | null
           hash: string
           last_error: string | null
+          lease_until: string | null
           lesson_id: string
           state: string
           storage_path: string
           version: string
         }
         Insert: {
+          attempts?: number
           bytes?: number | null
           created_at?: string
+          generation_token?: string | null
           hash: string
           last_error?: string | null
+          lease_until?: string | null
           lesson_id: string
           state?: string
           storage_path: string
           version: string
         }
         Update: {
+          attempts?: number
           bytes?: number | null
           created_at?: string
+          generation_token?: string | null
           hash?: string
           last_error?: string | null
+          lease_until?: string | null
           lesson_id?: string
           state?: string
           storage_path?: string
@@ -1187,6 +1196,81 @@ export type Database = {
         }
         Relationships: []
       }
+      unit_homework: {
+        Row: {
+          answers: Json
+          assigned_at: string
+          course_version: string
+          feedback: Json | null
+          grade: number
+          submitted_at: string | null
+          unit: number
+          user_id: string
+        }
+        Insert: {
+          answers?: Json
+          assigned_at?: string
+          course_version: string
+          feedback?: Json | null
+          grade: number
+          submitted_at?: string | null
+          unit: number
+          user_id: string
+        }
+        Update: {
+          answers?: Json
+          assigned_at?: string
+          course_version?: string
+          feedback?: Json | null
+          grade?: number
+          submitted_at?: string | null
+          unit?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      unit_section_learning: {
+        Row: {
+          answers: Json
+          completed_at: string | null
+          content_hash: string
+          course_version: string
+          grade: number
+          lesson_version: string
+          practised: boolean
+          skill: string
+          unit: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          answers?: Json
+          completed_at?: string | null
+          content_hash: string
+          course_version: string
+          grade: number
+          lesson_version: string
+          practised?: boolean
+          skill: string
+          unit: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          answers?: Json
+          completed_at?: string | null
+          content_hash?: string
+          course_version?: string
+          grade?: number
+          lesson_version?: string
+          practised?: boolean
+          skill?: string
+          unit?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
@@ -1236,6 +1320,16 @@ export type Database = {
           p_hash: string
           p_lesson: string
           p_path: string
+          p_version: string
+        }
+        Returns: boolean
+      }
+      claim_classroom_audio_lease: {
+        Args: {
+          p_hash: string
+          p_lesson: string
+          p_path: string
+          p_token: string
           p_version: string
         }
         Returns: boolean
@@ -1456,6 +1550,18 @@ export type Database = {
           p_steps: number
           p_user: string
           p_version: string
+        }
+        Returns: Json
+      }
+      save_unit_section: {
+        Args: {
+          p_answers: Json
+          p_finish: boolean
+          p_hash: string
+          p_lesson_version: string
+          p_practised: boolean
+          p_skill: string
+          p_user: string
         }
         Returns: Json
       }

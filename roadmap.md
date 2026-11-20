@@ -1,3 +1,9 @@
+# Grade 11 mock-exam repair
+- [x] Prevent poem quotation and MCQ label formatting errors without weakening textbook validation.
+- [x] Run 33 regression tests; preview build passes; no production deployment.
+- [x] Preserve provider-unavailable failures as 503 instead of incorrectly returning 500.
+- [ ] Verify a newly generated full paper in the signed-in preview — blocked: a temporary student reached generation but both configured AI paths failed with provider-unavailable; the owner's 2 daily exams are also used. No quotas changed.
+
 # Uploaded-paper AI marking
 - [x] Read uploaded PDF, Word and image question papers with student answer photos.
 - [x] Add optional private marking guide and render question files in the exam room.

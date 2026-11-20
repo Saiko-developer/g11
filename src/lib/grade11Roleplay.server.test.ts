@@ -164,6 +164,7 @@ it.each(["5D-14", "5D-21"])(
 
 it("does not open or charge a speaking session when the AI provider is unconfigured", async () => {
   vi.stubEnv("LOVABLE_API_KEY", "");
+  vi.stubEnv("GEMINI_API_KEY", "");
   const response = await handleGrade11Roleplay(request({ unit: 5 }));
   expect(response.status).toBe(503);
   expect((await response.json()).error).toBe("ai_not_configured");
