@@ -61,7 +61,7 @@ export function audioCatalog(): Promise<AudioClip[]> {
           source: "classroom",
           legacy_bucket: "classroom-narration",
           legacy_path: item.path,
-          pilot: lesson.grade === 11 && lesson.section === "grammar",
+          pilot: lesson.section === "grammar",
         });
       }
     return clips;

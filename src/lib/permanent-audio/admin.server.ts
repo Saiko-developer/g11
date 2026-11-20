@@ -304,7 +304,7 @@ export async function audioManagerPost(request: Request) {
     if (!ids.length) throw Error("Select at least one clip or version");
     if (action === "process-selection") {
       if (ids.some((id) => !catalog.find((c) => c.id === id)?.pilot))
-        throw Error("Select Grade 11 Grammar clips");
+        throw Error("Select Grammar clips");
       const result = await workOneAudioJob(ids);
       if (result.state === "idle") {
         const { data } = await audioDb()
@@ -379,7 +379,7 @@ export async function audioManagerPost(request: Request) {
     for (const id of ids) {
       if (action === "enqueue" || action === "regenerate") {
         const clip = catalog.find((c) => c.id === id);
-        if (!clip?.pilot) throw Error("Audio preparation is available for Grade 11 Grammar");
+        if (!clip?.pilot) throw Error("Audio preparation is available for Grammar");
         if (clip.source === "classroom") {
           const lesson = getMethodLesson(clip.grade, clip.unit, "grammar");
           if (!lesson || lesson.id !== clip.lesson_id || !(await publishedLesson(lesson)))
@@ -409,7 +409,7 @@ export async function audioManagerPost(request: Request) {
           });
         } else {
           if (!catalog.find((c) => c.id === row.clip_id)?.pilot)
-            throw Error("Version is outside Grade 11 Grammar");
+            throw Error("Version is outside the Grammar audio library");
           const { data: job, error } = await audioDb()
             .from("lesson_mp3_jobs")
             .update({

@@ -283,7 +283,7 @@ export function AudioManager() {
         <div>
           <h2 className="text-2xl font-bold">Permanent MP3 Audio Library</h2>
           <p className="text-sm text-muted-foreground">
-            Grade 11 · Grammar · Units 1–12. Existing scripts, Puck voice and WAV caches are
+            Grades 10–11 · Grammar · Units 1–12. Existing scripts, Puck voice and WAV caches are
             preserved.
           </p>
         </div>

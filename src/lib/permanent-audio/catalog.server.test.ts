@@ -6,14 +6,13 @@ it("inventories canonical authored clips without changing scripts or generating 
   expect(clips.filter((c) => c.source === "walkthrough")).toHaveLength(249);
   for (let unit = 1; unit <= 12; unit++) {
     const enabled = clips.filter((c) => c.pilot && c.unit === unit);
+    expect(enabled.some((c) => c.grade === 10 && c.source === "classroom")).toBe(true);
     expect(enabled.some((c) => c.source === "walkthrough")).toBe(true);
     expect(enabled.some((c) => c.source === "classroom")).toBe(true);
   }
-  expect(clips.filter((c) => c.pilot).every((c) => c.grade === 11 && c.section === "grammar")).toBe(
-    true,
-  );
+  expect(clips.filter((c) => c.pilot).every((c) => c.section === "grammar")).toBe(true);
   expect(clips.filter((c) => c.pilot && c.source === "walkthrough")).toHaveLength(249);
-  expect(clips.filter((c) => c.pilot && c.source === "classroom")).toHaveLength(148);
+  expect(clips.filter((c) => c.pilot && c.source === "classroom")).toHaveLength(280);
   expect(
     clips.filter((c) => c.source === "classroom" && c.grade === 10 && c.section === "grammar"),
   ).toHaveLength(132);
