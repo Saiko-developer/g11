@@ -239,7 +239,7 @@ export function AudioManager() {
     }
   };
   const unitDownloadParts = grade && unit ? (data?.unitArchiveParts[`${grade}-${unit}`] ?? 0) : 0;
-  const gradeDownloadParts = grade ? (data?.archiveParts[grade] ?? 0) : 0;
+  const gradeDownloadParts = grade && !unit ? (data?.archiveParts[grade] ?? 0) : 0;
   const file = async (path: string, previewOnly = false) => {
     setBusy(true);
     setError("");
@@ -408,13 +408,17 @@ export function AudioManager() {
       <section aria-label="Downloads" className="space-y-3 rounded-xl border bg-card p-4">
         <h3 className="font-semibold">Download approved audio</h3>
         <p className="text-sm text-muted-foreground">
-          {!grade || !unit
-            ? "Select a grade and unit above to download its audio."
+          {!grade
+            ? "Select a grade to see available downloads."
             : !data
               ? "Checking available downloads…"
-              : unitDownloadParts === 0
-                ? "No approved audio for this unit yet. Approve clips in Review to download them."
-                : `Grade ${grade} · Unit ${unit}. ZIP includes all approved audio in this unit across lessons. Look in your Downloads folder after clicking.`}
+              : unit
+                ? unitDownloadParts === 0
+                  ? `Grade ${grade} · Unit ${unit} has no approved MP3s to download yet. Approve clips in Review first.`
+                  : `Grade ${grade} · Unit ${unit}. ZIP includes approved audio from this unit only.`
+                : gradeDownloadParts
+                  ? `Full Grade ${grade} backup. Select a specific unit above for its ZIP.`
+                  : `Grade ${grade} has no approved MP3s to download yet.`}
         </p>
         {unitDownloadParts > 1 && (
           <p className="text-sm">Download all {unitDownloadParts} parts for the full unit.</p>
@@ -434,6 +438,9 @@ export function AudioManager() {
             </Button>
           ))}
         </div>
+        {grade && unit && (
+          <p className="text-xs text-muted-foreground">For a full grade backup, set Unit to All.</p>
+        )}
         {gradeDownloadParts > 0 && (
           <details className="text-sm">
             <summary className="cursor-pointer">Download a full grade backup</summary>
