@@ -238,6 +238,8 @@ export function AudioManager() {
       setBusy(false);
     }
   };
+  const unitDownloadParts = grade && unit ? (data?.unitArchiveParts[`${grade}-${unit}`] ?? 0) : 0;
+  const gradeDownloadParts = grade ? (data?.archiveParts[grade] ?? 0) : 0;
   const file = async (path: string, previewOnly = false) => {
     setBusy(true);
     setError("");
@@ -262,6 +264,7 @@ export function AudioManager() {
       a.download = name;
       a.rel = "noopener";
       a.click();
+      setMessage(`Download started: ${name}. Check your Downloads folder.`);
       setTimeout(() => URL.revokeObjectURL(url), 30000);
     } catch (e) {
       setError((e as Error).message);
@@ -402,6 +405,59 @@ export function AudioManager() {
           value={approved}
         />
       </div>
+      <section aria-label="Downloads" className="space-y-3 rounded-xl border bg-card p-4">
+        <h3 className="font-semibold">Download approved audio</h3>
+        <p className="text-sm text-muted-foreground">
+          {!grade || !unit
+            ? "Select a grade and unit above to download its audio."
+            : !data
+              ? "Checking available downloads…"
+              : unitDownloadParts === 0
+                ? "No approved audio for this unit yet. Approve clips in Review to download them."
+                : `Grade ${grade} · Unit ${unit}. ZIP includes all approved audio in this unit across lessons. Look in your Downloads folder after clicking.`}
+        </p>
+        {unitDownloadParts > 1 && (
+          <p className="text-sm">Download all {unitDownloadParts} parts for the full unit.</p>
+        )}
+        <div className="flex flex-wrap gap-2">
+          {Array.from({ length: unitDownloadParts }, (_, part) => (
+            <Button
+              key={part}
+              disabled={busy}
+              onClick={() =>
+                void file(`/api/audio-manager?format=zip&grade=${grade}&unit=${unit}&part=${part}`)
+              }
+            >
+              {unitDownloadParts === 1
+                ? `Download Unit ${unit} ZIP`
+                : `Download part ${part + 1} of ${unitDownloadParts}`}
+            </Button>
+          ))}
+        </div>
+        {gradeDownloadParts > 0 && (
+          <details className="text-sm">
+            <summary className="cursor-pointer">Download a full grade backup</summary>
+            <p className="mt-2 text-muted-foreground">
+              Includes all approved audio in Grade {grade}. Save every part.
+            </p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {Array.from({ length: gradeDownloadParts }, (_, part) => (
+                <Button
+                  key={part}
+                  variant="outline"
+                  disabled={busy}
+                  onClick={() =>
+                    void file(`/api/audio-manager?format=zip&grade=${grade}&part=${part}`)
+                  }
+                >
+                  Grade {grade} ZIP
+                  {gradeDownloadParts > 1 ? ` · part ${part + 1} of ${gradeDownloadParts}` : ""}
+                </Button>
+              ))}
+            </div>
+          </details>
+        )}
+      </section>
       {!unit && (
         <p className="text-sm text-muted-foreground">
           Choose a unit to prepare or process its queue.
@@ -419,18 +475,6 @@ export function AudioManager() {
         >
           Approve selected ({selectedReview.length})
         </Button>
-        {unit && grade && (data?.unitArchiveParts[`${grade}-${unit}`] ?? 0) > 0 && (
-          <Button
-            variant="outline"
-            disabled={busy}
-            onClick={() =>
-              void file(`/api/audio-manager?format=zip&grade=${grade}&unit=${unit}&part=0`)
-            }
-          >
-            Download Unit ZIP
-            {(data?.unitArchiveParts[`${grade}-${unit}`] ?? 0) > 1 ? " · part 1" : ""}
-          </Button>
-        )}
         <Button
           variant="outline"
           disabled={busy}
@@ -794,44 +838,6 @@ export function AudioManager() {
           </Button>
         </div>
       )}
-      <div className="rounded-xl border p-4">
-        <h3 className="font-semibold">Approved MP3 downloads</h3>
-        <p className="mb-3 text-sm text-muted-foreground">
-          Archives contain a manifest and stored MP3 files. Archives split at 32 MB. Grade archives
-          also split at 20 clips. Downloads never generate audio.
-        </p>
-        {grade && (
-          <div className="flex flex-wrap gap-2">
-            {unit &&
-              Array.from({ length: data?.unitArchiveParts[`${grade}-${unit}`] ?? 0 }, (_, part) => (
-                <Button
-                  key={`unit-${part}`}
-                  variant="outline"
-                  disabled={busy}
-                  onClick={() =>
-                    void file(
-                      `/api/audio-manager?format=zip&grade=${grade}&unit=${unit}&part=${part}`,
-                    )
-                  }
-                >
-                  Unit {unit} ZIP · part {part + 1}
-                </Button>
-              ))}
-            {Array.from({ length: data?.archiveParts[grade] ?? 0 }, (_, part) => (
-              <Button
-                key={part}
-                variant="outline"
-                disabled={busy}
-                onClick={() =>
-                  void file(`/api/audio-manager?format=zip&grade=${grade}&part=${part}`)
-                }
-              >
-                Grade {grade} ZIP · part {part + 1}
-              </Button>
-            ))}
-          </div>
-        )}
-      </div>
       <section className="space-y-3 rounded-xl border p-4">
         <h3 className="font-semibold">Restore approved audio backup</h3>
         <p className="text-sm text-muted-foreground">
