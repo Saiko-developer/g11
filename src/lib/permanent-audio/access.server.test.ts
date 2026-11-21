@@ -59,3 +59,15 @@ describe("audio management access and limits", () => {
     ).toEqual([1, 1, 1]);
   });
 });
+
+it("keeps unit ZIPs scoped and grade backup parts ordered without mixing units", async () => {
+  const { lessonArchiveParts } = await import("./admin.server");
+  const items = [10, 2, 1, 2].map((unit, index) => ({
+    bytes: 100,
+    clip: { grade: 11, unit, lesson_id: `g11-u${unit}-grammar`, segment_order: 4 - index },
+  }));
+  const unit = lessonArchiveParts(items, 11, 2);
+  expect(unit.map((part) => part.map((row) => row.clip.segment_order))).toEqual([[1, 3]]);
+  const grade = lessonArchiveParts(items, 11);
+  expect(grade.map((part) => part.map((row) => row.clip.unit))).toEqual([[1], [2, 2], [10]]);
+});

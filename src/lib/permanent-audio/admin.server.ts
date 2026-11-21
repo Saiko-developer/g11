@@ -34,6 +34,25 @@ export function archiveParts<T extends { bytes: number }>(
   }
   return parts;
 }
+export function lessonArchiveParts<
+  T extends {
+    bytes: number;
+    clip: { grade: number; unit: number; lesson_id: string; segment_order: number };
+  },
+>(items: T[], grade: number, unit?: number) {
+  const selected = items
+    .filter(({ clip }) => clip.grade === grade && (unit === undefined || clip.unit === unit))
+    .sort(
+      (a, b) =>
+        a.clip.unit - b.clip.unit ||
+        a.clip.lesson_id.localeCompare(b.clip.lesson_id) ||
+        a.clip.segment_order - b.clip.segment_order,
+    );
+  if (unit !== undefined) return archiveParts(selected, undefined, 200);
+  return Array.from({ length: 12 }, (_, i) => i + 1).flatMap((number) =>
+    archiveParts(selected.filter(({ clip }) => clip.unit === number)),
+  );
+}
 function filename(clip: AudioCatalogRow, versionId: string) {
   return `g${clip.grade}-unit${String(clip.unit).padStart(2, "0")}-${clip.section}-${clip.lesson_id}-segment${String(clip.segment_order).padStart(3, "0")}-${versionId.slice(0, 8)}.mp3`.replace(
     /[^a-zA-Z0-9_.-]/g,
@@ -87,22 +106,17 @@ export async function audioManagerGet(request: Request) {
             v.storage_path,
         );
         return v ? [{ ...v, clip }] : [];
-      })
-      .sort(
-        (a, b) =>
-          a.clip.lesson_id.localeCompare(b.clip.lesson_id) ||
-          a.clip.segment_order - b.clip.segment_order,
-      );
-    const grade = Number(url.searchParams.get("grade")),
-      unit = Number(url.searchParams.get("unit"));
+      });
+    const grade = Number(url.searchParams.get("grade"));
+    const rawUnit = url.searchParams.get("unit");
+    const unit = rawUnit === null ? undefined : Number(rawUnit);
     if (url.searchParams.get("format") === "zip") {
-      if (![10, 11].includes(grade) || (unit && (!Number.isInteger(unit) || unit < 1 || unit > 12)))
+      if (
+        ![10, 11].includes(grade) ||
+        (unit !== undefined && (!Number.isInteger(unit) || unit < 1 || unit > 12))
+      )
         return Response.json({ error: "Invalid archive selection" }, { status: 400 });
-      const parts = archiveParts(
-        ready.filter((v) => v.clip.grade === grade && (!unit || v.clip.unit === unit)),
-        undefined,
-        unit ? 200 : 20,
-      );
+      const parts = lessonArchiveParts(ready, grade, unit);
       const part = Number(url.searchParams.get("part") ?? 0);
       if (!Number.isInteger(part) || !parts[part])
         return Response.json({ error: "No approved files in this archive part" }, { status: 404 });
@@ -127,7 +141,18 @@ export async function audioManagerGet(request: Request) {
           name: "manifest.json",
           read: async () =>
             new TextEncoder().encode(
-              JSON.stringify({ part: part + 1, parts: parts.length, clips: manifest }, null, 2),
+              JSON.stringify(
+                {
+                  grade,
+                  unit: selected[0].clip.unit,
+                  scope: unit === undefined ? "grade" : "unit",
+                  part: part + 1,
+                  parts: parts.length,
+                  clips: manifest,
+                },
+                null,
+                2,
+              ),
             ),
         },
         ...selected.map((v) => ({
@@ -144,7 +169,7 @@ export async function audioManagerGet(request: Request) {
       return new Response(stream, {
         headers: {
           "Content-Type": "application/zip",
-          "Content-Disposition": `attachment; filename="grade-${grade}${unit ? `-unit-${unit}` : ""}-part-${part + 1}.zip"`,
+          "Content-Disposition": `attachment; filename="grade-${grade}${unit === undefined ? "-backup" : ""}-unit-${selected[0].clip.unit}-part-${part + 1}.zip"`,
           "Cache-Control": "private, no-store",
         },
       });
@@ -198,17 +223,13 @@ export async function audioManagerGet(request: Request) {
           [10, 11].flatMap((g) =>
             Array.from({ length: 12 }, (_, i) => [
               `${g}-${i + 1}`,
-              archiveParts(
-                ready.filter((v) => v.clip.grade === g && v.clip.unit === i + 1),
-                undefined,
-                200,
-              ).length,
+              lessonArchiveParts(ready, g, i + 1).length,
             ]),
           ),
         ),
         archiveParts: {
-          10: archiveParts(ready.filter((v) => v.clip.grade === 10)).length,
-          11: archiveParts(ready.filter((v) => v.clip.grade === 11)).length,
+          10: lessonArchiveParts(ready, 10).length,
+          11: lessonArchiveParts(ready, 11).length,
         },
       },
       { headers: { "Cache-Control": "no-store" } },
