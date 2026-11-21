@@ -66,3 +66,29 @@ describe("Audio Manager UI", () => {
     expect(fetcher.mock.calls.some(([url]) => String(url).includes("/api/tts"))).toBe(false);
   });
 });
+
+it("keeps shuffled scripts in numeric order across Review and All pages", async () => {
+  const order = [12, 2, 10, 6, 8, 3, 1, 11, 5, 9, 7, 4];
+  vi.spyOn(globalThis, "fetch").mockResolvedValue(
+    Response.json({
+      ...data,
+      clips: order.map((number) => ({
+        ...data.clips[0],
+        id: `clip-${number}`,
+        segment_order: number,
+        versions: [{ id: `version-${number}`, status: "pending" }],
+      })),
+    }),
+  );
+  render(<AudioManager />);
+  const displayed = () =>
+    screen
+      .queryAllByText(/^g11-u1-grammar-walkthrough · \d+$/)
+      .map((row) => Number(row.textContent?.split(" · ")[1]));
+  await screen.findByText("g11-u1-grammar-walkthrough · 1");
+  expect(displayed()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  fireEvent.click(screen.getByRole("button", { name: "Next page" }));
+  expect(displayed()).toEqual([11, 12]);
+  fireEvent.click(screen.getByRole("button", { name: "All (12)" }));
+  expect(displayed()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+});
