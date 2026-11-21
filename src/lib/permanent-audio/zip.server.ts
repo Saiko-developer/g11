@@ -85,3 +85,50 @@ export function zipStream(entries: ZipEntry[]) {
     },
   });
 }
+
+export const MAX_AUDIO_BACKUP_BYTES = 34 * 1024 * 1024;
+
+/** Read only the uncompressed ZIP format produced by Audio Manager. */
+export function readAudioZip(bytes: Uint8Array) {
+  if (bytes.length > MAX_AUDIO_BACKUP_BYTES) throw Error("Backup is too large");
+  const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  const files = new Map<string, Uint8Array>();
+  let offset = 0;
+  const decoder = new TextDecoder("utf-8", { fatal: true });
+  while (offset + 4 <= bytes.length && view.getUint32(offset, true) === 0x04034b50) {
+    if (offset + 30 > bytes.length || files.size >= 201) throw Error("Invalid ZIP header");
+    if (view.getUint16(offset + 6, true) !== 0x800 || view.getUint16(offset + 8, true) !== 0)
+      throw Error("Use the original Audio Manager ZIP");
+    const size = view.getUint32(offset + 18, true);
+    const nameSize = view.getUint16(offset + 26, true);
+    const start = offset + 30 + nameSize + view.getUint16(offset + 28, true);
+    const end = start + size;
+    if (end > bytes.length || size !== view.getUint32(offset + 22, true))
+      throw Error("Truncated ZIP entry");
+    const name = decoder.decode(bytes.subarray(offset + 30, offset + 30 + nameSize));
+    if (!/^[a-zA-Z0-9_.-]+$/.test(name) || files.has(name)) throw Error("Invalid ZIP filename");
+    const data = bytes.subarray(start, end);
+    if (crc32(data) !== view.getUint32(offset + 14, true)) throw Error("ZIP checksum mismatch");
+    files.set(name, data);
+    offset = end;
+  }
+  const directoryStart = offset;
+  for (let i = 0; i < files.size; i++) {
+    if (offset + 46 > bytes.length || view.getUint32(offset, true) !== 0x02014b50)
+      throw Error("Invalid ZIP directory");
+    offset +=
+      46 +
+      view.getUint16(offset + 28, true) +
+      view.getUint16(offset + 30, true) +
+      view.getUint16(offset + 32, true);
+  }
+  if (
+    offset + 22 !== bytes.length ||
+    view.getUint32(offset, true) !== 0x06054b50 ||
+    view.getUint16(offset + 10, true) !== files.size ||
+    view.getUint32(offset + 12, true) !== offset - directoryStart ||
+    view.getUint32(offset + 16, true) !== directoryStart
+  )
+    throw Error("Incomplete ZIP backup");
+  return files;
+}

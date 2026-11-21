@@ -46,6 +46,33 @@ export function AudioManager() {
     [review, setReview] = useState<string[]>([]),
     [editing, setEditing] = useState<string | null>(null),
     [script, setScript] = useState("");
+  const [backup, setBackup] = useState<File | null>(null);
+  const [backupReport, setBackupReport] = useState<{ file: string; status: string }[]>([]);
+  const restoreBackup = async (apply: boolean) => {
+    if (
+      !backup ||
+      (apply &&
+        !window.confirm(
+          "Restore matching files to private storage and make them available to signed-in students?",
+        ))
+    )
+      return;
+    setBusy(true);
+    setError("");
+    try {
+      const result = await requestJson(`/api/audio-manager?backup=${apply ? "restore" : "check"}`, {
+        method: "POST",
+        body: backup,
+        headers: { "Content-Type": "application/zip" },
+      });
+      setBackupReport(result.report);
+      if (apply) await refresh();
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Backup could not be read");
+    } finally {
+      setBusy(false);
+    }
+  };
   const post = (action: string, ids: string[], script?: string) =>
     requestJson("/api/audio-manager", {
       method: "POST",
@@ -805,6 +832,61 @@ export function AudioManager() {
           </div>
         )}
       </div>
+      <section className="space-y-3 rounded-xl border p-4">
+        <h3 className="font-semibold">Restore approved audio backup</h3>
+        <p className="text-sm text-muted-foreground">
+          Use an original Unit or Grade ZIP above. Check each ZIP part before restoring it. Existing
+          approvals are kept.
+        </p>
+        <label className="block text-sm">
+          Audio Manager ZIP
+          <input
+            className="block max-w-full"
+            type="file"
+            accept=".zip,application/zip"
+            disabled={busy}
+            onChange={(e) => {
+              setBackup(e.target.files?.[0] ?? null);
+              setBackupReport([]);
+            }}
+          />
+        </label>
+        <div className="flex flex-wrap gap-2">
+          <Button
+            variant="outline"
+            disabled={busy || !backup}
+            onClick={() => void restoreBackup(false)}
+          >
+            Check backup
+          </Button>
+          <Button
+            disabled={busy || !backupReport.some((row) => row.status === "ready")}
+            onClick={() => void restoreBackup(true)}
+          >
+            Restore matching audio
+          </Button>
+        </div>
+        {backupReport.length > 0 && (
+          <div role="status" className="text-sm">
+            <p>
+              {backupReport.filter((row) => row.status === "ready").length} ready ·{" "}
+              {backupReport.filter((row) => row.status === "Imported").length} imported ·{" "}
+              {backupReport.filter((row) => !["ready", "Imported"].includes(row.status)).length}{" "}
+              skipped or failed
+            </p>
+            <details>
+              <summary>File results</summary>
+              <ul className="max-h-52 overflow-auto break-all">
+                {backupReport.map((row) => (
+                  <li key={row.file}>
+                    {row.file} · {row.status}
+                  </li>
+                ))}
+              </ul>
+            </details>
+          </div>
+        )}
+      </section>
       {data && (
         <section className="rounded-xl border p-4">
           <h3 className="font-semibold">Usage monitoring</h3>

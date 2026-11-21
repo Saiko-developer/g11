@@ -116,6 +116,7 @@ export async function audioManagerGet(request: Request) {
         filename: filename(v.clip, v.id),
         scriptVersion: v.script_version,
         scriptHash: v.script_hash,
+        scriptText: v.script_text ?? null,
         voice: v.voice,
         duration: v.duration,
         bytes: v.bytes,
@@ -249,6 +250,27 @@ const actionSchema = z.object({
 export async function audioManagerPost(request: Request) {
   const access = await audioAdmin(request);
   if (access instanceof Response) return access;
+  const mode = new URL(request.url).searchParams.get("backup");
+  if (mode === "check" || mode === "restore") {
+    try {
+      const { restoreAudio } = await import("./restore.server");
+      return Response.json({
+        report: await restoreAudio(request, access.userId, mode === "restore"),
+      });
+    } catch (error) {
+      return Response.json(
+        {
+          error:
+            error instanceof z.ZodError
+              ? "Invalid backup manifest"
+              : error instanceof Error
+                ? error.message
+                : "Backup import failed",
+        },
+        { status: 400 },
+      );
+    }
+  }
   const raw = await request.text();
   if (raw.length > 34000) return Response.json({ error: "Request too large" }, { status: 413 });
   const parsed = actionSchema.safeParse(
