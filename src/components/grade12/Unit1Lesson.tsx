@@ -348,23 +348,51 @@ function CompoundPractice() {
   );
 }
 
-function CoreLesson({ skill }: { skill: "reading" | "vocabulary" | "grammar" }) {
+type CoreSkill = "reading" | "vocabulary" | "grammar";
+
+function ReadingWorkspace() {
+  const pane =
+    "min-w-0 space-y-4 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:max-h-[clamp(22rem,calc(100dvh_-_18rem),60rem)] lg:overflow-y-auto lg:overscroll-y-contain lg:p-1 lg:[scrollbar-gutter:stable]";
+  return (
+    <div className="grid gap-5 lg:grid-cols-2 lg:items-start">
+      <section aria-labelledby="grade12-reading-passage" tabIndex={0} className={pane}>
+        <h2 id="grade12-reading-passage" className="text-lg font-semibold">
+          Reading passage
+        </h2>
+        <PreReading />
+        <Reading />
+      </section>
+      <section aria-labelledby="grade12-reading-comprehension" tabIndex={0} className={pane}>
+        <h2 id="grade12-reading-comprehension" className="text-lg font-semibold">
+          Comprehension
+        </h2>
+        <CoreExercises skill="reading" />
+      </section>
+    </div>
+  );
+}
+
+function CoreLesson({ skill }: { skill: CoreSkill }) {
+  if (skill === "reading") return <ReadingWorkspace />;
+
   return (
     <>
-      {skill === "reading" && (
-        <>
-          <PreReading />
-          <Reading />
-          <h2 className="text-lg font-semibold">Comprehension</h2>
-        </>
-      )}
-      {skill === "vocabulary" && <VocabularyReference />}
-      {skill === "grammar" && (
+      {skill === "vocabulary" ? (
+        <VocabularyReference />
+      ) : (
         <>
           <GrammarScriptView grammar={unit1Grammar} />
           <UnitGrammarVideos videos={grammarVideos["1"]} showPending />
         </>
       )}
+      <CoreExercises skill={skill} />
+    </>
+  );
+}
+
+function CoreExercises({ skill }: { skill: CoreSkill }) {
+  return (
+    <>
       {core[skill].map(({ instruction, questions }) => {
         const key = instruction[0];
         const answers = unit1Keys[`${skill}:${key}`];
