@@ -1,3 +1,7 @@
+import { GrammarScriptView } from "@/components/lesson/GrammarScriptView";
+import { UnitGrammarVideos } from "@/components/grade11/Grade11GrammarVideos";
+import { unit1Grammar } from "@/data/grade12/unit1-grammar";
+import grammarVideos from "@/data/grade12/grammarVideos.json";
 import { Grade11Pronunciation } from "@/components/grade11/Grade11Pronunciation";
 import { ToggleReveal } from "@/components/lesson/ExerciseKit";
 import {
@@ -5,7 +9,6 @@ import {
   mannersMy,
   discussionMy,
   matchPartsMy,
-  modalNotes,
   questionStructuresMy,
   readingInstructionsMy,
   readingQuestionsMy,
@@ -15,7 +18,7 @@ import {
 import { useState } from "react";
 import { Grade11AIReview } from "@/components/grade11/Grade11AIReview";
 import core from "@/data/grade12/unit1-core.json";
-import { compounds, modals } from "@/data/grade12/unit1-reference";
+import { compounds } from "@/data/grade12/unit1-reference";
 import { Button } from "@/components/ui/button";
 import { isAnswerMatch } from "@/lib/answerMatch";
 import { unit1Sections, unit1AudioUrl } from "@/data/grade12/unit1";
@@ -294,57 +297,6 @@ function VocabularyReference() {
   );
 }
 
-function GrammarReference() {
-  return modals.map(({ word, negative, uses }) => {
-    const notes = modalNotes[word];
-    return (
-      <article key={word} className="space-y-3 rounded-2xl border p-4 sm:p-5">
-        <h4 className="text-lg font-bold">{word}</h4>
-        <div className="space-y-2 rounded-xl border border-primary/30 bg-primary/5 p-4">
-          <p lang="my" className="font-semibold text-primary">
-            အနှစ်ချုပ်
-          </p>
-          <p lang="my">{notes.summary}</p>
-          <p className="font-mono text-sm">Subject + {word.toLowerCase()} + base verb</p>
-        </div>
-        <ToggleReveal label="Text Explanation" hiddenLabel="Hide explanation" tone="primary">
-          <dl className="grid gap-2 sm:grid-cols-3">
-            {[
-              ["အပြုဝါကျ", `Subject + ${word.toLowerCase()} + base verb`],
-              ["အငြင်းဝါကျ", `Subject + ${negative} + base verb`],
-              ["မေးခွန်း", `${word} + subject + base verb …?`],
-            ].map(([label, formula]) => (
-              <div key={label} className="rounded-lg border bg-background p-3">
-                <dt lang="my" className="font-semibold">
-                  {label}
-                </dt>
-                <dd className="mt-1 font-mono">{formula}</dd>
-              </div>
-            ))}
-          </dl>
-          <ol className="mt-4 list-decimal space-y-3 pl-5">
-            {uses.map(([usage, example], index) => (
-              <li key={usage}>
-                <p lang="my" className="font-semibold">
-                  {notes.uses[index]}
-                </p>
-                <p lang="en" className="text-muted-foreground">
-                  {usage}
-                </p>
-                <English text={example} />
-                <BurmeseTranslation text={notes.examples[index]} />
-              </li>
-            ))}
-          </ol>
-          <p lang="my" className="mt-4 rounded-lg bg-background p-3">
-            {notes.tip}
-          </p>
-        </ToggleReveal>
-      </article>
-    );
-  });
-}
-
 function Matching() {
   const choices = matchColumns[1].map(
     (word, index) => `${String.fromCharCode(97 + index)}) ${word}`,
@@ -409,7 +361,12 @@ function CoreLesson({ skill }: { skill: "reading" | "vocabulary" | "grammar" }) 
         </>
       )}
       {skill === "vocabulary" && <VocabularyReference />}
-      {skill === "grammar" && <GrammarReference />}
+      {skill === "grammar" && (
+        <>
+          <GrammarScriptView grammar={unit1Grammar} />
+          <UnitGrammarVideos videos={grammarVideos["1"]} showPending />
+        </>
+      )}
       {core[skill].map(({ instruction, questions }) => {
         const key = instruction[0];
         const answers = unit1Keys[`${skill}:${key}`];

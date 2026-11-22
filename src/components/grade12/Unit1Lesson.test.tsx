@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
-import { afterEach, expect, it } from "vitest";
+import { afterEach, expect, it, vi } from "vitest";
 import { unit1Sections } from "@/data/grade12/unit1";
 import { Unit1Lesson } from "./Unit1Lesson";
 
@@ -28,7 +28,10 @@ it.each([
 ] as const)("renders all exercise groups for section index %s", (index, labels) => {
   render(<Unit1Lesson section={unit1Sections[index]} />);
   expect(
-    screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent?.slice(0, 2)),
+    screen
+      .getAllByRole("heading", { level: 3 })
+      .filter((h) => /^[A-E]\./.test(h.textContent ?? ""))
+      .map((h) => h.textContent?.slice(0, 2)),
   ).toEqual(labels);
   if (index === 3)
     expect(screen.queryByLabelText("Grade 12 Unit 1 listening audio")).not.toBeInTheDocument();
@@ -63,4 +66,33 @@ it("provides all ten modal blanks and six original-sentence inputs", () => {
   expect(screen.getByText("Can I take your umbrella?")).toBeInTheDocument();
   expect(screen.getAllByRole("combobox")).toHaveLength(10);
   expect(screen.getAllByRole("textbox", { name: /Sentence [1-6]/ })).toHaveLength(6);
+});
+
+it("offers the shared oral and video sections for Grade 12 grammar", () => {
+  render(<Unit1Lesson section={unit1Sections[2]} />);
+  expect(screen.getAllByRole("button", { name: "Oral Explanation" })).toHaveLength(3);
+  const video = within(screen.getByRole("region", { name: "Grammar video explanation" }));
+  expect(video.getByText("Video Lesson")).toBeInTheDocument();
+  expect(video.getByText("ဗီဒီယို မထည့်ရသေးပါ။")).toBeInTheDocument();
+  expect(video.queryByRole("button")).not.toBeInTheDocument();
+});
+
+it("requests the authored Burmese narration when Oral Explanation opens", async () => {
+  const fetchAudio = vi.fn().mockResolvedValue(new Response("Unavailable", { status: 503 }));
+  vi.stubGlobal("fetch", fetchAudio);
+  try {
+    render(<Unit1Lesson section={unit1Sections[2]} />);
+    expect(fetchAudio).not.toHaveBeenCalled();
+    fireEvent.click(screen.getAllByRole("button", { name: "Oral Explanation" })[0]);
+    await screen.findByText(/အသံ ဖွင့်၍ မရပါ/);
+    expect(fetchAudio).toHaveBeenCalledWith(
+      "/api/tts",
+      expect.objectContaining({
+        method: "POST",
+        body: expect.stringContaining("လေးလံတဲ့ သေတ္တာ"),
+      }),
+    );
+  } finally {
+    vi.unstubAllGlobals();
+  }
 });

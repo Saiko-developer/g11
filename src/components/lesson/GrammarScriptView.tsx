@@ -165,7 +165,7 @@ function TextMode({ section }: { section: GrammarSection }) {
             className="flex-1 rounded-lg text-xs"
             onClick={() => setTab(x.id)}
           >
-            {x.label}
+            {x.id === "combine" ? (t.transformation.labelMy ?? x.label) : x.label}
           </Button>
         ))}
       </div>
@@ -182,6 +182,18 @@ function TextMode({ section }: { section: GrammarSection }) {
               <p key={i}>{p}</p>
             ))}
           </Block>
+          {t.examples?.length ? (
+            <Block title="စာအုပ်မှ ဥပမာများ">
+              <ul className="space-y-3">
+                {t.examples.map(({ en, my }) => (
+                  <li key={en}>
+                    <p lang="en" className="whitespace-pre-line font-medium">{en}</p>
+                    <p lang="my">{my}</p>
+                  </li>
+                ))}
+              </ul>
+            </Block>
+          ) : null}
           <Block title="၃။ ရွှေစည်းမျဉ်းများ (Golden Rules)">
             <ol className="space-y-2">
               {t.goldenRulesMy.map((r, i) => (

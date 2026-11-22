@@ -4,7 +4,7 @@ import { GRADE11_VIDEO_SUBTITLES, GRADE11_VIDEO_SUBTITLE_TAILS } from "@/lib/gra
 import { Play } from "lucide-react";
 import videosByUnit from "@/data/grade11/grammarVideos.json";
 
-type Video = {
+export type GrammarVideo = {
   title: string;
   url: string;
   channel?: string;
@@ -12,7 +12,7 @@ type Video = {
   end?: number;
   noteMy?: string;
 };
-const catalog = videosByUnit as Record<string, Video[]>;
+const catalog = videosByUnit as Record<string, GrammarVideo[]>;
 
 function youtubeId(value: string) {
   if (/^[\w-]{11}$/.test(value)) return value;
@@ -34,14 +34,31 @@ function youtubeId(value: string) {
 
 /** Same video section pattern as Grade 10, with a separate Grade 11 catalog. */
 export function Grade11GrammarVideos({ unit }: { unit: number }) {
-  return <UnitGrammarVideos key={unit} unit={unit} />;
+  return <UnitGrammarVideos key={unit} videos={catalog[String(unit)] ?? []} />;
 }
 
-function UnitGrammarVideos({ unit }: { unit: number }) {
+export function UnitGrammarVideos({
+  videos,
+  showPending = false,
+}: {
+  videos: readonly GrammarVideo[];
+  showPending?: boolean;
+}) {
   const [active, setActive] = useState(0);
   const plainFrame = useRef<HTMLIFrameElement>(null);
-  const videos = catalog[String(unit)] ?? [];
-  if (!videos.length) return null;
+  if (!videos.length) {
+    return showPending ? (
+      <section
+        className="mt-5 rounded-2xl border border-border bg-card p-5"
+        aria-label="Grammar video explanation"
+      >
+        <VideoHeading />
+        <p lang="my" className="mt-2 rounded-xl bg-muted p-4 text-sm text-muted-foreground">
+          ဗီဒီယို မထည့်ရသေးပါ။
+        </p>
+      </section>
+    ) : null;
+  }
   const video = videos[Math.min(active, videos.length - 1)];
   const id = youtubeId(video.url);
   const start = Number.isSafeInteger(video.start) && video.start! >= 0 ? video.start! : 0;
@@ -57,9 +74,7 @@ function UnitGrammarVideos({ unit }: { unit: number }) {
       className="mt-5 rounded-2xl border border-border bg-card p-5"
       aria-label="Grammar video explanation"
     >
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
-        <Play className="h-3.5 w-3.5" /> Video Lesson
-      </div>
+      <VideoHeading />
       {videos.length > 1 && (
         <div className="mt-3 flex flex-wrap gap-2">
           {videos.map((item, index) => (
@@ -149,5 +164,13 @@ function UnitGrammarVideos({ unit }: { unit: number }) {
         </a>
       )}
     </section>
+  );
+}
+
+function VideoHeading() {
+  return (
+    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
+      <Play className="h-3.5 w-3.5" /> Video Lesson
+    </div>
   );
 }

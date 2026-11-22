@@ -38,6 +38,7 @@ export type GrammarMistake = {
 };
 
 export type GrammarTransformation = {
+  labelMy?: string;
   /** The two (or more) plain sentences before combining. */
   beforeEn: string[];
   /** The single combined sentence. */
@@ -67,6 +68,7 @@ export type GrammarTextMode = {
   mistakes: GrammarMistake[];
   /** ၄။ ဝါကျတည်ဆောက်ပုံ. */
   formulas: GrammarFormula[];
+  examples?: { en: string; my: string }[];
 };
 
 export type GrammarOralSegment = {
