@@ -1,3 +1,7 @@
+import {
+  grade12Unit1Roleplay,
+  isGrade12Unit1RoleplayExercise,
+} from "@/data/grade12/unit1-roleplay";
 import type { Grade11RoleplayExercise } from "@/lib/grade11RoleplayExercises";
 import {
   speakingAllowanceSchema,
@@ -76,9 +80,12 @@ export function Grade11RolePlay({
   unit: number;
   exercise?: Grade11RoleplayExercise;
 }) {
-  const unitTitle =
-    G11_SYLLABUS.filter((node) => node.type === "unit").find((node) => node.number === unit)
-      ?.title ?? "Grade 11 English";
+  const grade12 = isGrade12Unit1RoleplayExercise(exercise);
+  const grade = grade12 ? 12 : 11;
+  const unitTitle = grade12
+    ? grade12Unit1Roleplay[exercise].label
+    : (G11_SYLLABUS.filter((node) => node.type === "unit").find((node) => node.number === unit)
+        ?.title ?? "Grade 11 English");
   const [phase, setPhase] = useState<Phase>("idle");
   const [turns, setTurns] = useState<Turn[]>([]);
   const [scenario, setScenario] = useState<{ partner: string; en: string; my: string } | null>(
@@ -542,7 +549,7 @@ export function Grade11RolePlay({
 
   return (
     <section
-      aria-label="Grade 11 AI speaking practice"
+      aria-label={`Grade ${grade} AI speaking practice`}
       className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-b from-card to-muted/40 shadow-sm"
     >
       <div className="space-y-2 border-b border-border bg-muted/40 px-5 py-3 text-xs">
@@ -611,7 +618,9 @@ export function Grade11RolePlay({
             🦉
           </span>
           Saya Owl
-          <span className="font-normal text-muted-foreground">· Grade 11 · Unit {unit}</span>
+          <span className="font-normal text-muted-foreground">
+            · Grade {grade} · Unit {unit}
+          </span>
         </span>
         {live ? (
           <span className="flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 font-medium text-primary">
@@ -621,9 +630,9 @@ export function Grade11RolePlay({
       </div>
 
       <p lang="my" className="px-5 pt-3 text-xs text-muted-foreground">
-        Grade 11 ခေါင်းစဉ်အလိုက် AI နှင့် စကားပြောလေ့ကျင့်ခြင်း ဖြစ်ပါသည်။ AI က စကားပြောအခြေအနေကို
-        ဖန်တီးပေးပါမည်။ လက်ရှိ credit စည်းကမ်းအတိုင်း ကောက်ခံပြီး Grade 10/11 ၏ တူညီသော unit
-        နံပါတ်များတွင် နေ့စဉ် Speaking quota ကို မျှသုံးပါသည်။
+        Grade {grade} ခေါင်းစဉ်အလိုက် AI နှင့် စကားပြောလေ့ကျင့်ခြင်း ဖြစ်ပါသည်။ AI က
+        စကားပြောအခြေအနေကို ဖန်တီးပေးပါမည်။ လက်ရှိ credit စည်းကမ်းအတိုင်း ကောက်ခံပြီး Grade 10/11
+        {grade12 ? "/12" : ""} ၏ တူညီသော unit နံပါတ်များတွင် နေ့စဉ် Speaking quota ကို မျှသုံးပါသည်။
       </p>
       {error && (
         <p role="alert" lang="my" className="px-5 pt-3 text-sm text-destructive">

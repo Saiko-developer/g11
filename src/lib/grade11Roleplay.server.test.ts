@@ -248,3 +248,30 @@ it("allows a Gemini-only environment while keeping the existing speaking reserva
   expect(prepareGrade11Speaking).toHaveBeenCalledTimes(1);
   expect(generateJson).toHaveBeenCalledTimes(1);
 });
+
+it.each([
+  ["1D-G12-C", "three examples of each"],
+  ["1D-G12-D", "one piece of advice at a time"],
+  ["1D-G12-E", "arriving more than fifteen minutes late"],
+])("uses the Grade 12 textbook task and shared session for %s", async (exercise, topic) => {
+  const response = await handleGrade11Roleplay(request({ unit: 1, exercise }));
+  expect(response.status).toBe(200);
+  expect(prepareGrade11Speaking).toHaveBeenCalledWith(
+    expect.any(Request),
+    expect.objectContaining({ unit: 1, exercise }),
+    expect.any(String),
+    expect.any(String),
+  );
+  expect(generateJson).toHaveBeenCalledWith(
+    expect.objectContaining({
+      system: expect.stringContaining("Grade 12"),
+      prompt: expect.stringContaining(topic),
+    }),
+  );
+});
+
+it("rejects Grade 12 Unit 1 exercise IDs in other units before opening a session", async () => {
+  const response = await handleGrade11Roleplay(request({ unit: 2, exercise: "1D-G12-C" }));
+  expect(response.status).toBe(400);
+  expect(prepareGrade11Speaking).not.toHaveBeenCalled();
+});

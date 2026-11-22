@@ -1,4 +1,7 @@
 export const GRADE11_ROLEPLAY_EXERCISES = [
+  "1D-G12-C",
+  "1D-G12-D",
+  "1D-G12-E",
   "1D-30",
   "1D-31",
   "2D-18",

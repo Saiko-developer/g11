@@ -1,3 +1,7 @@
+import {
+  grade12Unit1Roleplay,
+  isGrade12Unit1RoleplayExercise,
+} from "@/data/grade12/unit1-roleplay";
 import { hasAiProvider } from "@/lib/ai-provider.server";
 import { GRADE11_ROLEPLAY_EXERCISES } from "./grade11RoleplayExercises";
 import { UNIT2_SECTIONS } from "./grade11Unit2";
@@ -121,7 +125,10 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
   const objective = unit.skills.find((skill) => skill.kind === "speaking")!.detail;
   const source = GRADE11_SPEAKING_LINES[body.unit].map((line) => line.en).join("\n");
   let exerciseContext = "";
-  if (body.exercise && body.unit === 1) {
+  const grade12Exercise = isGrade12Unit1RoleplayExercise(body.exercise)
+    ? grade12Unit1Roleplay[body.exercise]
+    : null;
+  if (!grade12Exercise && body.exercise && body.unit === 1) {
     const blocks = UNIT1_SECTIONS.find((section) => section.code === "1D")!.blocks;
     const instruction = blocks.find((block) => block.id === body.exercise)!;
     const dialogue = blocks
@@ -168,14 +175,19 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
         ? "\nAct as a classmate and ask the six textbook planning questions one at a time. Let the student choose a place from the five studied ASEAN countries. Do not invent their trip details."
         : "\nAsk the student to report a friend's preferred destination in the third person. Ask for their friend's actual answers first; do not invent a friend or travel facts. Give presentation feedback.";
   }
-  const context = `Grade 11 Unit ${body.unit}: ${unit.title}\nSpeaking objective: ${objective}\nTextbook practice phrases/questions:\n${source}\nExercise task:\n${exerciseContext}`;
+  const system = grade12Exercise
+    ? GRADE11_ROLEPLAY_SYSTEM.replaceAll("Grade 11", "Grade 12")
+    : GRADE11_ROLEPLAY_SYSTEM;
+  const context = grade12Exercise
+    ? `Grade 12 Unit 1: Good Manners\nSpeaking objective: Discuss manners and give advice.\n${grade12Exercise.context}`
+    : `Grade 11 Unit ${body.unit}: ${unit.title}\nSpeaking objective: ${objective}\nTextbook practice phrases/questions:\n${source}\nExercise task:\n${exerciseContext}`;
   const conversation = untrusted("conversation", JSON.stringify(body.turns), 36000);
   try {
     if (body.finish) {
       const out = z.object({ feedbackMy: z.string().min(1).max(3000) }).parse(
         await generateJson({
           signal: controller.signal,
-          system: GRADE11_ROLEPLAY_SYSTEM,
+          system,
           prompt: `${context}\n${conversation}\nThe call ended. Evaluate only the student's English. Return {"feedbackMy":"2-3 Burmese sentences: one strength and one practical improvement"}.`,
         }),
       );
@@ -191,7 +203,7 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
     const out = reply.parse(
       await generateJson({
         signal: controller.signal,
-        system: GRADE11_ROLEPLAY_SYSTEM,
+        system,
         prompt: `${context}\n${conversation}\n${task}`,
       }),
     );

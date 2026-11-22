@@ -96,3 +96,12 @@ it("requests the authored Burmese narration when Oral Explanation opens", async 
     vi.unstubAllGlobals();
   }
 });
+
+it("offers separate AI role-play for each speaking exercise while the recording is pending", () => {
+  render(<Unit1Lesson section={unit1Sections[3]} />);
+  expect(screen.getByText(/Listening recording pending/)).toBeInTheDocument();
+  expect(screen.getAllByRole("button", { name: /Practise [C-E] with AI/ })).toHaveLength(3);
+  expect(screen.queryByRole("button", { name: /Practise [AB] with AI/ })).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "Practise D with AI" }));
+  expect(screen.getByRole("status")).toBeInTheDocument();
+});

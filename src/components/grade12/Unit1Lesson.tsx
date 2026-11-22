@@ -1,3 +1,6 @@
+import { Grade11RolePlay } from "@/components/grade11/Grade11RolePlay";
+import { Grade11RequireSignIn } from "@/components/grade11/Grade11RequireSignIn";
+import { isGrade12Unit1RoleplayExercise } from "@/data/grade12/unit1-roleplay";
 import { GrammarScriptView } from "@/components/lesson/GrammarScriptView";
 import { UnitGrammarVideos } from "@/components/grade11/Grade11GrammarVideos";
 import { unit1Grammar } from "@/data/grade12/unit1-grammar";
@@ -197,6 +200,9 @@ function extractExercises(section: Extract<Section, { text: string }>): {
 }
 
 function ExerciseCard({ section, exercise }: { section: Section; exercise: Exercise }) {
+  const roleplayId = `1D-G12-${exercise.key}`;
+  const canRoleplay =
+    section.id === "listening-speaking" && isGrade12Unit1RoleplayExercise(roleplayId);
   const waitingForRecording =
     section.id === "listening-speaking" && !unit1AudioUrl && ["A", "B"].includes(exercise.key);
   return (
@@ -209,6 +215,17 @@ function ExerciseCard({ section, exercise }: { section: Section; exercise: Exerc
           expected={section.id === "writing" && exercise.key === "B" ? sampleReply : undefined}
           subjective
         />
+      )}
+      {canRoleplay && (
+        <ToggleReveal
+          label={`Practise ${exercise.key} with AI`}
+          hiddenLabel="Close AI role-play"
+          tone="primary"
+        >
+          <Grade11RequireSignIn>
+            <Grade11RolePlay unit={1} exercise={roleplayId} />
+          </Grade11RequireSignIn>
+        </ToggleReveal>
       )}
     </section>
   );
