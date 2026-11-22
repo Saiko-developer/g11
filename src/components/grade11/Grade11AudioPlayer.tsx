@@ -13,17 +13,34 @@ export function Grade11AudioPlayer({
   reference?: boolean;
 }) {
   const track = tracks.find((item) => item.unit === unit);
-  return track ? <TrackPlayer key={track.src} track={track} reference={reference} /> : null;
+  return track ? (
+    <ListeningTrackPlayer
+      key={track.src}
+      track={track}
+      reference={reference}
+      cues={getGrade11Captions(unit)}
+      grade={11}
+    />
+  ) : null;
 }
 
-function TrackPlayer({ track, reference }: { track: (typeof tracks)[number]; reference: boolean }) {
+export function ListeningTrackPlayer({
+  track,
+  reference = false,
+  cues,
+  grade,
+}: {
+  track: { unit: number; src: string };
+  reference?: boolean;
+  cues: ReturnType<typeof getGrade11Captions>;
+  grade: 11 | 12;
+}) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [speed, setSpeed] = useState(1);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
   const [showEnglish, setShowEnglish] = useState(true);
   const [showMy, setShowMy] = useState(true);
-  const cues = getGrade11Captions(track.unit);
   const stopAt = useRef<number | null>(null);
   const active = useGrade11CaptionClock(audioRef, cues, stopAt);
   const current = cues[active.cueIndex];
@@ -66,7 +83,7 @@ function TrackPlayer({ track, reference }: { track: (typeof tracks)[number]; ref
 
   return (
     <section
-      aria-label={`Grade 11 Unit ${track.unit} original audio`}
+      aria-label={`Grade ${grade} Unit ${track.unit} original audio`}
       className="my-5 min-w-0 space-y-3 rounded-2xl border border-primary/30 bg-card p-4"
     >
       <h2 className="font-semibold">🎧 Unit {track.unit} · Listening audio</h2>

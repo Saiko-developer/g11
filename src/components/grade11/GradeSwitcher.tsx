@@ -12,11 +12,7 @@ export function GradeSwitcher({ current }: { current: 10 | 11 | 12 }) {
       <Link to="/grade-11" className={`${base} ${current === 11 ? on : off}`}>
         Grade 11
       </Link>
-      <Link
-        to="/grade-12"
-        search={{ skill: "reading" }}
-        className={`${base} ${current === 12 ? on : off}`}
-      >
+      <Link to="/grade-12" search={{}} className={`${base} ${current === 12 ? on : off}`}>
         Grade 12
       </Link>
     </div>

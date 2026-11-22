@@ -1,0 +1,54 @@
+{
+  "listening": {
+    "instructionA": "A. Listen to a radio programme about good manners adopted in four countries. What advice does the travel expert give to the four people? Tick (✓) the pieces of advice mentioned in the programme. The first one is done for you.",
+    "topics": [
+      "meeting new people",
+      "how to behave at dinner",
+      "dress code",
+      "exchanging business cards",
+      "visiting someone’s house",
+      "showing respect to others"
+    ],
+    "instructionB": "B. Listen again and circle the correct answers.",
+    "questions": [
+      {
+        "prompt": "According to the travel expert, you do not need to give a ‘wai’ to ______ in Thailand.",
+        "options": [
+          "anyone",
+          "people who are older than you",
+          "people who are from lower social status than you"
+        ]
+      },
+      {
+        "prompt": "The Japanese like ______ when they meet people for the first time.",
+        "options": ["shaking hands", "giving business cards", "saying ‘Hello’"]
+      },
+      {
+        "prompt": "In Japan, you should take off ______ first before entering someone’s house.",
+        "options": ["your shoes", "your coat", "your hat"]
+      },
+      {
+        "prompt": "In Russia, leaving empty bottles on the dinner table is considered ______.",
+        "options": ["good luck", "bad luck", "politeness"]
+      },
+      {
+        "prompt": "According to the travel expert, the Koreans are happy if they bow very ______.",
+        "options": ["deeply", "slowly", "quickly"]
+      }
+    ]
+  },
+  "speaking": [
+    {
+      "instruction": "C. In pairs, think of three examples of good manners and three examples of bad manners in your country. Then tell your examples to another pair of students.",
+      "body": ""
+    },
+    {
+      "instruction": "D. Discuss the following question in groups. Then present your advice to the rest of the class using the useful language phrases in the box.",
+      "body": "• What advice would you give foreigners coming to live and work in your country?\n\nUseful language\nGiving advice\n• You should + v-inf …\n• You must / have to + v-inf …\n• You can + v-inf …\n• You need to + v-inf …\n• Remember to + v-inf …\n• The most important one / thing to remember is + to + v-inf …\n• You shouldn’t + v-inf …\n• You mustn’t + v-inf …\n• You don’t + have to + v-inf …\n• You can’t + v-inf …\n• You don’t + need to + v-inf …\n• The most important thing to remember is + not to + v-inf …"
+    },
+    {
+      "instruction": "E. Work in pairs. Say whether the following manners (a–c) are good or bad in the situation given below. Give reasons.",
+      "body": "When you are invited to someone’s birthday party,\n(a) bringing presents is …\n(b) complaining about the food is …\n(c) arriving more than fifteen minutes late is …"
+    }
+  ]
+}

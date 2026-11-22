@@ -23,8 +23,7 @@ it.each([
   [0, ["A.", "B.", "C."]],
   [1, ["A.", "B.", "C."]],
   [2, ["A.", "B."]],
-  [3, ["A.", "B.", "C.", "D.", "E."]],
-  [4, ["A.", "B."]],
+  [3, ["A.", "B."]],
 ] as const)("renders all exercise groups for section index %s", (index, labels) => {
   render(<Unit1Lesson section={unit1Sections[index]} />);
   expect(
@@ -33,8 +32,6 @@ it.each([
       .filter((h) => /^[A-E]\./.test(h.textContent ?? ""))
       .map((h) => h.textContent?.slice(0, 2)),
   ).toEqual(labels);
-  if (index === 3)
-    expect(screen.queryByLabelText("Grade 12 Unit 1 listening audio")).not.toBeInTheDocument();
 });
 
 it("keeps both pre-reading activities interactive and all comprehension questions available", () => {
@@ -95,15 +92,6 @@ it("requests the authored Burmese narration when Oral Explanation opens", async 
   } finally {
     vi.unstubAllGlobals();
   }
-});
-
-it("offers separate AI role-play for each speaking exercise while the recording is pending", () => {
-  render(<Unit1Lesson section={unit1Sections[3]} />);
-  expect(screen.getByText(/Listening recording pending/)).toBeInTheDocument();
-  expect(screen.getAllByRole("button", { name: /Practise [C-E] with AI/ })).toHaveLength(3);
-  expect(screen.queryByRole("button", { name: /Practise [AB] with AI/ })).not.toBeInTheDocument();
-  fireEvent.click(screen.getByRole("button", { name: "Practise D with AI" }));
-  expect(screen.getByRole("status")).toBeInTheDocument();
 });
 
 it("translates grammar instructions and individual modal blanks without revealing answers", () => {

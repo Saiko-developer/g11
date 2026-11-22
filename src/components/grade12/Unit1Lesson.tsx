@@ -1,6 +1,3 @@
-import { Grade11RolePlay } from "@/components/grade11/Grade11RolePlay";
-import { Grade11RequireSignIn } from "@/components/grade11/Grade11RequireSignIn";
-import { isGrade12Unit1RoleplayExercise } from "@/data/grade12/unit1-roleplay";
 import { GrammarScriptView } from "@/components/lesson/GrammarScriptView";
 import { UnitGrammarVideos } from "@/components/grade11/Grade11GrammarVideos";
 import { unit1Grammar } from "@/data/grade12/unit1-grammar";
@@ -26,7 +23,7 @@ import core from "@/data/grade12/unit1-core.json";
 import { compounds } from "@/data/grade12/unit1-reference";
 import { Button } from "@/components/ui/button";
 import { isAnswerMatch } from "@/lib/answerMatch";
-import { unit1Sections, unit1AudioUrl } from "@/data/grade12/unit1";
+import { unit1Sections } from "@/data/grade12/unit1";
 import {
   matchAnswers,
   sampleReply,
@@ -202,33 +199,15 @@ function extractExercises(section: Extract<Section, { text: string }>): {
 }
 
 function ExerciseCard({ section, exercise }: { section: Section; exercise: Exercise }) {
-  const roleplayId = `1D-G12-${exercise.key}`;
-  const canRoleplay =
-    section.id === "listening-speaking" && isGrade12Unit1RoleplayExercise(roleplayId);
-  const waitingForRecording =
-    section.id === "listening-speaking" && !unit1AudioUrl && ["A", "B"].includes(exercise.key);
   return (
     <section className="space-y-3 rounded-xl border p-4">
       <h3 className="font-semibold">{exercise.instruction}</h3>
       <English text={exercise.lines.join("\n").trim()} />
-      {!waitingForRecording && (
-        <Answer
-          prompt={exercise.instruction}
-          expected={section.id === "writing" && exercise.key === "B" ? sampleReply : undefined}
-          subjective
-        />
-      )}
-      {canRoleplay && (
-        <ToggleReveal
-          label={`Practise ${exercise.key} with AI`}
-          hiddenLabel="Close AI role-play"
-          tone="primary"
-        >
-          <Grade11RequireSignIn>
-            <Grade11RolePlay unit={1} exercise={roleplayId} />
-          </Grade11RequireSignIn>
-        </ToggleReveal>
-      )}
+      <Answer
+        prompt={exercise.instruction}
+        expected={section.id === "writing" && exercise.key === "B" ? sampleReply : undefined}
+        subjective
+      />
     </section>
   );
 }
@@ -479,19 +458,6 @@ export function Unit1Lesson({ section }: { section: Section }) {
   return (
     <div className="space-y-4" key={section.id}>
       <p className="text-xs text-muted-foreground">Textbook pages {section.pages}</p>
-      {section.id === "listening-speaking" &&
-        (unit1AudioUrl ? (
-          <audio
-            controls
-            preload="none"
-            src={unit1AudioUrl}
-            aria-label="Grade 12 Unit 1 listening audio"
-          />
-        ) : (
-          <p className="rounded-lg bg-muted p-3 text-sm">
-            Listening recording pending. Speaking exercises C–E can be practised now.
-          </p>
-        ))}
       {"text" in section ? (
         <>
           {legacy?.introduction.trim() && <English text={legacy.introduction} />}

@@ -101,9 +101,20 @@ function ShadowingModes({ unit }: { unit: number }) {
   );
 }
 
-function PracticePanel({ unit, recorded = false }: { unit: number; recorded?: boolean }) {
-  const lines: PracticeLine[] =
-    (recorded ? RECORDING_LINES[unit] : GRADE11_SPEAKING_LINES[unit]) ?? EMPTY_LINES;
+export function PracticePanel({
+  unit,
+  recorded = false,
+  grade = 11,
+  textbookLines,
+}: {
+  unit: number;
+  recorded?: boolean;
+  grade?: 11 | 12;
+  textbookLines?: readonly Grade11SpeakingLine[];
+}) {
+  const lines: readonly PracticeLine[] =
+    (recorded ? RECORDING_LINES[unit] : (textbookLines ?? GRADE11_SPEAKING_LINES[unit])) ??
+    EMPTY_LINES;
   const audioRef = useRef<HTMLAudioElement>(null);
   const stopAt = useRef<number | null>(null);
   const [audioReady, setAudioReady] = useState(false);
@@ -126,8 +137,8 @@ function PracticePanel({ unit, recorded = false }: { unit: number; recorded?: bo
   const buffer = useRef("");
   const interim = useRef("");
   const storageKey = recorded
-    ? `grade11:speaking:${unit}:recording:v1`
-    : `grade11:speaking:${unit}:shadow:v1`;
+    ? `grade${grade}:speaking:${unit}:recording:v1`
+    : `grade${grade}:speaking:${unit}:shadow:v1`;
 
   const persist = (next: PracticeState) => {
     stateRef.current = next;
@@ -310,11 +321,13 @@ function PracticePanel({ unit, recorded = false }: { unit: number; recorded?: bo
     });
   return (
     <section
-      aria-label="Grade 11 shadowing practice"
+      aria-label={`Grade ${grade} shadowing practice`}
       className="space-y-4 rounded-2xl border border-border bg-card p-4 sm:p-5"
     >
       <header className="space-y-2">
-        <h2 className="font-semibold">Grade 11 · Unit {unit} · လိုက်ဆိုလေ့ကျင့်ခြင်း</h2>
+        <h2 className="font-semibold">
+          Grade {grade} · Unit {unit} · လိုက်ဆိုလေ့ကျင့်ခြင်း
+        </h2>
         <p lang="my" className="text-sm text-muted-foreground">
           {recorded
             ? "ပေးထားသော Listening MP3 မှ တစ်ကြောင်းချင်း နားထောင်ပြီး လိုက်ဆိုပါ။ စာတန်းနှင့် အချိန်ကိုက်မှုကို စက်ဖြင့် ထုတ်ထားသဖြင့် အမှားအယွင်း ရှိနိုင်ပါသည်။"
