@@ -10,6 +10,14 @@ import { afterEach, expect, it, vi } from "vitest";
 import { grade12Units } from "@/data/grade12/syllabus";
 import { Route } from "@/routes/grade-12.index";
 
+vi.mock("@/components/AuthGate", () => ({
+  useAuth: () => ({ session: { access_token: "test" }, ready: true }),
+}));
+vi.mock("@/components/SayaOwlHome", () => ({
+  SayaOwlHome: ({ grade, lessonContext }: { grade: number; lessonContext: string }) => (
+    <button type="button" aria-label={`Grade ${grade} Saya Owl`} title={lessonContext} />
+  ),
+}));
 vi.mock("@/components/SiteHeader", () => ({ SiteHeader: () => null }));
 vi.mock("@/components/grade11/GradeSwitcher", () => ({ GradeSwitcher: () => null }));
 
@@ -29,6 +37,10 @@ it("opens a Unit 1 skill and returns to the expanded curriculum card", async () 
   });
   render(<RouterProvider router={router} />);
   const unit1 = await screen.findByRole("button", { name: /Unit 1 Good Manners/i });
+  expect(screen.getByRole("button", { name: "Grade 12 Saya Owl" })).toHaveAttribute(
+    "title",
+    expect.stringContaining("Unit 12 · Intercultural Communication"),
+  );
   expect(unit1).toHaveAttribute("aria-expanded", "true");
   for (const label of ["Receptive Skills", "Productive Skills", "Knowledge about Language"]) {
     expect(screen.getByRole("heading", { name: label })).toBeVisible();
@@ -36,6 +48,11 @@ it("opens a Unit 1 skill and returns to the expanded curriculum card", async () 
   fireEvent.click(screen.getByRole("link", { name: "Listening Good manners in four countries" }));
   const back = await screen.findByRole("link", { name: "Grade 12 Units" });
   expect(screen.getByRole("region", { name: "Grade 12 Unit 1 listening audio" })).toBeVisible();
+  expect(screen.getByRole("button", { name: "Grade 12 Saya Owl" })).toHaveAttribute(
+    "title",
+    expect.stringContaining("[Exercise B · Question 1 | source Grade 12 Unit 1]"),
+  );
+  expect(document.querySelector("[data-saya-home-section]")).toHaveTextContent("travel expert");
   fireEvent.click(back);
   expect(await screen.findByRole("button", { name: /Unit 1 Good Manners/i })).toHaveAttribute(
     "aria-expanded",
@@ -51,4 +68,4 @@ it("opens a Unit 1 skill and returns to the expanded curriculum card", async () 
     expect(screen.queryByRole("link", { name: /^Listening/ })).not.toBeInTheDocument();
   }
   expect(screen.getByText("Writing a blog post")).toBeVisible();
-});
+}, 15000);

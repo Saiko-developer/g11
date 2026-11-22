@@ -45,7 +45,7 @@ function readActiveSectionText(): string | null {
   return text.length > 12000 ? `${text.slice(0, 12000)}…` : text;
 }
 
-type SayaOwlHomeProps = { lessonContext: string; paperOnly?: boolean; grade?: 10 | 11 };
+type SayaOwlHomeProps = { lessonContext: string; paperOnly?: boolean; grade?: 10 | 11 | 12 };
 type Attachment = { name: string; mediaType: string; url: string };
 type Phase = "idle" | "listening" | "thinking" | "speaking" | "muted";
 type NativeRec = {
@@ -331,8 +331,8 @@ function SayaOwlHomeInner({ lessonContext, paperOnly = false, grade = 10 }: Saya
       },
       {
         body: {
-          ...(grade === 11
-            ? { grade: 11, currentQuestion: grade11PopupQuestion(lessonContext, text) }
+          ...(grade !== 10
+            ? { grade, currentQuestion: grade11PopupQuestion(lessonContext, text) }
             : {}),
           mode,
           paperVoice: paperModeRef.current && voiceOnRef.current,
@@ -525,7 +525,7 @@ function SayaOwlHomeInner({ lessonContext, paperOnly = false, grade = 10 }: Saya
         }
       }
       if (
-        (spoke && now - lastVoice > (grade === 11 ? 3000 : SILENCE_MS)) ||
+        (spoke && now - lastVoice > (grade !== 10 ? 3000 : SILENCE_MS)) ||
         now - startedAt > 45000 ||
         (!spoke && now - startedAt > 20000)
       ) {
@@ -1138,7 +1138,7 @@ function SayaOwlHomeInner({ lessonContext, paperOnly = false, grade = 10 }: Saya
       )}
       {open && (subtitle || phase !== "idle") && (
         <p className="line-clamp-2 max-w-[260px] rounded-2xl bg-card/95 px-3 py-1.5 text-xs leading-relaxed text-foreground shadow-md">
-          {(phase === "speaking" || (grade === 11 && phase === "listening")) && subtitle
+          {(phase === "speaking" || (grade !== 10 && phase === "listening")) && subtitle
             ? subtitle
             : phase === "thinking" && studentLine
               ? `ကြားလိုက်ရတာ: “${studentLine}”`

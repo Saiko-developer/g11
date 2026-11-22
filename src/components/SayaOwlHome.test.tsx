@@ -1,3 +1,4 @@
+import { grade12TutorContext } from "@/lib/grade12TutorContext";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import type { ReactNode } from "react";
@@ -278,4 +279,20 @@ it("gives Grade 10 a visible service failure and a working restart without paid 
     fireEvent.click(screen.getByRole("button", { name: "ဆရာနဲ့ စကားပြောရန် နှိပ်ပါ" }));
   });
   expect(screen.queryByRole("alert")).toBeNull();
+});
+
+it("sends a Grade 12 voice question through the shared tutor with its textbook reference", async () => {
+  vi.mocked(fetch).mockImplementation(async (url) =>
+    url === "/api/transcribe"
+      ? Response.json({ text: "Exercise A question 2" })
+      : new Response("unavailable", { status: 503 }),
+  );
+  render(<SayaOwlHome grade={12} lessonContext={grade12TutorContext("grammar")} />);
+  await startAndSpeak();
+  const form = vi.mocked(fetch).mock.calls.find(([url]) => url === "/api/transcribe")?.[1]
+    ?.body as FormData;
+  expect(form.get("grade")).toBe("12");
+  const body = mock.chat.sendMessage.mock.calls[0][1].body;
+  expect(body.grade).toBe(12);
+  expect(body.currentQuestion).toContain("______ you ride a motorcycle?");
 });

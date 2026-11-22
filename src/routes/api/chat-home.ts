@@ -99,7 +99,7 @@ type ChatHomeRequestBody = {
   sectionContent?: string | null;
   mode?: "voice" | "text";
   paperVoice?: boolean;
-  grade?: 10 | 11;
+  grade?: 10 | 11 | 12;
   currentQuestion?: string | null;
 };
 
@@ -120,8 +120,9 @@ export const Route = createFileRoute("/api/chat-home")({
             return new Response("Messages are required", { status: 400 });
           }
 
+          const upperGrade = body.grade === 11 || body.grade === 12;
           if (!hasAiProvider()) {
-            if (body.grade === 11)
+            if (upperGrade)
               return Response.json(
                 {
                   error: "ai_unavailable",
@@ -133,15 +134,23 @@ export const Route = createFileRoute("/api/chat-home")({
           }
           const model = getLovableChatModel("LOVABLE_CHAT_MODEL", 8000);
 
-          const grade11 = body.grade === 11;
-          let system = grade11 ? GRADE11_HOME_PROMPT : HOME_PROMPT;
+          let system = upperGrade ? GRADE11_HOME_PROMPT : HOME_PROMPT;
+          if (body.grade === 12) {
+            system = system.replaceAll("Grade 11", "Grade 12");
+            system +=
+              "\nUse curriculum headings only as an index. If a lesson passage, exercise or recording is unavailable in the supplied context, ask the learner for the source instead of inventing textbook content or answers.";
+          }
           if (lessonContext) {
-            system += `\n\n--- ယခု ကျောင်းသား ဖတ်နေသော သင်ခန်းစာ ---\n${untrusted("lesson", lessonContext, grade11 ? 40000 : 8000)}`;
+            system += `\n\n--- ယခု ကျောင်းသား ဖတ်နေသော သင်ခန်းစာ ---\n${untrusted("lesson", lessonContext, upperGrade ? 40000 : 8000)}`;
           }
           if (sectionContent) {
-            system += `\n\n--- ကျောင်းသား ကြည့်နေသော နေရာပိုင်း (မျက်နှာပြင်ပေါ်က စာသား အစစ်) ---\n${untrusted("screen_section", sectionContent, grade11 ? 16000 : 8000)}`;
+            system += `\n\n--- ကျောင်းသား ကြည့်နေသော နေရာပိုင်း (မျက်နှာပြင်ပေါ်က စာသား အစစ်) ---\n${untrusted("screen_section", sectionContent, upperGrade ? 16000 : 8000)}`;
           }
-          if (grade11 && typeof body.currentQuestion === "string" && body.currentQuestion.trim()) {
+          if (
+            upperGrade &&
+            typeof body.currentQuestion === "string" &&
+            body.currentQuestion.trim()
+          ) {
             system += `\n\n--- နောက်ဆုံးမေးခွန်းနှင့် ကိုက်ညီသော စာအုပ်မေးခွန်း ---\n${untrusted("resolved_question", body.currentQuestion, 2500)}`;
           }
           if (paperVoice) {

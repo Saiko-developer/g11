@@ -33,7 +33,7 @@ const request = (body: unknown) =>
     body: JSON.stringify(body),
   });
 describe("shared tutor workflow keeps Grade 10 defaults and supports Grade 11", () => {
-  it.each([10, 11])("uses the same model, quota and stream for Grade %i", async (grade) => {
+  it.each([10, 11, 12])("uses the same model, quota and stream for Grade %i", async (grade) => {
     const response = await post({
       request: request({ grade, messages: [], lessonContext: `Grade ${grade} reference` }),
     });
@@ -43,9 +43,9 @@ describe("shared tutor workflow keeps Grade 10 defaults and supports Grade 11", 
     const args = vi.mocked(streamText).mock.calls[0][0];
     expect(args.model).toBe("existing-model");
     expect(args.system).toContain(`(Grade ${grade})`);
-    if (grade === 11) expect(args.system).not.toContain("Grade 10");
+    if (grade !== 10) expect(args.system).not.toContain("Grade 10");
   });
-  it.each([undefined, 11])(
+  it.each([undefined, 11, 12])(
     "grounds voice replies in the active section for grade %s",
     async (grade) => {
       await post({
@@ -58,7 +58,7 @@ describe("shared tutor workflow keeps Grade 10 defaults and supports Grade 11", 
         }),
       });
       const system = vi.mocked(streamText).mock.calls[0][0].system;
-      expect(system).toContain(grade === 11 ? "Grade 11" : "Grade 10");
+      expect(system).toContain(`Grade ${grade ?? 10}`);
       expect(system).toContain('<untrusted label="screen_section">');
       expect(system).toContain("Current exercise question");
       expect(system).toContain("markdown");
@@ -117,7 +117,7 @@ it("grounds the reported Unit 3 Grammar question separately from the full sectio
   expect(system).toContain("I finished ___________ (write) the assignment");
 });
 
-it.each([10, 11])(
+it.each([10, 11, 12])(
   "uses the shared experienced-teacher policy and bounded first-token fallback for Grade %s",
   async (grade) => {
     await post({ request: request({ grade, mode: "voice", messages: [] }) });

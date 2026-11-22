@@ -1,3 +1,6 @@
+import { SayaOwlHome } from "@/components/SayaOwlHome";
+import { Grade11RequireSignIn } from "@/components/grade11/Grade11RequireSignIn";
+import { grade12TutorContext } from "@/lib/grade12TutorContext";
 import { Fragment, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
@@ -222,16 +225,18 @@ function Grade12Home() {
               </p>
             </header>
             <SkillLinks current={skill} />
-            {skill === "listening" || skill === "speaking" ? (
-              <Unit1ListeningSpeaking key={skill} skill={skill} />
-            ) : (
-              section && (
-                <article className="space-y-4 rounded-2xl border bg-card p-4 sm:p-6">
-                  <h2 className="text-xl font-semibold">{section.topic}</h2>
-                  <Unit1Lesson section={section} key={section.id} />
-                </article>
-              )
-            )}
+            <div data-saya-home-section>
+              {skill === "listening" || skill === "speaking" ? (
+                <Unit1ListeningSpeaking key={skill} skill={skill} />
+              ) : (
+                section && (
+                  <article className="space-y-4 rounded-2xl border bg-card p-4 sm:p-6">
+                    <h2 className="text-xl font-semibold">{section.topic}</h2>
+                    <Unit1Lesson section={section} key={section.id} />
+                  </article>
+                )
+              )}
+            </div>
           </>
         ) : (
           <>
@@ -242,9 +247,18 @@ function Grade12Home() {
                 Syllabus Curriculum Explorer — သင်ရိုးသစ် Unit 1–12
               </p>
             </header>
-            <Curriculum />
+            <div data-saya-home-section>
+              <Curriculum />
+            </div>
           </>
         )}
+        <Grade11RequireSignIn>
+          <SayaOwlHome
+            key={skill ?? "curriculum"}
+            grade={12}
+            lessonContext={grade12TutorContext(skill)}
+          />
+        </Grade11RequireSignIn>
       </main>
     </div>
   );

@@ -27,7 +27,7 @@ afterEach(() => {
   vi.unstubAllGlobals();
   vi.clearAllMocks();
 });
-it.each([undefined, "11"])(
+it.each([undefined, "11", "12"])(
   "preserves default transcription and scopes lesson hints to Grade %s",
   async (grade) => {
     const form = new FormData();
@@ -43,7 +43,7 @@ it.each([undefined, "11"])(
     const upstream = init.body as FormData;
     expect(upstream.has("language")).toBe(false);
     if (grade) {
-      expect(upstream.get("prompt")).toContain("Grade 11");
+      expect(upstream.get("prompt")).toContain(`Grade ${grade}`);
       expect(upstream.get("prompt")).toContain("Unit 1 dolphins");
       expect(upstream.get("prompt")).toContain('<untrusted label="lesson_vocabulary">');
       expect(init.signal).toBeInstanceOf(AbortSignal);
