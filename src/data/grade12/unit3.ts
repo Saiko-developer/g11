@@ -77,7 +77,7 @@ export const unit3Exercises: Record<Grade12Skill, TextbookExercise[]> = {
           "fresh",
         ],
         [
-          "rich",
+          "excellent",
           "important",
           "advisable",
           "healthy",

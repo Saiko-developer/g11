@@ -1,7 +1,11 @@
 import type { Grade12Skill } from "./syllabus";
 import { unit2ReadingQuestionsMy, unit2SpeakingLines } from "./unit2";
 
-type ExerciseTranslation = { instruction: string; items: readonly string[]; reference?: string };
+export type ExerciseTranslation = {
+  instruction: string;
+  items: readonly string[];
+  reference?: string;
+};
 
 export const unit2ExercisesMy: Record<Grade12Skill, readonly ExerciseTranslation[]> = {
   reading: [

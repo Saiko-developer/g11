@@ -1,3 +1,13 @@
+import { ToggleReveal } from "@/components/lesson/ExerciseKit";
+import { unit3Grammar } from "@/data/grade12/unit3-grammar";
+import {
+  unit3AffixMeaningsMy,
+  unit3ExercisesMy,
+  unit3SpeakingTopicsMy,
+  unit3WritingGuidanceMy,
+  unit3ReadingStructuresMy,
+  unit3ComprehensionSamples,
+} from "@/data/grade12/unit3-exercises-my";
 import { unit2ExercisesMy } from "@/data/grade12/unit2-exercises-my";
 import {
   unit3Affixes,
@@ -27,6 +37,13 @@ import {
 } from "@/data/grade12/unit2";
 import { grade12SkillTopics, type Grade12Skill } from "@/data/grade12/syllabus";
 
+const unit3SpeakingLines = unit3SpeakingTopics.map((en, index) => ({
+  id: `g12-u3-speaking-${index + 1}`,
+  en,
+  my: unit3SpeakingTopicsMy[index],
+  page: 29,
+}));
+
 const unit2Pages: Record<Grade12Skill, string> = {
   reading: "12–15",
   vocabulary: "15–16",
@@ -46,7 +63,7 @@ const unit3Pages: Record<Grade12Skill, string> = {
 };
 
 function AffixTables() {
-  return Object.entries(unit3Affixes).map(([label, entries]) => (
+  return (["Prefix", "Suffix"] as const).map((label) => (
     <div key={label} className="overflow-x-auto rounded-xl border">
       <table className="w-full text-left text-sm">
         <thead className="bg-muted">
@@ -59,13 +76,27 @@ function AffixTables() {
           </tr>
         </thead>
         <tbody>
-          {entries.map(([affix, meaning, examples]) => (
+          {unit3Affixes[label].map(([affix, meaning, examples], index) => (
             <tr key={affix} className="border-t">
               <th scope="row" className="p-3 font-medium">
                 {affix}
               </th>
-              <td className="p-3">{meaning}</td>
-              <td className="p-3">{examples}</td>
+              <td className="p-3">
+                {meaning}
+                <p lang="my" className="mt-1 text-muted-foreground">
+                  {unit3AffixMeaningsMy[label][index]}
+                </p>
+              </td>
+              <td className="p-3">
+                <div className="flex flex-wrap gap-x-3">
+                  {examples.split(", ").map((word) => (
+                    <span key={word} className="inline-flex items-center">
+                      <span lang="en">{word}</span>
+                      <Grade11Pronunciation text={word} />
+                    </span>
+                  ))}
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -80,7 +111,7 @@ export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3; skill: Grade1
   const groups = unit === 2 ? unit2Exercises[skill] : unit3Exercises[skill];
   const reading = unit === 2 ? unit2Reading : unit3Reading;
   const readingMy = unit === 2 ? unit2ReadingMy : unit3ReadingMy;
-  const translated = unit === 2 ? unit2ExercisesMy[skill] : undefined;
+  const translated = (unit === 2 ? unit2ExercisesMy : unit3ExercisesMy)[skill];
   const exercises = groups.map(({ instruction, reference, items }, groupIndex) => (
     <section key={instruction} className="space-y-3 rounded-xl border bg-card p-4">
       <h3 className="font-semibold">{instruction}</h3>
@@ -91,19 +122,25 @@ export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3; skill: Grade1
         />
       )}
       {unit === 3 && skill === "speaking" && (
-        <label className="block text-sm font-medium">
-          Choose a speaking topic
-          <select
-            value={speakingTopic}
-            onChange={(event) => setSpeakingTopic(event.target.value)}
-            className="mt-1 block w-full rounded-lg border bg-background p-2"
-          >
-            <option value="">Choose a card</option>
-            {unit3SpeakingTopics.map((topic) => (
-              <option key={topic}>{topic}</option>
-            ))}
-          </select>
-        </label>
+        <div className="space-y-2">
+          <label className="block text-sm font-medium">
+            Choose a speaking topic
+            <select
+              value={speakingTopic}
+              onChange={(event) => setSpeakingTopic(event.target.value)}
+              className="mt-1 block w-full rounded-lg border bg-background p-2"
+            >
+              <option value="">Choose a card</option>
+              {unit3SpeakingTopics.map((topic) => (
+                <option key={topic}>{topic}</option>
+              ))}
+            </select>
+          </label>
+          <BurmeseTranslation
+            label="Translate speaking topics"
+            text={unit3SpeakingTopicsMy.map((topic, index) => `${index + 1}. ${topic}`).join("\n")}
+          />
+        </div>
       )}
       {reference && <English text={reference} />}
       {translated?.[groupIndex]?.reference && (
@@ -129,11 +166,20 @@ export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3; skill: Grade1
                 text={translated[groupIndex].items[index]}
               />
             )}
+            {unit === 3 && skill === "reading" && groupIndex === 4 && (
+              <ToggleReveal
+                label="Sentence Structure"
+                hiddenLabel="Hide sentence structure"
+                tone="primary"
+              >
+                <p lang="my">{unit3ReadingStructuresMy[index]}</p>
+              </ToggleReveal>
+            )}
             <Answer
               prompt={unit === 3 && skill === "speaking" && speakingTopic ? speakingTopic : text}
               expected={
-                unit === 2 && skill === "reading" && groupIndex === 3
-                  ? unit2ComprehensionSamples[index]
+                skill === "reading" && groupIndex === groups.length - 1
+                  ? (unit === 2 ? unit2ComprehensionSamples : unit3ComprehensionSamples)[index]
                   : answer
               }
               choices={choices}
@@ -166,12 +212,12 @@ export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3; skill: Grade1
       )}
       {skill === "grammar" && (
         <>
-          {unit === 2 && <GrammarScriptView grammar={unit2Grammar} />}
+          <GrammarScriptView grammar={unit === 2 ? unit2Grammar : unit3Grammar} />
           <UnitGrammarVideos videos={unit === 2 ? videos["2"] : []} showPending />
         </>
       )}
-      {unit === 2 && skill === "speaking" && (
-        <nav aria-label="Grade 12 Unit 2 speaking modes" className="flex flex-wrap gap-2">
+      {skill === "speaking" && (
+        <nav aria-label={`Grade 12 Unit ${unit} speaking modes`} className="flex flex-wrap gap-2">
           <Button
             variant={shadowing ? "outline" : "default"}
             aria-pressed={!shadowing}
@@ -188,7 +234,13 @@ export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3; skill: Grade1
           </Button>
         </nav>
       )}
-      {shadowing && <PracticePanel grade={12} unit={2} textbookLines={unit2SpeakingLines} />}
+      {shadowing && (
+        <PracticePanel
+          grade={12}
+          unit={unit}
+          textbookLines={unit === 2 ? unit2SpeakingLines : unit3SpeakingLines}
+        />
+      )}
       {reference && (
         <div className="space-y-3 rounded-xl border p-4">
           {unit === 2 && skill === "writing" && (
@@ -197,6 +249,9 @@ export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3; skill: Grade1
           {reference.map((text) => (
             <English key={text} text={text} />
           ))}
+          {unit === 3 && skill === "writing" && (
+            <BurmeseTranslation label="Translate writing guidance" text={unit3WritingGuidanceMy} />
+          )}
         </div>
       )}
       {unit === 3 && skill === "vocabulary" && <AffixTables />}

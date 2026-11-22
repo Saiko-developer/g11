@@ -151,7 +151,9 @@ export function BurmeseTranslation({
 }) {
   return (
     <ToggleReveal label={label} hiddenLabel="ဘာသာပြန် ပိတ်ရန်">
-      <p lang="my">{text}</p>
+      <p lang="my" className="whitespace-pre-line">
+        {text}
+      </p>
     </ToggleReveal>
   );
 }
