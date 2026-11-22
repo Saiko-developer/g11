@@ -1,3 +1,4 @@
+import { grade12Unit3SpeakingCards } from "@/data/grade12/unit3-roleplay";
 import { beforeEach, afterEach, describe, expect, it, vi } from "vitest";
 import { handleGrade11Roleplay } from "./grade11Roleplay.server";
 import { requireUser } from "./api-guard.server";
@@ -274,4 +275,33 @@ it("rejects Grade 12 Unit 1 exercise IDs in other units before opening a session
   const response = await handleGrade11Roleplay(request({ unit: 2, exercise: "1D-G12-C" }));
   expect(response.status).toBe(400);
   expect(prepareGrade11Speaking).not.toHaveBeenCalled();
+});
+
+it.each(grade12Unit3SpeakingCards)(
+  "anchors the Grade 12 role-play to textbook card $label",
+  async ({ id, label }) => {
+    const response = await handleGrade11Roleplay(
+      request({ unit: 3, exercise: id, turns: [{ role: "student", text: "Here is my talk." }] }),
+    );
+    expect(response.status).toBe(200);
+    expect(prepareGrade11Speaking).toHaveBeenCalledWith(
+      expect.any(Request),
+      expect.objectContaining({ unit: 3, exercise: id }),
+      expect.any(String),
+      expect.any(String),
+    );
+    expect(generateJson).toHaveBeenCalledWith(
+      expect.objectContaining({
+        system: expect.stringContaining("Grade 12"),
+        prompt: expect.stringContaining(`Selected textbook speaking card: ${label}`),
+      }),
+    );
+  },
+);
+
+it("rejects a Grade 12 Unit 3 speaking card for a different unit", async () => {
+  const response = await handleGrade11Roleplay(request({ unit: 2, exercise: "3D-G12-B2" }));
+  expect(response.status).toBe(400);
+  expect(prepareGrade11Speaking).not.toHaveBeenCalled();
+  expect(generateJson).not.toHaveBeenCalled();
 });

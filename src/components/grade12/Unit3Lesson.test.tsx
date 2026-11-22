@@ -1,9 +1,20 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, expect, it } from "vitest";
+import { afterEach, expect, it, vi } from "vitest";
 import { grade12Skills } from "@/data/grade12/syllabus";
 import { unit3ExercisesMy } from "@/data/grade12/unit3-exercises-my";
 import { unit3Exercises } from "@/data/grade12/unit3";
 import { TextbookUnitLesson } from "./TextbookUnitLesson";
+
+vi.mock("@/components/grade11/Grade11RequireSignIn", () => ({
+  Grade11RequireSignIn: ({ children }: { children: React.ReactNode }) => children,
+}));
+vi.mock("@/components/grade11/Grade11RolePlay", () => ({
+  Grade11RolePlay: ({ unit, exercise }: { unit: number; exercise: string }) => (
+    <p role="status">
+      {unit} · {exercise}
+    </p>
+  ),
+}));
 
 afterEach(cleanup);
 
@@ -35,4 +46,16 @@ it("keeps all three grammar explanation controls and opens Grade 12 speaking sha
   fireEvent.click(screen.getByRole("button", { name: /လိုက်ဆို/ }));
   expect(screen.getByRole("region", { name: "Grade 12 shadowing practice" })).toBeVisible();
   expect(screen.getByText("Your food preferences")).toBeVisible();
+});
+
+it("starts the AI mode with the selected textbook card and no default paid session", () => {
+  render(<TextbookUnitLesson unit={3} skill="speaking" />);
+  fireEvent.click(screen.getByRole("button", { name: /Practise with AI/ }));
+  expect(screen.queryByRole("status")).not.toBeInTheDocument();
+  const picker = screen.getByRole("combobox", { name: "Choose a speaking topic" });
+  expect(screen.getAllByRole("option")).toHaveLength(7);
+  fireEvent.change(picker, { target: { value: "A balanced diet" } });
+  expect(screen.getByRole("status")).toHaveTextContent("3 · 3D-G12-B4");
+  fireEvent.change(picker, { target: { value: "Six vital nutrients" } });
+  expect(screen.getByRole("status")).toHaveTextContent("3 · 3D-G12-B2");
 });

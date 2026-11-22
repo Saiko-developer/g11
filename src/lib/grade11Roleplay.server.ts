@@ -1,3 +1,4 @@
+import { getGrade12Unit3SpeakingCard } from "@/data/grade12/unit3-roleplay";
 import {
   grade12Unit1Roleplay,
   isGrade12Unit1RoleplayExercise,
@@ -175,12 +176,16 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
         ? "\nAct as a classmate and ask the six textbook planning questions one at a time. Let the student choose a place from the five studied ASEAN countries. Do not invent their trip details."
         : "\nAsk the student to report a friend's preferred destination in the third person. Ask for their friend's actual answers first; do not invent a friend or travel facts. Give presentation feedback.";
   }
-  const system = grade12Exercise
-    ? GRADE11_ROLEPLAY_SYSTEM.replaceAll("Grade 11", "Grade 12")
-    : GRADE11_ROLEPLAY_SYSTEM;
+  const nutritionCard = getGrade12Unit3SpeakingCard(body.exercise);
+  const system =
+    grade12Exercise || nutritionCard
+      ? GRADE11_ROLEPLAY_SYSTEM.replaceAll("Grade 11", "Grade 12")
+      : GRADE11_ROLEPLAY_SYSTEM;
   const context = grade12Exercise
     ? `Grade 12 Unit 1: Good Manners\nSpeaking objective: Discuss manners and give advice.\n${grade12Exercise.context}`
-    : `Grade 11 Unit ${body.unit}: ${unit.title}\nSpeaking objective: ${objective}\nTextbook practice phrases/questions:\n${source}\nExercise task:\n${exerciseContext}`;
+    : nutritionCard
+      ? `Grade 12 Unit 3: Diet and Nutrition\nExercise B: Give a one-minute talk. Selected textbook speaking card: ${nutritionCard.label}.\nAct as a classmate listening to the learner’s short talk. Invite them to start in their own words and give them room to finish. Ask one relevant follow-up question per turn about the selected card. Keep feedback focused on English speaking and topic clarity. Do not deliver the talk for the learner or give personal dietary advice.`
+      : `Grade 11 Unit ${body.unit}: ${unit.title}\nSpeaking objective: ${objective}\nTextbook practice phrases/questions:\n${source}\nExercise task:\n${exerciseContext}`;
   const conversation = untrusted("conversation", JSON.stringify(body.turns), 36000);
   try {
     if (body.finish) {

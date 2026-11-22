@@ -30,14 +30,7 @@ const nutritionWords = [
   "work",
   "specific",
 ];
-export const unit3SpeakingTopics = [
-  "Your food preferences",
-  "Six vital nutrients",
-  "A relationship between diet and nutrition",
-  "A balanced diet",
-  "Negative effects of processed foods",
-  "Foods essential for nutrition",
-];
+export { unit3SpeakingTopics } from "./unit3-roleplay";
 const speakingExample =
   "Essential foods for nutrition\n\nI’d like to talk about essential foods to get nutrients. The food we eat can be divided into grains, fruits, vegetables, milk products, animal products, and beans. These foods carry six types of nutrients: carbohydrates, vitamins, minerals, fibre, proteins and lipids. We can maintain good health by having these foods. Firstly, grains such as rice, wheat, maize, millet, barley, and corn are energy-giving foods because we get carbohydrates from them. Secondly, fruits and vegetables give minerals, vitamins and fibre. Thirdly, milk products give proteins. Fourthly, animal products provide the same proteins. What’s more, beans are an excellent source of proteins. Finally, foods such as vegetable oil, fish and other seafood, plant oil, nuts and seeds, eggs, yogurt, milk, etc. are energy-giving foods. To sum up, if we eat these foods regularly, we will be healthy and happy. Therefore, these foods are essential for nutrition.";
 

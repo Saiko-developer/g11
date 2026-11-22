@@ -1,4 +1,7 @@
+import { grade12Unit3RoleplayIds } from "@/data/grade12/unit3-roleplay";
+
 export const GRADE11_ROLEPLAY_EXERCISES = [
+  ...grade12Unit3RoleplayIds,
   "1D-G12-C",
   "1D-G12-D",
   "1D-G12-E",

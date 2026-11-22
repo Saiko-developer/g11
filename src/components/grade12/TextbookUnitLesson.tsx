@@ -1,3 +1,6 @@
+import { Grade11RequireSignIn } from "@/components/grade11/Grade11RequireSignIn";
+import { Grade11RolePlay } from "@/components/grade11/Grade11RolePlay";
+import { grade12Unit3SpeakingCards } from "@/data/grade12/unit3-roleplay";
 import { ToggleReveal } from "@/components/lesson/ExerciseKit";
 import { unit3Grammar } from "@/data/grade12/unit3-grammar";
 import {
@@ -105,9 +108,40 @@ function AffixTables() {
   ));
 }
 
+function SpeakingTopicPicker({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <div className="space-y-2">
+      <label className="block text-sm font-medium">
+        Choose a speaking topic
+        <select
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          className="mt-1 block w-full rounded-lg border bg-background p-2"
+        >
+          <option value="">Choose a card</option>
+          {grade12Unit3SpeakingCards.map(({ id, label }) => (
+            <option key={id}>{label}</option>
+          ))}
+        </select>
+      </label>
+      <BurmeseTranslation
+        label="Translate speaking topics"
+        text={unit3SpeakingTopicsMy.map((topic, index) => `${index + 1}. ${topic}`).join("\n")}
+      />
+    </div>
+  );
+}
+
 export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3; skill: Grade12Skill }) {
-  const [shadowing, setShadowing] = useState(false);
+  const [speakingMode, setSpeakingMode] = useState<"lesson" | "shadowing" | "ai">("lesson");
   const [speakingTopic, setSpeakingTopic] = useState("");
+  const speakingCard = grade12Unit3SpeakingCards.find(({ label }) => label === speakingTopic);
   const groups = unit === 2 ? unit2Exercises[skill] : unit3Exercises[skill];
   const reading = unit === 2 ? unit2Reading : unit3Reading;
   const readingMy = unit === 2 ? unit2ReadingMy : unit3ReadingMy;
@@ -122,25 +156,7 @@ export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3; skill: Grade1
         />
       )}
       {unit === 3 && skill === "speaking" && (
-        <div className="space-y-2">
-          <label className="block text-sm font-medium">
-            Choose a speaking topic
-            <select
-              value={speakingTopic}
-              onChange={(event) => setSpeakingTopic(event.target.value)}
-              className="mt-1 block w-full rounded-lg border bg-background p-2"
-            >
-              <option value="">Choose a card</option>
-              {unit3SpeakingTopics.map((topic) => (
-                <option key={topic}>{topic}</option>
-              ))}
-            </select>
-          </label>
-          <BurmeseTranslation
-            label="Translate speaking topics"
-            text={unit3SpeakingTopicsMy.map((topic, index) => `${index + 1}. ${topic}`).join("\n")}
-          />
-        </div>
+        <SpeakingTopicPicker value={speakingTopic} onChange={setSpeakingTopic} />
       )}
       {reference && <English text={reference} />}
       {translated?.[groupIndex]?.reference && (
@@ -219,27 +235,51 @@ export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3; skill: Grade1
       {skill === "speaking" && (
         <nav aria-label={`Grade 12 Unit ${unit} speaking modes`} className="flex flex-wrap gap-2">
           <Button
-            variant={shadowing ? "outline" : "default"}
-            aria-pressed={!shadowing}
-            onClick={() => setShadowing(false)}
+            variant={speakingMode === "lesson" ? "default" : "outline"}
+            aria-pressed={speakingMode === "lesson"}
+            onClick={() => setSpeakingMode("lesson")}
           >
             📖 သင်ခန်းစာ
           </Button>
           <Button
-            variant={shadowing ? "default" : "outline"}
-            aria-pressed={shadowing}
-            onClick={() => setShadowing(true)}
+            variant={speakingMode === "shadowing" ? "default" : "outline"}
+            aria-pressed={speakingMode === "shadowing"}
+            onClick={() => setSpeakingMode("shadowing")}
           >
             🎯 လိုက်ဆို
           </Button>
+          {unit === 3 && (
+            <Button
+              type="button"
+              variant={speakingMode === "ai" ? "default" : "outline"}
+              aria-pressed={speakingMode === "ai"}
+              onClick={() => setSpeakingMode("ai")}
+            >
+              💬 Practise with AI
+            </Button>
+          )}
         </nav>
       )}
-      {shadowing && (
+      {speakingMode === "shadowing" && (
         <PracticePanel
           grade={12}
           unit={unit}
           textbookLines={unit === 2 ? unit2SpeakingLines : unit3SpeakingLines}
         />
+      )}
+      {unit === 3 && skill === "speaking" && speakingMode === "ai" && (
+        <section className="space-y-3 rounded-xl border bg-card p-4" aria-label="Practise with AI">
+          <SpeakingTopicPicker value={speakingTopic} onChange={setSpeakingTopic} />
+          {speakingCard ? (
+            <Grade11RequireSignIn>
+              <Grade11RolePlay key={speakingCard.id} unit={3} exercise={speakingCard.id} />
+            </Grade11RequireSignIn>
+          ) : (
+            <p lang="my" className="text-sm text-muted-foreground">
+              စကားပြောလေ့ကျင့်ဖို့ စာအုပ်ထဲက ခေါင်းစဉ်တစ်ခု ရွေးပါ။
+            </p>
+          )}
+        </section>
       )}
       {reference && (
         <div className="space-y-3 rounded-xl border p-4">
@@ -277,7 +317,7 @@ export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3; skill: Grade1
           exercises={exercises.slice(1)}
         />
       ) : (
-        !shadowing && exercises
+        speakingMode === "lesson" && exercises
       )}
     </article>
   );

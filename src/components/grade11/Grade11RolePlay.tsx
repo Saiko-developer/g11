@@ -1,3 +1,4 @@
+import { getGrade12Unit3SpeakingCard } from "@/data/grade12/unit3-roleplay";
 import {
   grade12Unit1Roleplay,
   isGrade12Unit1RoleplayExercise,
@@ -80,12 +81,15 @@ export function Grade11RolePlay({
   unit: number;
   exercise?: Grade11RoleplayExercise;
 }) {
-  const grade12 = isGrade12Unit1RoleplayExercise(exercise);
-  const grade = grade12 ? 12 : 11;
-  const unitTitle = grade12
-    ? grade12Unit1Roleplay[exercise].label
-    : (G11_SYLLABUS.filter((node) => node.type === "unit").find((node) => node.number === unit)
-        ?.title ?? "Grade 11 English");
+  const grade12Card = isGrade12Unit1RoleplayExercise(exercise)
+    ? grade12Unit1Roleplay[exercise]
+    : getGrade12Unit3SpeakingCard(exercise);
+  const grade = grade12Card ? 12 : 11;
+  const unitTitle =
+    grade12Card?.label ??
+    G11_SYLLABUS.filter((node) => node.type === "unit").find((node) => node.number === unit)
+      ?.title ??
+    "Grade 11 English";
   const [phase, setPhase] = useState<Phase>("idle");
   const [turns, setTurns] = useState<Turn[]>([]);
   const [scenario, setScenario] = useState<{ partner: string; en: string; my: string } | null>(
@@ -632,7 +636,8 @@ export function Grade11RolePlay({
       <p lang="my" className="px-5 pt-3 text-xs text-muted-foreground">
         Grade {grade} ခေါင်းစဉ်အလိုက် AI နှင့် စကားပြောလေ့ကျင့်ခြင်း ဖြစ်ပါသည်။ AI က
         စကားပြောအခြေအနေကို ဖန်တီးပေးပါမည်။ လက်ရှိ credit စည်းကမ်းအတိုင်း ကောက်ခံပြီး Grade 10/11
-        {grade12 ? "/12" : ""} ၏ တူညီသော unit နံပါတ်များတွင် နေ့စဉ် Speaking quota ကို မျှသုံးပါသည်။
+        {grade12Card ? "/12" : ""} ၏ တူညီသော unit နံပါတ်များတွင် နေ့စဉ် Speaking quota ကို
+        မျှသုံးပါသည်။
       </p>
       {error && (
         <p role="alert" lang="my" className="px-5 pt-3 text-sm text-destructive">
