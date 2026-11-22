@@ -1,6 +1,16 @@
 import { Fragment, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ChevronDown, Sparkles } from "lucide-react";
+import {
+  ArrowLeft,
+  BookOpen,
+  ChevronDown,
+  Headphones,
+  MessageSquare,
+  PenLine,
+  Sparkles,
+  SpellCheck,
+  Type,
+} from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { GradeSwitcher } from "@/components/grade11/GradeSwitcher";
 import { Unit1Lesson } from "@/components/grade12/Unit1Lesson";
@@ -23,7 +33,71 @@ export const Route = createFileRoute("/grade-12/")({
   component: Grade12Home,
 });
 
-function SkillLinks({ current }: { current?: Grade12Skill }) {
+const unit1SkillGroups = [
+  {
+    title: "Receptive Skills",
+    skills: [
+      {
+        id: "listening",
+        title: "Listening",
+        topic: "Good manners in four countries",
+        Icon: Headphones,
+      },
+      { id: "reading", title: "Reading", topic: "Good Manners", Icon: BookOpen },
+    ],
+  },
+  {
+    title: "Productive Skills",
+    skills: [
+      { id: "speaking", title: "Speaking", topic: "Good and bad manners", Icon: MessageSquare },
+      { id: "writing", title: "Writing", topic: "Writing a reply", Icon: PenLine },
+    ],
+  },
+  {
+    title: "Knowledge about Language",
+    skills: [
+      {
+        id: "vocabulary",
+        title: "Vocabulary",
+        topic: "Compound nouns and adjectives",
+        Icon: SpellCheck,
+      },
+      { id: "grammar", title: "Grammar", topic: "Can, should, must", Icon: Type },
+    ],
+  },
+] as const;
+
+function Unit1SkillCards() {
+  return (
+    <div className="grid gap-4 md:grid-cols-3">
+      {unit1SkillGroups.map(({ title, skills }) => (
+        <section key={title} className="space-y-3">
+          <h2 className="text-xs font-bold uppercase tracking-widest text-primary">{title}</h2>
+          <div className="grid gap-2">
+            {skills.map(({ id, title: skillTitle, topic, Icon }) => (
+              <Link
+                key={id}
+                to="/grade-12"
+                search={{ skill: id }}
+                className="flex items-start gap-3 rounded-xl border border-primary/40 bg-primary/5 p-3 transition hover:border-primary hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent/20 text-primary">
+                  <Icon aria-hidden="true" className="size-4" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-sm font-semibold">{skillTitle}</span>
+                  <span className="block text-sm text-muted-foreground">{topic}</span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function SkillLinks({ current }: { current: Grade12Skill }) {
   return (
     <nav aria-label="Unit 1 skills" className="flex flex-wrap gap-2">
       {grade12Skills.map((skill) => (
@@ -42,14 +116,16 @@ function SkillLinks({ current }: { current?: Grade12Skill }) {
 }
 
 function Curriculum() {
-  const [open, setOpen] = useState<number | null>(null);
+  const [open, setOpen] = useState<number | null>(1);
   return (
     <div className="space-y-3">
       {grade12Units.map(({ number, title, page }) => {
         const review = number % 3 === 0 ? grade12Reviews[number / 3 - 1] : null;
         return (
           <Fragment key={number}>
-            <section className="overflow-hidden rounded-2xl border bg-card">
+            <section
+              className={`overflow-hidden rounded-2xl border bg-card ${open === number ? "border-primary/40 shadow-sm" : "border-border"}`}
+            >
               <button
                 type="button"
                 aria-expanded={open === number}
@@ -57,7 +133,9 @@ function Curriculum() {
                 onClick={() => setOpen(open === number ? null : number)}
                 className="flex w-full items-center gap-4 px-5 py-4 text-left hover:bg-primary/5"
               >
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-sm font-bold text-primary">
+                <span
+                  className={`flex size-10 shrink-0 items-center justify-center rounded-xl text-sm font-bold ${open === number ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary"}`}
+                >
                   {number}
                 </span>
                 <span className="min-w-0 flex-1">
@@ -76,13 +154,15 @@ function Curriculum() {
                 hidden={open !== number}
                 className="space-y-3 border-t px-5 py-4"
               >
-                <p className="text-sm text-muted-foreground">Textbook page {page}</p>
                 {number === 1 ? (
-                  <SkillLinks />
+                  <Unit1SkillCards />
                 ) : (
-                  <p lang="my" className="text-sm">
-                    သင်ခန်းစာ မထည့်ရသေးပါ။
-                  </p>
+                  <>
+                    <p className="text-sm text-muted-foreground">Textbook page {page}</p>
+                    <p lang="my" className="text-sm">
+                      သင်ခန်းစာ မထည့်ရသေးပါ။
+                    </p>
+                  </>
                 )}
               </div>
             </section>
@@ -112,15 +192,14 @@ function Grade12Home() {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
       <main className={`mx-auto space-y-5 px-4 py-8 ${skill ? "max-w-6xl" : "max-w-5xl"}`}>
-        <GradeSwitcher current={12} />
         {skill ? (
           <>
             <Link
               to="/grade-12"
               search={{}}
-              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary"
+              className="inline-flex min-h-10 items-center gap-2 rounded-lg px-2 text-sm font-semibold text-primary transition hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-primary"
             >
-              <ArrowLeft aria-hidden="true" className="size-4" /> Grade 12
+              <ArrowLeft aria-hidden="true" className="size-4" /> Grade 12 Units
             </Link>
             <header>
               <p className="font-semibold text-primary">Unit 1</p>
@@ -143,6 +222,7 @@ function Grade12Home() {
           </>
         ) : (
           <>
+            <GradeSwitcher current={12} />
             <header>
               <h1 className="text-3xl font-bold">Grade 12 English</h1>
               <p className="mt-1 text-muted-foreground">
