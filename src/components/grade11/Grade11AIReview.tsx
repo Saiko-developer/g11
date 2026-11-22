@@ -13,6 +13,7 @@ export function Grade11AIReview({
   writing = false,
   checkLabel = "Check Answer with AI",
   compact = false,
+  grade = 11,
 }: {
   question: string;
   instructions: string;
@@ -21,6 +22,7 @@ export function Grade11AIReview({
   writing?: boolean;
   checkLabel?: string;
   compact?: boolean;
+  grade?: 11 | 12;
 }) {
   const { session, ready = true } = useAuth();
   const [busy, setBusy] = useState(false);
@@ -61,6 +63,7 @@ export function Grade11AIReview({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           mode: "check",
+          ...(grade === 12 ? { grade } : {}),
           taskType: writing ? "writing" : "exercise",
           question,
           instructions,

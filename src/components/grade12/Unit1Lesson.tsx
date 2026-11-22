@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Grade11AIReview } from "@/components/grade11/Grade11AIReview";
+import core from "@/data/grade12/unit1-core.json";
+import { compounds, modals } from "@/data/grade12/unit1-reference";
 import { Button } from "@/components/ui/button";
 import { isAnswerMatch } from "@/lib/answerMatch";
 import { unit1Sections, unit1AudioUrl } from "@/data/grade12/unit1";
@@ -18,17 +21,36 @@ function Answer({
   prompt,
   expected,
   subjective = false,
+  choices,
+  review,
 }: {
   prompt: string;
   expected?: string;
   subjective?: boolean;
+  choices?: readonly string[];
+  review?: { instructions: string; context: string };
 }) {
   const [answer, setAnswer] = useState("");
   const [feedback, setFeedback] = useState("");
   const [reveal, setReveal] = useState(false);
   return (
     <div className="space-y-2">
-      {subjective ? (
+      {choices ? (
+        <select
+          aria-label={prompt}
+          className="w-full rounded-lg border bg-background p-2 text-sm"
+          value={answer}
+          onChange={(e) => {
+            setAnswer(e.target.value);
+            setFeedback("");
+          }}
+        >
+          <option value="">Choose an answer</option>
+          {choices.map((choice) => (
+            <option key={choice}>{choice}</option>
+          ))}
+        </select>
+      ) : subjective ? (
         <textarea
           aria-label={prompt}
           rows={3}
@@ -70,6 +92,9 @@ function Answer({
           </Button>
         </div>
       )}
+      {review && (
+        <Grade11AIReview grade={12} question={prompt} answer={answer} {...review} compact />
+      )}
       {feedback && (
         <p role="status" className="text-sm">
           {feedback}
@@ -96,7 +121,7 @@ function English({ text }: { text: string }) {
   );
 }
 
-function Reading({ text }: { text: string }) {
+function Reading() {
   const [view, setView] = useState<"english" | "myanmar" | "structure">("english");
   return (
     <div className="space-y-4">
@@ -127,7 +152,11 @@ function Reading({ text }: { text: string }) {
         </Button>
       </div>
       {view === "english" ? (
-        <English text={text} />
+        <div className="space-y-4">
+          {core.paragraphs.map((block) => (
+            <English key={block} text={block} />
+          ))}
+        </div>
       ) : (
         <div lang="my" className="space-y-4 leading-loose">
           {(view === "myanmar" ? readingTranslation : readingStructures).map((block) => (
@@ -139,7 +168,10 @@ function Reading({ text }: { text: string }) {
   );
 }
 
-function extractExercises(section: Section): { introduction: string; exercises: Exercise[] } {
+function extractExercises(section: Extract<Section, { text: string }>): {
+  introduction: string;
+  exercises: Exercise[];
+} {
   const parts = ("\n" + section.text).split(/\n(?=[A-E]\. )/);
   return {
     introduction: parts.shift() ?? "",
@@ -151,80 +183,237 @@ function extractExercises(section: Section): { introduction: string; exercises: 
 }
 
 function ExerciseCard({ section, exercise }: { section: Section; exercise: Exercise }) {
-  const keys = unit1Keys[`${section.id}:${exercise.key}`];
   const waitingForRecording =
     section.id === "listening-speaking" && !unit1AudioUrl && ["A", "B"].includes(exercise.key);
   return (
     <section className="space-y-3 rounded-xl border p-4">
       <h3 className="font-semibold">{exercise.instruction}</h3>
-      {section.id === "vocabulary" && exercise.key === "A" ? (
-        <div className="space-y-3">
-          <div className="grid grid-cols-2 gap-3 rounded-lg bg-muted p-3 text-sm">
-            <div>
-              <strong>Column A</strong>
-              <ol>
-                {matchColumns[0].map((word, i) => (
-                  <li key={word}>
-                    {i + 1}. {word}
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <div>
-              <strong>Column B</strong>
-              <ol>
-                {matchColumns[1].map((word, i) => (
-                  <li key={word}>
-                    ({String.fromCharCode(97 + i)}) {word}
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
-          {matchColumns[0].map((word, i) => (
-            <div key={word} className="space-y-1">
-              <p>
-                {i + 1}. {word}
-              </p>
-              <Answer prompt={`Column B letter for ${word}`} expected={matchAnswers[i]} />
-            </div>
-          ))}
-        </div>
-      ) : keys ? (
-        exercise.lines
-          .filter((line) => /^\d+\. /.test(line))
-          .map((question, index) => (
-            <div className="space-y-2 border-t pt-3" key={question}>
-              <English text={question} />
-              <Answer
-                prompt={question}
-                expected={keys[index]}
-                subjective={section.id === "reading" && exercise.key === "C"}
-              />
-            </div>
-          ))
-      ) : (
-        <>
-          <English text={exercise.lines.join("\n").trim()} />
-          {!waitingForRecording && (
-            <Answer
-              prompt={exercise.instruction}
-              expected={section.id === "writing" && exercise.key === "B" ? sampleReply : undefined}
-              subjective
-            />
-          )}
-        </>
+      <English text={exercise.lines.join("\n").trim()} />
+      {!waitingForRecording && (
+        <Answer
+          prompt={exercise.instruction}
+          expected={section.id === "writing" && exercise.key === "B" ? sampleReply : undefined}
+          subjective
+        />
       )}
     </section>
   );
 }
 
-export function Unit1Lesson({ section }: { section: Section }) {
-  const { introduction, exercises } = extractExercises(section);
-  const marker = "\n\nRead the passage.\n\n";
-  const [preReading, passage] = introduction.split(marker);
+function PreReading() {
   return (
-    <div className="space-y-4">
+    <details className="rounded-xl border p-4">
+      <summary className="cursor-pointer font-medium">Pre-reading</summary>
+      <div className="mt-4 space-y-6">
+        {[
+          {
+            instruction:
+              "1. How polite do you think you should be to these people? Tick (✓) your answers. Then compare your answers with a partner.",
+            items: core.people,
+            choices: ["A little polite", "Polite", "Very polite"],
+          },
+          {
+            instruction:
+              "2. Read the following manners. Decide whether each manner is good or bad. Mark (✓) your answers. Then compare your answers with a partner.",
+            items: core.manners,
+            choices: ["Good", "Bad"],
+          },
+        ].map(({ instruction, items, choices }) => (
+          <fieldset key={instruction} className="space-y-2">
+            <legend className="mb-2 font-medium">{instruction}</legend>
+            {items.map((item) => (
+              <label
+                className="grid items-center gap-2 rounded-lg bg-muted/40 p-2 sm:grid-cols-[1fr_10rem]"
+                key={item}
+              >
+                <span>{item}</span>
+                <select className="rounded-md border bg-background p-2 text-sm" defaultValue="">
+                  <option value="">Choose</option>
+                  {choices.map((choice) => (
+                    <option key={choice}>{choice}</option>
+                  ))}
+                </select>
+              </label>
+            ))}
+          </fieldset>
+        ))}
+        <div className="space-y-3">
+          <p className="font-medium">3. Answer the following questions.</p>
+          <ol className="list-[lower-alpha] space-y-3 pl-5">
+            {core.discussion.map((prompt) => (
+              <li key={prompt}>
+                <p>{prompt}</p>
+                <Answer prompt={prompt} subjective />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </details>
+  );
+}
+
+function VocabularyReference() {
+  return (
+    <div className="grid gap-4 md:grid-cols-2">
+      {compounds.map(({ title, description, note, examples }) => (
+        <article key={title} className="space-y-3 rounded-xl border p-4">
+          <h2 className="font-semibold">{title}</h2>
+          <p>{description}</p>
+          {note && <p>{note}</p>}
+          <dl className="space-y-2">
+            {examples.map(([word, pattern]) => (
+              <div className="rounded-lg bg-muted/50 p-2" key={word}>
+                <dt className="font-medium">{word}</dt>
+                <dd className="text-sm text-muted-foreground">{pattern}</dd>
+              </div>
+            ))}
+          </dl>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function GrammarReference() {
+  return modals.map(({ word, negative, uses }) => (
+    <article key={word} className="rounded-xl border p-4">
+      <h2 className="mb-3 font-semibold">{word}</h2>
+      <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+        <div className="space-y-2 rounded-lg bg-muted/50 p-3">
+          <h4 className="font-semibold">Form</h4>
+          <p>Affirmative: Subject + {word.toLowerCase()} + v-inf</p>
+          <p>Negative: Subject + {negative} + v-inf</p>
+          <p>Interrogative: {word} + subject + v-inf …?</p>
+        </div>
+        <div className="space-y-2 rounded-lg bg-muted/50 p-3">
+          <h4 className="font-semibold">Use and Example</h4>
+          <ol className="list-decimal space-y-2 pl-5">
+            {uses.map(([usage, example]) => (
+              <li key={usage}>
+                <strong className="font-medium">{usage}</strong>
+                <English text={example} />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </article>
+  ));
+}
+
+function Matching() {
+  const choices = matchColumns[1].map(
+    (word, index) => `${String.fromCharCode(97 + index)}) ${word}`,
+  );
+  return (
+    <>
+      <p className="font-medium">Column B</p>
+      <ul className="grid grid-cols-2 gap-1 rounded-lg bg-muted/50 p-3 sm:grid-cols-3">
+        {choices.map((choice) => (
+          <li key={choice}>{choice}</li>
+        ))}
+      </ul>
+      <p className="font-medium">Column A</p>
+      <ol className="list-decimal space-y-3 pl-5">
+        {matchColumns[0].map((word, i) => (
+          <li key={word}>
+            <p>{word}</p>
+            <Answer
+              prompt={`Match ${word}`}
+              choices={choices}
+              expected={choices[matchAnswers[i].charCodeAt(0) - 97]}
+            />
+          </li>
+        ))}
+      </ol>
+    </>
+  );
+}
+
+function CompoundPractice() {
+  return (
+    <div className="grid grid-cols-2 gap-3">
+      {[
+        ["Compound nouns", "science fiction"],
+        ["Compound adjectives", "kind-hearted"],
+      ].map(([title, example]) => (
+        <fieldset key={title} className="space-y-2">
+          <legend className="mb-2 font-medium">{title}</legend>
+          <p>1. {example}</p>
+          {[2, 3, 4, 5].map((number) => (
+            <Answer key={number} prompt={`${title} ${number}`} />
+          ))}
+        </fieldset>
+      ))}
+    </div>
+  );
+}
+
+function CoreLesson({ skill }: { skill: "reading" | "vocabulary" | "grammar" }) {
+  return (
+    <>
+      {skill === "reading" && (
+        <>
+          <PreReading />
+          <Reading />
+          <h2 className="text-lg font-semibold">Comprehension</h2>
+        </>
+      )}
+      {skill === "vocabulary" && <VocabularyReference />}
+      {skill === "grammar" && <GrammarReference />}
+      {core[skill].map(({ instruction, questions }) => {
+        const key = instruction[0];
+        const answers = unit1Keys[`${skill}:${key}`];
+        const comprehension = skill === "reading" && key === "C";
+        return (
+          <section key={instruction} className="space-y-3 rounded-xl border p-4">
+            <h3 className="font-semibold">{instruction}</h3>
+            {skill === "vocabulary" && key === "A" && <Matching />}
+            {skill === "vocabulary" && key === "C" && <CompoundPractice />}
+            {skill === "grammar" && key === "B" && (
+              <ol className="list-decimal space-y-3 pl-5">
+                {[1, 2, 3, 4, 5, 6].map((number) => (
+                  <li key={number}>
+                    <Answer prompt={`Sentence ${number}`} />
+                  </li>
+                ))}
+              </ol>
+            )}
+            {questions.length > 0 && (
+              <ol className="list-decimal space-y-3 pl-5">
+                {questions.map((prompt, index) => (
+                  <li className="space-y-2 border-t pt-3" key={prompt}>
+                    <English text={prompt} />
+                    <Answer
+                      prompt={prompt}
+                      expected={answers?.[index]}
+                      subjective={comprehension}
+                      choices={skill === "grammar" ? ["must", "can", "should"] : undefined}
+                      review={
+                        comprehension
+                          ? {
+                              instructions: instruction,
+                              context: core.paragraphs.join("\n\n"),
+                            }
+                          : undefined
+                      }
+                    />
+                  </li>
+                ))}
+              </ol>
+            )}
+          </section>
+        );
+      })}
+    </>
+  );
+}
+
+export function Unit1Lesson({ section }: { section: Section }) {
+  const legacy = "text" in section ? extractExercises(section) : null;
+  return (
+    <div className="space-y-4" key={section.id}>
       <p className="text-xs text-muted-foreground">Textbook pages {section.pages}</p>
       {section.id === "listening-speaking" &&
         (unit1AudioUrl ? (
@@ -239,20 +428,16 @@ export function Unit1Lesson({ section }: { section: Section }) {
             Listening recording pending. Speaking exercises C–E can be practised now.
           </p>
         ))}
-      {passage ? (
+      {"text" in section ? (
         <>
-          <details className="rounded-xl border p-4">
-            <summary className="cursor-pointer font-medium">Pre-reading</summary>
-            <English text={preReading.replace(/^Pre-reading\n\n/, "")} />
-          </details>
-          <Reading text={passage.replace(/\n\nComprehension\s*$/, "")} />
+          {legacy?.introduction.trim() && <English text={legacy.introduction} />}
+          {legacy?.exercises.map((exercise) => (
+            <ExerciseCard key={exercise.key} section={section} exercise={exercise} />
+          ))}
         </>
       ) : (
-        introduction.trim() && <English text={introduction} />
+        <CoreLesson skill={section.id} />
       )}
-      {exercises.map((exercise) => (
-        <ExerciseCard key={exercise.key} section={section} exercise={exercise} />
-      ))}
     </div>
   );
 }
