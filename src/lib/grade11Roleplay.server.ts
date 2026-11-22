@@ -1,3 +1,5 @@
+import { getAdditionalRoleplay } from "@/data/grade12/additionalRoleplay";
+import { grade12TutorContext } from "@/lib/grade12TutorContext";
 import { grade12Unit4Roleplay } from "@/data/grade12/unit4-roleplay";
 import { unit4SpeakingLines } from "@/data/grade12/unit4";
 import { getGrade12Unit3SpeakingCard } from "@/data/grade12/unit3-roleplay";
@@ -167,7 +169,7 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
       .join("\n");
     exerciseContext = `Original Exercise C dialogue:\n${dialogue}\nPractise this dialogue between Lin Lin and Thiri about relaxing after the exam, City Mall, the Food Court and watching a movie. Start as Lin Lin and let the student be Thiri. Follow the textbook turns, accept equivalent agreement/disagreement expressions, and never speak the student's turn. Do not switch to an unrelated memory scenario.`;
   }
-  if (body.exercise && body.unit === 5) {
+  if (body.exercise === "5D-14" || body.exercise === "5D-21") {
     const blocks = TRAVEL_LESSONS[5].sections.find((section) => section.code === "5D")!.blocks;
     exerciseContext = blocks
       .filter((block) => Number(block.id.split("-")[1]) >= 14)
@@ -180,17 +182,21 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
   }
   const nutritionCard = getGrade12Unit3SpeakingCard(body.exercise);
   const stressDialogue = body.exercise === grade12Unit4Roleplay.id;
+  const additionalCard = getAdditionalRoleplay(body.exercise);
   const system =
-    grade12Exercise || nutritionCard || stressDialogue
+    grade12Exercise || nutritionCard || stressDialogue || additionalCard
       ? GRADE11_ROLEPLAY_SYSTEM.replaceAll("Grade 11", "Grade 12")
       : GRADE11_ROLEPLAY_SYSTEM;
-  const context = grade12Exercise
-    ? `Grade 12 Unit 1: Good Manners\nSpeaking objective: Discuss manners and give advice.\n${grade12Exercise.context}`
-    : nutritionCard
-      ? `Grade 12 Unit 3: Diet and Nutrition\nExercise B: Give a one-minute talk. Selected textbook speaking card: ${nutritionCard.label}.\nAct as a classmate listening to the learner’s short talk. Invite them to start in their own words and give them room to finish. Ask one relevant follow-up question per turn about the selected card. Keep feedback focused on English speaking and topic clarity. Do not deliver the talk for the learner or give personal dietary advice.`
-      : stressDialogue
-        ? `Grade 12 Unit 4: Emotional Well-Being\nExercise E: In pairs, practise the dialogue. The following is the textbook dialogue from Exercise C:\n${unit4SpeakingLines.map(({ speaker, en }) => `${speaker}: ${en}`).join("\n")}\nAct as Nilar. Let the learner speak as Thazin. Begin with Nilar’s greeting. Follow the dialogue one turn at a time and accept natural paraphrases. Treat stress as a fictional classroom scenario. Keep feedback about English and the language for asking, giving and responding to suggestions.`
-        : `Grade 11 Unit ${body.unit}: ${unit.title}\nSpeaking objective: ${objective}\nTextbook practice phrases/questions:\n${source}\nExercise task:\n${exerciseContext}`;
+  const context =
+    additionalCard && (body.unit === 5 || body.unit === 6 || body.unit === 7)
+      ? `${additionalCard.context}\n${grade12TutorContext("speaking", body.unit)}`
+      : grade12Exercise
+        ? `Grade 12 Unit 1: Good Manners\nSpeaking objective: Discuss manners and give advice.\n${grade12Exercise.context}`
+        : nutritionCard
+          ? `Grade 12 Unit 3: Diet and Nutrition\nExercise B: Give a one-minute talk. Selected textbook speaking card: ${nutritionCard.label}.\nAct as a classmate listening to the learner’s short talk. Invite them to start in their own words and give them room to finish. Ask one relevant follow-up question per turn about the selected card. Keep feedback focused on English speaking and topic clarity. Do not deliver the talk for the learner or give personal dietary advice.`
+          : stressDialogue
+            ? `Grade 12 Unit 4: Emotional Well-Being\nExercise E: In pairs, practise the dialogue. The following is the textbook dialogue from Exercise C:\n${unit4SpeakingLines.map(({ speaker, en }) => `${speaker}: ${en}`).join("\n")}\nAct as Nilar. Let the learner speak as Thazin. Begin with Nilar’s greeting. Follow the dialogue one turn at a time and accept natural paraphrases. Treat stress as a fictional classroom scenario. Keep feedback about English and the language for asking, giving and responding to suggestions.`
+            : `Grade 11 Unit ${body.unit}: ${unit.title}\nSpeaking objective: ${objective}\nTextbook practice phrases/questions:\n${source}\nExercise task:\n${exerciseContext}`;
   const conversation = untrusted("conversation", JSON.stringify(body.turns), 36000);
   try {
     if (body.finish) {

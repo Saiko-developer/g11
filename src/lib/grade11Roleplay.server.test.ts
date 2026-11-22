@@ -322,3 +322,25 @@ it("anchors Grade 12 Unit 4 speaking practice to the textbook dialogue", async (
   expect(model.prompt).toContain("Let the learner speak as Thazin.");
   expect(model.prompt).not.toContain("Grade 11 Unit 4");
 });
+
+it.each([
+  [5, "5D-G12-F", "colour", "Student A"],
+  [6, "6D-G12-E", "audience member", "A self-driving car"],
+  [7, "7D-G12-D", "Play Khant Hpone", "They are my old UPS and broken printer"],
+])(
+  "grounds Grade 12 Unit %i role-play in its textbook activity",
+  async (unit, exercise, role, example) => {
+    expect((await handleGrade11Roleplay(request({ unit, exercise }))).status).toBe(200);
+    expect(prepareGrade11Speaking).toHaveBeenCalledWith(
+      expect.any(Request),
+      expect.objectContaining({ unit, exercise }),
+      expect.any(String),
+      expect.any(String),
+    );
+    const model = vi.mocked(generateJson).mock.calls[0][0];
+    expect(model.system).toContain("Grade 12");
+    expect(model.prompt).toContain(`Grade 12 English · Unit ${unit}`);
+    expect(model.prompt).toContain(role);
+    expect(model.prompt).toContain(example);
+  },
+);

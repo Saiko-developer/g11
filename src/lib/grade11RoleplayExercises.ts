@@ -1,8 +1,10 @@
+import { additionalRoleplayIds } from "@/data/grade12/additionalRoleplay";
 import { grade12Unit4Roleplay } from "@/data/grade12/unit4-roleplay";
 import { grade12Unit3RoleplayIds } from "@/data/grade12/unit3-roleplay";
 
 export const GRADE11_ROLEPLAY_EXERCISES = [
   ...grade12Unit3RoleplayIds,
+  ...additionalRoleplayIds,
   grade12Unit4Roleplay.id,
   "1D-G12-C",
   "1D-G12-D",

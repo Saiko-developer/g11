@@ -1,3 +1,4 @@
+import { getAdditionalRoleplay } from "@/data/grade12/additionalRoleplay";
 import { grade12Unit4Roleplay } from "@/data/grade12/unit4-roleplay";
 import { getGrade12Unit3SpeakingCard } from "@/data/grade12/unit3-roleplay";
 import {
@@ -86,7 +87,7 @@ export function Grade11RolePlay({
     ? grade12Unit1Roleplay[exercise]
     : exercise === grade12Unit4Roleplay.id
       ? grade12Unit4Roleplay
-      : getGrade12Unit3SpeakingCard(exercise);
+      : (getGrade12Unit3SpeakingCard(exercise) ?? getAdditionalRoleplay(exercise));
   const grade = grade12Card ? 12 : 11;
   const unitTitle =
     grade12Card?.label ??

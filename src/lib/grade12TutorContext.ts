@@ -1,3 +1,4 @@
+import { additionalUnits, isAdditionalUnit } from "@/data/grade12/additionalUnits";
 import { textbookUnits, type AvailableGrade12Unit } from "@/data/grade12/textbookUnits";
 import { unit4EmotionRows, unit4Strategies } from "@/data/grade12/unit4";
 import { unit3Affixes, unit3SpeakingTopics } from "@/data/grade12/unit3";
@@ -16,7 +17,7 @@ export function grade12TutorContext(skill?: Grade12Skill, unit: AvailableGrade12
   if (!skill) {
     return [
       "Grade 12 English · Curriculum explorer",
-      "The following entries are curriculum headings. In-app textbook lesson and exercise content is currently available for Units 1–4.",
+      "The following entries are curriculum headings. In-app textbook lesson and exercise content is currently available for Units 1–7.",
       ...grade12Units.map(({ number, title }) => {
         const topics = grade12SkillTopics[number];
         return `Unit ${number} · ${title}: ${Object.entries(topics)
@@ -31,11 +32,15 @@ export function grade12TutorContext(skill?: Grade12Skill, unit: AvailableGrade12
     let paragraph = 0;
     const reference =
       skill === "reading"
-        ? reading.map((text) =>
-            /^\d+\. /.test(text) ? text : `[Paragraph ${++paragraph}] ${text}`,
-          )
+        ? isAdditionalUnit(unit)
+          ? additionalUnits[unit].passage.map(({ en, heading }) =>
+              heading ? en : `[Paragraph ${++paragraph}] ${en}`,
+            )
+          : reading.map((text) =>
+              /^\d+\. /.test(text) ? text : `[Paragraph ${++paragraph}] ${text}`,
+            )
         : skill === "grammar" || skill === "vocabulary" || skill === "writing"
-          ? references[skill]
+          ? (references[skill] ?? [])
           : [];
     return [
       `Grade 12 English · Unit ${unit} · ${skill} · ${grade12SkillTopics[unit][skill]}`,
@@ -48,8 +53,15 @@ export function grade12TutorContext(skill?: Grade12Skill, unit: AvailableGrade12
             ...unit4Strategies.map(([title, text]) => `${title}: ${text}`),
           ]
         : []),
-      skill === "listening" ? "Original audio and transcript are pending." : undefined,
+      skill === "listening"
+        ? unit === 7
+          ? "Original recording is pending. The textbook prints an e-waste dialogue."
+          : "Original audio and transcript are pending."
+        : undefined,
       ...(unit === 3 && skill === "speaking" ? unit3SpeakingTopics : []),
+      ...(unit === 7 && skill === "speaking"
+        ? additionalUnits[7].shadowing.map(({ en }) => en)
+        : []),
       ...(unit === 3 && skill === "vocabulary"
         ? Object.values(unit3Affixes).flatMap((rows) => rows.map((row) => row.join(" · ")))
         : []),

@@ -1,3 +1,5 @@
+import { isAdditionalUnit } from "@/data/grade12/additionalUnits";
+import { AdditionalTextbookLesson } from "@/components/grade12/AdditionalTextbookLesson";
 import {
   textbookUnitNumbers,
   type TextbookUnitNumber,
@@ -243,13 +245,18 @@ function Grade12Home() {
                     "ပျော်ရွှင်မှု၏ သော့ချက်",
                     "စားသောက်ပုံနှင့် အာဟာရ",
                     "စိတ်ခံစားမှု ကောင်းမွန်ခြင်း",
+                    "အရောင်များ",
+                    "ဉာဏ်ရည်တု",
+                    "ပတ်ဝန်းကျင်ကို ခြိမ်းခြောက်နေသော ညစ်ညမ်းမှု",
                   ][unit - 1]
                 }
               </p>
             </header>
             <SkillLinks current={skill} unit={unit} />
             <div data-saya-home-section>
-              {unit !== 1 ? (
+              {isAdditionalUnit(unit) ? (
+                <AdditionalTextbookLesson key={`${unit}:${skill}`} unit={unit} skill={skill} />
+              ) : unit !== 1 ? (
                 <TextbookUnitLesson key={`${unit}:${skill}`} unit={unit} skill={skill} />
               ) : skill === "listening" || skill === "speaking" ? (
                 <Unit1ListeningSpeaking key={skill} skill={skill} />

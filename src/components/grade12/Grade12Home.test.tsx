@@ -102,7 +102,7 @@ it("opens a Unit 1 skill and returns to the expanded curriculum card", async () 
   expect(
     await screen.findByRole("button", { name: "4 Unit 4 Emotional Well-Being" }),
   ).toHaveAttribute("aria-expanded", "true");
-  for (const { number, title } of grade12Units.slice(4)) {
+  for (const { number, title } of grade12Units.slice(7)) {
     fireEvent.click(screen.getByRole("button", { name: `${number} Unit ${number} ${title}` }));
     expect(screen.getByRole("heading", { name: "Receptive Skills" })).toBeVisible();
     expect(screen.getByRole("heading", { name: "Productive Skills" })).toBeVisible();

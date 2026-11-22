@@ -1,7 +1,7 @@
 import { unit4Grammar } from "@/data/grade12/unit4-grammar";
 import { unit4ReadingMy } from "@/data/grade12/unit4-reading-my";
 import { grade12Unit4Roleplay } from "@/data/grade12/unit4-roleplay";
-import { textbookUnits, type TextbookUnitNumber } from "@/data/grade12/textbookUnits";
+import { textbookUnits } from "@/data/grade12/textbookUnits";
 import {
   unit4ExercisesMy,
   unit4EmotionRows,
@@ -78,7 +78,7 @@ const unit4Pages: Record<Grade12Skill, string> = {
 };
 const pages = { 2: unit2Pages, 3: unit3Pages, 4: unit4Pages };
 const translations = { 2: unit2ExercisesMy, 3: unit3ExercisesMy, 4: unit4ExercisesMy };
-const readingTranslations: Record<TextbookUnitNumber, Readonly<Partial<Record<number, string>>>> = {
+const readingTranslations: Record<2 | 3 | 4, Readonly<Partial<Record<number, string>>>> = {
   2: unit2ReadingMy,
   3: unit3ReadingMy,
   4: unit4ReadingMy,
@@ -213,13 +213,7 @@ function SpeakingTopicPicker({
   );
 }
 
-export function TextbookUnitLesson({
-  unit,
-  skill,
-}: {
-  unit: TextbookUnitNumber;
-  skill: Grade12Skill;
-}) {
+export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3 | 4; skill: Grade12Skill }) {
   const [speakingMode, setSpeakingMode] = useState<"lesson" | "shadowing" | "ai">("lesson");
   const [speakingTopic, setSpeakingTopic] = useState("");
   const speakingCard = grade12Unit3SpeakingCards.find(({ label }) => label === speakingTopic);

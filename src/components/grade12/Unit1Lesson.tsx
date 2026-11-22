@@ -134,9 +134,15 @@ export function English({ text }: { text: string }) {
   return (
     <div lang="en" className="whitespace-pre-wrap break-words leading-relaxed">
       {text
-        .split(/(\*\*[^*]+\*\*)/)
+        .split(/(\*\*[^*]+\*\*|<u>[^<]+<\/u>)/)
         .map((part, index) =>
-          part.startsWith("**") ? <strong key={index}>{part.slice(2, -2)}</strong> : part,
+          part.startsWith("**") ? (
+            <strong key={index}>{part.slice(2, -2)}</strong>
+          ) : part.startsWith("<u>") ? (
+            <u key={index}>{part.slice(3, -4)}</u>
+          ) : (
+            part
+          ),
         )}
     </div>
   );
