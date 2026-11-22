@@ -105,3 +105,16 @@ it("offers separate AI role-play for each speaking exercise while the recording 
   fireEvent.click(screen.getByRole("button", { name: "Practise D with AI" }));
   expect(screen.getByRole("status")).toBeInTheDocument();
 });
+
+it("translates grammar instructions and individual modal blanks without revealing answers", () => {
+  render(<Unit1Lesson section={unit1Sections[2]} />);
+  const instructions = screen.getAllByRole("button", { name: "Translate instructions" });
+  expect(instructions).toHaveLength(2);
+  fireEvent.click(instructions[1]);
+  expect(screen.getByText(/ကိုယ်ပိုင်ဝါကျ ခြောက်ကြောင်း ရေးပါ/)).toBeVisible();
+  const sentences = screen.getAllByRole("button", { name: "Translate sentence" });
+  expect(sentences).toHaveLength(10);
+  fireEvent.click(sentences[1]);
+  expect(screen.getByText("သင် မော်တော်ဆိုင်ကယ် မောင်း ______ သလား။")).toBeVisible();
+  expect(screen.queryByText(/Suggested answer/)).not.toBeInTheDocument();
+});

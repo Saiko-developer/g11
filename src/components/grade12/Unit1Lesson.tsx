@@ -8,6 +8,8 @@ import grammarVideos from "@/data/grade12/grammarVideos.json";
 import { Grade11Pronunciation } from "@/components/grade11/Grade11Pronunciation";
 import { ToggleReveal } from "@/components/lesson/ExerciseKit";
 import {
+  grammarInstructionsMy,
+  grammarSentencesMy,
   peopleMy,
   mannersMy,
   discussionMy,
@@ -397,6 +399,12 @@ function CoreLesson({ skill }: { skill: "reading" | "vocabulary" | "grammar" }) 
                 text={readingInstructionsMy[key as keyof typeof readingInstructionsMy]}
               />
             )}
+            {skill === "grammar" && grammarInstructionsMy[key] && (
+              <BurmeseTranslation
+                label="Translate instructions"
+                text={grammarInstructionsMy[key]}
+              />
+            )}
             {skill === "vocabulary" && key === "A" && <Matching />}
             {skill === "vocabulary" && key === "C" && <CompoundPractice />}
             {skill === "grammar" && key === "B" && (
@@ -423,6 +431,12 @@ function CoreLesson({ skill }: { skill: "reading" | "vocabulary" | "grammar" }) 
                       <BurmeseTranslation
                         label="Translate sentence"
                         text={vocabularySentencesMy[index]}
+                      />
+                    )}
+                    {skill === "grammar" && (
+                      <BurmeseTranslation
+                        label="Translate sentence"
+                        text={grammarSentencesMy[index]}
                       />
                     )}
                     {comprehension && (
