@@ -1,3 +1,17 @@
+import { Grade11Pronunciation } from "@/components/grade11/Grade11Pronunciation";
+import { ToggleReveal } from "@/components/lesson/ExerciseKit";
+import {
+  peopleMy,
+  mannersMy,
+  discussionMy,
+  matchPartsMy,
+  modalNotes,
+  questionStructuresMy,
+  readingInstructionsMy,
+  readingQuestionsMy,
+  vocabularyMy,
+  vocabularySentencesMy,
+} from "@/data/grade12/unit1-study-support";
 import { useState } from "react";
 import { Grade11AIReview } from "@/components/grade11/Grade11AIReview";
 import core from "@/data/grade12/unit1-core.json";
@@ -9,7 +23,6 @@ import {
   matchAnswers,
   sampleReply,
   matchColumns,
-  readingStructures,
   readingTranslation,
   unit1Keys,
 } from "@/data/grade12/unit1-support";
@@ -23,11 +36,13 @@ function Answer({
   subjective = false,
   choices,
   review,
+  vocabularyAnswer = false,
 }: {
   prompt: string;
   expected?: string;
   subjective?: boolean;
   choices?: readonly string[];
+  vocabularyAnswer?: boolean;
   review?: { instructions: string; context: string };
 }) {
   const [answer, setAnswer] = useState("");
@@ -101,9 +116,10 @@ function Answer({
         </p>
       )}
       {reveal && (
-        <p className="rounded-lg bg-primary/10 p-3 text-sm">
-          <strong>Suggested answer:</strong> {expected}
-        </p>
+        <div className="rounded-lg bg-primary/10 p-3 text-sm">
+          <strong>Suggested answer:</strong>{" "}
+          {vocabularyAnswer && expected ? <VocabularyWord word={expected} /> : expected}
+        </div>
       )}
     </div>
   );
@@ -121,49 +137,44 @@ function English({ text }: { text: string }) {
   );
 }
 
+function BurmeseTranslation({ text, label = "မြန်မာဘာသာပြန်" }: { text: string; label?: string }) {
+  return (
+    <ToggleReveal label={label} hiddenLabel="ဘာသာပြန် ပိတ်ရန်">
+      <p lang="my">{text}</p>
+    </ToggleReveal>
+  );
+}
+
 function Reading() {
-  const [view, setView] = useState<"english" | "myanmar" | "structure">("english");
   return (
     <div className="space-y-4">
-      <div aria-label="Reading support" className="flex flex-wrap gap-2">
-        <Button
-          size="sm"
-          variant={view === "english" ? "default" : "outline"}
-          aria-pressed={view === "english"}
-          onClick={() => setView("english")}
+      {core.paragraphs.map((block, index) => (
+        <section
+          key={block}
+          aria-label={`Paragraph ${index + 1}`}
+          className="space-y-2 rounded-xl border p-4"
         >
-          English
-        </Button>
-        <Button
-          size="sm"
-          variant={view === "myanmar" ? "default" : "outline"}
-          aria-pressed={view === "myanmar"}
-          onClick={() => setView("myanmar")}
-        >
-          မြန်မာဘာသာပြန်
-        </Button>
-        <Button
-          size="sm"
-          variant={view === "structure" ? "default" : "outline"}
-          aria-pressed={view === "structure"}
-          onClick={() => setView("structure")}
-        >
-          ဝါကျဖွဲ့စည်းပုံ
-        </Button>
+          <p className="text-sm font-medium text-muted-foreground">Paragraph {index + 1}</p>
+          <English text={block} />
+          <BurmeseTranslation text={readingTranslation[index]} />
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function VocabularyWord({ word }: { word: string }) {
+  return (
+    <div>
+      <div className="flex flex-wrap items-center gap-x-2">
+        <span lang="en" className="font-medium">
+          {word}
+        </span>
+        <Grade11Pronunciation text={word} />
       </div>
-      {view === "english" ? (
-        <div className="space-y-4">
-          {core.paragraphs.map((block) => (
-            <English key={block} text={block} />
-          ))}
-        </div>
-      ) : (
-        <div lang="my" className="space-y-4 leading-loose">
-          {(view === "myanmar" ? readingTranslation : readingStructures).map((block) => (
-            <p key={block}>{block}</p>
-          ))}
-        </div>
-      )}
+      <p lang="my" className="text-sm text-muted-foreground">
+        {vocabularyMy[word] ?? matchPartsMy[word]}
+      </p>
     </div>
   );
 }
@@ -210,39 +221,45 @@ function PreReading() {
             instruction:
               "1. How polite do you think you should be to these people? Tick (✓) your answers. Then compare your answers with a partner.",
             items: core.people,
+            translations: peopleMy,
             choices: ["A little polite", "Polite", "Very polite"],
           },
           {
             instruction:
               "2. Read the following manners. Decide whether each manner is good or bad. Mark (✓) your answers. Then compare your answers with a partner.",
             items: core.manners,
+            translations: mannersMy,
             choices: ["Good", "Bad"],
           },
-        ].map(({ instruction, items, choices }) => (
+        ].map(({ instruction, items, translations, choices }) => (
           <fieldset key={instruction} className="space-y-2">
             <legend className="mb-2 font-medium">{instruction}</legend>
-            {items.map((item) => (
-              <label
-                className="grid items-center gap-2 rounded-lg bg-muted/40 p-2 sm:grid-cols-[1fr_10rem]"
-                key={item}
-              >
-                <span>{item}</span>
-                <select className="rounded-md border bg-background p-2 text-sm" defaultValue="">
-                  <option value="">Choose</option>
-                  {choices.map((choice) => (
-                    <option key={choice}>{choice}</option>
-                  ))}
-                </select>
-              </label>
+            {items.map((item, index) => (
+              <div key={item}>
+                <label
+                  className="grid items-center gap-2 rounded-lg bg-muted/40 p-2 sm:grid-cols-[1fr_10rem]"
+                  key={item}
+                >
+                  <span>{item}</span>
+                  <select className="rounded-md border bg-background p-2 text-sm" defaultValue="">
+                    <option value="">Choose</option>
+                    {choices.map((choice) => (
+                      <option key={choice}>{choice}</option>
+                    ))}
+                  </select>
+                </label>
+                <BurmeseTranslation text={translations[index]} />
+              </div>
             ))}
           </fieldset>
         ))}
         <div className="space-y-3">
           <p className="font-medium">3. Answer the following questions.</p>
           <ol className="list-[lower-alpha] space-y-3 pl-5">
-            {core.discussion.map((prompt) => (
+            {core.discussion.map((prompt, index) => (
               <li key={prompt}>
                 <p>{prompt}</p>
+                <BurmeseTranslation label="Translate question" text={discussionMy[index]} />
                 <Answer prompt={prompt} subjective />
               </li>
             ))}
@@ -264,7 +281,9 @@ function VocabularyReference() {
           <dl className="space-y-2">
             {examples.map(([word, pattern]) => (
               <div className="rounded-lg bg-muted/50 p-2" key={word}>
-                <dt className="font-medium">{word}</dt>
+                <dt>
+                  <VocabularyWord word={word} />
+                </dt>
                 <dd className="text-sm text-muted-foreground">{pattern}</dd>
               </div>
             ))}
@@ -276,30 +295,54 @@ function VocabularyReference() {
 }
 
 function GrammarReference() {
-  return modals.map(({ word, negative, uses }) => (
-    <article key={word} className="rounded-xl border p-4">
-      <h2 className="mb-3 font-semibold">{word}</h2>
-      <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
-        <div className="space-y-2 rounded-lg bg-muted/50 p-3">
-          <h4 className="font-semibold">Form</h4>
-          <p>Affirmative: Subject + {word.toLowerCase()} + v-inf</p>
-          <p>Negative: Subject + {negative} + v-inf</p>
-          <p>Interrogative: {word} + subject + v-inf …?</p>
+  return modals.map(({ word, negative, uses }) => {
+    const notes = modalNotes[word];
+    return (
+      <article key={word} className="space-y-3 rounded-2xl border p-4 sm:p-5">
+        <h4 className="text-lg font-bold">{word}</h4>
+        <div className="space-y-2 rounded-xl border border-primary/30 bg-primary/5 p-4">
+          <p lang="my" className="font-semibold text-primary">
+            အနှစ်ချုပ်
+          </p>
+          <p lang="my">{notes.summary}</p>
+          <p className="font-mono text-sm">Subject + {word.toLowerCase()} + base verb</p>
         </div>
-        <div className="space-y-2 rounded-lg bg-muted/50 p-3">
-          <h4 className="font-semibold">Use and Example</h4>
-          <ol className="list-decimal space-y-2 pl-5">
-            {uses.map(([usage, example]) => (
+        <ToggleReveal label="Text Explanation" hiddenLabel="Hide explanation" tone="primary">
+          <dl className="grid gap-2 sm:grid-cols-3">
+            {[
+              ["အပြုဝါကျ", `Subject + ${word.toLowerCase()} + base verb`],
+              ["အငြင်းဝါကျ", `Subject + ${negative} + base verb`],
+              ["မေးခွန်း", `${word} + subject + base verb …?`],
+            ].map(([label, formula]) => (
+              <div key={label} className="rounded-lg border bg-background p-3">
+                <dt lang="my" className="font-semibold">
+                  {label}
+                </dt>
+                <dd className="mt-1 font-mono">{formula}</dd>
+              </div>
+            ))}
+          </dl>
+          <ol className="mt-4 list-decimal space-y-3 pl-5">
+            {uses.map(([usage, example], index) => (
               <li key={usage}>
-                <strong className="font-medium">{usage}</strong>
+                <p lang="my" className="font-semibold">
+                  {notes.uses[index]}
+                </p>
+                <p lang="en" className="text-muted-foreground">
+                  {usage}
+                </p>
                 <English text={example} />
+                <BurmeseTranslation text={notes.examples[index]} />
               </li>
             ))}
           </ol>
-        </div>
-      </div>
-    </article>
-  ));
+          <p lang="my" className="mt-4 rounded-lg bg-background p-3">
+            {notes.tip}
+          </p>
+        </ToggleReveal>
+      </article>
+    );
+  });
 }
 
 function Matching() {
@@ -310,15 +353,18 @@ function Matching() {
     <>
       <p className="font-medium">Column B</p>
       <ul className="grid grid-cols-2 gap-1 rounded-lg bg-muted/50 p-3 sm:grid-cols-3">
-        {choices.map((choice) => (
-          <li key={choice}>{choice}</li>
+        {choices.map((choice, index) => (
+          <li key={choice}>
+            <span>({String.fromCharCode(97 + index)})</span>{" "}
+            <VocabularyWord word={matchColumns[1][index]} />
+          </li>
         ))}
       </ul>
       <p className="font-medium">Column A</p>
       <ol className="list-decimal space-y-3 pl-5">
         {matchColumns[0].map((word, i) => (
           <li key={word}>
-            <p>{word}</p>
+            <VocabularyWord word={word} />
             <Answer
               prompt={`Match ${word}`}
               choices={choices}
@@ -340,7 +386,9 @@ function CompoundPractice() {
       ].map(([title, example]) => (
         <fieldset key={title} className="space-y-2">
           <legend className="mb-2 font-medium">{title}</legend>
-          <p>1. {example}</p>
+          <div className="rounded-lg bg-muted/50 p-2">
+            <VocabularyWord word={example} />
+          </div>
           {[2, 3, 4, 5].map((number) => (
             <Answer key={number} prompt={`${title} ${number}`} />
           ))}
@@ -369,6 +417,12 @@ function CoreLesson({ skill }: { skill: "reading" | "vocabulary" | "grammar" }) 
         return (
           <section key={instruction} className="space-y-3 rounded-xl border p-4">
             <h3 className="font-semibold">{instruction}</h3>
+            {skill === "reading" && (
+              <BurmeseTranslation
+                label="Translate instructions"
+                text={readingInstructionsMy[key as keyof typeof readingInstructionsMy]}
+              />
+            )}
             {skill === "vocabulary" && key === "A" && <Matching />}
             {skill === "vocabulary" && key === "C" && <CompoundPractice />}
             {skill === "grammar" && key === "B" && (
@@ -385,7 +439,29 @@ function CoreLesson({ skill }: { skill: "reading" | "vocabulary" | "grammar" }) 
                 {questions.map((prompt, index) => (
                   <li className="space-y-2 border-t pt-3" key={prompt}>
                     <English text={prompt} />
+                    {skill === "reading" && (
+                      <BurmeseTranslation
+                        label="Translate question"
+                        text={readingQuestionsMy[key as keyof typeof readingQuestionsMy][index]}
+                      />
+                    )}
+                    {skill === "vocabulary" && (
+                      <BurmeseTranslation
+                        label="Translate sentence"
+                        text={vocabularySentencesMy[index]}
+                      />
+                    )}
+                    {comprehension && (
+                      <ToggleReveal
+                        label="Sentence Structure"
+                        hiddenLabel="Hide sentence structure"
+                        tone="primary"
+                      >
+                        <p lang="my">{questionStructuresMy[index]}</p>
+                      </ToggleReveal>
+                    )}
                     <Answer
+                      vocabularyAnswer={skill === "vocabulary"}
                       prompt={prompt}
                       expected={answers?.[index]}
                       subjective={comprehension}
