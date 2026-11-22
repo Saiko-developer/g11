@@ -19,6 +19,11 @@ describe.each([
   [5, [5, 6, 4, 9, 5, 5], "5D-G12-F"],
   [6, [3, 6, 9, 10, 14], "6D-G12-E"],
   [7, [3, 10, 10, 10], "7D-G12-D"],
+  [8, [4, 10, 10, 10, 6], "8D-G12-E"],
+  [9, [3, 12, 10, 16], "9D-G12-E"],
+  [10, [3, 6, 5, 2, 10], "10D-G12-C"],
+  [11, [3, 7, 10, 0, 1, 4], "11D-G12-E"],
+  [12, [3, 4, 7, 7, 8], "12D-G12-E"],
 ] as const)("Grade 12 Unit %i", (unit, readingCounts, exerciseId) => {
   it("includes each skill and has a corresponding Burmese translation per item", () => {
     const { sections, passage } = additionalUnits[unit];
@@ -31,6 +36,7 @@ describe.each([
       for (const group of groups) {
         expect(group.translation.instruction).toMatch(/[က-၏]/);
         expect(group.translation.items).toHaveLength(group.source.items.length);
+        for (const { my } of group.reference) expect(my).toMatch(/[က-၏]/);
         for (const translation of group.translation.items) {
           expect(translation).toMatch(/[က-၏]/);
         }

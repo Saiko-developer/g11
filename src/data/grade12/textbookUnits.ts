@@ -11,6 +11,6 @@ export const textbookUnits = {
   ...additionalUnits,
 };
 
-export const textbookUnitNumbers = [2, 3, 4, 5, 6, 7] as const;
+export const textbookUnitNumbers = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
 export type TextbookUnitNumber = (typeof textbookUnitNumbers)[number];
 export type AvailableGrade12Unit = 1 | TextbookUnitNumber;

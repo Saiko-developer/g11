@@ -17,7 +17,7 @@ export function grade12TutorContext(skill?: Grade12Skill, unit: AvailableGrade12
   if (!skill) {
     return [
       "Grade 12 English · Curriculum explorer",
-      "The following entries are curriculum headings. In-app textbook lesson and exercise content is currently available for Units 1–7.",
+      "The following entries are curriculum headings. In-app textbook lesson and exercise content is currently available for Units 1–12.",
       ...grade12Units.map(({ number, title }) => {
         const topics = grade12SkillTopics[number];
         return `Unit ${number} · ${title}: ${Object.entries(topics)

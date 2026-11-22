@@ -1,4 +1,5 @@
 import type { GrammarSection, UnitGrammar } from "@/data/grammar/types";
+import type { AdditionalUnitNumber } from "./additionalUnits";
 
 function lesson({
   id,
@@ -213,7 +214,264 @@ const causeLinks = lesson({
   answer: "owing to",
 });
 
-export const additionalGrammar: Record<5 | 6 | 7, UnitGrammar> = {
+const realConditionals = lesson({
+  id: "grade12-unit8-real-conditionals",
+  topicEn: "Zero and first conditionals",
+  topicMy: "ယေဘုယျအမှန်နှင့် ဖြစ်နိုင်သော အခြေအနေ",
+  rule: "အမြဲဖြစ်လေ့ရှိသော အခြေအနေနှင့် ရလဒ်ကို နှစ်ပိုင်းလုံး ပစ္စုပ္ပန်ကာလ သုံး၍ ရေးပါ။ သီးခြား အနာဂတ်ဖြစ်နိုင်ခြေအတွက် အခြေအနေတွင် ပစ္စုပ္ပန်၊ ရလဒ်တွင် အနာဂတ် အကူကြိယာ သုံးပါ။",
+  reason:
+    "ထပ်ခါတလဲလဲ အမှန်ဖြစ်သလား၊ နောင် တစ်ကြိမ်ဖြစ်နိုင်သလား ခွဲသိလျှင် ရလဒ်၏ ကာလကို ရွေးနိုင်သည်။",
+  examples: [
+    {
+      en: "If the wind stops blowing, all wind turbines stop working.",
+      my: "လေမတိုက်တော့လျှင် လေတာဘိုင်အားလုံး ရပ်သည်။",
+    },
+    {
+      en: "If they are hungry, I’ll make some sandwiches.",
+      my: "သူတို့ ဗိုက်ဆာလျှင် အသားညှပ်ပေါင်မုန့် လုပ်ပေးမည်။",
+    },
+  ],
+  formula: "If + present simple, present simple / will + base verb",
+  before: ["We may use public transport more.", "Our cities may be cleaner."],
+  after: "Our cities will be cleaner if we use public transport more.",
+  steps: [
+    "အခြေအနေကို အရင် ရှာပါ။",
+    "ရလဒ်က ယေဘုယျအမှန်လား၊ နောင်ဖြစ်နိုင်တာလား ဆုံးဖြတ်ပါ။",
+    "အခြေအနေပြ ဝါကျခွဲ ရှေ့ရောက်လျှင် ကော်မာ ထည့်ပါ။",
+  ],
+  mistake: [
+    "If she will not hurry, she will miss the bus.",
+    "If she does not hurry, she will miss the bus.",
+    "သာမန် အနာဂတ် အခြေအနေပြ အပိုင်းတွင် ရိုးရိုး ပစ္စုပ္ပန် သုံးပါ။",
+  ],
+  script:
+    "ကဲ၊ လေမတိုက်ရင် တာဘိုင်ရပ်တယ်။ ဒီဟာက တစ်ကြိမ်အတွက် ခန့်မှန်းတာလား၊ လေမတိုက်တိုင်း ဖြစ်တာလား။ တိုက်တိုင်း ဖြစ်တာဆိုတော့ နှစ်ဖက်လုံး ရိုးရိုး ပစ္စုပ္ပန်နဲ့ ပြောပါတယ်။ အခု ဘတ်စ်ကား မီမလား ဆိုတာ ကြည့်ပါ။ ဒီနေ့ သူ အလျင်မလုပ်ရင် ကားလွတ်မယ်။ ကားလွတ်မယ်ဆိုတာ နောင်ရလဒ်ပါ။ အခြေအနေမှာ ပစ္စုပ္ပန်ထားပြီး ရလဒ်မှာ အနာဂတ်ပုံ သုံးပါ။ စာကြောင်းဆက်မီ အကြိမ်တိုင်း မှန်တာလား၊ တစ်ကြိမ် ဖြစ်နိုင်တာလားလို့ ကိုယ့်ကိုယ်ကို မေးပါ။",
+  question: "If she does not hurry, she ___ the bus.",
+  options: ["will miss", "would have missed", "had missed"],
+  answer: "will miss",
+});
+
+const imaginedConditionals = lesson({
+  id: "grade12-unit8-unreal-conditionals",
+  topicEn: "Second and third conditionals",
+  topicMy: "လက်ရှိနှင့် အတိတ် စိတ်ကူးအခြေအနေများ",
+  rule: "ယခု သို့မဟုတ် နောင် စိတ်ကူးအတွက် အခြေအနေကို ရိုးရိုးအတိတ်၊ ရလဒ်ကို အကူကြိယာနှင့် ကြိယာအမြစ် သုံးပါ။ ပြောင်းမရသော အတိတ်အတွက် အတိတ်ပြီးစီးကာလနှင့် အတိတ်စိတ်ကူး ရလဒ်ပုံကို တွဲပါ။",
+  reason:
+    "အတိတ်ပုံစံကို အချိန်အတွက် သုံးတာလား၊ အဖြစ်မှန်နှင့် ကွာကြောင်း ပြဖို့ သုံးတာလား ခွဲကြည့်ပါ။",
+  examples: [
+    {
+      en: "If I had more time, I would exercise more.",
+      my: "အချိန်ပိုရလျှင် လေ့ကျင့်ခန်း ပိုလုပ်မည်။",
+    },
+    {
+      en: "You would never have met Jamie if you hadn’t gone to the same school.",
+      my: "ကျောင်းတူ မတက်ခဲ့လျှင် ဂျေမီနှင့် တွေ့ခဲ့မည် မဟုတ်ပါ။",
+    },
+  ],
+  formula:
+    "If + past simple → would + base verb · If + had + past participle → would have + past participle",
+  before: ["I didn’t know you were in the hospital.", "I didn’t visit you."],
+  after: "If I had known you were in the hospital, I would have visited you.",
+  steps: [
+    "နှစ်ခုစလုံး အတိတ်မှာ ပြီးသွားသလား စစ်ပါ။",
+    "အတိတ် အဖြစ်မှန်ကို ပြောင်းစိတ်ကူးလျှင် အခြေအနေကို အတိတ်ပြီးစီးပုံထားပါ။",
+    "ရလဒ်ကိုလည်း အတိတ်စိတ်ကူး ကြိယာပုံနှင့် တွဲပါ။",
+  ],
+  mistake: [
+    "If I knew you were in hospital yesterday, I would have visited.",
+    "If I had known you were in hospital yesterday, I would have visited.",
+    "မနေ့က မသိခဲ့သော အခြေအနေကို အတိတ်ပြီးစီးပုံ သုံးပါ။",
+  ],
+  script:
+    "ကားမရှိလို့ ကျောင်းကို ကားမောင်း မသွားနိုင်ဘူး။ ကားရှိတယ်လို့ စိတ်ကူးမယ်ဆိုရင် အခုကို ပြောင်းစိတ်ကူးတာပါ။ အခြေအနေမှာ အတိတ်ပုံ သုံးပေမဲ့ ပြောနေတာ အခုပါ။ မနေ့က သူငယ်ချင်း ဆေးရုံတက်မှန်း မသိလို့ မသွားခဲ့ဘူး ဆိုရင်တော့ အတိတ်ကို ပြန်ပြောင်းစိတ်ကူးတာ။ သိခဲ့ရင် သွားခဲ့မှာပေါ့လို့ ရေးမယ်။ အခြေအနေနဲ့ ရလဒ် နှစ်ခုလုံး အတိတ်စိတ်ကူးပုံ သုံးပါ။ လေ့ကျင့်ခန်းကို ဖြေခါနီး ဘယ်အချိန်ကို ပြောင်းစိတ်ကူးနေတာလဲ ဆုံးဖြတ်ပါ။",
+  question: "If we had listened to the radio, we ___ the news.",
+  options: ["will hear", "would hear", "would have heard"],
+  answer: "would have heard",
+});
+
+const infinitivePatterns = lesson({
+  id: "grade12-unit9-infinitives",
+  topicEn: "Noun group + bare infinitive or to-infinitive",
+  topicMy: "နာမ်စုနောက် လိုက်သည့် ကြိယာအမြစ်ပုံ နှစ်မျိုး",
+  rule: "ခွင့်ပြုခြင်း၊ အတင်းလုပ်စေခြင်းနှင့် မြင်ကြားသိခြင်းပြ ကြိယာအချို့နောက်တွင် ကံနှင့် အမှတ်အသားမပါသော ကြိယာအမြစ် လိုက်သည်။ တောင်းဆို၊ ခွင့်ပြု၊ အကြံပေးသည့် အခြားကြိယာများတွင် အမှတ်အသားပါသော ကြိယာအမြစ် လိုက်သည်။",
+  reason:
+    "ပထမ ကြိယာကို ခွဲသိလျှင် ကံနောက်တွင် မည်သည့်ပုံ လိုက်ရမည်ကို ရွေးနိုင်သည်။ ကူညီသည်ဟူသော ကြိယာနောက် နှစ်မျိုးလုံး ရသည်။",
+  examples: [
+    { en: "Annie made Helen pick up the doll.", my: "အန်နီ ဟယ်လင်ကို အရုပ်ကောက်စေသည်။" },
+    {
+      en: "Annie asked the family to leave the room.",
+      my: "အန်နီက မိသားစုကို အခန်းမှ ထွက်ရန် တောင်းဆိုသည်။",
+    },
+    { en: "Can you help me (to) carry this box?", my: "ဒီသေတ္တာကို သယ်ပေးနိုင်မလား။" },
+  ],
+  formula:
+    "make / let / hear + object + base verb · ask / allow / advise + object + to + base verb",
+  before: ["He went out of the room.", "She heard him."],
+  after: "She heard him go out of the room.",
+  steps: [
+    "ကြားသည့်သူကို အဓိကဝါကျ ကတ္တားထားပါ။",
+    "ထွက်သွားသူကို ကြားခြင်းပြ ကြိယာနောက် ကံအဖြစ် ထားပါ။",
+    "ကံနောက် လုပ်ရပ်ကို အမြစ်ပုံ ပြန်ပြောင်းပါ။",
+  ],
+  mistake: [
+    "They let her to eat with her hands.",
+    "They let her eat with her hands.",
+    "ခွင့်ပြုသည်ဟု ဆိုတိုင်း ပုံတူမဟုတ်ပါ။ မည်သည့် ပထမကြိယာ သုံးထားသလဲ စစ်ပါ။",
+  ],
+  script:
+    "အန်နီက ဟယ်လင်ကို အရုပ်ကောက်စေတယ်။ လုပ်စေသူ အန်နီ၊ လုပ်ရသူ ဟယ်လင်၊ လုပ်ရပ်က အရုပ်ကောက်တာပါ။ အတင်းလုပ်စေတဲ့ ကြိယာ သုံးထားလို့ ကံနောက်မှာ ကြိယာ အမြစ်ပဲ ထည့်ပါ။ အန်နီက မိသားစုကို ထွက်ဖို့ တောင်းဆိုတယ်ဆိုရင်လည်း လုပ်သူနဲ့ လုပ်ရပ်ကို ခွဲပါ။ ဒီတစ်ခါ ပထမကြိယာက တောင်းဆိုတာဖြစ်လို့ လုပ်ရပ်ရှေ့ အမှတ်အသား ပါရမယ်။ နှစ်ခုလုံးမှာ လူနဲ့ လုပ်ရပ် ပါတာတူတယ်။ ဘယ်လို ဆက်ရမလဲဆိုတာ ပထမကြိယာက ဆုံးဖြတ်ပေးပါတယ်။",
+  question: "The Kellers allowed Helen ___ food from other people’s plates.",
+  options: ["take", "to take", "takes"],
+  answer: "to take",
+});
+
+const purpose = lesson({
+  id: "grade12-unit10-purpose",
+  topicEn: "Connectors of purpose",
+  topicMy: "ရည်ရွယ်ချက်ပြ စကားဆက်များ",
+  rule: "ရည်ရွယ်ချက်ကို ကြိယာအမြစ်ပါ စကားစု သို့မဟုတ် သီးခြား ကတ္တားနှင့် ကြိယာပါ ဝါကျခွဲဖြင့် ရေးနိုင်သည်။",
+  reason: "ရည်ရွယ်ချက်အပိုင်းတွင် ဘယ်သူ ဘာလုပ်မည်ကို သီးခြား ဖော်ပြဖို့ လိုသလား စစ်ပါ။",
+  examples: [
+    {
+      en: "The student opened the window to ventilate the classroom.",
+      my: "စာသင်ခန်း လေဝင်ရန် ကျောင်းသား ပြတင်းပေါက် ဖွင့်သည်။",
+    },
+    {
+      en: "We want to get to the beach early so that we can see the sunrise.",
+      my: "နေထွက်တာ မြင်နိုင်ရန် ကမ်းခြေကို စောစောရောက်ချင်သည်။",
+    },
+  ],
+  formula: "to / in order to / so as to + base verb · so that / in order that + subject + verb",
+  before: ["The teacher spoke slowly.", "The students could take down the notes."],
+  after: "The teacher spoke slowly so that the students could take down the notes.",
+  steps: [
+    "ပထမလုပ်ရပ်နှင့် လိုချင်သော ရလဒ်ကို ခွဲပါ။",
+    "ရည်ရွယ်ချက်၏ ကတ္တားက ကျောင်းသားများဖြစ်၍ ဝါကျခွဲအဖြစ် ထည့်ပါ။",
+    "ဖြစ်နိုင်စွမ်းကို အကူကြိယာဖြင့် ပြပါ။",
+  ],
+  mistake: [
+    "The teacher spoke slowly to the students could take notes.",
+    "The teacher spoke slowly so that the students could take notes.",
+    "ကတ္တားကြိယာပါ ဝါကျခွဲရှေ့တွင် ဝါကျခွဲဆက်စကား သုံးပါ။",
+  ],
+  script:
+    "ပြတင်းပေါက် ဖွင့်တယ်။ ဘာအတွက်လဲ။ အခန်း လေဝင်ဖို့ပါ။ လုပ်ရပ်ကို ဘာလုပ်ဖို့လဲလို့ ဖြေလိုက်တော့ တိုတိုရေးလို့ ရတယ်။ ဆရာ ဖြည်းဖြည်း ပြောတယ်၊ ကျောင်းသားတွေ မှတ်စုလိုက်ရေးနိုင်ဖို့ဆိုရင် အပိုင်းနှစ်ခုမှာ လုပ်သူမတူဘူး။ ကျောင်းသားတွေကို သီးခြား ရေးရမယ်။ ဝါကျခွဲဆက်စကားသုံးပြီး လုပ်နိုင်တာကို ဆက်ပြပါ။ ကွက်လပ်နောက်မှာ ကြိယာအမြစ်ပဲလား၊ ကတ္တားနဲ့ ကြိယာလား စစ်ရင် ရွေးရလွယ်တယ်။",
+  question: "I’ll go to bed early ___ I can get up early tomorrow.",
+  options: ["to", "so that", "in order to"],
+  answer: "so that",
+});
+
+const comparisons = lesson({
+  id: "grade12-unit11-as-if",
+  topicEn: "As if and as though",
+  topicMy: "သကဲ့သို့ နှိုင်းယှဉ်သော ဝါကျများ",
+  rule: "ဖြစ်နိုင်ဖွယ် အထင်နှင့် မဖြစ်နိုင်သော စိတ်ကူးကို သကဲ့သို့ ဟူသော ဆက်စကားဖြင့် နှိုင်းယှဉ်နိုင်သည်။ မဖြစ်နိုင်သော လက်ရှိ နှိုင်းယှဉ်မှုတွင် အတိတ်ပုံ၊ မဖြစ်ခဲ့သော အတိတ်အတွက် အတိတ်ပြီးစီးပုံ ရွေးနိုင်သည်။",
+  reason:
+    "မြင်ရ၊ ကြားရသည့် အထောက်အထားအရ ဖြစ်နိုင်သလား၊ အဖြစ်မှန်ကို သိပြီး တင်စားတာလား ဆုံးဖြတ်ပါ။",
+  examples: [
+    { en: "It looks as if you’ve not met before.", my: "အရင်က မဆုံဖူးပုံ ပေါ်သည်။" },
+    { en: "He acts as if he were a king.", my: "ဘုရင်တစ်ပါးသကဲ့သို့ ပြုမူသည်။" },
+    { en: "They looked as if they had seen a ghost.", my: "တစ္ဆေ မြင်ခဲ့သကဲ့သို့ ပုံပေါ်သည်။" },
+  ],
+  formula: "look / feel / sound / act + as if / as though + clause",
+  before: ["They looked frightened.", "They did not see a ghost."],
+  after: "They looked as if they had seen a ghost.",
+  steps: [
+    "မြင်ရသည့် အမူအရာကို အဓိကဝါကျ ထားပါ။",
+    "မဖြစ်ခဲ့သော အတိတ်ကို အတိတ်ပြီးစီးပုံဖြင့် တင်စားပါ။",
+  ],
+  mistake: [
+    "He acts as if were a king.",
+    "He acts as if he were a king.",
+    "နှိုင်းယှဉ်မှု ထည့်သော ဝါကျခွဲတွင် ကတ္တားပါရမည်။",
+  ],
+  script:
+    "တစ်ယောက်ယောက် အိပ်ရေးမဝပုံပေါ်တယ်လို့ ပြောရင် တကယ် မအိပ်ခဲ့တာ ဖြစ်နိုင်တယ်။ ဘုရင်လို ပြုမူတယ်လို့ ပြောတာကတော့ သူ ဘုရင်မဟုတ်မှန်း သိပြီး နှိုင်းတာ။ ဒါကြောင့် အဲဒီ နှိုင်းယှဉ်ချက်မှာ အတိတ်ပုံကို သုံးပြီး စိတ်ကူးဖြစ်ကြောင်း ပြပါတယ်။ ကြောက်နေသူတွေ တစ္ဆေမြင်ခဲ့သလိုလို့ ဆိုရင် အဲဒါက အခုအမူအရာထက် စောတဲ့ မဖြစ်ခဲ့သောအရာပါ။ အတိတ်ပြီးစီးပုံ သုံးပါ။",
+  question: "They did not see a ghost. They looked as if they ___ a ghost.",
+  options: ["had seen", "see", "will see"],
+  answer: "had seen",
+});
+
+const introductoryPhrases = lesson({
+  id: "grade12-unit11-introductory-phrases",
+  topicEn: "Introductory phrases",
+  topicMy: "ဝါကျအစ စကားစုများ",
+  rule: "အချိန်၊ နေရာ၊ တစ်ပြိုင်နက် လုပ်ရပ် သို့မဟုတ် ရည်ရွယ်ချက် စကားစုကို ရှေ့တင်၍ ဝါကျအစ အမျိုးမျိုး ရေးနိုင်သည်။",
+  reason: "ဖတ်သူ အရင်သိရမည့် နောက်ခံကို ရှေ့တင်ပါ။ စကားစု၏ လုပ်သူနှင့် အဓိက ကတ္တားကို ကိုက်ညီစေပါ။",
+  examples: [
+    {
+      en: "After the bad storm, we saw the clear blue sky.",
+      my: "မုန်တိုင်းဆိုးပြီးနောက် ကြည်လင်သော ကောင်းကင် မြင်ရသည်။",
+    },
+    {
+      en: "Leaning against the tree, he gulped down some water.",
+      my: "သစ်ပင်မှီလျက် သူ ရေသောက်သည်။",
+    },
+    {
+      en: "To run the programme, press the ‘Start’ button.",
+      my: "ပရိုဂရမ် လည်ပတ်ရန် စတင်ခလုတ် နှိပ်ပါ။",
+    },
+  ],
+  formula: "Prepositional / participle / infinitive phrase, main clause",
+  before: ["She was driving to work.", "She saw a busking musician."],
+  after: "Driving to work, she saw a busking musician.",
+  steps: [
+    "နောက်ခံ စကားစုကို ရှာပါ။",
+    "ရှေ့တင်ပြီး ကော်မာ ထည့်ပါ။",
+    "အစစကားစု၏ လုပ်သူကို ကော်မာနောက်တွင် ထားပါ။",
+  ],
+  mistake: [
+    "Driving to work, a musician caught her eye.",
+    "Driving to work, she saw a musician.",
+    "ကားမောင်းသူကို ကော်မာနောက် ကတ္တားနေရာ ထားပါ။",
+  ],
+  script:
+    "ကားမောင်းနေတုန်း လမ်းပေါ်က ဂီတဖျော်ဖြေသူကို မြင်တယ်ဆိုပါစို့။ စာဖတ်သူကို ဘယ်အချိန်ကလဲ အရင်ပြချင်ရင် ကားမောင်းနေစဉ် ဆိုတဲ့အပိုင်းကို ရှေ့တင်ပါ။ ပြီးမှ ကားမောင်းသူက ဘယ်သူလဲ ဆိုတာ ကော်မာနောက်မှာ ရှင်းအောင် ထားပါ။ နေရာပြ စကားစု၊ ရည်ရွယ်ချက်ပြ စကားစုကိုလည်း အဲဒီလို ရှေ့တင်နိုင်ပါတယ်။ စာကြောင်းတိုင်းကို ကတ္တားနဲ့ စရင် တူနေတတ်လို့ ဖတ်သူ အရင်သိသင့်တာကို ကြည့်ပြီး ရွေးပါ။",
+  question: "___, U Soe listened to the footsteps.",
+  options: ["Standing completely still", "U Soe standing", "Completely still stands"],
+  answer: "Standing completely still",
+});
+
+const relatives = lesson({
+  id: "grade12-unit12-relatives",
+  topicEn: "Relative pronouns and relative adverbs",
+  topicMy: "ဆက်စပ်နာမ်စားနှင့် ဆက်စပ်ကြိယာဝိသေသန",
+  rule: "ထပ်ဖော်ပြလိုသော နာမ်နောက် ဆက်စပ်ဝါကျခွဲ ထားပါ။ လူ သို့မဟုတ် အရာကို ရည်ညွှန်းသည့် နာမ်စားက ကတ္တား၊ ကံ သို့မဟုတ် အပိုင် ဖြစ်နိုင်သည်။ နေရာ၊ အချိန်၊ အကြောင်းရင်းအတွက် သီးခြား ဆက်စကားများ ရှိသည်။",
+  reason: "အရင်ဆုံး ထပ်နေသော နာမ်ကို ရှာပြီး ဆက်စပ်ဝါကျခွဲတွင် ထိုနာမ် ဘာတာဝန်ယူသလဲ စစ်ပါ။",
+  examples: [
+    {
+      en: "The man who came to the house left flowers for you.",
+      my: "အိမ်သို့ လာသော အမျိုးသားက သင့်အတွက် ပန်းများ ထားခဲ့သည်။",
+    },
+    {
+      en: "I don’t know the man whom I met at the gate.",
+      my: "တံခါးမှာ တွေ့ခဲ့သော အမျိုးသားကို မသိပါ။",
+    },
+    { en: "This is the village where I was born.", my: "ဤရွာသည် ကျွန်ုပ် မွေးခဲ့သော နေရာဖြစ်သည်။" },
+    { en: "This is the season when roses bloom.", my: "ဤရာသီက နှင်းဆီပွင့်သော အချိန် ဖြစ်သည်။" },
+  ],
+  formula:
+    "Noun + who / whom / whose / which / that + clause · place / time / reason + where / when / why + clause",
+  before: ["This is the village.", "I was born in this village."],
+  after: "This is the village where I was born.",
+  steps: [
+    "နှစ်ကြောင်းစလုံးတွင် ထပ်နေသော ရွာကို ရှာပါ။",
+    "ဒုတိယဝါကျတွင် နေရာဖြစ်၍ နေရာပြ ဆက်စကား ရွေးပါ။",
+    "ရွာနောက်တွင် ဝါကျခွဲဆက်ပြီး နေရာပြ အပိုင်းကို ထပ်မရေးပါနှင့်။",
+  ],
+  mistake: [
+    "This is the village where I was born there.",
+    "This is the village where I was born.",
+    "ဆက်စကားက နေရာကို ကိုယ်စားပြုပြီးသားဖြစ်၍ ထပ်မထည့်ရပါ။",
+  ],
+  script:
+    "ဤရွာက ကျွန်ုပ်မွေးတဲ့ရွာလို့ ရေးမယ်ဆိုရင် မူရင်း နှစ်ကြောင်းထဲ ရွာ ထပ်နေတာကို အရင် ရှာပါ။ ဒုတိယကြောင်းမှာ မွေးသူက ကျွန်ုပ်၊ ရွာက မွေးတဲ့နေရာ။ နေရာပြ ဆက်စကားကို ရွာနောက် ထည့်ပြီး ရွာကို ထပ်မရေးနဲ့။ အိမ်လာသော အမျိုးသား ဆိုရင်တော့ အမျိုးသားက လာသူ၊ ကတ္တား ပါ။ တံခါးမှာ တွေ့ခဲ့သော အမျိုးသားဆိုရင် တွေ့သူက ကျွန်ုပ်၊ အမျိုးသားက တွေ့တဲ့သူ၊ ကံ ဖြစ်ပါတယ်။ အရင် နာမ်ကို ရှာ၊ ပြီးမှ လုပ်သူလား၊ ကံလား၊ နေရာလား စစ်ပါ။",
+  question: "I do not know the reason ___ he left early.",
+  options: ["where", "whom", "why"],
+  answer: "why",
+});
+
+export const additionalGrammar: Record<AdditionalUnitNumber, UnitGrammar> = {
   5: {
     unit: 5,
     topicEn: conjunctions.titleEn,
@@ -227,4 +485,24 @@ export const additionalGrammar: Record<5 | 6 | 7, UnitGrammar> = {
     topicMy: "အကြောင်းနှင့် အကျိုး",
     sections: [causeVerbs, causeLinks],
   },
+  8: {
+    unit: 8,
+    topicEn: "Conditionals",
+    topicMy: "အခြေအနေပြ ဝါကျများ",
+    sections: [realConditionals, imaginedConditionals],
+  },
+  9: {
+    unit: 9,
+    topicEn: infinitivePatterns.titleEn,
+    topicMy: infinitivePatterns.titleMy,
+    sections: [infinitivePatterns],
+  },
+  10: { unit: 10, topicEn: purpose.titleEn, topicMy: purpose.titleMy, sections: [purpose] },
+  11: {
+    unit: 11,
+    topicEn: "As if / as though and introductory phrases",
+    topicMy: "နှိုင်းယှဉ်မှုနှင့် ဝါကျအစ စကားစုများ",
+    sections: [comparisons, introductoryPhrases],
+  },
+  12: { unit: 12, topicEn: relatives.titleEn, topicMy: relatives.titleMy, sections: [relatives] },
 };

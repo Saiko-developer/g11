@@ -1,0 +1,194 @@
+# reading | 86–90
+@ We need energy sources for our cars, trains, planes, machines, appliances, and many other energy-consuming vehicles and devices. We rely mainly on **fossil** fuels such as coal, oil and gas, and we are consuming the world’s **fossil** fuels at an **alarming** rate. As a result, the amount of carbon dioxide (CO₂) in the atmosphere is increasing dramatically. Burning **fossil** fuels for decades has been destructive to the natural environment. Much of the destruction of our environment would not have taken place if these **fossil** fuels had not been used. In recent years, a great deal of attention has been paid to the dangers of consuming **fossil** fuels. In addition, the Earth is running out of **fossil** fuels, which means that there is a need for alternative sources of energy for use on a wide scale. Therefore, it is essential for us to use renewable energy instead of **fossil** fuels. Now, the use of renewable energy is becoming more and more common worldwide. | ကား၊ ရထား၊ လေယာဉ်၊ စက်နှင့် စွမ်းအင်သုံးကိရိယာများအတွက် စွမ်းအင်ရင်းမြစ် လိုအပ်သည်။ ကျောက်မီးသွေး၊ ရေနံနှင့် ဓာတ်ငွေ့ကဲ့သို့ ရုပ်ကြွင်းလောင်စာကို အဓိက အားထားပြီး စိုးရိမ်စရာနှုန်းဖြင့် သုံးနေသဖြင့် လေထုထဲ ကာဗွန်ဒိုင်အောက်ဆိုက် သိသိသာသာ များလာသည်။ ဆယ်စုနှစ်များစွာ လောင်ကျွမ်းသုံးစွဲခဲ့ခြင်းက သဘာဝပတ်ဝန်းကျင်ကို ပျက်စီးစေခဲ့သည်။ မသုံးခဲ့လျှင် ပျက်စီးမှုအများစု ဖြစ်ခဲ့မည်မဟုတ်ပါ။ မကြာသေးမီနှစ်များတွင် ယင်း၏ အန္တရာယ်များကို အာရုံစိုက်လာကြသည်။ ကမ္ဘာ့ရုပ်ကြွင်းလောင်စာလည်း ကုန်ခန်းလာသဖြင့် ကျယ်ပြန့်စွာ အသုံးချနိုင်မည့် အစားထိုးရင်းမြစ် လိုသည်။ ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင်ကို အစားထိုးသုံးရန် လိုအပ်ပြီး ကမ္ဘာတစ်ဝန်း ပိုသုံးလာကြသည်။
+^ Renewable energy and its benefits | ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင်နှင့် အကျိုးကျေးဇူးများ
+@ Renewable energy refers to ‘energy that is produced using the sun, wind, water, etc. rather than using fuels such as oil, gas and coal’. The sun, wind, water, waste, and heat are all rich sources of renewable energy. These energy sources can never run out or are **inexhaustible** and so they are known as renewable energy sources. Specifically, energy from the sun is considered an **inexhaustible** resource; as long as the sun exists, it gives us energy. Moreover, renewable energy sources can be recovered or produced without causing CO₂ **emissions**, air pollution and global warming. Renewable energy production is certainly essential if we are to prevent further environmental problems. There are many examples of renewable energy sources such as hydropower, wind power, solar energy, biomass energy and geothermal energy. | ရေနံ၊ ဓာတ်ငွေ့နှင့် ကျောက်မီးသွေး အစား နေ၊ လေ၊ ရေ စသည်တို့မှ ထုတ်ယူသော စွမ်းအင်ကို ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင်ဟု ခေါ်သည်။ နေ၊ လေ၊ ရေ၊ စွန့်ပစ်ပစ္စည်းနှင့် အပူတို့သည် ကြွယ်ဝသော ရင်းမြစ်များဖြစ်သည်။ ကုန်ခန်းမသွားသောကြောင့် ထိုအမည်ဖြင့် ခေါ်ကြပြီး နေရှိနေသမျှ နေစွမ်းအင်ရနိုင်သည်။ ကာဗွန်ဒိုင်အောက်ဆိုက် ထုတ်လွှတ်ခြင်း၊ လေထုညစ်ညမ်းခြင်းနှင့် ကမ္ဘာပူနွေးခြင်းတို့ မဖြစ်စေဘဲ ပြန်ထုတ်ယူနိုင်သည်။ ပတ်ဝန်းကျင်ပြဿနာများ ထပ်မဖြစ်စေရန် ထိုစွမ်းအင် ထုတ်လုပ်ဖို့ အရေးကြီးသည်။ ရေအား၊ လေအား၊ နေရောင်ခြည်၊ ဇီဝဒြပ်ထုနှင့် မြေအောက်အပူစွမ်းအင်တို့ ပါဝင်သည်။
+^ Hydropower | ရေအားစွမ်းအင်
+@ Hydropower utilises the power of moving water such as waterfalls and rivers and the sea. Electricity is generated when moving water turns **turbines**. As long as flowing water continues, it gives us an **inexhaustible** amount of energy. Hydropower dams are also a source of renewable energy. Power is generated when water from the dam is released through **turbines**. Although hydropower plants hardly emit any **pollutants** into the air, there are a few drawbacks. Water-powered **turbines** can have a negative effect on aquatic wildlife. Also, building hydropower dams causes land behind the dams to flood. One more drawback is that the costs of installing hydropower systems are high. | ရေတံခွန်၊ မြစ်နှင့် ပင်လယ်မှ ရွေ့လျားရေကို အသုံးချသည်။ ရေက တာဘိုင်လှည့်ပေးလျှင် လျှပ်စစ်ထွက်သည်။ ရေဆက်စီးနေသမျှ စွမ်းအင် မကုန်ခန်းပါ။ ဆည်မှ ရေကို တာဘိုင်ဖြတ် စီးဆင်းစေ၍လည်း ထုတ်ယူနိုင်သည်။ ရေအားစက်ရုံမှ လေထုညစ်ညမ်းပစ္စည်း ထွက်ခဲသော်လည်း တာဘိုင်က ရေနေသတ္တဝါများကို ထိခိုက်နိုင်သည်။ ဆည်နောက်ဘက် မြေရေလွှမ်းနိုင်ပြီး တပ်ဆင်စရိတ်လည်း ကြီးသည်။
+^ Wind power | လေအားစွမ်းအင်
+@ To create wind power, large **turbines** are placed on top of hills or offshore. Energy is generated when the wind turns wind **turbines**. Modern windmills or wind **turbines** can be utilised on a large scale or a small scale. Unlike hydropower, this process is relatively cheap and is considered one of the most affordable forms of energy today. In addition, it does not have harmful effects on the air or land it uses. One disadvantage is that if the wind stops blowing, all wind **turbines** stop working. Like hydropower, wind **turbines** can also be a threat to wildlife such as birds and bats in areas. | တာဘိုင်ကြီးများကို တောင်ထိပ် သို့မဟုတ် ကမ်းလွန်၌ တပ်ဆင်ပြီး လေဖြင့် လှည့်ကာ စွမ်းအင်ထုတ်သည်။ အကြီးစား၊ အသေးစား သုံးနိုင်သည်။ ရေအားထက် စရိတ်သက်သာပြီး လေနှင့် မြေကို မထိခိုက်စေပါ။ လေမတိုက်လျှင် တာဘိုင်ရပ်ကာ ငှက်နှင့် လင်းနို့တို့အတွက် အန္တရာယ် ဖြစ်နိုင်သည်။
+^ Solar energy | နေရောင်ခြည်စွမ်းအင်
+@ Electricity is generated when sunlight hits the photovoltaic¹ cells on specially designed panels. The efficiency of the solar panels depends on their location — the sunnier the place, the more efficient they are. Solar energy is popular in remote areas where there is no access to an electricity grid², but it is also used as a green alternative to power homes and buildings that are connected to the grid. This process of converting sunlight into electricity brings many benefits to our environment. It helps control air pollution, it causes no noise, and sunlight is a renewable source that will not get used up. However, a large area of land is needed to produce a large amount of solar power. In some countries, citizens turn to solar energy on their own, and governments encourage them to **adopt** solar power systems. | အထူးပြားများပေါ်ရှိ နေရောင်မှ လျှပ်စစ်ထုတ်သော ဆဲလ်များကို နေရောင်ထိသောအခါ လျှပ်စစ်ထွက်သည်။ နေထွက်အားကောင်းသည့် နေရာတွင် ပိုထိရောက်သည်။ မဟာဓာတ်အားလိုင်း မရောက်သော ဝေးလံဒေသများ၌ လူကြိုက်များပြီး လိုင်းချိတ်ထားသည့် အိမ်နှင့် အဆောက်အအုံများအတွက်လည်း ပတ်ဝန်းကျင်နှင့် သင့်လျော်သော အစားထိုးရင်းမြစ်ဖြစ်သည်။ လေထုညစ်ညမ်းမှု ထိန်းနိုင်၊ ဆူညံသံမထွက်ဘဲ နေရောင်လည်း မကုန်ခန်းပါ။ အများအပြား ထုတ်ရန် မြေဧရိယာကျယ် လိုသည်။ နိုင်ငံအချို့တွင် ပြည်သူတို့ ကိုယ်တိုင် စတင်သုံးကြပြီး အစိုးရလည်း အားပေးသည်။
+@ ¹ photovoltaic (adj) relating to the production of electricity at the meeting point of two substances that have been exposed to light. ² grid (n) a system of electric wires for sending power over a large area. | ၁ အလင်းထိသော ဒြပ်နှစ်မျိုး ဆုံရာတွင် လျှပ်စစ်ထွက်ခြင်းနှင့် ဆိုင်သော။ ၂ ကျယ်ပြန့်သည့် ဒေသသို့ ဓာတ်အားပို့သည့် ဝါယာကြိုးစနစ်။
+^ Biomass energy | ဇီဝဒြပ်ထုစွမ်းအင်
+@ Biomass is a biologically produced fuel made from dead plant and animal materials. It is considered to be the oldest source of renewable energy. Biomass energy has been used since humans first started burning wood for fire. The burning of biomass can be used to produce steam, which turns **turbines** and generates electricity. Biomass can re-grow over a relatively short period of time, whereas it takes hundreds of millions of years to form **fossil** fuels. By using biomass, which is made up of rubbish and other organic waste, we can reduce the need to bury rubbish under the ground in a landfill. However, some people are worried that burning biomass causes global warming because it produces **greenhouse gases**. In addition, it can be expensive to use biomass to generate energy on a large scale. | သေဆုံးပြီးသော အပင်နှင့် တိရစ္ဆာန်တို့မှ ဇီဝနည်းဖြင့်ရသော လောင်စာဖြစ်ပြီး ရှေးအကျဆုံး ပြန်လည်ပြည့်ဖြိုးမြဲရင်းမြစ်ဟု ယူဆသည်။ လူတို့ သစ်သားကို မီးစတင်ဖိုစဉ်ကတည်းက သုံးခဲ့သည်။ ဇီဝဒြပ်ထုကို မီးရှို့ရသော ရေနွေးငွေ့က တာဘိုင်လှည့်၍ လျှပ်စစ်ထုတ်ပေးသည်။ ရုပ်ကြွင်းလောင်စာ ဖြစ်လာရန် နှစ်သန်းရာချီ ကြာသော်လည်း ဇီဝဒြပ်ထု အချိန်တိုအတွင်း ပြန်ပေါက်နိုင်သည်။ အမှိုက်နှင့် အော်ဂဲနစ်စွန့်ပစ်ပစ္စည်း အသုံးချ၍ မြေမြှုပ်ရန် လျော့သည်။ သို့သော် ဖန်လုံအိမ်ဓာတ်ငွေ့ကြောင့် ကမ္ဘာပူမည်ကို စိုးရိမ်သူများ ရှိပြီး အကြီးစားထုတ်လျှင် စရိတ်ကြီးနိုင်သည်။
+^ Geothermal energy | မြေအောက်အပူစွမ်းအင်
+@ Geothermal energy uses the heat within the earth to produce electricity and heat buildings. In other words, heat that is trapped in the ground can be converted into steam to turn **turbines**. Geothermal energy uses relatively simple technology, and this process causes no pollution. The most active geothermal resources are usually found in areas near volcanoes. The initial costs of setting up a geothermal power plant are very high, but once it is built, the running costs are low. | ကမ္ဘာမြေတွင်း အပူဖြင့် လျှပ်စစ်ထုတ်ကာ အဆောက်အအုံ အပူပေးသည်။ မြေအောက်အပူဖြင့် ရေနွေးငွေ့ထုတ်၍ တာဘိုင်လှည့်သည်။ နည်းပညာ အတော်ရိုးရှင်းပြီး ညစ်ညမ်းမှု မဖြစ်စေပါ။ အားအကောင်းဆုံးရင်းမြစ်များကို မီးတောင်နားတွင် တွေ့ရလေ့ရှိသည်။ စက်ရုံတည်ဆောက်စရိတ် ကြီးသော်လည်း လည်ပတ်စရိတ် နည်းသည်။
+@ To conclude, using **fossil** fuels at a very rapid rate has serious harmful effects on the natural environment. Burning **fossil** fuels for heating, lighting, transportation, electricity, or manufacturing emits CO₂ in the atmosphere. Nearly all **climatologists** agree that many environmental problems we are facing today are mainly caused by the consumption of huge amounts of **fossil** fuels. The biggest challenge we all are facing is to stop burning **fossil** fuels and start using renewable energy. Governments should take steps to get enough energy from renewable fuels to be able to stop using **fossil** fuels completely. Before it is too late, it is important to reduce our negative **impact** on the natural environment as much as possible by using renewable energy instead of **fossil** fuels. | ရုပ်ကြွင်းလောင်စာ အလျင်အမြန် သုံးခြင်းသည် သဘာဝပတ်ဝန်းကျင်ကို ပြင်းထန်စွာ ထိခိုက်စေသည်။ အပူ၊ အလင်း၊ သယ်ယူပို့ဆောင်ရေး၊ လျှပ်စစ်နှင့် စက်မှုလုပ်ငန်းအတွက် မီးရှို့လျှင် ကာဗွန်ဒိုင်အောက်ဆိုက် ထွက်သည်။ ယနေ့ ပြဿနာများစွာသည် ယင်းကို အမြောက်အမြား သုံးခြင်းကြောင့်ဟု ရာသီဥတုပညာရှင် အများစု သဘောတူသည်။ အကြီးဆုံး စိန်ခေါ်ချက်က ရုပ်ကြွင်းလောင်စာ ရပ်ပြီး ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင် စသုံးရန် ဖြစ်သည်။ အစိုးရများက လုံလောက်သော စွမ်းအင်ရရန် ဆောင်ရွက်သင့်သည်။ နောက်မကျမီ အစားထိုးသုံးစွဲပြီး ပတ်ဝန်းကျင်အပေါ် ထိခိုက်မှု လျှော့ချရန် အရေးကြီးသည်။
+! Pre-reading | မဖတ်မီ မေးခွန်းများကို ဖြေပါ။
+- Do you use a lot of electricity at home? And how? | အိမ်မှာ လျှပ်စစ် အများကြီး သုံးသလား။ ဘယ်လို သုံးသလဲ။
+- In the future, do you think you will be using more or less electricity than you do now? Why do you think so? | နောင်တွင် ယခုထက် လျှပ်စစ် ပိုသုံးမည်လား၊ လျှော့သုံးမည်လား။ ဘာကြောင့် ထင်သလဲ။
+- How do you understand by the word ‘renewable’? | ပြန်လည်ပြည့်ဖြိုးမြဲဟူသော စကားလုံးကို ဘယ်လို နားလည်သလဲ။
+- Do you know any renewable energy sources? If so, what renewable energy sources do you use at home? | ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင် ရင်းမြစ်များ သိသလား။ သိလျှင် အိမ်မှာ ဘယ်ရင်းမြစ်ကို သုံးသလဲ။
+! A. In pairs, find the bold-faced words in the passage that are similar in meaning to the following. | နှစ်ယောက်တွဲ၍ အောက်ပါ အဓိပ္ပာယ်များနှင့် တူသည့် မည်းထူစာလုံးများကို ဖတ်စာမှ ရှာပါ။
+- gases or other substances that are sent into the air | လေထုထဲသို့ ထုတ်လွှတ်သည့် ဓာတ်ငွေ့နှင့် အခြားပစ္စည်းများ | emissions
+- start to use a particular method | နည်းလမ်းတစ်ခု စတင် အသုံးပြုသည် | adopt
+- machines that produce continuous turning power from a fast-moving flow of a liquid or gas, using a set of vanes attached to a wheel or rotor | မြန်စွာ စီးဆင်းသော အရည် သို့မဟုတ် ဓာတ်ငွေ့ဖြင့် ဘီးပေါ်ရှိ အရွက်များကို လှည့်ကာ အဆက်မပြတ် လည်ပတ်အားထုတ်သည့် စက်များ | turbines
+- a strong or powerful effect on something | အရာတစ်ခုအပေါ် ပြင်းထန်သော သက်ရောက်မှု | impact
+- experts in the scientific study of climate | ရာသီဥတုကို သိပ္ပံနည်းဖြင့် လေ့လာသည့် ကျွမ်းကျင်သူများ | climatologists
+- causing worry or fear | စိုးရိမ်မှု၊ ကြောက်ရွံ့မှု ဖြစ်စေသော | alarming
+- the remains of an animal or a plant that have become hard and turned into rock | မာကျောကာ ကျောက်ဖြစ်သွားသော တိရစ္ဆာန် သို့မဟုတ် အပင်၏ အကြွင်းအကျန် | fossil / fossils
+- gases such as carbon dioxide in the air surrounding the earth, which trap the heat of the sun | ကမ္ဘာကို ဝန်းရံထားသော လေထုထဲတွင် နေအပူကို ဖမ်းထားသည့် ကာဗွန်ဒိုင်အောက်ဆိုက်ကဲ့သို့ ဓာတ်ငွေ့များ | greenhouse gases
+- substances that make air, water, soil, etc. dangerously dirty and are caused by cars, factories, etc. | ကား၊ စက်ရုံ စသည်တို့မှ ထွက်၍ လေ၊ ရေ၊ မြေကို အန္တရာယ်ရှိစွာ ညစ်ညမ်းစေသော ပစ္စည်းများ | pollutants
+- existing in very great amounts that will never be finished or used up | အလွန်များပြားပြီး သုံး၍ မကုန်နိုင်သော | inexhaustible
+! B. Fill each blank with an appropriate answer from Exercise A. | လေ့ကျင့်ခန်း က မှ သင့်တော်သော အဖြေဖြင့် ကွက်လပ်ဖြည့်ပါ။
+- ___ have long warned us about the impact of greenhouse emissions on the atmosphere. | ဖန်လုံအိမ်ဓာတ်ငွေ့ ထုတ်လွှတ်မှုက လေထုအပေါ် သက်ရောက်ပုံကို ___ က ကြာမြင့်စွာ သတိပေးခဲ့သည်။ | climatologists
+- They say that the build-up of ___ is trapping heat from the sun and causing the Earth’s temperature to rise. | ___ များလာ၍ နေအပူကို ဖမ်းထားပြီး ကမ္ဘာ့အပူချိန် မြင့်လာသည်ဟု ဆိုသည်။ | greenhouse gases
+- The government decided to ___ the new policy on renewable energy. | ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင် မူဝါဒသစ်ကို ___ ရန် အစိုးရ ဆုံးဖြတ်ခဲ့သည်။ | adopt
+- Our demand for ___ fuels such as oil and natural gas is growing. | ရေနံနှင့် သဘာဝဓာတ်ငွေ့ကဲ့သို့ ___ လောင်စာ လိုအပ်မှု များလာသည်။ | fossil
+- Experts are worried that climate change is taking place at an ___ rate. | ရာသီဥတုပြောင်းလဲမှု ___ နှုန်းဖြင့် ဖြစ်နေသည်ကို ပညာရှင်များ စိုးရိမ်သည်။ | alarming
+- Global warming can have a negative ___ on human life. | ကမ္ဘာပူနွေးမှုက လူ့ဘဝအပေါ် ဆိုးကျိုး ___ ရှိနိုင်သည်။ | impact
+- Solar energy is considered to be a cheap ___ resource since it never runs out. | နေရောင်ခြည်စွမ်းအင် ကုန်မသွားသဖြင့် စရိတ်သက်သာသော ___ ရင်းမြစ်ဟု ယူဆကြသည်။ | inexhaustible
+- To harness electricity from wind energy, ___ are used to drive generators. | လေအားမှ လျှပ်စစ်ရရန် မီးစက်လှည့်ပေးဖို့ ___ သုံးသည်။ | turbines
+- Burning coal releases air ___ such as nitrogen oxide, carbon dioxide, and sulphur dioxide. | ကျောက်မီးသွေး မီးရှို့လျှင် နိုက်ထရိုဂျင်အောက်ဆိုက်၊ ကာဗွန်ဒိုင်အောက်ဆိုက်နှင့် ဆာလဖာဒိုင်အောက်ဆိုက်ကဲ့သို့ လေထု ___ ထွက်သည်။ | pollutants
+- Many countries are taking action to limit harmful industrial ___. | စက်မှုလုပ်ငန်းမှ အန္တရာယ်ရှိသော ___ ကို ကန့်သတ်ရန် နိုင်ငံများစွာ ဆောင်ရွက်နေသည်။ | emissions
+! C. Give a full-sentence answer to each question. | မေးခွန်းတစ်ခုစီကို ဝါကျပြည့် ဖြေပါ။
+- What are examples of fossil fuels and what are they used for? | ရုပ်ကြွင်းလောင်စာ ဥပမာများက ဘာလဲ။ ဘာအတွက် သုံးသလဲ။ | Coal, oil and gas are fossil fuels used for heating, lighting, transport, power and manufacturing. || ဥပမာနှင့် အသုံးကို ဝါကျတစ်ကြောင်းတွင် ဆက်ဖော်ပြပါ။
+- Why is it essential for us to use renewable energy instead of burning fossil fuels? | ရုပ်ကြွင်းလောင်စာ မီးရှို့မည့်အစား ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင် သုံးရန် ဘာကြောင့် လိုအပ်သလဲ။ | Fossil fuels are running out, and burning them damages the environment. || ကုန်ခန်းမှုနှင့် ပတ်ဝန်းကျင်ထိခိုက်မှုကို အကြောင်းရင်းအဖြစ် ဖော်ပြပါ။
+- What are the two benefits of using renewable energy? | ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင်၏ အကျိုးနှစ်ရပ်က ဘာလဲ။ | It does not run out and can be produced with less pollution. || အကျိုးနှစ်ခုကို အစဉ်လိုက် ဆက်ရေးပါ။
+- What are the drawbacks of using hydropower? | ရေအားစွမ်းအင် သုံးခြင်း၏ အားနည်းချက်များက ဘာလဲ။ | It can harm aquatic wildlife, flood land behind dams and cost a lot to install. || အားနည်းချက်များကို ပုံစံတူဖြင့် စာရင်းပြုပါ။
+- How is the process of creating wind power different from that of hydropower? | လေအားထုတ်ပုံက ရေအားထုတ်ပုံနှင့် ဘယ်လို ကွာသလဲ။ | Wind turns turbines for wind power, while moving water turns them for hydropower. || မည်သည့်အားက တာဘိုင်လှည့်သည်ကို နှိုင်းယှဉ်ပါ။
+- How is electricity generated from the sun? | နေမှ လျှပ်စစ်ကို မည်သို့ ထုတ်သလဲ။ | Electricity is generated when sunlight hits photovoltaic cells on solar panels. || ဖြစ်စဉ်ကို အခံဝါကျနှင့် အချိန်ပြစကားဖြင့် ရေးပါ။
+- What are the benefits of using solar energy for the environment? | နေရောင်ခြည်စွမ်းအင် သုံးလျှင် ပတ်ဝန်းကျင်အတွက် ဘာအကျိုးရှိသလဲ။ | It helps control air pollution, causes no noise and uses a source that will not run out. || အကျိုးများကို လုပ်ဆောင်ချက်သုံးခုဖြင့် ရေးပါ။
+- What is biomass? | ဇီဝဒြပ်ထုဆိုတာ ဘာလဲ။ | Biomass is a biologically produced fuel made from dead plant and animal materials. || အရာအမျိုးအစားနှင့် ဖြစ်ပေါ်ရင်းမြစ်ကို ဖွင့်ဆိုပါ။
+- How long does it take to form fossil fuels? | ရုပ်ကြွင်းလောင်စာ ဖြစ်လာရန် ဘယ်လောက် ကြာသလဲ။ | It takes hundreds of millions of years to form fossil fuels. || အချိန်ကြာမြင့်မှုကို ဦးစားပေး ဖြေပါ။
+- Where can the most active geothermal resources be found? | အားအကောင်းဆုံး မြေအောက်အပူရင်းမြစ်များကို ဘယ်မှာ တွေ့နိုင်သလဲ။ | They are usually found in areas near volcanoes. || နေရာကို အခံဝါကျဖြင့် ဖော်ပြပါ။
+! D. Complete the table using the information from the passage. | ဖတ်စာပါ အချက်များဖြင့် ဇယား ဖြည့်ပါ။
+> Hydropower: hardly emitting any pollutants into the air · a negative effect on aquatic wildlife · floods caused by hydropower dams. | ရေအား။ လေထုညစ်ညမ်းပစ္စည်း ထွက်ခဲ၊ ရေနေသတ္တဝါကို ထိခိုက်၊ ဆည်ကြောင့် ရေလွှမ်းနိုင်။
+> Wind power: no harmful effect on the environment · if the wind stops blowing, all wind turbines stop working · being a threat to wildlife. | လေအား။ ပတ်ဝန်းကျင်ကို မထိခိုက်၊ လေမတိုက်လျှင် တာဘိုင်ရပ်၊ တောရိုင်းသတ္တဝါကို ထိခိုက်နိုင်။
+> Solar energy: controlling air pollution · no noise. Biomass energy: re-growing over a short time · being expensive to generate energy. Geothermal energy: no pollution · high costs of initial installation. | နေစွမ်းအင်။ လေထုညစ်ညမ်းမှု ထိန်း၊ အသံမဆူ။ ဇီဝဒြပ်ထု။ အချိန်တို ပြန်ဖြစ်၊ ထုတ်လုပ်စရိတ်ကြီး။ မြေအောက်အပူ။ ညစ်ညမ်းမှုမရှိ၊ စတင်တပ်ဆင်စရိတ်ကြီး။
+- Wind power — Advantage | လေအား၏ အားသာချက် | low cost
+- Solar energy — Advantage | နေစွမ်းအင်၏ အားသာချက် | inexhaustible sunlight
+- Geothermal energy — Advantage | မြေအောက်အပူစွမ်းအင်၏ အားသာချက် | low running costs
+- Hydropower — Disadvantage | ရေအား၏ အားနည်းချက် | high installation costs
+- Solar energy — Disadvantage | နေစွမ်းအင်၏ အားနည်းချက် | needs a large area of land
+- Biomass energy — Disadvantage | ဇီဝဒြပ်ထုစွမ်းအင်၏ အားနည်းချက် | produces greenhouse gases
+# vocabulary | 90–91
+! A. Match the nouns in the box with the correct groups of words. The first one is done for you. | ဘောင်ထဲမှ နာမ်များကို သင့်တော်သော စကားလုံးအုပ်စုနှင့် တွဲပါ။ ပထမတစ်ခုကို လုပ်ပြထားသည်။
+> production · problem · energy · fuel · pollution | ထုတ်လုပ်မှု၊ ပြဿနာ၊ စွမ်းအင်၊ လောင်စာ၊ ညစ်ညမ်းမှု
+> air / water / noise / radioactive / light pollution | လေ၊ ရေ၊ ဆူညံသံ၊ ရေဒီယိုသတ္တိကြွနှင့် အလင်းရောင် ညစ်ညမ်းမှု
+- agricultural / electricity / gas / oil / food ___ | စိုက်ပျိုးရေး၊ လျှပ်စစ်၊ ဓာတ်ငွေ့၊ ရေနံ၊ အစားအစာ ___ | production
+- health / weight / environmental / immigration / waste ___ | ကျန်းမာရေး၊ ကိုယ်အလေးချိန်၊ ပတ်ဝန်းကျင်၊ လူဝင်မှုနှင့် အမှိုက် ___ | problem
+- diesel / fossil / clean / alternative / biomass ___ | ဒီဇယ်၊ ရုပ်ကြွင်း၊ သန့်ရှင်း၊ အစားထိုးနှင့် ဇီဝဒြပ်ထု ___ | fuel
+- wind / ocean / renewable / green / solar ___ | လေ၊ သမုဒ္ဒရာ၊ ပြန်လည်ပြည့်ဖြိုးမြဲ၊ သဘာဝနှင့် နေ ___ | energy
+! B. Complete the sentences using the collocations from Exercise A. | လေ့ကျင့်ခန်း က မှ တွဲဖက်အသုံးများဖြင့် ဝါကျဖြည့်ပါ။
+- ___ fuels, such as oil and gas, have a limited lifespan. | ရေနံနှင့် ဓာတ်ငွေ့ကဲ့သို့ ___ လောင်စာများသည် အကန့်အသတ်ရှိသည်။ | fossil
+- Nowadays, diabetes and obesity become common ___ problems in our society. | ယနေ့ လူမှုအသိုင်းအဝိုင်းတွင် ဆီးချိုနှင့် အဝလွန်ခြင်းသည် အဖြစ်များသော ___ ပြဿနာများ ဖြစ်လာသည်။ | health
+- ___ energy is any energy type that is generated from natural resources, such as sunlight, wind or water. | နေ၊ လေ၊ ရေကဲ့သို့ သဘာဝရင်းမြစ်များမှ ထုတ်သော စွမ်းအင်ကို ___ စွမ်းအင်ဟု ခေါ်သည်။ | renewable
+- To see the stars vividly, we should find a place where there is low ___ pollution. | ကြယ်များကို ရှင်းရှင်းမြင်ရန် ___ ညစ်ညမ်းမှု နည်းသည့် နေရာကို ရှာသင့်သည်။ | light
+- ___ production is the process of transforming raw ingredients into ready-made foods. | ကုန်ကြမ်းများကို အသင့်စားအစာအဖြစ် ပြောင်းခြင်းသည် ___ ထုတ်လုပ်မှု ဖြစ်သည်။ | food
+! C. Fill the blanks with the words in the box. Change the form of the word if necessary. | ဘောင်ပါစကားလုံးများဖြင့် ကွက်လပ်ဖြည့်ပါ။ လိုလျှင် စကားလုံးပုံစံ ပြောင်းပါ။
+> geothermal · waste · consumption · wind · solar · green · produce · conserve · cost · price | မြေအောက်အပူ၊ ဖြုန်းတီးသည်၊ သုံးစွဲမှု၊ လေ၊ နေ၊ သဘာဝနှင့် လိုက်ဖက်သော၊ ထုတ်လုပ်သည်၊ ချွေတာသည်၊ ကုန်ကျစရိတ်၊ ဈေးနှုန်း
+- To ___ electrical energy, we should replace all our fluorescent bulbs with LED bulbs. | လျှပ်စစ် ___ ရန် မီးချောင်းများကို စွမ်းအင်သက်သာသော မီးလုံးများဖြင့် အစားထိုးသင့်သည်။ | conserve
+- Burning fossil fuels such as oil, gas, and coal ___ energy. | ရေနံ၊ ဓာတ်ငွေ့၊ ကျောက်မီးသွေး မီးရှို့ခြင်းက စွမ်းအင် ___ သည်။ | produces
+- New technology in fuel delivery systems reduces the energy ___ of vehicles. | လောင်စာပို့စနစ်သစ်က ယာဉ်များ၏ စွမ်းအင် ___ ကို လျှော့ချသည်။ | consumption
+- Governments are planning to keep energy ___ down by building solar power plants. | နေရောင်ခြည်သုံး စက်ရုံများ ဆောက်၍ စွမ်းအင် ___ နိမ့်အောင် အစိုးရများ စီစဉ်သည်။ | costs
+- Environmentalists place more emphasis on the use of ___ energy sources such as the sun and water. | သဘာဝပတ်ဝန်းကျင် ထိန်းသိမ်းသူများက နေနှင့် ရေကဲ့သို့ ___ စွမ်းအင်ရင်းမြစ် သုံးရန် ပိုအလေးထားသည်။ | green
+- ___ energy is a way to harness sunlight for heating or electricity. | ___ စွမ်းအင်သည် နေရောင်ကို အပူပေးရန် သို့မဟုတ် လျှပ်စစ်ထုတ်ရန် အသုံးချသည့် နည်းဖြစ်သည်။ | solar
+- ___ energy is heat that is generated within the Earth. | ___ စွမ်းအင်သည် ကမ္ဘာမြေအတွင်းမှ ထွက်လာသော အပူဖြစ်သည်။ | geothermal
+- As long as energy ___ keep rising, it seems reasonable to generate energy from sunlight. | စွမ်းအင် ___ ဆက်မြင့်နေသရွေ့ နေရောင်မှ ထုတ်ရန် သင့်တော်ပုံရသည်။ | prices
+- Leaving the heating on all the time ___ electrical energy. | အပူပေးစက် အမြဲဖွင့်ထားခြင်းက လျှပ်စစ် ___ သည်။ | wastes
+- ___ energy is the use of wind turbines to generate electricity. | ___ စွမ်းအင်သည် လေတာဘိုင်ဖြင့် လျှပ်စစ် ထုတ်ခြင်း ဖြစ်သည်။ | wind
+# grammar | 91–94
+? Conditionals | အခြေအနေပြ ဝါကျများ
+> Conditionals, commonly referred to as if-clauses, are used to state that one thing depends on another. There are four basic types of conditionals, namely zero, first, second and third conditionals. | ဖြစ်ရပ်တစ်ခုက အခြားဖြစ်ရပ်အပေါ် မူတည်ကြောင်း အခြေအနေပြဝါကျဖြင့် ဖော်ပြသည်။ သုည၊ ပထမ၊ ဒုတိယနှင့် တတိယဟူ၍ အခြေခံ လေးမျိုးရှိသည်။
+> Zero: If the wind stops blowing, all wind turbines stop working. First: If they are hungry, I’ll make some sandwiches. Second: If I were tired, I would take a rest. Third: If you hadn’t forgotten her birthday, she wouldn’t have been upset. | လေမတိုက်လျှင် တာဘိုင်အားလုံး ရပ်သည်။ သူတို့ ဆာလျှင် အသားညှပ်ပေါင်မုန့် လုပ်ပေးမည်။ ပင်ပန်းနေပါက အနားယူမည်။ သူ့မွေးနေ့ မမေ့ခဲ့လျှင် သူ စိတ်မကောင်း ဖြစ်ခဲ့မည် မဟုတ်ပါ။
+! A. Complete the zero conditional sentences with the correct form of the verbs in brackets. | ကွင်းအတွင်း ကြိယာကို မှန်ကန်သော ပုံစံပြောင်းပြီး သုညအခြေအနေပြ ဝါကျများ ဖြည့်ပါ။
+- If you (dial) ___ my cell phone number, it (play) ___ my favourite song. | ကျွန်ုပ်ဖုန်းနံပါတ်ကို ခေါ်လျှင် အကြိုက်ဆုံးသီချင်း မြည်သည်။ | dial, plays
+- If people (have) ___ more fruit, they (get) ___ more vitamins. | သစ်သီးပိုစားလျှင် ဗီတာမင်ပိုရသည်။ | have, get
+- If you (burn) ___ oil and coal, you (pollute) ___ the environment. | ရေနံနှင့် ကျောက်မီးသွေး ရှို့လျှင် ပတ်ဝန်းကျင် ညစ်ညမ်းစေသည်။ | burn, pollute
+- If children (eat) ___ more protein, they (grow) ___ taller. | ကလေးများ အသားဓာတ်ပိုစားလျှင် အရပ် ပိုရှည်လာသည်။ | eat, grow
+- If it (not / rain) ___ for a long time, the earth (get) ___ dry. | ကြာကြာ မိုးမရွာလျှင် မြေခြောက်လာသည်။ | does not rain, gets
+! B. Complete the first conditional sentences with the correct form of the verbs in brackets. | ကွင်းထဲ ကြိယာပုံစံမှန်ဖြင့် ပထမ အခြေအနေပြဝါကျများ ဖြည့်ပါ။
+- If I (get) ___ a new job, I (earn) ___ a lot of money. | အလုပ်သစ်ရလျှင် ငွေများများ ဝင်မည်။ | get, will earn
+- If she (not / hurry) ___, she (miss) ___ the bus. | သူ အလျင်မလုပ်လျှင် ဘတ်စ်ကားလွတ်မည်။ | does not hurry, will miss
+- If global warming (get) ___ worse, there (be) ___ problems of rising sea levels. | ကမ္ဘာပိုပူလာလျှင် ပင်လယ်ရေမြင့်သည့် ပြဿနာများ ရှိလာမည်။ | gets, will be
+- The ice caps (melt) ___ if we (not / take care) ___ of our planet. | ကမ္ဘာကို ဂရုမစိုက်လျှင် ဝင်ရိုးစွန်းရေခဲများ အရည်ပျော်မည်။ | will melt, do not take care
+- Our cities (be) ___ cleaner if we (use) ___ public transport more. | အများသုံးယာဉ် ပိုသုံးလျှင် မြို့များ ပိုသန့်ရှင်းမည်။ | will be, use
+? Second conditional | ဒုတိယ အခြေအနေပြဝါကျ
+> Use: imaginary or unreal situations in the present or future. Form: If + past simple, … would / wouldn’t + infinitive. | လက်ရှိ သို့မဟုတ် နောင်တွင် စိတ်ကူးအခြေအနေကို သုံးသည်။ အခြေအနေပြ အပိုင်းတွင် ရိုးရိုးအတိတ်၊ ရလဒ်အပိုင်းတွင် အကူကြိယာနောက် ကြိယာအမြစ် သုံးသည်။
+> If I won the lottery, I would buy a big house. If I had more time, I would exercise more. If she were rich, she would buy the necklace. | ထီပေါက်လျှင် အိမ်ကြီးဝယ်မည်။ အချိန်ပိုရလျှင် လေ့ကျင့်ခန်း ပိုလုပ်မည်။ သူ ချမ်းသာလျှင် လည်ဆွဲကို ဝယ်မည်။
+? Third conditional | တတိယ အခြေအနေပြဝါကျ
+> Use: impossible situations in the past, often to express regret. Form: If + past perfect, … would / wouldn’t + have + past participle. | ဖြစ်ခဲ့ပြီး၍ မပြောင်းနိုင်သော အတိတ်အခြေအနေ၊ မကြာခဏ နောင်တကို ဖော်ပြသည်။ အခြေအနေပြအပိုင်းတွင် အတိတ်ပြီးစီးကာလ၊ ရလဒ်တွင် အကူကြိယာနောက် ကြိယာ၏ တတိယပုံစံ သုံးသည်။
+> Much of the destruction of our environment would not have taken place if these fossil fuels had not been used. You would never have met Jamie if you hadn’t gone to the same school. | ဤရုပ်ကြွင်းလောင်စာများ မသုံးခဲ့လျှင် ပတ်ဝန်းကျင် ပျက်စီးမှု အများစု ဖြစ်ခဲ့မည် မဟုတ်ပါ။ ကျောင်းတူ မတက်ခဲ့လျှင် ဂျေမီနှင့် ဆုံခဲ့မည် မဟုတ်ပါ။
+! C. Complete the present unreal conditional sentences with the correct form of the verbs in brackets. | ကွင်းထဲမှ ကြိယာပုံစံမှန်ဖြင့် လက်ရှိ စိတ်ကူးအခြေအနေပြ ဝါကျများ ဖြည့်ပါ။
+- If these shoes (fit) ___ me, I (buy) ___ them. | ဖိနပ်တွေ တော်လျှင် ဝယ်မည်။ | fit, would buy
+- It (not / surprise) ___ me if he (not / know) ___ the answer. | သူ အဖြေမသိလျှင် အံ့ဩမည်မဟုတ်ပါ။ | would not surprise, did not know
+- I (donate) ___ to many charities if I (be) ___ a billionaire. | ဘီလီယံနာ ဖြစ်လျှင် ပရဟိတအဖွဲ့များစွာကို လှူမည်။ | would donate, were
+- If I (own) ___ a car, I (drive) ___ to school. | ကားပိုင်လျှင် ကျောင်းကို ကားမောင်းမည်။ | owned, would drive
+- If there (be) ___ no paper, what (happen) ___ to the world? | စက္ကူမရှိလျှင် ကမ္ဘာ ဘာဖြစ်မလဲ။ | were, would happen
+! D. Complete the past unreal conditional sentences with the correct form of the verbs in brackets. | ကွင်းထဲမှ ကြိယာပုံစံမှန်ဖြင့် အတိတ်စိတ်ကူး ဝါကျများ ဖြည့်ပါ။
+- If we (listen) ___ to the radio, we (hear) ___ the breaking news. | ရေဒီယို နားထောင်ခဲ့လျှင် နောက်ဆုံးသတင်း ကြားခဲ့မည်။ | had listened, would have heard
+- She (come) ___ to our party if she (not / be) ___ on holiday. | အလည်ခရီး မထွက်ခဲ့လျှင် သူ ပွဲကို လာခဲ့မည်။ | would have come, had not been
+- If you (ask) ___ for directions, we (not / get) ___ lost. | လမ်းမေးခဲ့လျှင် လမ်းပျောက်ခဲ့မည် မဟုတ်ပါ။ | had asked, would not have got
+- If she (prepare) ___ for the test well, she (pass) ___. | ကောင်းကောင်းပြင်ဆင်ခဲ့လျှင် စာမေးပွဲ အောင်ခဲ့မည်။ | had prepared, would have passed
+- If we (develop) ___ alternative sources earlier, fossil fuels (not / run out) ___ so rapidly. | အစားထိုးရင်းမြစ် စောစောထုတ်ခဲ့လျှင် ရုပ်ကြွင်းလောင်စာ အမြန်မကုန်ခဲ့ပါ။ | had developed, would not have run out
+! E. Match the beginnings (1–10) in Column A with the endings (a–j) in Column B. | ကော်လံ က မှ အစပိုင်းကို ကော်လံ ခ မှ အဆုံးပိုင်းနှင့် တွဲပါ။
+> a. we would have said hello · b. it breaks · c. if I don’t get the cheap flight · d. if she were eighteen · e. we will be able to go out · f. if we told him about our secrets · g. if he had had the tools · h. I would have passed the exam · i. I would help you carry the piano · j. if I had a driving license | က နှုတ်ဆက်ခဲ့မည်၊ ခ ကွဲသည်၊ ဂ ဈေးသက်သာသော လေယာဉ်လက်မှတ် မရလျှင်၊ ဃ သူ ဆယ့်ရှစ်နှစ်ရှိလျှင်၊ င အပြင်ထွက်နိုင်မည်၊ စ သူ့ကို လျှို့ဝှက်ချက် ပြောလျှင်၊ ဆ သူ့မှာ ကိရိယာ ရှိခဲ့လျှင်၊ ဇ စာမေးပွဲ အောင်ခဲ့မည်၊ ဈ စန္ဒရား ကူသယ်မည်၊ ည ယာဉ်မောင်းလိုင်စင် ရှိလျှင်
+- If I were stronger, | ကျွန်ုပ် ပိုအားကောင်းလျှင် | i | a · b · c · d · e · f · g · h · i · j
+- If we had seen you, | ကျွန်ုပ်တို့ သင့်ကို မြင်ခဲ့လျှင် | a | a · b · c · d · e · f · g · h · i · j
+- If the sun shines, | နေသာလျှင် | e | a · b · c · d · e · f · g · h · i · j
+- He would have repaired the car himself | သူ ကိုယ်တိုင် ကား ပြင်ခဲ့မည် | g | a · b · c · d · e · f · g · h · i · j
+- If you drop the glass vase, | ဖန်ပန်းအိုးကို လွှတ်ချလျှင် | b | a · b · c · d · e · f · g · h · i · j
+- If I had studied, | စာကျက်ခဲ့လျှင် | h | a · b · c · d · e · f · g · h · i · j
+- I wouldn’t go to school by bus | ဘတ်စ်ကားဖြင့် ကျောင်းမသွားပါ | j | a · b · c · d · e · f · g · h · i · j
+- I won’t go to London | လန်ဒန် မသွားပါ | c | a · b · c · d · e · f · g · h · i · j
+- We’d be stupid | ကျွန်ုပ်တို့ မိုက်ရာကျမည် | f | a · b · c · d · e · f · g · h · i · j
+- She would have the right to vote | သူ မဲပေးခွင့် ရမည် | d | a · b · c · d · e · f · g · h · i · j
+! F. Write the second or third conditional sentences about these situations. | အခြေအနေတစ်ခုစီကို ဒုတိယ သို့မဟုတ် တတိယပုံစံနှင့် ရေးပါ။
+> I want to phone him, but I don’t know his phone number. → If I knew his phone number, I would phone him. | ဖုန်းခေါ်ချင်သော်လည်း နံပါတ်မသိပါ။ နံပါတ်သိလျှင် ခေါ်မည်။
+> I did not know you were in the hospital so I did not visit you. → If I had known you were in the hospital, I would have visited you. | ဆေးရုံရောက်နေမှန်း မသိ၍ သွားမတွေ့ခဲ့ပါ။ သိခဲ့လျှင် လာတွေ့ခဲ့မည်။
+- She stayed at a hotel so it cost her a lot. | ဟိုတယ်တည်းခဲ့၍ စရိတ်များခဲ့သည်။
+- Kaythi is not in Bagan now so I cannot see her tonight. | ကေသီ ယခု ပုဂံတွင် မရှိ၍ ယနေ့ည မတွေ့နိုင်ပါ။
+- You didn’t submit your assignment in time so the teacher punished you. | အိမ်စာ အချိန်မီ မတင်ခဲ့၍ ဆရာ အပြစ်ပေးသည်။
+- He doesn’t have a debit card so he cannot buy a ticket. | သူ့မှာ ဘဏ်ကတ်မရှိ၍ လက်မှတ် မဝယ်နိုင်ပါ။
+- Sue does not answer the phone because she is not in the office. | ဆူး ရုံးတွင် မရှိ၍ ဖုန်းမကိုင်ပါ။
+- The waiters in that restaurant didn’t serve well so I didn’t go there. | ထိုဆိုင်မှ စားပွဲထိုးများ ဝန်ဆောင်မှု မကောင်းခဲ့၍ ထိုနေရာ မသွားခဲ့ပါ။
+! G. Finish each sentence in a meaningful way. | အနက်ရှိသော ဝါကျဖြစ်အောင် ဖြည့်ပါ။
+- If I were you, ___ | ကျွန်ုပ်သာ သင်ဖြစ်လျှင် ___
+- If we had not wasted our time and energy, ___ | အချိန်နှင့် အား မဖြုန်းခဲ့လျှင် ___
+- If I had more free time, ___ | အားလပ်ချိန် ပိုရှိလျှင် ___
+- If you study your lessons regularly, ___ | သင်ခန်းစာ မှန်မှန် လေ့လာလျှင် ___
+- If you had taken a taxi, ___ | တက္ကစီ စီးခဲ့လျှင် ___
+# listening | 94–95
+! A. Listen to a talk on renewable energy and decide whether the following statements are True, False or Not Given. | ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင် ဟောပြောချက်ကို နားထောင်ပြီး မှန်၊ မှား၊ မဖော်ပြဟု ရွေးပါ။
+- Future generations have full responsibility for energy conservation. | နောင်မျိုးဆက်များသည် စွမ်းအင်ချွေတာရန် အပြည့်အဝ တာဝန်ရှိသည်။ || True · False · Not Given
+- It is necessary for us to take action in advance before energy resources are running out. | စွမ်းအင်ရင်းမြစ် မကုန်မီ ကြိုတင် ဆောင်ရွက်ရန် လိုသည်။ || True · False · Not Given
+- Renewable energy depends mainly on nature. | ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင်သည် သဘာဝကို အဓိက မှီခိုသည်။ || True · False · Not Given
+- Renewable resources are harmful to the environment. | ပြန်လည်ပြည့်ဖြိုးမြဲ ရင်းမြစ်များသည် ပတ်ဝန်းကျင်ကို ထိခိုက်စေသည်။ || True · False · Not Given
+- Renewable energy is cheap. | ပြန်လည်ပြည့်ဖြိုးမြဲ စွမ်းအင် စရိတ်သက်သာသည်။ || True · False · Not Given
+- Air pollution can cause premature deaths. | လေထုညစ်ညမ်းမှုက အရွယ်မတိုင်မီ သေဆုံးစေနိုင်သည်။ || True · False · Not Given
+- Man-made activities emit fewer amounts of greenhouse gases than the manufacturing of machinery to generate renewable energy. | လူ့လုပ်ငန်းများမှ ထွက်သည့် ဖန်လုံအိမ်ဓာတ်ငွေ့က ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင် စက်ထုတ်လုပ်မှုထက် နည်းသည်။ || True · False · Not Given
+- It is true that renewable energy makes our lives better. | ပြန်လည်ပြည့်ဖြိုးမြဲ စွမ်းအင်က လူ့ဘဝ တိုးတက်စေသည်မှာ မှန်သည်။ || True · False · Not Given
+! B. Listen again and complete the notes about the advantages and disadvantages of renewable energy. | ထပ်နားထောင်ပြီး ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင်၏ အားသာ၊ အားနည်းချက် မှတ်စု ဖြည့်ပါ။
+- The excessive use of natural resources such as gas and oil leads to resource ___. | ဓာတ်ငွေ့နှင့် ရေနံ အလွန်အကျွံ သုံးခြင်းက ရင်းမြစ် ___ စေသည်။
+- Renewable energy is never ___. | ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင် ဘယ်တော့မှ ___ မည်မဟုတ်ပါ။
+- Renewable energy is clean, green and ___. | ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင် သန့်ရှင်းပြီး သဘာဝနှင့် သင့်လျော်ကာ ___ သည်။
+- Producing renewable energy could harm ___ and animal migration. | ပြန်လည်ပြည့်ဖြိုးမြဲစွမ်းအင် ထုတ်လုပ်ခြင်းက ___ နှင့် သတ္တဝါ ရွှေ့ပြောင်းမှုကို ထိခိုက်နိုင်သည်။
+- Cutting down trees and building dams could damage the ___. | သစ်ပင်ခုတ်ခြင်းနှင့် ဆည်ဆောက်ခြင်းက ___ ကို ထိခိုက်နိုင်သည်။
+- Burning fossil fuels is one of the ___ activities that can emit greenhouse gases. | ရုပ်ကြွင်းလောင်စာ မီးရှို့ခြင်းက ဖန်လုံအိမ်ဓာတ်ငွေ့ ထုတ်နိုင်သော ___ လုပ်ရပ်တစ်ခုဖြစ်သည်။
+# speaking | 95–96
+! C. Study the following dialogue and underline the language expressions used to agree or disagree. The first one is done for you. | စကားပြောခန်းကို လေ့လာပြီး သဘောတူ၊ မတူကြောင်း ဖော်ပြသည့် စကားစုများကို မျဉ်းသားပါ။ ပထမတစ်ခုကို လုပ်ပြထားသည်။
+> Student A: What is your opinion on constructing a hydropower plant? | ကျောင်းသား က။ ရေအားစက်ရုံ ဆောက်ဖို့ ဘယ်လို ထင်သလဲ။
+> Student B: I think it is expensive to construct and maintain a hydropower plant and this can have a negative effect on the local environment. | ကျောင်းသား ခ။ ဆောက်လုပ်၊ ထိန်းသိမ်းဖို့ စရိတ်ကြီးပြီး ဒေသပတ်ဝန်းကျင်ကို ထိခိုက်နိုင်တယ်လို့ ထင်ပါတယ်။
+> Student A: <u>I’m afraid I don’t share that point of view.</u> It doesn’t produce air or water pollution, as opposed to burning fossil fuels like coal or gas. | ကျောင်းသား က။ အဲဒီအမြင်ကို သဘောမတူပါ။ ကျောက်မီးသွေး သို့မဟုတ် ဓာတ်ငွေ့ ရှို့ခြင်းနှင့် ကွာပြီး လေ၊ ရေ မညစ်ညမ်းပါ။
+> Student B: I am not sure about that. However, I’m sure building dams could damage the local ecological system and cause land behind the dams to flood. | ကျောင်းသား ခ။ အဲဒါတော့ မသေချာပါ။ ဆည်ဆောက်တာက ဒေသဂေဟစနစ်ကို ထိခိုက်စေပြီး ဆည်နောက်ဘက် မြေ ရေလွှမ်းနိုင်တာတော့ သေချာပါတယ်။
+> Student A: I have to side with you on that one. On the other hand, once a hydropower dam is up and running, the cost of maintenance and employee wages is relatively low although the initial installation cost is high. | ကျောင်းသား က။ အဲဒီအချက်တော့ သဘောတူပါတယ်။ စတင်တပ်ဆင်စရိတ် ကြီးပေမဲ့ စက်ရုံ လည်ပတ်လာရင် ထိန်းသိမ်းစရိတ်နဲ့ လုပ်ခ နည်းပါတယ်။
+> Student B: That’s true. Well, I think we’re going to agree to disagree. It is undeniable that there are certainly pros and cons of hydropower plants and it’s an efficient means of producing electricity for a sustainable future. | ကျောင်းသား ခ။ ဟုတ်ပါတယ်။ မတူတဲ့ အမြင်တွေကို လက်ခံကြရအောင်။ ရေအားစက်ရုံမှာ အားသာ၊ အားနည်းချက် ရှိသလို ရေရှည်အတွက် ထိရောက်တဲ့ လျှပ်စစ်ထုတ်နည်းတစ်ခုလည်း ဖြစ်ပါတယ်။
+- List the expressions that show agreement or disagreement. | သဘောတူ၊ သဘောမတူကြောင်း ဖော်ပြသော စကားစုများ စာရင်းပြုပါ။
+! D. Read the dialogue again and put the underlined expressions from Exercise C in the correct column. | စကားပြောခန်း ထပ်ဖတ်၍ မျဉ်းသားထားသော စကားစုများကို သက်ဆိုင်ရာ ကော်လံတွင် ထည့်ပါ။
+> Agreeing: That’s exactly how I feel. · I couldn’t agree with you more. · That’s also how I feel about it. · You might have a point there. | သဘောတူခြင်း။ ကျွန်ုပ်လည်း ဒီအတိုင်း ခံစားရတယ်။ အပြည့်အဝ သဘောတူပါတယ်။ ကျွန်ုပ်လည်း အဲဒီလိုပဲ ခံစားရပါတယ်။ အဲဒီအချက် ဟုတ်နိုင်တယ်။
+> Disagreeing: I don’t think so. · That’s incorrect. · I’m afraid I don’t share that point of view. · I beg to differ. | သဘောမတူခြင်း။ အဲဒီလို မထင်ပါ။ အဲဒါ မှားပါတယ်။ အဲဒီအမြင်နဲ့ မတူပါ။ ကွဲပြားစွာ ယူဆပါရစေ။
+- Agreeing — two expressions | သဘောတူသော စကားစု နှစ်ခု
+- Disagreeing — two expressions | သဘောမတူသော စကားစု နှစ်ခု
+? E. In pairs, practise the dialogue. | နှစ်ယောက်တွဲ စကားပြောခန်း လေ့ကျင့်ပါ။
+~ What is your opinion on constructing a hydropower plant? | ရေအားစက်ရုံ ဆောက်ဖို့ ဘယ်လို ထင်သလဲ။
+~ I’m afraid I don’t share that point of view. | အဲဒီအမြင်နဲ့တော့ မတူပါဘူး။
+~ I have to side with you on that one. | အဲဒီအချက်ကို သဘောတူပါတယ်။
+~ I think we’re going to agree to disagree. | မတူတဲ့ အမြင်တွေကို အတူ လက်ခံကြရအောင်။
+# writing | 96
+! A. Discuss the advantages and disadvantages of solar, hydro and wind energy. | နေ၊ ရေနှင့် လေအားတို့၏ အားသာနှင့် အားနည်းချက်ကို ဆွေးနွေးပါ။
+! B. Write notes in the table. | ဇယားတွင် မှတ်စုရေးပါ။
+- Solar — Advantages and disadvantages | နေစွမ်းအင်၏ အားသာချက်နှင့် အားနည်းချက်
+- Hydro — Advantages and disadvantages | ရေအား၏ အားသာချက်နှင့် အားနည်းချက်
+- Wind — Advantages and disadvantages | လေအား၏ အားသာချက်နှင့် အားနည်းချက်
+! C. Based on the information in the table, write an expository essay about the advantages and disadvantages of three types of renewable energy sources. | ဇယားပါ အချက်များအပေါ် အခြေခံ၍ ပြန်လည်ပြည့်ဖြိုးမြဲရင်းမြစ် သုံးမျိုး၏ အားသာ၊ အားနည်းချက်များကို ရှင်းလင်းတင်ပြသော စာစီစာကုံး ရေးပါ။

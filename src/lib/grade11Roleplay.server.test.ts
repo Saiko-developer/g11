@@ -327,6 +327,11 @@ it.each([
   [5, "5D-G12-F", "colour", "Student A"],
   [6, "6D-G12-E", "audience member", "A self-driving car"],
   [7, "7D-G12-D", "Play Khant Hpone", "They are my old UPS and broken printer"],
+  [8, "8D-G12-E", "Student B", "What is your opinion on constructing a hydropower plant?"],
+  [9, "9D-G12-E", "perseverance", "Which do you think makes disabled people successful"],
+  [10, "10D-G12-C", "older sister", "Can you tell me how to prepare for an interview?"],
+  [11, "11D-G12-E", "classmate", "What is the sequence of events?"],
+  [12, "12D-G12-E", "Student A", "Did you buy anything as a souvenir of Hokkaido?"],
 ])(
   "grounds Grade 12 Unit %i role-play in its textbook activity",
   async (unit, exercise, role, example) => {
@@ -344,3 +349,11 @@ it.each([
     expect(model.prompt).toContain(example);
   },
 );
+
+it("rejects a two-digit Grade 12 speaking exercise for the wrong unit before billing", async () => {
+  expect((await handleGrade11Roleplay(request({ unit: 1, exercise: "12D-G12-E" }))).status).toBe(
+    400,
+  );
+  expect(prepareGrade11Speaking).not.toHaveBeenCalled();
+  expect(generateJson).not.toHaveBeenCalled();
+});

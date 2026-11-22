@@ -1,3 +1,4 @@
+import { isAdditionalUnit } from "@/data/grade12/additionalUnits";
 import { getAdditionalRoleplay } from "@/data/grade12/additionalRoleplay";
 import { grade12TutorContext } from "@/lib/grade12TutorContext";
 import { grade12Unit4Roleplay } from "@/data/grade12/unit4-roleplay";
@@ -79,7 +80,7 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
   }
   if (body.finish && !body.session)
     return Response.json({ error: "Session required" }, { status: 400 });
-  if (body.exercise && Number(body.exercise[0]) !== body.unit)
+  if (body.exercise && !body.exercise.startsWith(`${body.unit}D-`))
     return Response.json({ error: "Invalid exercise" }, { status: 400 });
   if (body.action === "end") {
     if (!body.session) return Response.json({ error: "Session required" }, { status: 400 });
@@ -188,7 +189,7 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
       ? GRADE11_ROLEPLAY_SYSTEM.replaceAll("Grade 11", "Grade 12")
       : GRADE11_ROLEPLAY_SYSTEM;
   const context =
-    additionalCard && (body.unit === 5 || body.unit === 6 || body.unit === 7)
+    additionalCard && isAdditionalUnit(body.unit)
       ? `${additionalCard.context}\n${grade12TutorContext("speaking", body.unit)}`
       : grade12Exercise
         ? `Grade 12 Unit 1: Good Manners\nSpeaking objective: Discuss manners and give advice.\n${grade12Exercise.context}`

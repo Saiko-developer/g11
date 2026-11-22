@@ -3,6 +3,11 @@ import type { TextbookExercise, TextbookItem } from "./unit2";
 import unit5 from "./unit5.txt?raw";
 import unit6 from "./unit6.txt?raw";
 import unit7 from "./unit7.txt?raw";
+import unit8 from "./unit8.txt?raw";
+import unit9 from "./unit9.txt?raw";
+import unit10 from "./unit10.txt?raw";
+import unit11 from "./unit11.txt?raw";
+import unit12 from "./unit12.txt?raw";
 
 const unit7DialogueAnswersMy = [
   "ပျက်နေသော ပုံနှိပ်စက်",
@@ -31,7 +36,7 @@ export type AdditionalExerciseGroup = {
 
 // The heading markers preserve printed section and exercise order. A question
 // line holds English, Burmese, suggested answer, choices, and a structure hint.
-function readUnit(unit: AdditionalUnitNumber, raw: string) {
+function readUnit(unit: number, raw: string) {
   const sections = {} as Record<Grade12Skill, { pages: string; groups: AdditionalExerciseGroup[] }>;
   const passage: (BilingualText & { heading: boolean })[] = [];
   const shadowing: BilingualText[] = [];
@@ -45,7 +50,7 @@ function readUnit(unit: AdditionalUnitNumber, raw: string) {
       .slice(1)
       .trim()
       .split("|")
-      .map((field) => field.trim());
+      .map((field) => field.trim().replaceAll("\\n", "\n"));
     switch (line[0]) {
       case "#":
         skill = en as Grade12Skill;
@@ -141,8 +146,13 @@ export const additionalUnits = {
   5: readUnit(5, unit5),
   6: readUnit(6, unit6),
   7: readUnit(7, unit7),
+  8: readUnit(8, unit8),
+  9: readUnit(9, unit9),
+  10: readUnit(10, unit10),
+  11: readUnit(11, unit11),
+  12: readUnit(12, unit12),
 };
-export type AdditionalUnitNumber = 5 | 6 | 7;
+export type AdditionalUnitNumber = keyof typeof additionalUnits;
 
 export function isAdditionalUnit(unit: number): unit is AdditionalUnitNumber {
   return Object.hasOwn(additionalUnits, unit);

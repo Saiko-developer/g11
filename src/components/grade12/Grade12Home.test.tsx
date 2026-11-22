@@ -108,7 +108,17 @@ it("opens a Unit 1 skill and returns to the expanded curriculum card", async () 
     expect(screen.getByRole("heading", { name: "Productive Skills" })).toBeVisible();
     expect(screen.getByRole("heading", { name: "Knowledge about Language" })).toBeVisible();
     expect(screen.getByText(title, { selector: "span.text-muted-foreground" })).toBeVisible();
-    expect(screen.queryByRole("link", { name: /^Listening/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /^Listening/ })).toHaveAttribute(
+      "href",
+      expect.stringContaining(`unit=${number}`),
+    );
+    fireEvent.click(screen.getByRole("link", { name: /^Reading/ }));
+    expect(await screen.findByRole("heading", { name: title, level: 1 })).toBeVisible();
+    expect(screen.getAllByRole("button", { name: "Translate question" }).length).toBeGreaterThan(0);
+    fireEvent.click(screen.getByRole("link", { name: "Grade 12 Units" }));
+    expect(
+      await screen.findByRole("button", { name: `${number} Unit ${number} ${title}` }),
+    ).toHaveAttribute("aria-expanded", "true");
   }
   expect(screen.getByText("Writing a blog post")).toBeVisible();
 }, 30000);

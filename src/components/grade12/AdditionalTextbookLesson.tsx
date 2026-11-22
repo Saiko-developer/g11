@@ -50,17 +50,33 @@ function Exercise({
           index,
         } = entry;
         const sentenceStructure = structure[index];
+        const vocabularyWords =
+          skill === "vocabulary" && !informational
+            ? [...text.matchAll(/\*\*([^*]+)\*\*/g)].map((match) => match[1])
+            : [];
+        if (
+          skill === "vocabulary" &&
+          !informational &&
+          vocabularyWords.length === 0 &&
+          /^[a-z][a-z -]+$/i.test(text) &&
+          text.split(" ").length <= 3
+        ) {
+          vocabularyWords.push(text);
+        }
         return (
           <div key={position} className="space-y-2 border-t pt-3">
             <div className="flex items-start gap-2">
               {tick && (
                 <input type="checkbox" aria-label={text} className="mt-1.5 size-4 shrink-0" />
               )}
-              {!informational && !tick && (
+              {!informational && !tick && !/^\([a-z]\)/i.test(text) && (
                 <span className="shrink-0 text-muted-foreground">{index + 1}.</span>
               )}
               <English text={text} />
               {pronunciation && <Grade11Pronunciation text={text} />}
+              {vocabularyWords.map((word) => (
+                <Grade11Pronunciation key={word} text={word} />
+              ))}
             </div>
             {pronunciation ? (
               <>
