@@ -1,3 +1,10 @@
+import {
+  unit3Affixes,
+  unit3Exercises,
+  unit3Reading,
+  unit3References,
+  unit3SpeakingTopics,
+} from "@/data/grade12/unit3";
 import { unit2Exercises, unit2Reading, unit2References } from "@/data/grade12/unit2";
 import core from "@/data/grade12/unit1-core.json";
 import activities from "@/data/grade12/unit1-listening-speaking.json";
@@ -10,11 +17,11 @@ function question(group: string, index: number, text: string, detail: string, un
   return `[${group ? `Exercise ${group} · ` : ""}Question ${index + 1} | source Grade 12 Unit ${unit}] ${text}\n${detail}`;
 }
 
-export function grade12TutorContext(skill?: Grade12Skill, unit: 1 | 2 = 1): string {
+export function grade12TutorContext(skill?: Grade12Skill, unit: 1 | 2 | 3 = 1): string {
   if (!skill) {
     return [
       "Grade 12 English · Curriculum explorer",
-      "The following entries are curriculum headings. In-app textbook lesson and exercise content is currently available for Units 1 and 2.",
+      "The following entries are curriculum headings. In-app textbook lesson and exercise content is currently available for Units 1–3.",
       ...grade12Units.map(({ number, title }) => {
         const topics = grade12SkillTopics[number];
         return `Unit ${number} · ${title}: ${Object.entries(topics)
@@ -24,21 +31,28 @@ export function grade12TutorContext(skill?: Grade12Skill, unit: 1 | 2 = 1): stri
     ].join("\n");
   }
 
-  if (unit === 2) {
+  if (unit !== 1) {
+    const reading = unit === 2 ? unit2Reading : unit3Reading;
+    const references = unit === 2 ? unit2References : unit3References;
+    const exercises = unit === 2 ? unit2Exercises : unit3Exercises;
     let paragraph = 0;
     const reference =
       skill === "reading"
-        ? unit2Reading.map((text) =>
+        ? reading.map((text) =>
             /^\d+\. /.test(text) ? text : `[Paragraph ${++paragraph}] ${text}`,
           )
         : skill === "grammar" || skill === "vocabulary" || skill === "writing"
-          ? unit2References[skill]
+          ? references[skill]
           : [];
     return [
-      `Grade 12 English · Unit 2 · ${skill} · ${grade12SkillTopics[2][skill]}`,
+      `Grade 12 English · Unit ${unit} · ${skill} · ${grade12SkillTopics[unit][skill]}`,
       ...reference,
       skill === "listening" ? "Original audio and transcript are pending." : undefined,
-      ...unit2Exercises[skill].flatMap(({ instruction, reference: example, items }) => [
+      ...(unit === 3 && skill === "speaking" ? unit3SpeakingTopics : []),
+      ...(unit === 3 && skill === "vocabulary"
+        ? Object.values(unit3Affixes).flatMap((rows) => rows.map((row) => row.join(" · ")))
+        : []),
+      ...exercises[skill].flatMap(({ instruction, reference: example, items }) => [
         instruction,
         example,
         ...items.map(({ text, choices }, index) =>
@@ -47,7 +61,7 @@ export function grade12TutorContext(skill?: Grade12Skill, unit: 1 | 2 = 1): stri
             index,
             text,
             choices?.join(" · ") ?? instruction,
-            2,
+            unit,
           ),
         ),
       ]),

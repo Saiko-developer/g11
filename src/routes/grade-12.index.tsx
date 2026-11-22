@@ -1,4 +1,4 @@
-import { Unit2Lesson } from "@/components/grade12/Unit2Lesson";
+import { TextbookUnitLesson } from "@/components/grade12/TextbookUnitLesson";
 import { SayaOwlHome } from "@/components/SayaOwlHome";
 import { Grade11RequireSignIn } from "@/components/grade11/Grade11RequireSignIn";
 import { grade12TutorContext } from "@/lib/grade12TutorContext";
@@ -29,8 +29,8 @@ import {
 import { unit1Sections } from "@/data/grade12/unit1";
 
 export const Route = createFileRoute("/grade-12/")({
-  validateSearch: (search: Record<string, unknown>): { skill?: Grade12Skill; unit?: 2 } => ({
-    unit: search.unit === 2 || search.unit === "2" ? 2 : undefined,
+  validateSearch: (search: Record<string, unknown>): { skill?: Grade12Skill; unit?: 2 | 3 } => ({
+    unit: ([2, 3] as const).find((value) => value === search.unit || String(value) === search.unit),
     skill:
       grade12Skills.find((skill) => skill === search.skill) ??
       (search.skill === "listening-speaking" ? "listening" : undefined),
@@ -93,11 +93,11 @@ function UnitSkillCards({ unit }: { unit: number }) {
               );
               const card =
                 "flex items-start gap-3 rounded-xl border border-primary/40 bg-primary/5 p-3";
-              return unit <= 2 ? (
+              return unit <= 3 ? (
                 <Link
                   key={id}
                   to="/grade-12"
-                  search={{ skill: id, unit: unit === 2 ? 2 : undefined }}
+                  search={{ skill: id, unit: unit === 2 || unit === 3 ? unit : undefined }}
                   className={`${card} transition hover:border-primary hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}
                 >
                   {content}
@@ -115,13 +115,13 @@ function UnitSkillCards({ unit }: { unit: number }) {
   );
 }
 
-function SkillLinks({ current, unit }: { current: Grade12Skill; unit: 1 | 2 }) {
+function SkillLinks({ current, unit }: { current: Grade12Skill; unit: 1 | 2 | 3 }) {
   return (
     <nav aria-label={`Unit ${unit} skills`} className="flex flex-wrap gap-2">
       {grade12Skills.map((skill) => (
         <Link
           to="/grade-12"
-          search={{ skill, unit: unit === 2 ? 2 : undefined }}
+          search={{ skill, unit: unit === 2 || unit === 3 ? unit : undefined }}
           key={skill}
           aria-current={skill === current ? "page" : undefined}
           className={`rounded-full border px-3 py-2 text-sm font-medium capitalize ${skill === current ? "bg-primary text-primary-foreground" : "bg-card hover:bg-accent"}`}
@@ -133,7 +133,7 @@ function SkillLinks({ current, unit }: { current: Grade12Skill; unit: 1 | 2 }) {
   );
 }
 
-function Curriculum({ unit }: { unit: 1 | 2 }) {
+function Curriculum({ unit }: { unit: 1 | 2 | 3 }) {
   const [open, setOpen] = useState<number | null>(unit);
   return (
     <div className="space-y-3">
@@ -174,7 +174,7 @@ function Curriculum({ unit }: { unit: 1 | 2 }) {
               >
                 {open === number && (
                   <>
-                    {number > 2 && (
+                    {number > 3 && (
                       <p className="text-sm text-muted-foreground">
                         Textbook page {page} · <span lang="my">သင်ခန်းစာ မထည့်ရသေးပါ။</span>
                       </p>
@@ -224,13 +224,17 @@ function Grade12Home() {
               <p className="font-semibold text-primary">Unit {unit}</p>
               <h1 className="text-3xl font-bold">{grade12Units[unit - 1].title}</h1>
               <p lang="my" className="text-muted-foreground">
-                {unit === 1 ? "အမူအကျင့်ကောင်းများ" : "ပျော်ရွှင်မှု၏ သော့ချက်"}
+                {
+                  ["အမူအကျင့်ကောင်းများ", "ပျော်ရွှင်မှု၏ သော့ချက်", "စားသောက်ပုံနှင့် အာဟာရ"][
+                    unit - 1
+                  ]
+                }
               </p>
             </header>
             <SkillLinks current={skill} unit={unit} />
             <div data-saya-home-section>
-              {unit === 2 ? (
-                <Unit2Lesson key={skill} skill={skill} />
+              {unit !== 1 ? (
+                <TextbookUnitLesson key={`${unit}:${skill}`} unit={unit} skill={skill} />
               ) : skill === "listening" || skill === "speaking" ? (
                 <Unit1ListeningSpeaking key={skill} skill={skill} />
               ) : (
