@@ -17,6 +17,7 @@ import { Unit1Lesson } from "@/components/grade12/Unit1Lesson";
 import { Unit1ListeningSpeaking } from "@/components/grade12/Unit1ListeningSpeaking";
 import {
   grade12Reviews,
+  grade12SkillTopics,
   grade12Skills,
   grade12Units,
   type Grade12Skill,
@@ -33,24 +34,23 @@ export const Route = createFileRoute("/grade-12/")({
   component: Grade12Home,
 });
 
-const unit1SkillGroups = [
+const skillGroups = [
   {
     title: "Receptive Skills",
     skills: [
       {
         id: "listening",
         title: "Listening",
-        topic: "Good manners in four countries",
         Icon: Headphones,
       },
-      { id: "reading", title: "Reading", topic: "Good Manners", Icon: BookOpen },
+      { id: "reading", title: "Reading", Icon: BookOpen },
     ],
   },
   {
     title: "Productive Skills",
     skills: [
-      { id: "speaking", title: "Speaking", topic: "Good and bad manners", Icon: MessageSquare },
-      { id: "writing", title: "Writing", topic: "Writing a reply", Icon: PenLine },
+      { id: "speaking", title: "Speaking", Icon: MessageSquare },
+      { id: "writing", title: "Writing", Icon: PenLine },
     ],
   },
   {
@@ -59,37 +59,50 @@ const unit1SkillGroups = [
       {
         id: "vocabulary",
         title: "Vocabulary",
-        topic: "Compound nouns and adjectives",
         Icon: SpellCheck,
       },
-      { id: "grammar", title: "Grammar", topic: "Can, should, must", Icon: Type },
+      { id: "grammar", title: "Grammar", Icon: Type },
     ],
   },
 ] as const;
 
-function Unit1SkillCards() {
+function UnitSkillCards({ unit }: { unit: number }) {
+  const topics = grade12SkillTopics[unit];
   return (
     <div className="grid gap-4 md:grid-cols-3">
-      {unit1SkillGroups.map(({ title, skills }) => (
+      {skillGroups.map(({ title, skills }) => (
         <section key={title} className="space-y-3">
           <h2 className="text-xs font-bold uppercase tracking-widest text-primary">{title}</h2>
           <div className="grid gap-2">
-            {skills.map(({ id, title: skillTitle, topic, Icon }) => (
-              <Link
-                key={id}
-                to="/grade-12"
-                search={{ skill: id }}
-                className="flex items-start gap-3 rounded-xl border border-primary/40 bg-primary/5 p-3 transition hover:border-primary hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-              >
-                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent/20 text-primary">
-                  <Icon aria-hidden="true" className="size-4" />
-                </span>
-                <span className="min-w-0">
-                  <span className="block text-sm font-semibold">{skillTitle}</span>
-                  <span className="block text-sm text-muted-foreground">{topic}</span>
-                </span>
-              </Link>
-            ))}
+            {skills.map(({ id, title: skillTitle, Icon }) => {
+              const content = (
+                <>
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent/20 text-primary">
+                    <Icon aria-hidden="true" className="size-4" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-sm font-semibold">{skillTitle}</span>
+                    <span className="block text-sm text-muted-foreground">{topics[id]}</span>
+                  </span>
+                </>
+              );
+              const card =
+                "flex items-start gap-3 rounded-xl border border-primary/40 bg-primary/5 p-3";
+              return unit === 1 ? (
+                <Link
+                  key={id}
+                  to="/grade-12"
+                  search={{ skill: id }}
+                  className={`${card} transition hover:border-primary hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}
+                >
+                  {content}
+                </Link>
+              ) : (
+                <div key={id} className={card}>
+                  {content}
+                </div>
+              );
+            })}
           </div>
         </section>
       ))}
@@ -154,14 +167,14 @@ function Curriculum() {
                 hidden={open !== number}
                 className="space-y-3 border-t px-5 py-4"
               >
-                {number === 1 ? (
-                  <Unit1SkillCards />
-                ) : (
+                {open === number && (
                   <>
-                    <p className="text-sm text-muted-foreground">Textbook page {page}</p>
-                    <p lang="my" className="text-sm">
-                      သင်ခန်းစာ မထည့်ရသေးပါ။
-                    </p>
+                    {number > 1 && (
+                      <p className="text-sm text-muted-foreground">
+                        Textbook page {page} · <span lang="my">သင်ခန်းစာ မထည့်ရသေးပါ။</span>
+                      </p>
+                    )}
+                    <UnitSkillCards unit={number} />
                   </>
                 )}
               </div>

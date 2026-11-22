@@ -7,6 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, expect, it, vi } from "vitest";
+import { grade12Units } from "@/data/grade12/syllabus";
 import { Route } from "@/routes/grade-12.index";
 
 vi.mock("@/components/SiteHeader", () => ({ SiteHeader: () => null }));
@@ -41,4 +42,13 @@ it("opens a Unit 1 skill and returns to the expanded curriculum card", async () 
     "true",
   );
   expect(screen.getByRole("link", { name: "Speaking Good and bad manners" })).toBeVisible();
+  for (const { number, title } of grade12Units.slice(1)) {
+    fireEvent.click(screen.getByRole("button", { name: `${number} Unit ${number} ${title}` }));
+    expect(screen.getByRole("heading", { name: "Receptive Skills" })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Productive Skills" })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Knowledge about Language" })).toBeVisible();
+    expect(screen.getByText(title, { selector: "span.text-muted-foreground" })).toBeVisible();
+    expect(screen.queryByRole("link", { name: /^Listening/ })).not.toBeInTheDocument();
+  }
+  expect(screen.getByText("Writing a blog post")).toBeVisible();
 });
