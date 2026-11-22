@@ -59,7 +59,20 @@ it("opens a Unit 1 skill and returns to the expanded curriculum card", async () 
     "true",
   );
   expect(screen.getByRole("link", { name: "Speaking Good and bad manners" })).toBeVisible();
-  for (const { number, title } of grade12Units.slice(1)) {
+  fireEvent.click(screen.getByRole("button", { name: "2 Unit 2 Key to Happiness" }));
+  fireEvent.click(screen.getByRole("link", { name: "Grammar Relative clauses" }));
+  expect(await screen.findByRole("heading", { name: "Relative clauses" })).toBeVisible();
+  expect(screen.getByRole("button", { name: "Grade 12 Saya Owl" })).toHaveAttribute(
+    "title",
+    expect.stringContaining("Grade 12 English · Unit 2 · grammar"),
+  );
+  expect(screen.getByText("People ______ are honest are always trusted.")).toBeVisible();
+  fireEvent.click(screen.getByRole("link", { name: "Grade 12 Units" }));
+  expect(await screen.findByRole("button", { name: "2 Unit 2 Key to Happiness" })).toHaveAttribute(
+    "aria-expanded",
+    "true",
+  );
+  for (const { number, title } of grade12Units.slice(2)) {
     fireEvent.click(screen.getByRole("button", { name: `${number} Unit ${number} ${title}` }));
     expect(screen.getByRole("heading", { name: "Receptive Skills" })).toBeVisible();
     expect(screen.getByRole("heading", { name: "Productive Skills" })).toBeVisible();

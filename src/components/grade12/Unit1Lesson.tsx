@@ -17,7 +17,7 @@ import {
   vocabularyMy,
   vocabularySentencesMy,
 } from "@/data/grade12/unit1-study-support";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Grade11AIReview } from "@/components/grade11/Grade11AIReview";
 import core from "@/data/grade12/unit1-core.json";
 import { compounds } from "@/data/grade12/unit1-reference";
@@ -35,7 +35,7 @@ import {
 type Section = (typeof unit1Sections)[number];
 type Exercise = { key: string; instruction: string; lines: string[] };
 
-function Answer({
+export function Answer({
   prompt,
   expected,
   subjective = false,
@@ -130,7 +130,7 @@ function Answer({
   );
 }
 
-function English({ text }: { text: string }) {
+export function English({ text }: { text: string }) {
   return (
     <div lang="en" className="whitespace-pre-wrap break-words leading-relaxed">
       {text
@@ -142,7 +142,13 @@ function English({ text }: { text: string }) {
   );
 }
 
-function BurmeseTranslation({ text, label = "မြန်မာဘာသာပြန်" }: { text: string; label?: string }) {
+export function BurmeseTranslation({
+  text,
+  label = "မြန်မာဘာသာပြန်",
+}: {
+  text: string;
+  label?: string;
+}) {
   return (
     <ToggleReveal label={label} hiddenLabel="ဘာသာပြန် ပိတ်ရန်">
       <p lang="my">{text}</p>
@@ -350,7 +356,13 @@ function CompoundPractice() {
 
 type CoreSkill = "reading" | "vocabulary" | "grammar";
 
-function ReadingWorkspace() {
+export function ReadingWorkspace({
+  passage,
+  exercises,
+}: {
+  passage: ReactNode;
+  exercises: ReactNode;
+}) {
   const pane =
     "min-w-0 space-y-4 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:max-h-[clamp(22rem,calc(100dvh_-_18rem),60rem)] lg:overflow-y-auto lg:overscroll-y-contain lg:p-1 lg:[scrollbar-gutter:stable]";
   return (
@@ -359,21 +371,32 @@ function ReadingWorkspace() {
         <h2 id="grade12-reading-passage" className="text-lg font-semibold">
           Reading passage
         </h2>
-        <PreReading />
-        <Reading />
+        {passage}
       </section>
       <section aria-labelledby="grade12-reading-comprehension" tabIndex={0} className={pane}>
         <h2 id="grade12-reading-comprehension" className="text-lg font-semibold">
           Comprehension
         </h2>
-        <CoreExercises skill="reading" />
+        {exercises}
       </section>
     </div>
   );
 }
 
 function CoreLesson({ skill }: { skill: CoreSkill }) {
-  if (skill === "reading") return <ReadingWorkspace />;
+  if (skill === "reading") {
+    return (
+      <ReadingWorkspace
+        passage={
+          <>
+            <PreReading />
+            <Reading />
+          </>
+        }
+        exercises={<CoreExercises skill="reading" />}
+      />
+    );
+  }
 
   return (
     <>

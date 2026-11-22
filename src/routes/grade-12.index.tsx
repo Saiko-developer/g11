@@ -1,3 +1,4 @@
+import { Unit2Lesson } from "@/components/grade12/Unit2Lesson";
 import { SayaOwlHome } from "@/components/SayaOwlHome";
 import { Grade11RequireSignIn } from "@/components/grade11/Grade11RequireSignIn";
 import { grade12TutorContext } from "@/lib/grade12TutorContext";
@@ -28,7 +29,8 @@ import {
 import { unit1Sections } from "@/data/grade12/unit1";
 
 export const Route = createFileRoute("/grade-12/")({
-  validateSearch: (search: Record<string, unknown>): { skill?: Grade12Skill } => ({
+  validateSearch: (search: Record<string, unknown>): { skill?: Grade12Skill; unit?: 2 } => ({
+    unit: search.unit === 2 || search.unit === "2" ? 2 : undefined,
     skill:
       grade12Skills.find((skill) => skill === search.skill) ??
       (search.skill === "listening-speaking" ? "listening" : undefined),
@@ -91,11 +93,11 @@ function UnitSkillCards({ unit }: { unit: number }) {
               );
               const card =
                 "flex items-start gap-3 rounded-xl border border-primary/40 bg-primary/5 p-3";
-              return unit === 1 ? (
+              return unit <= 2 ? (
                 <Link
                   key={id}
                   to="/grade-12"
-                  search={{ skill: id }}
+                  search={{ skill: id, unit: unit === 2 ? 2 : undefined }}
                   className={`${card} transition hover:border-primary hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}
                 >
                   {content}
@@ -113,13 +115,13 @@ function UnitSkillCards({ unit }: { unit: number }) {
   );
 }
 
-function SkillLinks({ current }: { current: Grade12Skill }) {
+function SkillLinks({ current, unit }: { current: Grade12Skill; unit: 1 | 2 }) {
   return (
-    <nav aria-label="Unit 1 skills" className="flex flex-wrap gap-2">
+    <nav aria-label={`Unit ${unit} skills`} className="flex flex-wrap gap-2">
       {grade12Skills.map((skill) => (
         <Link
           to="/grade-12"
-          search={{ skill }}
+          search={{ skill, unit: unit === 2 ? 2 : undefined }}
           key={skill}
           aria-current={skill === current ? "page" : undefined}
           className={`rounded-full border px-3 py-2 text-sm font-medium capitalize ${skill === current ? "bg-primary text-primary-foreground" : "bg-card hover:bg-accent"}`}
@@ -131,8 +133,8 @@ function SkillLinks({ current }: { current: Grade12Skill }) {
   );
 }
 
-function Curriculum() {
-  const [open, setOpen] = useState<number | null>(1);
+function Curriculum({ unit }: { unit: 1 | 2 }) {
+  const [open, setOpen] = useState<number | null>(unit);
   return (
     <div className="space-y-3">
       {grade12Units.map(({ number, title, page }) => {
@@ -172,7 +174,7 @@ function Curriculum() {
               >
                 {open === number && (
                   <>
-                    {number > 1 && (
+                    {number > 2 && (
                       <p className="text-sm text-muted-foreground">
                         Textbook page {page} · <span lang="my">သင်ခန်းစာ မထည့်ရသေးပါ။</span>
                       </p>
@@ -202,7 +204,8 @@ function Curriculum() {
 }
 
 function Grade12Home() {
-  const { skill } = Route.useSearch();
+  const { skill, unit: selectedUnit } = Route.useSearch();
+  const unit = selectedUnit ?? 1;
   const section = unit1Sections.find((item) => item.id === skill);
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -212,21 +215,23 @@ function Grade12Home() {
           <>
             <Link
               to="/grade-12"
-              search={{}}
+              search={{ unit: selectedUnit }}
               className="inline-flex min-h-10 items-center gap-2 rounded-lg px-2 text-sm font-semibold text-primary transition hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-primary"
             >
               <ArrowLeft aria-hidden="true" className="size-4" /> Grade 12 Units
             </Link>
             <header>
-              <p className="font-semibold text-primary">Unit 1</p>
-              <h1 className="text-3xl font-bold">Good Manners</h1>
+              <p className="font-semibold text-primary">Unit {unit}</p>
+              <h1 className="text-3xl font-bold">{grade12Units[unit - 1].title}</h1>
               <p lang="my" className="text-muted-foreground">
-                အမူအကျင့်ကောင်းများ
+                {unit === 1 ? "အမူအကျင့်ကောင်းများ" : "ပျော်ရွှင်မှု၏ သော့ချက်"}
               </p>
             </header>
-            <SkillLinks current={skill} />
+            <SkillLinks current={skill} unit={unit} />
             <div data-saya-home-section>
-              {skill === "listening" || skill === "speaking" ? (
+              {unit === 2 ? (
+                <Unit2Lesson key={skill} skill={skill} />
+              ) : skill === "listening" || skill === "speaking" ? (
                 <Unit1ListeningSpeaking key={skill} skill={skill} />
               ) : (
                 section && (
@@ -248,15 +253,15 @@ function Grade12Home() {
               </p>
             </header>
             <div data-saya-home-section>
-              <Curriculum />
+              <Curriculum key={unit} unit={unit} />
             </div>
           </>
         )}
         <Grade11RequireSignIn>
           <SayaOwlHome
-            key={skill ?? "curriculum"}
+            key={`${unit}:${skill ?? "curriculum"}`}
             grade={12}
-            lessonContext={grade12TutorContext(skill)}
+            lessonContext={grade12TutorContext(skill, unit)}
           />
         </Grade11RequireSignIn>
       </main>
