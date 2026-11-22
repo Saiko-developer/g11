@@ -91,7 +91,18 @@ it("opens a Unit 1 skill and returns to the expanded curriculum card", async () 
   expect(
     await screen.findByRole("button", { name: "3 Unit 3 Diet and Nutrition" }),
   ).toHaveAttribute("aria-expanded", "true");
-  for (const { number, title } of grade12Units.slice(3)) {
+  fireEvent.click(screen.getByRole("button", { name: "4 Unit 4 Emotional Well-Being" }));
+  fireEvent.click(screen.getByRole("link", { name: "Grammar Adjectives with prepositions" }));
+  expect(await screen.findByRole("button", { name: "Oral Explanation" })).toBeVisible();
+  expect(screen.getByRole("button", { name: "Grade 12 Saya Owl" })).toHaveAttribute(
+    "title",
+    expect.stringContaining("Grade 12 English · Unit 4 · grammar"),
+  );
+  fireEvent.click(screen.getByRole("link", { name: "Grade 12 Units" }));
+  expect(
+    await screen.findByRole("button", { name: "4 Unit 4 Emotional Well-Being" }),
+  ).toHaveAttribute("aria-expanded", "true");
+  for (const { number, title } of grade12Units.slice(4)) {
     fireEvent.click(screen.getByRole("button", { name: `${number} Unit ${number} ${title}` }));
     expect(screen.getByRole("heading", { name: "Receptive Skills" })).toBeVisible();
     expect(screen.getByRole("heading", { name: "Productive Skills" })).toBeVisible();

@@ -1,3 +1,5 @@
+import { grade12Unit4Roleplay } from "@/data/grade12/unit4-roleplay";
+import { unit4SpeakingLines } from "@/data/grade12/unit4";
 import { getGrade12Unit3SpeakingCard } from "@/data/grade12/unit3-roleplay";
 import {
   grade12Unit1Roleplay,
@@ -177,15 +179,18 @@ export async function handleGrade11Roleplay(request: Request): Promise<Response>
         : "\nAsk the student to report a friend's preferred destination in the third person. Ask for their friend's actual answers first; do not invent a friend or travel facts. Give presentation feedback.";
   }
   const nutritionCard = getGrade12Unit3SpeakingCard(body.exercise);
+  const stressDialogue = body.exercise === grade12Unit4Roleplay.id;
   const system =
-    grade12Exercise || nutritionCard
+    grade12Exercise || nutritionCard || stressDialogue
       ? GRADE11_ROLEPLAY_SYSTEM.replaceAll("Grade 11", "Grade 12")
       : GRADE11_ROLEPLAY_SYSTEM;
   const context = grade12Exercise
     ? `Grade 12 Unit 1: Good Manners\nSpeaking objective: Discuss manners and give advice.\n${grade12Exercise.context}`
     : nutritionCard
       ? `Grade 12 Unit 3: Diet and Nutrition\nExercise B: Give a one-minute talk. Selected textbook speaking card: ${nutritionCard.label}.\nAct as a classmate listening to the learner’s short talk. Invite them to start in their own words and give them room to finish. Ask one relevant follow-up question per turn about the selected card. Keep feedback focused on English speaking and topic clarity. Do not deliver the talk for the learner or give personal dietary advice.`
-      : `Grade 11 Unit ${body.unit}: ${unit.title}\nSpeaking objective: ${objective}\nTextbook practice phrases/questions:\n${source}\nExercise task:\n${exerciseContext}`;
+      : stressDialogue
+        ? `Grade 12 Unit 4: Emotional Well-Being\nExercise E: In pairs, practise the dialogue. The following is the textbook dialogue from Exercise C:\n${unit4SpeakingLines.map(({ speaker, en }) => `${speaker}: ${en}`).join("\n")}\nAct as Nilar. Let the learner speak as Thazin. Begin with Nilar’s greeting. Follow the dialogue one turn at a time and accept natural paraphrases. Treat stress as a fictional classroom scenario. Keep feedback about English and the language for asking, giving and responding to suggestions.`
+        : `Grade 11 Unit ${body.unit}: ${unit.title}\nSpeaking objective: ${objective}\nTextbook practice phrases/questions:\n${source}\nExercise task:\n${exerciseContext}`;
   const conversation = untrusted("conversation", JSON.stringify(body.turns), 36000);
   try {
     if (body.finish) {

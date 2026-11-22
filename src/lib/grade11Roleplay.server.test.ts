@@ -305,3 +305,20 @@ it("rejects a Grade 12 Unit 3 speaking card for a different unit", async () => {
   expect(prepareGrade11Speaking).not.toHaveBeenCalled();
   expect(generateJson).not.toHaveBeenCalled();
 });
+
+it("anchors Grade 12 Unit 4 speaking practice to the textbook dialogue", async () => {
+  const response = await handleGrade11Roleplay(request({ unit: 4, exercise: "4D-G12-E" }));
+  expect(response.status).toBe(200);
+  expect(prepareGrade11Speaking).toHaveBeenCalledWith(
+    expect.any(Request),
+    expect.objectContaining({ unit: 4, exercise: "4D-G12-E" }),
+    expect.any(String),
+    expect.any(String),
+  );
+  const model = vi.mocked(generateJson).mock.calls[0][0];
+  expect(model.system).toContain("Grade 12");
+  expect(model.prompt).toContain("Grade 12 Unit 4: Emotional Well-Being");
+  expect(model.prompt).toContain("Nilar: Hello, Thazin.");
+  expect(model.prompt).toContain("Let the learner speak as Thazin.");
+  expect(model.prompt).not.toContain("Grade 11 Unit 4");
+});
