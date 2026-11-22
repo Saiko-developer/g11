@@ -46,6 +46,7 @@ import { Route as ClassExamNewRouteImport } from './routes/class-exam.new'
 import { Route as ClassroomGradeRouteImport } from './routes/classroom.$grade'
 import { Route as Grade11IndexRouteImport } from './routes/grade-11.index'
 import { Route as Grade11UnitRouteImport } from './routes/grade-11.$unit'
+import { Route as Grade12IndexRouteImport } from './routes/grade-12.index'
 import { Route as MockExamUnitRouteImport } from './routes/mock-exam.$unit'
 import { Route as PracticeUnitRouteImport } from './routes/practice.$unit'
 import { Route as SectionSectionIdRouteImport } from './routes/section.$sectionId'
@@ -239,6 +240,11 @@ const Grade11UnitRoute = Grade11UnitRouteImport.update({
   path: '/grade-11/$unit',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Grade12IndexRoute = Grade12IndexRouteImport.update({
+  id: '/grade-12/',
+  path: '/grade-12/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MockExamUnitRoute = MockExamUnitRouteImport.update({
   id: '/mock-exam/$unit',
   path: '/mock-exam/$unit',
@@ -316,6 +322,7 @@ export interface FileRoutesByFullPath {
   '/practice/$unit': typeof PracticeUnitRouteWithChildren
   '/section/$sectionId': typeof SectionSectionIdRoute
   '/grade-11/': typeof Grade11IndexRoute
+  '/grade-12/': typeof Grade12IndexRoute
   '/api/public/cron-auto-grade': typeof ApiPublicCronAutoGradeRoute
   '/grade-11/$unit/$skill': typeof Grade11UnitSkillRoute
   '/practice/$unit/$skill': typeof PracticeUnitSkillRoute
@@ -361,6 +368,7 @@ export interface FileRoutesByTo {
   '/mock-exam/$unit': typeof MockExamUnitRoute
   '/section/$sectionId': typeof SectionSectionIdRoute
   '/grade-11': typeof Grade11IndexRoute
+  '/grade-12': typeof Grade12IndexRoute
   '/api/public/cron-auto-grade': typeof ApiPublicCronAutoGradeRoute
   '/grade-11/$unit/$skill': typeof Grade11UnitSkillRoute
   '/practice/$unit/$skill': typeof PracticeUnitSkillRoute
@@ -408,6 +416,7 @@ export interface FileRoutesById {
   '/practice/$unit': typeof PracticeUnitRouteWithChildren
   '/section/$sectionId': typeof SectionSectionIdRoute
   '/grade-11/': typeof Grade11IndexRoute
+  '/grade-12/': typeof Grade12IndexRoute
   '/api/public/cron-auto-grade': typeof ApiPublicCronAutoGradeRoute
   '/grade-11/$unit_/$skill': typeof Grade11UnitSkillRoute
   '/practice/$unit/$skill': typeof PracticeUnitSkillRoute
@@ -456,6 +465,7 @@ export interface FileRouteTypes {
     | '/practice/$unit'
     | '/section/$sectionId'
     | '/grade-11/'
+    | '/grade-12/'
     | '/api/public/cron-auto-grade'
     | '/grade-11/$unit/$skill'
     | '/practice/$unit/$skill'
@@ -501,6 +511,7 @@ export interface FileRouteTypes {
     | '/mock-exam/$unit'
     | '/section/$sectionId'
     | '/grade-11'
+    | '/grade-12'
     | '/api/public/cron-auto-grade'
     | '/grade-11/$unit/$skill'
     | '/practice/$unit/$skill'
@@ -547,6 +558,7 @@ export interface FileRouteTypes {
     | '/practice/$unit'
     | '/section/$sectionId'
     | '/grade-11/'
+    | '/grade-12/'
     | '/api/public/cron-auto-grade'
     | '/grade-11/$unit_/$skill'
     | '/practice/$unit/$skill'
@@ -594,6 +606,7 @@ export interface RootRouteChildren {
   PracticeUnitRoute: typeof PracticeUnitRouteWithChildren
   SectionSectionIdRoute: typeof SectionSectionIdRoute
   Grade11IndexRoute: typeof Grade11IndexRoute
+  Grade12IndexRoute: typeof Grade12IndexRoute
   ApiPublicCronAutoGradeRoute: typeof ApiPublicCronAutoGradeRoute
   Grade11UnitSkillRoute: typeof Grade11UnitSkillRoute
 }
@@ -859,6 +872,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Grade11UnitRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/grade-12/': {
+      id: '/grade-12/'
+      path: '/grade-12'
+      fullPath: '/grade-12/'
+      preLoaderRoute: typeof Grade12IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mock-exam/$unit': {
       id: '/mock-exam/$unit'
       path: '/mock-exam/$unit'
@@ -966,6 +986,7 @@ const rootRouteChildren: RootRouteChildren = {
   PracticeUnitRoute: PracticeUnitRouteWithChildren,
   SectionSectionIdRoute: SectionSectionIdRoute,
   Grade11IndexRoute: Grade11IndexRoute,
+  Grade12IndexRoute: Grade12IndexRoute,
   ApiPublicCronAutoGradeRoute: ApiPublicCronAutoGradeRoute,
   Grade11UnitSkillRoute: Grade11UnitSkillRoute,
 }
