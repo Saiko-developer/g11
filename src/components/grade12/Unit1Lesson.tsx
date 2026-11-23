@@ -375,13 +375,15 @@ function CompoundPractice() {
 
 type CoreSkill = "reading" | "vocabulary" | "grammar";
 
-function ReadingPane({
+export function ReadingPane({
   title,
   pages,
+  scroll = true,
   children,
 }: {
   title: string;
   pages?: string;
+  scroll?: boolean;
   children: ReactNode;
 }) {
   const [translationShown, setTranslationShown] = useState(false);
@@ -415,7 +417,7 @@ function ReadingPane({
         tabIndex={0}
         aria-labelledby={titleId}
         role="group"
-        className="min-w-0 space-y-3 p-2 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-primary lg:max-h-[calc(100dvh_-_12rem_-_env(safe-area-inset-top))] lg:overflow-y-auto lg:p-3 lg:[scrollbar-gutter:stable]"
+        className={`min-w-0 space-y-3 p-2 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-primary lg:p-3 ${scroll ? "lg:max-h-[calc(100dvh_-_12rem_-_env(safe-area-inset-top))] lg:overflow-y-auto lg:[scrollbar-gutter:stable]" : ""}`}
       >
         <ReadingTranslation.Provider value={translationShown}>
           {children}

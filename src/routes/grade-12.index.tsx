@@ -1,3 +1,9 @@
+import {
+  TextbookPoem,
+  TextbookReview,
+  supplementNumbers,
+  type SupplementNumber,
+} from "@/components/grade12/TextbookSupplement";
 import { isAdditionalUnit } from "@/data/grade12/additionalUnits";
 import { AdditionalTextbookLesson } from "@/components/grade12/AdditionalTextbookLesson";
 import {
@@ -38,7 +44,18 @@ import { unit1Sections } from "@/data/grade12/unit1";
 export const Route = createFileRoute("/grade-12/")({
   validateSearch: (
     search: Record<string, unknown>,
-  ): { skill?: Grade12Skill; unit?: TextbookUnitNumber } => ({
+  ): {
+    skill?: Grade12Skill;
+    unit?: TextbookUnitNumber;
+    review?: SupplementNumber;
+    poem?: SupplementNumber;
+  } => ({
+    review: supplementNumbers.find(
+      (number) => number === search.review || String(number) === search.review,
+    ),
+    poem: supplementNumbers.find(
+      (number) => number === search.poem || String(number) === search.poem,
+    ),
     unit: textbookUnitNumbers.find(
       (value) => value === search.unit || String(value) === search.unit,
     ),
@@ -165,12 +182,16 @@ function SkillLinks({ current, unit }: { current: Grade12Skill; unit: AvailableG
   );
 }
 
+const supplementCard =
+  "flex min-h-11 items-center gap-2 rounded-xl border border-accent/60 bg-accent/15 px-3 py-2 text-sm font-semibold hover:border-primary/60 hover:bg-accent/25 focus-visible:outline-2 focus-visible:outline-primary";
+
 function Curriculum({ unit }: { unit: AvailableGrade12Unit }) {
   const [open, setOpen] = useState<number | null>(unit);
   return (
     <div className="space-y-3">
       {grade12Units.map(({ number, title, page }) => {
-        const review = number % 3 === 0 ? grade12Reviews[number / 3 - 1] : null;
+        const supplement = supplementNumbers.find((value) => value * 3 === number);
+        const review = supplement ? grade12Reviews[supplement - 1] : null;
         return (
           <Fragment key={number}>
             <section
@@ -216,16 +237,24 @@ function Curriculum({ unit }: { unit: AvailableGrade12Unit }) {
                 )}
               </div>
             </section>
-            {review && (
-              <div className="flex flex-wrap items-center gap-3 rounded-xl border border-dashed border-accent/60 bg-accent/15 px-4 py-2.5 text-xs font-semibold">
-                <Sparkles aria-hidden="true" className="size-4" />
-                <span>
-                  Review {number / 3} · p. {review.reviewPage}
-                </span>
-                <span className="h-px min-w-6 flex-1 bg-accent/50" />
-                <span>
-                  Poem {number / 3} · {review.poem} · p. {review.poemPage}
-                </span>
+            {supplement && review && (
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                <Link to="/grade-12" search={{ review: supplement }} className={supplementCard}>
+                  <Sparkles aria-hidden="true" className="size-4 shrink-0" />
+                  <span>Review {supplement}</span>
+                  <span className="ml-auto shrink-0 text-xs text-muted-foreground">
+                    p. {review.reviewPage}
+                  </span>
+                </Link>
+                <Link to="/grade-12" search={{ poem: supplement }} className={supplementCard}>
+                  <BookOpen aria-hidden="true" className="size-4 shrink-0" />
+                  <span>
+                    Poem {supplement} · {review.poem}
+                  </span>
+                  <span className="ml-auto shrink-0 text-xs text-muted-foreground">
+                    p. {review.poemPage}
+                  </span>
+                </Link>
               </div>
             )}
           </Fragment>
@@ -236,16 +265,52 @@ function Curriculum({ unit }: { unit: AvailableGrade12Unit }) {
 }
 
 function Grade12Home() {
-  const { skill, unit: selectedUnit } = Route.useSearch();
+  const { skill, unit: selectedUnit, review, poem } = Route.useSearch();
+  const supplement = poem ?? review;
+  const metadata = supplement ? grade12Reviews[supplement - 1] : undefined;
+  const title = supplement && (poem ? `Poem ${poem} · ${metadata?.poem}` : `Review ${review}`);
+  const returnUnit = textbookUnitNumbers.find((number) => number === (supplement ?? 0) * 3);
+  const isLesson = Boolean(skill || supplement);
   const unit = selectedUnit ?? 1;
   const section = unit1Sections.find((item) => item.id === skill);
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader compact={Boolean(skill)} />
+      <SiteHeader compact={isLesson} />
       <main
-        className={`mx-auto ${skill ? "max-w-[96rem] space-y-2 px-3 pt-2 pb-4 sm:px-4" : "max-w-5xl space-y-5 px-4 py-8"}`}
+        className={`mx-auto ${isLesson ? "max-w-[96rem] space-y-2 px-3 pt-2 pb-4 sm:px-4" : "max-w-5xl space-y-5 px-4 py-8"}`}
       >
-        {skill ? (
+        {supplement && metadata ? (
+          <>
+            <header className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <Link
+                to="/grade-12"
+                search={{ unit: returnUnit }}
+                aria-label="Grade 12 Units"
+                className="inline-flex min-h-8 items-center gap-1.5 rounded-md px-1.5 text-sm font-semibold text-primary hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-primary"
+              >
+                <ArrowLeft aria-hidden="true" className="size-4" /> Units
+              </Link>
+              <h1 className="text-base font-bold leading-snug sm:text-lg">{title}</h1>
+              <span className="text-xs text-muted-foreground">
+                Textbook p. {poem ? metadata.poemPage : metadata.reviewPage}
+              </span>
+              <Link
+                to="/grade-12"
+                search={poem ? { review: supplement } : { poem: supplement }}
+                className="rounded-md border px-2.5 py-1.5 text-sm font-medium text-primary hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-primary sm:ml-auto"
+              >
+                {poem ? `Review ${supplement}` : `Poem ${supplement} · ${metadata.poem}`}
+              </Link>
+            </header>
+            <div data-saya-home-section>
+              {poem ? (
+                <TextbookPoem key={poem} number={poem} />
+              ) : (
+                <TextbookReview key={supplement} number={supplement} />
+              )}
+            </div>
+          </>
+        ) : skill ? (
           <>
             <header className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <Link
@@ -321,9 +386,9 @@ function Grade12Home() {
         )}
         <Grade11RequireSignIn>
           <SayaOwlHome
-            key={`${unit}:${skill ?? "curriculum"}`}
+            key={title || `${unit}:${skill ?? "curriculum"}`}
             grade={12}
-            lessonContext={grade12TutorContext(skill, unit)}
+            lessonContext={title ? `Grade 12 English · ${title}` : grade12TutorContext(skill, unit)}
           />
         </Grade11RequireSignIn>
       </main>
