@@ -32,7 +32,7 @@ function Exercise({
 
   return (
     <section className="space-y-3 rounded-xl border bg-card p-4">
-      <h3 lang="en" className="font-semibold">
+      <h3 lang="en" className={source.instruction === "Pre-reading" ? "sr-only" : "font-semibold"}>
         {source.instruction}
       </h3>
       <BurmeseTranslation label="Translate instructions" text={translation.instruction} />
@@ -157,11 +157,15 @@ export function AdditionalTextbookLesson({
     { value: "ai", label: "Practise with AI" },
   ] as const;
   return (
-    <article className="space-y-4 rounded-2xl border bg-card p-4 sm:p-6">
-      <header>
-        <h2 className="text-xl font-semibold">{grade12SkillTopics[unit][skill]}</h2>
-        <p className="mt-1 text-xs text-muted-foreground">Textbook pages {pages}</p>
-      </header>
+    <article
+      className={skill === "reading" ? undefined : "space-y-3 rounded-xl border bg-card p-3 sm:p-4"}
+    >
+      {skill !== "reading" && (
+        <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <h2 className="font-semibold">{grade12SkillTopics[unit][skill]}</h2>
+          <p className="text-xs text-muted-foreground">Textbook pages {pages}</p>
+        </header>
+      )}
       {skill === "listening" && (
         <p lang="my" className="rounded-lg bg-muted p-3 text-sm">
           မူရင်းနားထောင်ရန် အသံဖိုင် မထည့်ရသေးပါ။
@@ -199,9 +203,10 @@ export function AdditionalTextbookLesson({
       )}
       {skill === "reading" ? (
         <ReadingWorkspace
+          pages={pages}
+          preReading={exercises[0]}
           passage={
             <>
-              {exercises[0]}
               {data.passage.map(({ en, my, heading }) => (
                 <section key={en} className="space-y-2 rounded-xl border p-4">
                   {heading ? (

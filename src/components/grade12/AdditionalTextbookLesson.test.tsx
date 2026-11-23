@@ -59,6 +59,26 @@ describe.each([
     ).toBeVisible();
   });
 
+  it("reveals reading exercise translations with one control and keeps the passage separate", () => {
+    render(<AdditionalTextbookLesson unit={unit} skill="reading" />);
+    const { sections, passage } = additionalUnits[unit];
+    const readingButton = screen.getByRole("button", {
+      name: "Myanmar translation for Reading passage",
+    });
+    const exerciseButton = screen.getByRole("button", {
+      name: "Myanmar translation for Comprehension",
+    });
+    const example = sections.reading.groups[1].translation.items[0];
+    expect(screen.queryByRole("button", { name: "Translate question" })).not.toBeInTheDocument();
+    expect(screen.queryByText(example)).not.toBeInTheDocument();
+    fireEvent.click(exerciseButton);
+    expect(screen.getByText(example)).toBeVisible();
+    const readingPane = within(screen.getByRole("region", { name: "Reading passage" }));
+    expect(readingPane.queryByText(passage[0].my)).not.toBeInTheDocument();
+    fireEvent.click(readingButton);
+    expect(readingPane.getByText(passage[0].my)).toBeVisible();
+  });
+
   it("opens the correct textbook role-play", () => {
     render(<AdditionalTextbookLesson unit={unit} skill="speaking" />);
     fireEvent.click(screen.getByRole("button", { name: "Practise with AI" }));

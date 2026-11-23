@@ -13,6 +13,7 @@ const en: Dict = {
   "site.title": "Sayar Owl Academy",
   "site.tagline": "English for Grade 10 Myanmar",
   "site.tagline.grade11": "English for Grade 11 Myanmar",
+  "site.tagline.grade12": "English for Grade 12 Myanmar",
   "lang.toggle": "မြန်မာ",
 
   // Landing
@@ -94,6 +95,7 @@ const my: Dict = {
   "site.title": "ဆရာ ဇီးကွက် အကယ်ဒမီ",
   "site.tagline": "မြန်မာ Grade 10 အတွက် အင်္ဂလိပ်ဘာသာ",
   "site.tagline.grade11": "မြန်မာ Grade 11 အတွက် အင်္ဂလိပ်ဘာသာ",
+  "site.tagline.grade12": "မြန်မာ Grade 12 အတွက် အင်္ဂလိပ်ဘာသာ",
   "lang.toggle": "English",
 
   "hero.badge": "မြန်မာနိုင်ငံ Grade 10 ကျောင်းသားများအတွက်",

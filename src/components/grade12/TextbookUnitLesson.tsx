@@ -223,7 +223,9 @@ export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3 | 4; skill: Gr
   const translated = translations[unit][skill];
   const exercises = groups.map(({ instruction, reference, items }, groupIndex) => (
     <section key={instruction} className="space-y-3 rounded-xl border bg-card p-4">
-      <h3 className="font-semibold">{instruction}</h3>
+      <h3 className={skill === "reading" && groupIndex === 0 ? "sr-only" : "font-semibold"}>
+        {instruction}
+      </h3>
       {translated?.[groupIndex] && (
         <BurmeseTranslation
           label="Translate instructions"
@@ -329,9 +331,15 @@ export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3 | 4; skill: Gr
   const reference =
     skill === "grammar" || skill === "vocabulary" || skill === "writing" ? references[skill] : null;
   return (
-    <article className="space-y-4 rounded-2xl border bg-card p-4 sm:p-6">
-      <h2 className="text-xl font-semibold">{grade12SkillTopics[unit][skill]}</h2>
-      <p className="text-xs text-muted-foreground">Textbook pages {pages[unit][skill]}</p>
+    <article
+      className={skill === "reading" ? undefined : "space-y-3 rounded-xl border bg-card p-3 sm:p-4"}
+    >
+      {skill !== "reading" && (
+        <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <h2 className="font-semibold">{grade12SkillTopics[unit][skill]}</h2>
+          <p className="text-xs text-muted-foreground">Textbook pages {pages[unit][skill]}</p>
+        </header>
+      )}
       {skill === "listening" && (
         <p lang="my" className="rounded-xl bg-muted p-3 text-sm">
           မူရင်းနားထောင်ရန် အသံဖိုင် မထည့်ရသေးပါ။
@@ -414,9 +422,10 @@ export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3 | 4; skill: Gr
       {unit === 3 && skill === "vocabulary" && <AffixTables />}
       {skill === "reading" ? (
         <ReadingWorkspace
+          pages={pages[unit][skill]}
+          preReading={exercises[0]}
           passage={
             <>
-              {exercises[0]}
               {reading.map((text, index) =>
                 /^\d+\. /.test(text) ? (
                   <h3 key={text} className="font-semibold">

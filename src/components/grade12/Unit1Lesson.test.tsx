@@ -5,15 +5,29 @@ import { Unit1Lesson } from "./Unit1Lesson";
 
 afterEach(cleanup);
 
-it("opens paragraph translations independently and keeps structure help in comprehension C", () => {
+it("uses separate passage and exercise translation controls and keeps sentence structure help", () => {
   render(<Unit1Lesson section={unit1Sections[0]} />);
   const first = within(screen.getByRole("region", { name: "Paragraph 1" }));
   const second = within(screen.getByRole("region", { name: "Paragraph 2" }));
-  fireEvent.click(first.getByRole("button", { name: "မြန်မာဘာသာပြန်" }));
-  expect(first.getByText(/အပြုအမူပုံစံဆိုသည်မှာ/)).toBeInTheDocument();
-  expect(second.getByRole("button", { name: "မြန်မာဘာသာပြန်" })).toBeInTheDocument();
+  const passage = screen.getByRole("button", { name: "Myanmar translation for Reading passage" });
+  const exercises = screen.getByRole("button", { name: "Myanmar translation for Comprehension" });
+  expect(first.queryByText(/အပြုအမူပုံစံဆိုသည်မှာ/)).not.toBeInTheDocument();
+  fireEvent.click(passage);
+  expect(passage).toHaveAttribute("aria-pressed", "true");
+  expect(first.getByText(/အပြုအမူပုံစံဆိုသည်မှာ/)).toBeVisible();
+  expect(second.getByText((_, element) => element?.getAttribute("lang") === "my")).toBeVisible();
+  expect(exercises).toHaveAttribute("aria-pressed", "false");
+  fireEvent.click(exercises);
+  expect(
+    within(screen.getByRole("region", { name: "Comprehension" })).getAllByText(
+      (_, element) => element?.getAttribute("lang") === "my" && element?.tagName === "P",
+    ).length,
+  ).toBeGreaterThan(27);
   expect(first.queryByRole("button", { name: "Sentence Structure" })).not.toBeInTheDocument();
-  expect(screen.getAllByRole("button", { name: "Translate question" })).toHaveLength(27);
+  expect(screen.queryByRole("button", { name: "Translate question" })).not.toBeInTheDocument();
+  fireEvent.click(passage);
+  expect(first.queryByText(/အပြုအမူပုံစံဆိုသည်မှာ/)).not.toBeInTheDocument();
+  expect(exercises).toHaveAttribute("aria-pressed", "true");
   expect(screen.getAllByRole("button", { name: "Sentence Structure" })).toHaveLength(10);
   fireEvent.click(screen.getAllByRole("button", { name: "Sentence Structure" })[0]);
   expect(screen.getByText(/ကွာခြားချက်ကို မေးထားသည်/)).toBeInTheDocument();

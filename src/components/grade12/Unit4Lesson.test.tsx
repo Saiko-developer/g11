@@ -33,6 +33,15 @@ it.each(grade12Skills)(
     expect(groups.map(({ items }) => items.length)).toEqual(counts[skill]);
     expect(unit4ExercisesMy[skill].map(({ items }) => items.length)).toEqual(counts[skill]);
     render(<TextbookUnitLesson unit={4} skill={skill} />);
+    if (skill === "reading") {
+      expect(screen.getAllByRole("button", { name: /Myanmar translation for/ })).toHaveLength(2);
+      expect(screen.queryByRole("button", { name: "Translate question" })).not.toBeInTheDocument();
+      fireEvent.click(
+        screen.getByRole("button", { name: "Myanmar translation for Comprehension" }),
+      );
+      expect(screen.getByText(unit4ExercisesMy.reading[1].instruction)).toBeVisible();
+      return;
+    }
     const instructions = screen.getAllByRole("button", { name: "Translate instructions" });
     expect(instructions).toHaveLength(groups.length);
     fireEvent.click(instructions[0]);

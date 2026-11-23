@@ -14,10 +14,12 @@ function AccountButton() {
   const { session, ready, signOut } = useAuth();
   const [busy, setBusy] = useState(false);
   if (!ready) return null;
-  const btn = "ml-1 inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-2 text-sm text-foreground hover:bg-muted disabled:opacity-60";
+  const btn =
+    "ml-1 inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-2 text-sm text-foreground hover:bg-muted disabled:opacity-60";
   if (session) return <AccountMenu session={session} onSignOut={() => void signOut()} />;
   return (
-    <Button variant="outline"
+    <Button
+      variant="outline"
       disabled={busy}
       onClick={async () => {
         setBusy(true);
@@ -51,18 +53,38 @@ function AdminLink() {
   );
 }
 
-export function SiteHeader() {
+export function SiteHeader({ compact = false }: { compact?: boolean }) {
   const { t } = useI18n();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const isGrade11 = path === "/grade-11" || path.startsWith("/grade-11/");
+  const isGrade12 = path === "/grade-12" || path.startsWith("/grade-12/");
+  const tagline = isGrade12
+    ? "site.tagline.grade12"
+    : isGrade11
+      ? "site.tagline.grade11"
+      : "site.tagline";
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 pt-[env(safe-area-inset-top)] backdrop-blur">
-      <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-2 px-3 py-2 sm:px-4 sm:py-3">
+    <header
+      className={`z-40 border-b border-border/60 bg-background/85 pt-[env(safe-area-inset-top)] backdrop-blur ${compact ? "relative" : "sticky top-0"}`}
+    >
+      <div
+        className={`mx-auto grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2 px-3 sm:px-4 ${compact ? "max-w-[96rem] py-1" : "max-w-6xl py-2 sm:py-3"}`}
+      >
         <Link to="/" className="flex min-w-0 items-center gap-2">
-          <img src={tutorLogo} alt="Sayar Owl Academy" width={36} height={36} className="h-9 w-9 shrink-0" />
+          <img
+            src={tutorLogo}
+            alt="Sayar Owl Academy"
+            width={36}
+            height={36}
+            className={`shrink-0 ${compact ? "size-7" : "size-9"}`}
+          />
           <div className="min-w-0 leading-tight">
             <div className="truncate text-sm font-semibold">{t("site.title")}</div>
-            <div className="hidden truncate text-[11px] text-muted-foreground sm:block">{t(isGrade11 ? "site.tagline.grade11" : "site.tagline")}</div>
+            {!compact && (
+              <div className="hidden truncate text-[11px] text-muted-foreground sm:block">
+                {t(tagline)}
+              </div>
+            )}
           </div>
         </Link>
         <nav className="flex shrink-0 items-center gap-1 text-sm">
@@ -74,13 +96,25 @@ export function SiteHeader() {
           >
             {t("nav.home")}
           </Link>
-          <Link to="/grade-11" className="inline-flex rounded-full border border-primary/40 px-2.5 py-1.5 text-xs font-semibold text-primary hover:bg-primary/10 sm:text-sm" activeProps={{ className: "bg-primary/10" }}>
-            Grade 11
+          <Link
+            to={isGrade12 ? "/grade-12" : "/grade-11"}
+            className="inline-flex rounded-full border border-primary/40 px-2.5 py-1.5 text-xs font-semibold text-primary hover:bg-primary/10 sm:text-sm"
+            activeProps={{ className: "bg-primary/10" }}
+          >
+            {isGrade12 ? "Grade 12" : "Grade 11"}
           </Link>
-          <Link to="/progress" className="hidden rounded-md px-3 py-2 text-muted-foreground hover:text-foreground md:inline-flex" activeProps={{ className: "text-foreground font-medium" }}>
+          <Link
+            to="/progress"
+            className="hidden rounded-md px-3 py-2 text-muted-foreground hover:text-foreground md:inline-flex"
+            activeProps={{ className: "text-foreground font-medium" }}
+          >
             My Progress
           </Link>
-          <Link to="/classrooms" className="hidden rounded-md px-3 py-2 text-muted-foreground hover:text-foreground md:inline-flex" activeProps={{ className: "text-foreground font-medium" }}>
+          <Link
+            to="/classrooms"
+            className="hidden rounded-md px-3 py-2 text-muted-foreground hover:text-foreground md:inline-flex"
+            activeProps={{ className: "text-foreground font-medium" }}
+          >
             Classrooms
           </Link>
           <Link

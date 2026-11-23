@@ -17,7 +17,8 @@ import {
   vocabularyMy,
   vocabularySentencesMy,
 } from "@/data/grade12/unit1-study-support";
-import { useState, type ReactNode } from "react";
+import { createContext, useContext, useId, useState, type ReactNode } from "react";
+import { Languages } from "lucide-react";
 import { Grade11AIReview } from "@/components/grade11/Grade11AIReview";
 import core from "@/data/grade12/unit1-core.json";
 import { compounds } from "@/data/grade12/unit1-reference";
@@ -148,6 +149,8 @@ export function English({ text }: { text: string }) {
   );
 }
 
+const ReadingTranslation = createContext<boolean | null>(null);
+
 export function BurmeseTranslation({
   text,
   label = "မြန်မာဘာသာပြန်",
@@ -155,6 +158,17 @@ export function BurmeseTranslation({
   text: string;
   label?: string;
 }) {
+  const readingTranslation = useContext(ReadingTranslation);
+  if (readingTranslation !== null) {
+    return readingTranslation && text ? (
+      <p
+        lang="my"
+        className="mt-1.5 whitespace-pre-line border-s-2 border-primary/30 ps-3 text-sm leading-relaxed text-muted-foreground"
+      >
+        {text}
+      </p>
+    ) : null;
+  }
   return (
     <ToggleReveal label={label} hiddenLabel="ဘာသာပြန် ပိတ်ရန်">
       <p lang="my" className="whitespace-pre-line">
@@ -228,60 +242,57 @@ function ExerciseCard({ section, exercise }: { section: Section; exercise: Exerc
 
 function PreReading() {
   return (
-    <details className="rounded-xl border p-4">
-      <summary className="cursor-pointer font-medium">Pre-reading</summary>
-      <div className="mt-4 space-y-6">
-        {[
-          {
-            instruction:
-              "1. How polite do you think you should be to these people? Tick (✓) your answers. Then compare your answers with a partner.",
-            items: core.people,
-            translations: peopleMy,
-            choices: ["A little polite", "Polite", "Very polite"],
-          },
-          {
-            instruction:
-              "2. Read the following manners. Decide whether each manner is good or bad. Mark (✓) your answers. Then compare your answers with a partner.",
-            items: core.manners,
-            translations: mannersMy,
-            choices: ["Good", "Bad"],
-          },
-        ].map(({ instruction, items, translations, choices }) => (
-          <fieldset key={instruction} className="space-y-2">
-            <legend className="mb-2 font-medium">{instruction}</legend>
-            {items.map((item, index) => (
-              <div key={item}>
-                <label
-                  className="grid items-center gap-2 rounded-lg bg-muted/40 p-2 sm:grid-cols-[1fr_10rem]"
-                  key={item}
-                >
-                  <span>{item}</span>
-                  <select className="rounded-md border bg-background p-2 text-sm" defaultValue="">
-                    <option value="">Choose</option>
-                    {choices.map((choice) => (
-                      <option key={choice}>{choice}</option>
-                    ))}
-                  </select>
-                </label>
-                <BurmeseTranslation text={translations[index]} />
-              </div>
-            ))}
-          </fieldset>
-        ))}
-        <div className="space-y-3">
-          <p className="font-medium">3. Answer the following questions.</p>
-          <ol className="list-[lower-alpha] space-y-3 pl-5">
-            {core.discussion.map((prompt, index) => (
-              <li key={prompt}>
-                <p>{prompt}</p>
-                <BurmeseTranslation label="Translate question" text={discussionMy[index]} />
-                <Answer prompt={prompt} subjective />
-              </li>
-            ))}
-          </ol>
-        </div>
+    <div className="space-y-6 p-3">
+      {[
+        {
+          instruction:
+            "1. How polite do you think you should be to these people? Tick (✓) your answers. Then compare your answers with a partner.",
+          items: core.people,
+          translations: peopleMy,
+          choices: ["A little polite", "Polite", "Very polite"],
+        },
+        {
+          instruction:
+            "2. Read the following manners. Decide whether each manner is good or bad. Mark (✓) your answers. Then compare your answers with a partner.",
+          items: core.manners,
+          translations: mannersMy,
+          choices: ["Good", "Bad"],
+        },
+      ].map(({ instruction, items, translations, choices }) => (
+        <fieldset key={instruction} className="space-y-2">
+          <legend className="mb-2 font-medium">{instruction}</legend>
+          {items.map((item, index) => (
+            <div key={item}>
+              <label
+                className="grid items-center gap-2 rounded-lg bg-muted/40 p-2 sm:grid-cols-[1fr_10rem]"
+                key={item}
+              >
+                <span>{item}</span>
+                <select className="rounded-md border bg-background p-2 text-sm" defaultValue="">
+                  <option value="">Choose</option>
+                  {choices.map((choice) => (
+                    <option key={choice}>{choice}</option>
+                  ))}
+                </select>
+              </label>
+              <BurmeseTranslation text={translations[index]} />
+            </div>
+          ))}
+        </fieldset>
+      ))}
+      <div className="space-y-3">
+        <p className="font-medium">3. Answer the following questions.</p>
+        <ol className="list-[lower-alpha] space-y-3 pl-5">
+          {core.discussion.map((prompt, index) => (
+            <li key={prompt}>
+              <p>{prompt}</p>
+              <BurmeseTranslation label="Translate question" text={discussionMy[index]} />
+              <Answer prompt={prompt} subjective />
+            </li>
+          ))}
+        </ol>
       </div>
-    </details>
+    </div>
   );
 }
 
@@ -364,43 +375,90 @@ function CompoundPractice() {
 
 type CoreSkill = "reading" | "vocabulary" | "grammar";
 
+function ReadingPane({
+  title,
+  pages,
+  children,
+}: {
+  title: string;
+  pages?: string;
+  children: ReactNode;
+}) {
+  const [translationShown, setTranslationShown] = useState(false);
+  const titleId = useId();
+  const bodyId = useId();
+  return (
+    <section aria-labelledby={titleId} className="min-w-0 rounded-xl border bg-card">
+      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 border-b px-3 py-2">
+        <div className="flex flex-col items-baseline gap-x-2 sm:flex-row">
+          <h2 id={titleId} className="font-semibold">
+            {title}
+          </h2>
+          {pages && <span className="text-xs text-muted-foreground">Textbook pp. {pages}</span>}
+        </div>
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          className="min-h-8 gap-1.5 rounded-md px-2.5 text-xs aria-pressed:border-primary/40 aria-pressed:bg-primary/10 aria-pressed:text-primary"
+          aria-label={`Myanmar translation for ${title}`}
+          aria-pressed={translationShown}
+          aria-controls={bodyId}
+          onClick={() => setTranslationShown((shown) => !shown)}
+        >
+          <Languages aria-hidden="true" className="size-4" />
+          မြန်မာဘာသာပြန်
+        </Button>
+      </div>
+      <div
+        id={bodyId}
+        tabIndex={0}
+        aria-labelledby={titleId}
+        role="group"
+        className="min-w-0 space-y-3 p-2 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-primary lg:max-h-[calc(100dvh_-_12rem_-_env(safe-area-inset-top))] lg:overflow-y-auto lg:p-3 lg:[scrollbar-gutter:stable]"
+      >
+        <ReadingTranslation.Provider value={translationShown}>
+          {children}
+        </ReadingTranslation.Provider>
+      </div>
+    </section>
+  );
+}
+
 export function ReadingWorkspace({
   passage,
+  preReading,
   exercises,
+  pages,
 }: {
   passage: ReactNode;
+  preReading: ReactNode;
   exercises: ReactNode;
+  pages: string;
 }) {
-  const pane =
-    "min-w-0 space-y-4 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:max-h-[clamp(22rem,calc(100dvh_-_18rem),60rem)] lg:overflow-y-auto lg:overscroll-y-contain lg:p-1 lg:[scrollbar-gutter:stable]";
   return (
-    <div className="grid gap-5 lg:grid-cols-2 lg:items-start">
-      <section aria-labelledby="grade12-reading-passage" tabIndex={0} className={pane}>
-        <h2 id="grade12-reading-passage" className="text-lg font-semibold">
-          Reading passage
-        </h2>
+    <div className="grid gap-3 lg:grid-cols-2 lg:items-start">
+      <ReadingPane title="Reading passage" pages={pages}>
         {passage}
-      </section>
-      <section aria-labelledby="grade12-reading-comprehension" tabIndex={0} className={pane}>
-        <h2 id="grade12-reading-comprehension" className="text-lg font-semibold">
-          Comprehension
-        </h2>
+      </ReadingPane>
+      <ReadingPane title="Comprehension">
+        <details className="rounded-lg border bg-muted/30">
+          <summary className="cursor-pointer px-3 py-2 text-sm font-semibold">Pre-reading</summary>
+          {preReading}
+        </details>
         {exercises}
-      </section>
+      </ReadingPane>
     </div>
   );
 }
 
-function CoreLesson({ skill }: { skill: CoreSkill }) {
+function CoreLesson({ skill, pages }: { skill: CoreSkill; pages: string }) {
   if (skill === "reading") {
     return (
       <ReadingWorkspace
-        passage={
-          <>
-            <PreReading />
-            <Reading />
-          </>
-        }
+        pages={pages}
+        passage={<Reading />}
+        preReading={<PreReading />}
         exercises={<CoreExercises skill="reading" />}
       />
     );
@@ -516,7 +574,9 @@ export function Unit1Lesson({ section }: { section: Section }) {
   const legacy = "text" in section ? extractExercises(section) : null;
   return (
     <div className="space-y-4" key={section.id}>
-      <p className="text-xs text-muted-foreground">Textbook pages {section.pages}</p>
+      {section.id !== "reading" && (
+        <p className="text-xs text-muted-foreground">Textbook pages {section.pages}</p>
+      )}
       {"text" in section ? (
         <>
           {legacy?.introduction.trim() && <English text={legacy.introduction} />}
@@ -525,7 +585,7 @@ export function Unit1Lesson({ section }: { section: Section }) {
           ))}
         </>
       ) : (
-        <CoreLesson skill={section.id} />
+        <CoreLesson skill={section.id} pages={section.pages} />
       )}
     </div>
   );

@@ -114,7 +114,7 @@ it("opens a Unit 1 skill and returns to the expanded curriculum card", async () 
     );
     fireEvent.click(screen.getByRole("link", { name: /^Reading/ }));
     expect(await screen.findByRole("heading", { name: title, level: 1 })).toBeVisible();
-    expect(screen.getAllByRole("button", { name: "Translate question" }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole("button", { name: /Myanmar translation for/ })).toHaveLength(2);
     fireEvent.click(screen.getByRole("link", { name: "Grade 12 Units" }));
     expect(
       await screen.findByRole("button", { name: `${number} Unit ${number} ${title}` }),

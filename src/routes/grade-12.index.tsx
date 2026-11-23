@@ -9,7 +9,7 @@ import { TextbookUnitLesson } from "@/components/grade12/TextbookUnitLesson";
 import { SayaOwlHome } from "@/components/SayaOwlHome";
 import { Grade11RequireSignIn } from "@/components/grade11/Grade11RequireSignIn";
 import { grade12TutorContext } from "@/lib/grade12TutorContext";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
@@ -131,15 +131,32 @@ function UnitSkillCards({ unit }: { unit: number }) {
 }
 
 function SkillLinks({ current, unit }: { current: Grade12Skill; unit: AvailableGrade12Unit }) {
+  const nav = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const rail = nav.current;
+    const active = rail?.querySelector<HTMLElement>('[aria-current="page"]');
+    if (!rail || !active) return;
+    const start = active.offsetLeft;
+    const end = start + active.offsetWidth;
+    if (start < rail.scrollLeft) rail.scrollLeft = start;
+    if (end > rail.scrollLeft + rail.clientWidth) rail.scrollLeft = end - rail.clientWidth;
+  }, [current]);
+
   return (
-    <nav aria-label={`Unit ${unit} skills`} className="flex flex-wrap gap-2">
+    <nav
+      ref={nav}
+      aria-label={`Unit ${unit} skills`}
+      className="relative flex gap-1 overflow-x-auto pb-1"
+    >
       {grade12Skills.map((skill) => (
         <Link
           to="/grade-12"
           search={{ skill, unit: unit !== 1 ? unit : undefined }}
           key={skill}
+          activeOptions={{ exact: true, explicitUndefined: true }}
           aria-current={skill === current ? "page" : undefined}
-          className={`rounded-full border px-3 py-2 text-sm font-medium capitalize ${skill === current ? "bg-primary text-primary-foreground" : "bg-card hover:bg-accent"}`}
+          className={`inline-flex min-h-9 shrink-0 items-center rounded-lg border px-2.5 text-sm font-medium capitalize focus-visible:outline-2 focus-visible:-outline-offset-2 ${skill === current ? "bg-primary text-primary-foreground" : "border-transparent text-muted-foreground hover:bg-accent hover:text-foreground"}`}
         >
           {skill}
         </Link>
@@ -224,38 +241,45 @@ function Grade12Home() {
   const section = unit1Sections.find((item) => item.id === skill);
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
-      <main className={`mx-auto space-y-5 px-4 py-8 ${skill ? "max-w-6xl" : "max-w-5xl"}`}>
+      <SiteHeader compact={Boolean(skill)} />
+      <main
+        className={`mx-auto ${skill ? "max-w-[96rem] space-y-2 px-3 pt-2 pb-4 sm:px-4" : "max-w-5xl space-y-5 px-4 py-8"}`}
+      >
         {skill ? (
           <>
-            <Link
-              to="/grade-12"
-              search={{ unit: selectedUnit }}
-              className="inline-flex min-h-10 items-center gap-2 rounded-lg px-2 text-sm font-semibold text-primary transition hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-primary"
-            >
-              <ArrowLeft aria-hidden="true" className="size-4" /> Grade 12 Units
-            </Link>
-            <header>
-              <p className="font-semibold text-primary">Unit {unit}</p>
-              <h1 className="text-3xl font-bold">{grade12Units[unit - 1].title}</h1>
-              <p lang="my" className="text-muted-foreground">
-                {
-                  [
-                    "အမူအကျင့်ကောင်းများ",
-                    "ပျော်ရွှင်မှု၏ သော့ချက်",
-                    "စားသောက်ပုံနှင့် အာဟာရ",
-                    "စိတ်ခံစားမှု ကောင်းမွန်ခြင်း",
-                    "အရောင်များ",
-                    "ဉာဏ်ရည်တု",
-                    "ပတ်ဝန်းကျင်ကို ခြိမ်းခြောက်နေသော ညစ်ညမ်းမှု",
-                    "ပြန်လည်ပြည့်ဖြိုးမြဲ စွမ်းအင်",
-                    "ဟယ်လင် ကယ်လာ",
-                    "ဆက်သွယ်ရေးစွမ်းရည် ဘာကြောင့် မြှင့်တင်သင့်သလဲ",
-                    "တစ်နေ့တာ စောင့်ဆိုင်းခြင်း",
-                    "ယဉ်ကျေးမှုကြား ဆက်သွယ်မှု",
-                  ][unit - 1]
-                }
-              </p>
+            <header className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <Link
+                to="/grade-12"
+                search={{ unit: selectedUnit }}
+                aria-label="Grade 12 Units"
+                className="inline-flex min-h-8 shrink-0 items-center gap-1.5 rounded-md px-1.5 text-sm font-semibold text-primary hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-primary"
+              >
+                <ArrowLeft aria-hidden="true" className="size-4" /> Units
+              </Link>
+              <div className="flex min-w-0 flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                <span className="shrink-0 text-xs font-semibold text-primary">Unit {unit}</span>
+                <h1 className="text-base font-bold leading-snug sm:text-lg">
+                  {grade12Units[unit - 1].title}
+                </h1>
+                <p lang="my" className="text-xs text-muted-foreground">
+                  {
+                    [
+                      "အမူအကျင့်ကောင်းများ",
+                      "ပျော်ရွှင်မှု၏ သော့ချက်",
+                      "စားသောက်ပုံနှင့် အာဟာရ",
+                      "စိတ်ခံစားမှု ကောင်းမွန်ခြင်း",
+                      "အရောင်များ",
+                      "ဉာဏ်ရည်တု",
+                      "ပတ်ဝန်းကျင်ကို ခြိမ်းခြောက်နေသော ညစ်ညမ်းမှု",
+                      "ပြန်လည်ပြည့်ဖြိုးမြဲ စွမ်းအင်",
+                      "ဟယ်လင် ကယ်လာ",
+                      "ဆက်သွယ်ရေးစွမ်းရည် ဘာကြောင့် မြှင့်တင်သင့်သလဲ",
+                      "တစ်နေ့တာ စောင့်ဆိုင်းခြင်း",
+                      "ယဉ်ကျေးမှုကြား ဆက်သွယ်မှု",
+                    ][unit - 1]
+                  }
+                </p>
+              </div>
             </header>
             <SkillLinks current={skill} unit={unit} />
             <div data-saya-home-section>
@@ -267,8 +291,14 @@ function Grade12Home() {
                 <Unit1ListeningSpeaking key={skill} skill={skill} />
               ) : (
                 section && (
-                  <article className="space-y-4 rounded-2xl border bg-card p-4 sm:p-6">
-                    <h2 className="text-xl font-semibold">{section.topic}</h2>
+                  <article
+                    className={
+                      skill === "reading"
+                        ? undefined
+                        : "space-y-3 rounded-xl border bg-card p-3 sm:p-4"
+                    }
+                  >
+                    {skill !== "reading" && <h2 className="font-semibold">{section.topic}</h2>}
                     <Unit1Lesson section={section} key={section.id} />
                   </article>
                 )
