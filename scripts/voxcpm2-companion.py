@@ -2,6 +2,7 @@
 """Pull fixed audio jobs over HTTPS and render with an existing Phase 1 kit."""
 
 import argparse
+import shutil
 from contextlib import suppress
 import hashlib
 import json
@@ -111,6 +112,11 @@ def render_part(args, kit, text, path, beat):
         "--seed", "42", "--steps", "1200", "--timesteps", str(args.timesteps), "--output", str(path),
         str(kit / "models/VoxCPM2-BaseLM-Q8_0.gguf"), str(kit / "models/VoxCPM2-Acoustic-F16.gguf"),
     ]
+    if getattr(args, "voice_reference", None):
+        command[1:1] = [
+            "--prompt-wav", str(args.voice_reference),
+            "--prompt-text", args.voice_prompt_text,
+        ]
     with subprocess.Popen(command) as process:
         try:
             deadline = time.monotonic() + args.timeout
@@ -146,6 +152,15 @@ def join_wav(parts, output):
                 joined.writeframes(samples)
 
 
+def apply_tempo(source, target, speed):
+    """Change tempo without changing speaker pitch, using FFmpeg."""
+    subprocess.run([
+        "ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
+        "-i", str(source), "-filter:a", f"atempo={speed:.3f}",
+        "-ar", "48000", "-ac", "1", "-c:a", "pcm_s16le", str(target),
+    ], check=True, timeout=180)
+
+
 def process_job(args, kit, exchange, job):
     reason = "script"
     try:
@@ -173,11 +188,15 @@ def process_job(args, kit, exchange, job):
                 paths.append(path)
             output = directory / "joined.wav"
             join_wav(paths, output)
+            if getattr(args, "speed", 1.0) != 1.0:
+                slowed = directory / "tempo-adjusted.wav"
+                apply_tempo(output, slowed, args.speed)
+                output = slowed
             reason = "upload"
             exchange.request(wav=output.read_bytes(), job=job)
         print("MP3 ready for review in Audio Manager.", flush=True)
         return True
-    except (EOFError, ValueError, OSError, wave.Error, RuntimeError) as error:
+    except (EOFError, ValueError, OSError, wave.Error, RuntimeError, subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
         print(error, file=sys.stderr, flush=True)
         with suppress(RuntimeError):
             exchange.request("fail", job=job, reason=reason)
@@ -191,9 +210,28 @@ def main():
     parser.add_argument("--timesteps", type=int, choices=(6, 10), default=6)
     parser.add_argument("--timeout", type=int, default=600, help="Seconds per rendered part")
     parser.add_argument("--once", action="store_true", help="Claim at most one job")
+    parser.add_argument("--voice-reference", type=Path, help="Approved teacher reference WAV on this machine")
+    parser.add_argument("--voice-prompt-text", help="Exact spoken transcript of the reference WAV")
+    parser.add_argument("--speed", type=float, default=1.0, help="Pitch-preserving output tempo (e.g. 0.90); requires FFmpeg")
     args = parser.parse_args()
     if args.timeout < 1:
         parser.error("--timeout must be positive")
+    if not 0.5 <= args.speed <= 1.5:
+        parser.error("--speed must be between 0.5 and 1.5")
+    if args.speed != 1.0 and not shutil.which("ffmpeg"):
+        parser.error("--speed requires ffmpeg. Install FFmpeg or omit --speed.")
+    if bool(args.voice_reference) != bool(args.voice_prompt_text):
+        parser.error("--voice-reference and --voice-prompt-text must be supplied together")
+    if args.voice_reference:
+        args.voice_reference = args.voice_reference.expanduser().resolve()
+        if not args.voice_reference.is_file():
+            parser.error("Teacher voice reference WAV was not found")
+        try:
+            with wave.open(str(args.voice_reference), "rb") as reference:
+                if reference.getnframes() == 0:
+                    parser.error("Teacher voice reference WAV is empty")
+        except (wave.Error, EOFError) as error:
+            parser.error(f"Teacher voice reference is not a supported WAV: {error}")
     kit = args.kit.expanduser().resolve()
     for path in (
         kit / "runtime/build/bin/voxcpm2-cli",
