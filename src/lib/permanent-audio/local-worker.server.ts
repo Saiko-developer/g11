@@ -129,10 +129,20 @@ async function claim() {
   if (!job) return json({ state: "idle" });
   const source = await transcript(job);
   if (!source?.text.trim() || source.text.length > 3500) {
-    await step(job, "failed", {
-      error: "The fixed script changed, is unavailable, or is too long.",
-    });
-    return json({ state: "failed" });
+    // Keep immutable versions intact; make stale-queue failures actionable.
+    const current = (await audioCatalog()).find((clip) => clip.id === job.clip_id);
+    const saved = await version(job.version_id);
+    const error = !current
+      ? "This queued clip is no longer in the current lesson catalog. Refresh and register the audio catalog, then queue the current clip."
+      : !saved || saved.clip_id !== current.id || saved.provider !== "voxcpm2_local"
+        ? "This local audio version no longer matches its catalog clip. Queue a fresh local version."
+        : saved.script_hash !== current.script_hash
+          ? "The lesson script changed since this job was queued. Queue the current lesson clip instead."
+          : !source?.text.trim()
+            ? "The narration script is empty or unavailable. Review the lesson script before queueing."
+            : "This narration exceeds 3500 characters. Split it into shorter fixed clips before queueing.";
+    await step(job, "failed", { error });
+    return json({ state: "failed", reason: error });
   }
   if (job.asset_token) {
     const saved = await stored(assetPaths(source.clip, job, job.asset_token).raw);
