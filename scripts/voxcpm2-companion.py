@@ -64,7 +64,7 @@ class Exchange:
         self.client = urllib.request.build_opener(NoRedirect)
 
     def request(self, action=None, *, job=None, progress=0, reason=None, wav=None):
-        headers = {"Authorization": f"Bearer {self.key}"}
+        headers = {"Authorization": f"Bearer {self.key}", "User-Agent": "SayaOwl-VoxCPM2-Companion/1.0"}
         if wav is None:
             body = {"action": action}
             if job:
