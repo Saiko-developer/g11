@@ -74,6 +74,22 @@ it("lets admins review classroom Grammar/Writing in either grade without generat
   expect(vi.mocked(fetch).mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(0);
 });
 
+it("shows the spoken Grade 10 Grammar script in Teaching Setup", async () => {
+  render(<TeachingSetup />);
+  fireEvent.change(screen.getByRole("combobox", { name: "Unit" }), { target: { value: "2" } });
+  fireEvent.click(screen.getByRole("button", { name: "Grammar" }));
+  expect(screen.getByText(/\(Adjectival Phrase\) ဆိုတာ/)).toHaveTextContent(
+    /ဝိသေသန ပြုပေးရန် ဖြစ်ပါတယ်။/,
+  );
+  await waitFor(() =>
+    expect(fetch).toHaveBeenCalledWith(
+      "/api/classroom?grade=10&lessonId=g10-u2-grammar",
+      expect.anything(),
+    ),
+  );
+  expect(vi.mocked(fetch).mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(0);
+});
+
 it("clears Reading approval acknowledgement when switching preparation sections", async () => {
   render(<TeachingSetup />);
   await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
