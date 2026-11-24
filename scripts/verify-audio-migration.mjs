@@ -16,6 +16,7 @@ try {
   );
   await db.exec(await readFile("drizzle/migrations/0014_permanent_mp3_audio.sql", "utf8"));
   await db.exec(await readFile("drizzle/migrations/0016_audio_script_drafts.sql", "utf8"));
+  await db.exec(await readFile("drizzle/migrations/0022_voxcpm2_local_audio.sql", "utf8"));
   const uid = "00000000-0000-4000-8000-000000000001";
   await db.exec(
     `INSERT INTO lesson_mp3_catalog(id,grade,unit,lesson_id,section,segment_id,segment_order,script_hash,script_version) VALUES('pilot',11,1,'unit1','grammar','one',1,'hash','v1');`,
@@ -139,6 +140,81 @@ try {
     (await db.query("SELECT lesson_mp3_stats() AS stats")).rows[0].stats.storageBytes,
     3000,
   );
+  const local = (await db.query("SELECT lesson_mp3_local_enqueue('pilot',$1,true) AS id", [uid]))
+    .rows[0].id;
+  assert.equal(
+    (await db.query("SELECT lesson_mp3_local_enqueue('pilot',$1,true) AS id", [uid])).rows[0].id,
+    local,
+  );
+  assert.equal((await db.query("SELECT * FROM lesson_mp3_claim()")).rows.length, 0);
+  const localClaim = (await db.query("SELECT * FROM lesson_mp3_local_claim()")).rows[0];
+  assert.equal(localClaim.version_id, local);
+  assert.equal((await db.query("SELECT * FROM lesson_mp3_local_claim()")).rows.length, 0);
+  const localStep = async (token, stage, progress = 0, patch = {}) =>
+    (
+      await db.query("SELECT * FROM lesson_mp3_local_step($1,$2,$3,$4,$5)", [
+        localClaim.id,
+        token,
+        stage,
+        progress,
+        JSON.stringify(patch),
+      ])
+    ).rows;
+  assert.equal((await localStep(uid, "beat", 30)).length, 0);
+  assert.equal((await localStep(localClaim.token, "beat", 30))[0].progress, 30);
+  const attached = (await localStep(localClaim.token, "attach"))[0];
+  assert.equal(attached.asset_token, localClaim.token);
+  await db.query("UPDATE lesson_mp3_jobs SET lease_until=now()-interval '1 second' WHERE id=$1", [
+    localClaim.id,
+  ]);
+  await db.exec("SELECT lesson_mp3_local_expire()");
+  assert.equal((await localStep(localClaim.token, "pending")).length, 0);
+  assert.equal(
+    (await db.query("SELECT lesson_mp3_local_requeue($1,false) AS ok", [local])).rows[0].ok,
+    true,
+  );
+  const resumed = (await db.query("SELECT * FROM lesson_mp3_local_claim()")).rows[0];
+  assert.notEqual(resumed.token, localClaim.token);
+  assert.equal(resumed.allow_generation, false);
+  assert.equal(resumed.asset_token, localClaim.token);
+  const before = (
+    await db.query("SELECT count(*) AS count FROM lesson_mp3_events WHERE kind='tts_attempt'")
+  ).rows[0].count;
+  assert.equal(
+    (
+      await localStep(resumed.token, "pending", 0, {
+        raw_path: "local/source.wav",
+        storage_path: "local/audio.mp3",
+        raw_bytes: 2000,
+        bytes: 1000,
+        duration: 1,
+      })
+    )[0].state,
+    "complete",
+  );
+  assert.equal((await localStep(resumed.token, "attach"))[0].state, "complete");
+  assert.equal(
+    (await db.query("SELECT count(*) AS count FROM lesson_mp3_events WHERE kind='tts_attempt'"))
+      .rows[0].count,
+    before,
+  );
+  assert.equal(
+    (await db.query("SELECT approved_version FROM lesson_mp3_catalog WHERE id='pilot'")).rows[0]
+      .approved_version,
+    id,
+  );
+  await db.query("SELECT lesson_mp3_review($1,$2,'approve')", [local, uid]);
+  assert.equal(
+    (await db.query("SELECT approved_version FROM lesson_mp3_catalog WHERE id='pilot'")).rows[0]
+      .approved_version,
+    local,
+  );
+  await db.query("SELECT lesson_mp3_review($1,$2,'approve')", [id, uid]);
+  assert.equal(
+    (await db.query("SELECT approved_version FROM lesson_mp3_catalog WHERE id='pilot'")).rows[0]
+      .approved_version,
+    id,
+  );
   await db.exec(
     `RESET ROLE;INSERT INTO storage.objects(bucket_id,name) VALUES('saya-owl-lesson-audio','private.mp3'),('other','existing.png');SET ROLE authenticated;`,
   );
@@ -149,6 +225,8 @@ try {
   );
   await assert.rejects(() => db.query("SELECT * FROM lesson_mp3_versions"));
   await assert.rejects(() => db.query("SELECT lesson_mp3_claim()"));
+  await assert.rejects(() => db.query("SELECT lesson_mp3_local_claim()"));
+  await assert.rejects(() => db.query("SELECT lesson_mp3_local_expire()"));
   await db.exec("RESET ROLE");
   assert.equal(
     (await db.query(`SELECT public FROM storage.buckets WHERE id='saya-owl-lesson-audio'`)).rows[0]

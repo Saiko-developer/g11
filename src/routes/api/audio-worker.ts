@@ -3,6 +3,11 @@ export const Route = createFileRoute("/api/audio-worker")({
   server: {
     handlers: {
       POST: async ({ request }) => {
+        if (new URL(request.url).searchParams.get("engine") === "voxcpm2") {
+          return (await import("@/lib/permanent-audio/local-worker.server")).localWorkerPost(
+            request,
+          );
+        }
         const secret = process.env.AUDIO_MP3_WORKER_SECRET;
         if (!secret || secret.length < 32)
           return Response.json({ error: "Worker is not configured" }, { status: 503 });

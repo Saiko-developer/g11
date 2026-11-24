@@ -19,7 +19,9 @@ const manifestSchema = z.object({
         scriptVersion: z.string().max(150),
         scriptText: z.string().min(1).max(3500).nullable().optional(),
         versionId: z.string().uuid(),
-        voice: z.literal("Puck"),
+        voice: z.enum(["Puck", "VoxCPM2 Burmese Teacher"]),
+        provider: z.literal("voxcpm2_local").optional(),
+        model: z.literal("VoxCPM2-Q8_0").optional(),
         bytes: z.number().int().positive(),
       }),
     )
@@ -76,7 +78,8 @@ export async function restoreAudio(request: Request, userId: string, apply: bool
   for (const entry of manifest.clips) {
     const clip = catalog.find(
       (c) =>
-        c.pilot &&
+        (c.pilot ||
+          (entry.voice === "VoxCPM2 Burmese Teacher" && entry.provider === "voxcpm2_local")) &&
         c.grade === entry.grade &&
         c.unit === entry.unit &&
         c.lesson_id === entry.lesson &&
@@ -97,6 +100,11 @@ export async function restoreAudio(request: Request, userId: string, apply: bool
     const result = { file: entry.filename, status: "ready" };
     report.push(result);
     if (
+      (entry.voice === "VoxCPM2 Burmese Teacher") !== (entry.provider === "voxcpm2_local") ||
+      (entry.provider === "voxcpm2_local") !== Boolean(entry.model)
+    ) {
+      result.status = "Backup voice and provider do not match";
+    } else if (
       !clip ||
       !(
         (entry.scriptVersion === clip.script_version && !entry.scriptText) ||
@@ -156,7 +164,8 @@ export async function restoreAudio(request: Request, userId: string, apply: bool
               storage_path: path,
               bytes: media.bytes,
               duration: media.duration,
-              provider: "backup",
+              provider: entry.provider ?? "backup",
+              model: entry.model ?? null,
               voice: entry.voice,
               created_by: userId,
               reviewed_by: userId,

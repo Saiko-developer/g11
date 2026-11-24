@@ -6,6 +6,7 @@ import { audioCatalog } from "./catalog.server";
 import { audioDb, rows, rpc, version, stored } from "./store.server";
 import { inspectMp3 } from "./codec.server";
 import { zipStream } from "./zip.server";
+import { localAudioEnabled } from "./local-worker.server";
 import { workOneAudioJob } from "./worker.server";
 import type { AudioCatalogRow, AudioVersion } from "./types";
 import { z } from "zod";
@@ -93,6 +94,9 @@ export async function audioManagerGet(request: Request) {
         },
       });
     }
+    const localEnabled = localAudioEnabled();
+    if (localEnabled && url.searchParams.get("format") !== "zip")
+      await rpc("lesson_mp3_local_expire");
     const catalog = await rows<AudioCatalogRow>("lesson_mp3_catalog"),
       versions = await rows<AudioVersion>("lesson_mp3_versions");
     const ready = catalog
@@ -132,6 +136,7 @@ export async function audioManagerGet(request: Request) {
         scriptHash: v.script_hash,
         scriptText: v.script_text ?? null,
         voice: v.voice,
+        ...(v.provider === "voxcpm2_local" ? { provider: v.provider, model: v.model } : {}),
         duration: v.duration,
         bytes: v.bytes,
         versionId: v.id,
@@ -189,10 +194,12 @@ export async function audioManagerGet(request: Request) {
       .select("blocked_until,next_request_at")
       .eq("id", 1)
       .single();
-    const jobs = await rows<{ version_id: string; state: string }>(
-      "lesson_mp3_jobs",
-      "version_id,state",
-    );
+    const jobs = await rows<{
+      version_id: string;
+      state: string;
+      engine?: string;
+      progress?: number;
+    }>("lesson_mp3_jobs", localEnabled ? "version_id,state,engine,progress" : "version_id,state");
     const monitoring = await rpc<Record<string, unknown>>("lesson_mp3_stats");
     const price = Number(process.env.AUDIO_MP3_ESTIMATED_USD_PER_MINUTE);
     monitoring.estimatedCostUsd =
@@ -216,6 +223,7 @@ export async function audioManagerGet(request: Request) {
               versions.some((v) => v.clip_id === c.id && v.id === j.version_id),
             ),
           })),
+        localEnabled,
         requiredInRepository: manifest.length,
         stats: monitoring,
         control: controls.data,
@@ -267,6 +275,7 @@ const actionSchema = z.object({
   ids: z.array(z.string().min(1).max(150)).max(200).default([]),
   script: z.string().trim().min(1).max(3500).optional(),
   confirmed: z.boolean().default(false),
+  engine: z.enum(["gemini", "voxcpm2"]).default("gemini"),
 });
 export async function audioManagerPost(request: Request) {
   const access = await audioAdmin(request);
@@ -304,7 +313,10 @@ export async function audioManagerPost(request: Request) {
     })(),
   );
   if (!parsed.success) return Response.json({ error: "Invalid audio action" }, { status: 400 });
-  const { action, ids, confirmed } = parsed.data;
+  const { action, ids, confirmed, engine } = parsed.data;
+  const local = engine === "voxcpm2";
+  if (local && !localAudioEnabled())
+    return Response.json({ error: "Local companion is not configured" }, { status: 503 });
   if (!confirmed && action !== "work")
     return Response.json({ error: "Please confirm this audio management action" }, { status: 400 });
   try {
@@ -392,10 +404,11 @@ export async function audioManagerPost(request: Request) {
           .single();
         if (error) throw Error("Draft could not be saved. Check migration 0016.");
       } else {
-        await rpc("lesson_mp3_enqueue_draft", {
+        await rpc(local ? "lesson_mp3_local_enqueue" : "lesson_mp3_enqueue_draft", {
           p_clip: id,
           p_user: access.userId,
           p_script: script,
+          ...(local ? { p_regenerate: true } : {}),
         });
       }
       return Response.json({ ok: true, action });
@@ -422,13 +435,14 @@ export async function audioManagerPost(request: Request) {
     for (const id of ids) {
       if (action === "enqueue" || action === "regenerate") {
         const clip = catalog.find((c) => c.id === id);
-        if (!clip?.pilot) throw Error("Audio preparation is available for Grammar");
-        if (clip.source === "classroom") {
+        if (!clip || (!local && !clip.pilot))
+          throw Error("This clip is unavailable for the selected provider");
+        if (!local && clip.source === "classroom") {
           const lesson = getMethodLesson(clip.grade, clip.unit, "grammar");
           if (!lesson || lesson.id !== clip.lesson_id || !(await publishedLesson(lesson)))
             throw Error("Review and publish the classroom script in Teaching setup first");
         }
-        await rpc("lesson_mp3_enqueue", {
+        await rpc(local ? "lesson_mp3_local_enqueue" : "lesson_mp3_enqueue", {
           p_clip: id,
           p_user: access.userId,
           p_regenerate: action === "regenerate",
@@ -451,8 +465,22 @@ export async function audioManagerPost(request: Request) {
             p_action: action,
           });
         } else {
-          if (!catalog.find((c) => c.id === row.clip_id)?.pilot)
-            throw Error("Version is outside the Grammar audio library");
+          const clip = catalog.find((c) => c.id === row.clip_id);
+          if (row.provider === "voxcpm2_local") {
+            if (!localAudioEnabled()) throw Error("Local companion is not configured");
+            if (!clip) throw Error("Fixed script is unavailable");
+            if (
+              !(await rpc<boolean>("lesson_mp3_local_requeue", {
+                p_version: id,
+                p_generate: action === "retry",
+              }))
+            )
+              throw Error(
+                "Only failed or interrupted local jobs without another active version can be resumed",
+              );
+            continue;
+          }
+          if (!clip?.pilot) throw Error("Version is outside the Grammar audio library");
           const { data: job, error } = await audioDb()
             .from("lesson_mp3_jobs")
             .update({
@@ -467,7 +495,13 @@ export async function audioManagerPost(request: Request) {
         }
       }
     }
-    return Response.json({ ok: true, action });
+    return Response.json({
+      ok: true,
+      action,
+      ...(local && (action === "enqueue" || action === "regenerate")
+        ? { message: "Queue updated. Start the Mac companion to process Local clips." }
+        : {}),
+    });
   } catch (error) {
     return Response.json(
       { error: error instanceof Error ? error.message : "Audio action failed" },

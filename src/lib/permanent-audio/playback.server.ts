@@ -1,6 +1,6 @@
 import { audioDb, stored } from "./store.server";
 import { inspectMp3 } from "./codec.server";
-/** Read approved Grammar audio, with legacy playback for clips outside the library. */
+/** Read approved audio for the canonical script, with legacy playback on a library miss. */
 export async function approvedMp3(
   scriptHash: string,
   metadataOnly = false,
@@ -20,7 +20,6 @@ export async function approvedMp3(
       .from("lesson_mp3_catalog")
       .select("*")
       .eq("script_hash", scriptHash)
-      .eq("section", "grammar")
       .limit(1);
     if (error) return unavailable();
     if (clips?.[0]?.removed_from_lesson)

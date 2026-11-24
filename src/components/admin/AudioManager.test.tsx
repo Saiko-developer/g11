@@ -92,3 +92,25 @@ it("keeps shuffled scripts in numeric order across Review and All pages", async 
   fireEvent.click(screen.getByRole("button", { name: "All (12)" }));
   expect(displayed()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 });
+
+it("queues local work with the provider selector and leaves the Gemini processor separate", async () => {
+  const fetcher = vi
+    .spyOn(globalThis, "fetch")
+    .mockImplementation(async (_url, init) =>
+      Response.json(init?.method === "POST" ? { ok: true } : { ...data, localEnabled: true }),
+    );
+  vi.spyOn(window, "confirm").mockReturnValue(true);
+  render(<AudioManager />);
+  fireEvent.change(await screen.findByLabelText("Voice provider"), {
+    target: { value: "voxcpm2" },
+  });
+  fireEvent.click(screen.getByRole("button", { name: "Prepare missing audio" }));
+  await waitFor(() => {
+    const post = fetcher.mock.calls.find(([, init]) => init?.method === "POST");
+    expect(JSON.parse(post?.[1]?.body as string)).toMatchObject({
+      action: "enqueue",
+      engine: "voxcpm2",
+      ids: ["pilot"],
+    });
+  });
+});

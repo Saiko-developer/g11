@@ -7,10 +7,11 @@ type Clip = AudioCatalogRow & {
   pilot: boolean;
   legacyReady: boolean;
   versions: AudioVersion[];
-  jobs: { version_id: string; state: string }[];
+  jobs: { version_id: string; state: string; engine?: string; progress?: number }[];
 };
 type Data = {
   clips: Clip[];
+  localEnabled?: boolean;
   requiredInRepository: number;
   stats: Record<string, number | string | null>;
   control: { blocked_until: string | null };
@@ -46,6 +47,8 @@ export function AudioManager() {
     [review, setReview] = useState<string[]>([]),
     [editing, setEditing] = useState<string | null>(null),
     [script, setScript] = useState("");
+  const [engine, setEngine] = useState<"gemini" | "voxcpm2">("gemini");
+  const local = engine === "voxcpm2" && data?.localEnabled === true;
   const [backup, setBackup] = useState<File | null>(null);
   const [backupReport, setBackupReport] = useState<{ file: string; status: string }[]>([]);
   const restoreBackup = async (apply: boolean) => {
@@ -73,11 +76,17 @@ export function AudioManager() {
       setBusy(false);
     }
   };
-  const post = (action: string, ids: string[], script?: string) =>
+  const post = (action: string, ids: string[], script?: string, useLocal = false) =>
     requestJson("/api/audio-manager", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action, ids, script, confirmed: true }),
+      body: JSON.stringify({
+        action,
+        ids,
+        script,
+        confirmed: true,
+        ...(useLocal ? { engine: "voxcpm2" } : {}),
+      }),
     });
   const refresh = async () => {
     try {
@@ -140,8 +149,27 @@ export function AudioManager() {
   );
   const selectedReview = reviewIds.filter((id) => review.includes(id));
   const queue = filtered
-    .filter((c) => c.pilot && c.jobs.some((j) => j.state === "queued"))
+    .filter(
+      (c) =>
+        c.pilot &&
+        c.jobs.some(
+          (j) =>
+            j.state === "queued" &&
+            j.engine !== "voxcpm2" &&
+            c.versions.find((v) => v.id === j.version_id)?.provider !== "voxcpm2_local",
+        ),
+    )
     .map((c) => c.id);
+  const localJobs = filtered.flatMap((c) =>
+    c.jobs.filter(
+      (j) =>
+        j.engine === "voxcpm2" ||
+        c.versions.find((v) => v.id === j.version_id)?.provider === "voxcpm2_local",
+    ),
+  );
+  const localQueued = localJobs.filter((j) => j.state === "queued").length;
+  const localRunning = localJobs.find((j) => j.state === "running");
+  const eligible = (clip: Clip) => local || clip.pilot;
   const processQueue = async () => {
     if (
       !window.confirm(
@@ -177,13 +205,17 @@ export function AudioManager() {
   const editAction = async (action: "save-script" | "queue-script", id: string) => {
     if (
       action === "queue-script" &&
-      !window.confirm("Queue revised narration? This may use TTS credits.")
+      !window.confirm(
+        local
+          ? "Queue revised narration for your Mac?"
+          : "Queue revised narration? This may use TTS credits.",
+      )
     )
       return;
     setBusy(true);
     setError("");
     try {
-      await post(action, [id], script);
+      await post(action, [id], script, local && action === "queue-script");
       await refresh();
       if (action === "queue-script") setEditing(null);
       setMessage(action === "save-script" ? "Draft saved" : "Revised narration queued");
@@ -224,7 +256,12 @@ export function AudioManager() {
       const result = await requestJson("/api/audio-manager", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action, ids, confirmed: true }),
+        body: JSON.stringify({
+          action,
+          ids,
+          confirmed: true,
+          ...(local && ["enqueue", "regenerate"].includes(action) ? { engine: "voxcpm2" } : {}),
+        }),
       });
       setMessage(
         result.message ?? `Audio action: ${result.state ?? result.action ?? "catalog registered"}`,
@@ -470,8 +507,34 @@ export function AudioManager() {
           Choose a unit to prepare or process its queue.
         </p>
       )}
+      {data?.localEnabled && (
+        <div className="flex flex-wrap items-center gap-3 rounded-lg border p-3 text-sm">
+          <label className="flex items-center gap-2">
+            Voice provider
+            <select
+              className="rounded-md border bg-background p-2"
+              value={engine}
+              onChange={(event) => {
+                setEngine(event.target.value === "voxcpm2" ? "voxcpm2" : "gemini");
+                setSelected([]);
+              }}
+            >
+              <option value="gemini">Gemini</option>
+              <option value="voxcpm2">VoxCPM2 Local</option>
+            </select>
+          </label>
+          <span role="status">
+            {localQueued} local queued
+            {localRunning ? ` · Mac working (${localRunning.progress ?? 0}% of job stages)` : ""}
+          </span>
+          {local && <span>Start the Mac companion to process local jobs.</span>}
+        </div>
+      )}
       <div className="sticky top-0 z-10 flex flex-wrap gap-2 border-b bg-background py-3">
-        <Button disabled={busy || !unit || !queue.length} onClick={() => void processQueue()}>
+        <Button
+          disabled={busy || local || !unit || !queue.length}
+          onClick={() => void processQueue()}
+        >
           Process Unit Queue ({queue.length})
         </Button>
         <Button
@@ -496,12 +559,20 @@ export function AudioManager() {
           Register / update catalog
         </Button>
         <Button
-          disabled={busy || !unit || !filtered.some((c) => c.pilot && !c.versions.length)}
+          disabled={
+            busy ||
+            !unit ||
+            !filtered.some((c) => eligible(c) && !c.removed_from_lesson && !c.versions.length)
+          }
           onClick={() =>
             void run(
               "enqueue",
-              filtered.filter((c) => c.pilot && !c.versions.length).map((c) => c.id),
-              "Queue missing clips for the selected unit and filters? Confirm you reviewed these fixed scripts. Existing WAV is reused first; missing audio may use provider credits.",
+              filtered
+                .filter((c) => eligible(c) && !c.removed_from_lesson && !c.versions.length)
+                .map((c) => c.id),
+              local
+                ? "Queue missing clips for your Mac? Confirm you reviewed the fixed scripts."
+                : "Queue missing clips for the selected unit and filters? Confirm you reviewed these fixed scripts. Existing WAV is reused first; missing audio may use provider credits.",
             )
           }
         >
@@ -513,7 +584,9 @@ export function AudioManager() {
             void run(
               "enqueue",
               selected,
-              "Queue selected clips? Confirm their fixed scripts are approved for narration. Provider credits may be used only when cached audio is missing.",
+              local
+                ? "Queue selected clips for your Mac? Confirm you reviewed the fixed scripts."
+                : "Queue selected clips? Confirm their fixed scripts are approved for narration. Provider credits may be used only when cached audio is missing.",
             )
           }
         >
@@ -526,7 +599,9 @@ export function AudioManager() {
             void run(
               "regenerate",
               selected,
-              "Create NEW audio versions and spend provider credits? Existing approved audio stays published until the replacement is approved.",
+              local
+                ? "Queue replacement versions for your Mac? Existing approved audio plays until you approve a replacement."
+                : "Create NEW audio versions and spend provider credits? Existing approved audio stays published until the replacement is approved.",
             )
           }
         >
@@ -535,14 +610,15 @@ export function AudioManager() {
       </div>
       {data?.control?.blocked_until && Date.parse(data.control.blocked_until) > Date.now() && (
         <p className="rounded-lg border p-3 text-sm">
-          Generation paused until {new Date(data.control.blocked_until).toLocaleString()}. Stored
-          playback and downloads remain available.
+          Gemini generation paused until {new Date(data.control.blocked_until).toLocaleString()}.
+          Stored playback and downloads remain available.
         </p>
       )}
       <p className="text-xs text-muted-foreground">
-        Jobs are stored in the database. A scheduled server worker is required for unattended
-        batches. Resume checks stored files only; Retry can spend credits. No audio is generated by
-        preview, approval, download or replay.
+        {local
+          ? "The Mac companion processes queued jobs in lesson order. Resume checks stored WAVs. Retry allows the Mac to render again."
+          : "Jobs are stored in the database. A scheduled server worker is required for unattended batches. Resume checks stored files only. Gemini retries can spend credits."}{" "}
+        Preview, approval, download and replay use stored files.
       </p>
       <div className="flex flex-wrap gap-2" aria-label="Clip status">
         {[
@@ -592,7 +668,11 @@ export function AudioManager() {
                         ? review.includes(latest.id)
                         : selected.includes(clip.id)
                     }
-                    disabled={busy || !clip.pilot}
+                    disabled={
+                      busy ||
+                      (latest?.status !== "pending" &&
+                        (!eligible(clip) || clip.removed_from_lesson))
+                    }
                     onChange={() =>
                       latest?.status === "pending"
                         ? setReview((ids) =>
@@ -607,11 +687,16 @@ export function AudioManager() {
                 </label>
                 <span className="rounded-full bg-primary/5 px-3 py-1 text-xs">
                   {clip.removed_from_lesson ? "Removed from lesson" : state(clip)}
-                  {!clip.pilot ? " · inventory only" : ""}
+                  {!clip.pilot
+                    ? data?.localEnabled
+                      ? " · VoxCPM2 Local"
+                      : " · inventory only"
+                    : ""}
                 </span>
               </div>
               <p className="mt-2 text-xs text-muted-foreground">
-                Puck · {clip.script_version} · WAV cache index:{" "}
+                {latest?.voice ?? (local ? "VoxCPM2 Burmese Teacher" : "Puck")} ·{" "}
+                {clip.script_version} · WAV cache index:{" "}
                 {clip.legacyReady ? "ready (validated on reuse)" : "not marked ready"}
               </p>
               <details className="mt-2 text-sm">
@@ -745,7 +830,9 @@ export function AudioManager() {
                         void run(
                           "retry",
                           [latest.id],
-                          "Retry failed audio? Check provider quota first. This authorizes a new paid request if no stored file can be recovered.",
+                          latest.provider === "voxcpm2_local"
+                            ? "Retry failed audio using your Mac? Start the companion to process it."
+                            : "Retry failed audio? Check provider quota first. This authorizes a new paid request if no stored file can be recovered.",
                         )
                       }
                     >
@@ -760,7 +847,7 @@ export function AudioManager() {
                   {clip.versions.map((v) => (
                     <div key={v.id} className="mt-2 flex flex-wrap items-center gap-2">
                       <span>
-                        {v.created_at} · {v.status} · {v.bytes} bytes
+                        {v.created_at} · {v.status} · {v.voice} · {v.bytes} bytes
                       </span>
                       {v.storage_path && (
                         <Button
