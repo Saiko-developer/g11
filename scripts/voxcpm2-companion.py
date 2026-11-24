@@ -108,7 +108,8 @@ def stop_process(process):
 
 def render_part(args, kit, text, path, beat):
     command = [
-        str(kit / "runtime/build/bin/voxcpm2-cli"), "--cpu", "--text", f"({VOICE}){text}",
+        str(kit / "runtime/build/bin/voxcpm2-cli"), "--cpu", "--text",
+        text if getattr(args, "voice_reference", None) else f"({VOICE}){text}",
         "--seed", "42", "--steps", "1200", "--timesteps", str(args.timesteps), "--output", str(path),
         str(kit / "models/VoxCPM2-BaseLM-Q8_0.gguf"), str(kit / "models/VoxCPM2-Acoustic-F16.gguf"),
     ]
