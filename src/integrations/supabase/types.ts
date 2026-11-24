@@ -879,6 +879,8 @@ export type Database = {
           grade: number
           id: string
           lesson_id: string
+          removed_from_lesson: boolean
+          script_draft: string | null
           script_hash: string
           script_version: string
           section: string
@@ -892,6 +894,8 @@ export type Database = {
           grade: number
           id: string
           lesson_id: string
+          removed_from_lesson?: boolean
+          script_draft?: string | null
           script_hash: string
           script_version: string
           section: string
@@ -905,6 +909,8 @@ export type Database = {
           grade?: number
           id?: string
           lesson_id?: string
+          removed_from_lesson?: boolean
+          script_draft?: string | null
           script_hash?: string
           script_version?: string
           section?: string
@@ -1064,6 +1070,7 @@ export type Database = {
           reviewed_at: string | null
           reviewed_by: string | null
           script_hash: string
+          script_text: string | null
           script_version: string
           status: string
           storage_path: string | null
@@ -1086,6 +1093,7 @@ export type Database = {
           reviewed_at?: string | null
           reviewed_by?: string | null
           script_hash: string
+          script_text?: string | null
           script_version: string
           status?: string
           storage_path?: string | null
@@ -1108,6 +1116,7 @@ export type Database = {
           reviewed_at?: string | null
           reviewed_by?: string | null
           script_hash?: string
+          script_text?: string | null
           script_version?: string
           status?: string
           storage_path?: string | null
@@ -1765,6 +1774,10 @@ export type Database = {
         Args: { _code: string; _name: string }
         Returns: string
       }
+      lesson_mp3_approve_selection: {
+        Args: { p_user: string; p_versions: string[] }
+        Returns: undefined
+      }
       lesson_mp3_backoff: {
         Args: {
           p_job: string
@@ -1800,8 +1813,34 @@ export type Database = {
           isSetofReturn: true
         }
       }
+      lesson_mp3_claim_selection: {
+        Args: { p_clips: string[] }
+        Returns: {
+          allow_generation: boolean
+          attempts: number
+          clip_id: string
+          created_at: string
+          id: string
+          lease_until: string | null
+          regenerate: boolean
+          state: string
+          token: string | null
+          updated_at: string
+          version_id: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "lesson_mp3_jobs"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
       lesson_mp3_enqueue: {
         Args: { p_clip: string; p_regenerate?: boolean; p_user: string }
+        Returns: string
+      }
+      lesson_mp3_enqueue_draft: {
+        Args: { p_clip: string; p_script: string; p_user: string }
         Returns: string
       }
       lesson_mp3_reserve: {
