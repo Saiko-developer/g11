@@ -999,11 +999,14 @@ export type Database = {
       lesson_mp3_jobs: {
         Row: {
           allow_generation: boolean
+          asset_token: string | null
           attempts: number
           clip_id: string
           created_at: string
+          engine: string
           id: string
           lease_until: string | null
+          progress: number
           regenerate: boolean
           state: string
           token: string | null
@@ -1012,11 +1015,14 @@ export type Database = {
         }
         Insert: {
           allow_generation?: boolean
+          asset_token?: string | null
           attempts?: number
           clip_id: string
           created_at?: string
+          engine?: string
           id?: string
           lease_until?: string | null
+          progress?: number
           regenerate?: boolean
           state?: string
           token?: string | null
@@ -1025,11 +1031,14 @@ export type Database = {
         }
         Update: {
           allow_generation?: boolean
+          asset_token?: string | null
           attempts?: number
           clip_id?: string
           created_at?: string
+          engine?: string
           id?: string
           lease_until?: string | null
+          progress?: number
           regenerate?: boolean
           state?: string
           token?: string | null
@@ -1795,11 +1804,39 @@ export type Database = {
         Args: never
         Returns: {
           allow_generation: boolean
+          asset_token: string | null
           attempts: number
           clip_id: string
           created_at: string
+          engine: string
           id: string
           lease_until: string | null
+          progress: number
+          regenerate: boolean
+          state: string
+          token: string | null
+          updated_at: string
+          version_id: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "lesson_mp3_jobs"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
+      lesson_mp3_claim_cloud: {
+        Args: { p_clips: string[] }
+        Returns: {
+          allow_generation: boolean
+          asset_token: string | null
+          attempts: number
+          clip_id: string
+          created_at: string
+          engine: string
+          id: string
+          lease_until: string | null
+          progress: number
           regenerate: boolean
           state: string
           token: string | null
@@ -1817,11 +1854,14 @@ export type Database = {
         Args: { p_clips: string[] }
         Returns: {
           allow_generation: boolean
+          asset_token: string | null
           attempts: number
           clip_id: string
           created_at: string
+          engine: string
           id: string
           lease_until: string | null
+          progress: number
           regenerate: boolean
           state: string
           token: string | null
@@ -1842,6 +1882,76 @@ export type Database = {
       lesson_mp3_enqueue_draft: {
         Args: { p_clip: string; p_script: string; p_user: string }
         Returns: string
+      }
+      lesson_mp3_local_claim: {
+        Args: never
+        Returns: {
+          allow_generation: boolean
+          asset_token: string | null
+          attempts: number
+          clip_id: string
+          created_at: string
+          engine: string
+          id: string
+          lease_until: string | null
+          progress: number
+          regenerate: boolean
+          state: string
+          token: string | null
+          updated_at: string
+          version_id: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "lesson_mp3_jobs"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
+      lesson_mp3_local_enqueue: {
+        Args: {
+          p_clip: string
+          p_regenerate: boolean
+          p_script?: string
+          p_user: string
+        }
+        Returns: string
+      }
+      lesson_mp3_local_expire: { Args: never; Returns: undefined }
+      lesson_mp3_local_requeue: {
+        Args: { p_generate: boolean; p_version: string }
+        Returns: boolean
+      }
+      lesson_mp3_local_step: {
+        Args: {
+          p_job: string
+          p_patch?: Json
+          p_progress?: number
+          p_stage: string
+          p_token: string
+        }
+        Returns: {
+          allow_generation: boolean
+          asset_token: string | null
+          attempts: number
+          clip_id: string
+          created_at: string
+          engine: string
+          id: string
+          lease_until: string | null
+          progress: number
+          regenerate: boolean
+          state: string
+          token: string | null
+          updated_at: string
+          version_id: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "lesson_mp3_jobs"
+          isOneToOne: false
+          isSetofReturn: true
+        }
       }
       lesson_mp3_reserve: {
         Args: {
