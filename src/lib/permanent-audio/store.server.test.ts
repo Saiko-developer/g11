@@ -1,5 +1,6 @@
 import { beforeEach, expect, it, vi } from "vitest";
 import { deleteAudioVersion } from "./store.server";
+import { AudioDeletionUnavailableError } from "./types";
 
 const mocks = vi.hoisted(() => ({
   rpc: vi.fn(),
@@ -57,6 +58,18 @@ it("leaves file paths available on a storage failure and clears them after a ret
 
 it("leaves private storage untouched when the database rejects the deletion", async () => {
   mocks.rpc.mockResolvedValueOnce({ error: { message: "Version is generating" } });
-  await expect(deleteAudioVersion(id, "admin")).rejects.toThrow("lesson_mp3_delete_audio");
+  await expect(deleteAudioVersion(id, "admin")).rejects.toThrow("Audio deletion failed");
   expect(mocks.remove).not.toHaveBeenCalled();
 });
+
+it.each(["PGRST202", "42883", "42703"])(
+  "reports the required migration when the deletion schema is unavailable (%s)",
+  async (code) => {
+    mocks.rpc.mockResolvedValueOnce({ data: null, error: { code } });
+    await expect(deleteAudioVersion(id, "admin")).rejects.toBeInstanceOf(
+      AudioDeletionUnavailableError,
+    );
+    expect(mocks.remove).not.toHaveBeenCalled();
+    expect(mocks.update).not.toHaveBeenCalled();
+  },
+);

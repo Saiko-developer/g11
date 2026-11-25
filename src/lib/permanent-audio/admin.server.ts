@@ -8,7 +8,7 @@ import { inspectMp3 } from "./codec.server";
 import { zipStream } from "./zip.server";
 import { localAudioEnabled } from "./local-worker.server";
 import { workOneAudioJob } from "./worker.server";
-import type { AudioCatalogRow, AudioVersion } from "./types";
+import { AudioDeletionUnavailableError, type AudioCatalogRow, type AudioVersion } from "./types";
 import { z } from "zod";
 export async function audioAdmin(request: Request) {
   const auth = await requireUser(request, { enforceAccountStatus: true });
@@ -233,6 +233,8 @@ export async function audioManagerGet(request: Request) {
             : [];
         }),
         localEnabled,
+        audioDeletionAvailable:
+          versions.length === 0 || Object.hasOwn(versions[0], "audio_deleted_at"),
         requiredInRepository: manifest.length,
         stats: monitoring,
         control: controls.data,
@@ -531,7 +533,7 @@ export async function audioManagerPost(request: Request) {
   } catch (error) {
     return Response.json(
       { error: error instanceof Error ? error.message : "Audio action failed" },
-      { status: 409 },
+      { status: error instanceof AudioDeletionUnavailableError ? 503 : 409 },
     );
   }
 }

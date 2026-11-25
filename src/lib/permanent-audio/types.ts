@@ -41,3 +41,7 @@ export type AudioJob = {
   attempts: number;
 };
 export const AUDIO_BUCKET = "saya-owl-lesson-audio";
+export const AUDIO_DELETE_MIGRATION_MESSAGE =
+  "Deleting generated audio requires Audio Manager migration 0025.";
+
+export class AudioDeletionUnavailableError extends Error {}

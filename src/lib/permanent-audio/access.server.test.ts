@@ -28,6 +28,7 @@ vi.mock("./store.server", () => ({
 }));
 import { audioManagerGet, audioManagerPost, archiveParts } from "./admin.server";
 import { audioCatalog } from "./catalog.server";
+import { AUDIO_DELETE_MIGRATION_MESSAGE, AudioDeletionUnavailableError } from "./types";
 beforeEach(() => vi.clearAllMocks());
 describe("audio management access and limits", () => {
   it("rejects anonymous preview, downloads and job actions before privileged reads", async () => {
@@ -117,6 +118,21 @@ it("allows only a confirmed admin to delete a specific generated version", async
   expect(mocks.deleteAudioVersion).not.toHaveBeenCalled();
   expect((await post({ action: "delete-audio", ids: [id], confirmed: true })).status).toBe(200);
   expect(mocks.deleteAudioVersion.mock.calls).toEqual([[id, "admin"]]);
+});
+
+it("reports migration 0025 when the deletion service is unavailable", async () => {
+  mocks.auth.mockResolvedValue({ userId: "admin" });
+  mocks.admin.mockResolvedValue(true);
+  mocks.deleteAudioVersion.mockRejectedValueOnce(
+    new AudioDeletionUnavailableError(AUDIO_DELETE_MIGRATION_MESSAGE),
+  );
+  const result = await post({
+    action: "delete-audio",
+    ids: ["00000000-0000-4000-8000-000000000001"],
+    confirmed: true,
+  });
+  expect(result.status).toBe(503);
+  expect(await result.json()).toEqual({ error: AUDIO_DELETE_MIGRATION_MESSAGE });
 });
 
 it("keeps unit ZIPs scoped and grade backup parts ordered without mixing units", async () => {

@@ -1,6 +1,11 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
-import { AUDIO_BUCKET, type AudioVersion } from "./types";
+import {
+  AUDIO_BUCKET,
+  AUDIO_DELETE_MIGRATION_MESSAGE,
+  AudioDeletionUnavailableError,
+  type AudioVersion,
+} from "./types";
 export const audioDb = () => supabaseAdmin as unknown as SupabaseClient;
 export async function rows<T>(table: string, select = "*"): Promise<T[]> {
   const result: T[] = [];
@@ -43,10 +48,18 @@ export async function upload(path: string, bytes: Uint8Array, type: string) {
   }
 }
 export async function deleteAudioVersion(id: string, userId: string) {
-  const assets = await rpc<{ mp3: string | null; wav: string | null }>("lesson_mp3_delete_audio", {
+  const { data, error: markError } = await audioDb().rpc("lesson_mp3_delete_audio", {
     p_version: id,
     p_user: userId,
   });
+  if (markError) {
+    if (["PGRST202", "42883", "42703"].includes(markError.code))
+      throw new AudioDeletionUnavailableError(AUDIO_DELETE_MIGRATION_MESSAGE);
+    throw Error(
+      "Audio deletion failed. Refresh the library and check this version before retrying.",
+    );
+  }
+  const assets = data as { mp3: string | null; wav: string | null };
   const paths = [...new Set([assets.mp3, assets.wav].filter((path) => path !== null))];
   if (!paths.length) return;
 

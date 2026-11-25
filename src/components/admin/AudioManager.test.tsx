@@ -173,3 +173,57 @@ it.each([10, 12])("edits, regenerates and deletes a Grade %i audio version", asy
     expect(posts()[2]).toMatchObject({ action: "delete-audio", ids: [version.id] }),
   );
 });
+
+it("explains why deletion is disabled when migration 0025 is missing", async () => {
+  const approved = { id: "approved", status: "approved", storage_path: "approved.mp3" };
+  const fetcher = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+    Response.json({
+      ...data,
+      audioDeletionAvailable: false,
+      clips: [{ ...data.clips[0], versions: [approved], approved_version: approved.id }],
+    }),
+  );
+  render(<AudioManager />);
+  fireEvent.click(await screen.findByRole("button", { name: "All (1)" }));
+  expect(screen.getByText(/requires Audio Manager migration 0025/)).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: "Delete generated audio" })).toBeDisabled();
+  expect(screen.getByRole("button", { name: "Preview MP3" })).toBeEnabled();
+  expect(fetcher.mock.calls.every(([, init]) => !init?.method)).toBe(true);
+});
+
+it("targets the previewable version, with deletion retries in version history", async () => {
+  const approved = { id: "approved", status: "approved", storage_path: "approved.mp3" };
+  const detached = {
+    id: "detached",
+    status: "rejected",
+    storage_path: "detached.mp3",
+    audio_deleted_at: "2026-11-25T00:00:00Z",
+  };
+  const fetcher = vi.spyOn(globalThis, "fetch").mockImplementation(async (_url, init) =>
+    Response.json(
+      init?.method === "POST"
+        ? { ok: true }
+        : {
+            ...data,
+            audioDeletionAvailable: true,
+            clips: [
+              { ...data.clips[0], versions: [detached, approved], approved_version: approved.id },
+            ],
+          },
+    ),
+  );
+  vi.spyOn(window, "confirm").mockReturnValue(true);
+  render(<AudioManager />);
+  fireEvent.click(await screen.findByRole("button", { name: "All (1)" }));
+  fireEvent.click(screen.getByRole("button", { name: "Delete generated audio" }));
+  const posts = () =>
+    fetcher.mock.calls
+      .filter(([, init]) => init?.method === "POST")
+      .map(([, init]) => JSON.parse(String(init?.body)));
+  await waitFor(() => expect(posts()[0]?.ids).toEqual([approved.id]));
+  fireEvent.click(screen.getByText("Version history / restore"));
+  const retry = screen.getByRole("button", { name: "Retry audio deletion" });
+  await waitFor(() => expect(retry).toBeEnabled());
+  fireEvent.click(retry);
+  await waitFor(() => expect(posts()[1]?.ids).toEqual([detached.id]));
+});

@@ -1,6 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import type { AudioCatalogRow, AudioVersion } from "@/lib/permanent-audio/types";
+import {
+  AUDIO_DELETE_MIGRATION_MESSAGE,
+  type AudioCatalogRow,
+  type AudioVersion,
+} from "@/lib/permanent-audio/types";
 type Clip = AudioCatalogRow & {
   script: string;
   source: string;
@@ -14,6 +18,7 @@ type Clip = AudioCatalogRow & {
 type Data = {
   clips: Clip[];
   localEnabled?: boolean;
+  audioDeletionAvailable?: boolean;
   requiredInRepository: number;
   stats: Record<string, number | string | null>;
   control: { blocked_until: string | null };
@@ -26,9 +31,12 @@ function state(c: Clip) {
   if (c.approved_version) return "approved";
   return c.versions[0]?.audio_deleted_at ? "missing" : (c.versions[0]?.status ?? "missing");
 }
-const hasMP3 = (v: AudioVersion) => Boolean(v.storage_path && !v.audio_deleted_at);
+const isReviewedOrReady = (v: AudioVersion) =>
+  ["pending", "approved", "rejected"].includes(v.status);
+const hasMP3 = (v: AudioVersion) =>
+  Boolean(v.storage_path && !v.audio_deleted_at && isReviewedOrReady(v));
 const canDelete = (v: AudioVersion) =>
-  Boolean((v.storage_path || v.raw_path) && ["pending", "approved", "rejected"].includes(v.status));
+  Boolean((v.storage_path || v.raw_path) && isReviewedOrReady(v));
 async function requestJson(path: string, init?: RequestInit) {
   const response = await fetch(path, init);
   const data = await response.json();
@@ -258,6 +266,10 @@ export function AudioManager() {
     setBusy(true);
     setError("");
     setMessage("");
+    if (action === "delete-audio" && ids.includes(previewVersion)) {
+      setPreview("");
+      setPreviewVersion("");
+    }
     try {
       const result = await requestJson("/api/audio-manager", {
         method: "POST",
@@ -272,10 +284,6 @@ export function AudioManager() {
       setMessage(
         result.message ?? `Audio action: ${result.state ?? result.action ?? "catalog registered"}`,
       );
-      if (action === "delete-audio" && ids.includes(previewVersion)) {
-        setPreview("");
-        setPreviewVersion("");
-      }
       await refresh();
       setSelected([]);
       setReview([]);
@@ -375,6 +383,9 @@ export function AudioManager() {
         >
           {error}
         </p>
+      )}
+      {data?.audioDeletionAvailable === false && (
+        <p className="text-sm text-muted-foreground">{AUDIO_DELETE_MIGRATION_MESSAGE}</p>
       )}
       {message && (
         <p role="status" className="rounded-xl bg-primary/5 p-3 text-sm">
@@ -668,13 +679,13 @@ export function AudioManager() {
           const latest = clip.versions[0],
             asset = clip.versions.find(hasMP3);
           const lastScript = clip.versions.find((v) => v.script_text)?.script_text;
-          const deleteTarget = clip.versions.find(canDelete);
+          const deleteTarget = asset ?? clip.versions.find(canDelete);
           const active = ["queued", "generating", "pending"].includes(state(clip));
           const deleteButton = (v: AudioVersion) => (
             <Button
               size="sm"
               variant="outline"
-              disabled={busy}
+              disabled={busy || data?.audioDeletionAvailable === false}
               onClick={() =>
                 void run(
                   "delete-audio",
