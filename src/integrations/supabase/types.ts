@@ -1064,6 +1064,7 @@ export type Database = {
       }
       lesson_mp3_versions: {
         Row: {
+          audio_deleted_at: string | null
           bytes: number
           clip_id: string
           created_at: string
@@ -1087,6 +1088,7 @@ export type Database = {
           voice: string
         }
         Insert: {
+          audio_deleted_at?: string | null
           bytes?: number
           clip_id: string
           created_at?: string
@@ -1110,6 +1112,7 @@ export type Database = {
           voice?: string
         }
         Update: {
+          audio_deleted_at?: string | null
           bytes?: number
           clip_id?: string
           created_at?: string
@@ -1875,6 +1878,10 @@ export type Database = {
           isSetofReturn: true
         }
       }
+      lesson_mp3_delete_audio: {
+        Args: { p_user: string; p_version: string }
+        Returns: Json
+      }
       lesson_mp3_enqueue: {
         Args: { p_clip: string; p_regenerate?: boolean; p_user: string }
         Returns: string
@@ -1883,6 +1890,7 @@ export type Database = {
         Args: { p_clip: string; p_script: string; p_user: string }
         Returns: string
       }
+      lesson_mp3_link_backup: { Args: { p_version: string }; Returns: boolean }
       lesson_mp3_local_claim: {
         Args: never
         Returns: {
@@ -1952,6 +1960,10 @@ export type Database = {
           isOneToOne: false
           isSetofReturn: true
         }
+      }
+      lesson_mp3_regenerate: {
+        Args: { p_clip: string; p_engine: string; p_user: string }
+        Returns: string
       }
       lesson_mp3_reserve: {
         Args: {
