@@ -27,6 +27,111 @@ MAX_PCM_BYTES = 32 * 1024 * 1024 - 44
 SENTENCE_END = re.compile(r"[။!?](?:\s*)|\.(?=\s|[\u1000-\u109f]|$)\s*|\n+")
 PHRASE_END = re.compile(r"[၊,;:]\s*|\s+")
 
+VERB_FORM = r"V(?:[123]|[-‑–]?(?i:ing))"
+VERB_FORMS = {
+    "V1": "Verb Form One",
+    "V2": "Verb Form Two",
+    "V3": "Verb Form Three",
+}
+FORM_RUN = (
+    rf"{VERB_FORM}(?:[ \t]*(?:/|→|->)[ \t]*{VERB_FORM})+"
+    rf"|V1[-–]V2[-–]V3|{VERB_FORM}"
+)
+NOTATION = re.compile(rf"(?<![A-Za-z0-9_./+-])(?:{FORM_RUN})(?![A-Za-z0-9_/+-]|\.[A-Za-z0-9_])")
+PROTECTED_TEXT = re.compile(
+    r'''(?i:https?|ftp)://[^\s<>"“”`]+|\bwww\.[^\s<>"“”`]+'''
+    r'''|\b[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)+/[^\s<>"“”`]+'''
+    r"|\b[A-Za-z0-9_.+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
+    r'''|`+[^`\n]+`+|"[^"]*"|“[^”]*”|‘[^\n]*?’(?![A-Za-z0-9])'''
+    r"""|(?<![A-Za-z0-9])'[^\n]*?'(?![A-Za-z0-9])"""
+    r"|\b[A-Za-z_]\w*\([A-Za-z0-9_., +*/=^×÷−<>≤≥-]+\)"
+)
+# Tight allowlists keep arithmetic, identifiers and unfamiliar punctuation intact.
+FORMULA = re.compile(
+    r"(?P<cue>\b(?:grammar formula|sentence (?:structure|pattern)|word order|"
+    r"grammar pattern)|ဝါကျ(?:ဖွဲ့စည်း|တည်ဆောက်)ပုံ|ပုံစံကို ဘုတ်မှာ ဒီလို မှတ်ထားမယ်)"
+    r"(?P<pause>[ \t]*(?:[:：]|[—–])[ \t]*)"
+    r"S[ \t]*\+[ \t]*V[ \t]*\+[ \t]*O(?![A-Za-z0-9_]|[ \t]*[+=*/^×÷−-])",
+    re.IGNORECASE,
+)
+ATOM = rf"(?:{VERB_FORM}|[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z0-9_]+)*|\d+(?:\.\d+)?)"
+EXPRESSION = re.compile(
+    rf"(?<![A-Za-z0-9_.])\(?{ATOM}\)?"
+    rf"(?:[ \t]*(?:->|[→+*/=^×÷−<>≤≥-])[ \t]*\(?{ATOM}\)?)+"
+    rf"(?![A-Za-z0-9_]|\.[A-Za-z0-9_])"
+)
+ANNOTATION = re.compile(
+    rf"(?<![A-Za-z0-9_])\((?P<label>{FORM_RUN}|(?i:combine (?:the )?sentences|"
+    r"sentence combining|(?:present|past) participle(?: phrase)?|prepositional phrase|"
+    r"(?:present|past) (?:simple|continuous|perfect)|"
+    r"base form|subject|verb|object|adjective|noun|pronoun|reported speech|passive voice)|"
+    r"[က-အ][က-ဿ ၊။\t]*)\)",
+)
+
+
+def spoken_verb_form(form):
+    return VERB_FORMS.get(form, "Verb plus I N G")
+
+
+def speak_notation(match):
+    notation = match[0]
+    if notation in ("V1-V2-V3", "V1–V2–V3"):
+        return "Verb Form One, Verb Form Two, and Verb Form Three"
+    groups = re.split(r"[ \t]*(?:→|->)[ \t]*", notation)
+    return " changes to ".join(
+        spoken_alternatives(group) if "/" in group else spoken_verb_form(group)
+        for group in groups
+    )
+
+
+def spoken_alternatives(notation):
+    forms = re.split(r"[ \t]*/[ \t]*", notation)
+    spoken = [spoken_verb_form(form) for form in forms]
+    if forms == ["V1", "V2", "V3"]:
+        return ", ".join(spoken[:-1]) + ", and " + spoken[-1]
+    if len(spoken) == 2:
+        return " or ".join(spoken)
+    return ", ".join(spoken[:-1]) + ", or " + spoken[-1]
+
+
+def normalize_for_voxcpm2(text):
+    """Expand confirmed teaching notation outside literal quotations and expressions."""
+    def annotation(match):
+        prefix = match.string[:match.start()]
+        if prefix.count("(") > prefix.count(")"):
+            # Leave nested grouping intact, including annotations inside it.
+            return match[0]
+        # Keep adjacent Burmese text separated when taking away a delimiter.
+        before = "" if not prefix or prefix[-1].isspace() else " "
+        following = match.string[match.end():match.end() + 1]
+        after = " " if following and following.isalnum() else ""
+        return before + match["label"] + after
+
+    def prose(fragment):
+        return NOTATION.sub(speak_notation, ANNOTATION.sub(annotation, fragment))
+
+    def narration(part):
+        part = FORMULA.sub(r"\g<cue>\g<pause>Subject plus Verb plus Object", part)
+        result = []
+        start = 0
+        for expression in EXPRESSION.finditer(part):
+            result.append(prose(part[start:expression.start()]))
+            literal = expression[0]
+            if ANNOTATION.fullmatch(literal) or NOTATION.fullmatch(literal):
+                literal = prose(literal)
+            result.append(literal)
+            start = expression.end()
+        result.append(prose(part[start:]))
+        return "".join(result)
+
+    result = []
+    start = 0
+    for literal in PROTECTED_TEXT.finditer(text):
+        result.extend((narration(text[start:literal.start()]), literal[0]))
+        start = literal.end()
+    result.append(narration(text[start:]))
+    return "".join(result)
+
 
 def split_transcript(text):
     """Keep source bytes and order, preferring a sentence boundary."""
@@ -152,7 +257,7 @@ def process_job(args, kit, exchange, job):
         text = job["text"]
         if hashlib.sha256(text.encode("utf-8")).hexdigest() != job["sha256"]:
             raise ValueError("Fixed transcript checksum did not match")
-        parts = list(split_transcript(text))
+        parts = list(split_transcript(normalize_for_voxcpm2(text)))
         if not parts:
             raise ValueError("Fixed transcript is empty")
         with tempfile.TemporaryDirectory(prefix="saya-owl-audio-") as tmp:

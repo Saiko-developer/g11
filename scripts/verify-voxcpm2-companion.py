@@ -27,6 +27,73 @@ class FakeExchange:
 
 
 class CompanionTest(unittest.TestCase):
+    def test_mixed_grammar_notation_and_unicode(self):
+        examples = {
+            "ကဲ V1၊ V2 နဲ့ V3 ကို ကြည့်ပါ။": (
+                "ကဲ Verb Form One၊ Verb Form Two နဲ့ Verb Form Three ကို ကြည့်ပါ။"
+            ),
+            "V-ing နဲ့ Ving ကို သုံးပါ။ (Combine sentences)": (
+                "Verb plus I N G နဲ့ Verb plus I N G ကို သုံးပါ။ Combine sentences"
+            ),
+            "ဝါကျဖွဲ့စည်းပုံ — S + V + O။ V1/V2/V3 ကို ခွဲပါ။": (
+                "ဝါကျဖွဲ့စည်းပုံ — Subject plus Verb plus Object။ "
+                "Verb Form One, Verb Form Two, and Verb Form Three ကို ခွဲပါ။"
+            ),
+            "V1/V2 → V3; V1-V2-V3.": (
+                "Verb Form One or Verb Form Two changes to Verb Form Three; "
+                "Verb Form One, Verb Form Two, and Verb Form Three."
+            ),
+            "အခု(V3)ကို ကြည့်ပါ။ (ပုံစံကို သတိထားပါ။)": (
+                "အခု Verb Form Three ကို ကြည့်ပါ။ ပုံစံကို သတိထားပါ။"
+            ),
+            "အခု (V1/V2) ကို ရွေးပါ။": (
+                "အခု Verb Form One or Verb Form Two ကို ရွေးပါ။"
+            ),
+            "လူတစ်ဦး (တစ်ခါတစ်ရံ တိရစ္ဆာန် (သို့) အရာဝတ္ထု) ရဲ့": (
+                "လူတစ်ဦး (တစ်ခါတစ်ရံ တိရစ္ဆာန် (သို့) အရာဝတ္ထု) ရဲ့"
+            ),
+        }
+        for original, expected in examples.items():
+            with self.subTest(original=original):
+                self.assertEqual(companion.normalize_for_voxcpm2(original), expected)
+                self.assertEqual(companion.normalize_for_voxcpm2(expected), expected)
+
+    def test_literal_examples_and_meaningful_symbols_are_preserved(self):
+        protected = (
+            '"She called it V1/V2." “I like (V3).” “V1\nV2” ‘It isn’t V-ing.’ '
+            "'This isn't V3.' https://example.org/V1/V2 example.org/V3 "
+            "V3@example.com `V1/V2` /models/V3 V2.0 B-V3 V10 (v3) "
+            "(V1/V2)/2, 3 × (V3 + 2) = 15, f(V3). "
+            "Physics formula: S + V + O. (x + y) / 2 = 4."
+        )
+        original = f"{protected}\nV3."
+        expected = f"{protected}\nVerb Form Three."
+        self.assertEqual(companion.normalize_for_voxcpm2(original), expected)
+        self.assertEqual(companion.normalize_for_voxcpm2(expected), expected)
+
+    def test_normalization_follows_checksum_and_precedes_splitting(self):
+        text = "V3 " * 130
+        rendered = []
+        exchange = FakeExchange()
+        args = types.SimpleNamespace(timeout=600, timesteps=6)
+        job = {"id": "job", "token": "lease", "text": text,
+               "sha256": hashlib.sha256(text.encode()).hexdigest()}
+
+        def render(_args, _kit, part, path, _beat):
+            rendered.append(part)
+            with wave.open(str(path), "wb") as wav:
+                wav.setparams((1, 2, 48000, 0, "NONE", "not compressed"))
+                wav.writeframes(b"\x10\x00" * 48)
+
+        with patch.object(companion, "render_part", side_effect=render):
+            self.assertTrue(companion.process_job(args, Path("/unused"), exchange, job))
+        self.assertEqual("".join(rendered), "Verb Form Three " * 130)
+        self.assertLess(len(job["text"].encode()), companion.PART_BYTES)
+        self.assertGreater(len(rendered), 1)
+        self.assertTrue(all(len(part.encode()) <= companion.PART_BYTES for part in rendered))
+        self.assertEqual(job["text"], text)
+        self.assertEqual(job["sha256"], hashlib.sha256(text.encode()).hexdigest())
+
     def test_three_existing_scripts_and_wav_join(self):
         for clip in MANIFEST["clips"]:
             with self.subTest(clip=clip["id"]):
@@ -76,7 +143,7 @@ class CompanionTest(unittest.TestCase):
 import sys, wave
 argv = sys.argv[1:]
 assert '--cpu' in argv and argv[argv.index('--timesteps') + 1] == '6'
-assert argv[argv.index('--text') + 1].endswith('Original fixed text.')
+assert argv[argv.index('--text') + 1].endswith('Verb Form Three. Combine sentences')
 assert argv[-2].endswith('/models/VoxCPM2-BaseLM-Q8_0.gguf')
 assert argv[-1].endswith('/models/VoxCPM2-Acoustic-F16.gguf')
 with wave.open(argv[argv.index('--output') + 1], 'wb') as output:
@@ -84,10 +151,16 @@ with wave.open(argv[argv.index('--output') + 1], 'wb') as output:
     output.writeframes(b'\\x10\\x00' * 48)
 """)
             engine.chmod(0o700)
-            out = kit / "part.wav"
-            companion.render_part(args, kit, "Original fixed text.", out, lambda: None)
-            with wave.open(str(out), "rb") as wav:
-                self.assertEqual(wav.getnframes(), 48)
+            text = "V3. (Combine sentences)"
+            job = {"id": "job", "token": "lease", "text": text,
+                   "sha256": hashlib.sha256(text.encode()).hexdigest()}
+            exchange = FakeExchange()
+            self.assertTrue(companion.process_job(args, kit, exchange, job))
+            with tempfile.TemporaryFile() as file:
+                file.write(exchange.events[-1][1]["wav"])
+                file.seek(0)
+                with wave.open(file, "rb") as wav:
+                    self.assertEqual(wav.getnframes(), 48)
 
     def test_origin_validation(self):
         with self.assertRaisesRegex(ValueError, "HTTPS"):
