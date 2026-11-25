@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { audioCatalog } from "./catalog.server";
+import { audioCatalog, canEditAudioScript } from "./catalog.server";
 import { inspectMp3 } from "./codec.server";
-import { audioDb, rows, upload, version } from "./store.server";
+import { audioDb, rows, rpc, upload, version } from "./store.server";
 import type { AudioCatalogRow } from "./types";
 import { MAX_AUDIO_BACKUP_BYTES, readAudioZip } from "./zip.server";
 
@@ -108,7 +108,7 @@ export async function restoreAudio(request: Request, userId: string, apply: bool
       !clip ||
       !(
         (entry.scriptVersion === clip.script_version && !entry.scriptText) ||
-        (clip.source === "walkthrough" &&
+        (canEditAudioScript(clip) &&
           entry.scriptVersion.startsWith("edited-") &&
           entry.scriptText?.trim())
       )
@@ -187,16 +187,8 @@ export async function restoreAudio(request: Request, userId: string, apply: bool
         )
           throw Error("Version changed during import");
 
-        const { data, error } = await audioDb()
-          .from("lesson_mp3_catalog")
-          .update({ approved_version: entry.versionId })
-          .eq("id", clip.id)
-          .eq("script_hash", entry.scriptHash)
-          .eq("removed_from_lesson", false)
-          .is("approved_version", null)
-          .select("id");
-        if (error) throw Error("Audio could not be linked to the lesson");
-        result.status = data?.length ? "Imported" : "Clip changed or already approved";
+        const linked = await rpc<boolean>("lesson_mp3_link_backup", { p_version: entry.versionId });
+        result.status = linked ? "Imported" : "Clip changed or already approved";
       } catch (error) {
         result.status = error instanceof Error ? error.message : "Import failed";
       }

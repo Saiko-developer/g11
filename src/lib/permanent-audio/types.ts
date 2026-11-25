@@ -7,6 +7,7 @@ export type AudioVersion = {
   status: "queued" | "generating" | "pending" | "approved" | "rejected" | "failed";
   storage_path: string | null;
   raw_path: string | null;
+  audio_deleted_at?: string | null;
   bytes: number;
   duration: number | null;
   voice: string;

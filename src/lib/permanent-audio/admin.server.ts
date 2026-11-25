@@ -1,9 +1,9 @@
 import { requireUser } from "../api-guard.server";
 import { classroomAdmin } from "../classroom/db.server";
 import { publishedLesson } from "../classroom/manifest.server";
-import { getMethodLesson } from "../classroom/method-lessons";
-import { audioCatalog } from "./catalog.server";
-import { audioDb, rows, rpc, version, stored } from "./store.server";
+import { resolveClassroomLesson } from "../classroom/unit-course";
+import { AUDIO_GRADES, audioCatalog, canEditAudioScript, type AudioClip } from "./catalog.server";
+import { audioDb, deleteAudioVersion, rows, rpc, version, stored } from "./store.server";
 import { inspectMp3 } from "./codec.server";
 import { zipStream } from "./zip.server";
 import { localAudioEnabled } from "./local-worker.server";
@@ -73,6 +73,7 @@ export async function audioManagerGet(request: Request) {
         download = url.searchParams.get("download") === "1";
       if (
         !row?.storage_path ||
+        row.audio_deleted_at ||
         !["approved", "pending", "rejected"].includes(row.status) ||
         (download && row.status !== "approved")
       )
@@ -106,6 +107,7 @@ export async function audioManagerGet(request: Request) {
           (v) =>
             v.id === clip.approved_version &&
             v.status === "approved" &&
+            !v.audio_deleted_at &&
             v.script_hash === clip.script_hash &&
             v.storage_path,
         );
@@ -116,7 +118,7 @@ export async function audioManagerGet(request: Request) {
     const unit = rawUnit === null ? undefined : Number(rawUnit);
     if (url.searchParams.get("format") === "zip") {
       if (
-        ![10, 11].includes(grade) ||
+        !AUDIO_GRADES.some((value) => value === grade) ||
         (unit !== undefined && (!Number.isInteger(unit) || unit < 1 || unit > 12))
       )
         return Response.json({ error: "Invalid archive selection" }, { status: 400 });
@@ -180,7 +182,7 @@ export async function audioManagerGet(request: Request) {
       });
     }
     const manifest = await audioCatalog();
-    const current = new Set(manifest.map((c) => c.id));
+    const current = new Map(manifest.map((c) => [c.id, c]));
     const [{ data: legacy }, { data: classroom }] = await Promise.all([
       audioDb().from("grade11_grammar_audio").select("hash,status"),
       audioDb().from("classroom_audio").select("hash,state"),
@@ -208,37 +210,43 @@ export async function audioManagerGet(request: Request) {
         : null;
     return Response.json(
       {
-        clips: catalog
-          .filter((c) => current.has(c.id))
-          .map((c) => ({
-            ...c,
-            script: manifest.find((m) => m.id === c.id)?.text,
-            pilot: manifest.find((m) => m.id === c.id)?.pilot,
-            source: manifest.find((m) => m.id === c.id)?.source,
-            legacyReady: cached.has(c.id),
-            versions: versions
-              .filter((v) => v.clip_id === c.id)
-              .sort((a, b) => b.created_at.localeCompare(a.created_at)),
-            jobs: jobs.filter((j) =>
-              versions.some((v) => v.clip_id === c.id && v.id === j.version_id),
-            ),
-          })),
+        clips: catalog.flatMap((c) => {
+          const authored = current.get(c.id);
+          return authored
+            ? [
+                {
+                  ...c,
+                  script: authored.text,
+                  pilot: authored.pilot,
+                  source: authored.source,
+                  lessonTitle: authored.lessonTitle,
+                  editable: canEditAudioScript(authored),
+                  legacyReady: cached.has(c.id),
+                  versions: versions
+                    .filter((v) => v.clip_id === c.id)
+                    .sort((a, b) => b.created_at.localeCompare(a.created_at)),
+                  jobs: jobs.filter((j) =>
+                    versions.some((v) => v.clip_id === c.id && v.id === j.version_id),
+                  ),
+                },
+              ]
+            : [];
+        }),
         localEnabled,
         requiredInRepository: manifest.length,
         stats: monitoring,
         control: controls.data,
         unitArchiveParts: Object.fromEntries(
-          [10, 11].flatMap((g) =>
+          AUDIO_GRADES.flatMap((g) =>
             Array.from({ length: 12 }, (_, i) => [
               `${g}-${i + 1}`,
               lessonArchiveParts(ready, g, i + 1).length,
             ]),
           ),
         ),
-        archiveParts: {
-          10: lessonArchiveParts(ready, 10).length,
-          11: lessonArchiveParts(ready, 11).length,
-        },
+        archiveParts: Object.fromEntries(
+          AUDIO_GRADES.map((g) => [g, lessonArchiveParts(ready, g).length]),
+        ),
       },
       { headers: { "Cache-Control": "no-store" } },
     );
@@ -271,12 +279,19 @@ const actionSchema = z.object({
     "process-selection",
     "remove-script",
     "restore-script",
+    "delete-audio",
   ]),
   ids: z.array(z.string().min(1).max(150)).max(200).default([]),
   script: z.string().trim().min(1).max(3500).optional(),
   confirmed: z.boolean().default(false),
   engine: z.enum(["gemini", "voxcpm2"]).default("gemini"),
 });
+async function requireClassroomPublication(clip: AudioClip) {
+  if (clip.source !== "classroom") return;
+  const lesson = resolveClassroomLesson(clip.grade, clip.lesson_id);
+  if (!lesson || !(await publishedLesson(lesson)))
+    throw Error("Review and publish the classroom script in Teaching setup first");
+}
 export async function audioManagerPost(request: Request) {
   const access = await audioAdmin(request);
   if (access instanceof Response) return access;
@@ -321,6 +336,12 @@ export async function audioManagerPost(request: Request) {
     return Response.json({ error: "Please confirm this audio management action" }, { status: 400 });
   try {
     if (action === "work") return Response.json(await workOneAudioJob());
+    if (action === "delete-audio") {
+      if (ids.length !== 1 || !z.string().uuid().safeParse(ids[0]).success)
+        throw Error("Select one generated audio version");
+      await deleteAudioVersion(ids[0], access.userId);
+      return Response.json({ ok: true, action, message: "Generated audio deleted" });
+    }
     const catalog = await audioCatalog();
     if (action === "register") {
       for (let offset = 0; offset < catalog.length; offset += 200) {
@@ -359,7 +380,7 @@ export async function audioManagerPost(request: Request) {
     if (!ids.length) throw Error("Select at least one clip or version");
     if (action === "process-selection") {
       if (ids.some((id) => !catalog.find((c) => c.id === id)?.pilot))
-        throw Error("Select Grammar clips");
+        throw Error("Select clips eligible for cloud generation");
       const result = await workOneAudioJob(ids);
       if (result.state === "idle") {
         const { data } = await audioDb()
@@ -393,8 +414,8 @@ export async function audioManagerPost(request: Request) {
       const [id] = ids;
       const script = parsed.data.script;
       const clip = catalog.find((c) => c.id === id);
-      if (ids.length !== 1 || !clip?.pilot || clip.source !== "walkthrough" || !script)
-        throw Error("Select one Grade 11 Grammar walkthrough clip and enter a script");
+      if (ids.length !== 1 || !clip || !canEditAudioScript(clip) || !script)
+        throw Error("Select one editable clip and enter a script");
       if (action === "save-script") {
         const { error } = await audioDb()
           .from("lesson_mp3_catalog")
@@ -404,6 +425,7 @@ export async function audioManagerPost(request: Request) {
           .single();
         if (error) throw Error("Draft could not be saved. Check migration 0016.");
       } else {
+        if (!local) await requireClassroomPublication(clip);
         await rpc(local ? "lesson_mp3_local_enqueue" : "lesson_mp3_enqueue_draft", {
           p_clip: id,
           p_user: access.userId,
@@ -437,20 +459,24 @@ export async function audioManagerPost(request: Request) {
         const clip = catalog.find((c) => c.id === id);
         if (!clip || (!local && !clip.pilot))
           throw Error("This clip is unavailable for the selected provider");
-        if (!local && clip.source === "classroom") {
-          const lesson = getMethodLesson(clip.grade, clip.unit, "grammar");
-          if (!lesson || lesson.id !== clip.lesson_id || !(await publishedLesson(lesson)))
-            throw Error("Review and publish the classroom script in Teaching setup first");
+        if (!local) await requireClassroomPublication(clip);
+        if (action === "regenerate") {
+          await rpc("lesson_mp3_regenerate", {
+            p_clip: id,
+            p_user: access.userId,
+            p_engine: engine,
+          });
+        } else {
+          await rpc(local ? "lesson_mp3_local_enqueue" : "lesson_mp3_enqueue", {
+            p_clip: id,
+            p_user: access.userId,
+            p_regenerate: false,
+          });
         }
-        await rpc(local ? "lesson_mp3_local_enqueue" : "lesson_mp3_enqueue", {
-          p_clip: id,
-          p_user: access.userId,
-          p_regenerate: action === "regenerate",
-        });
       } else {
         if (!z.string().uuid().safeParse(id).success) throw Error("Invalid audio version");
         const row = await version(id);
-        if (!row) throw Error("Audio version missing");
+        if (!row || row.audio_deleted_at) throw Error("Audio version is unavailable");
         if (action === "approve" || action === "reject") {
           if (action === "approve") {
             if (!row.storage_path) throw Error("MP3 is not ready");
@@ -480,7 +506,7 @@ export async function audioManagerPost(request: Request) {
               );
             continue;
           }
-          if (!clip?.pilot) throw Error("Version is outside the Grammar audio library");
+          if (!clip?.pilot) throw Error("Version is outside the cloud audio library");
           const { data: job, error } = await audioDb()
             .from("lesson_mp3_jobs")
             .update({

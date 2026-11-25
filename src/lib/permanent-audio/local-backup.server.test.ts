@@ -11,19 +11,18 @@ const mocks = vi.hoisted(() => ({
   rows: vi.fn(),
   upload: vi.fn(),
   version: vi.fn(),
+  rpc: vi.fn(),
   upsert: vi.fn(),
-  select: vi.fn(),
 }));
-vi.mock("./catalog.server", () => ({ audioCatalog: catalog.list }));
+vi.mock(import("./catalog.server"), async (original) => ({
+  ...(await original()),
+  audioCatalog: catalog.list,
+}));
 vi.mock("./store.server", () => ({
   ...mocks,
   audioDb: () => ({
     from: () => ({
       upsert: mocks.upsert,
-      update: () => {
-        const query = { eq: () => query, is: () => query, select: mocks.select };
-        return query;
-      },
     }),
   }),
 }));
@@ -45,10 +44,10 @@ beforeEach(() => {
   ]);
   mocks.rows.mockResolvedValue([]);
   mocks.upsert.mockResolvedValue({ error: null });
-  mocks.select.mockResolvedValue({ data: [{ id: "g10-clip" }], error: null });
+  mocks.rpc.mockResolvedValue(true);
 });
 
-async function backup(hasProvenance: boolean) {
+async function backup(hasProvenance: boolean, overrides = {}) {
   const mp3 = wavToMp3(syntheticWav()).bytes;
   const entry = {
     grade: 10,
@@ -63,6 +62,7 @@ async function backup(hasProvenance: boolean) {
     voice: "VoxCPM2 Burmese Teacher",
     bytes: mp3.length,
     ...(hasProvenance ? { provider: "voxcpm2_local", model: "VoxCPM2-Q8_0" } : {}),
+    ...overrides,
   };
   const bytes = await new Response(
     zipStream([
@@ -99,6 +99,7 @@ it("restores a local classroom backup with model and voice provenance", async ()
     expect.anything(),
   );
   expect(mocks.upload).toHaveBeenCalledWith(path, expect.any(Uint8Array), "audio/mpeg");
+  expect(mocks.rpc).toHaveBeenCalledWith("lesson_mp3_link_backup", { p_version: id });
 });
 
 it("rejects missing local provenance before any storage write", async () => {
@@ -107,4 +108,46 @@ it("rejects missing local provenance before any storage write", async () => {
     { file: "clip.mp3", status: "Backup voice and provider do not match" },
   ]);
   expect(mocks.upload).not.toHaveBeenCalled();
+});
+
+it("restores edited Grade 12 narration together with the saved text", async () => {
+  const scriptText = "Revised Grade 12 explanation";
+  const scriptVersion = "edited-grade12";
+  catalog.list.mockResolvedValue([
+    {
+      id: "g12-clip",
+      grade: 12,
+      unit: 1,
+      lesson_id: "g12-grammar",
+      section: "grammar",
+      segment_order: 1,
+      source: "grade12-grammar",
+      script_hash: hash,
+      script_version: "g12-v1",
+      pilot: true,
+    },
+  ]);
+  const { entry, request } = await backup(true, {
+    grade: 12,
+    lesson: "g12-grammar",
+    section: "grammar",
+    scriptText,
+    scriptVersion,
+  });
+  const path = `grade-12/unit-01/grammar/${id}/audio.mp3`;
+  mocks.version.mockResolvedValueOnce(null).mockResolvedValueOnce({
+    clip_id: "g12-clip",
+    script_hash: hash,
+    script_version: scriptVersion,
+    script_text: scriptText,
+    status: "approved",
+    storage_path: path,
+    bytes: entry.bytes,
+  });
+
+  expect(await restoreAudio(request, id, true)).toEqual([{ file: "clip.mp3", status: "Imported" }]);
+  expect(mocks.upsert).toHaveBeenLastCalledWith(
+    expect.objectContaining({ script_text: scriptText, script_version: scriptVersion }),
+    expect.anything(),
+  );
 });

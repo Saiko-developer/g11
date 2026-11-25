@@ -176,6 +176,13 @@
       "when": 1795618409063,
       "tag": "0024_restrict_classroom_publications",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "7",
+      "when": 1795619896354,
+      "tag": "0025_audio_manager_grade12_versions",
+      "breakpoints": true
     }
   ]
 }

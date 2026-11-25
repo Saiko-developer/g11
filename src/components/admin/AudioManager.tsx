@@ -4,6 +4,8 @@ import type { AudioCatalogRow, AudioVersion } from "@/lib/permanent-audio/types"
 type Clip = AudioCatalogRow & {
   script: string;
   source: string;
+  lessonTitle?: string;
+  editable?: boolean;
   pilot: boolean;
   legacyReady: boolean;
   versions: AudioVersion[];
@@ -22,8 +24,11 @@ function state(c: Clip) {
   if (["queued", "generating", "pending", "failed"].includes(c.versions[0]?.status))
     return c.versions[0].status;
   if (c.approved_version) return "approved";
-  return c.versions[0]?.status ?? "missing";
+  return c.versions[0]?.audio_deleted_at ? "missing" : (c.versions[0]?.status ?? "missing");
 }
+const hasMP3 = (v: AudioVersion) => Boolean(v.storage_path && !v.audio_deleted_at);
+const canDelete = (v: AudioVersion) =>
+  Boolean((v.storage_path || v.raw_path) && ["pending", "approved", "rejected"].includes(v.status));
 async function requestJson(path: string, init?: RequestInit) {
   const response = await fetch(path, init);
   const data = await response.json();
@@ -121,7 +126,8 @@ export function AudioManager() {
   const lessonOptions = [
     ...new Map(
       scopedClips.map((c) => {
-        const kind = c.source === "walkthrough" ? "Textbook walkthrough" : "AI classroom";
+        const kind =
+          c.lessonTitle ?? (c.source === "walkthrough" ? "Textbook walkthrough" : "AI classroom");
         const prefix = !grade || !unit ? `Grade ${c.grade} · Unit ${c.unit} · ` : "";
         const skill = !section || section === "classroom" ? `${c.section} · ` : "";
         return [c.lesson_id, { value: c.lesson_id, label: prefix + skill + kind }] as const;
@@ -226,16 +232,16 @@ export function AudioManager() {
     }
   };
   const playable = visible.flatMap((clip) => {
-    const version = clip.versions.find((v) => v.storage_path);
+    const version = clip.versions.find(hasMP3);
     return version ? [version.id] : [];
   });
   const previewIndex = playable.indexOf(previewVersion);
   const stats = useMemo(
     () => ({
       total: filtered.length,
-      generated: filtered.filter((c) => c.versions.some((v) => v.storage_path)).length,
+      generated: filtered.filter((c) => c.versions.some(hasMP3)).length,
       approved: filtered.filter((c) => c.approved_version).length,
-      missing: filtered.filter((c) => !c.versions.length).length,
+      missing: filtered.filter((c) => state(c) === "missing").length,
       failed: filtered.filter((c) => c.versions[0]?.status === "failed").length,
       queued: filtered.filter((c) => c.versions[0]?.status === "queued").length,
       generating: filtered.filter((c) => c.versions[0]?.status === "generating").length,
@@ -266,10 +272,15 @@ export function AudioManager() {
       setMessage(
         result.message ?? `Audio action: ${result.state ?? result.action ?? "catalog registered"}`,
       );
+      if (action === "delete-audio" && ids.includes(previewVersion)) {
+        setPreview("");
+        setPreviewVersion("");
+      }
       await refresh();
       setSelected([]);
       setReview([]);
     } catch (e) {
+      if (action === "delete-audio") await refresh();
       setError((e as Error).message);
     } finally {
       setBusy(false);
@@ -350,8 +361,7 @@ export function AudioManager() {
         <div>
           <h2 className="text-2xl font-bold">Permanent MP3 Audio Library</h2>
           <p className="text-sm text-muted-foreground">
-            Grades 10–11 · Grammar · Units 1–12. Existing scripts, Puck voice and WAV caches are
-            preserved.
+            Grades 10–12 · Units 1–12. Grade 12 grammar audio is available in this library.
           </p>
         </div>
         <Button variant="outline" disabled={busy} onClick={() => void refresh()}>
@@ -391,7 +401,7 @@ export function AudioManager() {
             setGrade(value);
             setLesson("");
           },
-          [10, 11].map((n) => ({ value: String(n), label: `Grade ${n}` })),
+          [10, 11, 12].map((n) => ({ value: String(n), label: `Grade ${n}` })),
         )}
         {filter(
           "Unit",
@@ -656,7 +666,28 @@ export function AudioManager() {
       <div className="space-y-2">
         {visible.slice(pageIndex * 10, pageIndex * 10 + 10).map((clip) => {
           const latest = clip.versions[0],
-            asset = clip.versions.find((v) => v.storage_path);
+            asset = clip.versions.find(hasMP3);
+          const lastScript = clip.versions.find((v) => v.script_text)?.script_text;
+          const deleteTarget = clip.versions.find(canDelete);
+          const active = ["queued", "generating", "pending"].includes(state(clip));
+          const deleteButton = (v: AudioVersion) => (
+            <Button
+              size="sm"
+              variant="outline"
+              disabled={busy}
+              onClick={() =>
+                void run(
+                  "delete-audio",
+                  [v.id],
+                  v.id === clip.approved_version
+                    ? "Delete this approved MP3 and its source WAV? This removes it from playback and downloads. The script stays available."
+                    : "Delete this version's MP3 and source WAV? The script stays available.",
+                )
+              }
+            >
+              {v.audio_deleted_at ? "Retry audio deletion" : "Delete generated audio"}
+            </Button>
+          );
           return (
             <article key={clip.id} className="rounded-lg border bg-card px-3 py-2">
               <div className="flex flex-wrap items-center justify-between gap-2">
@@ -701,14 +732,14 @@ export function AudioManager() {
               </p>
               <details className="mt-2 text-sm">
                 <summary>Script and details</summary>
-                {clip.pilot && clip.source === "walkthrough" && (
+                {(clip.editable ?? (clip.pilot && clip.source === "walkthrough")) && (
                   <Button
                     size="sm"
                     variant="outline"
                     disabled={busy}
                     onClick={() => {
                       setEditing(clip.id);
-                      setScript(clip.script_draft ?? latest?.script_text ?? clip.script);
+                      setScript(clip.script_draft ?? lastScript ?? clip.script);
                     }}
                   >
                     Edit script
@@ -749,7 +780,12 @@ export function AudioManager() {
                       Save draft
                     </Button>
                     <Button
-                      disabled={busy || !clip.script_draft || script.trim() !== clip.script_draft}
+                      disabled={
+                        busy ||
+                        !!clip.removed_from_lesson ||
+                        !clip.script_draft ||
+                        script.trim() !== clip.script_draft
+                      }
                       onClick={() => void editAction("queue-script", clip.id)}
                     >
                       Queue updated audio
@@ -760,7 +796,7 @@ export function AudioManager() {
                   </div>
                 )}
                 <p className="mt-2 whitespace-pre-wrap leading-relaxed">
-                  {asset?.script_text ?? clip.script}
+                  {clip.script_draft ?? lastScript ?? clip.script}
                 </p>
               </details>
               {latest?.last_error && (
@@ -777,6 +813,25 @@ export function AudioManager() {
                     Preview MP3
                   </Button>
                 )}
+                {eligible(clip) && !clip.removed_from_lesson && (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    disabled={busy || active}
+                    onClick={() =>
+                      void run(
+                        "regenerate",
+                        [clip.id],
+                        local
+                          ? "Queue the saved script for regeneration on your Mac?"
+                          : "Regenerate audio from the saved script? This may use TTS credits.",
+                      )
+                    }
+                  >
+                    Regenerate audio
+                  </Button>
+                )}
+                {deleteTarget && deleteButton(deleteTarget)}
                 {latest?.status === "pending" && (
                   <>
                     <Button
@@ -786,7 +841,9 @@ export function AudioManager() {
                         void run(
                           "approve",
                           [latest.id],
-                          "Approve this MP3 for student playback? Please listen to the complete clip first.",
+                          clip.grade === 12
+                            ? "Approve this MP3 for library downloads? Listen to the complete clip first."
+                            : "Approve this MP3 for student playback? Please listen to the complete clip first.",
                         )
                       }
                     >
@@ -847,9 +904,15 @@ export function AudioManager() {
                   {clip.versions.map((v) => (
                     <div key={v.id} className="mt-2 flex flex-wrap items-center gap-2">
                       <span>
-                        {v.created_at} · {v.status} · {v.voice} · {v.bytes} bytes
+                        {v.created_at} ·{" "}
+                        {v.audio_deleted_at
+                          ? canDelete(v)
+                            ? "Deletion pending"
+                            : "Audio deleted"
+                          : v.status}{" "}
+                        · {v.voice} · {v.bytes} bytes
                       </span>
-                      {v.storage_path && (
+                      {hasMP3(v) && (
                         <Button
                           size="sm"
                           variant="outline"
@@ -858,7 +921,7 @@ export function AudioManager() {
                           Listen
                         </Button>
                       )}
-                      {v.status === "approved" && v.id !== clip.approved_version && (
+                      {hasMP3(v) && v.status === "approved" && v.id !== clip.approved_version && (
                         <Button
                           size="sm"
                           variant="outline"
@@ -873,6 +936,7 @@ export function AudioManager() {
                           Restore
                         </Button>
                       )}
+                      {v.id !== deleteTarget?.id && canDelete(v) && deleteButton(v)}
                     </div>
                   ))}
                 </details>

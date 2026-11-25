@@ -36,7 +36,7 @@ export async function workOneAudioJob(clipIds?: string[]) {
     const clip = (await audioCatalog()).find((c) => c.id === job.clip_id),
       row = await version(job.version_id);
     if (!clip || !clip.pilot || !row || row.script_hash !== clip.script_hash)
-      throw Error("Script changed or clip is outside the Grammar audio library");
+      throw Error("Script changed or clip is outside the cloud audio library");
     const script = row.script_text ?? clip.text;
     const base = `grade-${clip.grade}/unit-${String(clip.unit).padStart(2, "0")}/${clip.section}/${row.id}`;
     // Deterministic paths recover a completed upload even if the worker died before checkpointing.
@@ -55,7 +55,8 @@ export async function workOneAudioJob(clipIds?: string[]) {
       return { state: "pending", reused: true };
     }
     let raw = await stored(rawPath);
-    if (!raw && !job.regenerate) raw = await stored(clip.legacy_path, clip.legacy_bucket);
+    if (!raw && !job.regenerate && !row.script_text && clip.legacy_path)
+      raw = await stored(clip.legacy_path, clip.legacy_bucket);
     if (raw) {
       pcm16Wav(raw);
       await upload(rawPath, raw, "audio/wav");

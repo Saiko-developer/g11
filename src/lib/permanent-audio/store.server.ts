@@ -42,6 +42,24 @@ export async function upload(path: string, bytes: Uint8Array, type: string) {
       throw Error("Immutable audio upload failed");
   }
 }
+export async function deleteAudioVersion(id: string, userId: string) {
+  const assets = await rpc<{ mp3: string | null; wav: string | null }>("lesson_mp3_delete_audio", {
+    p_version: id,
+    p_user: userId,
+  });
+  const paths = [...new Set([assets.mp3, assets.wav].filter((path) => path !== null))];
+  if (!paths.length) return;
+
+  const { error } = await audioDb().storage.from(AUDIO_BUCKET).remove(paths);
+  if (error) throw Error("Audio was unpublished. Retry deletion to remove the stored files.");
+
+  const { error: saveError } = await audioDb()
+    .from("lesson_mp3_versions")
+    .update({ storage_path: null, raw_path: null, bytes: 0, raw_bytes: 0, duration: null })
+    .eq("id", id)
+    .not("audio_deleted_at", "is", null);
+  if (saveError) throw Error("Files were removed. Retry deletion to finish updating the library.");
+}
 export async function version(id: string) {
   const { data, error } = await audioDb()
     .from("lesson_mp3_versions")

@@ -114,3 +114,62 @@ it("queues local work with the provider selector and leaves the Gemini processor
     });
   });
 });
+
+it.each([10, 12])("edits, regenerates and deletes a Grade %i audio version", async (grade) => {
+  const version = {
+    id: "version-one",
+    status: "approved",
+    storage_path: "audio.mp3",
+    script_text: "Updated teaching script",
+  };
+  const clip = {
+    ...data.clips[0],
+    grade,
+    lesson_id: `g${grade}-u1-grammar`,
+    source: grade === 10 ? "classroom" : "grade12-grammar",
+    editable: true,
+    versions: [version],
+    approved_version: version.id,
+  };
+  const fetcher = vi
+    .spyOn(globalThis, "fetch")
+    .mockImplementation(async (_url, init) =>
+      Response.json(init?.method === "POST" ? { ok: true } : { ...data, clips: [clip] }),
+    );
+  const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
+  render(<AudioManager />);
+  fireEvent.change(screen.getByLabelText("Grade"), { target: { value: String(grade) } });
+  fireEvent.click(await screen.findByRole("button", { name: "All (1)" }));
+  fireEvent.click(screen.getByText("Script and details"));
+  fireEvent.click(screen.getByRole("button", { name: "Edit script" }));
+  const editor = screen.getByLabelText("Teaching narration draft");
+  expect(editor).toHaveValue(version.script_text);
+  fireEvent.change(editor, { target: { value: "Revised script" } });
+  const posts = () =>
+    fetcher.mock.calls
+      .filter(([, init]) => init?.method === "POST")
+      .map(([, init]) => JSON.parse(String(init?.body)));
+  fireEvent.click(screen.getByRole("button", { name: "Save draft" }));
+  await waitFor(() =>
+    expect(posts()[0]).toMatchObject({
+      action: "save-script",
+      ids: [clip.id],
+      script: "Revised script",
+    }),
+  );
+  await waitFor(() =>
+    expect(screen.getByRole("button", { name: "Regenerate audio" })).toBeEnabled(),
+  );
+  fireEvent.click(screen.getByRole("button", { name: "Regenerate audio" }));
+  await waitFor(() => expect(posts()[1]).toMatchObject({ action: "regenerate", ids: [clip.id] }));
+  const remove = screen.getByRole("button", { name: "Delete generated audio" });
+  await waitFor(() => expect(remove).toBeEnabled());
+  confirm.mockReturnValue(false);
+  fireEvent.click(remove);
+  expect(posts()).toHaveLength(2);
+  confirm.mockReturnValue(true);
+  fireEvent.click(remove);
+  await waitFor(() =>
+    expect(posts()[2]).toMatchObject({ action: "delete-audio", ids: [version.id] }),
+  );
+});
