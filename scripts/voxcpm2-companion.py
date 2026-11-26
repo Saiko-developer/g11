@@ -97,13 +97,24 @@ def spoken_alternatives(notation):
     return ", ".join(spoken[:-1]) + ", or " + spoken[-1]
 
 
-def normalize_for_voxcpm2(text):
+ENGLISH_PHRASE = re.compile(r"[A-Za-z][A-Za-z0-9'’ -]*(?:[.!?])?")
+ENGLISH_LABEL = re.compile(r"\(([A-Za-z][A-Za-z0-9'’ -]*)\)")
+ENGLISH_RUN = re.compile(r"\b[A-Za-z][A-Za-z0-9'’-]*(?:[ \t]+[A-Za-z][A-Za-z0-9'’-]*)+")
+SPOKEN_PUNCTUATION = re.compile(
+    r"(?P<stop>[!?။]+|(?<![A-Za-z0-9])\.|\.(?![A-Za-z0-9]))"
+    r"|[၊()“”\"]|(?<!\d),|,(?!\d)"
+)
+
+
+def normalize_for_voxcpm2(text, *, pause_english=False):
     """Expand confirmed teaching notation outside literal quotations and expressions."""
     def annotation(match):
         prefix = match.string[:match.start()]
         if prefix.count("(") > prefix.count(")"):
             # Leave nested grouping intact, including annotations inside it.
             return match[0]
+        if pause_english and ENGLISH_PHRASE.fullmatch(match["label"]):
+            return f"\n{match['label']}\n"
         # Keep adjacent Burmese text separated when taking away a delimiter.
         before = "" if not prefix or prefix[-1].isspace() else " "
         following = match.string[match.end():match.end() + 1]
@@ -134,6 +145,46 @@ def normalize_for_voxcpm2(text):
         start = literal.end()
     result.append(narration(text[start:]))
     return "".join(result)
+
+
+def synthesis_transcript(text):
+    """Turn display punctuation into pauses while keeping the narrated words in order."""
+    mixed = bool(re.search(r"[\u1000-\u109f]", text) and re.search(r"[A-Za-z]", text))
+    text = normalize_for_voxcpm2(text, pause_english=mixed)
+
+    def pause_around(phrase):
+        return f"\n{phrase}\n" if mixed else f" {phrase} "
+
+    def strip_punctuation(prose):
+        prose = ENGLISH_LABEL.sub(lambda match: pause_around(match[1]), prose)
+        prose = SPOKEN_PUNCTUATION.sub(lambda match: "\n" if match["stop"] else " ", prose)
+        return ENGLISH_RUN.sub(lambda match: pause_around(match[0]), prose) if mixed else prose
+
+    def prose_with_expressions(prose):
+        output = []
+        start = 0
+        for expression in EXPRESSION.finditer(prose):
+            if not re.search(r"[+=*/^×÷−<>≤≥]", expression[0]):
+                continue
+            output.extend((strip_punctuation(prose[start:expression.start()]), expression[0]))
+            start = expression.end()
+        output.append(strip_punctuation(prose[start:]))
+        return "".join(output)
+
+    output = []
+    start = 0
+    for literal in PROTECTED_TEXT.finditer(text):
+        output.append(prose_with_expressions(text[start:literal.start()]))
+        quoted = literal[0][0] in "\"“‘'"
+        if quoted:
+            words = literal[0][1:-1]
+            spoken = prose_with_expressions(words)
+            output.append(pause_around(spoken) if ENGLISH_PHRASE.fullmatch(words) else f" {spoken} ")
+        else:
+            output.append(literal[0])
+        start = literal.end()
+    output.append(prose_with_expressions(text[start:]))
+    return "\n".join(line for line in (" ".join(line.split()) for line in "".join(output).splitlines()) if line)
 
 
 def split_transcript(text):
@@ -273,7 +324,7 @@ def process_job(args, kit, exchange, job):
         text = job["text"]
         if hashlib.sha256(text.encode("utf-8")).hexdigest() != job["sha256"]:
             raise ValueError("Fixed transcript checksum did not match")
-        narration = normalize_for_voxcpm2(text)
+        narration = synthesis_transcript(text)
         parts = list(split_transcript(narration))
         if not parts:
             raise ValueError("Fixed transcript is empty")

@@ -4,6 +4,7 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+import re
 import sys
 import tempfile
 import types
@@ -137,7 +138,7 @@ class CompanionTest(unittest.TestCase):
 
         with patch.object(companion, "render_part", side_effect=render):
             self.assertTrue(companion.process_job(args, Path("/unused"), exchange, job))
-        self.assertEqual("".join(rendered), "Verb Form Three " * 130)
+        self.assertEqual("".join(rendered), ("Verb Form Three " * 130).strip())
         self.assertLess(len(job["text"].encode()), companion.PART_BYTES)
         self.assertGreater(len(rendered), 1)
         self.assertTrue(all(len(part.encode()) <= companion.PART_BYTES for part in rendered))
@@ -161,7 +162,12 @@ class CompanionTest(unittest.TestCase):
                 args = types.SimpleNamespace(timeout=600, timesteps=6)
                 with patch.object(companion, "render_part", render):
                     self.assertTrue(companion.process_job(args, Path("/unused"), exchange, job))
-                self.assertEqual("".join(rendered), clip["text"])
+                self.assertEqual("".join(rendered), companion.synthesis_transcript(clip["text"]))
+                words = re.compile(r"[^\W_]+")
+                self.assertEqual(
+                    words.findall("".join(rendered)),
+                    words.findall(companion.normalize_for_voxcpm2(clip["text"])),
+                )
                 self.assertTrue(all(len(part.encode()) <= companion.PART_BYTES for part in rendered))
                 self.assertEqual(len(rendered) > 1, clip["id"] == "long-explanation")
                 body = exchange.events[-1][1]["wav"]
@@ -193,7 +199,9 @@ class CompanionTest(unittest.TestCase):
 import sys, wave
 argv = sys.argv[1:]
 assert '--cpu' in argv and argv[argv.index('--timesteps') + 1] == '6'
-assert argv[argv.index('--text') + 1].endswith('Verb Form Three. Combine sentences')
+assert argv[argv.index('--text') + 1].endswith(
+    'နာမဝိသေသနစု\\nAdjectival Phrase\\nဆိုတာပါ\\na tall man\\nကဲ့သို့'
+)
 assert argv[-2].endswith('/models/VoxCPM2-BaseLM-Q8_0.gguf')
 assert argv[-1].endswith('/models/VoxCPM2-Acoustic-F16.gguf')
 with wave.open(argv[argv.index('--output') + 1], 'wb') as output:
@@ -201,7 +209,7 @@ with wave.open(argv[argv.index('--output') + 1], 'wb') as output:
     output.writeframes(b'\\x10\\x00' * 48)
 """)
             engine.chmod(0o700)
-            text = "V3. (Combine sentences)"
+            text = 'နာမဝိသေသနစု (Adjectival Phrase) ဆိုတာပါ။ "a tall man" ကဲ့သို့။'
             job = {"id": "job", "token": "lease", "text": text,
                    "sha256": hashlib.sha256(text.encode()).hexdigest()}
             exchange = FakeExchange()
@@ -211,6 +219,27 @@ with wave.open(argv[argv.index('--output') + 1], 'wb') as output:
                 file.seek(0)
                 with wave.open(file, "rb") as wav:
                     self.assertEqual(wav.getnframes(), 48)
+
+    def test_mixed_labels_and_examples_survive_without_display_punctuation(self):
+        source = (
+            'ကဲ၊ What an adjectival phrase is ကို ကြည့်ပါ။ '
+            'နာမဝိသေသနစု (Adjectival Phrase) က နာမ် (Noun) ကို ရှင်းပြတယ်။ '
+            '"a tall man" ကဲ့သို့၊ "the man in the green shirt" ကို ကြည့်ပါ။'
+        )
+        expected = (
+            "ကဲ\nWhat an adjectival phrase is\nကို ကြည့်ပါ\n"
+            "နာမဝိသေသနစု\nAdjectival Phrase\nက နာမ်\nNoun\nကို ရှင်းပြတယ်\n"
+            "a tall man\nကဲ့သို့\nthe man in the green shirt\nကို ကြည့်ပါ"
+        )
+        self.assertEqual(companion.synthesis_transcript(source), expected)
+
+    def test_synthesis_keeps_internal_punctuation_in_meaningful_text(self):
+        self.assertEqual(
+            companion.synthesis_transcript(
+                "F(x) = 1,000.25. “I don't know,” she said. https://example.org/V3"
+            ),
+            "F(x) = 1,000.25\nI don't know she said\nhttps://example.org/V3",
+        )
 
     def test_origin_validation(self):
         with self.assertRaisesRegex(ValueError, "HTTPS"):
