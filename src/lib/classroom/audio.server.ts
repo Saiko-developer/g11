@@ -1,19 +1,25 @@
 import { hasAiProvider } from "@/lib/ai-provider.server";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import { generateSpeech } from "@/lib/ttsGenerate.server";
-import { spokenStepAt, type ReadingLesson } from "./types";
+import { CLASSROOM_STEPS, spokenStepAt, type ReadingLesson } from "./types";
 import { lessonHash } from "./manifest.server";
 
 export async function classroomAudioIdentity(lesson: ReadingLesson, cursor: number) {
-  const { step, narration: text } = spokenStepAt(lesson, cursor);
+  const { step, segment, narration: text } = spokenStepAt(lesson, cursor);
+  const original = segment.originalAudio;
+  const originalCursor = original?.cursors[CLASSROOM_STEPS.indexOf(step)];
+  const audioCursor = originalCursor ?? cursor;
+  const audioStep =
+    originalCursor == null ? step : CLASSROOM_STEPS[originalCursor % CLASSROOM_STEPS.length];
+  const version = original && originalCursor != null ? original.version : lesson.version;
   const identity = JSON.stringify([
     // New teaching scripts use per-clip content identity: editing a later sentence
     // must not regenerate unchanged clips. Legacy Grade 11 hashes stay identical.
     lesson.teachingRevision
-      ? `${lesson.id}:${lesson.version}:${lesson.teachingRevision}`
+      ? `${lesson.id}:${version}:${lesson.teachingRevision}`
       : await lessonHash(lesson),
-    cursor,
-    step,
+    audioCursor,
+    audioStep,
     text,
     "Puck",
     "classroom-audio-v1",
@@ -21,7 +27,7 @@ export async function classroomAudioIdentity(lesson: ReadingLesson, cursor: numb
   ]);
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(identity));
   const hash = Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
-  return { hash, text, path: `clips/${hash}.wav` };
+  return { hash, text, path: `clips/${hash}.wav`, version };
 }
 export async function readClassroomAudio(lesson: ReadingLesson, cursor: number): Promise<Response> {
   const { hash, path } = await classroomAudioIdentity(lesson, cursor);

@@ -13,7 +13,7 @@ it("preserves Unit 1 and unrelated canonical lessons while versioning only the n
     const original = canonicalHashes[lesson.id as keyof typeof canonicalHashes];
     if (lesson.grade === 10 && lesson.unit > 1 && lesson.section === "grammar") {
       expect(hash).not.toBe(original);
-      expect(lesson.version).toBe("rule-first-oral-v2");
+      expect(lesson.version).toBe("rule-first-split-v2");
     } else {
       expect(hash).toBe(original);
     }

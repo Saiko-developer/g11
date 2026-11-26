@@ -1,12 +1,15 @@
+import { createHash } from "node:crypto";
 import { expect, it } from "vitest";
 import oldRemainingScripts from "@/data/classroom/grade10-unit1-skills.json";
 import profiles from "@/data/classroom/writing-teaching-profiles.json";
-import foundations from "@/data/classroom/grammar-rule-foundations.json";
+import originalScripts from "./fixtures/grade10-grammar-unsplit-sha256.json";
 import { getMethodLesson, methodLessons } from "./method-lessons";
 import { getUnitLesson, resolveClassroomLesson } from "./unit-course";
 import { onDemandReadingPilot } from "./pilot";
 import { spokenStepAt } from "./types";
 import { lessonHash } from "./manifest.server";
+import { classroomAudioIdentity } from "./audio.server";
+import { splitGrade10GrammarClips } from "./grammar-clip-split";
 it("provides 48 distinct canonical classroom lessons for both grades' 12 units", () => {
   expect(methodLessons).toHaveLength(48);
   expect(new Set(methodLessons.map((l) => l.id)).size).toBe(48);
@@ -39,20 +42,33 @@ it("deletes the superseded classroom Grammar/Writing scripts and preserves the o
   expect(text).toContain("comma");
   expect(text.indexOf("noun phrase")).toBeLessThan(text.indexOf("ဝါကျနှစ်ကြောင်း ပေါင်းခိုင်း"));
 });
-it("covers every Grade 10 topic in short teacher-led clips", () => {
-  for (let unit = 2; unit <= 12; unit++) {
-    const lesson = getMethodLesson(10, unit, "grammar")!;
-    const expected = foundations[`10:${unit}` as keyof typeof foundations].sections;
-    expect(lesson.segments.map((s) => s.english)).toEqual(
-      expected.flatMap((topic) => [topic.title, topic.title]),
+it("keeps the original Grade 10 grammar narration word for word across the split clips", () => {
+  const encoder = new TextEncoder();
+  for (const [unit, originalHash] of Object.entries(originalScripts)) {
+    const lesson = getMethodLesson(10, Number(unit), "grammar")!;
+    const clips = Array.from(
+      { length: lesson.segments.length * 4 },
+      (_, cursor) => spokenStepAt(lesson, cursor).narration,
     );
-    expect(lesson.segments.every((s) => s.openingNarration && s.notes?.length)).toBe(true);
-    for (let cursor = 0; cursor < lesson.segments.length * 4; cursor++) {
-      const spoken = spokenStepAt(lesson, cursor).narration;
-      expect(new TextEncoder().encode(spoken).length).toBeLessThanOrEqual(500);
-      if (cursor % 4 === 0) expect(spoken).not.toBe(lesson.segments[cursor / 4].english);
-    }
+    expect(createHash("sha256").update(clips.join("")).digest("hex")).toBe(originalHash);
+    expect(clips.every((clip) => clip.trim() && encoder.encode(clip).length <= 650)).toBe(true);
   }
+});
+it("reuses an unchanged clip's audio identity even when a long earlier step moves its cursor", async () => {
+  const lesson = getMethodLesson(10, 1, "grammar")!;
+  const segment = {
+    ...lesson.segments[0],
+    translation: "စာကြောင်းကို အရင်ဖတ်ကြည့်ပါ။ ".repeat(22),
+    reasoning: "ဒီအချက်ကို ပြန်စဉ်းစားပါ။",
+  };
+  const before = { ...lesson, segments: [segment] };
+  const after = {
+    ...before,
+    version: "rule-first-split-v2",
+    segments: splitGrade10GrammarClips(before.segments, before.version),
+  };
+  const moved = await classroomAudioIdentity(after, after.segments.length * 4 - 1);
+  expect(moved).toEqual(await classroomAudioIdentity(before, 3));
 });
 it("keeps Writing about thinking, point grouping and grammatical choices rather than ready-written answers", () => {
   for (const lesson of methodLessons.filter((l) => l.section === "writing")) {

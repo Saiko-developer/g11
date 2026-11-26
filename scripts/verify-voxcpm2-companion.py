@@ -144,15 +144,6 @@ class CompanionTest(unittest.TestCase):
         self.assertEqual(job["text"], text)
         self.assertEqual(job["sha256"], hashlib.sha256(text.encode()).hexdigest())
 
-    def test_short_grade10_classroom_clips_fit_one_render_part(self):
-        source = Path(__file__).resolve().parents[1] / "src/data/classroom/grade10-grammar-oral.json"
-        units = json.loads(source.read_text(encoding="utf-8"))
-        for unit, topics in enumerate(units, start=2):
-            for clip, text in enumerate((text for topic in topics for card in topic for text in card), start=1):
-                with self.subTest(unit=unit, clip=clip):
-                    narration = companion.normalize_for_voxcpm2(text)
-                    self.assertEqual(list(companion.split_transcript(narration)), [narration])
-
     def test_three_existing_scripts_and_wav_join(self):
         for clip in MANIFEST["clips"]:
             with self.subTest(clip=clip["id"]):

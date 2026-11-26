@@ -10,6 +10,7 @@ export type ReadingSegment = {
   reasoning: string;
   leadIn?: string;
   openingNarration?: string;
+  originalAudio?: { version: string; cursors: (number | null)[] };
   closing?: string;
   notes?: string[];
   focus?: string[];

@@ -70,7 +70,7 @@ export function audioCatalog(): Promise<AudioClip[]> {
           segment_id: String(cursor),
           segment_order: cursor + 1,
           script_hash: item.hash,
-          script_version: `${lesson.version}:${lesson.teachingRevision ?? "legacy"}`,
+          script_version: `${item.version}:${lesson.teachingRevision ?? "legacy"}`,
           text: item.text,
           source: "classroom",
           legacy_bucket: "classroom-narration",

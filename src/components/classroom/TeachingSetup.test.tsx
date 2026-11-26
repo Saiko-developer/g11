@@ -78,8 +78,8 @@ it("shows the spoken Grade 10 Grammar script in Teaching Setup", async () => {
   render(<TeachingSetup />);
   fireEvent.change(screen.getByRole("combobox", { name: "Unit" }), { target: { value: "2" } });
   fireEvent.click(screen.getByRole("button", { name: "Grammar" }));
-  expect(screen.getByText(/a tall man နဲ့ the man in the green shirt/)).toHaveTextContent(
-    /နှစ်ခုလုံးမှာ ဘယ်သူ့အကြောင်း ပြောတာလဲ။/,
+  expect(screen.getByText(/\(Adjectival Phrase\) ဆိုတာ/)).toHaveTextContent(
+    /ဝိသေသန ပြုပေးရန် ဖြစ်ပါတယ်။/,
   );
   await waitFor(() =>
     expect(fetch).toHaveBeenCalledWith(

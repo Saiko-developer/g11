@@ -16,7 +16,7 @@ it("inventories canonical authored clips without changing scripts or generating 
   expect(clips.filter((c) => c.pilot && c.source === "walkthrough")).toHaveLength(249);
   expect(
     clips.filter((c) => c.source === "classroom" && c.grade === 10 && c.section === "grammar"),
-  ).toHaveLength(192);
+  ).toHaveLength(688);
   expect(
     clips.filter((c) => c.source === "classroom" && c.grade === 11 && c.section === "grammar"),
   ).toHaveLength(148);
