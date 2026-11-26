@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -24,6 +25,8 @@ VOICE = (
 # The pinned CLI prefills at most 1024 tokens. Leave room for the voice prompt and audio-start token.
 PART_BYTES = 800
 MAX_PCM_BYTES = 32 * 1024 * 1024 - 44
+CONTROL_TIMEOUT = 25
+UPLOAD_TIMEOUT = 150
 SENTENCE_END = re.compile(r"[။!?](?:\s*)|\.(?=\s|[\u1000-\u109f]|$)\s*|\n+")
 PHRASE_END = re.compile(r"[၊,;:]\s*|\s+")
 
@@ -185,7 +188,7 @@ class Exchange:
         for attempt in range(3):
             try:
                 req = urllib.request.Request(self.url, data=data, headers=headers, method="POST")
-                with self.client.open(req, timeout=25) as response:
+                with self.client.open(req, timeout=UPLOAD_TIMEOUT if wav is not None else CONTROL_TIMEOUT) as response:
                     return json.loads(response.read(64 * 1024))
             except urllib.error.HTTPError as error:
                 with error:
@@ -251,15 +254,39 @@ def join_wav(parts, output):
                 joined.writeframes(samples)
 
 
+def save_upload_recovery(output, recovery):
+    recovery.parent.mkdir(mode=0o700, exist_ok=True)
+    with tempfile.NamedTemporaryFile(dir=recovery.parent, delete=False) as pending:
+        temporary = Path(pending.name)
+        try:
+            with output.open("rb") as source:
+                shutil.copyfileobj(source, pending)
+            pending.close()
+            temporary.replace(recovery)
+        finally:
+            temporary.unlink(missing_ok=True)
+
+
 def process_job(args, kit, exchange, job):
     reason = "script"
     try:
         text = job["text"]
         if hashlib.sha256(text.encode("utf-8")).hexdigest() != job["sha256"]:
             raise ValueError("Fixed transcript checksum did not match")
-        parts = list(split_transcript(normalize_for_voxcpm2(text)))
+        narration = normalize_for_voxcpm2(text)
+        parts = list(split_transcript(narration))
         if not parts:
             raise ValueError("Fixed transcript is empty")
+        identity = json.dumps([job["id"], job["sha256"], narration, VOICE, args.timesteps])
+        recovery = kit / "upload-recovery" / f"{hashlib.sha256(identity.encode()).hexdigest()}.wav"
+        if recovery.is_file():
+            reason = "upload"
+            print(f"Retrying upload of saved WAV: {recovery}", flush=True)
+            exchange.request(wav=recovery.read_bytes(), job=job)
+            with suppress(OSError):
+                recovery.unlink()
+            print("MP3 ready for review in Audio Manager.", flush=True)
+            return True
         with tempfile.TemporaryDirectory(prefix="saya-owl-audio-") as tmp:
             directory = Path(tmp)
             paths = []
@@ -279,7 +306,15 @@ def process_job(args, kit, exchange, job):
             output = directory / "joined.wav"
             join_wav(paths, output)
             reason = "upload"
-            exchange.request(wav=output.read_bytes(), job=job)
+            try:
+                exchange.request(wav=output.read_bytes(), job=job)
+            except (RuntimeError, ValueError):
+                try:
+                    save_upload_recovery(output, recovery)
+                    print(f"Upload failed. WAV kept for Retry failed audio: {recovery}", file=sys.stderr)
+                except OSError as recovery_error:
+                    print(f"Could not keep the WAV for upload retry: {recovery_error}", file=sys.stderr)
+                raise
         print("MP3 ready for review in Audio Manager.", flush=True)
         return True
     except (EOFError, ValueError, OSError, wave.Error, RuntimeError) as error:

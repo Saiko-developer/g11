@@ -27,6 +27,56 @@ class FakeExchange:
 
 
 class CompanionTest(unittest.TestCase):
+    def test_failed_upload_reuses_joined_wav_for_the_same_job(self):
+        class TimedOutExchange(FakeExchange):
+            def request(self, action=None, **kwargs):
+                super().request(action, **kwargs)
+                if "wav" in kwargs:
+                    raise RuntimeError("The write operation timed out")
+
+        def render(_args, _kit, _text, path, _beat):
+            with wave.open(str(path), "wb") as wav:
+                wav.setparams((1, 2, 48000, 0, "NONE", "not compressed"))
+                wav.writeframes(b"\x10\x00" * 48)
+
+        args = types.SimpleNamespace(timeout=600, timesteps=6)
+        text = "V3 ကို ကြည့်ပါ။"
+        job = {"id": "job", "token": "old-lease", "text": text,
+               "sha256": hashlib.sha256(text.encode()).hexdigest()}
+        with tempfile.TemporaryDirectory() as tmp:
+            kit = Path(tmp)
+            exchange = TimedOutExchange()
+            with patch.object(companion, "render_part", side_effect=render):
+                self.assertFalse(companion.process_job(args, kit, exchange, job))
+            self.assertEqual(exchange.events[-1][1]["reason"], "upload")
+            [recovery] = (kit / "upload-recovery").glob("*.wav")
+            self.assertEqual(recovery.stat().st_mode & 0o777, 0o600)
+            saved = recovery.read_bytes()
+
+            exchange = FakeExchange()
+            retry = {**job, "token": "new-lease"}
+            with patch.object(companion, "render_part") as renderer:
+                self.assertTrue(companion.process_job(args, kit, exchange, retry))
+                renderer.assert_not_called()
+            self.assertEqual(exchange.events, [(None, {"wav": saved, "job": retry})])
+            self.assertFalse(recovery.exists())
+
+    def test_upload_uses_longer_timeout_and_retries_same_wav(self):
+        exchange = companion.Exchange("https://example.org", "token")
+        response = types.SimpleNamespace()
+        response_manager = unittest.mock.MagicMock()
+        response_manager.__enter__.return_value = response
+        response.read = lambda _size: b'{"state":"pending"}'
+        job = {"id": "job", "token": "lease"}
+        error = TimeoutError("The write operation timed out")
+        with patch.object(exchange.client, "open", side_effect=[error, response_manager, response_manager]) as open_request:
+            with patch.object(companion.time, "sleep"):
+                self.assertEqual(exchange.request(wav=b"wav", job=job), {"state": "pending"})
+                exchange.request("heartbeat", job=job)
+        calls = open_request.call_args_list
+        self.assertEqual([call.kwargs["timeout"] for call in calls], [150, 150, 25])
+        self.assertEqual([call.args[0].data for call in calls[:2]], [b"wav", b"wav"])
+
     def test_mixed_grammar_notation_and_unicode(self):
         examples = {
             "ကဲ V1၊ V2 နဲ့ V3 ကို ကြည့်ပါ။": (
@@ -93,6 +143,15 @@ class CompanionTest(unittest.TestCase):
         self.assertTrue(all(len(part.encode()) <= companion.PART_BYTES for part in rendered))
         self.assertEqual(job["text"], text)
         self.assertEqual(job["sha256"], hashlib.sha256(text.encode()).hexdigest())
+
+    def test_short_grade10_classroom_clips_fit_one_render_part(self):
+        source = Path(__file__).resolve().parents[1] / "src/data/classroom/grade10-grammar-oral.json"
+        units = json.loads(source.read_text(encoding="utf-8"))
+        for unit, topics in enumerate(units, start=2):
+            for clip, text in enumerate((text for topic in topics for card in topic for text in card), start=1):
+                with self.subTest(unit=unit, clip=clip):
+                    narration = companion.normalize_for_voxcpm2(text)
+                    self.assertEqual(list(companion.split_transcript(narration)), [narration])
 
     def test_three_existing_scripts_and_wav_join(self):
         for clip in MANIFEST["clips"]:

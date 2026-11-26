@@ -5,11 +5,19 @@ import { grammarBoardCue, grammarFormulaParts } from "./grammar-board";
 import { methodLessons, getMethodLesson } from "./method-lessons";
 import { readingLessons } from "./lessons";
 import { stepAt } from "./types";
-it("preserves all non-Writing canonical narration, publication and progress versions", () => {
-  for (const lesson of [...methodLessons, ...readingLessons].filter((l) => l.section !== "writing"))
-    expect(createHash("sha256").update(JSON.stringify(lesson)).digest("hex")).toBe(
-      canonicalHashes[lesson.id as keyof typeof canonicalHashes],
-    );
+it("preserves Unit 1 and unrelated canonical lessons while versioning only the new Grade 10 Grammar", () => {
+  for (const lesson of [...methodLessons, ...readingLessons].filter(
+    (l) => l.section !== "writing",
+  )) {
+    const hash = createHash("sha256").update(JSON.stringify(lesson)).digest("hex");
+    const original = canonicalHashes[lesson.id as keyof typeof canonicalHashes];
+    if (lesson.grade === 10 && lesson.unit > 1 && lesson.section === "grammar") {
+      expect(hash).not.toBe(original);
+      expect(lesson.version).toBe("rule-first-oral-v2");
+    } else {
+      expect(hash).toBe(original);
+    }
+  }
 });
 it("provides contextual board cues for every clip in all 24 grammar lessons", () => {
   for (const lesson of methodLessons.filter((l) => l.section === "grammar"))

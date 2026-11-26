@@ -9,6 +9,7 @@ export type ReadingSegment = {
   explanation: string;
   reasoning: string;
   leadIn?: string;
+  openingNarration?: string;
   closing?: string;
   notes?: string[];
   focus?: string[];
@@ -55,7 +56,7 @@ export function spokenStepAt(lesson: ReadingLesson, cursor: number) {
   const { segment, step, text } = result;
   const narration = [
     step === "english" ? segment.leadIn : undefined,
-    text,
+    step === "english" ? (segment.openingNarration ?? text) : text,
     step === "reasoning" ? segment.closing : undefined,
   ]
     .filter(Boolean)

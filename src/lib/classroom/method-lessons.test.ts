@@ -1,6 +1,7 @@
 import { expect, it } from "vitest";
 import oldRemainingScripts from "@/data/classroom/grade10-unit1-skills.json";
 import profiles from "@/data/classroom/writing-teaching-profiles.json";
+import foundations from "@/data/classroom/grammar-rule-foundations.json";
 import { getMethodLesson, methodLessons } from "./method-lessons";
 import { getUnitLesson, resolveClassroomLesson } from "./unit-course";
 import { onDemandReadingPilot } from "./pilot";
@@ -37,6 +38,21 @@ it("deletes the superseded classroom Grammar/Writing scripts and preserves the o
   expect(text).toContain("agreement");
   expect(text).toContain("comma");
   expect(text.indexOf("noun phrase")).toBeLessThan(text.indexOf("ဝါကျနှစ်ကြောင်း ပေါင်းခိုင်း"));
+});
+it("covers every Grade 10 topic in short teacher-led clips", () => {
+  for (let unit = 2; unit <= 12; unit++) {
+    const lesson = getMethodLesson(10, unit, "grammar")!;
+    const expected = foundations[`10:${unit}` as keyof typeof foundations].sections;
+    expect(lesson.segments.map((s) => s.english)).toEqual(
+      expected.flatMap((topic) => [topic.title, topic.title]),
+    );
+    expect(lesson.segments.every((s) => s.openingNarration && s.notes?.length)).toBe(true);
+    for (let cursor = 0; cursor < lesson.segments.length * 4; cursor++) {
+      const spoken = spokenStepAt(lesson, cursor).narration;
+      expect(new TextEncoder().encode(spoken).length).toBeLessThanOrEqual(500);
+      if (cursor % 4 === 0) expect(spoken).not.toBe(lesson.segments[cursor / 4].english);
+    }
+  }
 });
 it("keeps Writing about thinking, point grouping and grammatical choices rather than ready-written answers", () => {
   for (const lesson of methodLessons.filter((l) => l.section === "writing")) {

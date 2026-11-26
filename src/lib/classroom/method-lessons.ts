@@ -1,5 +1,6 @@
 import apposition from "@/data/classroom/apposition-rule-first.json";
 import foundations from "@/data/classroom/grammar-rule-foundations.json";
+import grade10Oral from "@/data/classroom/grade10-grammar-oral.json";
 import writingProfiles from "@/data/classroom/writing-teaching-profiles.json";
 import { TEACHING_METHOD_REVISION } from "./teaching-method";
 import type { ReadingLesson, ReadingSegment } from "./types";
@@ -23,6 +24,7 @@ const rules = foundations as Record<
 const sourcePath = (grade: number, unit: number) =>
   grade === 10 ? `src/data/textbookUnit${unit}.json` : `src/data/grade11/textbook/unit${unit}.json`;
 const join = (parts: string[]) => parts.filter(Boolean).join("\n\n");
+const GRADE10_GRAMMAR_ORAL_VERSION = "rule-first-oral-v2";
 /** Split long rule explanations without truncating them; every narration stays within provider bounds. */
 function chunks(text: string, limit = 2600): string[] {
   const out: string[] = [];
@@ -71,6 +73,26 @@ function grammarSegments(grade: 10 | 11, unit: number) {
   if (grade === 10 && unit === 1)
     return apposition.flatMap((c, i) => card(10, 1, "grammar", i, c.title, c.paragraphs, c.notes));
   const foundation = rules[`${grade}:${unit}`];
+  if (grade === 10) {
+    const topics = grade10Oral[unit - 2];
+    return topics.flatMap((cards, index) => {
+      const topic = foundation.sections[index];
+      return cards.map(
+        ([openingNarration, translation, explanation, reasoning], part): ReadingSegment => ({
+          id: `g10-u${unit}-grammar-oral-${index}-${part}`,
+          paragraph: index + 1,
+          source: `${sourcePath(10, unit)}; authored grammar teaching, ${GRADE10_GRAMMAR_ORAL_VERSION}`,
+          english: topic.title,
+          openingNarration,
+          translation,
+          explanation,
+          reasoning,
+          notes: topic.patterns,
+          focus: [topic.patterns[0]],
+        }),
+      );
+    });
+  }
   return foundation.sections.flatMap((s, index) =>
     card(
       grade,
@@ -117,7 +139,12 @@ export function getMethodLesson(grade: number, unit: number, skill: string): Rea
       grade,
       unit,
       section: skill,
-      version: skill === "grammar" ? "rule-first-v1" : WRITING_VERSION,
+      version:
+        skill === "writing"
+          ? WRITING_VERSION
+          : grade === 10 && unit > 1
+            ? GRADE10_GRAMMAR_ORAL_VERSION
+            : "rule-first-v1",
       teachingRevision: skill === "writing" ? WRITING_REVISION : TEACHING_METHOD_REVISION,
       teachingMethod: skill === "grammar" ? "rule-first" : "point-first",
       review: "draft",
