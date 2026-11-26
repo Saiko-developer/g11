@@ -1,7 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { isClassroomCancellation, CLASSROOM_PAUSED_NOTICE } from "@/lib/classroom/cancellation";
 import { createClassAudioBuffer } from "./class-audio-buffer";
-import { emptyProgress, type ClassroomProgress, type ReadingLesson } from "@/lib/classroom/types";
+import {
+  lessonClipCount,
+  stepAt,
+  emptyProgress,
+  type ClassroomProgress,
+  type ReadingLesson,
+} from "@/lib/classroom/types";
 
 export async function classroomRequest(
   grade: number,
@@ -67,7 +73,7 @@ export function useClassroom(
   const teacherDialogueRef = useRef(teacherDialogue);
   teacherDialogueRef.current = teacherDialogue;
   const startCursor = range?.start ?? 0;
-  const endCursor = range?.end ?? lesson.segments.length * 4;
+  const endCursor = range?.end ?? lessonClipCount(lesson);
   const [progress, setProgress] = useState(() => ({ ...emptyProgress(), cursor: startCursor }));
   const current = useRef(progress);
   const revision = useRef(0);
@@ -98,7 +104,15 @@ export function useClassroom(
   const loadingRef = useRef(false);
   const playRef = useRef<(cursor: number, offset: number) => Promise<void>>(async () => {});
   const maxCursor = endCursor - 1;
-  const totalSteps = lesson.segments.length * 4;
+  const totalSteps = lessonClipCount(lesson);
+  const endsCard = useCallback(
+    (cursor: number) => {
+      const { step, parts, partIndex } = stepAt(lesson, cursor);
+      return step === "reasoning" && partIndex + 1 === (parts?.length ?? 1);
+    },
+    [lesson],
+  );
+
   const update = useCallback((next: ClassroomProgress) => {
     current.current = next;
     setProgress(next);
@@ -334,7 +348,7 @@ export function useClassroom(
         };
         a.onended = () => {
           if (token !== generation.current) return;
-          if (teacherDialogueRef.current && cursor % 4 === 3) {
+          if (teacherDialogueRef.current && endsCard(cursor)) {
             setWaitingAt(cursor);
             setPlaying(false);
             loadingRef.current = false;
@@ -384,6 +398,7 @@ export function useClassroom(
     [
       userId,
       published,
+      endsCard,
       ready,
       lesson.grade,
       lesson.id,
@@ -405,7 +420,7 @@ export function useClassroom(
       const token = generation.current;
       audio.current.onended = () => {
         if (generation.current !== token || !active.current) return;
-        if (teacherDialogueRef.current && cursor % 4 === 3) {
+        if (teacherDialogueRef.current && endsCard(cursor)) {
           setWaitingAt(cursor);
           setPlaying(false);
           return;

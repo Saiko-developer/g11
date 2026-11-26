@@ -1,25 +1,20 @@
 import { hasAiProvider } from "@/lib/ai-provider.server";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import { generateSpeech } from "@/lib/ttsGenerate.server";
-import { CLASSROOM_STEPS, spokenStepAt, type ReadingLesson } from "./types";
+import { spokenStepAt, type ReadingLesson } from "./types";
 import { lessonHash } from "./manifest.server";
 
 export async function classroomAudioIdentity(lesson: ReadingLesson, cursor: number) {
-  const { step, segment, narration: text } = spokenStepAt(lesson, cursor);
-  const original = segment.originalAudio;
-  const originalCursor = original?.cursors[CLASSROOM_STEPS.indexOf(step)];
-  const audioCursor = originalCursor ?? cursor;
-  const audioStep =
-    originalCursor == null ? step : CLASSROOM_STEPS[originalCursor % CLASSROOM_STEPS.length];
-  const version = original && originalCursor != null ? original.version : lesson.version;
+  const { step, originalCursor, parts, narration: text } = spokenStepAt(lesson, cursor);
+  const version = parts ? lesson.version : (lesson.splitAudio?.originalVersion ?? lesson.version);
   const identity = JSON.stringify([
     // New teaching scripts use per-clip content identity: editing a later sentence
     // must not regenerate unchanged clips. Legacy Grade 11 hashes stay identical.
     lesson.teachingRevision
       ? `${lesson.id}:${version}:${lesson.teachingRevision}`
       : await lessonHash(lesson),
-    audioCursor,
-    audioStep,
+    parts ? cursor : originalCursor,
+    step,
     text,
     "Puck",
     "classroom-audio-v1",

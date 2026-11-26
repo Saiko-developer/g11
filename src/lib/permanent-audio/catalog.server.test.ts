@@ -16,7 +16,13 @@ it("inventories canonical authored clips without changing scripts or generating 
   expect(clips.filter((c) => c.pilot && c.source === "walkthrough")).toHaveLength(249);
   expect(
     clips.filter((c) => c.source === "classroom" && c.grade === 10 && c.section === "grammar"),
-  ).toHaveLength(688);
+  ).toHaveLength(196);
+  const unit2 = clips.filter((c) => c.lesson_id === "g10-u2-grammar");
+  expect(unit2).toHaveLength(16);
+  expect(unit2.slice(1, 6).map((c) => c.part)).toEqual(
+    [1, 2, 3, 4, 5].map((number) => ({ clip: 2, number, total: 5 })),
+  );
+  expect(unit2.filter((c) => !c.part)).toHaveLength(11);
   expect(
     clips.filter((c) => c.source === "classroom" && c.grade === 11 && c.section === "grammar"),
   ).toHaveLength(148);

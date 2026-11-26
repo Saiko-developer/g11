@@ -1,6 +1,7 @@
 import { grade11AuthoredClips, grade11AudioHash } from "../grade11GrammarAudioCache.server";
 import { methodLessons } from "../classroom/method-lessons";
 import { readingLessons } from "../classroom/lessons";
+import { lessonClipCount, stepAt } from "../classroom/types";
 import { classroomAudioIdentity } from "../classroom/audio.server";
 import { additionalGrammar } from "@/data/grade12/additionalGrammar";
 import { unit1Grammar } from "@/data/grade12/unit1-grammar";
@@ -25,6 +26,7 @@ export type AudioClip = {
   text: string;
   source: "walkthrough" | "classroom" | "grade12-grammar";
   lessonTitle?: string;
+  part?: { clip: number; number: number; total: number };
   legacy_bucket?: string;
   legacy_path?: string;
   pilot: boolean;
@@ -59,8 +61,9 @@ export function audioCatalog(): Promise<AudioClip[]> {
       });
     }
     for (const lesson of [...methodLessons, ...readingLessons])
-      for (let cursor = 0; cursor < lesson.segments.length * 4; cursor++) {
+      for (let cursor = 0; cursor < lessonClipCount(lesson); cursor++) {
         const item = await classroomAudioIdentity(lesson, cursor);
+        const { parts, originalCursor, partIndex } = stepAt(lesson, cursor);
         clips.push({
           id: `classroom-${item.hash}`,
           grade: lesson.grade,
@@ -73,6 +76,9 @@ export function audioCatalog(): Promise<AudioClip[]> {
           script_version: `${item.version}:${lesson.teachingRevision ?? "legacy"}`,
           text: item.text,
           source: "classroom",
+          ...(parts
+            ? { part: { clip: originalCursor + 1, number: partIndex + 1, total: parts.length } }
+            : {}),
           legacy_bucket: "classroom-narration",
           legacy_path: item.path,
           pilot: lesson.grade === 10 || lesson.section === "grammar",

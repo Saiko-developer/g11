@@ -284,8 +284,7 @@ function sentences(text: string) {
 }
 /** Presentation only: never attach board cues to lesson objects or change their publication/audio hashes. */
 export function grammarBoardCue(lesson: ReadingLesson, cursor: number): GrammarBoardCue {
-  const { segment, text } = stepAt(lesson, cursor);
-  const stage = cursor % 4;
+  const { segment, stage, text } = stepAt(lesson, cursor);
   if (lesson.grade === 10 && lesson.unit === 1) return apposition[segment.paragraph - 1][stage];
   const foundation = (
     foundations as Record<

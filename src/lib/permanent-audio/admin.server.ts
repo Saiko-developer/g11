@@ -220,6 +220,7 @@ export async function audioManagerGet(request: Request) {
                   pilot: authored.pilot,
                   source: authored.source,
                   lessonTitle: authored.lessonTitle,
+                  part: authored.part,
                   editable: canEditAudioScript(authored),
                   legacyReady: cached.has(c.id),
                   versions: versions

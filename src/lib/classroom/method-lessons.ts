@@ -23,7 +23,7 @@ const rules = foundations as Record<
 >;
 const sourcePath = (grade: number, unit: number) =>
   grade === 10 ? `src/data/textbookUnit${unit}.json` : `src/data/grade11/textbook/unit${unit}.json`;
-const GRADE10_SPLIT_VERSION = "rule-first-split-v2";
+const GRADE10_SPLIT_VERSION = "rule-first-split-v3";
 const ORIGINAL_GRAMMAR_VERSION = "rule-first-v1";
 const join = (parts: string[]) => parts.filter(Boolean).join("\n\n");
 /** Split long rule explanations without truncating them; every narration stays within provider bounds. */
@@ -74,7 +74,7 @@ function grammarSegments(grade: 10 | 11, unit: number) {
   if (grade === 10 && unit === 1)
     return apposition.flatMap((c, i) => card(10, 1, "grammar", i, c.title, c.paragraphs, c.notes));
   const foundation = rules[`${grade}:${unit}`];
-  const segments = foundation.sections.flatMap((s, index) =>
+  return foundation.sections.flatMap((s, index) =>
     card(
       grade,
       unit,
@@ -102,7 +102,6 @@ function grammarSegments(grade: 10 | 11, unit: number) {
       s.patterns[0],
     ),
   );
-  return grade === 10 ? splitGrade10GrammarClips(segments, ORIGINAL_GRAMMAR_VERSION) : segments;
 }
 const cache = new Map<string, ReadingLesson>();
 export function getMethodLesson(grade: number, unit: number, skill: string): ReadingLesson | null {
@@ -115,7 +114,10 @@ export function getMethodLesson(grade: number, unit: number, skill: string): Rea
   )
     return null;
   const key = `g${grade}-u${unit}-${skill}`;
-  if (!cache.has(key))
+  if (!cache.has(key)) {
+    const segments =
+      skill === "grammar" ? grammarSegments(grade, unit) : writingSegments(grade, unit);
+    const splitGrammar = skill === "grammar" && grade === 10 && unit > 1;
     cache.set(key, {
       id: key,
       grade,
@@ -134,9 +136,18 @@ export function getMethodLesson(grade: number, unit: number, skill: string): Rea
         skill === "grammar"
           ? rules[`${grade}:${unit}`].title
           : writingProfiles.find((p) => p.grade === grade && p.unit === unit)!.title,
-      segments: skill === "grammar" ? grammarSegments(grade, unit) : writingSegments(grade, unit),
+      segments,
+      ...(splitGrammar
+        ? {
+            splitAudio: {
+              originalVersion: ORIGINAL_GRAMMAR_VERSION,
+              parts: splitGrade10GrammarClips(segments),
+            },
+          }
+        : {}),
       questions: [],
     });
+  }
   return cache.get(key)!;
 }
 export const methodLessons = ([10, 11] as const).flatMap((grade) =>

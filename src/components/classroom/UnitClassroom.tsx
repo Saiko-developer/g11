@@ -13,7 +13,7 @@ import {
   validUnitActivity,
   type UnitSkill,
 } from "@/lib/classroom/unit-course";
-import { spokenStepAt, type ReadingLesson } from "@/lib/classroom/types";
+import { lessonClipCount, spokenStepAt, type ReadingLesson } from "@/lib/classroom/types";
 import { isClassroomCancellation } from "@/lib/classroom/cancellation";
 import { ReadingWhiteboard } from "./ReadingWhiteboard";
 import { classroomRequest, useClassroom } from "./useClassroom";
@@ -170,7 +170,7 @@ function UnitSection({
   autoStart: boolean;
   onCompleted: (course: CourseState) => void;
 }) {
-  const total = lesson.segments.length * 4;
+  const total = lessonClipCount(lesson);
   const firstMissing = Array.from({ length: total }, (_, i) => i).find(
     (i) => !saved?.steps.includes(i),
   );
@@ -434,7 +434,7 @@ export function UnitTeachingBlock({
         lesson={lesson}
         cursor={engine.progress.cursor}
         completed={engine.progress.completed.length}
-        total={lesson.segments.length * 4}
+        total={lessonClipCount(lesson)}
         transcript={narration}
       />
       <div className="flex flex-wrap gap-2">

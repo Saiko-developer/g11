@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { getUnitLesson, type UnitSkill } from "@/lib/classroom/unit-course";
-import { spokenStepAt } from "@/lib/classroom/types";
+import { CLASSROOM_STEPS, segmentNarration } from "@/lib/classroom/types";
 import { classroomRequest } from "./useClassroom";
 
 /** Rendered only inside the admin setup; API independently checks the admin role. */
@@ -71,9 +71,9 @@ export function UnitScriptReview({
             {i + 1}.{" "}
             {lesson.section === "writing" ? `${lesson.title} · သင်ကြားပိုင်း ${i + 1}` : s.english}
           </summary>
-          {[0, 1, 2, 3].map((step) => (
+          {CLASSROOM_STEPS.map((step) => (
             <p key={step} className="mt-4 whitespace-pre-wrap text-sm leading-loose">
-              {spokenStepAt(lesson, i * 4 + step).narration}
+              {segmentNarration(s, step)}
             </p>
           ))}
         </details>

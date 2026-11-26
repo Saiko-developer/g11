@@ -1,7 +1,12 @@
 import { RequireSignIn } from "@/components/RequireSignIn";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { spokenStepAt, type ReadingLesson } from "@/lib/classroom/types";
+import {
+  CLASSROOM_STEPS,
+  lessonClipCount,
+  segmentNarration,
+  type ReadingLesson,
+} from "@/lib/classroom/types";
 import { UnitTeachingBlock } from "./UnitClassroom";
 
 export function ClassroomLessonChooser({ grade, unit }: { grade: 10 | 11; unit: number }) {
@@ -67,7 +72,7 @@ export function MethodClassroom({
   const [block, setBlock] = useState(0);
   const [done, setDone] = useState(false);
   const [review, setReview] = useState(false);
-  const total = lesson.segments.length * 4;
+  const total = lessonClipCount(lesson);
   return (
     <section className="space-y-5 py-5" aria-label="AI teaching lesson">
       <header>
@@ -140,9 +145,9 @@ export function MethodClassroom({
                 {lesson.section === "writing" ? `${lesson.title} · ${i + 1}` : s.english}
               </h2>
               {lesson.section === "writing" && <p className="mt-2 leading-loose">{s.english}</p>}
-              {[1, 2, 3].map((step) => (
+              {CLASSROOM_STEPS.slice(1).map((step) => (
                 <p key={step} className="mt-3 whitespace-pre-wrap text-sm leading-loose">
-                  {spokenStepAt(lesson, i * 4 + step).narration}
+                  {segmentNarration(s, step)}
                 </p>
               ))}
             </section>

@@ -6,7 +6,7 @@ import originalScripts from "./fixtures/grade10-grammar-unsplit-sha256.json";
 import { getMethodLesson, methodLessons } from "./method-lessons";
 import { getUnitLesson, resolveClassroomLesson } from "./unit-course";
 import { onDemandReadingPilot } from "./pilot";
-import { spokenStepAt } from "./types";
+import { lessonClipCount, segmentNarration, spokenStepAt } from "./types";
 import { lessonHash } from "./manifest.server";
 import { classroomAudioIdentity } from "./audio.server";
 import { splitGrade10GrammarClips } from "./grammar-clip-split";
@@ -18,7 +18,7 @@ it("provides 48 distinct canonical classroom lessons for both grades' 12 units",
     expect(getUnitLesson(lesson.grade, lesson.unit, lesson.section!)).toBe(lesson);
     expect(onDemandReadingPilot(lesson)).toBe(true);
     expect(resolveClassroomLesson(lesson.grade === 10 ? 11 : 10, lesson.id)).toBeNull();
-    for (let cursor = 0; cursor < lesson.segments.length * 4; cursor++) {
+    for (let cursor = 0; cursor < lessonClipCount(lesson); cursor++) {
       const text = spokenStepAt(lesson, cursor).narration;
       expect(text.trim().length).toBeGreaterThan(10);
       expect(text.length).toBeLessThanOrEqual(3500);
@@ -47,27 +47,30 @@ it("keeps the original Grade 10 grammar narration word for word across the split
   for (const [unit, originalHash] of Object.entries(originalScripts)) {
     const lesson = getMethodLesson(10, Number(unit), "grammar")!;
     const clips = Array.from(
-      { length: lesson.segments.length * 4 },
+      { length: lessonClipCount(lesson) },
       (_, cursor) => spokenStepAt(lesson, cursor).narration,
     );
     expect(createHash("sha256").update(clips.join("")).digest("hex")).toBe(originalHash);
-    expect(clips.every((clip) => clip.trim() && encoder.encode(clip).length <= 650)).toBe(true);
+    expect(clips.every((clip) => clip.trim() && encoder.encode(clip).length <= 5200)).toBe(true);
   }
 });
 it("reuses an unchanged clip's audio identity even when a long earlier step moves its cursor", async () => {
   const lesson = getMethodLesson(10, 1, "grammar")!;
   const segment = {
     ...lesson.segments[0],
-    translation: "စာကြောင်းကို အရင်ဖတ်ကြည့်ပါ။ ".repeat(22),
+    translation: "စာကြောင်းကို အရင်ဖတ်ကြည့်ပါ။ ".repeat(95),
     reasoning: "ဒီအချက်ကို ပြန်စဉ်းစားပါ။",
   };
   const before = { ...lesson, segments: [segment] };
   const after = {
     ...before,
-    version: "rule-first-split-v2",
-    segments: splitGrade10GrammarClips(before.segments, before.version),
+    version: "rule-first-split-v3",
+    splitAudio: {
+      originalVersion: before.version,
+      parts: splitGrade10GrammarClips(before.segments),
+    },
   };
-  const moved = await classroomAudioIdentity(after, after.segments.length * 4 - 1);
+  const moved = await classroomAudioIdentity(after, lessonClipCount(after) - 1);
   expect(moved).toEqual(await classroomAudioIdentity(before, 3));
 });
 it("keeps Writing about thinking, point grouping and grammatical choices rather than ready-written answers", () => {
@@ -89,4 +92,20 @@ it("changes audio/publication identity when teacher content changes without touc
     await lessonHash({ ...lesson, version: "unit-teacher-v1" }),
   );
   expect(getUnitLesson(10, 1, "reading")!.version).toBe("teacher-v2");
+});
+
+it("changes Unit 2 from 12 to 16 clips by splitting only original clip 2", () => {
+  const lesson = getMethodLesson(10, 2, "grammar")!;
+  expect(lesson.segments.length * 4).toBe(12);
+  expect(lessonClipCount(lesson)).toBe(16);
+  expect(Object.keys(lesson.splitAudio!.parts)).toEqual(["1"]);
+  const parts = lesson.splitAudio!.parts[1];
+  expect(parts).toHaveLength(5);
+  expect(parts.join("")).toBe(segmentNarration(lesson.segments[0], "translation"));
+  expect(Array.from({ length: 5 }, (_, part) => spokenStepAt(lesson, part + 1).narration)).toEqual(
+    parts,
+  );
+  expect(spokenStepAt(lesson, 6).narration).toBe(
+    segmentNarration(lesson.segments[0], "explanation"),
+  );
 });

@@ -1,6 +1,6 @@
 import { ArrowRight, Check, Lightbulb, ScanText } from "lucide-react";
 import { grammarBoardCue, grammarFormulaParts } from "@/lib/classroom/grammar-board";
-import type { ReadingLesson } from "@/lib/classroom/types";
+import { stepAt, type ReadingLesson } from "@/lib/classroom/types";
 
 const terms =
   /\b(noun phrase|noun|appositive phrase|appositive|apposition|referent|subject|main verb|verb|singular|plural|identifying|extra information|comma|V-ing|V1|V2|V3|gerund|infinitive|auxiliary|tense|active|passive|relative pronoun|clause|My son|a musician|Aye Aye|U Tun Tun|our English teacher)\b/gi;
@@ -93,7 +93,7 @@ export function GrammarWhiteboard({
   transcript: string;
 }) {
   const cue = grammarBoardCue(lesson, cursor);
-  const stage = cursor % 4;
+  const { stage } = stepAt(lesson, cursor);
   const formulas = cue.formulas ?? [];
   return (
     <article

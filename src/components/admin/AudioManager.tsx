@@ -9,6 +9,7 @@ type Clip = AudioCatalogRow & {
   script: string;
   source: string;
   lessonTitle?: string;
+  part?: { clip: number; number: number; total: number };
   editable?: boolean;
   pilot: boolean;
   legacyReady: boolean;
@@ -726,6 +727,8 @@ export function AudioManager() {
                     }
                   />
                   {clip.lesson_id} · {clip.segment_order}
+                  {clip.part &&
+                    ` · Original clip ${clip.part.clip}, part ${clip.part.number}/${clip.part.total}`}
                 </label>
                 <span className="rounded-full bg-primary/5 px-3 py-1 text-xs">
                   {clip.removed_from_lesson ? "Removed from lesson" : state(clip)}

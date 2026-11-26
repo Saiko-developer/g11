@@ -4,7 +4,7 @@ import canonicalHashes from "./fixtures/canonical-lessons-before-grammar-board.j
 import { grammarBoardCue, grammarFormulaParts } from "./grammar-board";
 import { methodLessons, getMethodLesson } from "./method-lessons";
 import { readingLessons } from "./lessons";
-import { stepAt } from "./types";
+import { lessonClipCount, stepAt } from "./types";
 it("preserves Unit 1 and unrelated canonical lessons while versioning only the new Grade 10 Grammar", () => {
   for (const lesson of [...methodLessons, ...readingLessons].filter(
     (l) => l.section !== "writing",
@@ -13,7 +13,7 @@ it("preserves Unit 1 and unrelated canonical lessons while versioning only the n
     const original = canonicalHashes[lesson.id as keyof typeof canonicalHashes];
     if (lesson.grade === 10 && lesson.unit > 1 && lesson.section === "grammar") {
       expect(hash).not.toBe(original);
-      expect(lesson.version).toBe("rule-first-split-v2");
+      expect(lesson.version).toBe("rule-first-split-v3");
     } else {
       expect(hash).toBe(original);
     }
@@ -21,7 +21,7 @@ it("preserves Unit 1 and unrelated canonical lessons while versioning only the n
 });
 it("provides contextual board cues for every clip in all 24 grammar lessons", () => {
   for (const lesson of methodLessons.filter((l) => l.section === "grammar"))
-    for (let cursor = 0; cursor < lesson.segments.length * 4; cursor++) {
+    for (let cursor = 0; cursor < lessonClipCount(lesson); cursor++) {
       const cue = grammarBoardCue(lesson, cursor);
       expect(cue.title.length).toBeGreaterThan(0);
       expect(cue.check.length).toBeGreaterThan(0);

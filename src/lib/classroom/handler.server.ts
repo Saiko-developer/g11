@@ -6,7 +6,7 @@ import { withAiCredit } from "@/lib/ai-credit.server";
 import { resolveClassroomLesson } from "./unit-course";
 import { classroomAdmin, classroomUnavailable, classroomUserDb } from "./db.server";
 import { lessonHash, publishedLesson } from "./manifest.server";
-import { emptyProgress, readingFinished, stepAt } from "./types";
+import { emptyProgress, lessonClipCount, readingFinished, stepAt } from "./types";
 import { onDemandReadingPilot } from "./pilot";
 import {
   prepareClassroomAudio,
@@ -92,7 +92,7 @@ export async function postClassroom(request: Request) {
   const body = parsed.data;
   const lesson = resolveClassroomLesson(body.grade, body.lessonId);
   if (!lesson) return Response.json({ error: "lesson_not_found" }, { status: 404 });
-  const steps = lesson.segments.length * 4;
+  const steps = lessonClipCount(lesson);
   if (body.cursor >= steps || body.completed.some((i) => i >= steps))
     return Response.json({ error: "invalid_cursor" }, { status: 400 });
   try {
