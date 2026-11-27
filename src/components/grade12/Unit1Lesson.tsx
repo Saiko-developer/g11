@@ -1,3 +1,4 @@
+import { GrammarExerciseGenerator } from "@/components/lesson/GrammarExerciseGenerator";
 import { GrammarScriptView } from "@/components/lesson/GrammarScriptView";
 import { UnitGrammarVideos } from "@/components/grade11/Grade11GrammarVideos";
 import { unit1Grammar } from "@/data/grade12/unit1-grammar";
@@ -564,6 +565,14 @@ function CoreExercises({ skill }: { skill: CoreSkill }) {
                   </li>
                 ))}
               </ol>
+            )}
+            {skill === "grammar" && (
+              <GrammarExerciseGenerator
+                grade={12}
+                title={`Grade 12 Unit 1 Grammar ${key}`}
+                instructions={instruction}
+                samples={questions.map((text, index) => ({ text, answer: answers?.[index] }))}
+              />
             )}
           </section>
         );

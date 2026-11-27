@@ -26,6 +26,7 @@ import {
 } from "@/data/grade12/unit3-exercises-my";
 import { unit2ExercisesMy } from "@/data/grade12/unit2-exercises-my";
 import { unit3Affixes, unit3ReadingMy, unit3SpeakingTopics } from "@/data/grade12/unit3";
+import { GrammarExerciseGenerator } from "@/components/lesson/GrammarExerciseGenerator";
 import { GrammarScriptView } from "@/components/lesson/GrammarScriptView";
 import { UnitGrammarVideos } from "@/components/grade11/Grade11GrammarVideos";
 import { PracticePanel } from "@/components/grade11/Grade11SpeakingPractice";
@@ -326,6 +327,15 @@ export function TextbookUnitLesson({ unit, skill }: { unit: 2 | 3 | 4; skill: Gr
           </li>
         ))}
       </ol>
+      {skill === "grammar" && (
+        <GrammarExerciseGenerator
+          grade={12}
+          title={`Grade 12 Unit ${unit} Grammar ${groupIndex + 1}`}
+          instructions={instruction}
+          reference={reference}
+          samples={items}
+        />
+      )}
     </section>
   ));
   const reference =

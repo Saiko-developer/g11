@@ -13,10 +13,14 @@ export function GrammarExerciseGenerator({
   instructions,
   samples,
   placeholder,
+  grade,
+  reference,
 }: {
   title: string;
   instructions: string;
-  samples: { text: string; answer?: string }[];
+  samples: { text: string; answer?: string; choices?: readonly string[] }[];
+  grade?: 12;
+  reference?: string;
   placeholder?: string;
 }) {
   const storageKey = `grammar-gen:${title}:${instructions.slice(0, 80)}`;
@@ -50,6 +54,8 @@ export function GrammarExerciseGenerator({
         body: JSON.stringify({
           title,
           instructions,
+          grade,
+          reference,
           samples: samples.slice(0, 8),
           avoid: items.map((i) => i.text),
         }),

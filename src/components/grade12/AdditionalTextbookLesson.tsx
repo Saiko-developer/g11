@@ -5,6 +5,7 @@ import { Grade11RolePlay } from "@/components/grade11/Grade11RolePlay";
 import { UnitGrammarVideos } from "@/components/grade11/Grade11GrammarVideos";
 import { PracticePanel } from "@/components/grade11/Grade11SpeakingPractice";
 import { ToggleReveal } from "@/components/lesson/ExerciseKit";
+import { GrammarExerciseGenerator } from "@/components/lesson/GrammarExerciseGenerator";
 import { GrammarScriptView } from "@/components/lesson/GrammarScriptView";
 import { Button } from "@/components/ui/button";
 import { additionalGrammar } from "@/data/grade12/additionalGrammar";
@@ -21,10 +22,12 @@ function Exercise({
   group,
   skill,
   readingContext,
+  practiceTitle,
 }: {
   group: AdditionalExerciseGroup;
   skill: Grade12Skill;
   readingContext: string;
+  practiceTitle?: string;
 }) {
   const { source, translation, structure, entries, informational } = group;
   const tick = group.input === "tick" || group.input === "personal";
@@ -122,6 +125,15 @@ function Exercise({
       {!informational && source.items.length === 0 && (
         <Answer prompt={source.instruction} subjective />
       )}
+      {practiceTitle && (
+        <GrammarExerciseGenerator
+          grade={12}
+          title={practiceTitle}
+          instructions={source.instruction}
+          reference={group.reference.map(({ en }) => en).join("\n")}
+          samples={source.items}
+        />
+      )}
     </section>
   );
 }
@@ -138,12 +150,17 @@ export function AdditionalTextbookLesson({
   const { pages, groups } = data.sections[skill];
   const speaking = skill === "speaking";
   const readingContext = skill === "reading" ? data.reading.join("\n\n") : "";
-  const exercises = groups.map((group) => (
+  const exercises = groups.map((group, index) => (
     <Exercise
       key={group.source.instruction}
       group={group}
       skill={skill}
       readingContext={readingContext}
+      practiceTitle={
+        skill === "grammar" && !group.informational
+          ? `Grade 12 Unit ${unit} Grammar ${index + 1}`
+          : undefined
+      }
     />
   ));
   const shadowing = data.shadowing.map((line, index) => ({
