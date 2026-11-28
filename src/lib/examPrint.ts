@@ -4,6 +4,7 @@
  * iframe so none of the app chrome (timer, buttons, header) is captured.
  * Used ONLY by src/routes/mock-exam.$unit.tsx.
  */
+import { parseExamGrade } from "@/lib/examBlueprint";
 import type { ExamSection, MockExamPaper } from "@/lib/mockExam";
 
 const esc = (value: unknown) =>
@@ -238,7 +239,7 @@ async function renderImage(html: string, format: "png" | "jpeg"): Promise<Blob> 
 }
 
 export function downloadExamPaper(paper: MockExamPaper, format: DownloadFormat = "pdf") {
-  const head = `<div class="doc-head"><div class="sub">Sayar Owl Academy · Grade ${paper.grade === 11 ? 11 : 10} English</div>
+  const head = `<div class="doc-head"><div class="sub">Sayar Owl Academy · Grade ${parseExamGrade(paper.grade) ?? 10} English</div>
     <h1>${esc(paper.title)}</h1>
     <p>ENGLISH · PRACTICE EXAMINATION</p>
     <p>WRITE YOUR ANSWERS IN THE ANSWER BOOKLET.<br>ANSWER ALL QUESTIONS.</p>
@@ -264,7 +265,7 @@ export function downloadExamPaper(paper: MockExamPaper, format: DownloadFormat =
 }
 
 export function answerKeyHtml(paper: MockExamPaper): string {
-  const head = `<div class="doc-head"><div class="sub">Sayar Owl Academy · Grade ${paper.grade === 11 ? 11 : 10} English</div>
+  const head = `<div class="doc-head"><div class="sub">Sayar Owl Academy · Grade ${parseExamGrade(paper.grade) ?? 10} English</div>
     <h1>${esc(paper.title)}</h1>
     <div class="meta">Unit ${esc(paper.unit)} · Total marks: ${esc(paper.totalMarks)}</div></div>
     <div class="key-banner">Answer Key — Teacher&rsquo;s Guide</div>`;

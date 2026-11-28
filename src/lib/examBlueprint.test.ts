@@ -28,6 +28,13 @@ describe("exam builder totals", () => {
     const g11 = normalizeConfig({ units: "1", grade: "11" });
     expect(configKey(g11)).not.toBe(configKey(g10));
   });
+  it("uses the Grade 11 blueprint and a separate cache key for Grade 12", () => {
+    const config = normalizeConfig({ grade: "12", units: [12, 1, 13] });
+    expect(config.units).toEqual([1, 12]);
+    expect(examTotals(config)).toEqual({ marks: 100, minutes: 180 });
+    expect(configKey(config)).toBe("g12-v2|1,12|I,II,III,IV,V,VI,VII,VIII,IX|10");
+    expect(normalizeConfig({ grade: 12, units: "13" }, 13).units).toEqual([1]);
+  });
   it("combines chosen units in order without duplicates", () => {
     expect(normalizeConfig({ units: "3,1,3", sections: "I", count: "5" })).toEqual({
       units: [1, 3],

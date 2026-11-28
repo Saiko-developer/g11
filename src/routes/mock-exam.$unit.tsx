@@ -39,12 +39,13 @@ const FORMATS: { f: DownloadFormat; label: string }[] = [
   { f: "jpeg", label: "Image (.jpg)" },
 ];
 import type { ExamSection, MockExamPaper } from "@/lib/mockExam";
-import { normalizeConfig } from "@/lib/examBlueprint";
+import { normalizeConfig, parseExamGrade } from "@/lib/examBlueprint";
+import { grade12Units } from "@/data/grade12/syllabus";
 
 export const Route = createFileRoute("/mock-exam/$unit")({
   head: ({ params }) => {
     const title = `Unit ${params.unit} Mock Exam — Sayar Owl Academy`;
-    const description = `A full Grade 10 English mock exam paper for Unit ${params.unit}, written by Sayar Owl in the Myanmar matriculation format: nine sections, 95 marks, with a built-in timer.`;
+    const description = `A Myanmar English mock exam for Unit ${params.unit} with a built-in timer, grading and downloadable papers.`;
     return {
       meta: [
         { title },
@@ -59,7 +60,7 @@ export const Route = createFileRoute("/mock-exam/$unit")({
   validateSearch: (
     s: Record<string, unknown>,
   ): { units?: string; sections?: string; count?: number; grade?: number } => ({
-    grade: Number(s.grade) === 11 ? 11 : undefined,
+    grade: parseExamGrade(s.grade),
     units:
       typeof s.units === "string"
         ? s.units
@@ -74,6 +75,15 @@ export const Route = createFileRoute("/mock-exam/$unit")({
 
 function useUnitMeta(units: number[], grade = 10) {
   return useMemo(() => {
+    if (grade === 12) {
+      return {
+        title:
+          units.length > 1
+            ? `Units ${units.join(", ")} Combined Exam`
+            : (grade12Units.find(({ number }) => number === units[0])?.title ?? `Unit ${units[0]}`),
+        topics: "", // Resolved server-side from the Grade 12 textbook syllabus.
+      };
+    }
     const source: (SyllabusUnit | G11Unit)[] =
       grade === 11
         ? G11_SYLLABUS.filter((n): n is G11Unit => n.type === "unit")
@@ -191,7 +201,9 @@ function MockExamPage() {
   // on-screen answers unlock only after they submit their paper for grading.
   const isStaff =
     !!quota && (quota.limit < 0 || quota.role === "teacher" || quota.role === "admin");
-  const storeKey = paper ? `mockexam:${unitNumber}:${paper.title}` : null;
+  const storeKey = paper
+    ? `mockexam:${paper.grade === 12 ? "g12:" : ""}${unitNumber}:${paper.title}`
+    : null;
   const [genAt, setGenAt] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [now, setNow] = useState(() => Date.now());
@@ -231,7 +243,7 @@ function MockExamPage() {
       <main className="mx-auto max-w-4xl px-4 py-10">
         <button
           type="button"
-          onClick={() => void navigate({ to: "/exam-builder" })}
+          onClick={() => void navigate({ to: "/exam-builder", search: { grade: config.grade } })}
           className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary"
         >
           <ArrowLeft className="h-4 w-4" /> Back to Exam Builder
@@ -240,7 +252,7 @@ function MockExamPage() {
         <header className="mt-4 flex flex-wrap items-start justify-between gap-4">
           <div className="min-w-0">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              {unitLabel} · Sayar Owl exam
+              Grade {config.grade ?? 10} · {unitLabel} · Sayar Owl exam
             </p>
             <h1 className="text-2xl font-bold tracking-tight md:text-3xl">
               {paper?.title ?? meta.title}

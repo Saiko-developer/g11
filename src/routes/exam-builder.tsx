@@ -9,9 +9,11 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { SYLLABUS, type SyllabusUnit } from "@/data/syllabus";
 import { G11_SYLLABUS, type G11Unit } from "@/data/grade11/syllabus";
+import { grade12Units } from "@/data/grade12/syllabus";
 import {
   ALL_SECTION_IDS,
   examTotals,
+  parseExamGrade,
   sectionMarks,
   sectionSpecs,
   type Grade,
@@ -22,7 +24,7 @@ export const Route = createFileRoute("/exam-builder")({
   head: () => {
     const title = "Exam Builder — Sayar Owl Academy";
     const description =
-      "Build your own Grade 10 or Grade 11 English exam: combine any units, choose a full paper or only the sections you need, and let Sayar Owl write it.";
+      "Build your own Grade 10, 11, or 12 English exam: combine any units, choose a full paper or only the sections you need, and let Sayar Owl write it.";
     return {
       meta: [
         { title },
@@ -34,7 +36,7 @@ export const Route = createFileRoute("/exam-builder")({
       ],
     };
   },
-  validateSearch: (s: Record<string, unknown>): { grade?: Grade } => (Number(s.grade) === 11 ? { grade: 11 } : {}),
+  validateSearch: (s: Record<string, unknown>): { grade?: Grade } => ({ grade: parseExamGrade(s.grade) }),
   component: () => <OfflineGuard feature="Exam Generator"><ExamBuilderPage /></OfflineGuard>,
 });
 
@@ -47,7 +49,7 @@ function ExamBuilderPage() {
   const navigate = useNavigate();
   const search = Route.useSearch();
   const [grade, setGradeState] = useState<Grade>(search.grade ?? 10);
-  const UNITS: { number: number; title: string }[] = grade === 11 ? G11_UNITS : G10_UNITS;
+  const UNITS = grade === 12 ? grade12Units : grade === 11 ? G11_UNITS : G10_UNITS;
   const SPECS = sectionSpecs(grade);
   const [units, setUnits] = useState<number[]>([]);
   const setGrade = (g: Grade) => {
@@ -78,7 +80,7 @@ function ExamBuilderPage() {
     void navigate({
       to: "/mock-exam/$unit",
       params: { unit: String(units[0]) },
-      search: { units: units.join(","), sections: chosenSections.join(","), count: chosenCount, ...(grade === 11 ? { grade: 11 } : {}) },
+      search: { units: units.join(","), sections: chosenSections.join(","), count: chosenCount, grade: grade === 10 ? undefined : grade },
     });
   };
 
@@ -107,7 +109,7 @@ function ExamBuilderPage() {
         )}
 
         <div className="mt-6 inline-flex gap-2" role="group" aria-label="Grade">
-          {([10, 11] as Grade[]).map((g) => (
+          {([10, 11, 12] as const).map((g) => (
             <button key={g} type="button" aria-pressed={grade === g} onClick={() => setGrade(g)} className={`min-h-11 ${chip(grade === g)}`}>
               Grade {g}
             </button>
@@ -155,7 +157,7 @@ function ExamBuilderPage() {
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <button type="button" onClick={() => setMode("full")} aria-pressed={mode === "full"} className={`text-left ${chip(mode === "full")} p-4`}>
               <span className="block font-semibold">စာမေးပွဲအပြည့်</span>
-              <span className="block text-xs opacity-80">အပိုင်း ၉ ပိုင်း · {grade === 11 ? "၁၀၀" : "၉၅"} မှတ် · ၂ နာရီ</span>
+              <span className="block text-xs opacity-80">အပိုင်း ၉ ပိုင်း · {grade === 10 ? "၉၅" : "၁၀၀"} မှတ် · ၃ နာရီ</span>
             </button>
             <button type="button" onClick={() => setMode("custom")} aria-pressed={mode === "custom"} className={`text-left ${chip(mode === "custom")} p-4`}>
               <span className="block font-semibold">စိတ်ကြိုက် အပိုင်းရွေး</span>

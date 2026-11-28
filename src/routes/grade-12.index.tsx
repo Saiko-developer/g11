@@ -379,6 +379,24 @@ function Grade12Home() {
                 Syllabus Curriculum Explorer — သင်ရိုးသစ် Unit 1–12
               </p>
             </header>
+            <Link
+              to="/exam-builder"
+              search={{ grade: 12 }}
+              className="flex items-center justify-between gap-3 rounded-2xl border border-primary/40 bg-primary/5 px-5 py-4 transition hover:bg-primary/10"
+            >
+              <span className="flex items-center gap-3">
+                <Sparkles aria-hidden="true" className="size-5 shrink-0 text-primary" />
+                <span>
+                  <span className="block text-sm font-bold">Exam Builder with Sayar Owl</span>
+                  <span lang="my" className="block text-xs text-muted-foreground">
+                    Unit များကို ပေါင်းပြီး စိတ်ကြိုက် စာမေးပွဲ ထုတ်ပါ
+                  </span>
+                </span>
+              </span>
+              <span className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground">
+                Open
+              </span>
+            </Link>
             <div data-saya-home-section>
               <Curriculum key={unit} unit={unit} />
             </div>

@@ -1,7 +1,17 @@
 import { buildTextbookVerseCompletion } from "./examVerse";
-import { ALL_SECTION_IDS, sectionSpecs, type ExamConfig, type SectionId } from "./examBlueprint";
+import {
+  ALL_SECTION_IDS,
+  sectionSpecs,
+  WRITING_LIMITS,
+  type ExamConfig,
+  type SectionId,
+} from "./examBlueprint";
 import type { MockExamPaper, LetterScenario } from "./mockExam";
-import type { Grade11ExamSource } from "./grade11ExamSource.server";
+export type ExamTextbookSource = {
+  readings: { unit: number; passage: string }[];
+  poems: { title: string; lines: string[] }[];
+};
+
 const normalize = (s: string) =>
   s
     .toLowerCase()
@@ -47,7 +57,7 @@ export function normalizeExamSectionId(value: unknown): SectionId | null {
   return ALL_SECTION_IDS.includes(id as SectionId) ? (id as SectionId) : null;
 }
 /** Choose the quotation before generation so the model interprets these exact lines. */
-export function selectPoemInterpretation(source: Grade11ExamSource, random = Math.random) {
+export function selectPoemInterpretation(source: ExamTextbookSource, random = Math.random) {
   const pairs = source.poems.flatMap((poem) =>
     poem.lines.slice(0, -1).flatMap((line, i) => {
       const next = poem.lines[i + 1];
@@ -61,12 +71,15 @@ export function selectPoemInterpretation(source: Grade11ExamSource, random = Mat
   return pair;
 }
 const optionLabel = (value: string) =>
-  value.trim().match(/^\(?([ABC])\)?[.):]?$/i)?.[1]?.toUpperCase();
+  value
+    .trim()
+    .match(/^\(?([ABC])\)?[.):]?$/i)?.[1]
+    ?.toUpperCase();
 /** Reject malformed generated papers before they can be recorded or consume an exam allowance. */
-export function applyGrade11Format(
+export function applyMatriculationFormat(
   paper: MockExamPaper,
   config: ExamConfig,
-  source: Grade11ExamSource,
+  source: ExamTextbookSource,
   interpretation?: ReturnType<typeof selectPoemInterpretation>,
 ) {
   requireFormat(
@@ -88,9 +101,11 @@ export function applyGrade11Format(
       q.number = start + i;
     });
   };
+  const grade = config.grade === 12 ? 12 : 11;
+  const writingLimits = WRITING_LIMITS[grade];
   paper.sections = config.sections.map((id) => {
     const s = paper.sections.find((section) => section.id === id);
-    const spec = sectionSpecs(11).find((section) => section.id === id);
+    const spec = sectionSpecs(grade).find((section) => section.id === id);
     requireFormat(s && spec, `missing section ${id}`);
     s.marks = spec.countable ? config.count : spec.marks;
     const expected = {
@@ -113,7 +128,8 @@ export function applyGrade11Format(
         for (const item of s.items) {
           if (Array.isArray(item.options)) {
             for (const option of item.options) {
-              const label = typeof option.label === "string" ? optionLabel(option.label) : undefined;
+              const label =
+                typeof option.label === "string" ? optionLabel(option.label) : undefined;
               if (label) option.label = label;
             }
             const label = optionLabel(item.answer);
@@ -153,8 +169,10 @@ export function applyGrade11Format(
         );
       for (const q of s.partB.slice(0, 4))
         requireFormat(
-          q.answer?.trim() &&
+          q.question?.trim() &&
+            q.answer?.trim() &&
             q.sourceEvidence &&
+            normalize(q.sourceEvidence) &&
             source.readings.some(
               (r) =>
                 r.unit === q.sourceUnit &&
@@ -236,7 +254,7 @@ export function applyGrade11Format(
         "five A/B exchanges",
       );
     } else if (s.type === "writing") {
-      s.maxWords = id === "VIII" ? 300 : 500;
+      s.maxWords = id === "VIII" ? writingLimits.letter : writingLimits.essay;
       if (id === "VIII") {
         requireFormat(
           s.letterScenarios?.length === 2 &&
@@ -256,8 +274,8 @@ export function applyGrade11Format(
       );
       s.instructions =
         id === "VIII"
-          ? "Choose a situation given below and write a letter. Do not write more than 300 words."
-          : "Write an essay on ONE of the following. Do not write more than 500 words.";
+          ? `Choose a situation given below and write a letter. Do not write more than ${s.maxWords} words.`
+          : `Write an essay on ONE of the following. Do not write more than ${s.maxWords} words.`;
     }
     return s;
   });

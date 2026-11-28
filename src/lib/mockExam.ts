@@ -3,6 +3,8 @@
  * Used ONLY by the Syllabus Curriculum Explorer "AI grammar practice" flow.
  */
 
+import type { Grade } from "./examBlueprint";
+
 export type FillItem = { number: number; sentence: string; hint?: string; answer: string };
 export type McqItem = {
   number: number;
@@ -118,7 +120,7 @@ export type ExamSection =
     };
 
 export type MockExamPaper = {
-  grade?: 10 | 11;
+  grade?: Grade;
   title: string;
   unit: number;
   unitTopics: string;

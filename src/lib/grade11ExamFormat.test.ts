@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyGrade11Format, letterPrompt, normalizeExamSectionId, selectPoemInterpretation } from "./grade11ExamFormat";
+import { applyMatriculationFormat, letterPrompt, normalizeExamSectionId, selectPoemInterpretation } from "./grade11ExamFormat";
 import { grade11ExamSource } from "./grade11ExamSource.server";
 import { questionBody } from "./examPrint";
 import type { MockExamPaper, ExamSection, LetterScenario } from "./mockExam";
@@ -43,7 +43,7 @@ function paper(section: ExamSection): MockExamPaper {
   };
 }
 function apply(p: MockExamPaper) {
-  applyGrade11Format(
+  applyMatriculationFormat(
     p,
     { grade: 11, units: [1], sections: [p.sections[0].id as "VIII"], count: 10 },
     source,
@@ -86,11 +86,11 @@ describe("Grade 11 exam paper contract", () => {
         { number: 0, question: "Explain the shade near the bank.", answer: "The trees shelter the river bank." },
       ],
     };
-    applyGrade11Format(paper(s), { grade: 11, units: [1], sections: ["IV"], count: 10 }, source, selected);
+    applyMatriculationFormat(paper(s), { grade: 11, units: [1], sections: ["IV"], count: 10 }, source, selected);
     expect(s.partB[4]).toEqual({ number: 10, question: selected.question, answer: "The trees shelter the river bank." });
     expect(s.poemTitle).toBe("Test");
     s.partB[4].answer = "";
-    expect(() => applyGrade11Format(paper(s), { grade: 11, units: [1], sections: ["IV"], count: 10 }, source, selected)).toThrow("two-line poem interpretation");
+    expect(() => applyMatriculationFormat(paper(s), { grade: 11, units: [1], sections: ["IV"], count: 10 }, source, selected)).toThrow("two-line poem interpretation");
   });
   it("still rejects invented poem quotations when no server selection was supplied", () => {
     const s: ExamSection = {
@@ -141,7 +141,7 @@ describe("Grade 11 exam paper contract", () => {
       })),
     };
     const p = paper(section);
-    applyGrade11Format(p, { grade: 11, units: [1], sections: ["I"], count: 10 }, source);
+    applyMatriculationFormat(p, { grade: 11, units: [1], sections: ["I"], count: 10 }, source);
     expect(p.sections[0].id).toBe("I");
   });
   it.each([null, undefined, "", "X", "10", "Intro", "IIIA", "Section VIIIa"])(
@@ -157,13 +157,13 @@ describe("Grade 11 exam paper contract", () => {
       { ...letters(), id: "8" },
     ];
     expect(() =>
-      applyGrade11Format(p, { grade: 11, units: [1], sections: ["VIII", "IX"], count: 10 }, source),
+      applyMatriculationFormat(p, { grade: 11, units: [1], sections: ["VIII", "IX"], count: 10 }, source),
     ).toThrow("duplicate sections");
   });
   it("still rejects a genuinely missing section I instead of relabeling another section", () => {
     const p = paper(letters());
     expect(() =>
-      applyGrade11Format(p, { grade: 11, units: [1], sections: ["I"], count: 10 }, source),
+      applyMatriculationFormat(p, { grade: 11, units: [1], sections: ["I"], count: 10 }, source),
     ).toThrow("missing section I");
   });
 

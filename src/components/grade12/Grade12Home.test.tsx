@@ -41,6 +41,10 @@ it("opens a Unit 1 skill and returns to the expanded curriculum card", async () 
     "title",
     expect.stringContaining("Unit 12 · Intercultural Communication"),
   );
+  expect(screen.getByRole("link", { name: /Exam Builder with Sayar Owl/ })).toHaveAttribute(
+    "href",
+    "/exam-builder?grade=12",
+  );
   expect(unit1).toHaveAttribute("aria-expanded", "true");
   for (const label of ["Receptive Skills", "Productive Skills", "Knowledge about Language"]) {
     expect(screen.getByRole("heading", { name: label })).toBeVisible();
